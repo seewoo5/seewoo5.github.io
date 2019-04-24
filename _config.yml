@@ -17,10 +17,10 @@ remote_theme : mmistakes/minimal-mistakes
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Site Title"
+title                    : "Anti Math Math Club"
 title_separator          : "-"
-name                     : "Your Name"
-description              : "An amazing website."
+name                     : "Seewoo Lee"
+description              : "Mathematics Blog"
 url                      : "https://seewoo5.github.io"
 baseurl                  : ""
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
