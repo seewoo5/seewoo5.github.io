@@ -2,33 +2,15 @@
 title: "Unramified extension of"
 ---
 
-\newcommand{\nc}{\newcommand}
-
-\nc{\Tr}{\mathrm{Tr}\,}
-\newcommand{\Cl}{\mathrm{Cl}}
-\newcommand{\GL}{\mathrm{GL}}
-\newcommand{\SL}{\mathrm{SL}}
-\nc{\Gal}{\mathrm{Gal}}
-
-%\nc{\Mod}[1]{\,(\mathrm{mod}\,#1)}
-
-\nc{\cSO}{\mathcal{SO}}
-\nc{\cO}{\mathcal{O}}
-\nc{\cS}{\mathcal{S}}
-
-\nc{\Zz}{\mathbb{Z}}
-\nc{\Qq}{\mathbb{Q}}
-\nc{\Cc}{\mathbb{C}}
-\nc{\Rr}{\mathbb{R}}
-\nc{\Ff}{\mathbb{F}}
 
 
-In this note, we show that there's no unramified extension of $\Qq(\sqrt{3})$. Before we start, let's recall the easier case - $\Qq$. 
-If $K/\Qq$ is a finite extension, then the Minkowski's bound tell's us that for any ideal class $A\in \mathrm{Cl}_{K}$,  there's a nonzero integral ideal $\mathfrak{a}\subseteq \mathcal{O}_{K}$ in $A$ such that 
+
+In this post, we show that there's no unramified extension of $\mathbb{Q}(\sqrt{3})$. Before we start, let's recall the easier case - $\mathbb{Q}$. 
+If $K/\mathbb{Q}$ is a finite extension, then the Minkowski's bound tell's us that for any ideal class $A\in \mathrm{Cl}_{K}$,  there's a nonzero integral ideal $\mathfrak{a}\subseteq \mathcal{O}_{K}$ in $A$ such that 
 $$
 [\mathcal{O}_{K}:\mathfrak{a}] = \mathcal{N}(\mathfrak{a}) \leq \frac{n!}{n^{n}} \left( \frac{4}{\pi}\right)^{s} \sqrt{|d_{K}|}
 $$
-where $n = [K:\Qq]$, $s$ is the number of (pairs of) complex places, and $d_K$ is the discriminant of $K$. We know that the prime $p\in \Qq$ ramifies in $K$ if and only if $p|d_K$. 
+where $n = [K:\mathbb{Q}]$, $s$ is the number of (pairs of) complex places, and $d_K$ is the discriminant of $K$. We know that the prime $p\in \mathbb{Q}$ ramifies in $K$ if and only if $p|d_K$. 
 Since $\mathcal{N}(\mathfrak{a})\geq 1$, we have
 $$
 |d_{K}| \geq \frac{n^{n}}{n!}\left(\frac{\pi}{4}\right)^{s} \geq \frac{n^{n}}{n!} \left(\frac{\pi}{4}\right)^{n/2}
@@ -38,9 +20,9 @@ $$
 \frac{a_{n+1}}{a_{n}} = \left( \frac{\pi}{4}\right)^{1/2}\left( 1 + \frac{1}{n}\right)^{n} \geq 2\sqrt{\frac{\pi}{4}} = \sqrt{\pi} > 1
 $$
 and $a_{2} = \frac{\pi}{2} > 1$, so $a_{n} >1$ for all $n\geq 1$. 
-This implies that for any nontrivial extension $K$ of $\Qq$, $|d_{K}|>1$ so there exists a prime $p\in \Qq$ that divides $d_{K}$, so that ramifies in $K$. 
+This implies that for any nontrivial extension $K$ of $\mathbb{Q}$, $|d_{K}|>1$ so there exists a prime $p\in \mathbb{Q}$ that divides $d_{K}$, so that ramifies in $K$. 
 
-To obtain the similar result for $\Qq(\sqrt{3})$ or any other number fields, we may need the (global) class field theory. According to the class field theory, for any number field $K$,  there exists the \emph{Hilbert class field} $H_K$, which is a maximal unramified finite abelian extension of $K$ and $\Gal(H_K/K) \simeq \mathrm{Cl}_{K}$ canonically (via Artin reciprocity map). 
+To obtain the similar result for $\mathbb{Q}(\sqrt{3})$ or any other number fields, we may need the (global) class field theory. According to the class field theory, for any number field $K$,  there exists the \emph{Hilbert class field} $H_K$, which is a maximal unramified finite abelian extension of $K$ and $\Gal(H_K/K) \simeq \mathrm{Cl}_{K}$ canonically (via Artin reciprocity map). 
 So if $K$ has a class number 1 (i.e. $\mathcal{O}_{K}$ is a PID), then there's no nontrivial unramified \emph{abelian} extension of $K$. 
 (Here unramifiedness includes archimedean places. For example, $L/\mathbb{Q}(\sqrt{3})$ is unramified at real places if and only if $L$ is a totally real field.) 
 
@@ -50,12 +32,12 @@ $$
 \Delta_{M/K} = \mathcal{N}_{L/K}(\Delta_{M/L}) \Delta_{L/K}^{[M:L]}
 $$
 where $\mathcal{N}_{L/K}:I_{L}\to I_{K}$ is the ideal norm map. 
-Now assume that there's a nontrivial unramified extension $K$ of $\Qq(\sqrt{3})$. By applying the above relation, we get
+Now assume that there's a nontrivial unramified extension $K$ of $\mathbb{Q}(\sqrt{3})$. By applying the above relation, we get
 $$
-\Delta_{K/\Qq} = \Delta_{\Qq(\sqrt{3})/\Qq}^{[K:\Qq{\sqrt{3}}]} = 12^{n}
+\Delta_{K/\mathbb{Q}} = \Delta_{\mathbb{Q}(\sqrt{3})/\mathbb{Q}}^{[K:\mathbb{Q}{\sqrt{3}}]} = 12^{n}
 $$
-where $n = [K:\Qq(\sqrt{3})]$. 
-($\Delta_{K/\Qq(\sqrt{3})} = (1)$ since $K/\Qq(\sqrt{3})$ is unramified.) 
+where $n = [K:\mathbb{Q}(\sqrt{3})]$. 
+($\Delta_{K/\mathbb{Q}(\sqrt{3})} = (1)$ since $K/\mathbb{Q}(\sqrt{3})$ is unramified.) 
 Now the Minkowski's bound gives
 $$
 \frac{(2n)!}{(2n)^{2n}} \cdot 12^{n/2} \geq 1.
@@ -67,14 +49,14 @@ $$
 \frac{b_{n+1}}{b_{n}} = \left( 1 + \frac{1}{n}\right)^{-2n} \frac{2n+1}{2n+2} \sqrt{12} \leq \frac{\sqrt{12}}{4} \leq 1
 $$
 for any $n\geq 1$, and $a_{3} < 1$. 
-So we get $n \leq 2$, and we already know that there's no degree 2 unramified extension of $\Qq(\sqrt{3})$ because every degree 2 extension is abelian!
+So we get $n \leq 2$, and we already know that there's no degree 2 unramified extension of $\mathbb{Q}(\sqrt{3})$ because every degree 2 extension is abelian!
 
 What if we allow infinite places to be ramify? 
 Then there's such extension. 
-We will show that $K = \Qq(\sqrt{3}, \sqrt{-1})$ is such extension. 
-First, since $d_{\Qq(\sqrt{-1})} = -4$, the only prime $p\in \Qq$ ramifies in $\Qq(\sqrt{-1})$ is 2. 
-So if $p\neq 2$, then $p$ is unramified in $\Qq(\sqrt{-1})$, and this implies that any prime $\mathfrak{p}|p$ in $\Qq(\sqrt{3})$ is unramified in $K = \Qq(\sqrt{3}, \sqrt{-1})$. 
+We will show that $K = \mathbb{Q}(\sqrt{3}, \sqrt{-1})$ is such extension. 
+First, since $d_{\mathbb{Q}(\sqrt{-1})} = -4$, the only prime $p\in \mathbb{Q}$ ramifies in $\mathbb{Q}(\sqrt{-1})$ is 2. 
+So if $p\neq 2$, then $p$ is unramified in $\mathbb{Q}(\sqrt{-1})$, and this implies that any prime $\mathfrak{p}|p$ in $\mathbb{Q}(\sqrt{3})$ is unramified in $K = \mathbb{Q}(\sqrt{3}, \sqrt{-1})$. 
 For $p = 2$, assume that the prime $\mathfrak{p}$  lying over $2$ ramifies in $K$. 
-Then the ramification degree of $2$ in $K$ is $4$ since $2$ also ramifies in $\Qq(\sqrt{3})$. 
-However, this is impossible since $2$ does not ramify in the subfield $\Qq(\sqrt{-3}) = \Qq(\zeta_{3})$, which has a discriminant $d_{\Qq(\sqrt{-3})} = -3$. 
-Hence any finite prime in $\Qq(\sqrt{3}$ is unramified in $K$. But the infinite place ramifies in $K$ since $K$ has a complex place ($K$ is not a totally real field). 
+Then the ramification degree of $2$ in $K$ is $4$ since $2$ also ramifies in $\mathbb{Q}(\sqrt{3})$. 
+However, this is impossible since $2$ does not ramify in the subfield $\mathbb{Q}(\sqrt{-3}) = \mathbb{Q}(\zeta_{3})$, which has a discriminant $d_{\mathbb{Q}(\sqrt{-3})} = -3$. 
+Hence any finite prime in $\mathbb{Q}(\sqrt{3}$ is unramified in $K$. But the infinite place ramifies in $K$ since $K$ has a complex place ($K$ is not a totally real field). 
