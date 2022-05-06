@@ -28,9 +28,10 @@ twitter_username: antimath3
 github_username:  seewoo5
 
 # Build settings
-theme: minimal-mistakes-jekyll
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 plugins:
   - jekyll-feed
+  - jekyll-include-cache
 minimal_mistakes_skin: "dark"
 
 # Exclude from processing.
