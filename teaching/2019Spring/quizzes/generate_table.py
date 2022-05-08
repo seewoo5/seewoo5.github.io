@@ -1,15 +1,6 @@
 import os
 
 
-def link_str(s):
-    date = s.split('_')[-1].split(".")[0]
-    ws_str = date
-    ws_sol_str = ws_str + "sol"
-    ws_link_str = f"[{ws_str}](worksheets/{s})"
-    ws_sol_link_str = f"[{ws_sol_str}](worksheets/{s.replace('.', '_sol.')})"
-    return ws_link_str, ws_sol_link_str
-
-
 if __name__ == "__main__":
     ws_files = os.listdir(".")
     ws_files = [f for f in ws_files if f.endswith("pdf")]
