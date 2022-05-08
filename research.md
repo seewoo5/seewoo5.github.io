@@ -19,5 +19,5 @@ permalink: /research/
 
 * [This](https://github.com/seewoo5/math-notes) is a link to a GitHub repository for all the LaTeX-ed notes that I wrote.
 
-* [My Qualifying exam syllabus and questions](https://drive.google.com/file/d/1uhsUqZKRB0J-UDhJ1YFymrZ8J3EXde01/view).
+* [My qualifying exam syllabus and questions](https://drive.google.com/file/d/1uhsUqZKRB0J-UDhJ1YFymrZ8J3EXde01/view).
 
