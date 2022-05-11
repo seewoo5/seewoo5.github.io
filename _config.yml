@@ -33,7 +33,6 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-spaceship
-  - jekyll-pdf-embed
 minimal_mistakes_skin: "dark"
 
 # Exclude from processing.

@@ -3,6 +3,4 @@ layout: single
 permalink: /cv/
 ---
 
-<!-- <embed src="https://github.com/seewoo5/seewoo5/blob/main/CV/CV.pdf" type="application/pdf"/> -->
-
-{% pdf "/assets/cv/CV.pdf" no_link %}
+<object data="/assets/cv/CV.pdf" width="1000" height="1000" type='application/pdf'></object>
