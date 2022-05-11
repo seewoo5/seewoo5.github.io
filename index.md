@@ -12,4 +12,4 @@ Currently, I'm on leave for alternative military service from 2019 Fall to 2022 
 
 Email: seewoo5 + at + berkeley + dot + edu
 
-Here's my [CV](https://github.com/seewoo5/seewoo5/blob/main/CV/CV.pdf), [Github](https://github.com/seewoo5), and [LinkedIn](https://www.linkedin.com/in/lee-seewoo-857062171/).
+Here's my [CV].
