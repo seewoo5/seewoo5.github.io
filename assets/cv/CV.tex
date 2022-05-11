@@ -1,0 +1,258 @@
+% (c) 2002 Matthew Boedicker <mboedick@mboedick.org> (original author) http://mboedick.org
+% (c) 2003-2007 David J. Grant <davidgrant-at-gmail.com> http://www.davidgrant.ca
+% (c) 2008 Nathaniel Johnston <nathaniel@nathanieljohnston.com> http://www.nathanieljohnston.com
+% (l) 2012 Arun I B <arunib@smail.iitm.ac.in> http://www.ee.iitm.ac.in/~ee10s026/
+%This work is licensed under the Creative Commons Attribution-Noncommercial-Share Alike 2.5 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/2.5/ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA.
+
+
+\documentclass[letterpaper,11pt]{article}
+\newlength{\outerbordwidth}
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+\usepackage[svgnames]{xcolor}
+\usepackage{framed}
+\usepackage{times}
+\usepackage{hyperref}
+\usepackage{tocloft}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{multirow,enumitem} 
+%\usepackage{tabularx}
+\usepackage{hyperref,tabu}
+\usepackage{fontawesome}
+
+
+\title{Aparna-CV}
+%-----------------------------------------------------------
+%Edit these values as you see fit
+
+\setlength{\outerbordwidth}{3pt}  % Width of border outside of title bars
+\definecolor{shadecolor}{gray}{0.75}  % Outer background color of title bars (0 = black, 1 = white)
+\definecolor{shadecolorB}{gray}{0.93}  % Inner background color of title bars
+
+
+%-----------------------------------------------------------
+%Margin setup
+
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\paperheight}{11in}
+\setlength{\paperwidth}{8.5in}
+%\setlength{\tabcolsep}{0in}
+\setlength{\textheight}{9.5in}
+\setlength{\textwidth}{7in}
+\setlength{\topmargin}{-0.3in}
+\setlength{\topskip}{0in}
+\setlength{\voffset}{0.1in}
+
+
+%-----------------------------------------------------------
+%Custom commands
+\newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
+\newcommand{\resheading}[1]{\vspace{8pt}
+  \parbox{\textwidth}{\setlength{\FrameSep}{\outerbordwidth}
+    \begin{shaded}
+\setlength{\fboxsep}{0pt}\framebox[\textwidth][l]{\setlength{\fboxsep}{4pt}\fcolorbox{shadecolorB}{shadecolorB}{\textbf{\sffamily{\mbox{~}\makebox[6.762in][l]{\large #1} \vphantom{p\^{E}}}}}}
+    \end{shaded}
+  }\vspace{-5pt}
+}
+\newcommand{\ressubheading}[4]{
+\begin{tabular*}{6.5in}{l@{\cftdotfill{\cftsecdotsep}\extracolsep{\fill}}r}
+		\textbf{#1} & #2 \\
+		{#3} & {#4} \\
+\end{tabular*}\vspace{-6pt}}
+%-----------------------------------------------------------
+
+\usepackage{newtxtext}
+\begin{document}
+
+%-----------------------------------------------------------
+%Insert IIT Madras Logo 
+\begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
+  & \multirow{4}{*}{}\\
+  & \\
+%-----------------------------------------------------------  
+  \textbf{\Large Seewoo Lee} & \\
+  Ph. D. student in Mathematics& \\
+  University of California Berkeley, USA  \\
+  seewoo5@berkeley.edu \\
+  \faHome\,\,\url{https://sites.google.com/berkeley.edu/seewoolee/home} \\
+  \faGithubSquare\,\,\url{https://github.com/seewoo5} \\
+  \faLinkedinSquare\,\,\url{https://www.linkedin.com/in/lee-seewoo-857062171/}
+\end{tabular*}
+\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Education}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}[leftmargin=5.5mm]
+\item[]
+	\ressubheading{University of California Berkeley}{Berkeley}{Ph.D in Mathematics}{2018 -- Present}
+	\begin{itemize}
+		\resitem{On leave for military service (2019 Fall - 2022 Summer)}
+		\resitem{Advisor: Sug Woo Shin}
+	\end{itemize}
+
+\item[]
+	\ressubheading{Pohang University of Science and Technology (POSTECH)}{Pohang}{M.S in Mathematics}{2017 -- 2018}
+	\begin{itemize}
+		\resitem{Thesis: \emph{Maass wave forms, quantum modular forms and Hecke operators}}
+		\resitem{Advisor: YoungJu Choie}
+	\end{itemize}
+
+\item[]
+	\ressubheading{Pohang University of Science and Technology (POSTECH)}{Pohang}{B.S. in Mathematics}{2013 -- 2017}
+	\begin{itemize}
+		\resitem{\emph{Summa Cum Laude} with top honours in mathematics} 
+		\resitem{Honor's thesis: \emph{Quantum modular forms and Hecke operators}}
+	\end{itemize}
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Experiences}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}[leftmargin=5.5mm]
+\item[]
+	\ressubheading{CryptoLab}{Seoul}{Researcher}{2021.05 -- Present}
+	\begin{itemize}
+		\resitem{Research on Homomorphic Encryption and application in Machine Learning}
+		% \resitem{Developing a Python library for Homomorphic Encryption}
+	\end{itemize}
+
+	\ressubheading{Riiid!}{Seoul}{Research Scientist}{2019.07 -- 2021.05}
+	\begin{itemize}
+		\resitem{Research on Knowlege Tracing, Score Prediction, Student Dropout Prediction, Item Recommendation}
+	\end{itemize}
+
+\end{itemize}
+
+
+
+\resheading{Research Interests}
+\begin{itemize}
+\item Number theory, Automorphic Forms and Representations, Analytic Number Theory, Algebraic Number Theory
+\item Deep learning, Natural Language Processing, Knowledge Tracing, Topological Data Analysis
+\end{itemize}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Publications}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}%[leftmargin=5.5mm]
+\item D. Choi, \textbf{S. Lee}, \emph{Non-archimedean Sendov's conjecture}, 
+\emph{$p$-adic numbers, Ultrametric Analysis and Applications} 14, 77-80 (2022).
+\item \textbf{S. Lee}, K. Kim, J. Shin, J. Park, \emph{Tracing Knowledge for Tracing Dropouts: Multi-Task Training for Study Session Dropout Prediction}, Educational Data Mining 2021.
+\item M. Kim, Y. Shim, \textbf{S. Lee}, H. Loh, J. Park, \emph{Behavioral Testing of Deep Knowledge Tracing Models}, Educational Data Mining 2021.
+\item H. Loh, D. Shin, \textbf{S. Lee}, J. Baek, C. Hwang, Y. Lee, Y. Cha, S. Kwon, J. Park and Y. Choi, \emph{Recommendation for Effective Standardized Exam Preparation}, LAK21: 11th International Learning Analytics and Knowledge Conference. 2021.
+\item D. Shin, Y. Shim, H. Yu, \textbf{S. Lee}, B. Kim, Y. Choi, \emph{SAINT+: Integrating Temporal Features for EdNet Correctness Prediction}, LAK21: 11th International Learning Analytics and Knowledge Conference. 2021.
+\item Y. Choi, Y. Lee, D. Shin, J. Cho, S. Park, \textbf{S. Lee}, J. Baek, B. Kim, Y. Jang, \emph{EdNet: A Large-Scale Hierarchical Dataset in Education}, International Conference on Artificial Intelligence in Education (2021), 69-73
+\item J. Kim, \textbf{S. Lee}, \emph{Joint Liability and Stochastic Shapley Value}, International Review of Law \& Economics 60 (2019), 1-8
+\item \textbf{S. Lee}, \emph{Maass wave forms, Quantum Modular Forms and Hecke Operators}, Res. Mathematical Science 6, 7 (2018), Modular Forms are Everywhere: Celebration of Don Zagier's 65th Birthday.
+\item \textbf{S. Lee}, \emph{Quantum Modular Forms and Hecke Operators}, Res. Number Theory 4, 18 (2018).
+\item Y. Chen, R. Chernov, M. Flores, M. F. Bourque, \textbf{S. Lee}, B. Yang, \emph{Toy Teichm\"uller spaces of real dimension 2: the pentagon and the punctured triangle}, Geom. Dedicata 197 (2018), 193-227.
+\end{enumerate}
+%\newpage
+\resheading{Preprints}
+
+\begin{enumerate}
+\item \textbf{S. Lee}, Y. Choi, J. Park, B. Kim, J. Shin, \emph{Consistency and Monotonicity Regularization for Neural Knowledge Tracing}.
+\item Y. Choi, Y. Lee, J. Cho, J. Baek, D. Shin, \textbf{S. Lee}, Y. Cha, B. Kim, J. Heo, \emph{Assessment Modeling: Fundamental Pre-training Tasks for Interactive Educational Systems}.
+
+\end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Awards, Grants \& Honours}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\vspace{-2pt}
+	\begin{center}\begin{tabular*}{6.6in}{l@{\extracolsep{\fill}}r}
+	    \multicolumn{2}{c}{Kwanjeong Educational Foundation Scholarship, KEF \cftdotfill{\cftdotsep}2017--2018}\\
+		\multicolumn{2}{c}{Excellency Award, Dept. of Mathematics, POSTECH \cftdotfill{\cftdotsep}2017}\\
+		\multicolumn{2}{c}{POSTECH Outstanding Talent Development Scholarship, POSTECH \cftdotfill{\cftdotsep} 2013--2016}\\
+		\multicolumn{2}{c}{National Science and Technology Scholarship, KOSAF \cftdotfill{\cftdotsep}2013--2016}\\
+		\multicolumn{2}{c}{Silver medals, Undergraduate Mathematical Competition, KMS  \cftdotfill{\cftdotsep}2013, 2015, 2016}\\ 
+		\multicolumn{2}{c}{31st place, ACM-ICPC Daejeon Regional, ACM\cftdotfill{\cftdotsep} 2015}\\
+		\multicolumn{2}{c}{Grand prize, POSTECH Programming Contest, Dept. of Computer Science, POSTECH \cftdotfill{\cftdotsep} 2015} \\
+		\multicolumn{2}{c}{Honorable mention, Korean Olympiad of Informatics, NIA \cftdotfill{\cftdotsep} 2012} \\
+		\vphantom{E}
+		
+\end{tabular*}
+\end{center}\vspace*{-16pt} 
+
+
+\resheading{Teaching Experience}
+%%%%%%%%%%%%%%%%
+\begin{itemize}[leftmargin=5.5mm] 
+\item[]
+\ressubheading{Graduate Student Instructor (T.A.)}{Berkeley}{UC Berkeley}{2019}
+\begin{itemize}
+	\resitem{(2019 Spring) Methods of Mathematics: Calculus, Statistics, and Combinatorics}
+\end{itemize}
+
+\ressubheading{Graduate Student Reader (Grader)}{Berkeley}{UC Berkeley}{2018}
+\begin{itemize}
+	\resitem{(2018 Fall) Introduction to Abstract Algebra}
+\end{itemize}
+	\ressubheading{Grader \& T.A.}{Pohang}{POSTECH}{2015 -- 2018}
+	\begin{itemize}
+		\resitem{(2018 Spring) Differential Manifolds and Lie groups (Graduate course)}
+		\resitem{(2017 Fall) Modern Algebra II}
+		\resitem{(2017 Spring) Calculus}
+		\resitem{(2016 Fall) Applied Linear Algebra (Undergraduate T.A.)}
+		\resitem{(2015 Winter) POSTECH Potential Development Camp for High School Students}
+	\end{itemize}
+	\ressubheading{Tutoring}{Pohang}{POSTECH}{2014 -- 2015}
+	\begin{itemize}
+		\resitem{(2015 Spring) Calculus}
+		\resitem{(2015 Spring) Modern Algebra I}
+		\resitem{(2014 Fall) Analysis II}
+		\resitem{(2014 Spring) Analysis I} 
+	\end{itemize}
+\end{itemize}
+
+
+\resheading{Talks}
+%%%%%%%%%%%%%%%%%
+\begin{itemize}
+\item 1st FHE.org workshop, Trondheim, Norway, 2022.\\
+Encrypted Multinomial Logistic Regression Training with Softmax Approximation
+\item Workshop for Young Mathematicians in Korea, Online, January 2022 \\
+Hitchhiker's guide to non-archimedean world
+\item Graduate student seminar, Sogang University, July 2018\\
+Maass wave forms, quantum modular forms and Hecke operators
+\item Sungkyunkwan University, June 2018\\
+Maass wave forms, quantum modular forms and Hecke operators
+\item Instructional Workshop on Class Field Theory, KIAS, January 2018\\
+Proof of the main theorem of local class field theory
+\item NCTS-POSTECH Number Theory Workshop, December 2017\\ Quantum modular forms and Hecke operators
+%\item FUSRP Mini Conference, Fields Institute, Toronto, Canada, August 31, 2018\\ 
+%\emph{Convexivity in Teichm\"uller space}
+\end{itemize}
+
+\resheading{Languages}
+\begin{itemize}
+\item Korean (native), English (intermediate)
+\item Python (PyTorch, Numpy, Pandas), C/C++, \LaTeX, MATLAB, SAGE Math, Haskell
+\end{itemize}
+
+
+
+\resheading{Miscelleneous (click the icons)}
+\begin{itemize}
+\item Blogs
+\begin{itemize}
+    \item Number Theory (EN, Wordpress): \emph{Expanding the Margin} \href{https://expandingthemargin.wordpress.com/}{\faEdit}
+    \item Machine Learning (KR, Tistory): \emph{Anti Math Math Club} \href{https://seewoo5.tistory.com/}{\faEdit}
+\end{itemize}
+\item Math Stackexchange \href{https://math.stackexchange.com/users/350772/seewoo-lee}{\faStackExchange}\,\& Math Overflow \href{https://mathoverflow.net/users/95471/seewoo-lee}{\faStackOverflow}
+\item Speedcuber\,\,\href{https://www.worldcubeassociation.org/persons/2018LEES06}{\faCube}
+\item Bedroom DJ (Techno, House)\,\,\href{https://soundcloud.com/aftrmath-dj}{\faSoundcloud}\,\,\href{https://www.youtube.com/channel/UCv2LsKzh8sdzXeMWa99dn_A}{\faYoutube}
+\end{itemize}
+\end{document}
