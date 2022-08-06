@@ -15,7 +15,7 @@ permalink: /research/
 - (with Y. Chen, R. Chernov, M. Flores, M. Bourque and B. Yang) *Toy Teichmüller spaces of real dimension 2: the pentagon and the punctured triangle*, Geom. Dedicata 197 (2018), 193-227 [link](https://link.springer.com/article/10.1007/s10711-018-0325-6)
 
 **Publications (Others)**
-
+- (with J. Kim) Revisiting the Convergence Theorem for Competitive Bidding in Common Value Actions, To appear in Economic Theory Bulletin
 - (with K. Kim, J. Shin, J. Park) Tracing Knowledge for Tracing Dropouts: Multi-Task Training for Study Session Dropout Prediction, Educational Data Mining 2021 [link](https://educationaldatamining.org/EDM2021/virtual/static/pdf/EDM21_paper_174.pdf)
 - (with S. Kim, Y. Shim, H. Loh, J. Park) Behavioral Testing of Deep Neural Network Knowledge Tracing Models, Educational Data Mining 2021 [link](https://eric.ed.gov/?id=ED615512)
 - (with D. Shin, Y. Shim, H. Yu, S. Lee, B. Kim, Y. Choi) *SAINT+: Integrating Temporal Features for EdNet Correctness Prediction*, LAK 2021: 11th International Learning Analytics and Knowledge Conference [link](https://dl.acm.org/doi/10.1145/3448139.3448188)
