@@ -25,5 +25,5 @@ See [HERE](https://sites.google.com/view/normansheu/teaching/math-53-fall-2022?a
 
 | | Mon | Wed | Fri |
 | --- | :---: | :---: | :---: |
-| Week1 | - | - | |
+| Week1 | - | - | [220824](worksheets/WS220826.pdf)|
 
