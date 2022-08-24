@@ -3,7 +3,7 @@ layout: single
 title: 2022 Fall - Math 53
 ---
 
-## Multivariable Calculus
+![Multivatiable Calculus](./multcal.png)
 
 Professor: [Norman Sheu](https://sites.google.com/view/normansheu/home?authuser=1)
 
