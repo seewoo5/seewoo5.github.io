@@ -28,12 +28,12 @@ It is strongly encouraged to attend all the discussions.
 Also, attending all three discussions in a week would give 0.5\% extra credit, and a maximum of 3\% can be added in this way.
 
 #### Exams and Grading policies
-* First exam: 15\%
-* Second exam: 20\%
-* Third exam: 20\%
-* Final exam: 30\%
-* Homework: 15\%
-* additional credit by attendence for discussion: $\leq$ 3\%
+* First exam: 15%
+* Second exam: 20%
+* Third exam: 20%
+* Final exam: 30%
+* Homework: 15%
+* additional credit by attendence for discussion: maximum 3%
 
 See [HERE](https://sites.google.com/view/normansheu/teaching/math-53-fall-2022?authuser=1) for the details.
 
