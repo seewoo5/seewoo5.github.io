@@ -22,7 +22,7 @@ Five problems wil be chosen at random to be graded for completion. Two of the lo
 #### Quizzes 
 **There are NO quizzes in this class!**
 
-#### Attendence
+#### Attendance
 
 I may bring an attendence sheet for every discussion and you may need to check it at the end of every discussion.
 It is strongly encouraged to attend all the discussions.
@@ -36,6 +36,15 @@ Also, attending all three discussions in a week would give 0.5% extra credit, an
 * Homework: 15%
 * additional credit by attendence for discussion: maximum 3%
 
+#### Q&A
+Q. Is it allowed to use graph calculators in exams?
+
+A. No.
+
+Q. When will be the first HW?
+
+A. Second week, which is due September 2nd.
+
 See [HERE](https://sites.google.com/view/normansheu/teaching/math-53-fall-2022?authuser=1) for the details.
 
 ---
@@ -46,5 +55,5 @@ All the worksheets will be uploaded with solutions.
 
 | | Mon | Wed | Fri |
 | --- | :---: | :---: | :---: |
-| Week1 | - | - | [220824](worksheets/WS220826.pdf)|
+| Week1 | - | - | [220826](worksheets/WS220826.pdf)|
 
