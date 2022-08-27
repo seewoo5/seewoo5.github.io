@@ -66,4 +66,5 @@ All the worksheets will be uploaded with solutions.
 | | Mon | Wed | Fri |
 | --- | :---: | :---: | :---: |
 | Week1 | - | - | [220826](worksheets/WS220826.pdf)|
+| Week2| [220829](worksheets/WS220829.pdf) |  | |
 
