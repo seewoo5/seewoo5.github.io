@@ -24,7 +24,7 @@ Five problems wil be chosen at random to be graded for completion. Two of the lo
 
 #### Attendance
 
-Attendence will be checkt at the end of every discussion.
+Attendence will be checked at the end of every discussion.
 It is strongly encouraged to attend all the discussions.
 Also, attending all three discussions in a week would give 0.5% extra credit, and a maximum of 3% can be added in this way.
 
