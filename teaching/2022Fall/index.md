@@ -45,6 +45,10 @@ Q. When will be the first HW?
 
 A. Second week, which is due September 2nd.
 
+Q. Is the problems in the UCB edition of the textbook matches with the ordinary version of the textbook (8th edition)?
+
+A. At least for the first homework, they match. I think it would match for all the problems.
+
 See [HERE](https://sites.google.com/view/normansheu/teaching/math-53-fall-2022?authuser=1) for the details.
 
 ---
