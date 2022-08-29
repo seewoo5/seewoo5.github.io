@@ -49,6 +49,13 @@ Q. Is the problems in the UCB edition of the textbook matches with the ordinary 
 
 A. At least for the first homework, they match. I think it would match for all the problems.
 
+Q. Any recommendations for other materials?
+
+A. Here are some recommendations:
+
+* Lang - Calculus of Several Variables
+* Schey - div, grad, curl, and all that: an informal text on vector calculus
+
 See [HERE](https://sites.google.com/view/normansheu/teaching/math-53-fall-2022?authuser=1) for the details.
 
 ---
