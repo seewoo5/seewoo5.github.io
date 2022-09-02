@@ -73,5 +73,6 @@ All the worksheets will be uploaded with solutions.
 | | Mon | Wed | Fri |
 | --- | :---: | :---: | :---: |
 | Week1 | - | - | [220826](worksheets/WS220826.pdf)|
-| Week2 | [220829](worksheets/WS220829.pdf) | [220831](worksheets/WS220831.pdf) | |
+| Week2 | [220829](worksheets/WS220829.pdf) | [220831](worksheets/WS220831.pdf) | [220902](worksheets/WS220902.pdf)|
+| Week3 | [⚒️](https://en.wikipedia.org/wiki/Labor_Day) | | |
 
