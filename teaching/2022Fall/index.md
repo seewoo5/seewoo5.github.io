@@ -56,6 +56,10 @@ A. Here are some recommendations:
 * Lang - Calculus of Several Variables
 * Schey - div, grad, curl, and all that: an informal text on vector calculus
 
+Q. Will you check the attendance for the labor day week?
+
+A. No.
+
 See [HERE](https://sites.google.com/view/normansheu/teaching/math-53-fall-2022?authuser=1) for the details.
 
 ---
