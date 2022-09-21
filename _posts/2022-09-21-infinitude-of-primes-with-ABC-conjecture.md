@@ -3,6 +3,7 @@ layout: posts
 title:  "Infinitude of primes with ABC conjecture"
 date:   2022-09-21
 categories: jekyll update
+tags: math
 ---
 
 As a first post of my (new) blog, I'm going to introduce a proof of infinitude of primes that I found few years ago, assuming ABC conjecture.
