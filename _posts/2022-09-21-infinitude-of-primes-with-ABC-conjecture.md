@@ -23,7 +23,7 @@ Here $\mathrm{rad}(n)$ is a product of prime divisors of $n$.
 
 Now, here I present a simple proof of infinitude of primes assuming ABC conjecture.
 
-*Proof.* Assume that there are only finitely many primes: $p_1, p_2, \dots, p_k$. Consider an abc-pair $(n -1, 1, n$.
+*Proof.* Assume that there are only finitely many primes: $p_1, p_2, \dots, p_k$. Consider an abc-pair $(n -1, 1, n)$.
 Factorizing $n - 1$ and $n$ into primes gives 
 
 \begin{equation}
