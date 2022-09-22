@@ -19,8 +19,8 @@ And here is an ABC conjecture[^1], which is one of the most important problems i
 > $$ 
 > c \leq K_{\epsilon} \mathrm{rad}(abc)^{1+\epsilon}.
 > $$
-
-Here $\mathrm{rad}(n)$ is a product of prime divisors of $n$.
+>
+> Here $\mathrm{rad}(n)$ is a product of prime divisors of $n$.
 
 Now, here I present a simple proof of infinitude of primes assuming ABC conjecture.
 
