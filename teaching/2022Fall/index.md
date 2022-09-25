@@ -81,3 +81,26 @@ All the worksheets will be uploaded with solutions.
 | Week3 | [⚒️](https://en.wikipedia.org/wiki/Labor_Day) | [220907](worksheets/WS220907.pdf)| [220909](worksheets/WS220909.pdf) |
 | Week4 | [220912](worksheets/WS220912.pdf) | [220914](worksheets/WS220914.pdf) | [220916](worksheets/WS220916.pdf) |
 | Week5 | - | - | [220923](worksheets/WS220923.pdf)|
+| Week6 | [220926](worksheets/WS220926.pdf) |  |  |
+
+### Graded HW problems (randomly selected, 5 for each)
+
+**HW1**
+10.1 #9 #19 #33 /
+10.2 #7 #25 
+
+**HW2**
+10.2 #15 #33 /
+10.3 #11 #19 #57
+
+**HW3**
+10.4 #13 #41 /
+10.5 #19 /
+12.1 #15 /
+12.2 #27
+
+**HW4**
+12.3 #23 /
+12.4 #13 /
+12.5 #7 #51 /
+12.6 #19 
