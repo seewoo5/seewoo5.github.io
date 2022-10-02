@@ -104,3 +104,9 @@ All the worksheets will be uploaded with solutions.
 12.4 #13 /
 12.5 #7 #51 /
 12.6 #19 
+
+**HW5**
+13.1 #29 /
+13.2 #25 /
+13.3 #17 /
+13.4 #7 #41
