@@ -12,7 +12,7 @@ So here's a theorem that we want to prove, which is quite well-known:
 
 > **<ins>Theorem</ins>** (Euclid, ...) There are infinitely many primes.
 
-And here is an ABC conjecture[^1], which is one of the most important problems in number theory.
+And here's ABC conjecture[^1], which is one of the most important problems in number theory.
 
 > **<ins>ABC Conjecture</ins>** (Osterlé-Masser) For every $\epsilon > 0$, there exists $K_\epsilon > 0$ such that for all triples $(a, b, c)$ of coprime positive integers with $a +b = c$, we have
 > 
