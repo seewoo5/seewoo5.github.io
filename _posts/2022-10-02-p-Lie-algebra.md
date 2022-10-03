@@ -1,7 +1,7 @@
 ---
 layout: posts
 title:  "p-Lie algebra from an associative algebra"
-date:   2022-09-21
+date:   2022-10-02
 categories: jekyll update
 tags: math
 ---
