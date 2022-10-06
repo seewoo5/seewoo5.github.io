@@ -1,6 +1,6 @@
 ---
 layout: posts
-title:  "AlphaTensor"
+title:  "AlphaTensor: Discovering faster matrix multiplication algorithms with reinforcement learning"
 date:   2022-10-06
 categories: jekyll update
 tags: math machine-learning
