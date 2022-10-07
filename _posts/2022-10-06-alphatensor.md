@@ -20,6 +20,9 @@ You can find the original post from Deepmind [here](https://www.deepmind.com/blo
 
 ## Non-standard matrix multiplication
 
+We can also consider a matrix multiplication of *structured* matrices.
+For example, the authors tried to decompose a tensor that corresponds to multiplying two $n \times n$ *skew-symmetric* matrics, i.e. matrices $A$ satisfying $A^{\intercal} = -A$.
+
 ## Hardware-aware search
 
 Another interesting point of the AlphaTensor is that it is possible to find hardware-specific tensor decomposition algorithms by modifying a reward function.
