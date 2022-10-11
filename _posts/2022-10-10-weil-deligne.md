@@ -120,6 +120,7 @@ Also, any admissible (finite-dimensional) representation has a unique decomposit
 > $$
 > \sigma' = \bigoplus_{i=1}^{s} \pi_i \otimes \mathrm{sp}(n_i)
 > $$
+> 
 > which is unique up to permuting the factors.
 
 *Proof.* Decomposability follows from the induction on the dimension of $\sigma'$.
