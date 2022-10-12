@@ -83,7 +83,7 @@ All the worksheets will be uploaded with solutions.
 | Week5 | - | - | [220923](worksheets/WS220923.pdf)|
 | Week6 | [220926](worksheets/WS220926.pdf) | [220928](worksheets/WS220928.pdf) | [220930](worksheets/WS220930.pdf) |
 | Week7 | [221003](worksheets/WS221003.pdf) | [221005](worksheets/WS221005.pdf) | [221007](worksheets/WS221007.pdf) |
-| Week8 | [221010](worksheets/WS221010.pdf) |  |
+| Week8 | [221010](worksheets/WS221010.pdf) | [221012](worksheets/WS221012.pdf) |
 
 ### Graded HW problems (randomly selected, 5 for each)
 
