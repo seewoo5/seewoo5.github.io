@@ -80,10 +80,11 @@ All the worksheets will be uploaded with solutions.
 | Week2 | [220829](worksheets/WS220829.pdf) | [220831](worksheets/WS220831.pdf) | [220902](worksheets/WS220902.pdf)|
 | Week3 | [⚒️](https://en.wikipedia.org/wiki/Labor_Day) | [220907](worksheets/WS220907.pdf)| [220909](worksheets/WS220909.pdf) |
 | Week4 | [220912](worksheets/WS220912.pdf) | [220914](worksheets/WS220914.pdf) | [220916](worksheets/WS220916.pdf) |
-| Week5 | - | - | [220923](worksheets/WS220923.pdf)|
+| Week5 | mid1 prep | mid1 review | [220923](worksheets/WS220923.pdf)|
 | Week6 | [220926](worksheets/WS220926.pdf) | [220928](worksheets/WS220928.pdf) | [220930](worksheets/WS220930.pdf) |
 | Week7 | [221003](worksheets/WS221003.pdf) | [221005](worksheets/WS221005.pdf) | [221007](worksheets/WS221007.pdf) |
-| Week8 | [221010](worksheets/WS221010.pdf) | [221012](worksheets/WS221012.pdf) |
+| Week8 | [221010](worksheets/WS221010.pdf) | [221012](worksheets/WS221012.pdf) | [221014](worksheets/WS221014.pdf) |
+| Week9 | mid2 prep | mid2 review |  |
 
 ### Graded HW problems (randomly selected, 5 for each)
 
