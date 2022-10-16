@@ -118,3 +118,9 @@ All the worksheets will be uploaded with solutions.
 14.1 #15 #49 /
 14.2 #21 #37 /
 14.3 #43
+
+**HW7**
+14.4 #31 /
+14.5 #11 #45 /
+14.6 #41 /
+14.7 #3 
