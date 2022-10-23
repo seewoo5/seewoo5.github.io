@@ -85,6 +85,7 @@ All the worksheets will be uploaded with solutions.
 | Week7 | [221003](worksheets/WS221003.pdf) | [221005](worksheets/WS221005.pdf) | [221007](worksheets/WS221007.pdf) |
 | Week8 | [221010](worksheets/WS221010.pdf) | [221012](worksheets/WS221012.pdf) | [221014](worksheets/WS221014.pdf) |
 | Week9 | mid2 prep | [mid2 review](Math53Mid2Sol.pdf) | [221021](worksheets/WS221021.pdf)|
+| Week10 | [221024](worksheets/WS221024.pdf) | | |
 
 ### Graded HW problems (randomly selected, 5 for each)
 
@@ -124,3 +125,9 @@ All the worksheets will be uploaded with solutions.
 14.5 #11 #45 /
 14.6 #41 /
 14.7 #3 
+
+**HW8**
+14.7 #33 /
+14.8 #19 /
+15.1 #21 #35 /
+15.2 #55
