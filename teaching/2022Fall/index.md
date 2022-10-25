@@ -131,3 +131,7 @@ All the worksheets will be uploaded with solutions.
 14.8 #19 /
 15.1 #21 #35 /
 15.2 #55
+
+### Coffee problems
+
+Problem 1: see [this post](../../_posts/2022-10-25-planar-curve.md).
