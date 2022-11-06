@@ -140,6 +140,11 @@ All the worksheets will be uploaded with solutions.
 15.5 #9 /
 15.6 #17
 
+**HW10**
+15.7 #21 /
+15.8 #23 #35 /
+15.9 #19 #25
+
 ### Coffee problems
 
 Problem 1: see [this post](../../_posts/2022-10-25-planar-curve.md).
