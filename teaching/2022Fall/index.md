@@ -6,7 +6,7 @@ title: 2022 Fall - Math 53
 
 ![logo](./strikelogo.png)
 
-**Strike from Nov 14th till it ends, no discussion, no grading, no office hours, no response to emails.**
+**Strike from Nov 14th till it ends, no discussion, no grading, no office hours.**
 
 
 For details, see below.
