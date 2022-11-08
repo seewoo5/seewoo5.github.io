@@ -13,6 +13,7 @@ For details, see below.
 
 * [Slides for you](strike.pdf)
 * [Article](https://www.sfchronicle.com/bayarea/article/Thousands-vote-to-strike-across-UC-system-The-17554377.php)
+* [How to support us](https://docs.google.com/document/u/1/d/1EWj5ZZ7ZjIbZRlmflQtBHVva_co52YxpH86ETsBgeXQ/mobilebasic)
 * [Official website](https://www.fairucnow.org/)
 * [FAQ](https://www.fairucnow.org/strikefaq/)
 
