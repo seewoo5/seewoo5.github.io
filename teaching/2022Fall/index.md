@@ -78,6 +78,10 @@ Q. Will you check the attendance for the labor day week?
 
 A. No.
 
+Q. Why curl of gradient is zero?
+
+A. [This article](https://ccom.ucsd.edu/~ctiee/notes/grad_n_curl.pdf) has a nice explanation.
+
 See [HERE](https://sites.google.com/view/normansheu/teaching/math-53-fall-2022?authuser=1) for the details.
 
 ---
@@ -105,7 +109,7 @@ All the worksheets will be uploaded with solutions.
 | Week9 | mid2 prep | [mid2 review](Math53Mid2Sol.pdf) | [221021](worksheets/WS221021.pdf)|
 | Week10 | [221024](worksheets/WS221024.pdf) | [221026](worksheets/WS221026.pdf) | [221028](worksheets/WS221028.pdf) |
 | Week11 | [221031](worksheets/WS221031.pdf) | [221102](worksheets/WS221102.pdf) | [221104](worksheets/WS221104.pdf) |
-| Week12 | [221107](worksheets/WS221107.pdf) | | [🪖](https://en.wikipedia.org/wiki/Veterans_Day)|
+| Week12 | [221107](worksheets/WS221107.pdf) | [221109](worksheets/WS221109.pdf) | [🪖](https://en.wikipedia.org/wiki/Veterans_Day)|
 
 
 ### Graded HW problems (randomly selected, 5 for each)
