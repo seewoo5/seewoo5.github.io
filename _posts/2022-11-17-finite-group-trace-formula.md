@@ -1,7 +1,7 @@
 ---
 layout: posts
 title:  "Trace formula for finite groups"
-date:   2022-11-17
+date:   2022-11-18
 categories: jekyll update
 tags: math
 ---
@@ -22,20 +22,26 @@ Typical strategy is to compare geometric side of trace formula for two different
 The goal of this post is to introduce toy version of the trace formula, i.e. **trace formula for finite groups**.
 The formula itself almost looks the same as original Arthur-Selberg trace formula, but we don't have to care about any technical issues like choice of measures and convergence of orbital integrals.
 
-The main reference is the Whitehouse's lecture note on trace formula [1].
+The main reference is the Whitehouse's lecture note on trace formula [1]. Especially, this post describes the solution for the Exercise 2.3 of [1].
 
 ### Trace formula for finite groups
 
 Let $G$ be a finite group and $\Gamma$ be its subgroup.
-Consider $V_\Gamma = \mathbb{C}[\Gamma \backslash G]$, the space of complex valued functions on $G$ that is left $\Gamma$-invariant.
-Then $G$ acts on $V_\Gamma$ by right translation: $(R(g)\varphi) = \varphi(xg)$.
-We can decompose $R$ into the sum of irreducible representations as
+Let $(\rho, V_\rho)$ be an irreducible representation of $\Gamma$ and $R_\rho = \mathrm{Ind}_\Gamma^G(\rho)$ be the induced representation.
+It can be described as a space of functions
 
 $$
-R = \bigoplus_{\pi \in \hat{G}} m_{\pi}^{\Gamma} \pi
+V_{\rho, \Gamma} = \{\varphi: G \to V_\rho\,|\,\varphi(\gamma x) = \rho(\gamma)\varphi(x)\}
 $$
 
-where $\hat{G}$ is the set of irreducible representations of $G$ and $m_{\pi}^{\Gamma} \in \mathbb{Z}_{\geq 0}$ are their multiplicities.
+where $G$ acts as a right translation.
+We can decompose $R_\rho$ into the sum of irreducible representations as
+
+$$
+R_\rho = \bigoplus_{\pi \in \hat{G}} m_{\pi}^{\rho} \pi
+$$
+
+where $\hat{G}$ is the set of irreducible representations of $G$ and $m_{\pi}^{\rho} \in \mathbb{Z}_{\geq 0}$ are their multiplicities.
 
 For any function $f: G \to \mathbb{C}$ and a representation $(\pi, V)$, we can *linearlize* $\pi$ as follows: define $\pi(f): V \to V$ as
 
@@ -44,22 +50,26 @@ $$
 $$
 
 for all $v \in V$. 
-Since $\mathrm{tr}(\pi(f))$ only depends on the isomorphism class of $\pi$, we can express the trace of $R(f)$ as
+In case of $R_\rho$, it can be written as 
 
 $$
-\mathrm{tr}(R(f)) = \sum_{\pi \in \hat{G}} m_{\pi}^{\Gamma}\mathrm{tr}(\pi(f)).
+(R_\rho(f)\varphi)(x) = \sum_{y\in G} f(y) \varphi(xy).
 $$
 
-Now we will express $\mathrm{tr}R(f)$ in a different way to get the desired formula. By definition, $R(f): V_\Gamma \to V_\Gamma$ becomes
+Now, we are interested in the trace of $R_\rho(f)$.
+Since $\mathrm{tr}(\pi(f))$ only depends on the isomorphism class of $\pi$, we can express the trace of $R_\rho(f)$ as
 
 $$
-(R(f)\varphi)(x) = \sum_{y \in G} f(y) \varphi(xy).
+\mathrm{tr}(R_\rho(f)) = \sum_{\pi \in \hat{G}} m_{\pi}^{\rho}\mathrm{tr}(\pi(f))
 $$
 
+and we call this expansion as a *spectral expansion* of $\mathrm{tr}(R_\rho(f))$.
+
+Now we will express $\mathrm{tr}(R_\rho(f))$ in a different way to get the desired trace formula. 
 After making the change of variable $y \mapsto x^{-1}y$, we have
 
 $$
-(R(f) \varphi)(x) = \sum_{y \in G} f(x^{-1}y) \varphi(y)
+(R_\rho(f) \varphi)(x) = \sum_{y \in G} f(x^{-1}y) \varphi(y)
 $$
 
 and the latter sum can be expressed as a following double sum
@@ -67,15 +77,15 @@ and the latter sum can be expressed as a following double sum
 $$
 \begin{align*}
 \sum_{y \in G} f(x^{-1}y) \varphi(y) &= \sum_{y \in \Gamma \backslash G} \sum_{\gamma \in \Gamma} f(x^{-1}\gamma y) \varphi(\gamma y) \\
-&=\sum_{y \in \Gamma \backslash G} \sum_{\gamma \in \Gamma} f(x^{-1}\gamma y) \varphi(y) 
+&=\sum_{y \in \Gamma \backslash G} \sum_{\gamma \in \Gamma} f(x^{-1}\gamma y) \rho(\gamma) \varphi(y) 
 \end{align*}
 $$
 
-where the second equality comes from the left $\Gamma$-invariance of $\varphi$.
-This means that the linearized right regular representation $R(f)$ has a kernel expression
+where the second equality comes from $\varphi \in V_{\rho, \Gamma}$.
+When $\rho = 1$ is a trivial representation, then this implies that the linearized right regular representation $R_1(f)$ has a kernel expression
 
 $$
-(R(f)\varphi)(x) = \sum_{y \in \Gamma \backslash G} K_f(x, y) \varphi(y)
+(R_1(f)\varphi)(x) = \sum_{y \in \Gamma \backslash G} K_f(x, y) \varphi(y)
 $$
 
 for
@@ -87,14 +97,78 @@ $$
 and the trace of it can be expressed as a summation of $K_f$ over *diagonals*:
 
 $$
-\mathrm{tr}(R(f)) = \sum_{x\in \Gamma\backslash G} K_f(x, x).
+\mathrm{tr}(R_1(f)) = \sum_{x\in \Gamma\backslash G} K_f(x, x).
 $$
 
-Our goal is to express this as a sum of *orbital integrals* over the conjugacy classes of $\Gamma$, using unfolding and folding tricks.
-Once we decompose the sum over $\Gamma$ in $K_f(x, x)$ into conjugacy classes of $\Gamma$, we get
+For general $\rho$, we can't simply write it as a kernel expression because of the presence of $\rho(\gamma)$.
+But we still have a nice formula for the trace:
+
+> **Lemma.** The trace of $R_\rho(f)$ is
+>
+> $$
+> \mathrm{tr}(R_\rho(f)) = \sum_{x\in \Gamma \backslash G}\sum_{\gamma \in \Gamma} f(x^{-1}\gamma x)  \mathrm{tr}(\rho(\gamma)).
+> $$
+
+*Proof.* We will first construct a basis for $V_{\rho, \Gamma}$. 
+Let $\{v_1, \dots, v_m\}$ be a basis of $V_\rho$, and $\{z_1, \dots, z_k\}$ be a set of right coset representatives of $\Gamma \backslash G$.
+Define $\delta_{i, j}: G \to V_\rho$ as
 
 $$
-\sum_{\gamma \in \Gamma} f(x^{-1}\gamma x) = \sum_{[\gamma] \in \{\Gamma\}} \sum_{\delta \in \Gamma_{\gamma} \backslash \Gamma} f(x^{-1}\delta^{-1}\gamma \delta x)
+\delta_{i, j}(x) = \begin{cases} \rho(x)^{-1}\rho(z_i)v_j & x \in \Gamma z_j \\ 0 & \text{otherwise}.\end{cases}
+$$
+
+One can check that these functions are in $V_{\rho, \Gamma}$, i.e. $\delta_{i, j}(\gamma x) = \rho(\gamma)\delta_{i, j}(x)$ for all $\gamma \in \Gamma$ and $x \in G$.
+Also, these functions are linearly independent.
+Since $\dim V_{\rho, \Gamma} = \dim R_\rho = [G:\Gamma]\dim \rho = mk$, they form a basis of $V_{\rho, \Gamma}$.
+By direct computation,
+
+$$
+\begin{align*}
+(R_\rho(f)\delta_{i, j})(x) &= \sum_{\gamma \in \Gamma} \sum_{y \in \Gamma \backslash G} f(x^{-1} \gamma y) \rho(\gamma) \delta_{i, j}(y) \\
+&= \sum_{\gamma \in \Gamma} f(x^{-1} \gamma z_i) \rho(\gamma) \delta_{i, j} (z_i) \\
+&= \sum_{\gamma \in \Gamma} f(x^{-1} \gamma z_i) \rho(\gamma) v_j \\
+&= \sum_{\gamma \in \Gamma} \sum_{1\leq \ell \leq m} f(x^{-1} \gamma z_i) c_{j, \ell}^{\gamma} v_\ell
+\end{align*}
+$$
+
+where $(c_{j, \ell}^{\gamma})\_{1 \leq j, \ell \leq m}$ is a matrix representation of $\rho(\gamma): V_\rho \to V_\rho$ with respect to the basis $\{v_1, \dots, v_m\}$.
+If we write $R_\rho(f)\delta_{i, j}$ as a linear combination of $\delta_{i, j}$
+
+$$
+R_\rho(f)\delta_{i, j} = \sum_{\substack{1 \leq s \leq k \\ 1 \leq t \leq m}} a_{s, t} \delta_{s, t},
+$$
+
+then the trace becomes $\mathrm{tr}(R_\rho(f)) = \sum_{s, t}a_{s, t}$.
+By the way, plugging in $x = z_i$ gives 
+
+$$
+\sum_{\gamma \in \Gamma}\sum_{1\leq \ell \leq m} f(z_{i}^{-1} \gamma z_{i}) c_{j, \ell}^{\gamma} v_{\ell} = (R_\rho(f)\delta_{i, j}) (z_i) = \sum_{\substack{1 \leq s \leq k \\ 1 \leq t \leq m}} a_{s, t} \delta_{s, t}(z_i) = \sum_{1 \leq t \leq m} a_{i t} v_t
+$$
+
+so comparing the coefficients gives
+
+$$
+a_{i, j} = \sum_{\gamma \in \Gamma} f(z_{i}^{-1} \gamma z_i) c_{j, j}^{\gamma} 
+$$
+
+and the trace is
+
+$$
+\begin{align*}
+\mathrm{tr}(R_\rho(f)) &= \sum_{\substack{1 \leq i \leq k \\ 1 \leq j \leq m}} a_{i, j} \\
+&= \sum_{\substack{1 \leq i \leq k \\ 1 \leq j \leq m}} \sum_{\gamma \in \Gamma} f(z_i^{-1} \gamma z_i) c_{j, j}^{\gamma} \\
+&= \sum_{1 \leq i \leq k} \sum_{\gamma \in \Gamma} f(z_i^{-1} \gamma z_i) \mathrm{tr}(\rho(\gamma)) \\
+&= \sum_{x \in \Gamma \backslash G} \sum_{\gamma \in \Gamma} f(x^{-1} \gamma x) \mathrm{tr}(\rho(\gamma)).
+\end{align*}
+$$
+
+This completes the proof. $\square$
+
+Our goal is to express this as a sum of *orbital sums* over the conjugacy classes of $\Gamma$, using unfolding and folding tricks.
+Once we decompose the sum over $\Gamma$ into conjugacy classes of $\Gamma$, we get
+
+$$
+\sum_{\gamma \in \Gamma} f(x^{-1}\gamma x)\mathrm{tr}(\rho(\gamma)) = \sum_{[\gamma] \in \{\Gamma\}} \sum_{\delta \in \Gamma_{\gamma} \backslash \Gamma} f(x^{-1}\delta^{-1}\gamma \delta x) \mathrm{tr}(\rho(\gamma))
 $$
 
 where $\{\Gamma\}$ is the set of conjugacy classes of $\Gamma$, and $\Gamma_\gamma$ is the centralizer of $\gamma$ in $\Gamma$ (i.e. stabilizer of the conjugation action for $\gamma$).
@@ -102,26 +176,26 @@ Using this, we can change the order of summation and combine them as follows:
 
 $$
 \begin{align*}
-\sum_{x\in \Gamma \backslash G} K_f(x, x) &= \sum_{x \in \Gamma \backslash G} \sum_{[\gamma] \in \{\Gamma\}} \sum_{\delta \in \Gamma_\gamma \backslash \Gamma} f(x^{-1}\delta^{-1} \gamma \delta x) \\
-&=\sum_{[\gamma] \in \{\Gamma\}}  \sum_{\delta \in \Gamma_\gamma \backslash \Gamma} \sum_{x\in \Gamma \backslash G} f(x^{-1} \delta^{-1} \gamma \delta x) \\
-&= \sum_{[\gamma] \in \{\Gamma\}} \sum_{x \in \Gamma_\gamma \backslash G} f(x^{-1}\gamma x).
+\mathrm{tr}(R_\rho(f)) &= \sum_{x \in \Gamma \backslash G} \sum_{[\gamma] \in \{\Gamma\}} \sum_{\delta \in \Gamma_\gamma \backslash \Gamma} f(x^{-1}\delta^{-1} \gamma \delta x) \mathrm{tr}(\rho(\gamma)) \\
+&=\sum_{[\gamma] \in \{\Gamma\}} \mathrm{tr}(\rho(\gamma)) \sum_{\delta \in \Gamma_\gamma \backslash \Gamma} \sum_{x\in \Gamma \backslash G} f(x^{-1} \delta^{-1} \gamma \delta x) \\
+&= \sum_{[\gamma] \in \{\Gamma\}} \mathrm{tr}(\rho(\gamma)) \sum_{x \in \Gamma_\gamma \backslash G} f(x^{-1}\gamma x).
 \end{align*}
 $$
 
 Since $f(x^{-1}\gamma x)$ does not change if we replace $x$ with $yx$ for $y \in G_\gamma$, the last sum becomes
 
 $$
-\sum_{[\gamma] \in \{\Gamma\}} \frac{|G_\gamma|}{|\Gamma_\gamma|} \sum_{x \in G_\gamma \backslash G} f(x^{-1} \gamma x).
+\sum_{[\gamma] \in \{\Gamma\}} \frac{|G_\gamma|}{|\Gamma_\gamma|} \mathrm{tr}(\rho(\gamma)) \sum_{x \in G_\gamma \backslash G} f(x^{-1} \gamma x).
 $$
 
 This gives the desired trace formula for finite groups.
 
 
-> **Theorem (Trace formula for finite groups).** Let $G$ be a finite group and $\Gamma \leq G$ be a subgroup. Let $R = \oplus_{\pi \in \hat{G}} m_\pi^{\Gamma}\pi$ be the decomposition of right regular representation $R$ on $\mathbb{C}[\Gamma \backslash G]$ as irreducible representations.
+> **Theorem (Trace formula for finite groups).** Let $G$ be a finite group and $\Gamma \leq G$ be a subgroup. Let $R_\rho = \oplus_{\pi \in \hat{G}} m_\pi^{\rho}\pi$ be the decomposition of the induced representation $R_\rho := \mathrm{Ind}_\Gamma^G(\rho)$ of an irreducible representation $\rho$ of $\Gamma$.
 > For any $f : G \to \mathbb{C}$, we have
 > 
 > $$
-> \sum_{\pi \in \hat{G}} m_{\pi}^{\Gamma} \mathrm{tr}(\pi(f)) = \sum_{[\gamma] \in \{\Gamma\}}\frac{|G_\gamma|}{|\Gamma_\gamma|} \sum_{x \in G_\gamma \backslash G} f(x^{-1} \gamma x) 
+> \sum_{\pi \in \hat{G}} m_{\pi}^{\rho} \mathrm{tr}(\pi(f)) = \sum_{[\gamma] \in \{\Gamma\}}\frac{|G_\gamma|}{|\Gamma_\gamma|} \mathrm{tr}(\rho(\gamma)) \sum_{x \in G_\gamma \backslash G} f(x^{-1} \gamma x) 
 > $$
 
 *Remark*. In the adelic setting, $G = G(\mathbb{A}\_F)$ is a group of $\mathbb{A}\_F$-points of a reductive group $G$ (here we are abusing a notation) and $\Gamma = G(F)$ is a group of $F$-points, which is a discrete subgroup of $G(\mathbb{A}\_F)$.
@@ -130,11 +204,17 @@ In the geometric expansion (RHS of the trace formula), $| G\_\gamma| / | \Gamma\
 
 ### Application: Frobenius reciperocity
 
-By using the trace formula, we can compute the multiplicities $m_{\pi}^{\Gamma}$ of each $\pi$ occuring in the expansion of $R$.
+By using the trace formula, we can compute the multiplicities $m_{\pi}^{\rho}$ of each $\pi$ occuring in the decomposition of $R_\rho$.
 
-> **Corollary (Frobenius reciprocity).** $m_{\pi}^{\Gamma} = \dim \pi^{\Gamma}$, where $\pi^\Gamma$ denotes the subspace of $\pi$ fixed by $\Gamma$.
+> **Corollary (Frobenius reciprocity).** $m_\pi^\rho = \langle \chi_\rho, \mathrm{Res}\_\Gamma^G(\chi\_\pi) \rangle_\Gamma$, where $\mathrm{Res}\_\Gamma^G(\chi_\pi)$ denotes the restriction of $\chi_\pi$ on $\Gamma$, which equals to the character of the restricted representation $\mathrm{Res}\_\Gamma^G(\pi)$.
 
-We need a lemma. 
+Note that orthogonality of characters of irreducible representations imply $m_\pi^\rho = \langle \mathrm{Ind}\_\Gamma^G(\chi_\rho), \chi_\pi \rangle$, so it can be also written as 
+
+$$
+\langle \mathrm{Ind}_\Gamma^G(\chi_\rho), \chi_\pi \rangle_G = \langle \chi_\rho, \mathrm{Res}_\Gamma^G(\chi_\pi) \rangle_\Gamma.
+$$
+
+<!-- We need a following lemma. 
 
 > **Lemma.** For any finite-dimensional representation $(\pi, V)$ of $G$,
 > 
@@ -151,49 +231,35 @@ $$
 which projects onto the space of fixed vectors $V^G$.
 Since it restricts as an identity map on $V^G$, we get the equation by taking the trace of this map. $\square$
 
-*Proof of corollary.*
-We have
+*Proof of corollary.* -->
+
+*Proof.*
+Choose an irreducible representation $\rho$ and let $f = f_\sigma = \overline{\chi_\sigma}$, the complex conjugation of the character of $\sigma$. Then
 
 $$
-\sum_{g\in G} \mathrm{tr}(\pi(g)) = \sum_{[g] \in \{G\}} \frac{|G|}{|G_g|} \mathrm{tr}(\pi(g))
+\mathrm{tr}(\pi(f_\sigma)) = \sum_{g \in G} \mathrm{tr}(\pi(g)) \overline{\mathrm{tr}(\sigma(g))} = \begin{cases} |G| & \pi \simeq \sigma \\ 0 & \text{otherwise} \end{cases} 
 $$
 
-and combining with Lemma, we get
+by orthogonality of characters. Hence
 
 $$
-\sum_{[g] \in \{G\}} \frac{1}{|G_g|} \mathrm{tr}(\pi(g)) = \dim \pi^G.
+\sum_{\pi} m_{\pi}^{\rho} \mathrm{tr}(\pi(f_\sigma)) = m_{\sigma}^{\rho} \cdot |G|.
 $$
 
-Now, fix an irreducible representation $\sigma \in \hat{G}$ and let $f_\sigma := \overline{\mathrm{tr}(\sigma(g))}$, i.e. complex conjugate of the character of $\sigma$.
-Then
-
-$$
-\mathrm{tr} (\pi(f_\sigma)) = \sum_{g \in G} \overline{\mathrm{tr}(\sigma(g))} \mathrm{tr}(\pi(g))
-$$
-
-and by orthogonality of characters, we get
-
-$$
-\mathrm{tr}(\pi(f_\sigma)) = \begin{cases} |G| & \pi\simeq \sigma \\ 0 & \text{otherwise}.\end{cases}
-$$
-
-and this gives
-
-$$
-\mathrm{tr}(R(f_\sigma)) = \sum_{\pi \in \hat{G}} \mathrm m_{\pi}^{\Gamma} \mathrm{tr}(\pi(f_\sigma)) = m_{\sigma}^{\Gamma} \cdot |G|.
-$$
 On the other hand we have, by trace formula, 
 
 $$
 \begin{align*}
-\mathrm{tr}(\pi(f_\sigma)) &= \sum_{[\gamma] \in \{\Gamma\}} \frac{|G_\gamma|}{|\Gamma_\gamma|} \sum_{x \in G_\gamma \backslash G} f_{\sigma}(x^{-1}\gamma x) \\
-&=  \sum_{[\gamma] \in \{\Gamma\}} \frac{|G_\gamma|}{|\Gamma_\gamma|} \frac{|G|}{|G_\gamma|} \overline{\mathrm{tr}(\sigma(\gamma))} \\
-&= |G| \overline{ \sum_{[\gamma] \in \{\Gamma\}} \frac{1}{|G_\gamma|} \mathrm{tr}(\sigma(\gamma))} \\
-&= |G| \dim \sigma^\Gamma
+\mathrm{tr}(\pi(f_\sigma)) &= \sum_{[\gamma] \in \{\Gamma\}} \frac{|G_\gamma|}{|\Gamma_\gamma|} \mathrm{tr}(\rho(\gamma)) \sum_{x \in G_\gamma \backslash G} f_{\sigma}(x^{-1}\gamma x) \\
+&=  \sum_{[\gamma] \in \{\Gamma\}} \frac{|G_\gamma|}{|\Gamma_\gamma|} \mathrm{tr}(\rho(\gamma)) \frac{|G|}{|G_\gamma|} \overline{\mathrm{tr}(\sigma(\gamma))} \\
+&= |G|  \sum_{[\gamma] \in \{\Gamma\}} \frac{1}{|\Gamma_\gamma|} \mathrm{tr}(\rho(\gamma)) \overline{\mathrm{tr}(\sigma(\gamma))} \\
+&= \frac{|G|}{|\Gamma|} \sum_{[\gamma] \in \{\Gamma\}} \frac{|\Gamma|}{|\Gamma_\gamma|} \mathrm{tr}(\rho(\gamma))\overline{\mathrm{tr}(\sigma(\gamma))} \\
+&= \frac{|G|}{|\Gamma|} \sum_{\gamma \in \Gamma} \mathrm{tr}(\rho(\gamma))\overline{\mathrm{tr}(\sigma(\gamma))} \\
+&= |G| \langle  \chi_\rho, \mathrm{Res}_\Gamma^G(\chi_\sigma) \rangle _{\Gamma}
 \end{align*}
 $$
 
-hence we get $m_{\sigma}^\Gamma = \dim \sigma^\Gamma$. $\square$
+hence we get $m_\sigma^\rho = \langle \chi_\rho, \mathrm{Res}\_\Gamma^G(\chi_\sigma) \rangle$. $\square$
 
 
 *References*:
