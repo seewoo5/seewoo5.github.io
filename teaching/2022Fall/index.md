@@ -6,17 +6,10 @@ title: 2022 Fall - Math 53
 
 ![logo](./strikelogo.png)
 
-**Strike from Nov 14th till it ends, no discussion, no grading, no office hours.**
 
+**STRIKE IS FINISHED. GRADING WILL BE DONE AND REALEASED UNTIL DECEMBER 31st.**
 
-For details, see below.
-
-* [Slides for you](strike.pdf)
-* [Article](https://www.sfchronicle.com/bayarea/article/Thousands-vote-to-strike-across-UC-system-The-17554377.php)
-* [How to support us](https://docs.google.com/document/u/1/d/1EWj5ZZ7ZjIbZRlmflQtBHVva_co52YxpH86ETsBgeXQ/mobilebasic)
-* [Official website](https://www.fairucnow.org/)
-* [FAQ](https://www.fairucnow.org/strikefaq/)
-
+We won! See details [here](https://www.fairucnow.org/ta-summary/).
 
 
 ---
