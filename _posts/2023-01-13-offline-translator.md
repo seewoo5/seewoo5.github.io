@@ -72,4 +72,4 @@ Be F a local body and E a quadratic extension of E
 Enter a French sentence to translate: 
 
 ```
-But it is okay since we know that *corps local* means *local fields* in mathematics.
+But it is okay since we know that *corps local* means *local field* in mathematics.
