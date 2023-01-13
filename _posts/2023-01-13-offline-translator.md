@@ -1,6 +1,6 @@
 ---
 layout: posts
-title:  "Offline translator using huggingface"
+title:  "Simple code snippet for an offline translation"
 date:   2023-01-13
 categories: jekyll update
 tags: machine-learning development
@@ -21,7 +21,7 @@ Then make a file named `translate.py` and put the following script in it:
 from transformers import pipeline
 
 
-def load_tranlator():
+def load_translator():
     translator = pipeline('translation_fr_to_en', model='Helsinki-NLP/opus-mt-fr-en')
     return translator
 
@@ -31,7 +31,7 @@ def translate(text: str) -> str:
 
 
 if __name__ == "__main__":
-    translator = load_tranlator()
+    translator = load_translator()
     while True:
         print("Enter a French sentence to translate: ")
         french_sentence = input()
