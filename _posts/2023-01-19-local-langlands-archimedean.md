@@ -70,7 +70,12 @@ Then all the irreducible admissible representations can be obtained by tensoring
 When $n=2$, there's essentially one type of 
 
 
-## Representations of the Weil group $W_\mathbb{R}$
+### Local $L$-factors and $\epsilon$-factors
+
+## Representations of the Weil group $W_\mathbb{R}$ and $L$-functions
+
+### Representations of $W_\mathbb{R}$
+
 
 Now we are going to define and classify representations of the Weil group $W_\mathbb{R}$.
 These will correspond to the representations of $\mathrm{GL}\_n(\mathbb{R})$ in LLC.
@@ -128,11 +133,42 @@ If $\mu \neq \nu$, choose a basis $u_{1}, \dots, u_{r}$ of $V_{\mu, \nu}$ and pu
 Then $\mathbb{C}u_{i} \oplus \mathbb{C}u_{i}'$ is a 2-dimensional inratiant subspace and we get a decomposition of $V_{\mu, \nu} \oplus V_{\nu, \mu}$ into 2-dimensional subspaces $\oplus_{i=1}^{r} (\mathbb{C}u_{i} \oplus \mathbb{C} u_{i}')$.
 $\square$
 
-$L$-functions...
+### local $L$-factors and $\epsilon$-factors
+
+For each irreducible representations $\varphi$, the corresponding local $L$-factors $L(s, \varphi)$ are defined as
+
+$$
+\begin{align*}
+L(s, \varphi) =\begin{cases} 
+\pi^{-(s+t)/2} \Gamma(\frac{s+t}{2}) & \varphi\text{ has a type of }(+, t), \\
+\pi^{-(s+t+1)/2} \Gamma(\frac{s+t+1}{2}) & \varphi\text{ has a type of }(-, t), \\
+2(2\pi)^{-(s+t + \frac{l}{2})} \Gamma(s+t + \frac{l}{2}) & \varphi\text{ has a type of }(l, t). \\
+\end{cases}
+\end{align*}
+$$
+
+Fix an additive character $\psi$ of $\mathbb{R}$.
+Then $\epsilon$-factors of each irreducible representation $\varphi$ are defined as
+
+$$
+\begin{align*}
+\epsilon(s, \varphi, \psi) = \begin{cases}
+1 & \varphi \text{ has a type of }(+, t), \\
+i & \varphi \text{ has a type of }(-, t), \\
+i^{l+1} & \varphi \text{ has a type of }(l, t).
+\end{cases}
+\end{align*}
+$$
+
+Note that these are constant in $s$.
+When $\varphi = \oplus \varphi_j$ is reducible, then the corresponding local $L$-factor and $\epsilon$-factor are defined as a product $L(s, \varphi) = \prod_j L(s, \varphi_j)$ and $\epsilon(s, \varphi, \psi) = \prod_j \epsilon(s, \varphi_j, \psi)$.
 
 ## LLC for $\mathrm{GL}_n(\mathbb{R})$
 
 > **Theorem (Local Langlands Correspondence for $\mathrm{GL}_n(\mathbb{R})$).** 
+> The above association $\varphi \mapsto \rho\_{\mathbb{R}}(\varphi)$ is a well-defined byjection between the set of all equivalence classes of $n$-dimensional semisimple complex representations of $W\_{\mathbb{R}}$ and the set of all equivalence classes of irreducible admissible representations of $\mathrm{GL}\_{n}(\mathbb{R})$.
+> Also, the association preserves $L$-factors and $\epsilon$-factors.
+
 
 ## LLC for $\mathrm{GL}_n(\mathbb{C})$
 
@@ -187,7 +223,7 @@ Such an association gives LLC for $\mathrm{GL}_{n}(\mathbb{C})$.
 
 > **Theorem (Local Langlands Correspondence for $\mathrm{GL}_n(\mathbb{C})$)** 
 > The above association $\varphi \mapsto \rho\_{\mathbb{C}}(\varphi)$ is a well-defined byjection between the set of all equivalence classes of $n$-dimensional semisimple complex representations of $W\_{\mathbb{C}}$ and the set of all equivalence classes of irreducible admissible representations of $\mathrm{GL}\_{n}(\mathbb{C})$.
-> Also, the association preserves $L$-functions and $\epsilon$-factors.
+> Also, the association preserves $L$-factors and $\epsilon$-factors.
 
 ## LLC for general reductive groups over $\mathbb{R}$ or $\mathbb{C}$
 
