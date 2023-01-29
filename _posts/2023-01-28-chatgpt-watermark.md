@@ -1,7 +1,7 @@
 ---
 layout: posts
 title:  "ChatGPT and Watermarking"
-date:   2023-01-27
+date:   2023-01-28
 categories: jekyll update
 tags: machine-learning
 ---
