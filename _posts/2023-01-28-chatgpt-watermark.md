@@ -141,7 +141,7 @@ p_{k}^{(t)} = \begin{cases}
 $$
 
 This does not affect the quality of the generated sentence too much in the following sence.
-When a $k$-th word is highly likely and $p\_{k}^{(t)} \simeq 1$, then the logit $l\_k^{(t)}$ is much larger than others, and this will remain the largest regardless of whether it is blacklisted or not.
+When a $k$-th word is highly likely and $p\_{k}^{(t)} \approx 1$, then the logit $l\_k^{(t)}$ is much larger than others, and this will remain the largest regardless of whether it is blacklisted or not.
 If not, there are many comparably large logits to choose from, and the soft watermarking has a large impact on the sampling distribution, strongly biasing the output towards the whitelist.
 They also suggest an algorithm to make watermarking *private* (see Algorithm 3 of the paper).
 
