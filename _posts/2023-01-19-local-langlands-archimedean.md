@@ -35,27 +35,28 @@ We will first see the case of $G = \mathrm{GL}_n$, and move on to the general re
 
 ## Representations of $\mathrm{GL}_n(\mathbb{R})$
 
-### Admissibility and $(\mathfrak{g}, K)$-modules
-
 We first study and classify representations of $G = \mathrm{GL}_n(\mathbb{R})$. Our goal is to understand Langlands' classification.
 In short, we will see that *admissible* representations of $\mathrm{GL}_n(\mathbb{R})$ are obtained by parabolic induction of irreducible admissible representations of $\mathrm{GL}_1(\mathbb{R)}$ and $\mathrm{GL}_2(\mathbb{R})$, where the latter representations (building blocks for the represenetations of $\mathrm{GL}_n(\mathbb{R})$) are easy to be classified.
 
 
 ### Irreducible admissible representations of $\mathrm{GL}\_n(\mathbb{R})$
 Let $K=O(n)$ be the maximal compact subgroup of $\mathrm{GL}\_n(\mathbb{R})$ ($n\times n$ orthogonal matrices).
-The right category of representations to study is the *admissible* representations, which are the representations $(\rho, V)$ of $\mathrm{GL}\_n(\mathbb{R})$ whose restrictions $\rho|_{K}$ on $K$ decompose as irreducibles with finite multiplicities.
+The right category of representations to study is the *admissible* representations, which are the representations $(\rho, V)$ of $\mathrm{GL}\_n(\mathbb{R})$ whose restrictions $\rho|_{K}$ on $K$ decompose as finite dimensional irreducibles with finite multiplicities.
 For such representations, let $V_K$ be the space of $K$-finite vectors, that transforms in a finite-dimensional space under $K$.
 The nice thing about admissible representations is that, classifying them is equivalent to classify associated $(\mathfrak{g}, K)$-modules [ref], which is a space $V_K$ with compatible actions of the Lie algebra $\mathfrak{g} = \mathfrak{gl}\_n(\mathbb{R})$ and $K$.
 In other words, two admissible representations are equivalent if and only if the corresponding $(\mathfrak{g}, K)$-modules are isomorphic (*infinitesimally equivalent*).
 Also, irreduciblity is preserved under the association.
 Now our goal is to study admissible representations of $\mathrm{GL}\_n(\mathbb{R})$ and classify them.
 
-Let's consider the subgroup $\mathrm{SL}\_{n}^{\pm}(\mathbb{R})$ of elements $g \in \mathrm{GL}\_n(\mathbb{R})$ with $|\det g| = 1$ and representations of them.
-Then $\mathrm{SL}\_n(\mathbb{R})$ has index 2 in it.
-When $n=1$, $\mathrm{SL}\_{1}^{\pm}(\mathbb{R}) = \{\pm 1\}$ and there are only two (irreducible) representations of it: $1$ (trivial) and $\mathrm{sgn}$ (sign).
-Then all the irreducible admissible representations can be obtained by tensoring it with the power of norm characters $a \mapsto |a|^{t}\_{\mathbb{R}}$ for $t \in\mathbb{C}$.
+<!-- Let's consider the subgroup $\mathrm{SL}\_{n}^{\pm}(\mathbb{R})$ of elements $g \in \mathrm{GL}\_n(\mathbb{R})$ with $|\det g| = 1$ and representations of them. -->
+<!-- Then $\mathrm{SL}\_n(\mathbb{R})$ has index 2 in it. -->
+When $n=1$, the maximal compact subgroup of $\mathrm{GL}\_1(\mathbb{R})\simeq \mathbb{R}^{\times}$ is $K =\{\pm 1\}$, so we don't need to care about $K$-finiteness since $K$ is finite.
+For the subgroup of positive reals $\mathbb{R}\_{+}^{\times}$, every characters $\mathbb{R}\_{+}^{\times} \to \mathbb{C}^{\times}$ is power of the norm characters $a \mapsto |a|\_{\mathbb{R}}^{t}$ for some $t \in \mathbb{C}$.
+Since $\mathbb{R}\_{+}^{\times}$ has index 2 in $\mathbb{R}^{\times}$ and both are abelian, any characters of $\mathbb{R}^{\times}$ are completely determined by its restriction on $\mathbb{R}\_{+}^{\times}$ and a value at $-1$, which leads to the following classification.
+<!-- When $n=1$, $\mathrm{SL}\_{1}^{\pm}(\mathbb{R}) = \{\pm 1\}$ and there are only two (irreducible) representations of it: $1$ (trivial) and $\mathrm{sgn}$ (sign).
+Then all the irreducible admissible representations can be obtained by tensoring it with the power of norm characters $a \mapsto |a|^{t}\_{\mathbb{R}}$ for $t \in\mathbb{C}$. -->
 
-> **Proposition** Irreducible admissible representations of $\mathrm{GL}\_1(\mathbb{R})$ are either
+> **Proposition.** Irreducible admissible representations of $\mathrm{GL}\_1(\mathbb{R})$ are either
 > 
 > $$
 > 1\otimes |\cdot|_\mathbb{R}^t, \quad t \in \mathbb{C}
@@ -64,10 +65,22 @@ Then all the irreducible admissible representations can be obtained by tensoring
 > or
 > 
 > $$
-> \mathrm{sgn} \otimes |\cdot|_\mathbb{R}^t, \quad t \in \mathbb{C}.
+> \mathrm{sgn} \otimes |\cdot|_\mathbb{R}^t, \quad t \in \mathbb{C}
 > $$
+>
+> where $1$ is a trivial character and $\mathrm{sgn}$ is a sign character.
 
-When $n=2$, there's essentially one type of 
+When $n=2$, irreducible admissible representations of $\mathrm{GL}\_2(\mathbb{R})$ roughly classified as follows.
+We first consider the representations of the index 2 subgroup $\mathrm{GL}\_{2}^{+}(\mathbb{R})$ and their $(\mathfrak{g}, K) =(\mathfrak{gl}\_{2}, \mathrm{SO}(2))$ module structures.
+The Lie algebra action natually extends to the action of the universal enveloping algebra $\mathcal{U}(\mathfrak{gl}\_2(\mathbb{C}))$, and the center of it should act as a constant multiplication (by Schur's lemma).
+The center is generated by two elements, $\Delta$ (the element corresponds to Laplace-Beltrami operator on the complex upper half plane) and $Z$, and let's call the corresponding scalars as $\mu$ and $\lambda = s(1-s)$.
+Then we can classify the corresponding $(\mathfrak{gl}\_2, \mathrm{SO}(2))$ module structures using these parameters, and slight modification gives a classification of $(\mathfrak{gl}\_2, \mathrm{O}(2))$ modules, i.e. irreducible admissible representations of $\mathrm{GL}\_2(\mathbb{R})$.
+
+<!-- Once you observe the corresponding $(\mathfrak{gl}\_2, O(2))$-modules,  are classified as follows: -->
+
+> **Proposition.** Irreducible admissible representations of $\mathrm{GL}\_2(\mathbb{R})$ are classified as follows:
+
+See [ref] or [ref] for proofs.
 
 
 ### Local $L$-factors and $\epsilon$-factors
