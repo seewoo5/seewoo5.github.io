@@ -1,6 +1,6 @@
 ---
 layout: posts
-title:  "Image of congruence subgroup is not congruence"
+title:  "Image of a congruence subgroup is not always congruence"
 date:   2023-02-16
 categories: jekyll update
 tags: math
@@ -31,7 +31,7 @@ Y = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}, \quad
 Z = \begin{pmatrix} 0 & 0 \\ -1 & 0 \end{pmatrix},
 $$
 
-then $g = (\begin{smallmatrix} a & b \\ c & d \end{smallmatrix})$ acts as
+then $g = \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right)$ acts as
 
 $$
 \begin{align*}
@@ -50,13 +50,13 @@ $$
 and this induces an embedding $\iota: \mathrm{PGL}\_2 \hookrightarrow \mathrm{GL}\_3$. 
 and we can define $\Gamma\_{\mathrm{PGL}\_2}(M)$ using this map.
 From now on, we will always consider representatives with integer entries.
-In fact, for $\bar{g} = \overline{(\begin{smallmatrix}a&b\\ c&d \end{smallmatrix})}$ in $\mathrm{PGL}\_2(\mathbb{Q})$, there is a unique representative $g$ with coprime integer entries (up to multiplication by $-I_2$), and $\iota(g) \in \mathrm{GL}\_3(\mathbb{Z})$ implies $\det(g) = \pm 1$.
+In fact, for $\bar{g} = \overline{\left(\begin{smallmatrix}a&b\\ c&d \end{smallmatrix}\right)}$ in $\mathrm{PGL}\_2(\mathbb{Q})$, there is a unique representative $g$ with coprime integer entries (up to multiplication by $-I_2$), and $\iota(g) \in \mathrm{GL}\_3(\mathbb{Z})$ implies $\det(g) = \pm 1$.
 
 Now, we will show that $\alpha(\Gamma\_{\mathrm{SL}\_2}(8))$ is not a congruence subgroup, where $\alpha: \mathrm{SL}\_2 \to \mathrm{PGL}\_2$.
 In other words, we will show that for any $M \geq 1$, $\Gamma\_{\mathrm{PGL}\_2}(M) \not\subseteq \alpha(\Gamma\_{\mathrm{SL}\_2}(8))$.
 
 First, assume that $8\nmid M$.
-We can easily check that $\overline{(\begin{smallmatrix} 1 & M \\ 0 & 1\end{smallmatrix})}$ is in $\Gamma\_{\mathrm{PGL}\_2}(M)$, but not in the image of $\Gamma\_{\mathrm{SL}\_2}(8)$.
+We can easily check that $\overline{\left(\begin{smallmatrix} 1 & M \\ 0 & 1\end{smallmatrix}\right)}$ is in $\Gamma\_{\mathrm{PGL}\_2}(M)$, but not in the image of $\Gamma\_{\mathrm{SL}\_2}(8)$.
 
 When $M$ is a multiple of 8, we will use the following lemma.
 
@@ -86,4 +86,4 @@ $$
 and such $x$ satisfies the condition of lemma. $\square$
 
 
-[^1]: We can find such an element by setting $g = (\begin{smallmatrix} x + \alpha M & \beta M \\ \gamma M & x + \delta M\end{smallmatrix})$ and finding appropriate $\alpha, \beta, \gamma, \delta \in \mathbb{Z}$.
+[^1]: We can find such an element by setting $g = \left(\begin{smallmatrix} x + \alpha M & \beta M \\ \gamma M & x + \delta M\end{smallmatrix}\right)$ and finding appropriate $\alpha, \beta, \gamma, \delta \in \mathbb{Z}$.
