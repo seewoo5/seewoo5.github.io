@@ -42,7 +42,7 @@ gZg^{-1} &= \frac{1}{D} (b^2 X + bd Y + d^2 Z)
 \end{align*}
 $$
 
-where $D = \det(g) = ad - bc$. Hence we obtain an embedding $\mathrm{GL}\_2 \hookrightarrow \mathrm{GL}\_3$ as
+where $D = \det(g) = ad - bc$. Hence we obtain a map $\mathrm{GL}\_2 \hookrightarrow \mathrm{GL}\_3$ as
 
 $$
 \begin{pmatrix} a & b \\ c & d \end{pmatrix} \mapsto \frac{1}{ad - bc} \begin{pmatrix} a^2 & 2ab & b^2 \\ ac & ad + bc & bd \\ c^2 & 2cd & d^2 \end{pmatrix},
