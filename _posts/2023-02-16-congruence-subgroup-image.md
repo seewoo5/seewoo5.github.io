@@ -48,12 +48,11 @@ $$
 \begin{pmatrix} a & b \\ c & d \end{pmatrix} \mapsto \frac{1}{ad - bc} \begin{pmatrix} a^2 & 2ab & b^2 \\ ac & ad + bc & bd \\ c^2 & 2cd & d^2 \end{pmatrix},
 $$
 
-and this induces an embedding $\iota: \mathrm{PGL}\_2 \hookrightarrow \mathrm{GL}\_3$. 
-and we can define $\Gamma\_{\mathrm{PGL}\_2}(M)$ using this map.
+and this induces an embedding $\iota: \mathrm{PGL}\_2 \hookrightarrow \mathrm{GL}\_3$, so we can define $\Gamma\_{\mathrm{PGL}\_2}(M)$ using this map.
 From now on, we will always consider representatives with integer entries.
 In fact, for $\bar{g} = \overline{\left(\begin{smallmatrix}a&b \\\ c&d \end{smallmatrix}\right)}$ in $\mathrm{PGL}\_2(\mathbb{Q})$, there is a unique representative $g$ with coprime integer entries (up to multiplication by $-I_2$), and $\iota(g) \in \mathrm{GL}\_3(\mathbb{Z})$ implies $\det(g) = \pm 1$.
 
-Now, we will show that $\alpha(\Gamma\_{\mathrm{SL}\_2}(8))$ is not a congruence subgroup, where $\alpha: \mathrm{SL}\_2 \to \mathrm{PGL}\_2$.
+Now, we will show that $\alpha(\Gamma\_{\mathrm{SL}\_2}(8))$ is not a congruence subgroup, where $\alpha: \mathrm{SL}\_2 \to \mathrm{PGL}\_2$ is the natural map.
 In other words, we will show that for any $M \geq 1$, $\Gamma\_{\mathrm{PGL}\_2}(M) \not\subseteq \alpha(\Gamma\_{\mathrm{SL}\_2}(8))$.
 
 First, assume that $8\nmid M$.
@@ -72,7 +71,7 @@ $$
 
 satisfies $\iota(\bar{g}) \equiv I_3 \,(\mathrm{mod}\,M)$, so $\bar{g} \in \Gamma\_{\mathrm{PGL}\_2}(M)$ but $\bar{g}$ is not in the image of $\Gamma\_{\mathrm{SL}\_2}(8)$ by Lemma.[^1]
 
-Finally, let's prove the Lemma.
+Here's a proof of the Lemma.
 Write $M = 2^k \cdot M_0$ where $k \geq 3$ and $2 \nmid M_0$.
 It is known that $5$ is an order $2^{k-2}$ element in $(\mathbb{Z}/2^k \mathbb{Z})^\times$ (one can check this by applying binomial theorem to $5 = 1 + 4$).
 Now let $x_0 = \pm 5^{2^{k-3}}$ where the sign is choosen as $x_0 \not \equiv 1 \,(\mathrm{mod}\,8)$.
