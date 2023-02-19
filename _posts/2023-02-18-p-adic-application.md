@@ -98,7 +98,7 @@ where $\gamma_1, \dots, \gamma_m$ are distinct algebraic numbers.
 By using the formal inverse $\mathcal{D}^{-1} = (1 + \frac{d}{dx})^{-1} = \sum_{k \geq 0} (-1)^{k} \frac{d^k}{dx^k}$, $v$ has the following partial fraction expansion
 
 $$
-v(x) = \sum_{i, j} c_{i, j}\sum_{k \geq 0} \binom{k+j-1}{j-1} \frac{k}{(x - \gamma_j)^{k+j}}.
+v(x) = \sum_{i, j} c_{i, j}\sum_{k \geq 0} \binom{k+j-1}{j-1} \frac{k!}{(x - \gamma_j)^{k+j}}.
 $$
 
 Now let $S_1$ be a set of places of $\mathbb{Q}$ containing archimedean place such that for $p \not \in S_1$, 
