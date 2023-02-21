@@ -17,7 +17,7 @@ One of my favorite application of $p$-adic numbers is the following theorem:
 > Then the number of triangles is even.
 
 It does not seem to be related to $p$-adic numbers at all.
-However, as far as I know, the only known proof (by Monsky) uses $p$-adic norm as follows.
+However, as far as I know, the only known proof (by Monsky) uses $2$-adic norm as follows.
 
 *Proof.*
 We use the following lemma (from [Pete L. Clark's answer on MO](https://mathoverflow.net/a/141466/95471)):
@@ -44,7 +44,7 @@ We use the following lemma (from [Pete L. Clark's answer on MO](https://mathover
 
 
 Now let $K$ be a field obtained by adjoining all the $x$ and $y$-coordinates of verticies of triangles to $\mathbb{Q}$.
-By Lemma, we can extend 2-adic norm on $\mathbb{Q}$ to $K$, denote as $|\cdot|_2$.
+By Lemma, we can extend $2$-adic norm on $\mathbb{Q}$ to $K$, denote as $|\cdot|_2$.
 We will color the vertices of triangles as follows: a point $(x, y)$ red if $|x|_2 < 1, |y|_2<1$, color it blue if $|x|_2\leq |y|_2$ and $|y|_2\geq 1$, and color it green if $|x| _2> |y|_2$ and $|x|_2\geq 1$. 
 Then each edge can only contain at most two colors. By Sperner's lemma, we can find a complete triangle where all the vertices have different colors. 
 Let $(x_{r}, y_{r}), (x_{b}, y_{b}), (x_{g}, y_{g})$ be the coordinates of the complete triangle with red, blue, and green colors. 
@@ -74,8 +74,8 @@ By the way, the area is $A = 1/n$, so we get $|n|_2 \leq 1/2$ and $n$ is even.
 $\square$
 
 
-Note that the original proof uses Axiom of Choice to impose 2-adic valuation on $\mathbb{C}$ via $\mathbb{C} \simeq \mathbb{C}\_2$.
-However, as we did above, we don't need AC to prove the theorem - imposing 2-adic valuation on $K$ is enough.
+Note that the original proof uses Axiom of Choice to impose $2$-adic norm on $\mathbb{C}$ via $\mathbb{C} \simeq \mathbb{C}\_2$.
+However, as we did above, we don't need AC to prove the theorem - imposing $2$-adic valuation on $K$ is enough.
 
 ## Skolem-Mahler-Lech theorem
 
@@ -145,7 +145,7 @@ P(n) := x_{mn + r} = \langle A^{mn+r}v, w \rangle = \langle (I+pB)^n A^r v, w \r
 $$
 
 which is a function $P: \mathbb{Z} \to \mathbb{Z}$ that is zero for infinitely many $n$ by assumption.
-Since $\|(I+pB)^{p^m} - I\|_p \to 0$ as $m \to \infty$ (where $\|M\|_p := \sup_{i, j} |m_{i, j}|_p$ for $M = (m_{i, j})$), The function can be extended as $P: \mathbb{Z}\_p \to \mathbb{Z}\_p$.
+Since $\|(I+pB)^{p^m} - I\|_p \to 0$ as $m \to \infty$ (where $\|M\|_p := \sup_{i, j} |m_{i, j}|_p$ for $M = (m_{i, j})$), the function can be extended as $P: \mathbb{Z}\_p \to \mathbb{Z}\_p$.
 Write $P(n)$ as a formal power series
 
 $$
@@ -280,18 +280,18 @@ where $\gamma_1, \dots, \gamma_m$ are distinct algebraic numbers.
 By using the formal inverse $\mathcal{D}^{-1} = (1 + \frac{d}{dx})^{-1} = \sum_{k \geq 0} (-1)^{k} \frac{d^k}{dx^k}$, $v$ has the following partial fraction expansion
 
 $$
-v(x) = \sum_{i, j} c_{i, j}\sum_{k \geq 0} \binom{k+j-1}{j-1} \frac{k!}{(x - \gamma_j)^{k+j}}.
+v(x) = \sum_{i, j} c_{i, j}\sum_{k \geq 0} \binom{k+j-1}{j-1} \frac{k!}{(x - \gamma_i)^{k+j}}.
 $$
 
 Now let $S_1$ be a set of places of $\mathbb{Q}$ containing archimedean place such that for $p \not \in S_1$, 
 
-* (1) all nonzero $c_{i, j}$ and $\gamma_j$ have absolute value 1,
-* (2) $|\gamma_i - \gamma_j|_p = 1$ for all $i\neq j$.
+* $|c_{i, j}|_p = 1 = |\gamma_j|_p$ whenever they are nonzero,
+* $|\gamma_i - \gamma_j|_p = 1$ for all $i\neq j$.
 
-Then one can show that the coefficients of the expansion $v(x) = \sum_{n \geq 0} \frac{a_n}{x^{n+1}}$ are $p$-adic integers for all $p \not \in S_1$.
+Then one can show that the coefficients of the expansion $v(x) = \sum_{n \geq 0} \frac{a_n}{x^{n+1}}$ are $p$-adic integers for all $p \not \in S_1$ (consider Laurent series expansion of $1/(x-\gamma_i)^{k+j}$ near $x = 0$).
 Hence the condition (B1) is satisfied for any $S$ containing $S_1$.
 
-For (B2), note that $v(x)$ converges outside a disc $K_p \subset \mathbb{C}_p$ of some positive radius $R_p$ for all $p \not \in S_1$.
+For (B2), note that $v(x)$ converges outside of a disc $K_p \subset \mathbb{C}_p$ of some positive radius $R_p$ for all $p \in S_1$.
 For $p \not \in S_1$, $v(x)$ converges in the complement of $K_p$ that is a union of discs $D_i$ centered at $\gamma_i$'s, and we can take radii of discs as $p^{-1/(p-1)}$ since the radius of convergence of $\sum_{k\geq 0} k! x^k$ is $p^{1/(p-1)}$.
 Since the radius of convergence is smaller than 1, the discs are disjoint by second assumption on $S_1$.
 Now, the transfinite diameter of $K_p$ becomes:
@@ -336,6 +336,15 @@ where the RHS converges to $p^{-1/(m(p-1))}$ as $N\to\infty$.
 This gives $\delta_\infty(K_p) \geq p^{-1/(m(p-1))}$ and completes the proof. $\square$
 
 
+## Other applications
+
+Here are some list of other interesting applications of $p$-adic numbers:
+
+* Structure of $(\mathbb{Z}/p^n\mathbb{Z})^\times$. Use $p$-adic exponential and logarithm to show that they are cyclic (for odd $p$ - when $p=2$ then $(\mathbb{Z}/2^k\mathbb{Z})^\times$ it is a product of two cyclic groups). See [this note](https://github.com/seewoo5/math-notes/blob/main/number-theory/unit_group_of_Zmodpn/Zmodpnx.pdf).
+* Galois group of certain polynomials. Coleman showed that the Galois group of a splitting field of truncated exponential polynomial $f_n(x) = \sum_{k=0}^{n} \frac{x^k}{k!}$ is $S_n$ if $4\nmid n$ and $A_n$ otherwise, using Newton polygons.
+See [this blog post by Baker](https://mattbaker.blog/2014/05/02/newton-polygons-and-galois-groups/).
+* Complex dynamics. See [this MO answer](https://mathoverflow.net/a/84334/95471) by Silverman and also [the original paper](https://people.math.harvard.edu/~demarco/preperiodic.pdf) by Baker-DeMarco. Although the statement is about dynamics over complex numbers, proof uses equidistribution theorem on non-archimedean Berkovich spaces.
+* Cryptanalysis. See [Klapper and Goresky's paper](https://www.math.ias.edu/~goresky/pdf/crypt95.pdf) on attacking stream ciphers using 2-adic numbers.
 
 
 [^1] As it mentioned in Matt Baker's blog post, this statement is slightly different from the original one from Bezvin-Robba, which are essentially the same via simple transformation.
