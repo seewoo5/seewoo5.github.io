@@ -16,16 +16,135 @@ We will assume that readers are familiar with $p$-adic numbers and their basic p
 
 ## Skolem-Mahler-Lech theorem
 
+Consider a sequence $\{a_n\}$ defined by
+
+$$
+a_0 = a_1 = 1, \quad a_{n+2} = a_{n+1} - a_{n}.
+$$
+
+If you compute first few terms of $a_n$, you will find that the sequence is periodic as
+
+$$
+1, 1, 0, -1, -1, 0, 1, 1, 0, -1,-1, 0, \dots
+$$
+
+and the zero set of $a_n$ (set of $n$ with $a_n = 0$) is $\{n:n\equiv 2\,\mathrm{mod}\,3\}$.
+
+Consider another sequence $\{b_n\}$ given as
+
+$$
+b_n = 2b_{n-1} - 4b_{n-2} + 8b_{n-3}
+$$
+
+with $b_0 = b_1 = 1$ and $b_2 = -2$.
+Then one can show that $b_n = 0$ if and only if $n\equiv 3\,(\mathrm{mod}\, 4)$.
+In both cases, the zero set of sequence are periodic.
+Skolem-Mahler-Lech theorem tells us that this is true in general:
+
 > **Theorem (Skolem-Mahler-Lech).** The zero set of a linear recurrence sequence is eventually periodic.
 
 In this post, we will only consider *integer* sequences, which was the scope of the original result by Skolem (it is generalized further by Mahler and Lech for algebraic numbers and characteristic 0 fields).
 Surprisingly, all the known proofs uses $p$-adic integers.
 Here we will provide a proof by Hansel, which is stolen from [Terrence Tao's blog post](https://terrytao.wordpress.com/2007/05/25/open-question-effective-skolem-mahler-lech-theorem/).
 
+*Proof.* Let $\{x_n\}$ be an integer sequence defined recursively as $x_n = a_1 x_{n-1} + \cdots + a_{d} x_{n-d}$ with $a_i \in \mathbb{Z}$.
+We can assume that $a_d \neq 0$.
+Then
+
+$$
+\begin{pmatrix} x_{n+1} \\ x_{n+2} \\ \vdots \\ x_{n+d}\end{pmatrix} = \begin{pmatrix} 0 & 1 & 0 & \cdots & 0 \\ 0 & 0 & 1 & \cdots & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ a_{d} & a_{d-1} & a_{d-2} & \cdots & a_{1} \end{pmatrix} \begin{pmatrix} x_n \\ x_{n+1} \\ \vdots \\ x_{n+d-1}\end{pmatrix}
+$$
+
+and this let us to write $x_n$ as 
+
+$$
+x_n = \langle A^n v, w\rangle
+$$
+
+for some $A \in \mathrm{GL}\_{d}(\mathbb{Z})$ and $v, w\in \mathbb{Z}^d$
+(we can take $A$ as the above $d\times d$ matrix, $v = (x_0, x_1, \dots, x_{d-1})^{\intercal}$ and $w = (1, 0, \dots, 0)^{\intercal}$).
+Choose a prime $p> 2$ that does not divide $\det(A)$, so that $A$ is also invertible modulo $p$.
+Then we can find $m \geq 1$ such that $A^m \equiv I \,(\mathrm{mod}\,p)$ (take $m$ to be the order of $A$ in $\mathrm{GL}\_n(\mathbb{F}\_p)$).
+
+Our claim is that $m$ is the eventual period of the zero set.
+More precisely, for each $r = 0, 1, \dots, m-1$, we will prove that 
+
+$$
+\{n \geq 0: x_{mn + r} = 0\}
+$$
+
+is either finite or all $\mathbb{Z}\_{\geq 0}$.
+Assume that it is infinite.
+Let $A^m = I + pB$ with $B \in M\_{d \times d}(\mathbb{Z})$ and put 
+
+$$
+P(n) := x_{mn + r} = \langle A^{mn+r}v, w \rangle = \langle (I+pB)^n A^r v, w \rangle
+$$
+
+which is a function $P: \mathbb{Z} \to \mathbb{Z}$ that is zero for infinitely many $n$ by assumption.
+Since $\|(I+pB)^{p^m} - I\|_p \to 0$ as $m \to \infty$ (where $\|M\|_p := \sup_{i, j} |m_{i, j}|_p$ for $M = (m_{i, j})$), The function can be extended as $P: \mathbb{Z}\_p \to \mathbb{Z}\_p$.
+Write $P(n)$ as a formal power series
+
+$$
+P(n) = \sum_{j=0}^{\infty} p^j P_j(n).
+$$
+
+The binomial expansion of $(I+pB)^n$ is
+
+$$
+(I+pB)^n = \sum_{k \geq 0}  \binom{n}{k} (pB)^k = \sum_{\geq 0} n(n-1)\cdots (n-k+1) \frac{p^k}{k!} B^k.
+$$
+
+Now we have
+
+$$
+\begin{align*}
+v_p\left(\frac{p^k}{k!}\right) &= k - v_p(k!) = k - \left(\left\lfloor \frac{k}{p} \right\rfloor + \left\lfloor \frac{k}{p^2}\right\rfloor + \cdots \right) \\
+&> k - \left(\frac{k}{p} + \frac{k}{p^2} + \cdots\right) = \left(\frac{p-2}{p-1}\right) k  \xrightarrow{k\to\infty} \infty
+\end{align*}
+$$
+
+(note that we assumed $p> 2$).
+This implies that each of $P_j$ can be build using only finitely many of the terms in the binomial expansion.
+Hence $P: \mathbb{Z} \to \mathbb{Z}$ extends continuously to a function $P:\mathbb{Z}\_p \to \mathbb{Z}\_p$ such that each $n\mapsto P(n) \,(\mathrm{mod}\,p^j)$ is a polynomial in $n$ for all $j$.
+In other words, it is a uniform limit of polynomials.
+
+
+Now, we will show that $P$ is identically zero.
+If $n_0$ is a zero of $P$, then we can factor $P(n)$ as
+
+$$
+P(n) = (n - n_0)Q(n) = (n - n_0) (Q_0(n) + pQ_1(n) + p^2 Q_2(n) + \cdots)
+$$
+
+for some continuous $Q: \mathbb{Z}\_p \to \mathbb{Z}\_p$.
+Then $P_0(n) = (n - n_0)Q_0(n)$, i.e. $n_0$ is also a zero of the constant term $P_0(n)$ *which is a polynomial*.
+Since $P$ has infinitely many zeros, $P_0$ should vanish and $P(n)$ is divisible by $p$.
+By repeating the same argument, $P$ should be divisible by arbitrary power of $p$, which implies $P = 0$.
+This concludes the proof.
+$\square$
+
+Note that the theorem is false in characteristic $p$: consider the sequence $\{a_n\}$ in $\mathbb{F}_p(x)$ defined as
+
+$$
+a_n = (2x+2)a_{n-1} - (x^2 + 3x + 1)a_{n-2} + (x^2 + x)a_{n-3}.
+$$
+
+with initial conditions $a_0 = -1, a_1 = 0, a_2 = 2x^2$.
+This sequence is nothing but 
+
+$$
+a_n = (x+1)^n - x^n - 1,
+$$
+
+and we have $a_{p^k} = 0$ for all $k\geq 0$, which can't be a finite union of arithmetic progressions.
+Harm Derksen [proved](https://arxiv.org/abs/math/0510583) that this is essentially the only way where the theorem could fail in positive characteristic.
+
+
 
 ## $\pi$ and $e$ are transcendental
 
-(This follows [Matt Baker's blog post](https://mattbaker.blog/2015/03/20/a-p-adic-proof-that-pi-is-transcendental/).)
+(This section follows [Matt Baker's blog post](https://mattbaker.blog/2015/03/20/a-p-adic-proof-that-pi-is-transcendental/).)
 Another striking application of $p$-adic numbers is that $\pi$ and $e$ (and many more) are trancendental.
 More generally, [Bezvin and Robba](https://www.jstor.org/stable/1971488) proposed an alternative proof of the following Lindemann-Weierstrass theorem:
 
