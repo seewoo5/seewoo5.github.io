@@ -1,7 +1,7 @@
 ---
 layout: posts
 title:  "Interesting applications of p-adic numbers"
-date:   2023-02-18
+date:   2023-02-21
 categories: jekyll update
 tags: math
 ---
