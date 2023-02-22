@@ -252,7 +252,7 @@ For our purpose, we will use the following criterion by Bertrandias:
 > **Theorem (Bertrandias).** Let $g(z) = \sum_{n\geq 0} \frac{a_n}{z^{n+1}} \in \mathcal{F}_{\mathbb{Q}}$.
 Let $S$ be a finite set of places, containing the infinite places, such that
 >
-> (B1) For $p \not \in S$, $|a\_n|\_p \leq 1$ for all $n\geq 0$.
+> (B1) For $p \not \in S$, $\|a\_n\|\_p \leq 1$ for all $n\geq 0$.
 > 
 > (B2) For $p \in S$, $g(z)$ extends to a meromorphic function on the complement of a bounded set $K_v \subset \mathbb{C}\_v$ (which is assumed to be a finite union of discs if $v$ is non-archimedean) and $\prod_{v\in S} \delta_{\infty}(K_v) < 1$.
 >
@@ -286,9 +286,9 @@ $$
 
 Now let $S_1$ be a set of places of $\mathbb{Q}$ containing archimedean place such that for $p \not \in S_1$, 
 
-1) $|c_{i, j}|_p = 1 = |\gamma_j|_p$ whenever they are nonzero,
+1) $\|c\_{i, j}\|\_p = 1 = \|\gamma\_j\|\_p$ whenever they are nonzero,
 
-2) $|\gamma_i - \gamma_j|_p = 1$ for all $i\neq j$.
+2) $\|\gamma\_i - \gamma\_j\|\_p = 1$ for all $i\neq j$.
 
 Then one can show that the coefficients of the expansion $v(x) = \sum_{n \geq 0} \frac{a_n}{x^{n+1}}$ are $p$-adic integers for all $p \not \in S_1$ (consider Laurent series expansion of $1/(x-\gamma_i)^{k+j}$ near $x = 0$).
 Hence the condition (B1) is satisfied for any $S$ containing $S_1$.
