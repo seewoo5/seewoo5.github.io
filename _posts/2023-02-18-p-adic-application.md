@@ -44,7 +44,7 @@ and extend to $K = F(t)$ by multiplicativity. $\square$
 
 
 Now let $K$ be a field obtained by adjoining all the $x$ and $y$-coordinates of verticies of triangles to $\mathbb{Q}$.
-By Lemma, we can extend $2$-adic norm on $\mathbb{Q}$ to $K$, denote as $|\cdot|_2$.
+By Lemma, we can extend $2$-adic norm on $\mathbb{Q}$ to $K$, denote as $|\cdot|\_2$.
 We will color the vertices of triangles as follows: a point $(x, y)$ red if $|x|_2 < 1, |y|_2<1$, color it blue if $|x|_2\leq |y|_2$ and $|y|_2\geq 1$, and color it green if $|x| _2> |y|_2$ and $|x|_2\geq 1$. 
 Then each edge can only contain at most two colors. By Sperner's lemma, we can find a complete triangle where all the vertices have different colors. 
 Let $(x_{r}, y_{r}), (x_{b}, y_{b}), (x_{g}, y_{g})$ be the coordinates of the complete triangle with red, blue, and green colors. 
@@ -230,7 +230,8 @@ Now, consider the [Laplace transform](https://mathworld.wolfram.com/LaplaceTrans
 Since $f(1) = 0$ and $\alpha_i$ are distinct, we have $n\geq 2$ and at least one $\alpha_i$ should be nonzero, so $f(z)$ has at least one simple pole.
 Now we need a following lemma, which we will use without proof:
 
-> **Lemma.** $f(z) \in \mathbb{C}[[z]]$ defines an entire function of exponential growth (i.e. $|f(z)| \leq C_1 e^{C_2|z|}$ for some constants $C_1, C_2$) if and only if $\mathcal{L}(f)$ is analytic at infinity.
+> **Lemma.** 
+> $f(z) \in \mathbb{C}[[z]]$ defines an entire function of exponential growth (i.e. $|f(z)| \leq C_1 e^{C_2|z|}$ for some constants $C_1, C_2$) if and only if $\mathcal{L}(f)$ is analytic at infinity.
 
 Let $g(z) := \frac{f(z)}{z-1}$, which is analytic by the assumption $f(1) = 0$.
 Hence, by the above Lemma, $v:=\mathcal{L}(g) \in \frac{1}{x} \mathbb{C}[[\frac{1}{x}]]$ is analytic at infinity.
