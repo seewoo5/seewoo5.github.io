@@ -45,7 +45,7 @@ and extend to $K = F(t)$ by multiplicativity. $\square$
 
 Now let $K$ be a field obtained by adjoining all the $x$ and $y$-coordinates of verticies of triangles to $\mathbb{Q}$.
 By Lemma, we can extend $2$-adic norm on $\mathbb{Q}$ to $K$, denote as $|\cdot|\_2$.
-We will color the vertices of triangles as follows: a point $(x, y)$ red if $|x|_2 < 1, |y|_2<1$, color it blue if $|x|_2\leq |y|_2$ and $|y|_2\geq 1$, and color it green if $|x| _2> |y|_2$ and $|x|_2\geq 1$. 
+We will color the vertices of triangles as follows: a point $(x, y)$ red if $|x|\_2 < 1, |y|\_2 < 1$, color it blue if $|x|\_2 \leq |y|\_2$ and $|y|\_2\geq 1$, and color it green if $|x|\_2> |y|\_2$ and $|x|\_2\geq 1$. 
 Then each edge can only contain at most two colors. By Sperner's lemma, we can find a complete triangle where all the vertices have different colors. 
 Let $(x_{r}, y_{r}), (x_{b}, y_{b}), (x_{g}, y_{g})$ be the coordinates of the complete triangle with red, blue, and green colors. 
 The area $A$ of the triangle is the absolute value of 
@@ -252,9 +252,9 @@ For our purpose, we will use the following criterion by Bertrandias:
 > **Theorem (Bertrandias).** Let $g(z) = \sum_{n\geq 0} \frac{a_n}{z^{n+1}} \in \mathcal{F}_{\mathbb{Q}}$.
 Let $S$ be a finite set of places, containing the infinite places, such that
 >
-> (B1) For $p \not \in S$, $|a_n|_p \leq 1$ for all $n\geq 0$.
+> (B1) For $p \not \in S$, $|a\_n|\_p \leq 1$ for all $n\geq 0$.
 > 
-> (B2) For $p \in S$, $g(z)$ extends to a meromorphic function on the complement of a bounded set $K_v \subset \mathbb{C}_v$ (which is assumed to be a finite union of discs if $v$ is non-archimedean) and $\prod_{v\in S} \delta_{\infty}(K_v) < 1$.
+> (B2) For $p \in S$, $g(z)$ extends to a meromorphic function on the complement of a bounded set $K_v \subset \mathbb{C}\_v$ (which is assumed to be a finite union of discs if $v$ is non-archimedean) and $\prod_{v\in S} \delta_{\infty}(K_v) < 1$.
 >
 > Then $g(z)$ is a rational function.
 
@@ -286,13 +286,14 @@ $$
 
 Now let $S_1$ be a set of places of $\mathbb{Q}$ containing archimedean place such that for $p \not \in S_1$, 
 
-* $|c_{i, j}|_p = 1 = |\gamma_j|_p$ whenever they are nonzero,
-* $|\gamma_i - \gamma_j|_p = 1$ for all $i\neq j$.
+1) $|c_{i, j}|_p = 1 = |\gamma_j|_p$ whenever they are nonzero,
+
+2) $|\gamma_i - \gamma_j|_p = 1$ for all $i\neq j$.
 
 Then one can show that the coefficients of the expansion $v(x) = \sum_{n \geq 0} \frac{a_n}{x^{n+1}}$ are $p$-adic integers for all $p \not \in S_1$ (consider Laurent series expansion of $1/(x-\gamma_i)^{k+j}$ near $x = 0$).
 Hence the condition (B1) is satisfied for any $S$ containing $S_1$.
 
-For (B2), note that $v(x)$ converges outside of a disc $K_p \subset \mathbb{C}_p$ of some positive radius $R_p$ for all $p \in S_1$.
+For (B2), note that $v(x)$ converges outside of a disc $K_p \subset \mathbb{C}\_p$ of some positive radius $R_p$ for all $p \in S_1$.
 For $p \not \in S_1$, $v(x)$ converges in the complement of $K_p$ that is a union of discs $D_i$ centered at $\gamma_i$'s, and we can take radii of discs as $p^{-1/(p-1)}$ since the radius of convergence of $\sum_{k\geq 0} k! x^k$ is $p^{1/(p-1)}$.
 Since the radius of convergence is smaller than 1, the discs are disjoint by second assumption on $S_1$.
 Now, the transfinite diameter of $K_p$ becomes:
