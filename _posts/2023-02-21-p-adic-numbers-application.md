@@ -349,4 +349,4 @@ See [this blog post by Baker](https://mattbaker.blog/2014/05/02/newton-polygons-
 * Cryptanalysis. See [Klapper and Goresky's paper](https://www.math.ias.edu/~goresky/pdf/crypt95.pdf) on attacking stream ciphers using 2-adic numbers.
 
 
-[^1] As it mentioned in Matt Baker's blog post, this statement is slightly different from the original one from Bezvin-Robba, which are essentially the same via simple transformation.
+[^1]: As it mentioned in Matt Baker's blog post, this statement is slightly different from the original one from Bezvin-Robba, which are essentially the same via simple transformation.
