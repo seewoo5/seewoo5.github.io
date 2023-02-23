@@ -8,4 +8,6 @@ layout: single
 I'm 2nd year graduate student in Mathematics at UC Berkeley. My advisor is [Sug Woo Shin](https://math.berkeley.edu/~swshin/).
 I'm interested in number theory, especially about automorphic forms and representations.
 
+Office hour: MW 1pm - 3pm, TTh 1pm - 4pm, except when there are some [workshops](https://www.msri.org/web/msri/scientific/workshops). Feel free to email me if you have any questions.
+
 Email: seewoo5 + at + berkeley + dot + edu
