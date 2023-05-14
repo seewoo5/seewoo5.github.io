@@ -2,12 +2,18 @@
 layout: single
 ---
 
-<div style="text-align: center; margin-bottom: 2em"><img src="assets/profile.jpeg" width="200"/></div>
+<figure>
+<div style="text-align: center; margin-bottom: 2em">
+<img src="assets/profile.jpeg" width="200" title="at Stanford"/>
+</div>
+</figure>
 
 
-I'm 2nd year graduate student in Mathematics at UC Berkeley. My advisor is [Sug Woo Shin](https://math.berkeley.edu/~swshin/).
+I'm 3rd year graduate student in Mathematics at UC Berkeley. My advisor is [Sug Woo Shin](https://math.berkeley.edu/~swshin/).
 I'm interested in number theory, especially about automorphic forms and representations.
 
-Office hour: MW 1pm - 3pm, TTh 1pm - 4pm, except when there are some [workshops](https://www.msri.org/web/msri/scientific/workshops). Feel free to email me if you have any questions.
+Office hour: TBD
+
+Feel free to email me if you have any questions.
 
 Email: seewoo5 + at + berkeley + dot + edu
