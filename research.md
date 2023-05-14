@@ -26,6 +26,7 @@ permalink: /research/
 
 **Preprints**
 
+* (with J. Baek) Formalizing Mason–Stothers Theorem and its consequences
 
 **Miscellaneous**
 
