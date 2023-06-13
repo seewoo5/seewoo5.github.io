@@ -1,6 +1,6 @@
 main:
   - title: "CV"
-    url: "https://cdn.jsdelivr.net/gh/seewoo5/seewoo5.github.io/assets/cv/CV.pdf"
+    url: "https://seewoo5.github.io/assets/cv/CV.pdf"
   - title: "Research"
     url: /research
   - title: "Teaching"
