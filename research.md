@@ -15,7 +15,7 @@ permalink: /research/
 - (with Y. Chen, R. Chernov, M. Flores, M. Bourque and B. Yang) **Toy Teichmüller spaces of real dimension 2: the pentagon and the punctured triangle**, Geom. Dedicata 197 (2018), 193-227 [paper](https://link.springer.com/article/10.1007/s10711-018-0325-6)
 
 **Publications (Others)**
-- (with G. Lee, J. Kim, J. Shin, M. Lee) **HETAL: Efficient Privacy-preserving Transfer Learning with Homomomorphic Encryption**, accepted to International Conference on Machine Learning 2023 (Oral) [paper](https://openreview.net/forum?id=jJXuL3hQvt) [github](https://github.com/CryptoLabInc/HETAL) [long_presentation](https://seewoo5.github.io/assets/hetal-kias.pdf)
+- (with G. Lee, J. Kim, J. Shin, M. Lee) **HETAL: Efficient Privacy-preserving Transfer Learning with Homomomorphic Encryption**, accepted to International Conference on Machine Learning 2023 (Oral) [paper](https://openreview.net/forum?id=jJXuL3hQvt) [github](https://github.com/CryptoLabInc/HETAL) [presentation(long)](https://seewoo5.github.io/assets/hetal-kias.pdf)
 - (with J. Kim) **Revisiting the Convergence Theorem for Competitive Bidding in Common Value Actions**, Economic Theory Bulletin 10, 293-302 (2022) [paper](https://link.springer.com/article/10.1007/s40505-022-00234-2)
 - (with K. Kim, J. Shin, J. Park) **Tracing Knowledge for Tracing Dropouts: Multi-Task Training for Study Session Dropout Prediction**, Educational Data Mining 2021 [paper](https://educationaldatamining.org/EDM2021/virtual/static/pdf/EDM21_paper_174.pdf)
 - (with S. Kim, Y. Shim, H. Loh, J. Park) **Behavioral Testing of Deep Neural Network Knowledge Tracing Models**, Educational Data Mining 2021 [paper](https://eric.ed.gov/?id=ED615512)
@@ -25,6 +25,8 @@ permalink: /research/
 - (with J. Kim) **Apportionment of Liability by the Stochastic Shapley Value**, International Review of Law & Economics 60 (2019), 1-8 [paper](https://www.sciencedirect.com/science/article/abs/pii/S014481881930153X)
 
 **Preprints**
+
+* (with J. Baek) **$n^2+1$ unit equiliateral triangles cannot cover an equilateral triangle of side $>n$ if all triangles have parallel sides** [paper](https://arxiv.org/abs/2306.09533)
 
 * (with J. Baek) **Formalizing Mason–Stothers Theorem and its consequences** [github](https://github.com/seewoo5/lean-poly-abc)
 
