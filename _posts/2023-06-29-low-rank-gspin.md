@@ -84,7 +84,7 @@ One of the most important property of $\mathrm{GSpin}(V)$ is that it becomes a $
 > **Theorem.** There exists a short exact sequence of (algebraic) groups
 >
 > $$
-> 1 \to F^\times \to \mathrm{GSpin}(V) \to \mathrm{SO}(V) \to 1
+> 1 \to F^\times \xrightarrow{\iota} \mathrm{GSpin}(V) \xrightarrow{p} \mathrm{SO}(V) \to 1
 > $$
 >
 > where $\mathrm{SO}(V)$ is the special orthogonal group associated to the quadratic space $(V, q)$ defined as
@@ -141,9 +141,53 @@ Obviously, we have $\mathrm{img}(\iota) \subset \ker(p)$ since $\mathrm{img}(\io
 For the reverse inclusion, it is equivalent to $Z(C(V)) = C^0(V) \simeq F$, which is true because Clifford algebras are central simple.
 </details>
 
-Note that the connected component of the center $Z^\circ$ of $\mathrm{GSpin}(V)$ is isomorphic to $F^\times for all $n \neq 2$.
+Note that the connected component of the center $Z^\circ$ of $\mathrm{GSpin}(V)$ is isomorphic to $F^\times$ for all $n \neq 2$.
 
 
+There is a natural involution on the Clifford algebra, given by
+
+$$
+(v_1 v_2 \cdots v_k)^* := v_k v_{k-1} \cdots v_1
+$$
+
+where each $v_i$ is in $V$.
+This gives a map
+
+$$
+N: C(V) \to C(V), \quad N(x) = xx^*
+$$
+
+for $x \in C(V)$, which we call *spinor norm*.
+From anti-commutativity of orthogonal elements in $C(V)$, it follows that $C^+(V)$ is closed under the involution.
+In fact, we have the following.
+
+> **Proposition.** For $g \in \mathrm{GSpin}(V)$, $g^* \in \mathrm{GSpin}(V)$ and $N(g) \in C^0(V)^\times = F^\times$.
+
+
+<details>
+
+<summary><i>Proof [Scharlau, Lemma 3.2, page 335].</i></summary>
+
+Let $g \in \mathrm{GSpin}(V)$.
+By definition, we have $gV = Vg$, and taking involution on the both sides gives $g^* V = V g^*$, so $g^* \in \mathrm{GSpin}(V)$.
+To show $gg^* \in C^0(V)^\times$, it is enough to show that $p(gg^*) = 1$ (where $p: \mathrm{GSpin}(V) \to \mathrm{SO}(V)$ is defined above).
+Since $v^* = v$ for all $v \in V$, we have
+
+$$
+g^* v (g^{*})^{-1} = (g^* v (g^{-1})^{*})^* = g^{-1} v^* g = g^{-1} v g
+$$
+
+so
+
+$$
+gg^* v (gg^*)^{-1} = g(g^* v (g^*)^{-1})g^{-1} = g(g^{-1}vg)g^{-1} =v
+$$
+
+for all $v \in V$. Hence $p(gg^*) = p(N(g)) = 1$ and $N(g) \in F^\times$.
+
+Note that Scharlau worked with slightly larger group called *Clifford group*.
+</details>
 
 ## Exceptional isomorphisms, for $n \leq 5$
+
 
