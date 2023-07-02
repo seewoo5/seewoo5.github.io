@@ -2,15 +2,12 @@
 layout: posts
 title:  "Exceptional isomorphisms for low-rank general spin groups"
 date:   2023-06-29
-header-includes:
-   - \usepackage{tikz}
-   - \usetikzlibrary{shapes.geometric,arrows}
 categories: jekyll update
 tags: math
 ---
 
 In this post, we define general spin groups via Clifford algebra and give exceptional isomorphisms with other groups for low rank cases.
-This post is based on the chapter 2 of M. Emory's "On the global Gan-Gross-Prasad conjecture for general spin groups", and T. Y. Lam's "Introduction to Quadratic Forms over Fields", but with a bit of more details.
+Main references are the chapter 2 of M. Emory's "On the global Gan-Gross-Prasad conjecture for general spin groups", and T. Y. Lam's "Introduction to Quadratic Forms over Fields", but with a bit of more details.
 
 ## Clifford algebra and general spin groups
 
@@ -24,7 +21,18 @@ $$
 
 which recovers $q$ by $q(v) = B(v, v)$.
 We say that $v$ and $w$ are *orthogonal* if $B(v, w) = 0$.
-Then we define a *Clifford algebra* $C(V)$ associated to the quadratic space $(V, q)$ as a universal unital associative algebra $C(V) = C(V, q)$ over $F$ with inclusion $i: V \to C(V)$ satisfying $i(v)^2 = q(v)\cdot 1$ for all $v \in V$.
+Also, we say that $V$ is *regular* if $B$ defines a non-degenerate bilinear paring on $V$, i.e. $v \mapsto B(v, -)$ is an isomorphism between $V$ and $V^{\ast}$.
+For regular quadratic spaces, we define their *discriminant* (signed determinant) as
+
+$$
+\mathrm{disc}(V) = (-1)^{\frac{n(n-1)}{2}} \det(V) \in F^\times / (F^\times)^2
+$$
+
+where $\det(V) = \det(Q)$ is the determinant of a matrix $Q = Q_q$ representing the quadratic form $q$.
+For two isomorphic quadratic spaces $(V, q) \simeq (V, q')$, there exists $C \in \mathrm{GL}(V)$ such that $Q_{q'} = C^t Q_{q} C$ hence $\det(Q_{q'}) = \det(Q_q) \det(C)^2$ and $\det(Q_q)$ are in the same equivalence class of $F^\times / (F^\times)^2$.
+
+
+*Clifford algebra* $C(V)$ associated to the quadratic space $(V, q)$ is defined as a universal unital associative algebra $C(V) = C(V, q)$ over $F$ with inclusion $i: V \to C(V)$ satisfying $i(v)^2 = q(v)\cdot 1$ for all $v \in V$.
 It satisfies the following universal property: given any unital associative algebra $A$ over $F$ with a linear map $j: V \to A$ satisfying $j(v)^2 = q(v) \cdot 1_A$ for all $v \in V$, it factors through $i$.
 Explicitly, it can be constructed as follows.
 Let $T(V)$ be a tensor algebra associated to $V$, which is
@@ -70,10 +78,9 @@ $$
 $$
 
 which we call the *even* and *odd* Clifford algebra, with $\dim C^+(V) = \dim C^-(V) = 2^{n-1}$.
-<!-- Note that, when $q = 0$ (i.e. $V$ is totally isotropic), then the Clifford algebra $C(V, 0)$ is isomorphic to the exterior algebra $\Lambda(V)$ of $V$. -->
 
-From now, we will assume that $(V, q)$ is a *regular* quadratic space, i.e. the associated bilinear form $B_q: V \times V \to F$ is nondegenerate.
-Now, we define the general spin group $\mathrm{GSpin}(V) = \mathrm{GSpin}(V, q)$ associated to $(V, q)$ as
+From now, we will assume that $(V, q)$ is a *regular* quadratic space.
+Define the general spin group $\mathrm{GSpin}(V) = \mathrm{GSpin}(V, q)$ associated to $(V, q)$ as
 
 $$
 \mathrm{GSpin}(V, q):= \{ g\in C^+(V) : g^{-1} \text{ exists and } gVg^{-1} = V\}.
@@ -81,7 +88,7 @@ $$
 
 One of the most important property of $\mathrm{GSpin}(V)$ is that it becomes a $\mathrm{GL}_1$-cover of the special orthogonal group $\mathrm{SO}(V) = \mathrm{SO}(V, q)$.
 
-> **Theorem.** There exists a short exact sequence of (algebraic) groups
+> **<ins>Theorem</ins>.** There exists a short exact sequence of (algebraic) groups
 >
 > $$
 > 1 \to F^\times \xrightarrow{\iota} \mathrm{GSpin}(V) \xrightarrow{p} \mathrm{SO}(V) \to 1
@@ -113,29 +120,35 @@ Hence its image is in $\mathrm{SO}(V)$.
 To prove surjectivity of $p$, we use the following theorem:
 
 <blockquote>
-<i>Theorem (Cartan-Dieudonné)</i> Let $(V, q)$ be a regular quadratic space of dimension $n$. Then every $\sigma \in \mathrm{O}(V, q)$ is a product of at most $n$ reflections. In other words, there exists anistropic vectors $w_1, \dots, w_r \in V$ with $r \leq n$ such that $\sigma = \tau_{w_1} \cdots \tau_{w_r}$, where
+<b><ins>Theorem</ins> (Cartan-Dieudonné).</b> Let $(V, q)$ be a regular quadratic space of dimension $n$. Then every $\sigma \in \mathrm{O}(V, q)$ is a product of at most $n$ reflections. In other words, there exists anistropic vectors $w_1, \dots, w_r \in V$ with $r \leq n$ such that $\sigma = \tau_{w_1} \cdots \tau_{w_r}$, where
 
 $$
-\tau_w(v):= v - \frac{2B_q(v, w)}{q(w)}y.
+\tau_w(v):= v - \frac{2B_q(v, w)}{q(w)}w.
 $$
 </blockquote>
 
 Proof of the theorem can be found in [Lam, page 20].
-Now, if $\sigma = \tau_{w_1} \cdots \tau_{w_r} \in \mathrm{SO}(V)$, then $\det(\sigma) = 1 = \det(\tau_{w_1}) \cdots \det(\tau_{w_r}) = (-1)^r$ and $r$ should be even.
+Now, if $\sigma = \tau_{w_1} \cdots \tau_{w_r} \in \mathrm{SO}(V)$, then 
+
+$$
+\det(\sigma) = 1 = \det(\tau_{w_1}) \cdots \det(\tau_{w_r}) = (-1)^r
+$$
+
+and $r$ should be even.
 So it is enough to show that every product of two reflections, $\tau_{w} \tau_{w'}$, is in the image of $p$.
 In fact, a direct computation gives that in $C(V)$, we have
 
 $$
-\tau_y(x) = x - \frac{2B_q(x, y)}{q(y)} y = x - \frac{(xy + yx)}{q(y)} y = -yxy^{-1}
+\tau_w(x) = x - \frac{2B_q(x, w)}{q(w)} w = x - \frac{(xw + wx)}{q(w)} w = -wxw^{-1}
 $$
 
 hence 
 
 $$
-\tau_y(\tau_{y'}(x)) = -y(-y'xy'^{-1})y^{-1} = (yy')x(yy')^{-1}
+\tau_w(\tau_{w'}(x)) = -w(-w'xw'^{-1})w^{-1} = (ww')x(ww')^{-1}
 $$
 
-and $\tau_y \tau_y' = p(yy')$.
+and $\tau_w \tau_w' = p(ww')$.
 
 Obviously, we have $\mathrm{img}(\iota) \subset \ker(p)$ since $\mathrm{img}(\iota)$ lies in the center of $\mathrm{GSpin}(V)$.
 For the reverse inclusion, it is equivalent to $Z(C(V)) = C^0(V) \simeq F$, which is true because Clifford algebras are central simple.
@@ -161,7 +174,7 @@ for $x \in C(V)$, which we call *spinor norm*.
 From anti-commutativity of orthogonal elements in $C(V)$, it follows that $C^+(V)$ is closed under the involution.
 In fact, we have the following.
 
-> **Proposition.** For $g \in \mathrm{GSpin}(V)$, $g^* \in \mathrm{GSpin}(V)$ and $N(g) \in C^0(V)^\times = F^\times$.
+> **<ins>Proposition</ins>.** For $g \in \mathrm{GSpin}(V)$, $g^* \in \mathrm{GSpin}(V)$ and $N(g) \in C^0(V)^\times = F^\times$.
 
 
 <details>
@@ -185,9 +198,423 @@ $$
 
 for all $v \in V$. Hence $p(gg^*) = p(N(g)) = 1$ and $N(g) \in F^\times$.
 
-Note that Scharlau worked with slightly larger group called *Clifford group*.
+Note that Scharlau worked with slightly larger group called <i>Clifford group</i>.
 </details>
 
-## Exceptional isomorphisms, for $n \leq 5$
 
 
+
+## Structures of Clifford algebra
+
+To *compute* (low-rank) general spin groups, one needs to understand the structure of (even) Clifford algebras.
+They are so-called *central simple graded algebras* (CSGAs), and we will see the structure theorems of general CSGAs and how they applies to the Clifford algebras.
+This mostly follows the Lam's book, chapter IV and V.
+
+
+CSGAs are simply central simple algebras (CSAs) with $\mathbb{Z}/2$-grading.
+An $F$-algebra $A$ is a ($\mathbb{Z}/2$-)graded if it has a decomposition $A = A^+ \oplus A^-$ as even and odd parts, so that $F = F \cdot 1 \subset A^+$ and multiplication respects grading (e.g. if $a, b \in A^-$, then $ab \in A^+$).
+We call $a$ is *homogeneous* if $a \in h(A):= A^+ \cup A^-$, and for such $a$, we denote $|a|$ for its degree: $|a| = 0$ (resp. $1$) if $a \in A^+$ (resp. $a \in A^-$).
+$A$ is called *simply graded algebra* (SGA) if it has no proper *graded* ideal, and we say $A$ is CSGA if it is both SGA and CSA.
+For two graded algebras $A$ and $B$, we can take its *graded tensor product* $A \hat{\otimes} B$ whose grading is given by
+
+$$
+\begin{align*}
+(A \hat{\otimes} B)^+ &= (A^+ \otimes B^+) \oplus (A^- \otimes B^-) \\
+(A \hat{\otimes} B)^- &= (A^+ \otimes B^-) \oplus (A^- \otimes B^+)
+\end{align*}
+$$
+
+and the multiplication is induced by
+
+$$
+(a \otimes b) (a' \otimes b') = (-1)^{|b||a'|} (aa') \otimes (bb')
+$$
+
+for $a, a' \in h(A)$ and $b, b' \in h(B)$.
+If $A$ and $B$ are CSGA, it can be shown that $A \hat{\otimes} B$ is also a CSGA [Lam, Theorem 2.3 (3), page 85].
+
+### Examples
+
+(1) A quadratic extension $A = F(\sqrt{a})$ of $F$ ($a\in F^\times$) can be graded as $A^+ = F$ and $A^- = F \cdot \sqrt{a}$, which we denote as $F\langle \sqrt{a} \rangle$ to indicate the fact that $A$ is made into a graded algebra in this way. It can be shown that $F \langle \sqrt{a} \rangle$ is a CSGA, and it is even true when $a \in (F^\times)^2$ and $A \simeq F \oplus F$ (so is not a field).
+
+(2) A quaternion algebra $C = \left(\frac{a, b}{F}\right)$, which can be graded as
+
+$$
+C^+ = F \oplus F \cdot k, \quad C^- = F\cdot i \oplus F \cdot j.
+$$
+
+As a previous example, we will denote the quaternion algebra with the grading as $\langle \frac{a, b}{F} \rangle$.
+In fact, we can check that 
+
+$$
+\left\langle \frac{a, b}{F} \right\rangle \simeq (F \oplus F \cdot i) \hat{\otimes} (F \oplus F \cdot j) = F\langle \sqrt{a} \rangle \hat{\otimes} F\langle \sqrt{b} \rangle
+$$
+
+so is also CSGA.
+
+
+(3) For a graded algebra $A$, there's a natural grading on the matrix algebra $M_r(A)$ over $A$ (which we denote as $\tilde{M}_r(A)$):
+
+$$
+\tilde{M}_r(A)^+ := M_r(A^+), \quad \tilde{M}_r(A)^- := M_r(A^-)
+$$
+
+However, there's one more interesting grading, so-called *checkerboard* grading (denote as $\hat{M}_r(A)$):
+
+$$
+\begin{align*}
+\hat{M}_r(A)^+ := \begin{pmatrix}
+A^+ & A^- & \cdots \\
+A^- & A^+ & \cdots \\
+\vdots & \vdots & \ddots 
+\end{pmatrix}
+\\
+\hat{M}_r(A)^- := \begin{pmatrix}
+A^- & A^+ & \cdots \\
+A^+ & A^- & \cdots \\
+\vdots & \vdots & \ddots 
+\end{pmatrix}
+\end{align*}
+$$
+
+This may looks weird at first glance.
+However, when $A = A^+$ (i.e. $A$ is concentrated at even degree), such a grading coincides with the natural grading on $\mathrm{End}(V)$ of a graded vector space $V = V^+ \oplus V^-$ induced from it.
+
+
+For a CSGA $A$ over $F$, we write $Z = Z(A) = Z^+ \oplus Z^- = F \oplus Z^-$ for the center of $A$ ($Z^- \subseteq A^-$).
+If $Z^- = 0$, we say that $A$ is of *even type*, and if $Z^- \neq 0$, then we say that $A$ is of *odd type*.
+One can check that $A$ is of even type iff $A$ is a CSA as an ungraded algebra.
+Also, $A$ is of odd type iff $A^- \neq 0$ and $A^+$ is a CSA over $F$, in which case $A$ is not a CSA.
+
+Now, the following two theorems describe structures of odd and even type CSGAs. You can find the proof in [Lam].
+
+
+> **<ins>Theorem</ins> (odd type, [Lam, Theorem 3.6, page 92]).** Let $A$ be a CSGA of odd type. Then
+>
+> (1) $Z(A) = F\langle \sqrt{a} \rangle$ for some $a \in F^\times$. The square class of $a$ is uniquely determined.
+>
+> (2) There are graded algebra isomorphisms 
+>
+> $$
+> A \simeq A^+ \hat{\otimes} F\langle \sqrt{a} \rangle \simeq A^+ \otimes F\langle \sqrt{a} \rangle
+> $$
+> 
+> (3) If $a \not\in (F^\times)^2$, then $A$ is a CSA over $Z(A) \simeq F(\sqrt{a})$. If $a \in (F^\times)^2$, then $Z(A) \simeq F \times F$, and $A \simeq A^+ \times A^+$.
+
+
+
+> **<ins>Theorem</ins> (even type [Lam, Theorem 3.8, page 94]).** Let $A$ be a CSGA of even type, so is a CSA over $F$. Assume that $A \simeq M_n(D)$ for some central division algebra $D$ over $F$ (Wedderburn's theorem). Then
+>
+> (1) $Z(A^+) = F\langle \sqrt{a}\rangle$ for some $a \in F^\times$, whose square class is uniquely determined.
+>
+> (2) Suppose $a \in (F^\times)^2$. Then $Z(A^+) \simeq F \times F$ and there exists a graded $F$-vector space $V = V^+ \oplus V^-$, such that $A \simeq \mathrm{End}(V) \hat{\otimes} D$ as graded algebras. Furthermore, $A^+ \simeq M_r(D) \times M_s(D)$ where $r =\dim V^+$ and $s = \dim V^-$.
+>
+> (3) Suppose $a \not \in (F^\times)^2$ and $F(\sqrt{a})$ can be embedded into $D$. Then there exists a grading on $D$ such that $A \simeq \tilde{M}(D)$. In this case, $A^+ \simeq M_n(D^+)$ is a CSA over $F(\sqrt{a})$.
+>
+> (4) Suppose $a \not \in (F^\times)^2$ and $F(\sqrt{a})$ cannot be embedded into $D$. Then $n = 2m$ is even, and $A \simeq (M_m(D)) \hat{\otimes} \langle \frac{-a, 1}{F} \rangle$ as graded algebras. In this case, $A^+ \simeq M_m(D) \otimes F(\sqrt{a})$ is a CSA over $F(\sqrt{a})$.
+
+
+Now, let's get back to the Clifford algebras.
+For two quadratic spaces $(V, q)$ and $(V', q')$, we have an isomorphism
+
+$$
+C(V \oplus V) \simeq C(V) \hat{\otimes} C(V')
+$$
+
+induced from
+
+$$
+(x, x') \mapsto x \otimes 1 + 1 \otimes x'
+$$
+
+for $x \in V$ and $x' \in V$.
+From this and the previous results, by decomposing $V$ into orthogonal sum of 1-dimensional quadratic spaces, one can see that $C(V)$ is a CSGA and we can apply the above theorems.
+One needs to know the type of $C(V)$ (even or odd), and this is precisely determined by the dimension $n = \dim_F V$ of $V$.
+
+
+> **<ins>Lemma</ins>.** The type of $C(V)$ is same as $\dim_F V\,(\mathrm{mod}\,2)$.
+
+<details>
+
+<summary><i>Proof [Lam, Theorem 2.2, page 109].</i></summary>
+
+Choose an orthogonal basis $e_1, \dots, e_n$ of $V$ and set $z = e_1 e_2 \cdots e_n$. Write $Z = Z(C(V)) = F \oplus Z^-$ ($Z^- \subseteq C^-(V)$).
+If $n$ is odd, then $ze_i = e_i z$ for all $i$, since $e_i e_j = -e_j e_i$ for $i \neq j$ and there are $(n-1)$ swaps from $ze_i$ to $e_i z$, which is even.
+Hence $z \in Z^-$ defines a nonzero element and $C(V)$ is of odd type.
+If $n$ is even, we have $z e_i = -e_i z$ for all $i$, so $z e_i e_j = e_i e_j z$ for all $i, j$.
+In particular, $z \in Z(C^+(V))$ and so $C^+(V)$ is not a CSA, which implies that $C(V)$ is of even type.
+</details>
+
+
+Now we can state the structure theorem for Clifford algebras, which immediately follows from the above structure theorems for CSGAs.
+
+> **<ins>Theorem</ins>.** Let $n = \dim(V)$, $d = \mathrm{disc}(V)$, and $E = F(\sqrt{d})$. Then we have
+>
+> $$
+> C^+(V) = \begin{cases} A & 2 \nmid n \\ A \times A & 2 \mid n \text{ and } d = 1 \\ A_E & 2 \mid n \text{ and } d \neq 1 \end{cases}
+> $$
+>
+> where $A$ is a central simple algebra over $F$ and $A_E$ is a central simple algebra over $E$. Note that $\dim_F A = \dim_F C^+(V) = 2^{n-1}$ if $n$ is odd and $\dim_F A = \dim_E A_E = 2^{n-2}$ if $n$ is even. Also, when $n$ is even, $d \in (F^\times)^2$, and $C(V) \simeq M_t(D)$ for some central division algebra $D$ over $F$, then $t$ is a power of 2 and 
+>
+> $$
+> C^+(V) \simeq M_{t/2}(D) \times M_{t/2}(D)
+> $$
+>
+> and $C^+(V) \subset C(V)$ corresponds to the diagonal embedding $M_{t/2}(D) \times M_{t/2}(D) \hookrightarrow M_t(D)$.
+<details>
+
+<summary><i>Proof [Lam, Theorem 2.4, Theorem 2.5, page 110].</i></summary>
+
+When $n$ is odd, $C(V)$ is off odd type (by Lemma) and so $C^+(V)$ is a CSA over $F$.
+When $n$ is even, $C(V)$ is a CSA over $F$ and so $C(V) \simeq M_t(D)$ for some central division algebra $D$ over $F$.
+By observing the dimensions, we have
+
+$$
+\dim_F M_t(D) = t^2 (\dim_F D) = \dim_F C(V) = 2^n,
+$$
+
+so $t$ and $\dim_F D$ should be powers of 2.
+If $d \not \in (F^\times)^2$.
+Then $C^+(V)$ is a CSA over $E = F(\sqrt{d})$.
+(We can give a finer classification depending on whether $E$ embeds into $D$ or not, but we may not need this.)
+When $d \in (F^\times)^2$, choose an orthogonal basis $\\{ e_1, \dots, e_n\\}$ and let $z = e_1 e_2 \cdots e_n$.
+Then $z^2 = \mathrm{disc}(V)$ and we may assume $z^2 = 1$ by multiplying a scalar if necessary.
+Then
+
+$$
+e = \frac{1 + z}{2}, \quad f = \frac{1 - z}{2}
+$$
+
+are two elements in $C^+(V)$ that are orthogonal idempotents and $e + f = 1$.
+Hence the two simple factors of $C^+(V)$ are just $C^+(V)\cdot e$ and $C^+(V) \cdot f$.
+Now the reflection map $\tau = \tau_{e_1}: V \to V$ extends to an isomorphism $C(\tau): C(V) \to C(V)$ with $C(\tau)(z) = -e_1 e_2 \cdots e_n = -z$.
+Hence it swaps $e$ and $f$ and so $C^+(V)\cdot e \simeq C^+(V) \cdot f$.
+This implies $r = s = t / 2$.
+</details>
+
+We also needs to describe the *types* of involutions on $C(V)$.
+
+> **<ins>Theorem</ins> ([Knus et al., (8.4) Proposition, page 89]).**
+> The involution $*$ on $C(V)$ is
+>
+> $$
+> \begin{cases} \text{unitary} & n \equiv 2, 6\,(\mathrm{mod}\,8) \\ \text{symplectic} & n \equiv 3, 4, 5\, (\mathrm{mod}\,8) \\ \text{orthogonal} & n \equiv 0, 1, 7\, (\mathrm{mod}\,8) \end{cases} 
+> $$
+>
+> and furthermore if $n\equiv 0, 4\,(\mathrm{mod}\,8)$ and $C^+(V) = A\times A$ then $*$ is orthogonal or symplectic type on each factor of $C^+(V)$.
+
+
+
+
+
+## Exceptional isomorphisms, for $n \leq 6$
+
+Now let's *compute* general spin groups for $n \leq 7$.
+To do this, we consider the *similarity group* $\mathrm{Sim}(V)$ defined as
+
+$$
+\mathrm{Sim}(V):= \{g \in C^+(V): N(g) \in C^0(V)^\times = F^\times\}
+$$
+
+which, by definition, contains $\mathrm{GSpin}(V)$.
+Both $\mathrm{Sim}(V)$ and $\mathrm{GSpin}(V)$ are connected as algebraic groups, so they should be the same if they have the same dimension.
+This happens when $n$ is small, as we will see.
+
+First of all, using the short exact sequence above, we can compute the dimension of $\mathrm{GSpin}(V)$ as
+
+$$
+\dim \mathrm{GSpin}(V) = \dim \mathrm{SO}(V) + \dim \mathrm{GL}_1 = \frac{n(n-1)}{2} + 1
+$$
+
+where $n = \dim_F V$. Now, let's compute $\mathrm{Sim}(V)$ for small $n$'s.
+
+### $n = 1$
+
+By the structure theorem, $C^+(V)$ is a central simple algebra of dimension 1, hence $F$.
+Then
+
+$$
+\begin{align*}
+\mathrm{Sim}(V) &= \{ g \in F: N(g) = g^2 \in F^\times \} = F^\times
+\end{align*}
+$$
+
+and $\dim \mathrm{Sim}(V) = 1 = \dim \mathrm{GSpin}(V)$, hence 
+
+$$
+\mathrm{GSpin}(V) = \mathrm{Sim}(V) \simeq \mathrm{GL}_{1}.
+$$
+
+### $n = 2$
+
+Since $n$ is even, there are two cases to consider.
+
+*Case 1.* Assume $d = \mathrm{disc}(V) = 1$, so that $V = \mathbb{H}$ is a *hyperbolic plane*, i.e. the unique regular isotropic quadratic space (up to isomorphism), which can be also thought as $V = F \oplus F$ with $q(x, y) = xy$.
+Then $C^+(V) = A \times A$ for a central simple algebra $A$ over $F$ with $\dim_F A = 1$, so $A = F$ and $C^+(V) \simeq F \times F$.
+
+
+*Case 2.* If $d \neq 1$, then $V = E$ with norm form $q(x) = N_{E/F}(x) = xx^* = x\bar{x}$ ($\bar{x}$ is the Galois conjugate of $x$).
+By the structure theorem again, $C^+(V)$ is a central simple algebra over $E$ with $\dim_E C^+(V) = 1$, hence $C^+(V) = E$.
+This gives
+
+$$
+\mathrm{Sim}(V) = \{g \in E: gg^* \in F^\times\} = E^\times \simeq \mathrm{Res}_{E/F}\mathrm{GL}_{1, E}
+$$
+
+whose dimension is $2 = \dim \mathrm{GSpin}(V)$. Hence 
+
+$$
+\mathrm{GSpin}(V) = \mathrm{Sim}(V) \simeq \mathrm{Res}_{E/F} \mathrm{GL}_{1, E}.
+$$
+
+
+### $n = 3$
+
+Since $n$ is odd, $C^+(V)$ is a central simple algebra over $F$ of dimension $2^{3-1} = 4$, hence a quaternion algebra $D$ over $F$.
+Also, the involution $*$ is symplectic, so it is the quaternion conjugation and
+
+$$
+\mathrm{Sim}(V) = \{ g \in D : g\bar{g} \in F^\times \} = D^\times
+$$
+
+which has dimension $4 = \frac{3(3-1)}{2} + 1$.
+Hence
+
+$$
+\mathrm{GSpin}(V) = \mathrm{Sim}(V) \simeq D^\times.
+$$
+
+Especially, $\mathrm{GSpin}(V) \simeq \mathrm{GL}_2$ when $D$ splits ($D \simeq M_2(F)$).
+
+
+### $n = 4$
+
+
+As in the case of $n = 2$, there are two cases to consider.
+
+*Case 1.* Assume $d = 1$, so $C^+(V) = A \times A$ for a central simple algebra $A$ over $F$ of dimension $\dim_F A = 2^{4-2} = 4$.
+Then $C^+(V) = D \times D$ for a quaternion algebra $D$ over $F$, and since $n \equiv 4\,(\mathrm{mod}\,8)$, the involution is symplectic on each factor $D$.
+This means that the involution is given by
+
+$$
+(x, y)^* = (\bar{x}, \bar{y})
+$$
+
+for $(x, y) \in D$, for the quaternion conjugation $x \mapsto \bar{x}$, and
+
+$$
+\begin{align*}
+\mathrm{Sim}(V) &= \{(x, y) \in D \times D: (x, y)(\bar{x}, \bar{y}) = (x\bar{x}, y\bar{y}) \in \Delta F^\times \} \\
+&= \{ (x, y) \in D^\times \times D^\times: N_D(x) = N_D(y)\} \\
+&= D^\times \times_{\mathrm{GL}_1} D^\times
+\end{align*}
+$$
+
+where $N_D: D \to \mathrm{GL}_1$ is a reduced norm on $D$.
+Then dimension of $\mathrm{Sim}(V)$ is $2 \dim_F D - 1 = 8 - 1 = 7$ (the dimension of $D^\times \times D^\times$ is $2 \dim_F D = 8$, and it is cut out by a single equation $N_D(x) = N_D(y)$ which decreases a dimension by $1$.)
+Since this equals to the dimension of $\mathrm{GSpin}(V)$, we have
+
+$$
+\mathrm{GSpin}(V) = \mathrm{Sim}(V) \simeq D^\times \times_{\mathrm{GL}_1} D^\times.
+$$
+
+When $D = M_2(F)$ splits, then $\bar{x} = \mathrm{adj}(x)$ is the adjoint matrix of $x$ and $N_D(x) = \det(x)$, so
+
+$$
+\mathrm{GSpin}(V) \simeq \mathrm{GL}_2 \times_{\mathrm{GL}_1} \mathrm{GL}_2.
+$$
+
+*Case 2.* Assume $d \neq 1$, so $C^+(V) = A_E$ is a central simple algebra over $E = F(\sqrt{d})$ with $\dim_E A_E = 2^{4-2} = 4$.
+Thus $A_E = D_E$ is a quaternion algebra over $E$ and the involution $*$ is the quaternion conjugation on $D_E$.
+Then
+
+$$
+\mathrm{Sim}(V) = \{ g \in D_E^\times: N_{D_E}(g) = g\bar{g} \in \mathrm{GL}_{1, F} \}
+$$
+
+whose dimension over $F$ is $8 - 1 = 7 = \frac{3(3-1)}{2} + 1$ (the dimension of $D_E^\times$ over $F$ is $4 \cdot 2 = 8$, and the the condition $N_{D_E}(g) \in F^\times$ is equivalent to $N_{D_E}(g) = \overline{N_{D_E}(g)}$ for a Galois conjugation $x \mapsto \bar{x}$, which gives a single equation over $F$ and gives a codimension 1 subvariety).
+Hence
+
+$$
+\mathrm{GSpin}(V) = \mathrm{Sim}(V) \simeq \{ g \in D_E: N_{D_E}(g) \in \mathrm{GL}_{1, F} \}.
+$$
+
+Especially, when $D_E = M_2(E)$ (splits over $E$), then $N_{D_E}(g) = \det(g)$ and 
+
+$$
+\mathrm{GSpin}(V) = \{ g\in \mathrm{GL}_2(E): \det(g) \in \mathrm{GL}_{1, F} \}.
+$$
+
+
+### $n = 5$
+
+Since $n$ is odd, $C^+(V)$ is a CSA over $F$ of dimension $2^{5-1} = 16$.
+Then there are three possible cases to consider:
+
+$$
+C^+(V) \simeq 
+\begin{cases}
+M_4(F) \\
+M_2(D) & D \text{ is a quaternion algebra} \\
+A & A\text{ is a degree }4 \text{ central division algebra}
+\end{cases}
+$$
+
+where the first case happens when $d = \mathrm{disc}(V) = 1$.
+
+*Case 1.* Assume $C^+(V) \simeq M_4(F)$.
+
+*Case 2.* Assume $C^+(V) \simeq M_2(D)$ for a quaternion algebra $D$ over $F$.
+
+*Case 3.* Let $A$ be a central division algebra over $F$ of degree $4$ (dimension $16$).
+In [Albert], the author showed that $A$ is always a tensor product of two quaternion algebras, say $A \simeq D_1 \otimes D_2$.
+Also, in [Rowen], it is shown that both $D_1$ and $D_2$ are $*$-invariant subalgebras of $A$.
+
+
+### $n = 6$
+
+For sanity check, we will try to compute $\mathrm{GSpin}(V)$ when $\dim V = 6$ using the similarity group, which would fail because their dimension won't be the same anymore (and for higher $n$, there will be the same issue).
+Let's consider the simplest $6$-dimensional quadratic space, which is $V = \mathbb{H} \oplus \mathbb{H} \oplus \mathbb{H}$ (so that $\mathrm{disc}(V) = 1$).
+Then the structure theorem gives
+
+$$
+C(V) \simeq M_{2^3}(F) = M_8(F), \quad C^+(V) \simeq M_4(F) \times M_4(F)
+$$
+
+where $M_4(F) \times M_4(F)$ embeds into $M_8(F)$ diagonally.
+In this case, the involution on $M_8(F)$ is given by
+
+$$
+\begin{pmatrix} X_{00} & X_{01} \\ X_{10} & X_{11} \end{pmatrix} \mapsto \begin{pmatrix} X_{11} & X_{10} \\ X_{01} & X_{00} \end{pmatrix}
+$$
+
+where $X_{ij} \in M_4(F)$, and this induces an involution on $M_4(F) \times M_4(F)$ that swaps components: $(X, Y)^* = (Y, X)$.
+It acts as an identity on the center $Z(C(V)) \simeq \{ a I_8: a \in F^\times \} \simeq F^\times$ where $I_8$ is the $8 \times 8$ identity matrix.
+Then the similarity group becomes
+
+$$
+\begin{align*}
+\mathrm{Sim}(V) &\simeq \{(X, Y) \in \mathrm{GL}_4 \times \mathrm{GL}_4: N(X, Y) = (XY, YX) \in Z(C(V))\} \\
+& = \{ (X, aX^{-1}) : X \in \mathrm{GL}_4, a \in \mathrm{GL}_1\}
+\end{align*}
+$$
+
+which has the dimension $\dim \mathrm{GL}_4 + \dim \mathrm{GL}_1 = 16 + 1 = 17$.
+Unfortunately, the dimension of the corresponding general spin group is $\frac{6(6-1)}{2} + 1 = 16$, which is smaller by $1$.
+
+
+
+*References.*
+
+
+[Albert] Albert, *Structure of Algebras*, Amer. Math. Soc. Colloq. Publ. no. 24, Amer. Math. Soc , Providence, R.I., 1961.
+
+[Lam] Lam, *Introduction to Quadratic Forms over fields*.
+
+[Rowen] Rowen, *Central Simple Algebras*, Israel J. Math. 29 (1978), 285-301.
+
+[Emory] Emory, *On the Global Gan-Gross-Prasad conjecture for generalspin groups*.
+
+[Scharlau] Scharlau, *Quadratic and Hermitian Forms*.
+
+[Knus et al.] Knus et al. *The Book of Involutions*.
