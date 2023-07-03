@@ -404,12 +404,28 @@ We also needs to describe the *types* of involutions on $C(V)$.
 > and furthermore if $n\equiv 0, 4\,(\mathrm{mod}\,8)$ and $C^+(V) = A\times A$ then $*$ is orthogonal or symplectic type on each factor of $C^+(V)$.
 
 
+In case of a quaternion algebra, the only symplectic involution is the canonical involution, i.e. the quaternion conjugation.
+
+> **<ins>Proposition</ins> ([Knus et al. (2.21) Proposition, page 26])** The quaternion conjugation on a quaternion algebra $D$ is the unique symplectic involution on $D$.
+
+<details>
+
+<summary><i>Proof [Knus et al., (2.21) Proposition, page 26].</i></summary>
+
+Let $\sigma$ be an arbitrary symplectic involution on $D$ and $\sigma_D$ be the canonical involution (quaternion conjugation) on $D$.
+Since $\sigma$ is an involution of the first kind (fixes every elements in the center), $\sigma \sigma_D = \sigma \sigma_D^{-1}$ is a $F$-linear automorphism.
+By Skolem-Noether theorem, it should be an inner automorphism $\mathrm{Inn}(u)$ by $u \in D^\times$, so $\sigma = \mathrm{Inn}(u) \circ \sigma_D$ ($\mathrm{Inn}(u)(x):= uxu^{-1}$).
+By a direct computation, we have $1 = \sigma^2 = \mathrm{Inn}(u \sigma_D(u)^{-1})$, so $\sigma_D(u) = \lambda u$ for some $\lambda \in F$.
+Taking $\sigma_D$ on both sides gives $\lambda^2 = 1 \Leftrightarrow \lambda = \pm 1$.
+One can check that $\lambda = 1$ because $\sigma$ and $\sigma_D$ has a same type ([Knus et al., (2.7) Proposition, page 17]).
+</details>
+
 
 
 
 ## Exceptional isomorphisms, for $n \leq 6$
 
-Now let's *compute* general spin groups for $n \leq 7$.
+Now let's *compute* general spin groups for $n \leq 6$.
 To do this, we consider the *similarity group* $\mathrm{Sim}(V)$ defined as
 
 $$
@@ -451,6 +467,21 @@ Since $n$ is even, there are two cases to consider.
 
 *Case 1.* Assume $d = \mathrm{disc}(V) = 1$, so that $V = \mathbb{H}$ is a *hyperbolic plane*, i.e. the unique regular isotropic quadratic space (up to isomorphism), which can be also thought as $V = F \oplus F$ with $q(x, y) = xy$.
 Then $C^+(V) = A \times A$ for a central simple algebra $A$ over $F$ with $\dim_F A = 1$, so $A = F$ and $C^+(V) \simeq F \times F$.
+In this case, the unitary involution is the exchange involution $(a, b)^* := (b, a)$, and
+
+$$
+\begin{align*}
+\mathrm{Sim}(V) &\simeq \{(a, b) \in F \times F: N(a, b)=(ab, ab) \in \Delta F^\times\} \\
+& = F^\times \times F^\times
+\end{align*}
+$$
+
+whose $F$-dimension is $2 = \frac{2(2-1)}{2} + 1$.
+Hence we have
+
+$$
+\mathrm{GSpin}(V) = \mathrm{Sim}(V) \simeq \mathrm{GL}_1 \times \mathrm{GL}_1.
+$$
 
 
 *Case 2.* If $d \neq 1$, then $V = E$ with norm form $q(x) = N_{E/F}(x) = xx^* = x\bar{x}$ ($\bar{x}$ is the Galois conjugate of $x$).
@@ -458,7 +489,7 @@ By the structure theorem again, $C^+(V)$ is a central simple algebra over $E$ wi
 This gives
 
 $$
-\mathrm{Sim}(V) = \{g \in E: gg^* \in F^\times\} = E^\times \simeq \mathrm{Res}_{E/F}\mathrm{GL}_{1, E}
+\mathrm{Sim}(V) \simeq \{g \in E: gg^* \in F^\times\} = E^\times \simeq \mathrm{Res}_{E/F}\mathrm{GL}_{1, E}
 $$
 
 whose dimension is $2 = \dim \mathrm{GSpin}(V)$. Hence 
@@ -471,7 +502,8 @@ $$
 ### $n = 3$
 
 Since $n$ is odd, $C^+(V)$ is a central simple algebra over $F$ of dimension $2^{3-1} = 4$, hence a quaternion algebra $D$ over $F$.
-Also, the involution $*$ is symplectic, so it is the quaternion conjugation and
+If $d \neq 1$, then $C(V) \simeq C^+(V) \otimes_F E = D_E$ is a quaternion algebra over $E = F(\sqrt{d})$, and if $d = 1$, then $C(V) = C^+(V) \times C^+(V) = D \times D$.
+For both cases, the symplectic involution $*$ on $C(V)$ restricts to the quaternion conjugation on $D$ so
 
 $$
 \mathrm{Sim}(V) = \{ g \in D : g\bar{g} \in F^\times \} = D^\times
@@ -525,7 +557,7 @@ $$
 $$
 
 *Case 2.* Assume $d \neq 1$, so $C^+(V) = A_E$ is a central simple algebra over $E = F(\sqrt{d})$ with $\dim_E A_E = 2^{4-2} = 4$.
-Thus $A_E = D_E$ is a quaternion algebra over $E$ and the involution $*$ is the quaternion conjugation on $D_E$.
+Thus $A_E = D_E$ is a quaternion algebra over $E$ and the involution $*$ is the quaternion conjugation on $D_E$ (since it is symplectic).
 Then
 
 $$
@@ -563,12 +595,51 @@ $$
 where the first case happens when $d = \mathrm{disc}(V) = 1$.
 
 *Case 1.* Assume $C^+(V) \simeq M_4(F)$.
+Then involution $*$ on $C+(V)$ is symplectic, hence there exists a 4-dimensional vector space $V_0$ with a symplectic bilinear form $B_0: V_0 \times V_0 \to F$ such that $(M_4(F), \ast) \simeq (\mathrm{End}(V_0), \ast_{0})$ as involution algebras, where $\ast_{0}$ is the adjoint involution for $B_0$.
+Then we have
+
+$$
+\mathrm{Sim}(V) \simeq \{ g \in \mathrm{End}(V): gg^{\ast_0} \in F^\times\}.
+$$
+
+Since $\ast_0$ is the adjoint involution for $B_0$,
+
+$$
+B_0(gv, gv') = B_0(v, g^{\ast_0} g v') = N(g) B_0(v, v')
+$$
+
+for all $v, v'$, which implies $\mathrm{Sim}(V) \simeq \mathrm{GSp}(V_0, B_0)$.
+In general, the dimension of the general simplectic group $\mathrm{GSp}_{2n}$ is
+
+$$
+\begin{align*}
+\dim \mathrm{GSp}_{2n} &= 1 + \dim \mathrm{Sp}_{2n} \\
+&= 1 + \dim \mathfrak{sp}_{2n} \\
+&= 1 + n^2 + \frac{n(n+1)}{2} + \frac{n(n+1)}{2} \\
+&= 2n^2 + 2n + 1
+\end{align*}
+$$
+
+and for $n = 2$, the dimension is $11 = \frac{5(5-1)}{2} + 1$, that coincides with the dimension of $\mathrm{GSpin}(V)$.
+Here we use the standard form of symplectic Lie algebra to compute the dimension. Its elements are block matrices $\left(\begin{smallmatrix} X & Y \\\ Z & W\end{smallmatrix}\right)$ where $X, Y, Z, W$ are $n \times n$ matrices satisfying
+
+$$
+W = -X^T, \quad Y = Y^T, \quad Z = Z^T.
+$$
+
+So we have
+
+$$
+\mathrm{GSpin}(V) = \mathrm{Sim}(V) \simeq \mathrm{GSp}(V_0), \quad \dim_F V_0 = 4.
+$$
 
 *Case 2.* Assume $C^+(V) \simeq M_2(D)$ for a quaternion algebra $D$ over $F$.
 
+
 *Case 3.* Let $A$ be a central division algebra over $F$ of degree $4$ (dimension $16$).
-In [Albert], the author showed that $A$ is always a tensor product of two quaternion algebras, say $A \simeq D_1 \otimes D_2$.
-Also, in [Rowen], it is shown that both $D_1$ and $D_2$ are $*$-invariant subalgebras of $A$.
+Note that it is equipped with a symplectic involution $\ast$.
+In [Rowen, Theorem B, page 296], the author proved that $A$ is always a tensor product  of two $\ast$-invariant quaternion subalgebras, say $A \simeq D_1 \otimes D_2$.
+Also, it contains a maximal subfield $E$ that is a bi-quadratic extension of $F$, i.e. $E = F(\sqrt{d_1}, \sqrt{d_2})$ for some $d_1, d_2 \in F^\times - (F^\times)^2$ that are not in the same square classes (so $\mathrm{Gal}(E/F) \simeq \mathbb{Z}/2 \times \mathbb{Z}/2$) [Rowen, Theorem 4.5, page 293].
 
 
 ### $n = 6$
@@ -595,7 +666,7 @@ Then the similarity group becomes
 $$
 \begin{align*}
 \mathrm{Sim}(V) &\simeq \{(X, Y) \in \mathrm{GL}_4 \times \mathrm{GL}_4: N(X, Y) = (XY, YX) \in Z(C(V))\} \\
-& = \{ (X, aX^{-1}) : X \in \mathrm{GL}_4, a \in \mathrm{GL}_1\}
+& = \{ (X, aX^{-1}) : X \in \mathrm{GL}_4, a \in \mathrm{GL}_1\} \simeq \mathrm{GL}_4 \times \mathrm{GL}_1
 \end{align*}
 $$
 
@@ -613,7 +684,7 @@ Unfortunately, the dimension of the corresponding general spin group is $\frac{6
 
 [Rowen] Rowen, *Central Simple Algebras*, Israel J. Math. 29 (1978), 285-301.
 
-[Emory] Emory, *On the Global Gan-Gross-Prasad conjecture for generalspin groups*.
+[Emory] Emory, *On the Global Gan-Gross-Prasad conjecture for general spin groups*.
 
 [Scharlau] Scharlau, *Quadratic and Hermitian Forms*.
 
