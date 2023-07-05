@@ -346,7 +346,7 @@ In particular, $z \in Z(C^+(V))$ and so $C^+(V)$ is not a CSA, which implies tha
 </details>
 
 
-Now we can state the structure theorem for Clifford algebras, which immediately follows from the above structure theorems for CSGAs.
+Now we can state the structure theorem for Clifford algebras, which follows from the above structure theorems for CSGAs.
 
 > **<ins>Theorem</ins>.** Let $n = \dim(V)$, $d = \mathrm{disc}(V)$, and $E = F(\sqrt{d})$. Then we have
 >
@@ -392,10 +392,30 @@ Hence it swaps $e$ and $f$ and so $C^+(V)\cdot e \simeq C^+(V) \cdot f$.
 This implies $r = s = t / 2$.
 </details>
 
-We also needs to describe the *types* of involutions on $C(V)$.
+We also needs to discuss about the *types* of involutions on $C(V)$.
+First, let $W$ be a quadratic space with the associated non-degenerate bilinear form $B:W \times W \to F$.
+It induces an isomorphism $\hat{B}: W \to W^\ast$.
+Using this, we may then define a map $\sigma_B: \mathrm{End}_F(W) \to \mathrm{End}_F(W)$ as
+
+$$
+\sigma_B(f) := \hat{B}^{-1} \circ f^* \circ \hat{B}
+$$
+
+where $f^\ast: W^\ast \to W^\ast$ is a dual (transpose) map of $f:W \to W$.
+Then $\sigma_B$ is a $F$-linear anti-automorphism of $\mathrm{End}_F(W)$, and one has the following theorem that allows us to *define* the types of ($F$-linear) involutions.
+
+> **<ins>Theorem</ins> ([Knus et al., Theorem, page 1]).**
+> The above map induces a bijection between equivalence classes of non-degenerate bilinear forms on $W$ up to a nonzero constant and linear anti-automorphisms of $\mathrm{End}_F(W)$. Under this bijection, $F$-linear involutions on $\mathrm{End}_F(W)$ correspond to non-degenerate bilinear forms which are either symmetric or skew-symmetric. 
+
+There are two *kinds* of involutions, depending on whether the involution restricted to the center ($\simeq F$) fixes each element (*first kind*) or not (*second kind*).
+For the involutions of the first kind, we call it *orthogonal* if a corresponding bilinear form (under the above theorem) is symmetric, and *symplectic* otherwise (anti-symmetric).
+For the involutions of the second kind, the center is a quadratic étale algebra, i.e. either $F \times F$ or a quadratic field extension $E$ of $F$.
+Such involutions are called *unitary*, and it restricts to the canonical (non-identity) involution on the center: $(x, y) \mapsto (y, x)$ (when $F \times F$) or $x \mapsto \bar{x}$ (when $E/F$ is a quadratic extension and $x \mapsto \bar{x}$ is the Galois conjugation).
+
+The following theorem determines the types of the canonical involution on $C^+(V)$ in terms of dimensions of $V$.
 
 > **<ins>Theorem</ins> ([Knus et al., (8.4) Proposition, page 89]).**
-> The involution $*$ on $C(V)$ is
+> The involution $*$ on $C^+(V)$ is
 >
 > $$
 > \begin{cases} \text{unitary} & n \equiv 2, 6\,(\mathrm{mod}\,8) \\ \text{symplectic} & n \equiv 3, 4, 5\, (\mathrm{mod}\,8) \\ \text{orthogonal} & n \equiv 0, 1, 7\, (\mathrm{mod}\,8) \end{cases} 
@@ -653,26 +673,28 @@ C(V) \simeq M_{2^3}(F) = M_8(F), \quad C^+(V) \simeq M_4(F) \times M_4(F)
 $$
 
 where $M_4(F) \times M_4(F)$ embeds into $M_8(F)$ diagonally.
-In this case, the involution on $M_8(F)$ is given by
+The involution $*$ on $C^+(V)$ is unitary, and by [Knus et al. (2.20) Proposition, page 24], any such involution has a form of
 
 $$
-\begin{pmatrix} X_{00} & X_{01} \\ X_{10} & X_{11} \end{pmatrix} \mapsto \begin{pmatrix} X_{11} & X_{10} \\ X_{01} & X_{00} \end{pmatrix}
+(X, Y) \mapsto (uY^T u^{-1}, uX^T u^{-1}), \quad u \in \mathrm{GL}_4(F)
 $$
 
-where $X_{ij} \in M_4(F)$, and this induces an involution on $M_4(F) \times M_4(F)$ that swaps components: $(X, Y)^* = (Y, X)$.
+where $u(u^T)^{-1} \in F^\times \cdot I_4$. If we assume $u = 1$, then it is simply given by the exchange involution $(X, Y) \mapsto (Y^T, X^T)$.
 It acts as an identity on the center $Z(C(V)) \simeq \{ a I_8: a \in F^\times \} \simeq F^\times$ where $I_8$ is the $8 \times 8$ identity matrix.
 Then the similarity group becomes
 
 $$
 \begin{align*}
-\mathrm{Sim}(V) &\simeq \{(X, Y) \in \mathrm{GL}_4 \times \mathrm{GL}_4: N(X, Y) = (XY, YX) \in Z(C(V))\} \\
-& = \{ (X, aX^{-1}) : X \in \mathrm{GL}_4, a \in \mathrm{GL}_1\} \simeq \mathrm{GL}_4 \times \mathrm{GL}_1
+\mathrm{Sim}(V) &\simeq \{(X, Y) \in \mathrm{GL}_4 \times \mathrm{GL}_4: N(X, Y) = (XY^T, YX^T) \in Z(C(V))\} \\
+& = \{ (X, aX^{-T}) : X \in \mathrm{GL}_4, a \in \mathrm{GL}_1\} \simeq \mathrm{GL}_4 \times \mathrm{GL}_1
 \end{align*}
 $$
 
-which has the dimension $\dim \mathrm{GL}_4 + \dim \mathrm{GL}_1 = 16 + 1 = 17$.
+(here $X^{-T}:= (X^T)^{-1}$) which has the dimension $\dim \mathrm{GL}_4 + \dim \mathrm{GL}_1 = 16 + 1 = 17$.
 Unfortunately, the dimension of the corresponding general spin group is $\frac{6(6-1)}{2} + 1 = 16$, which is smaller by $1$.
 
+However, it may possible to investigate the isomorphisms further and find an appropriate codimension 1 subgroup of the above $\mathrm{Sim}(V) \simeq \mathrm{GL}_4 \times \mathrm{GL}_1$ that is isomorphic to $\mathrm{GSpin}(V)$ for $n = 6$.
+(I'll add this later once I figure it out.)
 
 
 *References.*
