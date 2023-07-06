@@ -654,6 +654,35 @@ $$
 $$
 
 *Case 2.* Assume $C^+(V) \simeq M_2(D)$ for a quaternion algebra $D$ over $F$.
+In this case, we say that $C^+(V)$ is *Brauer equivalent to* $D$ (i.e. defines a same element in a Brauer group).
+Becher proved that, $(C^+(V), \ast)$ is isomorphic to $(D, \ast_D) \otimes (M_2(F), \ast')$ where $\ast_D: D \to D$ is the quaternion conjugation (i.e. the unique symplectic involution on $D$), and $\ast': M_2(F) \to M_2(F)$ is an orthogonal involution of the form
+
+$$
+g \mapsto \begin{pmatrix} 1 & \\ & -a \end{pmatrix}^{-1} g^T \begin{pmatrix}1 & \\ & -a \end{pmatrix}
+$$
+
+for some $a \in F^\times$.
+Then the induced involution on $M_2(D) \simeq D \otimes M_2(F)$ is
+
+$$
+\begin{pmatrix} x & y \\ z & w \end{pmatrix} \mapsto \begin{pmatrix} \bar{x}  & -a \bar{z} \\ -\frac{\bar{y}}{a} & \bar{w} \end{pmatrix} 
+$$
+
+where $x \mapsto \bar{x}$ is the quaternion conjugation on $D$.
+Then the similarity group is isomorphic to
+
+$$
+\begin{align*}
+&\{g \in \mathrm{GL}_2(D): gg^* \in F^\times \cdot I_2\} \\
+&= \left\{ \begin{pmatrix} x & y \\ z & w\end{pmatrix} \in \mathrm{GL}_2(D) : \begin{pmatrix} N_D(x) - \frac{N_D(y)}{a} & -ax\bar{z} + y \bar{w} \\ \bar{x}z - \frac{\bar{y}w}{a} & -aN_D(z) + N_D(w) \end{pmatrix}\in F^\times \cdot I_2\right\} \\
+&=\left\{\begin{pmatrix} x&y \\ z&w \end{pmatrix} \in \mathrm{GL}_2(D): y\bar{w} = ax\bar{z},\,\, N_D(x) - \frac{N_D(y)}{a} = -aN_D(z) + N_D(w) \ne 0 \right\}.
+\end{align*}
+$$
+
+The set elements with $y \neq 0$ is a Zariski open subset of the group. and on the set, $w$ is simply determined as $w = a\bar{x}z / \bar{y}$.
+Hence we have three free variables $x, y, z \in D$ with a single equation over $F$, and the dimension becomes $3 \cdot 4 - 1 = 11$.
+Hence $\mathrm{GSpin}(V)$ is isomorphic to the above group.
+
 
 
 *Case 3.* Let $A$ be a central division algebra over $F$ of degree $4$ (dimension $16$).
@@ -661,6 +690,8 @@ Note that it is equipped with a symplectic involution $\ast$.
 In [Rowen, Theorem B, page 296], the author proved that $A$ is always a tensor product  of two $\ast$-invariant quaternion subalgebras, say $A \simeq D_1 \otimes D_2$.
 Also, it contains a maximal subfield $E$ that is a bi-quadratic extension of $F$, i.e. $E = F(\sqrt{d_1}, \sqrt{d_2})$ for some $d_1, d_2 \in F^\times - (F^\times)^2$ that are not in the same square classes (so $\mathrm{Gal}(E/F) \simeq \mathbb{Z}/2 \times \mathbb{Z}/2$) [Rowen, Theorem 4.5, page 293].
 
+In honest, I don't know how proceed from here, especially how to describe the (symplectic) involution in this case. I believe that there may exists a Becher-type theorem for such degree 4 central division algebras (with no split factors).
+I'll add the details later once I figure it out.
 
 ### $n = 6$
 
@@ -694,6 +725,7 @@ $$
 Unfortunately, the dimension of the corresponding general spin group is $\frac{6(6-1)}{2} + 1 = 16$, which is smaller by $1$.
 
 However, it may possible to investigate the isomorphisms further and find an appropriate codimension 1 subgroup of the above $\mathrm{Sim}(V) \simeq \mathrm{GL}_4 \times \mathrm{GL}_1$ that is isomorphic to $\mathrm{GSpin}(V)$ for $n = 6$.
+At least, it is known that the *spin* group $\mathrm{Spin}_6(\mathbb{C})$ is isomorphic to $\mathrm{SL}_4(\mathbb{C})$, and we should have $\mathrm{GSpin}(V) \simeq \mathrm{GL}_4$ over a general field when $V \simeq \mathbb{H}\oplus \mathbb{H} \oplus \mathbb{H}$.
 (I'll add this later once I figure it out.)
 
 
@@ -702,12 +734,14 @@ However, it may possible to investigate the isomorphisms further and find an app
 
 [Albert] Albert, *Structure of Algebras*, Amer. Math. Soc. Colloq. Publ. no. 24, Amer. Math. Soc , Providence, R.I., 1961.
 
-[Lam] Lam, *Introduction to Quadratic Forms over fields*.
+[Becher] Becher, *A proof of the Pfister Factor Conjecture*, Invent. Math. 173 (2008), no. 1, 1-6
+
+[Emory] Emory, *On the Global Gan-Gross-Prasad conjecture for general spin groups*. Pacific J. Math. 306 (2020), no. 1, 115-151.
+
+[Knus et al.] Knus et al. *The Book of Involutions*. Americal Mathematical Society Colloquium Publications, Volume 44, 1998
+
+[Lam] Lam, *Introduction to Quadratic Forms over fields*. Graduate Studies in Mathematics, Volume 67, 2004
 
 [Rowen] Rowen, *Central Simple Algebras*, Israel J. Math. 29 (1978), 285-301.
 
-[Emory] Emory, *On the Global Gan-Gross-Prasad conjecture for general spin groups*.
-
-[Scharlau] Scharlau, *Quadratic and Hermitian Forms*.
-
-[Knus et al.] Knus et al. *The Book of Involutions*.
+[Scharlau] Scharlau, *Quadratic and Hermitian Forms*. A Series of Comprehensive Studies in Mathematics, 1985
