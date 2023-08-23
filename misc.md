@@ -4,8 +4,15 @@ title: Miscellaneous
 permalink: /misc/
 ---
 
-![image](assets/aftrmath_transparent.png){: style="float: left; margin-right: 1em;" width="208"}
-I'm a dj, with a nickname aftrmath. I've made several mixes, and you can listen to it on my [Soundcloud](https://soundcloud.com/aftrmath-dj) and [YouTube](https://www.youtube.com/channel/UCv2LsKzh8sdzXeMWa99dn_A).
+![image](../assets/setup.png)
+
+
+<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1267871122&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/aftrmath-dj" title="aftrmath" target="_blank" style="color: #cccccc; text-decoration: none;">aftrmath</a> · <a href="https://soundcloud.com/aftrmath-dj/sets/techno-mix" title="Techno mix" target="_blank" style="color: #cccccc; text-decoration: none;">Techno mix</a></div>
+
+
+I'm a dj, and I've made several mixes (mostly techno and sometimes house). You can listen to it on my [Soundcloud](https://soundcloud.com/aftrmath-dj) or [YouTube](https://www.youtube.com/channel/UCv2LsKzh8sdzXeMWa99dn_A).
+
+---
 
 <a href="https://stackexchange.com/users/8720939"><img src="https://stackexchange.com/users/flair/8720939.png" width="208" height="58" alt="profile for Seewoo Lee on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for Seewoo Lee on Stack Exchange, a network of free, community-driven Q&amp;A sites" style="margin-right:0.8em"></a>
 My StackExchange profile.
