@@ -31,7 +31,7 @@ Also, no homework for the first week.
 
 #### Attendance
 
-Attendence will be checked at the end of every discussion. It is strongly encouraged to attend all the discussions. Also, attending all three discussions in a week would give **0.375%** extra credit, and a maximum of **3%** can be added in this way (so 8 weeks of full attendances will give you the maximum extra credit).
+Attendence will be checked at the end of every discussion. It is strongly encouraged to attend all the discussions. Also, attending all (two) discussions in a week would give **0.375%** extra credit, and a maximum of **3%** can be added in this way (so 8 weeks of full attendances will give you the maximum extra credit).
 
 #### Q&A
 
@@ -44,6 +44,6 @@ But in case you haven't find an answer to your question...
 
 | | Tue | Thu |
 | --- | :---: | :---: |
-| Week1 | - | |
+| Week1 | - | [230824](worksheets/WS230824.pdf) |
 
 #### Graded HW problems (ramdomly selected)
