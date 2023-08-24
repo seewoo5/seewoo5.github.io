@@ -12,7 +12,7 @@ layout: single
 I'm 3rd year graduate student in Mathematics at UC Berkeley. My advisor is [Sug Woo Shin](https://math.berkeley.edu/~swshin/).
 I'm interested in number theory, especially about automorphic forms and representations.
 
-Office hour: TBD
+Office hour: Mon & Thu 2:00 pm - 3:00 pm at Evans 1066 (for Math 10A)
 
 Feel free to email me if you have any questions.
 
