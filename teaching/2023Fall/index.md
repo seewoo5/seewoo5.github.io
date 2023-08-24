@@ -22,7 +22,7 @@ TBD
 
 #### Homework
 
-You need to submit homework **every Thursday**, at the end of the discussion. Also, you must submit only physical copy - **do not email me!**. Five problems wil be chosen at random to be graded for completion. Two of the lowest homework scores will be dropped. Working with others is encouraged, but you must write your solutions on your own and write the names of your collaborators at the top of the assignment.
+You need to submit homework **every Thursday**, at the end of the discussion. Also, you must submit only physical copy - **do not email me!**. Five problems wil be chosen at random to be graded for completion. Three of the lowest homework scores will be dropped. Working with others is encouraged, but you must write your solutions on your own and write the names of your collaborators at the top of the assignment.
 Also, no homework for the first week.
 
 #### Quizzes
