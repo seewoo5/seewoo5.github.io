@@ -33,7 +33,8 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-spaceship
-minimal_mistakes_skin: "dirt"
+minimal_mistakes_skin: "default"
+minimal_mistakes_skin2: "dark"
 
 # markdown: kramdown
 # kramdown:
