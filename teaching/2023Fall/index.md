@@ -17,7 +17,9 @@ Professor: [Norman Sheu](https://sites.google.com/view/normansheu/teaching/math-
 
 #### Office hour
 
-TBD
+Mon 2:00 pm - 3:00 pm, Thu 2:00 pm - 3:00 pm
+
+You can go to any GSI's office hour if this conflicts with your schedules. Also, feel free to email me for any specific questions so that we can possibly have an extra meeting.
 
 
 #### Homework
