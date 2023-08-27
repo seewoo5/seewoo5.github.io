@@ -49,3 +49,7 @@ But in case you haven't find an answer to your question...
 | Week1 | - | [230824](worksheets/WS230824.pdf) |
 
 #### Graded HW problems (ramdomly selected)
+
+#### Extra notes
+
+* [Why matrix multiplication is weird](matmul.pdf)
