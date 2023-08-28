@@ -47,6 +47,7 @@ But in case you haven't find an answer to your question...
 | | Tue | Thu |
 | --- | :---: | :---: |
 | Week1 | - | [230824](worksheets/WS230824.pdf) |
+| Week2 | [230829](worksheets/WS230829.pdf) | |
 
 #### Graded HW problems (ramdomly selected)
 
