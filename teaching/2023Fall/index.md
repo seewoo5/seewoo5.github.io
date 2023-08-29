@@ -40,7 +40,17 @@ Attendence will be checked at the end of every discussion. It is strongly encour
 Most of the questions are already answered in Norman Sheu's website above.
 But in case you haven't find an answer to your question...
 
+Q. Are there any good sources for practis other than our textbook?
 
+A. For linear algebra parts, you can use
+
+* Thomas, Multivatiable Calculus, Chapter 12
+* Strang, Linear Algebra and Its Applications (just consider 2 by 2 and 3 by 3 matrices - it's a bit more than that)
+
+For calculus, you can use
+
+* Thomas, Calculus
+* Any random thick calculus book looks like Stewart's and Thomas'
 
 #### Worksheets
 
