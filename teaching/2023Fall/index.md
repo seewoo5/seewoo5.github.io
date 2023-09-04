@@ -62,6 +62,10 @@ For calculus, you can use
 Let me know if you find any errors in the worksheets (and solutions).
 #### Graded HW problems (ramdomly selected)
 
+**HW1**
+8.1 #5 #15 #25 #29 #39
+
+
 #### Extra notes
 
 * [Why matrix multiplication is weird](matmul.pdf)
