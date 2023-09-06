@@ -21,6 +21,8 @@ Professor: [Norman Sheu](https://sites.google.com/view/normansheu/teaching/math-
 
 You can go to any GSI's office hour if this conflicts with your schedules. Also, feel free to email me for any specific questions so that we can possibly have an extra meeting.
 
+* Office hour on Sep 7 (Thursday) would be **1:00 pm - 2:00 pm** instead of **2:00 pm - 3:00 pm**.
+
 
 #### Homework
 
@@ -61,6 +63,8 @@ For calculus, you can use
 | Week3 | [230905](worksheets/WS230905sol.pdf) | |
 
 Let me know if you find any errors in the worksheets (and solutions).
+These will be also uploaded on bCourses - Files.
+
 #### Graded HW problems (ramdomly selected)
 
 **HW1**
