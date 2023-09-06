@@ -58,6 +58,7 @@ For calculus, you can use
 | --- | :---: | :---: |
 | Week1 | - | [230824](worksheets/WS230824.pdf) |
 | Week2 | [230829](worksheets/WS230829sol.pdf) | [230831](worksheets/WS230831sol.pdf) |
+| Week3 | [230905](worksheets/WS230905sol.pdf) | |
 
 Let me know if you find any errors in the worksheets (and solutions).
 #### Graded HW problems (ramdomly selected)
