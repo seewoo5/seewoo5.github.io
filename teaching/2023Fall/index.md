@@ -54,6 +54,13 @@ For calculus, you can use
 * Thomas, Calculus
 * Any random thick calculus book looks like Stewart's and Thomas'
 
+Q. Why $(AB)^{-1} = B^{-1}A^{-1}$?
+
+A. Imagine $A$ is socks and $B$ is shoes.
+You put on your socks first and then shoes ($=AB$).
+To take off these ($=(AB)^{-1}$), you take of shoes first and then socks ($B^{-1} \cdot A^{-1}$).
+Hence $(AB)^{-1} = B^{-1}A^{-1}$.
+
 #### Worksheets
 
 | | Tue | Thu |
