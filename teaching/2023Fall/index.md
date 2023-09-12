@@ -61,15 +61,20 @@ For calculus, you can use
 | Week1 | - | [230824](worksheets/WS230824.pdf) |
 | Week2 | [230829](worksheets/WS230829sol.pdf) | [230831](worksheets/WS230831sol.pdf) |
 | Week3 | [230905](worksheets/WS230905sol.pdf) | [230907](worksheets/WS230907sol.pdf)|
+| Week4 | | |
 
 Let me know if you find any errors in the worksheets (and solutions).
 These will be also uploaded on bCourses - Files.
 
 #### Graded HW problems (ramdomly selected)
 
-**HW1**
+**HW1** \
 8.1 #5 #15 #25 #29 #39
 
+**HW2** \
+8.2 #17 #35 \
+8.3 #21 #31 \
+8.4 #9
 
 #### Extra notes
 
