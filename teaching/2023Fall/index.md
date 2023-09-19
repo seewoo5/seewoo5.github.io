@@ -69,6 +69,7 @@ Hence $(AB)^{-1} = B^{-1}A^{-1}$.
 | Week2 | [230829](worksheets/WS230829sol.pdf) | [230831](worksheets/WS230831sol.pdf) |
 | Week3 | [230905](worksheets/WS230905sol.pdf) | [230907](worksheets/WS230907sol.pdf)|
 | Week4 | [230912](worksheets/WS230912sol.pdf) | [230914](worksheets/WS230914sol.pdf) |
+| Week5 | [230919](worksheets/WS230919sol.pdf) |  |
 
 Let me know if you find any errors in the worksheets (and solutions).
 These will be also uploaded on bCourses - Files.
@@ -83,6 +84,9 @@ These will be also uploaded on bCourses - Files.
 8.3 #21 #31 \
 8.4 #9
 
+**HW3** \
+8.5 #7 #19 \
+8.6 #1 #13 #15
 #### Extra notes
 
 * [Why matrix multiplication is weird](matmul.pdf)
