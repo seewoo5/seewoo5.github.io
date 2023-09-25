@@ -87,6 +87,11 @@ These will be also uploaded on bCourses - Files.
 **HW3** \
 8.5 #7 #19 \
 8.6 #1 #13 #15
+
+**HW4** \
+8.6 #19 #25 \
+8.7 #11 \
+8.8 #5 #19
 #### Extra notes
 
 * [Why matrix multiplication is weird](matmul.pdf)
