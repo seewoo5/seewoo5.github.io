@@ -63,7 +63,6 @@ Hence $(AB)^{-1} = B^{-1}A^{-1}$.
 
 #### Worksheets
 
-<div align="center">
 
 | | Tue | Thu |
 | --- | :---: | :---: |
@@ -74,7 +73,6 @@ Hence $(AB)^{-1} = B^{-1}A^{-1}$.
 | Week5 | [230919](worksheets/WS230919sol_fixed2.pdf) | [mid1 prep](worksheets/practice1sol_fixed.pdf) |
 | Week6 | [230926](worksheets/WS230926sol.pdf) | |
 
-</div>
 
 Let me know if you find any errors in the worksheets (and solutions).
 These will be also uploaded on bCourses - Files.
