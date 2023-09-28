@@ -71,7 +71,7 @@ Hence $(AB)^{-1} = B^{-1}A^{-1}$.
 | Week3 | [230905](worksheets/WS230905sol.pdf) | [230907](worksheets/WS230907sol.pdf)|
 | Week4 | [230912](worksheets/WS230912sol.pdf) | [230914](worksheets/WS230914sol.pdf) |
 | Week5 | [230919](worksheets/WS230919sol_fixed2.pdf) | [mid1 prep](worksheets/practice1sol_fixed.pdf) |
-| Week6 | [230926](worksheets/WS230926sol2.pdf) | |
+| Week6 | [230926](worksheets/WS230926sol2.pdf) | [230928](worksheets/WS230928sol.pdf) |
 
 
 Let me know if you find any errors in the worksheets (and solutions).
