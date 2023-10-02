@@ -22,6 +22,7 @@ Professor: [Norman Sheu](https://sites.google.com/view/normansheu/teaching/math-
 You can go to any GSI's office hour if this conflicts with your schedules. Also, feel free to email me for any specific questions so that we can possibly have an extra meeting.
 
 * Office hour on Sep 7 (Thursday) would be **1:00 pm - 2:00 pm** instead of **2:00 pm - 3:00 pm**.
+* There will be no office hour on Oct 5 (Thursday). Instead, I'll have an office hour on Oct 2 (Monday) **2:00 pm - 4:00 pm**.
 
 
 #### Homework
