@@ -24,7 +24,6 @@ You can go to any GSI's office hour if this conflicts with your schedules. Also,
 * Office hour on Sep 7 (Thursday) would be **1:00 pm - 2:00 pm** instead of **2:00 pm - 3:00 pm**.
 * There will be no office hour on Oct 5 (Thursday). Instead, I'll have an office hour on Oct 2 (Monday) **2:00 pm - 4:00 pm**.
 
-
 #### Homework
 
 You need to submit homework **every Thursday**, at the end of the discussion. Also, you must submit only physical copy - **do not email me!**. Five problems wil be chosen at random to be graded for completion. Three of the lowest homework scores will be dropped. Working with others is encouraged, but you must write your solutions on your own and write the names of your collaborators at the top of the assignment.
