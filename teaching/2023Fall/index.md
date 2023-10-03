@@ -43,7 +43,7 @@ Attendence will be checked at the end of every discussion. It is strongly encour
 Most of the questions are already answered in Norman Sheu's website above.
 But in case you haven't find an answer to your question...
 
-Q. Are there any good sources for practis other than our textbook?
+Q. Are there any good sources for practice other than our textbook?
 
 A. For linear algebra parts, you can use
 
@@ -62,6 +62,12 @@ You put on your socks first and then shoes ($=AB$).
 To take off these ($=(AB)^{-1}$), you take of shoes first and then socks ($B^{-1} \cdot A^{-1}$).
 Hence $(AB)^{-1} = B^{-1}A^{-1}$.
 
+Q. Do you have any meme on geometric series?
+
+A.
+
+!["geometric" series](./geometric_series.png)
+
 #### Worksheets
 
 
@@ -73,6 +79,7 @@ Hence $(AB)^{-1} = B^{-1}A^{-1}$.
 | Week4 | [230912](worksheets/WS230912sol.pdf) | [230914](worksheets/WS230914sol.pdf) |
 | Week5 | [230919](worksheets/WS230919sol_fixed2.pdf) | [mid1 prep](worksheets/practice1sol_fixed.pdf) |
 | Week6 | [230926](worksheets/WS230926sol2.pdf) | [230928](worksheets/WS230928sol.pdf) |
+| Week7 | [231003](worksheets/WS231003sol.pdf) | |
 
 
 Let me know if you find any errors in the worksheets (and solutions).
