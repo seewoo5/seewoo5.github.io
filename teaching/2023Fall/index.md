@@ -22,7 +22,7 @@ Professor: [Norman Sheu](https://sites.google.com/view/normansheu/teaching/math-
 You can go to any GSI's office hour if this conflicts with your schedules. Also, feel free to email me for any specific questions so that we can possibly have an extra meeting.
 
 * Office hour on Sep 7 (Thursday) would be **1:00 pm - 2:00 pm** instead of **2:00 pm - 3:00 pm**.
-
+* There will be no office hour on Oct 5 (Thursday). Instead, I'll have an office hour on Oct 2 (Monday) **2:00 pm - 4:00 pm**.
 
 #### Homework
 
@@ -42,7 +42,7 @@ Attendence will be checked at the end of every discussion. It is strongly encour
 Most of the questions are already answered in Norman Sheu's website above.
 But in case you haven't find an answer to your question...
 
-Q. Are there any good sources for practis other than our textbook?
+Q. Are there any good sources for practice other than our textbook?
 
 A. For linear algebra parts, you can use
 
@@ -61,7 +61,14 @@ You put on your socks first and then shoes ($=AB$).
 To take off these ($=(AB)^{-1}$), you take of shoes first and then socks ($B^{-1} \cdot A^{-1}$).
 Hence $(AB)^{-1} = B^{-1}A^{-1}$.
 
+Q. Do you have any meme on geometric series?
+
+A.
+
+!["geometric" series](./geometric_series.png)
+
 #### Worksheets
+
 
 | | Tue | Thu |
 | --- | :---: | :---: |
@@ -69,7 +76,10 @@ Hence $(AB)^{-1} = B^{-1}A^{-1}$.
 | Week2 | [230829](worksheets/WS230829sol.pdf) | [230831](worksheets/WS230831sol.pdf) |
 | Week3 | [230905](worksheets/WS230905sol.pdf) | [230907](worksheets/WS230907sol.pdf)|
 | Week4 | [230912](worksheets/WS230912sol.pdf) | [230914](worksheets/WS230914sol.pdf) |
-| Week5 | [230919](worksheets/WS230919sol2.pdf) |  |
+| Week5 | [230919](worksheets/WS230919sol_fixed2.pdf) | [mid1 prep](worksheets/practice1sol_fixed.pdf) |
+| Week6 | [230926](worksheets/WS230926sol2.pdf) | [230928](worksheets/WS230928sol.pdf) |
+| Week7 | [231003](worksheets/WS231003sol.pdf) | |
+
 
 Let me know if you find any errors in the worksheets (and solutions).
 These will be also uploaded on bCourses - Files.
@@ -87,6 +97,14 @@ These will be also uploaded on bCourses - Files.
 **HW3** \
 8.5 #7 #19 \
 8.6 #1 #13 #15
+
+**HW4** \
+8.6 #19 #25 \
+8.7 #11 \
+8.8 #5 #19
+
+**HW5** \
+1.1 #7 #29 #57 #67 #73
 #### Extra notes
 
 * [Why matrix multiplication is weird](matmul.pdf)
