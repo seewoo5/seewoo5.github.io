@@ -105,6 +105,15 @@ These will be also uploaded on bCourses - Files.
 
 **HW5** \
 1.1 #7 #29 #57 #67 #73
+
+**HW6** \
+1.2 #3 \
+1.3 #33 \
+1.4 #21 \
+1.5 #49 \
+2.1 #17
+
+
 #### Extra notes
 
 * [Why matrix multiplication is weird](matmul.pdf)
