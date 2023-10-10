@@ -79,6 +79,8 @@ A.
 | Week5 | [230919](worksheets/WS230919sol_fixed2.pdf) | [mid1 prep](worksheets/practice1sol_fixed.pdf) |
 | Week6 | [230926](worksheets/WS230926sol2.pdf) | [230928](worksheets/WS230928sol.pdf) |
 | Week7 | [231003](worksheets/WS231003sol.pdf) | [231005](worksheets/WS231005sol.pdf)|
+| Week8 | [231010](worksheets/WS231010sol.pdf) | |
+
 
 
 Let me know if you find any errors in the worksheets (and solutions).
