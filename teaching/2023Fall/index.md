@@ -115,6 +115,14 @@ These will be also uploaded on bCourses - Files.
 1.5 #49 \
 2.1 #17
 
+**HW7** \
+2.2 #27 \
+2.4 #13 \
+3.1 #9 \
+3.2 #29 \
+3.3 #37
+
+
 
 #### Extra notes
 
