@@ -127,3 +127,4 @@ These will be also uploaded on bCourses - Files.
 #### Extra notes
 
 * [Why matrix multiplication is weird](matmul.pdf)
+* [Taylor approximation is not a universal problem solver](analytic_function.pdf)
