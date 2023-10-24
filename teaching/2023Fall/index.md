@@ -123,6 +123,12 @@ These will be also uploaded on bCourses - Files.
 3.2 #29 \
 3.3 #37
 
+**HW8**
+
+3.4 #27 \
+3.5 #43 #71 \
+3.7 #47 \
+3.8 #35
 
 
 #### Extra notes
