@@ -83,7 +83,7 @@ A.
 | Week9 | [231017](worksheets/WS231017sol.pdf) | [231019](worksheets/WS231019sol.pdf)|
 | Week10 | [231024](worksheets/WS231024sol.pdf) | [231026](worksheets/WS231026sol.pdf) |
 | Week11 | [231031](worksheets/WS231031sol.pdf) | [mid2 prep](worksheets/practice2sol2.pdf) |
-| Week12 | [231107](worksheets/WS231107sol.pdf) | |
+| Week12 | [231107](worksheets/WS231107sol.pdf) | [231109](worksheets/WS231109sol.pdf)|
 
 
 
