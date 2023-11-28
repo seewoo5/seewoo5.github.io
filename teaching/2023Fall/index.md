@@ -67,6 +67,16 @@ A.
 
 !["geometric" series](./geometric_series.png)
 
+Q. Othere memes?
+
+A. For diagonalization:
+
+![diagonalization](./diagonalize.jpg)
+
+Q. Cool calculus song?
+
+A. https://www.youtube.com/watch?v=uqwC41RDPyg
+
 #### Worksheets
 
 
