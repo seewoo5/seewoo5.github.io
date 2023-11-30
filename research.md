@@ -8,7 +8,7 @@ permalink: /research/
 / [Google Scholar](https://scholar.google.com/citations?user=jdFDv6IAAAAJ&hl=en)
 
 **Publications (Math)**
-
+- (with J. Baek) **$n^2+1$ unit equiliateral triangles cannot cover an equilateral triangle of side $>n$ if all triangles have parallel sides**, accepted to American Mathematical Monthly subject to minor revision [paper](https://arxiv.org/abs/2306.09533)
 - (with D. Choi) **Non-archimedean Sendov's conjecture**, p-adic Numbers, Ultrametric Analysis and Applications 14, 77-80 (2022) [paper](https://link.springer.com/article/10.1134/S2070046622010058)
 - **Maass wave forms, quantum modular forms and Hecke operators**, Res. Mathematical Science 6, 7 (2018), Modular Forms are Everywhere: Celebration of Don Zagier's 65th Birthday [paper](https://link.springer.com/article/10.1007/s40687-018-0170-0)
 - **Quantum modular forms and Hecke operators**. Res. Number Theory 4, 18 (2018) [paper](https://link.springer.com/article/10.1007/s40993-018-0114-1)
@@ -26,9 +26,7 @@ permalink: /research/
 
 **Preprints**
 
-* (with J. Baek) **$n^2+1$ unit equiliateral triangles cannot cover an equilateral triangle of side $>n$ if all triangles have parallel sides** [paper](https://arxiv.org/abs/2306.09533)
-
-* (with J. Baek) **Formalizing Mason–Stothers Theorem and its consequences** [github](https://github.com/seewoo5/lean-poly-abc)
+- (with J. Baek) **Formalizing Mason–Stothers Theorem and its consequences** [github](https://github.com/seewoo5/lean-poly-abc)
 
 **Miscellaneous**
 
