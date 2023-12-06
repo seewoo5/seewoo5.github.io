@@ -13,7 +13,7 @@ For even $k \geq 2$, the Eisenstein series of weight $k$ and level $1$ is define
 $$
 \begin{align*}
 G_k(z) &= \frac{1}{2} \sum_{(m, n) \in \mathbb{Z}^2 \backslash \{(0, 0)\}} \frac{1}{(mz + n)^k} \\
-& =\frac{1}{2} \sum_{n \neq 0} \frac{1}{n^2} + \frac{1}{2} \sum_{m \neq 0} \sum_{n \in \mathbb{Z}} \frac{1}{(mz + n)^2}.
+& =\frac{1}{2} \sum_{n \neq 0} \frac{1}{n^k} + \frac{1}{2} \sum_{m \neq 0} \sum_{n \in \mathbb{Z}} \frac{1}{(mz + n)^k}.
 \end{align*}
 $$
 
