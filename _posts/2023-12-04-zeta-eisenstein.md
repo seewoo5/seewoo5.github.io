@@ -11,24 +11,33 @@ In this post, we give a new short proof of the Bassel problem $\zeta(2) = \pi^2 
 For even $k \geq 2$, the Eisenstein series of weight $k$ and level $1$ is defined as
 
 $$
-G_k(z) = \frac{1}{2} \sum_{(m, n) \in \mathbb{Z}^2 \backslash \{(0, 0)\}} \frac{1}{(mz + n)^k}.
+\begin{align*}
+G_k(z) &= \frac{1}{2} \sum_{(m, n) \in \mathbb{Z}^2 \backslash \{(0, 0)\}} \frac{1}{(mz + n)^k} \\
+& =\frac{1}{2} \sum_{n \neq 0} \frac{1}{n^2} + \frac{1}{2} \sum_{m \neq 0} \sum_{n \in \mathbb{Z}} \frac{1}{(mz + n)^2}.
+\end{align*}
 $$
 
-There's a well known formula for the Fourier coefficients of $G_k(z)$:
+They are $1$-periodic, and we can compute their Fourier coefficients using Lipschitz's formula:
+
+$$
+\sum_{n \in \mathbb{Z}} \frac{1}{(z + n)^k} = \frac{(2 \pi i )^k}{(k-1)!} \sum_{r =1}^{\infty} r^{k-1} q^{k}
+$$
+
+for $q = e^{2 \pi i z}$, which can be derived from Euler's identity
+
+$$
+\sum_{n \in \mathbb{Z}} \frac{1}{z + n} = \frac{\pi}{\tan \pi z} \quad (z \in \mathbb{C} \backslash \mathbb{Z})
+$$
+
+by differentiating it $(k-1)$-times.
+Using this, we can prove that $G_k(z)$ has the following Fourier expansion (or $q$-expansion)
 
 $$
 G_k(z) = \zeta(k) + \frac{(2\pi i )^{k}}{(k-1)!} \sum_{n\geq 1} \sigma_{k-1}(n) q^n.
 $$
 
-For example, see Zagier's famous expository article *Elliptic modular forms and applications*, Proposition 5 on page 16.
-Note that the series defining $G_k(z)$ absolutely converges only if $k > 2$, and we need some additional efforts for $k = 2$.
-For example, we can define the $G_2(z)$ as
-
-$$
-G_2(z) = \frac{1}{2} \sum_{n \neq 0} \frac{1}{n^2} + \frac{1}{2} \sum_{m \neq 0} \sum_{n \in \mathbb{Z}} \frac{1}{(mz + n)^2}
-$$
-
-and it admits the same form of the Fourier series.
+See Zagier's famous expository article *Elliptic modular forms and applications* on *1-2-3 of modular forms*, Proposition 5 on page 16.
+Note that the first series defining $G_k(z)$ absolutely converges only if $k > 2$, and we use the second series for $k = 2$, which still admits the same form of the Fourier expansion
 One can normalize these forms as
 
 $$
@@ -36,7 +45,7 @@ E_k(z) = 1 + \frac{(2 \pi i )^k}{\zeta(k)(k-1)!} \sum_{n\geq 1} \sigma_{k-1}(n) 
 $$
 
 for $\alpha_k = \frac{(2 \pi i)^k}{\zeta(k) (k-1)!}$.
-Then our goal is reduced to compute $\alpha_2$ and $\alpha_4$ (and maybe other $\alpha_k$'s, too).
+Then our goal is reduced to compute $\alpha_2$ (and maybe other $\alpha_k$'s, too).
 
 The key idea is to use the Ramanujan's identity:
 
