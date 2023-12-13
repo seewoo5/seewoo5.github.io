@@ -1,7 +1,7 @@
 ---
 layout: posts
 title:  "A progress on Conway-Soifer conjecture"
-date:   2023-12-15
+date:   2023-12-12
 categories: jekyll update
 tags: math
 ---
