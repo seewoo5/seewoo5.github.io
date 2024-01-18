@@ -46,7 +46,7 @@ But in case you haven't find an answer to your question...
 
 | | Tue | Thu |
 | --- | :---: | :---: |
-| Week1 | - | |
+| Week1 | - | [240118](worksheets/SyllabusReview.pdf) |
 
 
 
