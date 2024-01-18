@@ -222,7 +222,7 @@ The figure (c) shows that the algorithm optimized in one hardware do not perform
 </p>
 <figcaption align = "center"><b>Performances of device-aware algorithms, Fawzi et al.</b></figcaption>
 
-### Conclusion
+## Conclusion
 
 AlphaTensor shows that it is possible to find practical matrix multiplication algorithms with deep reinforcement learning by reducing the problems as tensor decomposition problems and modeling it as a single-player game called TensorGame.
 As author mentioned, one may apply the same technique for other problems that can be transformed into tensor decomposition problems, such as a polynomial multiplication.
