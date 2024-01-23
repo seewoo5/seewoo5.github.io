@@ -39,7 +39,9 @@ Attendence will be checked at the end of every discussion. It is strongly encour
 Most of the questions are already answered in Norman Sheu's website above.
 But in case you haven't find an answer to your question...
 
-(To Be Added)
+Q. I want to practice more. Are there any additional resources or excercises available?
+
+A. You can find a bunch of resource in this website. See the previous classes I tought and you'll see what I mean.
 
 #### Worksheets
 
@@ -47,6 +49,7 @@ But in case you haven't find an answer to your question...
 | | Tue | Thu |
 | --- | :---: | :---: |
 | Week1 | - | [240118](worksheets/SyllabusReview.pdf) |
+| Week1 | [240123](worksheets/WS240123.pdf) |  |
 
 
 
