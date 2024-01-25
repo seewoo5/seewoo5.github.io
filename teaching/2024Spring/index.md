@@ -49,7 +49,7 @@ A. You can find a bunch of resource in this website. See the previous classes I 
 | | Tue | Thu |
 | --- | :---: | :---: |
 | Week1 | - | [240118](worksheets/SyllabusReview.pdf) |
-| Week1 | [240123](worksheets/WS240123.pdf) |  |
+| Week1 | [240123](worksheets/WS240123.pdf) | [240125](worksheets/WS240125.pdf) |
 
 
 
