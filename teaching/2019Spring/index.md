@@ -33,7 +33,7 @@ Week10  | 🏖 | SPRING | BREAK | 🏝 |
 | Week13        | [190416](worksheets/WS_190416.pdf)    | [190416sol](worksheets/WS_190416_sol.pdf)     | [190418](worksheets/WS_190418.pdf)    | [190418sol](worksheets/WS_190418_sol.pdf)        |
 | Week14        | [190423](worksheets/WS_190423.pdf)    | [190423sol](worksheets/WS_190423_sol.pdf)     | [190425](worksheets/WS_190425.pdf)    | [190425sol](worksheets/WS_190425_sol.pdf)        |
 | Week15        | [190430](worksheets/WS_190430.pdf)    | [190430sol](worksheets/WS_190430_sol.pdf)     | [190502](worksheets/WS_190502.pdf)    | [190502sol](worksheets/WS_190502_sol.pdf)        |
-| Week16        | [FinalReview1](FinalReview1.pdf) | | [FinalReview2](FinalReview2.pdf) | |
+| Week16        | [FinalReview1](worksheets/FinalReview1.pdf) | | [FinalReview2](worksheets/FinalReview2.pdf) | |
 
 
 ### Quizzes
