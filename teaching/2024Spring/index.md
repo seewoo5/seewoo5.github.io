@@ -58,5 +58,8 @@ These will be also uploaded on bCourses - Files.
 
 #### Graded HW problems (ramdomly selected)
 
+**HW 1**
+
+12.1 #5 #17 #25 #31 #37
 
 #### Extra notes
