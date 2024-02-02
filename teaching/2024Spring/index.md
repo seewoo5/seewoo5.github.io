@@ -50,7 +50,7 @@ A. You can find a bunch of resource in this website. See the previous classes I 
 | --- | :---: | :---: |
 | Week1 | - | [240118](worksheets/SyllabusReview.pdf) |
 | Week2 | [240123](worksheets/WS240123.pdf) | [240125](worksheets/WS240125.pdf) |
-| Week3 | [240130](worksheets/WS240130.pdf) | |
+| Week3 | [240130](worksheets/WS240130.pdf) | [240201](worksheets/WS240201.pdf) |
 
 
 
