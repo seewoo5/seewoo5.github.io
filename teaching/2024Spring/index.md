@@ -63,4 +63,8 @@ These will be also uploaded on bCourses - Files.
 
 12.1 #5 #17 #25 #31 #37
 
+**HW 2**
+
+6.1 #47 #57 / 6.2 #15 #41 #43
+
 #### Extra notes
