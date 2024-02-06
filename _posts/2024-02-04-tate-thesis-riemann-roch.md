@@ -11,7 +11,7 @@ In this article, I explain the meaning of the following statement:
 >  "Tate's thesis over function field is Riemann-Roch theorem."
 
 which I've heard many times but never tried to understand it throughly.
-I closely followed the book "Fourier Analysis on Number Fields" by Ramakrishnan and Valenza, Chapter 7. Also, [Ponnen's note](https://math.mit.edu/~poonen/786/notes.pdf) was helpful, too.
+I closely followed the book "Fourier Analysis on Number Fields" by Ramakrishnan and Valenza, Chapter 7. Also, [Poonen's note](https://math.mit.edu/~poonen/786/notes.pdf) was helpful, too.
 
 In my own words, I may re-state the above as follows:
 
