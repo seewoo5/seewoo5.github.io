@@ -74,3 +74,5 @@ These will be also uploaded on bCourses - Files.
 6.3 #21 #33 #43 / 6.4 #19 #37
 
 #### Extra notes
+
+* [Life tips](./pokerprob.pdf)
