@@ -53,6 +53,7 @@ A. You can find a bunch of resource in this website. See the previous classes I 
 | Week3 | [240130](worksheets/WS240130.pdf) | [240201](worksheets/WS240201.pdf) |
 | Week4 | [240206](worksheets/WS240206.pdf) | [240208](worksheets/WS240208.pdf) |
 | Week5 | [240213](worksheets/WS240213.pdf) | [240215](worksheets/WS240215.pdf) |
+| Week6 | [240220](worksheets/WS240220.pdf) |  |
 
 
 
@@ -73,7 +74,7 @@ These will be also uploaded on bCourses - Files.
 
 6.3 #21 #33 #43 / 6.4 #19 #37
 
-**HW4 **
+**HW 4**
 
 6.5 #9 #11 #21 / 12.2 #39 #45
 
