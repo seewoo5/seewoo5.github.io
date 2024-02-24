@@ -43,7 +43,7 @@ But in case you haven't find an answer to your question...
 
 Q. I want to practice more. Are there any additional resources or excercises available?
 
-A. You can find a bunch of resource in this website. See the previous classes I tought and you'll see what I mean.
+A. You can find a bunch of resource in this website. See the previous classes I taught and you'll see what I mean.
 
 #### Worksheets
 
