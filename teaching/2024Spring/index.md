@@ -81,6 +81,15 @@ These will be also uploaded on bCourses - Files.
 
 6.5 #9 #11 #21 / 12.2 #39 #45
 
+**HW 5**
+
+7.1 #15 #23 #33 / 7.2 #5 #7
+
+**HW 6**
+
+7.2 #13 #23 / 12.3 #5 #7 #15
+
+
 #### Extra notes
 
 * [Life tips](./pokerprob.pdf)
