@@ -90,6 +90,10 @@ These will be also uploaded on bCourses - Files.
 
 7.2 #13 #23 / 12.3 #5 #7 #15
 
+**HW 7**
+
+12.1 #41 #59 / 7.2 #31 / 7.3 #3 #13
+
 
 #### Extra notes
 
