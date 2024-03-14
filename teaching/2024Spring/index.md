@@ -58,6 +58,7 @@ A. You can find a bunch of resource in this website. See the previous classes I 
 | Week6 | [240220](worksheets/WS240220.pdf) | mid1 review |
 | Week7 | [240227](worksheets/WS240227.pdf) | [240229](worksheets/WS240229.pdf) |
 | Week8 | [240305](worksheets/WS240305.pdf) | [240307](worksheets/WS240307.pdf) |
+| Week9 | [240312](worksheets/WS240312.pdf) | [240314](worksheets/WS240314.pdf) |
 
 
 
