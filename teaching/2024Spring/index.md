@@ -45,6 +45,11 @@ Q. I want to practice more. Are there any additional resources or excercises ava
 
 A. You can find a bunch of resource in this website. See the previous classes I taught and you'll see what I mean.
 
+Q. What if I don't believe Monty Hall Problem?
+
+A. Check out this website: https://www.rossmanchance.com/applets/2021/montyhall/Monty.html
+
+and also this video if you are familiar with Korean: https://youtu.be/6NDum5WjZqU?si=DeDU-nbgcD2nKNOY
 #### Worksheets
 
 
