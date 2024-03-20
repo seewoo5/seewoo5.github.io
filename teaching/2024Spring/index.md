@@ -21,6 +21,8 @@ Professor: [Norman Sheu](https://sites.google.com/view/normansheu/teaching/math-
 
 - No office hour on Feb 21 (Wednesday), and this one will be moved to Feb 23 (Friday) 3:30 pm - 4:30 pm.
 
+- No office hour on Mar 20 (Wednesday), and this one will be moved to Mar 22 (Friday) 9:00 am - 10:00 am.
+
 You can go to any GSI's office hour if this conflicts with your schedules. Also, feel free to email me for any specific questions so that we can possibly have an extra meeting.
 
 #### Homework
