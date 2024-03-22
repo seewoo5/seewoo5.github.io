@@ -66,7 +66,7 @@ and also this video if you are familiar with Korean: https://youtu.be/6NDum5WjZq
 | Week7 | [240227](worksheets/WS240227.pdf) | [240229](worksheets/WS240229.pdf) |
 | Week8 | [240305](worksheets/WS240305.pdf) | [240307](worksheets/WS240307.pdf) |
 | Week9 | [240312](worksheets/WS240312.pdf) | [240314](worksheets/WS240314.pdf) |
-| Week10 | [240319](worksheets/WS240319.pdf) | |
+| Week10 | [240319](worksheets/WS240319.pdf) | [240321](worksheets/WS240321.pdf) |
 | Week11 | 🏖 Spring | Break 🏖  |
 
 
@@ -108,6 +108,9 @@ These will be also uploaded on bCourses - Files.
 
 12.4 #15 #25 #51 / 7.4 #5 #19
 
+**HW 9**
+
+12.5 #5 #7 #25 / 7.4 #27 #45
 
 #### Extra notes
 
