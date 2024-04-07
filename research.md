@@ -26,11 +26,11 @@ permalink: /research/
 
 **Preprints**
 
+- **Algebraic proof of Viazovska's inequalities**, in preparation
 - (with J. Baek) **Formalizing Mason–Stothers Theorem and its consequences** [github](https://github.com/seewoo5/lean-poly-abc)
 
 **Miscellaneous**
 
 * [This](https://github.com/seewoo5/math-notes) is a link to a GitHub repository for all the LaTeX-ed notes that I wrote.
-
 * [My qualifying exam syllabus and questions](assets/Qual_report.pdf).
 
