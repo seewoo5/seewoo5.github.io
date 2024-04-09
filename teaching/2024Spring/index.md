@@ -115,6 +115,11 @@ These will be also uploaded on bCourses - Files.
 
 12.5 #5 #7 #25 / 7.4 #27 #45
 
+**HW 10**
+
+12.5 #31 #49 #55 #61 #75
+
+
 #### Extra notes
 
 * [Life tips](./pokerprob.pdf)
