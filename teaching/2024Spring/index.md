@@ -71,7 +71,7 @@ and also this video if you are familiar with Korean: https://youtu.be/6NDum5WjZq
 | Week10 | [240319](worksheets/WS240319.pdf) | [240321](worksheets/WS240321.pdf) |
 | Week11 | 🏖 Spring | Break 🏖  |
 | Week12 | mid2 prep | mid2 review  |
-| Week13 | [240409](worksheets/WS240409.pdf) |  |
+| Week13 | [240409](worksheets/WS240409.pdf) | [240411](worksheets/WS240411.pdf) |
 
 
 
