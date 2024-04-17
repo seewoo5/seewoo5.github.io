@@ -12,11 +12,33 @@ I'm a dj, and I mostly play techno / trance / house. Check out my [Soundcloud](h
 
 <p></p>
 
-Upcoming events:
+<details>
+<summary>Upcoming events:</summary>
 
 <iframe src="https://ra.co/widget/eventlisting?dj=aftrmath" height="250" width="640" frameborder="0"></iframe>
 
+<p align="center">
+<img src="/assets/images/KLUBNACHT240511.jpeg">
+</p>
 
+</details>
+
+<details>
+<summary>Past events:</summary>
+
+<p align="center">
+<img src="/assets/images/SPACEDREAM240229.png">
+</p>
+
+<p align="center">
+<img src="/assets/images/TUNNEL231117.jpg">
+</p>
+
+<p align="center">
+<img src="/assets/images/SUPERB230421.jpeg">
+</p>
+
+</details>
 ---
 
 <a href="https://stackexchange.com/users/8720939"><img src="https://stackexchange.com/users/flair/8720939.png" width="208" height="58" alt="profile for Seewoo Lee on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for Seewoo Lee on Stack Exchange, a network of free, community-driven Q&amp;A sites" style="margin-right:0.8em"></a>
