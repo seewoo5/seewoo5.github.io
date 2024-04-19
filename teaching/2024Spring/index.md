@@ -125,6 +125,10 @@ These will be also uploaded on bCourses - Files.
 
 4 #B5 #D3 / 5 #C1 #E1 / 17 #A4
 
+**HW 12**
+
+13.1 #3 #11 #23 / 13.2 #3 #9
+
 
 #### Extra notes
 
