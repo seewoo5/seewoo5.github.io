@@ -25,6 +25,8 @@ Professor: [Norman Sheu](https://sites.google.com/view/normansheu/teaching/math-
 
 - No office hour on April 3 (Wednesday).
 
+- There will be additional office hours on May 1 (Wednesday) 12:00 pm - 1:00pm and May 2 (Thursday) 12:00 pm - 1:00 pm.
+
 You can go to any GSI's office hour if this conflicts with your schedules. Also, feel free to email me for any specific questions so that we can possibly have an extra meeting.
 
 #### Homework
@@ -130,6 +132,9 @@ These will be also uploaded on bCourses - Files.
 
 13.1 #3 #11 #23 / 13.2 #3 #9
 
+**HW 13**
+
+26 #A4 #B3 #C2 #D1 / 13.3 #5
 
 #### Extra notes
 
