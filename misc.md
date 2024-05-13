@@ -17,14 +17,15 @@ I'm a dj, and I mostly play techno / trance / house. Check out my [Soundcloud](h
 
 <iframe src="https://ra.co/widget/eventlisting?dj=aftrmath" height="250" width="640" frameborder="0"></iframe>
 
-<p align="center">
-<img src="/assets/images/KLUBNACHT240511.jpeg">
-</p>
 
 </details>
 
 <details>
 <summary>Past events:</summary>
+
+<p align="center">
+<img src="/assets/images/KLUBNACHT240511.jpeg">
+</p>
 
 <p align="center">
 <img src="/assets/images/SPACEDREAM240229.png">
