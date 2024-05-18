@@ -16,10 +16,6 @@ During the master's program at POSTECH, I was supervised by [YoungJu Choie](http
 
 ---
 
-Office hour (for Math 10B): Monday 2:00pm-3:00pm & Wednesday 5:00pm-6:00pm, at Evans 1066
-
----
-
 Feel free to email me if you have any questions.
 
 Email: seewoo5 + at + berkeley + dot + edu
