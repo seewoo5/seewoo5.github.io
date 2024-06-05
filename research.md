@@ -26,7 +26,7 @@ permalink: /research/
 
 **Preprints**
 
-- **Algebraic proof of Viazovska's inequalities**, in preparation
+- **Algebraic proof of modular form inequalities for optimal sphere packings**, in preparation
 - (with J. Baek) **Formalizing Mason–Stothers Theorem and its consequences** [github](https://github.com/seewoo5/lean-poly-abc)
 
 **Miscellaneous**
