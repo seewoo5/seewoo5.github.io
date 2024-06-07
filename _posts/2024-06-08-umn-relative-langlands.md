@@ -1,22 +1,148 @@
 ---
 layout: posts
 title:  "Relative Langlands Duality summer school & workshop at UMN"
-date:   2024-06-08
+date:   2024-06-03
 categories: jekyll update
 tags: math
 ---
 
+There was [Relative Langlands Duality summer school & workshop at University of Minnesota](https://cse.umn.edu/math/events/summer-school-and-workshop-relative-langlands-duality), which introduces the recent work by Ben-Zvi, Sakellaridis, and Venkatesh ([the huge paper](https://www.math.ias.edu/~akshay/research/BZSVpaperV1.pdf) called BZSV) and related works.
+I got interest in the topic after I study Gan-Gross-Prasad problems and related topics.
+In my understanding, **relative** Langlands duality can be summarized as
+
+> Study Langlands functoriality and relate it to periods and special L-values
+
+as a number theorist, not as a mathematical physicist.
+As far as I know, we don't have nice arithmetic theory yet (we have arithmetic TQFT by Minhyong Kim, but they are not fully developed as much as geometric analogues).
+
 ## Summer school
 
-There are four mini lecture series covering four different (but strongly connected) topics in relative Langlands duality.
+There were four mini lecture series covering four different (but strongly connected) topics in relative Langlands duality.
 
 ### 1. Relative Langlands Duality - A-side by Yiannis Sakellaridis
 
+Yiannis Sakellaridis introduced the **A-side**, i.e. **Automorphic Side** of relative Langlands duality.
+
 ### 2. Relative Langlands Duality - B-side by David Ben-Zvi
+
+David Ben-Zvi introduced the other side of relative Langlands duality, which is **B-side** or **Spectral side** (or "B"alois side).
 
 ### 3. Relative Langlands Duality - Examples by Lei Zhang and Chen Wan
 
-### 4.
+Lei Zhang and Chen Wan gave *a ton of examples* for relative Langlands duality.
+In relative Langlands, we have a notion of **BZSV quadruple** 
 
+$$
+\Delta = (G, H, \iota, \rho_H)
+$$
+
+where $G$ is a (split) reductive group, $H$ is a (split) subgroup of $G$, $\rho_H$ is a symplectic representation of $H$, and $\iota: \mathrm{SL}_2 \to G$ is a homomorphism whose image commutes with $H$, so that it induces a map $\iota: H \times \mathrm{SL}_2 \to G$.
+
+As we can associate Langlands dual group $\check{G}$ to a reductive group $G$, there exists a **dual quadruple**
+
+$$
+\check{\Delta} = (\check{G}, \check{H}', \check{\iota}', \rho_{\check{H}'})
+$$
+
+associated to $\Delta$.
+Some of the important points are:
+
+* $\check{H}'$ is *not* equal to $\check{H}$ in general, and it is a group associated to whole $\Delta$, not just $H$.
+* Unlike Langlands dual group (defined as swappring root datum), we don't have a general systematic/algorithmic/combinatorial way to get $\check{\Delta}$ out of $\Delta$.
+
+Now, the conjecture is that we have identities relating automorphic period of $\Delta$ (resp. $\check{\Delta}$) and certain $L$-values of $\check{\Delta}$ (resp. $\Delta$).
+
+
+### 4. Mathematical definition of Coulomb branches and Ring objects in the derived Satake category by Hiraku Nakajima
+
+This talk is also inclined to mathematical physics that I could not understand most of the things.
+The first talk is to explain the meaning of the following equation, which is the equation (3.13) from Gaiotto and Witten's paper [$S$-Duality of Boundary Conditions in $\mathcal{N}=4$ Super Yang-Mills Theory](https://www.arxiv.org/abs/0807.3720)[^1]
+
+$$
+\mathcal{T}^\vee = (\mathcal{T} \times \mathcal{T}[G] \, \backslash\mkern-11mu /\!\!/\!\!/ G)^*
+$$
+
+where
+* $G$ is a reductive group
+* $\mathcal{T}$ is a 3D $\mathcal{N} = 4$ SQFT with $G$-symmetry ($\mathcal{T}$ for "T"heory)
+* $\mathcal{T}[G]$ is a "kernel" 3D $\mathcal{N} = 4$ SQFT
+* $\backslash\mkern-11mu /\mkern-6mu/ \mkern-6mu/$ is SUSY gauging
+* $*$ is 3D mirror
 
 ## Workshop
+
+There was a workshop followed by the summer school, introducing recent works related to relative Langlands duality and BZSV framework.
+Here I record summary of some of the talks that I was interested in.
+Again, if there are anything wrong written below, it is due to myself.
+
+### Tony Feng - Rankin-Selberg unfolding for geometric periods
+
+This talk is based on the work by Tony Feng and Jonathan Wang ([paper](https://math.berkeley.edu/~fengt/GLPeriods.pdf)).
+The duality conjecture in BZSV is rougly following: under the geometric Langlands duality (which is still conjectural, although [it is claimed to be proven very recently](https://people.mpim-bonn.mpg.de/gaitsgde/GLC/))
+
+$$
+D(\mathrm{Bun}_{G}) \simeq \mathrm{Coh}(\mathrm{Loc}_{\check{G}})
+$$
+
+a period sheaf $\mathcal{P}\_{X} \in D(\mathrm{Bun}\_{G})$ of $X$ corresponds to an $L$-sheaf $\mathcal{L}\_{\check{X}} \in \mathrm{Coh}(\mathrm{Loc}\_{\check{G}})$ of the dual $\check{X}$.
+Especially, they verified the conjecture for
+
+* Iwasawa-Tate case, $G = \mathrm{GL}\_{1} \curvearrowright \mathbb{A}^{1}$ (self-dual),
+* Hecke case, $G = \mathrm{GL}\_{2} \curvearrowright X = \mathrm{GL}\_{2} / \mathrm{GL}\_{1} \leftrightarrow \check{G} = \mathrm{GL}\_{2} \curvearrowright \mathbb{A}^{2}$,
+* Rankin-Selberg case, $G = \mathrm{GL}\_{2} \times \mathrm{GL}\_{2} \curvearrowright X = \mathrm{Ind}_{\mathrm{GL}\_{2}}^{\mathrm{GL}\_{2} \times \mathrm{GL}\_{2}} (\mathbb{A}^{2} \backslash \{0\})$ $\leftrightarrow$ $\check{G} = \mathrm{GL}\_{2} \times \mathrm{GL}\_{2} \curvearrowright \check{X} = (\mathbb{A}^{2} \otimes \mathbb{A}^{2})^{\mathrm{rk} \leq 1}$.
+
+Note that $\check{X}$in the Rankin-Selberg case is singular and non-affine, so it is not covered in the original BZSV conjecture.
+The main idea is to use Eisenstein case
+
+$$
+G \times T \curvearrowright X = G / N \leftrightarrow \check{G} \times \check{T} \curvearrowright \check{X} = \check{G} / \check{N}
+$$
+
+and the Whittaker case
+
+$$
+G \curvearrowright X = G / (N, \psi) \leftrightarrow \check{G} \curvearrowright \check{X} = \mathrm{pt}
+$$
+
+as building blocks, and mimic the standard unfolding process categorically.
+One needs to understand how $\mathcal{P}\_{X_{1} \cup X_{2}}$ and $\mathcal{L}\_{X_{1} \cup X_{2}}$ are related to $\mathcal{P}\_{X_{1}}, \mathcal{P}\_{X_{2}}$ and $\mathcal{L}\_{X_{2}}, \mathcal{L}\_{X_{2}}$, and the point is that one needs some "correction terms" or "thickenings" for these.
+The main tool is the derived Fourier transform developed by [Feng-Yun-Zhang](https://math.berkeley.edu/~fengt/FYZ-ModularityI.pdf).
+
+### Spencer Leslie - Rationality and Stabilization for Symmetric Varieties
+
+Friedberg and Jacquet proved the following BZSV-like result for the pair of groups
+
+$$
+(G, H) = (\mathrm{GL}_{2n}, \mathrm{GL}_{n} \times \mathrm{GL}_{n})
+$$
+
+where $H$ is embedded in $G$ block-diagonally. They proved that the following: let $\pi$ be a cuspidal automorphic representation of $G$.
+The automorphic period $\mathcal{P}_H(\phi) = \int_{[H]} \phi(h) \mathrm{d} h$  is nonvanishing for some $\phi \in \pi$ if and only if
+
+1. $L(s, \pi, \wedge^2)$ has a pole at $s = 1$ (which corresponds to the A-parameter condition in BZSV conjecture stated in Wan and Zhang's talk)
+2. $L(1/2, \pi) \neq 0$.
+
+The main case of interest in Leslie's ongoing work (joint with Jingwei Xiao and Wei Zhang) is the unitary version of Friedberg-Jacquet pair:
+
+$$
+(G, H) = (\mathrm{U}_{2n}, \mathrm{U}_{n} \times \mathrm{U}_{n}).
+$$
+
+(The periods would be related to the base change $L$-function $L(1/2, \mathrm{BC}(\pi))$ in this case.)
+The main obstacle for studying this case compared to Friedberg-Jacquet is that one needs a Galois action to distinguish this case with other twists.
+To do this, they defined inner and outer forms for $G$-varieties (as in a way that we may expect), and propose the following theorem to distinguish *outer* forms.
+
+
+> **Theorem (Leslie).** Let $G$ be a quasi-splic group over $F$, fix Borel $B \subset G$, and $X = G / H$ a spherical variety ($H$ is a spherical subgroup of $G$). Let $\mathrm{Aut}^{\mathrm{dist}}(X)$ be the *distinguished automorphism group* defined by Losev. $\Gamma = \mathrm{Gal}_F$.
+> 1. There exists a canonical 1-cocycle $c_X: \Gamma \to \mathrm{Aut}^{\mathrm{dist}}(X)(\overline{F})$ such that for two $G$-varieties $X_1$ and $X_2$ that are $G$-forms each other, they are $G$-inner if and only if $[c_{X_1}] = [c_{X_2}]$.
+> 2. Let $X = G / G^\eta$ be a symmetric variety, associated to an involution $\eta: G \to G$. Then $\mathrm{Aut}^{\mathrm{dist}}(X)$ determines a symplectic representation $\check{G}_{X} \curvearrowright S_X$ and the data of $c_X$ uniquely determines further $\Gamma$-action, hence ${}^{L} \check{G}_{X} \curvearrowright S_X$.
+
+
+
+
+### Chen Wan - Strongly tempered BZSV quadruples
+
+
+[^1]: Here I use $\check{\Delta}$ instead of $\hat{\Delta}$ for duals, but the original notation in the paper is latter one.
+
+[^2]: I found that the original equation in the paper is different from what I saw from the lecture, but I believe the two equations have the same meanings.
