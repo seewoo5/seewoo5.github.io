@@ -13,7 +13,7 @@ In my understanding, **relative** Langlands duality can be summarized as
 > Study Langlands functoriality and relate it to periods and special L-values
 
 as a number theorist, not as a mathematical physicist.
-As far as I know, we don't have nice arithmetic theory yet (we have arithmetic TQFT by Minhyong Kim, but they are not fully developed as much as geometric analogues).
+As far as I know, we don't have nice arithmetic theory yet (we have arithmetic QFT by Minhyong Kim, but they are not fully developed as much as geometric analogues).
 
 ## Summer school
 
@@ -38,7 +38,7 @@ $$
 
 where $G$ is a (split) reductive group, $H$ is a (split) subgroup of $G$, $\rho_H$ is a symplectic representation of $H$, and $\iota: \mathrm{SL}_2 \to G$ is a homomorphism whose image commutes with $H$, so that it induces a map $\iota: H \times \mathrm{SL}_2 \to G$.
 
-As we can associate Langlands dual group $\check{G}$ to a reductive group $G$, there exists a **dual quadruple**
+As we can associate Langlands dual group $\check{G}$ to a reductive group $G$, there exists a **dual quadruple**[^1]
 
 $$
 \check{\Delta} = (\check{G}, \check{H}', \check{\iota}', \rho_{\check{H}'})
@@ -56,7 +56,7 @@ Now, the conjecture is that we have identities relating automorphic period of $\
 ### 4. Mathematical definition of Coulomb branches and Ring objects in the derived Satake category by Hiraku Nakajima
 
 This talk is also inclined to mathematical physics that I could not understand most of the things.
-The first talk is to explain the meaning of the following equation, which is the equation (3.13) from Gaiotto and Witten's paper [$S$-Duality of Boundary Conditions in $\mathcal{N}=4$ Super Yang-Mills Theory](https://www.arxiv.org/abs/0807.3720)[^1]
+The first talk is to explain the meaning of the following equation, which is the equation (3.13) from Gaiotto and Witten's paper [$S$-Duality of Boundary Conditions in $\mathcal{N}=4$ Super Yang-Mills Theory](https://www.arxiv.org/abs/0807.3720)[^2]
 
 $$
 \mathcal{T}^\vee = (\mathcal{T} \times \mathcal{T}[G] \, \backslash\mkern-11mu /\!\!/\!\!/ G)^*
@@ -91,7 +91,7 @@ Especially, they verified the conjecture for
 * Hecke case, $G = \mathrm{GL}\_{2} \curvearrowright X = \mathrm{GL}\_{2} / \mathrm{GL}\_{1} \leftrightarrow \check{G} = \mathrm{GL}\_{2} \curvearrowright \mathbb{A}^{2}$,
 * Rankin-Selberg case, $G = \mathrm{GL}\_{2} \times \mathrm{GL}\_{2} \curvearrowright X = \mathrm{Ind}_{\mathrm{GL}\_{2}}^{\mathrm{GL}\_{2} \times \mathrm{GL}\_{2}} (\mathbb{A}^{2} \backslash \{0\})$ $\leftrightarrow$ $\check{G} = \mathrm{GL}\_{2} \times \mathrm{GL}\_{2} \curvearrowright \check{X} = (\mathbb{A}^{2} \otimes \mathbb{A}^{2})^{\mathrm{rk} \leq 1}$.
 
-Note that $\check{X}$in the Rankin-Selberg case is singular and non-affine, so it is not covered in the original BZSV conjecture.
+Note that $\check{X}$ in the Rankin-Selberg case is singular and non-affine, so it is not covered in the original BZSV conjecture.
 The main idea is to use Eisenstein case
 
 $$
@@ -135,14 +135,53 @@ To do this, they defined inner and outer forms for $G$-varieties (as in a way th
 
 > **Theorem (Leslie).** Let $G$ be a quasi-splic group over $F$, fix Borel $B \subset G$, and $X = G / H$ a spherical variety ($H$ is a spherical subgroup of $G$). Let $\mathrm{Aut}^{\mathrm{dist}}(X)$ be the *distinguished automorphism group* defined by Losev. $\Gamma = \mathrm{Gal}_F$.
 > 1. There exists a canonical 1-cocycle $c_X: \Gamma \to \mathrm{Aut}^{\mathrm{dist}}(X)(\overline{F})$ such that for two $G$-varieties $X_1$ and $X_2$ that are $G$-forms each other, they are $G$-inner if and only if $[c_{X_1}] = [c_{X_2}]$.
-> 2. Let $X = G / G^\eta$ be a symmetric variety, associated to an involution $\eta: G \to G$. Then $\mathrm{Aut}^{\mathrm{dist}}(X)$ determines a symplectic representation $\check{G}_{X} \curvearrowright S_X$ and the data of $c_X$ uniquely determines further $\Gamma$-action, hence ${}^{L} \check{G}_{X} \curvearrowright S_X$.
+> 2. Let $X = G / G^\eta$ be a symmetric variety, associated to an involution $\eta: G \to G$. Then $\mathrm{Aut}^{\mathrm{dist}}(X)$ determines a symplectic representation $\check{G}\_{X} \curvearrowright S_{X}$ and the data of $c_{X}$ uniquely determines further $\Gamma$-action, hence ${}^{L} \check{G}\_{X} \curvearrowright S_{X}$.
 
 
 
 
 ### Chen Wan - Strongly tempered BZSV quadruples
 
+This talk is based on the work by Zhengyu Mao, Chen Wan, and Lei Zhang ([paper](https://arxiv.org/abs/2405.17699v1)).
+They focus on **strongly tempered** BZSV quadruples, which are $\Delta = (G, H, \iota, \rho_H)$ where their duals have a form
+
+$$
+\check{\Delta} = (\check{G}, \check{G}, \check{\iota}, \check{\rho})
+$$
+
+(up to center - to be precise, it should be $\check{H}$ with $\check{G} = \check{H} Z_{\check{G}}$.)
+Also, we call $\Delta$ **reductive** if $\iota = 1$.
+In this case, the $L$-factors correspond to $\mathrm{SL}\_{2}$-part in the dual side vanishes and the period-L-function conjecture becomes
+
+$$
+\frac{|\mathcal{P}_{\Delta}(\phi)|^{2}}{\langle \phi, \phi \rangle} = \frac{L(1/2, \pi, \check{\rho})}{L(1, \pi, \mathrm{Ad})}
+$$
+
+(of coures, up to a global and ramified factors).
+The most famous example of strongly tempered case is the GGP case, where we have
+
+$$
+\Delta = (\mathrm{SO}_{2n+1} \times \mathrm{SO}_{2n}, \mathrm{SO}_{2n}, 0, 1) \leftrightarrow \check{\Delta} = (\mathrm{Sp}_{2n} \times \mathrm{SO}_{2n}, \mathrm{Sp}_{2n}, \times \mathrm{SO}_{2n}, \mathrm{std} \otimes \mathrm{std}, 1)
+$$
+
+Now, we know that $(\check{G}, \check{G}, \check{\rho}, 1)$ is a BZSV quadruple if
+
+1. $\check{\rho}$ is anomaly-free,
+2. $\check{\rho}$ is multiplicity-free,
+3. the generic stabilizer of $\check{\rho}$ of $\check{G}$ is connected.
+
+Luckily, we have a classification of multiplicity-free symplectic representations by Knop.
+Hence this gives "tables" of the dual quadruples $\Delta$, and our question is to find the corresponding $\Delta$ (as I mentioned before, there's no algorithmic or combinatorial way to find dual quadruple of a given BZSV quadruple yet.)
+Mao, Wan, and Zhang give many tables of conjectural correspondances, and provide three tyles of evidences:
+
+1. local character formula for the dual pairs
+2. prove the P=L conjecture *assuming (refined) GGP and Rallis inner product formula*
+2. behaves well under "Whittaker induction"[^3]
+
+
 
 [^1]: Here I use $\check{\Delta}$ instead of $\hat{\Delta}$ for duals, but the original notation in the paper is latter one.
 
 [^2]: I found that the original equation in the paper is different from what I saw from the lecture, but I believe the two equations have the same meanings.
+
+[^3]: During the talk, Sakellaridis mentioned that there's already a notion of Whittaker induction in the BZSV paper, which is different from Mao-Wan-Zhang's definition. Hence the name might change in future.
