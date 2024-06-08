@@ -7,13 +7,13 @@ tags: math
 ---
 
 There was [Relative Langlands Duality summer school & workshop at University of Minnesota](https://cse.umn.edu/math/events/summer-school-and-workshop-relative-langlands-duality), which introduces the recent work by Ben-Zvi, Sakellaridis, and Venkatesh ([the huge paper](https://www.math.ias.edu/~akshay/research/BZSVpaperV1.pdf) called BZSV) and related works.
-I got interest in the topic after I study Gan-Gross-Prasad problems and related topics.
+I got interest in the topic after I study Gan-Gross-Prasad and Ichino-Ikeda type problems and related topics.
 In my understanding, **relative** Langlands duality can be summarized as
 
 > Study Langlands functoriality and relate it to periods and special L-values
 
 as a number theorist, not as a mathematical physicist.
-As far as I know, we don't have nice arithmetic theory yet (we have arithmetic QFT by Minhyong Kim, but they are not fully developed as much as geometric analogues).
+As far as I know, we don't have nice arithmetic theory yet (we have arithmetic TQFT by Minhyong Kim, but they are not fully developed as much as geometric analogues).
 
 ## Summer school
 
@@ -21,11 +21,53 @@ There were four mini lecture series covering four different (but strongly connec
 
 ### 1. Relative Langlands Duality - A-side by Yiannis Sakellaridis
 
-Yiannis Sakellaridis introduced the **A-side**, i.e. **Automorphic Side** of relative Langlands duality.
+Yiannis Sakellaridis introduced the **A-side**, i.e. **Automorphic Side** of relative Langlands duality. He started his (and the summer school's) first lecture with drawing a turntable with A-side of an LP.
+
+One of the main feature of relative Langlands program is that automorphic periods can be related to $L$-functions (or special $L$-values) on dual side.
+More precisely, let $G$ be a reductive group and $H$ be a spherical subgroup.
+Then $M = T^{\ast}(X) = T^{\ast}(H \backslash G)$ is a symplectic $G$-variety, and one can associate a *dual* symplectic variety $\check{M}$ with $\check{G}$-action on it.
+The following well-known examples fit into this phenomena:
+
+*Rankin-Selberg.* $H = \mathrm{GL}\_{n}$ is diagonally embedded into $G = \mathrm{GL}\_{n} \times \mathrm{GL}\_{n+1}$, and the dual space is $\check{M} = T^{\ast} (\mathrm{std}\_{n} \otimes \mathrm{std}\_{n+1})$. In this case, we have integral representation of $L$-function by Godment-Jacquet.
+
+*Gan-Gross-Prasad.* $H = \mathrm{SO}\_{n}$ is diagonally embedded into $G = \mathrm{SO}\_{n} \times \mathrm{SO}\_{n+1}$, and the corresponding dual is the tensor product of two standard representation, $\check{M} = \mathrm{std}\_{n} \otimes \mathrm{std}\_{n}$.
+In this case, we have Ichino-Ikeda conjecture of the form
+
+$$
+\left|\int_{[\Delta \mathrm{SO}_{n}]} \varphi(h) \mathrm{d}h\right|^{2} = L\left(\pi, \mathrm{std} \otimes \mathrm{std}, \frac{1}{2}\right)
+$$
+
+up to global constants and adjoint $L$-functions.
+
+*Whittaker.* We have a unipotent group $N \subset G$ and a generic character $\psi: N \to \mathbb{C}^{\times}$, and $X = (N, \psi) \backslash G$. The dual is simply a point $\check{M} = \mathrm{pt}$ and the corresponding identity reduces to Lapid-Mao conjecture.
+
+*Group case.* For $G = H \times H \supset H$ embeded diagonally, we have $X = H \backslash G \simeq H$. Then $\check{M} = T^{*}\check{H}$ and the corresponding $\check{G} = \check{H} \times \check{H}$ is not the naive action, but twisted by Chevalley involution.
+In thia case, one expect equation of the form
+
+$$
+\int_{[H]} \varphi(h) \mathrm{d}h = \sum_{x} \sqrt{L(\pi, T_{x}\check{M})}
+$$
+
+where the sum is over certain fixed points on $\check{M}$, and the square root of L-function can be make sense using adjoint $L$-functions.
+
+Under the duality, one expect *dual theorem* by swapping $M = T^{*}(H \backslash G)$ with its dual. In GGP case, the dual theorem of Ichino-Ikeda conjecture becomes Rallis inner product formula for theta correspondence.
+
 
 ### 2. Relative Langlands Duality - B-side by David Ben-Zvi
 
-David Ben-Zvi introduced the other side of relative Langlands duality, which is **B-side** or **Spectral side** (or "B"alois side).
+David Ben-Zvi introduced the other side of relative Langlands duality, which is **B-side** or **Spectral side** (or "B"alois side) - but actually he covered both sides later.
+
+He stated relative Langlands as "studying the functoriality of Langlands correspondence".For a reductive group $G$ over some field $F$, one can consider the *automorphic theory* or *A-side* of $G$, namely $\mathcal{A}\_{G}$.
+Langlands functoriality is essentially about studying relations of $\mathcal{A}\_{H}$ and $\mathcal{A}\_{G}$ for different groups $H$ and $G$. More precisely, we want to upgrade the assignment $G \leadsto \mathcal{A}\_{G}$ as a functor
+
+$$
+H \xrightarrow{M} G \quad \leadsto \quad \mathcal{A}_{H} \xrightarrow{\mathcal{A}_{M}} \mathcal{A}_{G}.
+$$
+
+Langlands program expect that automorphic theory for $G$ corresponds to a *spectral theory* for the dual group $\check{G}$ (over a coefficient field $k$), can be thought as algebraic geometry of Langlands parameters.. We denote this as $\mathcal{B}\_{\check{G}}$ for $B$-side.
+One should also have a functoriality on spectral as well, and what we want is that the Langlands duality and funtorialities are compatible, i.e. roughly we have a commutative diagram
+
+Now, what *are* $\mathcal{A}$ and $\mathcal{B}$? The model for this (in relative Langlands / BZSV) is 4-d TQFT.
 
 ### 3. Relative Langlands Duality - Examples by Lei Zhang and Chen Wan
 
@@ -56,7 +98,7 @@ Now, the conjecture is that we have identities relating automorphic period of $\
 ### 4. Mathematical definition of Coulomb branches and Ring objects in the derived Satake category by Hiraku Nakajima
 
 This talk is also inclined to mathematical physics that I could not understand most of the things.
-The first talk is to explain the meaning of the following equation, which is the equation (3.13) from Gaiotto and Witten's paper [$S$-Duality of Boundary Conditions in $\mathcal{N}=4$ Super Yang-Mills Theory](https://www.arxiv.org/abs/0807.3720)[^2]
+The first talk is to understand the meaning of the following equation, which is the equation (3.13) from Gaiotto and Witten's paper [$S$-Duality of Boundary Conditions in $\mathcal{N}=4$ Super Yang-Mills Theory](https://www.arxiv.org/abs/0807.3720)[^2]
 
 $$
 \mathcal{T}^\vee = (\mathcal{T} \times \mathcal{T}[G] \, \backslash\mkern-11mu /\!\!/\!\!/ G)^*
