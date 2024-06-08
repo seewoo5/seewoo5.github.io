@@ -245,6 +245,25 @@ In fact, there is a categorical (sheaf) version of parabolic induction for the d
 [Bezrukanikov and Chan](https://arxiv.org/abs/2401.07189) proved that jetification is also possible for categorical version.
 
 
+### Zhiwei Yun - Character sheaves in the setting of theta correspondence
+
+Theta correspondence (over finite fields) is roughly given by the following way.
+Let $(V_{1}, w_{1})$ and $(V_{2}, q_{2})$ be symplectic and orthogonal spaces.
+Taking a tensor product gives a bigger symplectic space $(V, w) = (V_{1} \otimes V_{2}, \omega_{1} \otimes B_{q_{2}})$, with a represenetation of $G_{1} \times G_{2} = \mathrm{Sp}(V_{1}, w_{1}) \times \mathrm{O}(V_{2}, q_{2})$.
+Now, choose a nontrivial character $\psi: \mathbb{F}\_{q} \to \mathbb{C}^{\times}$ and a Lagrangian $L \subset V$, and consider a *Weil representation* $\omega = \omega(\psi, L)$ of $\mathrm{Sp}(V, w)$ attached to $(\psi, L)$ (following Shrödinger model).
+Now, Waldspurger proved that the restriction  $\omega|\_{G_{1} \times G_{2}}$ decomposes as multiplicity one factors, and this gives so-called *theta correspondence* between irreducible repsentations of $G_{1}$ and $G_{2}$ by
+
+$$
+\omega|_{G_{1} \times G_{2}} = \bigoplus \pi \boxtimes \Theta(\pi), \quad \pi \in \mathrm{Irr}(G_{1}),\,\, \Theta(\pi) \in \mathrm{Irr}(G_{2}).
+$$
+
+(Note that Weil representations for other fields may require metaplectic covers, but we don't need this over finite fields.)
+Now, in my understanding, the goal of this talk (based on a joint work with Shamgar Gurevich) is about geometrization of theta corresspondence - the irreducible projectors above correspond to perverse sheaves on $(V_{1} \otimes V_{2}) / (G_{1} \times G_{2})$.
+Especially, one can construct *$\Theta$-sheaves* analogous to $\Theta$-correspondence.
+There's a notion of parabolic induction for $\Theta$-sheaves, and the building blocks for $\Theta$-sheaves are *Cayley sheaves* that live on $\mathbb{A}^{2} / \mathbb{G}\_{m}$ (the action is hyperbolic).
+Finally, one can construct character sheaves from $\Theta$-sheaves by taking pullback along $G_{1} \times G_{2} \times V \twoheadrightarrow V$, take a tensor product with Gurevich-Hadani's kernel sheaf, and than pushforward along $G_{1} \times G_{2} \times V \to G_{1} \times G_{2}$.
+
+
 [^1]: Here I use $\check{\Delta}$ instead of $\hat{\Delta}$ for duals, but the original notation in the paper is latter one.
 
 [^2]: I found that the original equation in the paper is different from what I saw from the lecture, but I believe the two equations have the same meanings.
