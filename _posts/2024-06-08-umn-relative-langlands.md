@@ -178,6 +178,29 @@ Mao, Wan, and Zhang give many tables of conjectural correspondances, and provide
 2. prove the P=L conjecture *assuming (refined) GGP and Rallis inner product formula*
 2. behaves well under "Whittaker induction"[^3]
 
+For 3, their Whittaker induction is defined as follows.
+The map $\iota : \mathrm{SL}_{2} \to G$ defines a parabolic subgroup $P = MN$ where $M$ is a centralizer of the image of $\mathrm{diag}(t, t^{-1})$ and 
+
+$$
+N = \{ g \in G : \lim_{t \to 0} \iota(\mathrm{diag}(t, t^{-1})) g \iota(\mathrm{diag}(t, t^{-1}))^{-1} = 1\}.
+$$
+
+
+
+### Charlotte Chan - Generic character sheaves on parahoric subgroups
+
+The talk covers several papers by Chan and coauthors (possibly all the papers in [Chan's webpage](https://websites.umich.edu/~charchan/papers/) with "Deligne-Lusztig" in the abstract).
+
+Deligne-Lusztig theory gives a way to build irreducible representations of reductive groups over finite fields via cohomology of *Deligne-Lusztig varieties*.
+Once we have a representation $\pi$ of such groups $G(\mathbb{F}_{p})$, the easiest(?) way to produce a representation of $p$-adic groups $G(\mathbb{Q}_{p})$ is 1) to take pullback along the natural map $G(\mathbb{Z}_{p}) \twoheadrightarrow G(\mathbb{F}_{p})$ and 2) take a compact induction to $G(\mathbb{Q}_{p})$.
+However, we can only obtain *depth 0* representations of $G(\mathbb{Q}_{p})$ in this way.
+
+To get representations of positive depths, [Adler](https://msp.org/pjm/1998/185-1/pjm-v185-n1-p01-p.pdf) and [Yu](https://www.ams.org/journals/jams/2001-14-03/S0894-0347-01-00363-0/S0894-0347-01-00363-0.pdf) boost up the step 1) of the above construction, which is "algebraic" in nature.
+Instead, one may consider to use representations of "thickened" groups $G(\mathbb{Z} / p^{r}\mathbb{Z})$ using "geometry".
+These are called **jet schemes**: more precisely, for a connective reductive group $G$ over $\mathbb{F}_{p}$, we define the $r$-th jet scheme $G_{r}$ as a group scheme $A \mapsto G(A[t] / t^{r+1})$.
+Then there's an analogous jet-version of Deligene-Lusztig variety whose cohomology gives a representation of $G_{r}(\mathbb{F}_{p})$, and following the remaining step gives irreducible cuspidal representations of $G(\mathbb{Q}_{p})$ of *positive depth*.
+In fact, there is a categorical (sheaf) version of parabolic induction for the derived category of $\ell$-adic sheaves.
+[Bezrukanikov and Chan](https://arxiv.org/abs/2401.07189) proved that jetification is also possible for categorical version.
 
 
 [^1]: Here I use $\check{\Delta}$ instead of $\hat{\Delta}$ for duals, but the original notation in the paper is latter one.
