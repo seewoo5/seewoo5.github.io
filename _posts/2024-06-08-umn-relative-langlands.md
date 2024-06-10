@@ -68,6 +68,13 @@ Langlands program expect that automorphic theory for $G$ corresponds to a *spect
 One should also have a functoriality on spectral as well, and what we want is that the Langlands duality and funtorialities are compatible, i.e. roughly we have a commutative diagram
 
 Now, what *are* $\mathcal{A}$ and $\mathcal{B}$? The model for this (in relative Langlands / BZSV) is 4-d TQFT.
+Ben-Zvi didn't give any definitions of 4-d TQFT, but what he told us (which was enough for me) is the following: it assigns
+
+* 3-manifold $\leadsto$ vector space,
+* 2-manifold $\leadsto$ ($k$-linear) category,
+* 1-manifold $\leadsto$ 2-category.
+
+(He also mentioned that 4-manifold goes to a number in a base field, and I guess 0-manifold (point) maps to 3-category).
 
 ### 3. Relative Langlands Duality - Examples by Lei Zhang and Chen Wan
 
@@ -131,7 +138,7 @@ Especially, they verified the conjecture for
 
 * Iwasawa-Tate case, $G = \mathrm{GL}\_{1} \curvearrowright \mathbb{A}^{1}$ (self-dual),
 * Hecke case, $G = \mathrm{GL}\_{2} \curvearrowright X = \mathrm{GL}\_{2} / \mathrm{GL}\_{1} \leftrightarrow \check{G} = \mathrm{GL}\_{2} \curvearrowright \mathbb{A}^{2}$,
-* Rankin-Selberg case, $G = \mathrm{GL}\_{2} \times \mathrm{GL}\_{2} \curvearrowright X = \mathrm{Ind}_{\mathrm{GL}\_{2}}^{\mathrm{GL}\_{2} \times \mathrm{GL}\_{2}} (\mathbb{A}^{2} \backslash \{0\})$ $\leftrightarrow$ $\check{G} = \mathrm{GL}\_{2} \times \mathrm{GL}\_{2} \curvearrowright \check{X} = (\mathbb{A}^{2} \otimes \mathbb{A}^{2})^{\mathrm{rk} \leq 1}$.
+* Rankin-Selberg case, $G = \mathrm{GL}\_{2} \times \mathrm{GL}\_{2} \curvearrowright X = \mathrm{Ind}_{\Delta \mathrm{GL}\_{2}}^{\mathrm{GL}\_{2} \times \mathrm{GL}\_{2}} (\mathbb{A}^{2} \backslash \{0\})$ $\leftrightarrow$ $\check{G} = \mathrm{GL}\_{2} \times \mathrm{GL}\_{2} \curvearrowright \check{X} = (\mathbb{A}^{2} \otimes \mathbb{A}^{2})^{\mathrm{rk} \leq 1}$.
 
 Note that $\check{X}$ in the Rankin-Selberg case is singular and non-affine, so it is not covered in the original BZSV conjecture.
 The main idea is to use Eisenstein case
@@ -161,7 +168,7 @@ $$
 where $H$ is embedded in $G$ block-diagonally. They proved that the following: let $\pi$ be a cuspidal automorphic representation of $G$.
 The automorphic period $\mathcal{P}_H(\phi) = \int_{[H]} \phi(h) \mathrm{d} h$  is nonvanishing for some $\phi \in \pi$ if and only if
 
-1. $L(s, \pi, \wedge^2)$ has a pole at $s = 1$ (which corresponds to the A-parameter condition in BZSV conjecture stated in Wan and Zhang's talk)
+1. $L(s, \pi, \wedge^2)$ has a pole at $s = 1$ (which corresponds to the factor-through-A-parameter condition in BZSV conjecture stated in Wan and Zhang's talk)
 2. $L(1/2, \pi) \neq 0$.
 
 The main case of interest in Leslie's ongoing work (joint with Jingwei Xiao and Wei Zhang) is the unitary version of Friedberg-Jacquet pair:
@@ -172,6 +179,15 @@ $$
 
 (The periods would be related to the base change $L$-function $L(1/2, \mathrm{BC}(\pi))$ in this case.)
 The main obstacle for studying this case compared to Friedberg-Jacquet is that one needs a Galois action to distinguish this case with other twists.
+For example, for a quadratic extension $E /F$, the following two varieties
+
+$$
+X_{1} = \mathrm{GL}_{2n} / (\mathrm{GL}_{n} \times \mathrm{GL}_{n}), \quad X_{2} = \mathrm{GL}_{2n} / \mathrm{Res}_{E/F} \mathrm{GL}_{n}
+$$
+
+are isomorphic over $E$, but not over $F$.
+The action of $\mathrm{Gal}(E/F)$ on the first three components of their dual datum ($\check{G}, \check{G}_{\Delta}, \check{\iota}$) cannot distinguish those two, hence one needs Galois action on $\check{\rho}$.
+
 To do this, they defined inner and outer forms for $G$-varieties (as in a way that we may expect), and propose the following theorem to distinguish *outer* forms.
 
 
@@ -203,7 +219,10 @@ $$
 The most famous example of strongly tempered case is the GGP case, where we have
 
 $$
-\Delta = (\mathrm{SO}_{2n+1} \times \mathrm{SO}_{2n}, \mathrm{SO}_{2n}, 0, 1) \leftrightarrow \check{\Delta} = (\mathrm{Sp}_{2n} \times \mathrm{SO}_{2n}, \mathrm{Sp}_{2n}, \times \mathrm{SO}_{2n}, \mathrm{std} \otimes \mathrm{std}, 1)
+\begin{align*}
+\Delta &= (\mathrm{SO}_{2n+1} \times \mathrm{SO}_{2n}, \mathrm{SO}_{2n}, 0, 1) \\
+\leftrightarrow \check{\Delta} &= (\mathrm{Sp}_{2n} \times \mathrm{SO}_{2n}, \mathrm{Sp}_{2n}, \times \mathrm{SO}_{2n}, \mathrm{std} \otimes \mathrm{std}, 1)
+\end{align*}
 $$
 
 Now, we know that $(\check{G}, \check{G}, \check{\rho}, 1)$ is a BZSV quadruple if
@@ -227,20 +246,37 @@ $$
 N = \{ g \in G : \lim_{t \to 0} \iota(\mathrm{diag}(t, t^{-1})) g \iota(\mathrm{diag}(t, t^{-1}))^{-1} = 1\}.
 $$
 
+As before, $\iota: H \times \mathrm{SL}\_{2} \to G$ defines an adjoint action of $H \times \mathrm{SL}\_{2}$ on $\mathfrak{g}$ and decompose it as
 
+$$
+\mathfrak{g} = \bigoplus_{k \geq 0} \rho_{k} \otimes \mathrm{Sym}^{k}.
+$$
+
+Then we define $\Delta = (G, H, \iota, \rho_H)$ to be the Whittaker induction of $\Delta_{0} = (M, H, 1, \rho')$ where
+
+$$
+\rho' = \rho \oplus \left(\bigoplus_{k \,\mathrm{odd}} \rho_k \right)
+$$
+
+Then the third evidence reads as follows.
+Assume that the dual quadruple of $\Delta_0$ is $\check{\Delta}_0 = (\check M, \check M, 1, \rho\_{\check M})$, i.e. strongly tempered.
+If $\rho\_{\check M}$ is an irreducible representation of $\check M$ with highest weight $\varpi\_{\check M}$, then we define $\rho\_{\check M}^{\check G}$ to be the irreducible representation of $\check G$ with highest weight $\varpi\_{\check G} = w \varpi\_{\check M}$ for some $w \in W_G$.
+If $\rho\_{\check M}$ is not irreducible, do this for all the irreducible factors.
+Then they conjectured that $\check \Delta = (\check G, \check G, 1, \rho\_{\check M}^{\check G})$.
+They checked that, all the quadruples $\Delta$ in Table 3-6 are Whittaker inductions of some other quadruples $\Delta\_{0}$, and if we assume the conjectural duality for $\Delta\_{0}$ and $\check{\Delta}\_{0}$, then the above conjecture is also true.
 
 ### Charlotte Chan - Generic character sheaves on parahoric subgroups
 
-The talk covers several papers by Chan and coauthors (possibly all the papers in [Chan's webpage](https://websites.umich.edu/~charchan/papers/) with "Deligne-Lusztig" in the abstract).
+The talk covered several papers by Chan and coauthors (possibly all the papers in [Chan's webpage](https://websites.umich.edu/~charchan/papers/) with "Deligne-Lusztig" in  abstracts).
 
 Deligne-Lusztig theory gives a way to build irreducible representations of reductive groups over finite fields via cohomology of *Deligne-Lusztig varieties*.
-Once we have a representation $\pi$ of such groups $G(\mathbb{F}_{p})$, the easiest(?) way to produce a representation of $p$-adic groups $G(\mathbb{Q}_{p})$ is 1) to take pullback along the natural map $G(\mathbb{Z}_{p}) \twoheadrightarrow G(\mathbb{F}_{p})$ and 2) take a compact induction to $G(\mathbb{Q}_{p})$.
-However, we can only obtain *depth 0* representations of $G(\mathbb{Q}_{p})$ in this way.
+Once we have a representation $\pi$ of such groups $G(\mathbb{F}\_{p})$, the easiest(?) way to produce a representation of $p$-adic groups $G(\mathbb{Q}\_{p})$ is 1) to take pullback along the natural map $G(\mathbb{Z}\_{p}) \twoheadrightarrow G(\mathbb{F}\_{p})$ and 2) take a compact induction to $G(\mathbb{Q}\_{p})$.
+However, we can only obtain *depth 0* representations of $G(\mathbb{Q}\_{p})$ in this way.
 
 To get representations of positive depths, [Adler](https://msp.org/pjm/1998/185-1/pjm-v185-n1-p01-p.pdf) and [Yu](https://www.ams.org/journals/jams/2001-14-03/S0894-0347-01-00363-0/S0894-0347-01-00363-0.pdf) boost up the step 1) of the above construction, which is "algebraic" in nature.
 Instead, one may consider to use representations of "thickened" groups $G(\mathbb{Z} / p^{r}\mathbb{Z})$ using "geometry".
-These are called **jet schemes**: more precisely, for a connective reductive group $G$ over $\mathbb{F}_{p}$, we define the $r$-th jet scheme $G_{r}$ as a group scheme $A \mapsto G(A[t] / t^{r+1})$.
-Then there's an analogous jet-version of Deligene-Lusztig variety whose cohomology gives a representation of $G_{r}(\mathbb{F}_{p})$, and following the remaining step gives irreducible cuspidal representations of $G(\mathbb{Q}_{p})$ of *positive depth*.
+These are called **jet schemes**: more precisely, for a connective reductive group $G$ over $\mathbb{F}\_{p}$, we define the $r$-th jet scheme $G_{r}$ as a group scheme $A \mapsto G(A[t] / t^{r+1})$.
+Then there's an analogous jet-version of Deligene-Lusztig variety whose cohomology gives a representation of $G_{r}(\mathbb{F}\_{p})$, and following the remaining step gives irreducible cuspidal representations of $G(\mathbb{Q}\_{p})$ of *positive depth*.
 In fact, there is a categorical (sheaf) version of parabolic induction for the derived category of $\ell$-adic sheaves.
 [Bezrukanikov and Chan](https://arxiv.org/abs/2401.07189) proved that jetification is also possible for categorical version.
 
@@ -263,6 +299,25 @@ Especially, one can construct *$\Theta$-sheaves* analogous to $\Theta$-correspon
 There's a notion of parabolic induction for $\Theta$-sheaves, and the building blocks for $\Theta$-sheaves are *Cayley sheaves* that live on $\mathbb{A}^{2} / \mathbb{G}\_{m}$ (the action is hyperbolic).
 Finally, one can construct character sheaves from $\Theta$-sheaves by taking pullback along $G_{1} \times G_{2} \times V \twoheadrightarrow V$, take a tensor product with Gurevich-Hadani's kernel sheaf, and than pushforward along $G_{1} \times G_{2} \times V \to G_{1} \times G_{2}$.
 
+
+## Concluding remarks
+
+While staying at Minnesota, I learned that relative Langlands is an extremly active area and a lot of people are working on it.
+The workshop hugely motivated myself, and I decided to study meterials including
+
+* perverse sheaves (it seems that perverse sheaves are "linear algebra" of geometric Langlands, and I can't say anything without knowing about it)
+* dual of spherical variety ([Knop-Schalke](https://arxiv.org/abs/1702.08264))
+* the original GGP paper and SV (not BZSV) paper
+* Mao-Wan-Zhang's paper (see if there's any example that is more interesting than other examples)
+
+which are more than enough for remaining years.
+
+<p align="center">
+<img src="/assets/images/umn-nametag.png">
+<figcaption align="center">My nametag</figcaption>
+</p>
+
+Also, there's a Korean restaurant called "Korea Restaurant", and it was great (I ate 도가니탕). Also, "Hongkong noodle" was a good choice.
 
 [^1]: Here I use $\check{\Delta}$ instead of $\hat{\Delta}$ for duals, but the original notation in the paper is latter one.
 
