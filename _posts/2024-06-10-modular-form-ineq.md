@@ -37,3 +37,49 @@ E_{2}' = \frac{E_{2}^{2} - E_{4}}{12}, \quad E_{4}' = \frac{E_{2}E_{4} - E_{6}}{
 $$
 
 and product rule.
+I differentiate $F$ using Sage, and I got the following:
+
+$$
+F' = 
+$$
+
+(you only need to call `F.derivative()`). As you can see, differentiating quasimodular form increases weight by 2 and depth by 1. The original $F$ has weight $16$ and depth $2$, so $F'$ has weight $18$ and depth $3$. However, I found that we can cancel out $E_{2}^{3}$ terms, and moreover, it even factors into a product of two forms:
+
+$$
+F' - \frac{7}{6} E_{2} F = 
+$$
+
+Surprisingly, each factor are essentially derivatives of $E_{4}$ and $-E_{10} = - E_{4} E_{6}$, hence they should have positive Fourier coefficients.
+After I observe this, I wonder if this would imply positivity of $F$.
+It turned out to be true, and the idea is to solve the differential equation.
+I also found that the cancellation phenomena is quite general, and the operator $D - \frac{7}{6} E_{2}$ actually has a name - Serre derivative of weight $14$.
+This proved the "easy" inequality
+
+For a while again, I had no progress on the "hard" inequality.
+Of course, I tried to mimic Romik's proof, but his proof is quite delicate and it was not clear for me how to apply it in $d = 24$ case.
+Especially, we need to prove that $F$ has nonnegative Fourier coefficients, which does not follow from the previous argument (using Serre derivative).
+Hence I decided to understand $d = 8$ case more carefully, especially trying myself to re-prove the (hard) inequality.
+Then I observed the monotonicity of quotient, and how nicely its derivative factors, which yield Proof 1.
+Luckily, the same strategy seems to work for 24-dimensional case (2nd inequality), but proving the positivity of $F'G - FG'$ seems much harder than 8-dimensional case.
+The biggest difference is that it does not factors as nicely as 8-dimensional case - it factors as
+
+$$
+F'G - FG' = H_{2}^{5} (H_2 + H_4)^{2} H_{4}^{2} \cdot K
+$$
+
+where $K$ is a weight 14, *depth 2*, level 2 quasimodular form (it does not factor as a product of depth 1 quasimodular forms).
+But one interesting observation was that the actual level $K$ was $\Gamma_{0}(2)$, not $\Gamma(2)$.
+
+Then the next question is - how to cook up positive quasimodular forms of level $1$ or $\Gamma_{0}(2)$.
+I tried a lot of things, but what actually worked is using extermal quasimodular forms and old forms from it.
+Especially, it is possible to express $K$ as a positive linear combination of
+
+$$
+\begin{align*}
+H_{2}(z) X_{12, 2}(z), &\quad H_{2}(z) (X_{12, 2}(z) - 2^{10} X_{12, 2}(2z)), \\
+(H_{2}(z) + 2 H_{4}(z)) X_{10, 2}(z), &\quad (H_{2}(z) + 2H_{4}(z)) (X_{10, 2}(z) - 2^{8} X_{10, 2}(2z)) \\
+H_{2}^{2}(z) X_{8, 2}(z), &\quad H_{2}^{2}(z) (X_{8, 2}(z) - 2^{6} X_{8, 2}(2z))
+\end{align*}
+$$
+
+where all the forms above are positive (in fact, completely positive).
