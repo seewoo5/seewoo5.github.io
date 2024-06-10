@@ -179,7 +179,7 @@ $$
 (G, H) = (\mathrm{U}_{2n}, \mathrm{U}_{n} \times \mathrm{U}_{n}).
 $$
 
-(The periods would be related to the base change $L$-function $L(1/2, \mathrm{BC}(\pi))$ in this case.)
+and its arithmetic counterpart (the periods would be related to the base change $L$-function $L(1/2, \mathrm{BC}(\pi))$ in this case).
 The main obstacle for studying this case compared to Friedberg-Jacquet is that one needs a Galois action to distinguish this case with other twists.
 For example, for a quadratic extension $E /F$, the following two varieties
 
@@ -197,6 +197,17 @@ To do this, they defined inner and outer forms for $G$-varieties (as in a way th
 > 1. There exists a canonical 1-cocycle $c_X: \Gamma \to \mathrm{Aut}^{\mathrm{dist}}(X)(\overline{F})$ such that for two $G$-varieties $X_1$ and $X_2$ that are $G$-forms each other, they are $G$-inner if and only if $[c_{X_1}] = [c_{X_2}]$.
 > 2. Let $X = G / G^\eta$ be a symmetric variety, associated to an involution $\eta: G \to G$. Then $\mathrm{Aut}^{\mathrm{dist}}(X)$ determines a symplectic representation $\check{G}\_{X} \curvearrowright S_{X}$ and the data of $c_{X}$ uniquely determines further $\Gamma$-action, hence ${}^{L} \check{G}\_{X} \curvearrowright S_{X}$.
 
+For example, in case of $X_1$ and $X_2$ above, we have $c_{X_1} = 1$ but $c_{X_2}: \Gamma \to \{\pm 1\}$ is a quadratic character.
+
+Furthermore, for the symmetric case, we can tell something about endoscopy.
+More precisely, for a semisimple and suitably Galois-stable $s \in \check X$, one has an endoscopic datum $e = (G_{\mu(s)}, \mu(s), \xi)$ and $X_e = G\_{\mu(s)} / H_e$ for some stabilizer $H_e$ and a canonical $F$-rational map between categorical quotients
+
+$$
+X_e // H_e \xrightarrow{\varphi_e} X // H,
+$$
+
+which is what we need for the stabilization of the relavent RTF.
+Leslie mentioned that they proved weak transfer and the fundamental lemma.
 
 
 
@@ -315,6 +326,7 @@ $$
 $$
 
 (Note that Weil representations for other fields may require metaplectic covers, but we don't need this over finite fields.)
+
 Now, in my understanding, the goal of this talk (based on a joint work with Shamgar Gurevich) is about geometrization of theta corresspondence - the irreducible projectors above correspond to perverse sheaves on $(V_{1} \otimes V_{2}) / (G_{1} \times G_{2})$.
 Especially, one can construct *$\Theta$-sheaves* analogous to $\Theta$-correspondence.
 There's a notion of parabolic induction for $\Theta$-sheaves, and the building blocks for $\Theta$-sheaves are *Cayley sheaves* that live on $\mathbb{A}^{2} / \mathbb{G}\_{m}$ (the action is hyperbolic).
