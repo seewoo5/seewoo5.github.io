@@ -15,6 +15,9 @@ In my understanding, **relative** Langlands duality can be summarized as
 as a number theorist, not as a mathematical physicist.
 As far as I know, we don't have nice arithmetic theory yet (we have arithmetic TQFT by Minhyong Kim, but they are not fully developed as much as geometric analogues).
 
+I wrote summary of each summer school and (subset of) workshop talks, based on my own notes and [other's notes](https://sites.google.com/site/tsaohsienchen/home/summer-schools-and-workshops?authuser=0).
+If there are anything wrong written below, it is due to my lack of understanding.
+
 ## Summer school
 
 There were four mini lecture series covering four different (but strongly connected) topics in relative Langlands duality.
@@ -122,7 +125,6 @@ where
 
 There was a workshop followed by the summer school, introducing recent works related to relative Langlands duality and BZSV framework.
 Here I record summary of some of the talks that I was interested in.
-Again, if there are anything wrong written below, it is due to myself.
 
 ### Tony Feng - Rankin-Selberg unfolding for geometric periods
 
@@ -277,8 +279,27 @@ To get representations of positive depths, [Adler](https://msp.org/pjm/1998/185-
 Instead, one may consider to use representations of "thickened" groups $G(\mathbb{Z} / p^{r}\mathbb{Z})$ using "geometry".
 These are called **jet schemes**: more precisely, for a connective reductive group $G$ over $\mathbb{F}\_{p}$, we define the $r$-th jet scheme $G_{r}$ as a group scheme $A \mapsto G(A[t] / t^{r+1})$.
 Then there's an analogous jet-version of Deligene-Lusztig variety whose cohomology gives a representation of $G_{r}(\mathbb{F}\_{p})$, and following the remaining step gives irreducible cuspidal representations of $G(\mathbb{Q}\_{p})$ of *positive depth*.
-In fact, there is a categorical (sheaf) version of parabolic induction for the derived category of $\ell$-adic sheaves.
-[Bezrukanikov and Chan](https://arxiv.org/abs/2401.07189) proved that jetification is also possible for categorical version.
+
+Now, the main slogan is: Yu's algebraic construction is, on geometric side, given by parabolic induction.
+For a charater $\theta : T \to \mathbb{F}\_p^\times$, we have a *parabolic induction* $\mathrm{pInd}\_T^G(\theta)$ and a class function associated to it:
+
+$$
+g \mapsto \sum_{\substack{hB \in G / B \\ hgh^{-1} \in B}} \theta(\mathrm{pr}(hgh^{-1}))
+$$
+
+where $\mathrm{pr}: B \to T$ is the projection.
+One can categorify this as follows: let 
+
+$$
+X = \{(g, hB) \in G \times G/B: hgh^{-1} \in B\}
+$$
+
+with two projections $\pi : X \to G$ (the natural projection) and $f: X \to T, (g, hB) \mapsto \mathrm{pr}(hgh^{-1})$. Then the sheafification of the above class function is simply $\mathrm{pInd}\_T^G(\mathcal{L}\_\theta) := \pi\_{!} f^{\ast} \mathcal{L}\_\theta$, where $\mathcal{L}\_\theta$ is a local system on $T$ associated to $\theta$.
+Lusztig proved that this is a simple perverse sheaf, and taking trace of Frobeinus recovers the class function associated to $R_T^G(\theta)$.
+Lusztig conjectured that the same is true for jetified version, and this is what Chan and other collegues proved (e.g. see [Bezrukanikov and Chan](https://arxiv.org/abs/2401.07189)).
+One interesting point is that, when we match up the geometric construction with Yu's algebraic construction, it requires some correction that arises in local Langlands.
+Chan also mentioned that, one can take limit of (cohomology of) jetified Deligne-Lusztig varieties, and the result is related to $p$-adic Deligne-Lusztig variety.
+
 
 
 ### Zhiwei Yun - Character sheaves in the setting of theta correspondence
