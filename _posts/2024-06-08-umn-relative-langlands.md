@@ -68,9 +68,9 @@ H \xrightarrow{M} G \quad \leadsto \quad \mathcal{A}_{H} \xrightarrow{\mathcal{A
 $$
 
 Langlands program expect that automorphic theory for $G$ corresponds to a *spectral theory* for the dual group $\check{G}$ (over a coefficient field $k$), can be thought as algebraic geometry of Langlands parameters.. We denote this as $\mathcal{B}\_{\check{G}}$ for $B$-side.
-One should also have a functoriality on spectral as well, and what we want is that the Langlands duality and funtorialities are compatible, i.e. roughly we have a commutative diagram
+One should also have a functoriality on spectral as well, and what we want is that the Langlands duality and functorialities are compatible.
 
-Now, what *are* $\mathcal{A}$ and $\mathcal{B}$? The model for this (in relative Langlands / BZSV) is 4-d TQFT.
+What *are* $\mathcal{A}$ and $\mathcal{B}$? The model for this (in relative Langlands / BZSV) is 4-d TQFT.
 Ben-Zvi didn't give any definitions of 4-d TQFT, but what he told us (which was enough for me) is the following: it assigns
 
 * 3-manifold $\leadsto$ vector space,
@@ -78,6 +78,7 @@ Ben-Zvi didn't give any definitions of 4-d TQFT, but what he told us (which was 
 * 1-manifold $\leadsto$ 2-category.
 
 (He also mentioned that 4-manifold goes to a number in a base field, and I guess 0-manifold (point) maps to 3-category).
+We also expect this to be a symmetric monoidal functor from the cobordism category: disjoint union corresponds to "products" (scalar product, tensor product, etc.) and manifolds with boundaries to morphisms between its values on those boundaries.
 
 ### 3. Relative Langlands Duality - Examples by Lei Zhang and Chen Wan
 
@@ -103,6 +104,108 @@ Some of the important points are:
 * Unlike Langlands dual group (defined as swappring root datum), we don't have a general systematic/algorithmic/combinatorial way to get $\check{\Delta}$ out of $\Delta$.
 
 Now, the conjecture is that we have identities relating automorphic period of $\Delta$ (resp. $\check{\Delta}$) and certain $L$-values of $\check{\Delta}$ (resp. $\Delta$).
+More precisely, let $\pi$ be an automorphic representation of $G$ and $Y \subset V\_{\rho\_{H}}$ be the maixmal isotropic subspace.
+We can define the corresponding Weil representation $(\Omega\_{\iota}, \mathscr{S}(Y(\mathbb{A})))$ of the metaplectic cover, and define the theta series $\Theta = \Theta\_{\Omega\_{\iota}}$ as usual:
+
+$$
+\Theta(g) := \sum_{v \in Y(k)} \Omega_\iota(g) \phi(v), \quad g \in \mathrm{Mp}(V(\mathbb{A})), \quad \phi \in \mathscr{S}(Y(\mathbb{A}))
+$$
+
+Then the *automorphic period integral* associated to $\Delta$ is given by
+
+$$
+\mathcal{P}_{\Delta}(\phi) = \int_{[H]}^{\ast} \mathcal{F}_\iota(\varphi)(h) \Theta(\rho_{H}(h)) \mathrm{d}h
+$$
+
+where $\mathcal{F}\_{\iota}$ is a degenerate Whittaker period associated to $\iota$.
+Then we have the folloing "$\mathcal{P}\_{\Delta} = L_{\check{\Delta}}$" conjecture: 
+
+1. $\mathcal{P}\_{\Delta}(\varphi) \neq 0$ only if the Arthur parameter of $\pi$ factors through $\check{\iota} : \check{H}'(\mathbb{C}) \times \mathrm{SL}\_{2}(\mathbb{C}) \to \check{G}(\mathbb{C})$.
+2. Assume that $\pi$ is a lifting of a global tempered Arthur packet $\Pi$ of $H'(\mathbb{A})$. Then, up to a global constant, we have
+
+$$
+\frac{|\mathcal{P}_\Delta(\varphi)|^{2}}{\| \varphi\|^{2}} = \frac{L(1/2, \Pi, \rho_{\check H'}) \prod_m L(m/2 + 1, \Pi, \check \rho_m)}{L(1, \Pi, \mathrm{Ad})^{2}}
+$$
+
+Furthermore, we can obtain *dual* theorem/conjecture by swapping $\Delta$ and $\check \Delta$, i.e. $\mathcal{P}\_{\check \Delta} = L_{\Delta}$.
+
+There are *a lot of* known/conjectural examples, such as
+
+- Lapid-Mao 
+
+$$
+\Delta = (G, 1, \iota_{\mathrm{reg}}, 0) \leftrightarrow \check \Delta = (\check G, \check G, 1, 0)
+$$
+
+In this case, the dual theorem is trivial.
+
+- Rankin-Selberg
+
+$$
+\begin{align*}
+\Delta &= (\mathrm{GL}_n \times \mathrm{GL}_n, \mathrm{GL}_n^\Delta, 1, T^*\mathrm{std}) \\
+\leftrightarrow \check \Delta &= (\mathrm{GL}_n \times \mathrm{GL}_n, \mathrm{GL}_n \times \mathrm{GL}_n, 1,  T^*(\mathrm{std} \otimes \mathrm{std}))
+\end{align*}
+$$
+
+We have
+
+$$
+\mathcal{P}_{\Delta} = L_{\check \Delta} \Leftrightarrow \int_{[\mathrm{GL}_{n}^{\Delta}]} \varphi_{1}(h) \varphi_{2}(h) E(s, h, \phi') \mathrm{d}h = L(s, \pi_{1} \otimes \pi_{2}, \mathrm{std}_{n} \otimes \mathrm{std}_{n})
+$$
+
+(for generic $\pi = \pi_1 \otimes \pi_2$).
+The dual theorem becomes Godment-Jacquet integral (theta correspondence):
+
+$$
+\mathcal{P}_{\check \Delta}(\varphi) = \int_{[\mathrm{GL}_{n}]} \int_{[\mathrm{GL}_{n}]} \varphi_1(g) \varphi_2(g) \Theta(g, h) \mathrm{d}g \mathrm{d}h
+$$
+
+(here $\Theta$ is the theta series for $\mathrm{Mp}\_{2n^2}$) and it is nonvanishing if and only if $\pi_{2}$ is a global theta lifting of $\pi_{1}$ and $L(1/2, \pi_{1}) \neq 0$.
+
+- Gan-Gross-Prasad
+
+$$
+\begin{align*}
+\Delta &= (\mathrm{SO}_{2n+1} \times \mathrm{SO}_{2n}, \mathrm{SO}_{2n}^\Delta, 1, 0) \\
+\leftrightarrow \check \Delta &= (\mathrm{Sp}_{2n} \times \mathrm{SO}_{2n}, \mathrm{Sp}_{2n} \times \mathrm{SO}_{2n}, 1, \mathrm{std} \otimes \mathrm{std}).
+\end{align*}
+$$
+
+We have Ichino-Ikeda formula
+
+$$
+|\mathcal{P}_{\Delta}(\varphi_1 \otimes \varphi_2)|^{2} = L\left(\frac{1}{2} \pi_{1} \otimes \pi_{2}, \mathrm{std} \otimes \mathrm{std} \right)
+$$
+
+
+The dual theorem becomes Rallis inner product formula for theta correspondence.
+
+- Jacquet-Shalika
+
+$$
+\begin{align*}
+\Delta &= (\mathrm{GL}_{2n}, \mathrm{GL}_{n}, [2^n], T^\ast \mathrm{std}) \\
+\leftrightarrow \check \Delta &= (\mathrm{GL}_{2n}, \mathrm{GL}_{2n}, 1, \wedge^2 \oplus (\wedge^2)^\vee)
+\end{align*}
+$$
+
+We have
+
+$$
+\mathcal{P}_\Delta = L_\Delta \Leftrightarrow \int_{[\mathrm{GL}_{2n}]} \varphi(h) E(s, \wedge^2(h), f) \mathrm{d}h = L(s, \pi, \wedge^2)
+$$
+
+where $E(s, g, f)$ is the Eisenstein series of $\mathrm{GL}(\wedge^2) = \mathrm{GL}\_{n(2n-1)}$.
+Then the dual theorem becomes
+
+$$
+\mathcal{P}\_{\check \Delta}(\varphi) = L(s, \tau) L(2, \tau, \mathrm{Ad})
+$$
+
+when $\pi$ is the Speh representation $(\tau, 2)$ (one needs to regularize $\mathcal{P}\_{\check \Delta}$).
+
+The above part was covered by Lei Zhang (for two lectures), and the remaining half is covered by Chen Wan, which was elaborated in his workshop talk (see below).
 
 
 ### 4. Mathematical definition of Coulomb branches and Ring objects in the derived Satake category by Hiraku Nakajima
@@ -350,7 +453,7 @@ which are more than enough for remaining years.
 <figcaption align="center">My nametag</figcaption>
 </p>
 
-Also, there's a Korean restaurant called "Korea Restaurant", and it was great (I ate 도가니탕). Also, "Hongkong noodle" was a good choice.
+Also, there's a Korean restaurant called [Korea Restaurant](https://maps.app.goo.gl/tLuKTDFvzzJTKJad7), and it was an authentic and great (I ate 도가니탕). [Hongkong Noodle](https://maps.app.goo.gl/cJDhuj7s7TkYSURw8) was a good choice, too.
 
 [^1]: Here I use $\check{\Delta}$ instead of $\hat{\Delta}$ for duals, but the original notation in the paper is latter one.
 
