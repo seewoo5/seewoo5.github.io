@@ -1,7 +1,7 @@
 ---
 layout: posts
 title:  "Relative Langlands Duality summer school & workshop at UMN"
-date:   2024-06-03
+date:   2024-06-08
 categories: jekyll update
 tags: math
 ---
@@ -13,7 +13,8 @@ In my understanding, **relative** Langlands duality can be summarized as
 > Study Langlands functoriality and relate it to periods and special L-values
 
 as a number theorist, not as a mathematical physicist.
-As far as I know, we don't have nice arithmetic theory yet (we have arithmetic TQFT by Minhyong Kim, but they are not fully developed as much as geometric analogues).
+But the "model" for relative duality comes from *4-dimensional boundary TQFT* where *boundary* part explains period and $L$-functions.
+As far as I know, we don't have nice arithmetic theory yet (we have arithmetic TQFT by Minhyong Kim, but they are not fully developed as much as geometric analogues), although we have a lot of known examples of the "P=L" conjecture for number field cases.
 
 I wrote summary of each summer school and (subset of) workshop talks, based on my own notes and [other's notes](https://sites.google.com/site/tsaohsienchen/home/summer-schools-and-workshops?authuser=0).
 If there are anything wrong written below, it is due to my lack of understanding.
@@ -55,6 +56,15 @@ where the sum is over certain fixed points on $\check{M}$, and the square root o
 
 Under the duality, one expect *dual theorem* by swapping $M = T^{*}(H \backslash G)$ with its dual. In GGP case, the dual theorem of Ichino-Ikeda conjecture becomes Rallis inner product formula for theta correspondence.
 
+Sakellaridis also discussed about geometric case.
+Let $F = \mathbb{F}\_{q}(\Sigma)$ be a function field of a curve over finite fields, and $G$ be a reductive group over $F$.
+For a spherical $G$-variety $X$, we have a space $\mathrm{Bun}\_{G}^{X} \xrightarrow{p} \mathrm{Bun}\_{G}$ that parametrizes $G$-bundles on $\Sigma$ *and* a $X$-section.
+Then the pushforward $p_{\ast} \underline{k}$ of a constant sheaf gives a sheaf on $\mathrm{Bun}\_{G}$ is called the *period sheaf* $\mathcal{P}\_{X}$, whose trace of Frobenius should recover theta series (of the distinguished unramified section).
+For the Iwasawa-Tate case ($G = \mathbb{G}\_{m}$ and $X = \mathbb{A}^{1}$), $\mathrm{Bun}\_{G}$ is simply the Picard group of $\Sigma$ and for the distinguished unramified section $\Phi = \mathbf{1}\_{\hat{\mathcal{O}}}$, $\Theta\_{\Phi}(g)$ counts the number of sections of the associated line bundle $\mathcal{L}\_{[g]}$.
+
+The remaining talks were about local periods and unramified Plancherel densities.
+Honestly, I could not understand this story well, so I recommend you to check other's note on Sakellaridis' third lecture.
+
 
 ### 2. Relative Langlands Duality - B-side by David Ben-Zvi
 
@@ -78,7 +88,76 @@ Ben-Zvi didn't give any definitions of 4-d TQFT, but what he told us (which was 
 * 1-manifold $\leadsto$ 2-category.
 
 (He also mentioned that 4-manifold goes to a number in a base field, and I guess 0-manifold (point) maps to 3-category).
+Let's denote the assignment (theory) as $\mathcal{Z}$.
 We also expect this to be a symmetric monoidal functor from the cobordism category: disjoint union corresponds to "products" (scalar product, tensor product, etc.) and manifolds with boundaries to morphisms between its values on those boundaries.
+$\mathcal{Z}(\Sigma \times \mathbb{S}^{1})$ is determined by $\mathcal{Z}(\Sigma)$ as the "dimension" or "cocenter".
+More generally, if we have an automorphism $f: \Sigma \to \Sigma$ then it induces a morphism $\mathcal{Z}(f): \mathcal{Z}(\Sigma) \to \mathcal{Z}(\Sigma)$, and the trace of $\mathcal{Z}(f)$ recovers $\mathcal{Z}$ of mapping torus of $f$ (and $f = \mathrm{id}$ recovers $\Sigma \times \mathbb{S}^{1}$ case).
+
+*Hecke action* can be given as follows.
+Given $\Sigma$, consider $\Sigma \times I = \Sigma \times [0, 1]$ and choose a small ball $\mathbb{S}^{2}$ centered at $(x, 1/2)$ (for $x \in \Sigma$).
+Then the disjoint union
+
+$$
+\Sigma \bigsqcup \mathbb{S}^{2} \to \Sigma
+$$
+
+yields
+
+$$
+\mathcal{Z}(\Sigma) \otimes \mathcal{Z}(\mathbb{S}^{2}) \to \mathcal{Z}(\Sigma),
+$$
+
+i.e. an action of $\mathcal{Z}(\mathbb{S}^{2})$ on $\mathcal{Z}(\Sigma)$.
+Moreover, we can "collapse" $\Sigma \sqcup \mathbb{S}^{2}$ over $I$ and get doubled $\Sigma$ with "ravioli" centered at $x \in \Sigma$:
+
+$$
+\Sigma \to \Sigma_{x} := \Sigma \bigsqcup_{\Sigma \backslash \{x\}} \Sigma = \Sigma \bigsqcup_{D} (D \bigsqcup_{D^\times} D) \leftarrow \Sigma
+$$
+
+giving a Hecke action at $x$.
+We can add more points and balls (raviolis) and compose these in three directions, giving $E_{3}$-algebra structure on $\mathcal{Z}(\mathbb{S}^{2})$.
+These are called **observables** $\mathrm{Obs}\_{\mathcal{Z}}(\Sigma)$, acting on the **states** $\mathcal{Z}(\Sigma)$.
+
+I haven't mentioned what are $\mathcal{A}$ and $\mathcal{B}$ yet.
+(In geometric Langlands) $\mathcal{A}\_{G}$ is referred to the topology of spaces of $G$-bundles, e.g. associate $\mathrm{Bun}\_{G}(\Sigma)$ or its cohomology.
+$\mathcal{B}\_{\check G}$ is on arithmetic geometry of moduli of local systems $\mathrm{Loc}\_{\check G}(\Sigma)$, view as representations $\pi_{1}(\Sigma) \to \check G$ or locally constant maps $\Sigma \to B\check G$.
+Then (geometric) Langlands correspondence becomes
+
+$$
+\mathcal{A}_G(\Sigma) \simeq \mathcal{B}_{\check G}(\Sigma)
+$$
+
+in an appropriate sense. Moreover, Ben-Zvi mentioned the following diamond diagrams:
+
+<p align="center">
+<img src="/assets/images/umn-diamond-ben-zvi.jpeg">
+</p>
+
+where
+
+* $/$ direction corrsponds to local $\leftrightarrow$ global
+* $\backslash$ direction corresponds arithmetic $\leftrightarrow$ geometric, via traces
+* dimensions are 1, 2 and 3 from bottom to the top
+* $\mathcal{A}\_{G} \simeq \mathcal{B}\_{\check G}$ duality holds for each vertex of diamond (left is $\mathcal{A}$, right is $\mathcal{B}$).
+
+For *relative* Langlands, we need to relate $\mathcal{A}$ and $\mathcal{B}$-sides for different groups.
+Morphisms in field theory are **interfaces**, i.e. extension of two theories $\mathcal{Z}(\Sigma)$ and $\mathcal{Z}'(\Sigma)$ to a cylinder $\Sigma \times I$ (which is an analogue of bimodule).
+If $\mathcal{Z}'$ is a trivial theory, then the corresponding interface is the boundary theory for $\mathcal{Z}$, and it becomes 3-d TQFT if both $\mathcal{Z}$ and $\mathcal{Z}'$ are trivial.
+On $\mathcal{A}$-side, boundary theory correpsonds to periods, and the boundary theory on $\mathcal{B}$-side corresponds to L-functions ($\mathcal{L}$-sheaves).
+More precisely, L-functions become a (graded) traces of Frobenius of $\mathcal{L}$-sheaves, following Grothendieck's function-sheaf correspondence.
+
+Now, assume that two groups $G$ and $H$ acts on $X$ (like as a bimodule).
+Then we want to have a corresponding interface $\mathcal{A}\_{X}$ with actions of $\mathcal{A}\_{G}$ and $\mathcal{A}\_{H}$ and similar for $\mathcal{B}\_{\check X}$ with $\mathcal{B}\_{\check G}$ and $\mathcal{B}\_{\check H}$ actions.
+For example, Eisenstein series or Springer correspondence is encoded as $X = G / N$ with $G$ and $H = T$ actions on it.
+Unfortunately, we don't know how to produce $\check X$ from $G, X, H$ in full generality yet.
+
+Note that we have a similar *arithmetic* theory by Minhyong Kim, with analogy of
+
+* 3-manifolds $\leftrightarrow$ number fields / global function fields / $\mathrm{Spec}(\mathcal{O}\_{F})$
+* 2-manifolds $\leftrightarrow$ local fields / curve over algebraically closed fields
+* 1-manifolds $\leftrightarrow$ $\mathrm{Spec}(\overline{k}((t)))$, $\mathrm{Spec}(\mathbb{F}\_{q})$.
+
+Unfortunately, we don't have a good theory of bordisms yet.
 
 ### 3. Relative Langlands Duality - Examples by Lei Zhang and Chen Wan
 
@@ -175,7 +254,7 @@ $$
 We have Ichino-Ikeda formula
 
 $$
-|\mathcal{P}_{\Delta}(\varphi_1 \otimes \varphi_2)|^{2} = L\left(\frac{1}{2} \pi_{1} \otimes \pi_{2}, \mathrm{std} \otimes \mathrm{std} \right)
+|\mathcal{P}_{\Delta}(\varphi_1 \otimes \varphi_2)|^{2} = L\left(\frac{1}{2}, \pi_{1} \otimes \pi_{2}, \mathrm{std} \otimes \mathrm{std} \right)
 $$
 
 
@@ -281,7 +360,7 @@ $$
 $$
 
 where $H$ is embedded in $G$ block-diagonally. They proved that the following: let $\pi$ be a cuspidal automorphic representation of $G$.
-The automorphic period $\mathcal{P}_H(\phi) = \int_{[H]} \phi(h) \mathrm{d} h$  is nonvanishing for some $\phi \in \pi$ if and only if
+The automorphic period $\mathcal{P}\_H(\phi) = \int_{[H]} \phi(h) \mathrm{d} h$  is nonvanishing for some $\phi \in \pi$ if and only if
 
 1. $L(s, \pi, \wedge^2)$ has a pole at $s = 1$ (which corresponds to the factor-through-A-parameter condition in BZSV conjecture stated in Wan and Zhang's talk)
 2. $L(1/2, \pi) \neq 0$.
