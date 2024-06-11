@@ -211,6 +211,8 @@ The above part was covered by Lei Zhang (for two lectures), and the remaining ha
 ### 4. Mathematical definition of Coulomb branches and Ring objects in the derived Satake category by Hiraku Nakajima
 
 This talk is also inclined to mathematical physics that I could not understand most of the things.
+I strongly recommend you to follow other's notes linked above.
+
 The first talk is to understand the meaning of the following equation, which is the equation (3.13) from Gaiotto and Witten's paper [$S$-Duality of Boundary Conditions in $\mathcal{N}=4$ Super Yang-Mills Theory](https://www.arxiv.org/abs/0807.3720)[^2]
 
 $$
@@ -219,10 +221,18 @@ $$
 
 where
 * $G$ is a reductive group
-* $\mathcal{T}$ is a 3D $\mathcal{N} = 4$ SQFT with $G$-symmetry ($\mathcal{T}$ for "T"heory)
-* $\mathcal{T}[G]$ is a "kernel" 3D $\mathcal{N} = 4$ SQFT
+* $\mathcal{T}$ is a 3d $\mathcal{N} = 4$ SQFT with $G$-symmetry ($\mathcal{T}$ for "T"heory)
+* $\mathcal{T}[G]$ is a "kernel" 3d $\mathcal{N} = 4$ SQFT (only depends on $G$)
 * $\backslash\mkern-11mu /\mkern-6mu/ \mkern-6mu/$ is SUSY gauging
-* $*$ is 3D mirror
+* $*$ is 3d mirror
+
+The above equation tells us how to compute "dual theory".
+The *Coulomb branch* $\mathcal{M}\_{C}$ for 3d $\mathcal{N} = 4$ SUSY gauge theory for $(G, M)$ is defined using Borel-Moore homology of a fiber of a certain fiber bundle of affine grassmannian, when $M = T^{\ast} N$ is an anomaly free symplectic representation of $G$.
+Some examples with $G = \mathbb{G}\_{m}$ is provided.
+
+Also, there's a notion of *Higgs branch* $\mathcal{M}\_H$, and there's a sort of duality between two branches: we expect ath $\mathcal{M}\_{C}$ is smooth if and only if $\mathcal{M}\_{H}$ is a point.
+3d mirror $\mathcal{T}^\ast$ of a theory $\mathcal{T}$ is defined to be another SQFT with $\mathcal{M}\_{C}(\mathcal{T}^{\ast}) = \mathcal{M}\_{H}(\mathcal{T})$ and $\mathcal{M}\_{H}(\mathcal{T}^{\ast}) = \mathcal{M}\_{C}(\mathcal{T})$.
+
 
 ## Workshop
 
