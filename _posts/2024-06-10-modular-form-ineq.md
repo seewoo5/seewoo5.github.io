@@ -7,7 +7,9 @@ tags: math
 ---
 
 I uploaded a new paper on arXiv about modular form inequalities appear in the proof of optimality of $E_{8}$ and Leech lattice sphere packings by Viazovska and Cohn-Kumar-Miller-Radchenko-Viazovska.
-The paper summarizes as: now we have "algebraic" proofs that does not require any numerical analysis.
+The paper can be summarized as: we have "algebraic" proofs that does not require any numerical analysis.
+
+### Story
 
 The history of the problem itself can be found in the introduction/preliminary of my paper or in the first few slides of this file.
 Instead, I share my own history and thought process on this project.
@@ -40,26 +42,26 @@ and product rule.
 I differentiate $F$ using Sage, and I got the following:
 
 $$
-F' = 
+F' = \frac{7}{6}(49 E_{2}^{3} E_{4}^{3} - 25 E_{2}^{3} E_{6}^{3} - 72 E_{2}^{2} E_{4}^{2} E_{6} - 15 E_{2} E_{4}^{2} + 81 E_{2} E_{4} E_{6}^{2} - 10 E_{4}^{3} E_{6} - 14 E_{6}^{3})
 $$
 
 (you only need to call `F.derivative()`). As you can see, differentiating quasimodular form increases weight by 2 and depth by 1. The original $F$ has weight $16$ and depth $2$, so $F'$ has weight $18$ and depth $3$. However, I found that we can cancel out $E_{2}^{3}$ terms, and moreover, it even factors into a product of two forms:
 
 $$
-F' - \frac{7}{6} E_{2} F = 
+F' - \frac{7}{6} E_{2} F = \frac{7}{3} (E_{2} E_{4} - E_{6}) (-12 E_{2} E_{4} E_{6} + 5 E_{4}^{3} + 7 E_{6}^{2}).
 $$
 
 Surprisingly, each factor are essentially derivatives of $E_{4}$ and $-E_{10} = - E_{4} E_{6}$, hence they should have positive Fourier coefficients.
 After I observe this, I wonder if this would imply positivity of $F$.
 It turned out to be true, and the idea is to solve the differential equation.
-I also found that the cancellation phenomena is quite general, and the operator $D - \frac{7}{6} E_{2}$ actually has a name - Serre derivative of weight $14$.
-This proved the "easy" inequality
+I also found that the cancellation phenomena is quite general, and the operator $D - \frac{7}{6} E_{2}$ actually has a name - *Serre derivative* of weight $14$.
+This proved the "easy" inequality.
 
 For a while again, I had no progress on the "hard" inequality.
-Of course, I tried to mimic Romik's proof, but his proof is quite delicate and it was not clear for me how to apply it in $d = 24$ case.
-Especially, we need to prove that $F$ has nonnegative Fourier coefficients, which does not follow from the previous argument (using Serre derivative).
+Of course, I tried to mimic Romik's proof, but his proof is quite delicate and it was not clear for me how to mimic it in $d = 24$ case.
+Especially, we need to prove that $F$ has nonnegative Fourier coefficients, which does not follow from the previous argument (with Serre derivative).
 Hence I decided to understand $d = 8$ case more carefully, especially trying myself to re-prove the (hard) inequality.
-Then I observed the monotonicity of quotient, and how nicely its derivative factors, which yield Proof 1.
+After playing with Sage for few more weeks, I observed the monotonicity of quotient (Figure 1), and how nicely its derivative factors, which yield the Proof 1.
 Luckily, the same strategy seems to work for 24-dimensional case (2nd inequality), but proving the positivity of $F'G - FG'$ seems much harder than 8-dimensional case.
 The biggest difference is that it does not factors as nicely as 8-dimensional case - it factors as
 
@@ -83,3 +85,27 @@ H_{2}^{2}(z) X_{8, 2}(z), &\quad H_{2}^{2}(z) (X_{8, 2}(z) - 2^{6} X_{8, 2}(2z))
 $$
 
 where all the forms above are positive (in fact, completely positive).
+There are two comments on this:
+
+1. This proof is *not* contained in the final version of the above paper, since I found a much simpler that saves almost 5~6 pages. But it has its own interest and may appear in a future paper (hopefully...).
+2. When I found this, I thought that I finished the project. Unfortunately, I realized there's a *third* inequality for 24-dimensional case, which does not appear in 8-dimensional case.
+
+For the issue in 2, I had to decide whether 1) upload the incomplete version on the arXiv, or 2) spend more time on the *third* inequality.
+I thought that there's no algebraic proof of the inequality, because it include exponential and polynomial terms (not purely modular).
+However, after playing with Sage again, I found that there might be a workaround that may leads to an algebraic proof.
+The current proof in the paper is quite different from the initial idea, but anyway there it is and that's the end.
+
+### Why it matters
+
+So I proved statements that are already known to be true. Then why it matters at all?
+Maybe, it does not matter at all. But I can try to promote the result as follows:
+
+- Algebraic method is more well-suited than numerical method to prove some results that are *uniform* in infinitely many dimensions (maybe I'm wrong), since numerical methods  cannot be applied easily to prove infinitely many statements (inequalities). In fact, my original goal was to prove a uniform bound (of course, I don't have a proof).
+Unfortunately, the conjectural LP bound is weaker than the current best known upper bound.
+- Better for *formalization*. At least in Lean, it is more inclined toward "algebra" than "analysis", so this proof of the inequalities might be more easily formalizable than other analytic proofs.
+
+### Why computer matters
+
+What I learn from the project is that Sage or any math programs are extremely helpful.
+Since I'm not Ramanujan, I cannot plot the graphs of quotients $F(it) / G(it)$ or even factor $\partial\_{14}F$ with hands, but Sage can do this in milli seconds.
+Maybe I'm too much biased toward computer-assisted mathematics, but I strongly believe that computer will be used a lot in future math research (much more than now).
