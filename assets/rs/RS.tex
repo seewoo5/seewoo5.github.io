@@ -1,0 +1,154 @@
+\documentclass[12pt]{article}
+
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% \newcommand{\GQ}{\mathrm{Gal}(\overline{\mathbb{Q}}/\mathbb{Q})}
+\newcommand{\GQ}{G_{\mathbb{Q}}}
+\newcommand{\newstuff}[1]{\color{blue}{#1}\color{black}}
+\pagestyle{empty}
+
+\begin{document}
+
+\noindent Seewoo Lee \\
+Research Statement \\
+% \today
+\bigskip
+
+
+
+My research centers on number theory, particularly delving into the realms of automorphic forms and the Langlands program, leveraging computational tools to enhance exploration and understanding.
+
+
+\section*{(Relative) Langlands program}
+
+
+
+Introduced by Robert Langlands, the \emph{Langlands Program} constitutes a comprehensive unification theory in number theory and beyond, seeking to establish connections between two seemingly disparate mathematical domains: \emph{Galois Representations} and \emph{Automorphic Forms}.
+
+
+In 1846, Évariste Galois delved into the zeros of polynomial equations by examining their \emph{symmetries}, specifically the \emph{Galois groups}.
+These groups are a fundamental and crucial tool for the study of Diophantine equations.
+For example, after the discovery of the formulas for cubic and quartic equations by Cardano, it took about 300 more years for Abel and Ruffini to provide a negative answer to the question of the solvability of general polynomial equations of degree at least $5$, using Galois theory.
+One ultimate goal for number theorists is to understand the structure of the \emph{absolute Galois group} $\mathrm{Gal}_{\mathbb{Q}}$, which encodes all possible symmetries for polynomials with rational coefficients.
+\emph{Galois representations} propose a way to explore the group through the lens of linear algebra.
+
+
+On the other side of the mathematical spectrum are \emph{automorphic forms} - special functions exhibiting profound internal symmetries.
+Take \emph{modular forms}, for instance, which are automorphic forms defined on the space of two by two matrices with specific symmetries.
+They not only encode intricate arithmetic information through \emph{Fourier coefficients} but also play a role in deriving non-trivial formulas in number theory, including the Lagrange's four squares theorem.
+
+
+The crux of the Langlands program lies in its conjecture that Galois representations and automorphic forms share a profound connection, mediated by entities known as \emph{$L$-functions}.
+Evidence of this conjecture can be discovered in Wiles's  proof of Fermat's Last Theorem, where the existence of a non-trivial integer solution necessitated the concurrent construction of a Galois representation and an associated modular form with special properties, ultimately making them impossible to exist.
+
+
+
+
+My research delves into the rich world of automorphic forms within the Langlands program, focusing particularly on \emph{the Langlands functorialities} — the relationships between automorphic forms defined on different spaces.
+Known results for specific pairs of spaces have already yielded significant theorems in number theory, such as the Sato--Tate conjectures \cite{harris2010family,barnet2011family} or generalized Ramanujan conjectures \cite{sarnak2005notes} on the Fourier coefficients of automorphic forms.
+
+
+\subsection*{Ichino-Ikeda formula for general spin groups, Bessel case}
+
+
+% In particular, I am interested in characterizing the images of the functoriality maps: If one can always produce an automorphic form on a group $G$ from another on a different group $G'$, how can we describe the automorphic forms on $G$ coming from $G'$?
+% This characterization often hinges on the nonvanishing of specific integrals of automorphic forms referred as \emph{period integrals}. Remarkably, these period integrals are often related to the special values of $L$-functions associated with the automorphic representations. 
+For example, the Gan--Gross--Prasad conjecture \cite{gan2011symplectic} proposes an answer to the restriction problem - restricting an automorphic representation on a group to a subgroup - in terms of non-vanishing of the special values of the  associated $L$-functions. 
+Ichino and Ikeda presented a refined version of the conjecture, an equation directly relates period integrals and $L$-values, and proved certain cases \cite{ichino2010periods}. 
+Building upon the groundwork laid by Liu \cite{liu2016refined} on the special orthogonal groups ($\mathrm{SO}_{2} \times \mathrm{SO}_{5}$ and $\mathrm{SO}_{3} \times \mathrm{SO}_{6}$) and drawing insights from Emory's work \cite{emory2020global} on \emph{general spin groups} ($\mathrm{GSpin}_{n} \times \mathrm{GSpin}_{n+1}$ for $n = 2, 3, 4$), I am working on the Ichino--Ikeda conjecture for general spin groups, particularly in cases involving general Bessel periods.
+Furthermore, I'm trying to generalize Furusawa and Morimoto's work on the $\mathrm{SO}_{2} \times \mathrm{SO}_{2n+1}$ case and B\"ocher's conjecture \cite{furusawa2020refined} in this direction.
+My approach involves leveraging exceptional isomorphisms between low-rank general spin groups and other classical groups and reducing the conjecture to the already known cases.
+
+
+\section*{Computational approach in number theory}
+
+
+
+In the realm of the Langlands Program, dealing with abstract objects like Galois representations and automorphic forms often benefits from grounding these concepts in tangible, computable counterparts.
+My prior work, exemplified by my undergraduate and master's theses on Maass wave forms and quantum modular forms, provides concrete instances of automorphic forms.
+By experimenting with examples through MATLAB \cite{MATLAB} and SageMath \cite{sagemath}, I found an appropriate definition of \emph{Hecke operators} for the spaces of these automorphic forms, which lead to the discovery of novel and non-trivial number-theoretic identities related to roots of unity \cite{lee2018quantum,lee2019maass}.
+
+\subsection*{Maass wave forms, Quantum modular forms, and Hecke operators}
+
+In \cite{cohen1988q}, Cohen construct the first explicit example of maass wave form, based on one of the Ramanujan's $q$-series.
+Its coefficients are certain Hecke character of the real quadratic field $\mathbb{Q}(\sqrt{6})$, and Cohen conjectured that the Maass wave form is an eigenform for suitable Hecke operators.
+However, due to 
+
+\subsection*{Modular forms and sphere packing problems}
+
+% Currently, I'm interested in the optimal sphere packing problems and related subjects, using modular forms.
+\emph{Optimal sphere packing problem} asks the densest packing of $d$-dimensional space $\mathbb{R}^{d}$ with unit balls.
+The problem is trivial for $d = 1$, and $d = 2$ case is solved by Thue in 1890.
+The three-dimensional case, known as Kepler's conjecture, was resolved by Thomas Hales based on heavy computer calculations \cite{hales2005proof}.
+It took nearly a decade to be formally checked via computer proof assistants HOL Light and Isabelle \cite{hales2017formal}.
+
+
+A surprising bridge emerges between the $8$ and $24$-dimensional sphere packing problem and number theory. 
+Cohn and Elikies introduced the \emph{linear programming bound}  \cite{cohn2003new}, which suggests that identifying specific ``magic functions'' holds the key to optimal sphere packing in these dimensions. 
+However, constructing these functions, requiring control over both the function and its Fourier transform, is challenging due to the uncertainty principle.
+Maryna Viazovska used modular forms from number theory to construct a magic function for dimension $8$ \cite{viazovska2017sphere}, and the $24$-dimensional case was soon resolved using similar methods \cite{cohn2017sphere}.
+
+
+To prove these two cases, the authors \cite{viazovska2017sphere,cohn2017sphere} relied on numerical approximations and extensive computer assisted computations to establish desired inequalities between modular forms. However, it is natural to ask if there is a more general and conceptual proof for these inequalities.
+While a more straightforward proof exists for the case of dimension $8$ by Dan Romik \cite{romik2023viazovska}, I found \emph{algebraic} proofs for both of the dimensions $8$ and $24$ cases that circumvents reliance on numerical calculations or approximations \cite{lee2024algebraic}.
+Notably, I develop a theory of \emph{positive} and \emph{completely positive} quasimodular forms, and use the theory to study the \emph{magic modular forms} appear in the optimal sphere packing.
+Especially, I found an interesting connection with Kaneko and Koike's \emph{extremal quasimodular forms}, which are conjectured to have nonnegative Fourier coefficients.
+As a result, I found simple and \emph{algebraic} proofs of the modular form inequalities used in \cite{viazovska2017sphere} and \cite{cohn2017sphere}, which do not require any of numerical analysis or manipulation of complicated mathematical constants \cite{lee2024algebraic}.
+The main inegredients are the differential equations satisfied by the modular forms.
+This also opens a new possibility to generalize Viazovska's construction to the dimensions other than $8$ and $24$, based on the construction of Fourier eigenfunctions by Feigenbaum, Grabner, and Hinder \cite{feigenbaum2021eigenfunctions}.
+Especially, it would imply a new upper bound for the uncertainty principle \cite{bourgain2010principe} in specific dimensions.
+
+
+% Again, the above results are hinted a lot from experiments with many examples through SageMath.
+% Looking ahead, I envision employing computational approaches for diverse research problems in number theory.
+% My proficiency in programming, honed during my alternative military service, particularly with Python, positions me well for navigating these computational tools and databases like LMFDB \cite{lmfdb} effectively. 
+% This computational arsenal not only facilitates practical research but also opens avenues for exploring interesting applications and connections within number theory.
+
+
+\section*{Other projects}
+
+My interest is not restricted to number theory. I'm interested in various subjects, including
+\begin{itemize}
+    \item formalization of mathematics
+    \item discrete geometry
+    \item homomorphic encryption
+\end{itemize}
+
+
+
+
+\subsection*{Formalization of Polynomial Fermat's Last Theorem}
+
+\subsection*{Conway--Soifer Conjecture - homothetic case}
+
+
+\subsection*{Encrypted transfer learning with homomorphic encryption}
+
+While I was working at CryptoLab as a Research Engineer during my alternative military service, I develop privacy-preserving machine learning library called \texttt{HEaaN.SDK} [REF] based on CKKS homomorphic encryption (HE) scheme [REF].
+In theory, one can compute arbitrary arithmetic circuit over encrypted real and complex numbers (with small errors) using CKKS scheme, and one might think implementing machine learning algorithms with HE is not hard.
+However, encrypted computations over ciphertexts are much slower than over plaintexts, and naive implementations could be highly impractical.
+Hence we need to re-design the algorithm in \emph{HE-friendly} way, which is usually a nontrivial research problem.
+In particular, I found that there were no HE-based training algorithms for \emph{multiclass} classification tasks at the moment, and most of the previous works are only applicable for binary classifications with small number of features.
+
+To implement such an HE-based multiclass classification algorithm, we need 1) efficient encrypted softmax computation with large input, and 2) efficient large encrypted matrix multiplication.
+Both problems were resolved in HETAL (efficient \textbf{H}omomorphic \textbf{E}ncryption based \textbf{T}r\textbf{a}nsfer \textbf{L}earning) [REF], accepted to ICML 2023 as an Oral presentation.
+For the softmax computation, we found that homomorphic comparison [REF] can be used to normalize inputs (subtract maximum value), then homomorphic domain extension [REF] let us to cover wider range of inputs with much smaller errors, compared to the previous works [REFS].
+To perform efficient encrypted matrix multiplications, we implement two types of multiplications $A B^\intercal$ and $A^\intercal B$ separately, which allow us to avoid transpose operation.
+Tiling and complex packing techniques are used to reduce the number of rotations required substantially, which result matrix multiplication algorithms that are 1.8 to 323 times faster than the previous algorithms [REFS].
+As a result, we were able to fine-tune commonly used vision and language models within an hour with a single A40 GPU on five benchmark datasets, which shows HE-based encrypted fine-tuning is indeed practical.
+
+
+
+
+\bibliographystyle{plain} % We choose the "plain" reference style
+{
+\scriptsize
+\bibliography{refs} % Entries are in the refs.bib file
+}
+
+\end{document}

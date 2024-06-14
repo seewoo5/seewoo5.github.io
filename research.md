@@ -7,6 +7,8 @@ permalink: /research/
 [MathSciNet](https://mathscinet.ams.org/mathscinet/search/author.html?mrauthid=1266901)
 / [Google Scholar](https://scholar.google.com/citations?user=jdFDv6IAAAAJ&hl=en)
 
+[Research Statement](assets/rs/RS.pdf)
+
 **Publications (Math)**
 - (with J. Baek) **An equilateral triangle of side $>n$ cannot be covered by $n^2 + 1$ unit equilateral triangles homothetic to it**, accepted to American Mathematical Monthly [paper](https://arxiv.org/abs/2306.09533) [blog](https://seewoo5.github.io/jekyll/update/2023/12/12/conway-soifer.html)
 - (with D. Choi) **Non-archimedean Sendov's conjecture**, p-adic Numbers, Ultrametric Analysis and Applications 14, 77-80 (2022) [paper](https://link.springer.com/article/10.1134/S2070046622010058)
