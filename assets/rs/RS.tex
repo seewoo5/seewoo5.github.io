@@ -129,17 +129,17 @@ My interest is not restricted to number theory. I'm interested in various subjec
 
 \subsection*{Encrypted transfer learning with homomorphic encryption}
 
-While I was working at CryptoLab as a Research Engineer during my alternative military service, I develop privacy-preserving machine learning library called \texttt{HEaaN.SDK} [REF] based on CKKS homomorphic encryption (HE) scheme [REF].
+While I was working at CryptoLab as a Research Engineer during my alternative military service, I develop privacy-preserving machine learning library called \texttt{HEaaN.SDK} \cite{heaansdk} based on CKKS homomorphic encryption (HE) scheme \cite{cheon2017homomorphic}.
 In theory, one can compute arbitrary arithmetic circuit over encrypted real and complex numbers (with small errors) using CKKS scheme, and one might think implementing machine learning algorithms with HE is not hard.
 However, encrypted computations over ciphertexts are much slower than over plaintexts, and naive implementations could be highly impractical.
 Hence we need to re-design the algorithm in \emph{HE-friendly} way, which is usually a nontrivial research problem.
 In particular, I found that there were no HE-based training algorithms for \emph{multiclass} classification tasks at the moment, and most of the previous works are only applicable for binary classifications with small number of features.
 
 To implement such an HE-based multiclass classification algorithm, we need 1) efficient encrypted softmax computation with large input, and 2) efficient large encrypted matrix multiplication.
-Both problems were resolved in HETAL (efficient \textbf{H}omomorphic \textbf{E}ncryption based \textbf{T}r\textbf{a}nsfer \textbf{L}earning) [REF], accepted to ICML 2023 as an Oral presentation.
-For the softmax computation, we found that homomorphic comparison [REF] can be used to normalize inputs (subtract maximum value), then homomorphic domain extension [REF] let us to cover wider range of inputs with much smaller errors, compared to the previous works [REFS].
+Both problems were resolved in HETAL (efficient \textbf{H}omomorphic \textbf{E}ncryption based \textbf{T}r\textbf{a}nsfer \textbf{L}earning) \cite{lee2023hetal}.
+For the softmax computation, we found that homomorphic comparison \cite{cheon2020efficient} can be used to normalize inputs (subtract maximum value), then homomorphic domain extension \cite{cheon2022efficient} let us to cover wider range of inputs with much smaller errors, compared to the previous works \cite{jin2020secure,lee2022privacy,hong2022secure}.
 To perform efficient encrypted matrix multiplications, we implement two types of multiplications $A B^\intercal$ and $A^\intercal B$ separately, which allow us to avoid transpose operation.
-Tiling and complex packing techniques are used to reduce the number of rotations required substantially, which result matrix multiplication algorithms that are 1.8 to 323 times faster than the previous algorithms [REFS].
+Tiling and complex packing techniques are used to reduce the number of rotations required substantially, which result matrix multiplication algorithms that are 1.8 to 323 times faster than the previous algorithms \cite{crockett2020low,jin2020secure}.
 As a result, we were able to fine-tune commonly used vision and language models within an hour with a single A40 GPU on five benchmark datasets, which shows HE-based encrypted fine-tuning is indeed practical.
 
 
