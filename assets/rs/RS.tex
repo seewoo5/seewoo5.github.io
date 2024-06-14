@@ -6,10 +6,15 @@
 \usepackage{xcolor}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
 
 % \newcommand{\GQ}{\mathrm{Gal}(\overline{\mathbb{Q}}/\mathbb{Q})}
 \newcommand{\GQ}{G_{\mathbb{Q}}}
 \newcommand{\newstuff}[1]{\color{blue}{#1}\color{black}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+
 \pagestyle{empty}
 
 \begin{document}
@@ -53,7 +58,7 @@ My research delves into the rich world of automorphic forms within the Langlands
 Known results for specific pairs of spaces have already yielded significant theorems in number theory, such as the Sato--Tate conjectures \cite{harris2010family,barnet2011family} or generalized Ramanujan conjectures \cite{sarnak2005notes} on the Fourier coefficients of automorphic forms.
 
 
-\subsection*{Ichino-Ikeda formula for general spin groups, Bessel case}
+\subsection*{Ichino-Ikeda formula for general spin groups - Bessel case}
 
 
 % In particular, I am interested in characterizing the images of the functoriality maps: If one can always produce an automorphic form on a group $G$ from another on a different group $G'$, how can we describe the automorphic forms on $G$ coming from $G'$?
@@ -114,9 +119,9 @@ Especially, it would imply a new upper bound for the uncertainty principle \cite
 
 My interest is not restricted to number theory. I'm interested in various subjects, including
 \begin{itemize}
-    \item formalization of mathematics
-    \item discrete geometry
-    \item homomorphic encryption
+    \item formalization of mathematics,
+    \item discrete geometry,
+    \item homomorphic encryption.
 \end{itemize}
 
 
@@ -126,10 +131,24 @@ My interest is not restricted to number theory. I'm interested in various subjec
 
 \subsection*{Conway--Soifer Conjecture - homothetic case}
 
+Consider an equilateral triangle of side length $n + \varepsilon$ for an integer $n \geq 1$ and a sufficiently small $\varepsilon > 0$.
+What is the minimum number of unit equilateral triangles needed to cover the whole triangle?
+It is easy to see that at least $n^2 + 1$ triangles are required, by considering area.
+Conway and Soifer give two different ways to cover the large triangle with $n^2 + 2$ unit triangles \cite{conway2005covering}, and conjectured that this is the minimum number of triangles required.
+
+With Jineon Baek, we proved that the conjecture is true \emph{if we restrict our attention to homothetic triangles}, i.e. assuming all the sides of the unit equilateral triangles are parallel to the large triangle ($\bigtriangleup$ or $\bigtriangledown$) \cite{baek2024n2}.
+In fact, we proved the following general statement.
+
+\begin{theorem*}[Baek-Lee]
+Call a triangle a horizontal triangle of base $b$ and height $h$, if it has a side of length $b$ parallel to the $x$-axis, and the height $h$ measured in the direction of $y$-axis.
+Then $n^2 + 1$ horizontal triangles of base $b$ and height $h$ cannot cover a horizontal triangle of base $nb$ and height $> nh$.
+\end{theorem*}
+
+The proof is elementary, and we also determined the largest possible $\varepsilon$ such that an equilateral triangle of side length $n + \varepsilon$ can be covered by $n^2 + 2$ or $n^2 + 3$ homothetic unit equilateral triangles ($\varepsilon = 1/(n+1)$ and $\varepsilon = 1 / n$, respectively). 
 
 \subsection*{Encrypted transfer learning with homomorphic encryption}
 
-While I was working at CryptoLab as a Research Engineer during my alternative military service, I develop privacy-preserving machine learning library called \texttt{HEaaN.SDK} \cite{heaansdk} based on CKKS homomorphic encryption (HE) scheme \cite{cheon2017homomorphic}.
+While I was working at CryptoLab as a Research Engineer during my alternative military service, I developed privacy-preserving machine learning library called \texttt{HEaaN.SDK} \cite{heaansdk} based on CKKS homomorphic encryption (HE) scheme \cite{cheon2017homomorphic}.
 In theory, one can compute arbitrary arithmetic circuit over encrypted real and complex numbers (with small errors) using CKKS scheme, and one might think implementing machine learning algorithms with HE is not hard.
 However, encrypted computations over ciphertexts are much slower than over plaintexts, and naive implementations could be highly impractical.
 Hence we need to re-design the algorithm in \emph{HE-friendly} way, which is usually a nontrivial research problem.
