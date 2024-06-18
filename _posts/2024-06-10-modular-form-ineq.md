@@ -11,14 +11,14 @@ The paper can be summarized as: we have "algebraic" proofs that do not require a
 
 ### Story
 
-The history of the problem itself can be found in the introduction/preliminary of my paper or the first few slides of [this](../assets/spherepacking.pdf).
+The history of the problem itself can be found in the introduction/preliminary of my paper or the first few slides of [this](https://seewoo5.github.io/assets/spherepacking.pdf).
 Instead, I will share my own history and thought process on this project.
 
 I learned about the problem when Viazovska announced the proof, and give a presentation on it when I was a senior undergraduate student.
 Of course, I didn't fully understand the proof, but I knew that the proof uses modular forms and one need to prove some inequalities between modular forms, where the original proofs use approximations based on bounds of Fourier coefficients and numerical analysis (interval arithmetic).
-Then I forgot about the problem for a while, until 2023 Fall when Dan Romik introduced [his new proof](https://www.pnas.org/doi/full/10.1073/pnas.2304891120) of Viazovska's inequalities in $8$ dimension at UC Berkeley's RTG seminar.
+Then I forgot about the problem for a while, until 2023 Fall when [Dan Romik](https://www.math.ucdavis.edu/~romik/) introduced [his new proof](https://www.pnas.org/doi/full/10.1073/pnas.2304891120) of Viazovska's inequalities in $8$ dimension at UC Berkeley RTG seminar.
 After the talk, I asked him the most obvious question one can ask: what about $d = 24$?
-He said that it would be a good project for graduate students, and I decided to work on it as a "side project", since I already had a problem that I working on.
+He said that it would be a good project for graduate students, and I decided to work on it as a "side project", since I already had a problem that I was working on.
 
 After reading the CKMRV paper carefully, I found that the first "easy" inequality I have to prove is already not easy.
 One has to prove that the following modular form is positive on the (positive) imaginary axis:
@@ -43,7 +43,10 @@ and product rule.
 I differentiate $F$ using Sage, and I got the following:
 
 $$
-F' = \frac{7}{6}(49 E_{2}^{3} E_{4}^{3} - 25 E_{2}^{3} E_{6}^{3} - 72 E_{2}^{2} E_{4}^{2} E_{6} - 15 E_{2} E_{4}^{2} + 81 E_{2} E_{4} E_{6}^{2} - 10 E_{4}^{3} E_{6} - 14 E_{6}^{3})
+\begin{align*}
+F' = \frac{7}{6}(&49 E_{2}^{3} E_{4}^{3} - 25 E_{2}^{3} E_{6}^{3} - 72 E_{2}^{2} E_{4}^{2} E_{6} \\
+&- 15 E_{2} E_{4}^{2} + 81 E_{2} E_{4} E_{6}^{2} - 10 E_{4}^{3} E_{6} - 14 E_{6}^{3})
+\end{align*}
 $$
 
 (simply call `F.derivative()`). As you can see, differentiating quasimodular form increases weight by 2 and depth by 1. The original $F$ has weight $16$ and depth $2$, so $F'$ has weight $18$ and depth $3$. However, I found that multiplying $F$ by a multiple of $E_{2}$ and subtract from $F'$ cancels out $E_{2}^{3}$ terms, and moreover, the result factors into a product of two forms:
@@ -54,7 +57,7 @@ $$
 
 Surprisingly, each factor are essentially derivatives of $E_{4}$ and $-E_{10} = - E_{4} E_{6}$, hence they should have positive Fourier coefficients.
 After I observe this, I wonder if this would imply positivity of $F$.
-It turned out to be true, and the idea is to solve the differential equation, or equivalently, observe monotonicity of $t \mapsto F(it) / \Delta(it)^{7/6}$.
+It turned out to be true, and the idea is to solve the differential equation, or equivalently, observe the monotonicity of $t \mapsto F(it) / \Delta(it)^{7/6}$.
 I also found that the cancellation phenomena is quite general, and the operator $D - \frac{7}{6} E_{2}$ actually has a name - *Serre derivative* of weight $14$.
 This proved the "easy" inequality.
 
@@ -74,7 +77,7 @@ where $K$ is a weight 14, *depth 2*, level 2 quasimodular form (it does not fact
 But one interesting observation was that the actual level $K$ was $\Gamma_{0}(2)$, not $\Gamma(2)$.
 
 Then the next question is - how to cook up positive quasimodular forms of level $1$ or $\Gamma_{0}(2)$.
-I tried a lot of things, but what actually worked is using extermal quasimodular forms and old forms from it.
+I tried a lot of things, but what actually worked is using extermal quasimodular forms and old forms arise from them.
 Especially, it is possible to express $K$ as a positive linear combination of
 
 $$
