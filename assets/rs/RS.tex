@@ -78,13 +78,9 @@ In the realm of the Langlands Program, dealing with abstract objects like Galois
 My prior work, exemplified by my undergraduate and master's theses on Maass wave forms and quantum modular forms, provides concrete instances of automorphic forms.
 By experimenting with examples through MATLAB \cite{MATLAB} and SageMath \cite{sagemath}, I found an appropriate definition of \emph{Hecke operators} for the spaces of these automorphic forms, which lead to the discovery of novel and non-trivial number-theoretic identities related to roots of unity \cite{lee2018quantum,lee2019maass}.
 
-\subsection*{Maass wave forms, Quantum modular forms, and Hecke operators}
 
-In \cite{cohen1988q}, Cohen construct the first explicit example of maass wave form, based on one of the Ramanujan's $q$-series.
-Its coefficients are certain Hecke character of the real quadratic field $\mathbb{Q}(\sqrt{6})$, and Cohen conjectured that the Maass wave form is an eigenform for suitable Hecke operators.
-However, due to 
 
-\subsection*{Modular forms and sphere packing problems}
+\subsection*{Modular forms and optimal sphere packings}
 
 % Currently, I'm interested in the optimal sphere packing problems and related subjects, using modular forms.
 \emph{Optimal sphere packing problem} asks the densest packing of $d$-dimensional space $\mathbb{R}^{d}$ with unit balls.
@@ -102,19 +98,31 @@ Maryna Viazovska used modular forms from number theory to construct a magic func
 To prove these two cases, the authors \cite{viazovska2017sphere,cohn2017sphere} relied on numerical approximations and extensive computer assisted computations to establish desired inequalities between modular forms. However, it is natural to ask if there is a more general and conceptual proof for these inequalities.
 While a more straightforward proof exists for the case of dimension $8$ by Dan Romik \cite{romik2023viazovska}, I found \emph{algebraic} proofs for both of the dimensions $8$ and $24$ cases that circumvents reliance on numerical calculations or approximations \cite{lee2024algebraic}.
 Notably, I develop a theory of \emph{positive} and \emph{completely positive} quasimodular forms, and use the theory to study the \emph{magic modular forms} appear in the optimal sphere packing.
-Especially, I found an interesting connection with Kaneko and Koike's \emph{extremal quasimodular forms}, which are conjectured to have nonnegative Fourier coefficients.
-As a result, I found simple and \emph{algebraic} proofs of the modular form inequalities used in \cite{viazovska2017sphere} and \cite{cohn2017sphere}, which do not require any of numerical analysis or manipulation of complicated mathematical constants \cite{lee2024algebraic}.
+Especially, I found an interesting connection with Kaneko and Koike's \emph{extremal quasimodular forms} \cite{kaneko2006extremal}, which are conjectured to have nonnegative Fourier coefficients.
+The proofs are based on a simple observation on the monotonicity of quotients of two forms to compare.
 The main inegredients are the differential equations satisfied by the modular forms.
 This also opens a new possibility to generalize Viazovska's construction to the dimensions other than $8$ and $24$, based on the construction of Fourier eigenfunctions by Feigenbaum, Grabner, and Hinder \cite{feigenbaum2021eigenfunctions}.
 Especially, it would imply a new upper bound for the uncertainty principle \cite{bourgain2010principe} in specific dimensions.
+Also, as a byproduct, I proved Kaneko--Koike's conjecture on the positivity of Fourier coefficients of extremal forms in the case of depth $1$.
 
-
-% Again, the above results are hinted a lot from experiments with many examples through SageMath.
+Again, the above results are hinted a lot from experiments with many examples through SageMath.
+Especially, once I plot the quotient of two modular forms (Figure xxx), it becomes clear that what I should try to prove (monotonicity and limit), which turned out to be true.
 % Looking ahead, I envision employing computational approaches for diverse research problems in number theory.
 % My proficiency in programming, honed during my alternative military service, particularly with Python, positions me well for navigating these computational tools and databases like LMFDB \cite{lmfdb} effectively. 
 % This computational arsenal not only facilitates practical research but also opens avenues for exploring interesting applications and connections within number theory.
+\subsection*{Maass wave forms, Quantum modular forms, and Hecke operators}
+
+In \cite{cohen1988q}, Cohen construct the first explicit example of maass wave form, based on one of the Ramanujan's $q$-series.
+Its coefficients are certain Hecke character of the real quadratic field $\mathbb{Q}(\sqrt{6})$, and Cohen conjectured that the Maass wave form is an eigenform for suitable Hecke operators.
+However, the usual Hecke operator is not the right candidate since the multiplier system (Nebentypus) of Cohn's Maass wave form does not come from Dirichlet characters.
+In my undergraduate and master's thesis, I propose the correct definition of Hecke operator that works for more general multiplier systems, including Cohn's Maass wave form, and prove that the Maass wave form is indeed eigenform under the operators \cite{lee2018quantum,lee2019maass}.
+Also, one can associate \emph{quantum modular forms} to the Maass wave form as a period integral (following \cite{lewis2001period,zagier2010quantum}), and I proved that this map is Hecke-equivariant.
+As a corollary, this gives a nontrivial identities on ceratin $p$-th root of unities and $p$-th coefficient of the Maass wave form for primes $p$.
+Same argument also worked for Li--Ngo--Rhoades' Maass wave form \cite{li2013renormalization}.
 
 
+
+\newpage
 \section*{Other projects}
 
 My interest is not restricted to number theory. I'm interested in various subjects, including
