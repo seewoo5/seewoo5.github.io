@@ -9,7 +9,7 @@ permalink: /research/
 
 **Preprints**
 
-- **Algebraic proof of modular form inequalities for optimal sphere packings**, [arXiv](https://arxiv.org/abs/2406.14659) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [presentation](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
+- **Algebraic proof of modular form inequalities for optimal sphere packings**, [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [presentation](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
 
 **Publications (Math)**
 - (with J. Baek) **An equilateral triangle of side $>n$ cannot be covered by $n^2 + 1$ unit equilateral triangles homothetic to it**, accepted to American Mathematical Monthly [paper](https://arxiv.org/abs/2306.09533) [blog](https://seewoo5.github.io/jekyll/update/2023/12/12/conway-soifer.html)
