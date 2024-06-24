@@ -1,17 +1,19 @@
 ---
 layout: posts
 title:  "Algebraic proof of modular form inequalities for optimal sphere packings"
-date:   2024-06-03
+date:   2024-06-23
 categories: jekyll update
 tags: math
 ---
 
-I uploaded a new paper on arXiv about modular form inequalities appear in the proof of optimality of $E_{8}$ and Leech lattice sphere packings by [Viazovska](https://annals.math.princeton.edu/2017/185-3/p07) and [Cohn-Kumar-Miller-Radchenko-Viazovska](https://annals.math.princeton.edu/2017/185-3/p08).
-The paper can be summarized as: we have "algebraic" proofs that do not require any numerical analysis.
+I uploaded a [new paper on arXiv](https://arxiv.org/abs/2406.14659) about modular form inequalities appear in the proof of optimality of $E_{8}$ and Leech lattice sphere packings by [Viazovska](https://annals.math.princeton.edu/2017/185-3/p07) and [Cohn-Kumar-Miller-Radchenko-Viazovska](https://annals.math.princeton.edu/2017/185-3/p08).
+The paper can be summarized as:
+
+> We have "algebraic" proofs of the inequalities that do not require any numerical analysis.
 
 ### Story
 
-The history of the problem itself can be found in the introduction/preliminary of my paper or the first few slides of [this](https://seewoo5.github.io/assets/spherepacking.pdf).
+The history of the problem itself can be found in the introduction/preliminary of my paper or the first few slides of [this](https://seewoo5.github.io/assets/presentations/spherepacking.pdf).
 Instead, I will share my own history and thought process on this project.
 
 I learned about the problem when Viazovska announced the proof, and give a presentation on it when I was a senior undergraduate student.
@@ -63,11 +65,17 @@ This proved the "easy" inequality.
 
 For a while again, I had no progress on the "hard" inequality.
 Of course, I tried to mimic Romik's proof, but his proof is quite delicate and it was not clear for me how to mimic it in $d = 24$ case.
-Especially, we need to prove that $F$ has nonnegative Fourier coefficients, which does not follow from the previous argument (with Serre derivative).
+Especially, we need to prove that $F$ has nonnegative Fourier coefficients, which does not follow from the previous argument (using Serre derivative).
 Hence I decided to understand $d = 8$ case more carefully, especially trying myself to re-prove the (hard) inequality.
 After playing with Sage for few more weeks, I observed the monotonicity of quotient (Figure 1), and how nicely its derivative factors, which yield the Proof 1.
-Luckily, the same strategy seems to work for 24-dimensional case (2nd inequality), but proving the positivity of $F'G - FG'$ seems much harder than 8-dimensional case.
-The biggest difference is that it does not factors as nicely as 8-dimensional case - it factors as
+
+<p align="center">
+<img src="/assets/images/spherepacking-8dplot.png">
+<figcaption align="center">Figure 1. Plot of F/G.</figcaption>
+</p>
+
+Luckily, the same strategy seems to work for 24-dimensional case (2nd inequality), but proving the positivity of $F'G - FG'$ seems much harder than the 8-dimensional case.
+The biggest difference is that it does not factors as nicely as the 8-dimensional case - it factors as
 
 $$
 F'G - FG' = H_{2}^{5} (H_2 + H_4)^{2} H_{4}^{2} \cdot K
@@ -82,9 +90,9 @@ Especially, it is possible to express $K$ as a positive linear combination of
 
 $$
 \begin{align*}
-H_{2}(z) X_{12, 2}(z), &\quad H_{2}(z) (X_{12, 2}(z) - 2^{10} X_{12, 2}(2z)), \\
-(H_{2}(z) + 2 H_{4}(z)) X_{10, 2}(z), &\quad (H_{2}(z) + 2H_{4}(z)) (X_{10, 2}(z) - 2^{8} X_{10, 2}(2z)) \\
-H_{2}^{2}(z) X_{8, 2}(z), &\quad H_{2}^{2}(z) (X_{8, 2}(z) - 2^{6} X_{8, 2}(2z))
+H_{2}(z) X_{12, 2}(2z), &\quad H_{2}(z) (X_{12, 2}(z) - 2^{10} X_{12, 2}(2z)), \\
+(H_{2}(z) + 2 H_{4}(z)) X_{10, 2}(2z), &\quad (H_{2}(z) + 2H_{4}(z)) (X_{10, 2}(z) - 2^{8} X_{10, 2}(2z)) \\
+H_{2}^{2}(z) X_{8, 2}(2z), &\quad H_{2}^{2}(z) (X_{8, 2}(z) - 2^{6} X_{8, 2}(2z))
 \end{align*}
 $$
 
