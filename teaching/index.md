@@ -3,7 +3,7 @@ layout: single
 title: Teaching
 ---
 
-
+* [2024 Fall - Math 110](2024Fall/index)
 * [2024 Spring - Math 10B](2024Spring/index)
 * [2023 Fall - Math 10A](2023Fall/index)
 * [2022 Fall - Math 53](2022Fall/index)
