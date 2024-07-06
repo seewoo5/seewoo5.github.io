@@ -1,6 +1,6 @@
 ---
 layout: posts
-title:  "Weyl' complete reducibility theorem for semisimple Lie algebra - homological algebra proof"
+title:  "Weyl' complete reducibility theorem for semisimple Lie algebra: homological algebra proof"
 date:   2024-07-05
 categories: jekyll update
 tags: math
@@ -16,7 +16,7 @@ I recently learned this from one of the exercises comes from the [Koszul duality
 
 ### Universal enveloping algebra and Casimir element
 
-For a Lie algebra $\mathfrak{g}$, *universal enveloping algebra* $\mathcal{U}\mathfrak{g}$ is defined as
+For a Lie algebra $\mathfrak{g}$, *universal enveloping algebra* $\mathcal{U}(\mathfrak{g})$ is defined as
 
 $$
 \mathcal{U}(\mathfrak{g}) := T(\mathfrak{g}) / \langle x \otimes y - y \otimes x - [x, y] : x, y \in \mathfrak{g} \rangle
@@ -36,7 +36,7 @@ One may try to classify representation by fixing a central character first.
 
 For a given representation $\rho : \mathfrak{g} \to \mathrm{End}(V)$, we have a special elemtn $C_V \in \mathcal{Z}$ that satisfy the following lemma:
 
-> **Lemma.** Let $(\rho, V)$ be a nontrivial irreducible representation of a semisimple Lie algebra $\mathfrak{g}$. Then there exists a central element $C_V \in \mathcal{Z}(\mathcal{U}\mathfrak{g}))$ that acts
+> **Lemma.** Let $(\rho, V)$ be a nontrivial irreducible representation of a semisimple Lie algebra $\mathfrak{g}$. Then there exists a central element $C_V \in \mathcal{Z}(\mathcal{U}(\mathfrak{g}))$ that acts
 > 
 > * by a nonzero constant on $V$
 > * and by zero on the trivial representation.
