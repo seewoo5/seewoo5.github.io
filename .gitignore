@@ -15,4 +15,6 @@ vendor
 *.out
 *.synctex.gz
 *.auxlock
+*.bbl
+*.blg
 teaching/2022Fall/worksheets/*.tex
