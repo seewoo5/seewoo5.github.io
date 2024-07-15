@@ -1,7 +1,7 @@
 ---
 layout: posts
 title:  "Kazhdan-Lusztig Polynomials and perverse sheaves"
-date:   2024-07-13
+date:   2024-07-14
 categories: jekyll update
 tags: math
 ---
@@ -13,11 +13,12 @@ This post is based on the several references including
 
 * Jim Humphrey's book "Representation of Semisimple Lie Algebra in the BGG category $\mathcal{O}$" (and also his other Lie algebra book)
 * Peng Shan's [presentation file](http://www.math.ac.cn/xshd/sxsjz/201902/W020190312493255635326.pdf) on Hecke algebra (and the talk at the [SLMath summer school](https://www.slmath.org/summer-schools/1072) too!)
+* Yi Sun's [note](https://yisun.io/notes/klconj.pdf) on perverse sheaves and Kazhdan-Lusztig conjectures
 * Paul Garrett's [note](https://www-users.cse.umn.edu/~garrett/m/lie/hc_isomorphism.pdf) on Verma modules and Harish-Chandra morphism for $\mathfrak{sl}\_{2}$ and $\mathfrak{sl}\_{3}$
 * Yiannis Sakellaridis' [note](https://math.jhu.edu/~sakellar/automorphic-files/vermamodules.pdf) on Verma module
 
 
-### Representation of semisimple Lie algebra
+### Finite dimensional epresentations of semisimple Lie algebra
 
 Let $\mathfrak{g}$ be a complex *semisimple* Lie algebra[^1].
 Our goal is to understand representations of $\mathfrak{g}$.
@@ -71,11 +72,57 @@ $$
 and more generally, one can construct $L(\lambda)$ as symmetric power of standard representation $\mathrm{Sym}^{\lambda} (\mathrm{std})$.
 You can check that there are no other finite dimensional irreducible representations - any such a representation should have an integer highest weight.
 
+For general $\mathfrak{g}$ and $\lambda$, how can we *understand* $L(\lambda)$?
+One might ask multiplicities of its weight spaces, $\dim L(\lambda)\_{\mu}$, where
+
+$$
+L(\lambda)_{\mu} = \{v \in L(\lambda): hv = \mu(h)v\,\forall h \in \mathfrak{h}\}.
+$$
+
+It is often convenient to define the *formal character* of a representation $M$ as
+
+$$
+\mathrm{ch}(M) := \sum_{\mu \in \Lambda } (\dim M_{\mu}) e(\mu)
+$$
+
+as a $\mathbb{Z}$-valued function on $\Lambda$, where $e(\mu)$ is a symbol associated to each $\mu \in \Lambda$ (delta function) and $\Lambda \subset \mathfrak{h}^{\ast}$ is the root lattice of $\mathfrak{g}$.
+It has a natural convolution product with $e(\mu) \ast e(\mu') = e(\mu + \mu')$.
+Define 
+
+$$
+\begin{align*}
+p(\mu) &:= \# \{(c_{\alpha})_{\alpha > 0} \in \mathbb{Z}_{>0}^{\Lambda^{+}}: -\sum_{\alpha > 0} c_{\alpha} \alpha = \mu\} \\
+q &:= \prod_{\alpha > 0} (e(\alpha / 2) - e(-\alpha / 2)) = e(\rho) \ast \prod_{\alpha > 0} (e(0) - e(-\alpha)).
+\end{align*}
+$$
+
+The first function $p$ is called as *Kostant function*.
+Then we have the following neat formulas for $\mathrm{ch}(L(\lambda))$.
+
+> **Theorem.**
+> Weyl's character formula gives
+>
+> $$
+> q \ast \mathrm{ch}(L(\lambda)) = \sum_{w \in W} (-1)^{\ell(w)} e(w(\lambda + \rho)).
+> $$
+> 
+> As a corollary, we have  a Kostant's formula
+>
+> $$
+> \dim L(\lambda)_{\mu} = \sum_{w\in W}(-1)^{\ell(w)} p(\rho - w \bullet \lambda).
+> $$
+
+Note that this is for *finite dimensional* representations. Also, the above formula is not suitable for computations because the size of $W$ is often big: for example, the order of the Weyl group of $E_{8}$ is $2^{14} 3^{5} 5^{2} 7 = 696729600$.
+
+
 ### Verma modules and category $\mathcal{O}$
 
-Assuming that we know there's at most one $L(\lambda)$ for a given integral  dominant weight $\lambda \in \mathfrak{h}^{\ast}$, how can we build it?
-This can be done via constructing the *universal* representation of highest weight $\lambda$ first, and find finite dimensional quotient of it.
-Such a universal object is called *Verma module*, which we will denote as $M(\lambda)$.
+
+Now we have two natural questions to ask.
+The first one is how to *construct* $L(\lambda)$ for given integral dominant $\lambda$, and the second is how to compute the character of *infinite* dimensional representations.
+To do this, we will define *Verma module* and use it to construct (finite dimensional) irreducible representations $L(\lambda)$, and compute is character even when $\dim L(\lambda) = \infty$.
+
+*Verma module* is a *universal object* for a given highest weight $\lambda$, which we will denote as $M(\lambda)$.
 It satisfies the following universal property: for a Borel subalgebra $\mathfrak{b} \subset \mathfrak{g}$ and view Cartan algebra $\mathfrak{h}$ as a quotient of $\mathfrak{b}$, $M(\lambda)$ is a $\mathfrak{g}$-module satisfying
 
 $$
@@ -145,9 +192,21 @@ Hence each indecomposable module should lie in a unique $\mathcal{O}\_{\chi}$, a
 These $\mathcal{O}\_{\chi}$ are called *blocks*, and the special one $\mathcal{O}\_{0} := \mathcal{O}\_{\chi_{0}}$ corresponds to $0 \in \mathfrak{h}^{\ast}$ is called the *principal block*.
 
 
+Let's get back to our second question.
+To compute character of $L(\lambda)$, we can
+
+1. Compute character of Verma modules $\mathrm{ch} (M(\mu))$,
+2. Express $\mathrm{ch}(L(\lambda))$ as a combination of $\mathrm{ch}(M(\mu))$, which is equivalent to compute multiplicities $[M(\mu): L(\lambda)]$ (by "inverting" the formula).
+
+Luckily, it is quite easy to compute characters of Verma modules.
+
+> **Theorem.** For $\lambda \in \mathfrak{h}^{\ast}$, $\mathrm{ch} (M(\lambda)) = p \ast e(\lambda)$. Especially, $\mathrm{ch}(M(0)) = p$.
+
+See [Humphreys, 1.16] for the proof. Hence we only need to know how to compute multiplicities of simples in Verma modules.
+
 ### (Iwahori-)Hecke algebra and Kazhdan-Lusztig polynomials
 
-It is natural to ask what is a multiplicity of a simiple modules (irreducible representations) of a given module in $\mathcal{O}$, especially for Verma modules. In case of $\mathfrak{sl}\_{2}$, we already know the answer: we have
+In case of $\mathfrak{sl}\_{2}$, we already know the answer: we have
 
 $$
 M(-\lambda - 2) = L(-\lambda - 2)
@@ -178,21 +237,64 @@ Hecke algebra $\mathcal{H} = \mathcal{H}(W, S)$ is an (noncommutative) algebra o
 $$
 \begin{align*}
 H_{s}H_{t}H_{s} \cdots &= H_{t}H_{s}H_{t} \cdots (\text{for }sts\cdots = tst \cdots) \\
-(H_{s} + v)(H_{s} - v^{-1}) &= 0 \Leftrightarrow H_{s}^{2} + (v - v^{-1})H_{1} - 1 = 0
+(H_{s} + v)(H_{s} - v^{-1}) &= 0 \Leftrightarrow H_{s}^{2} + (v - v^{-1})H_{s} - 1 = 0
 \end{align*}
 $$
 
 where the first relations corresponds to the relation defining $W$ as a Coxeter system - for all simple reflections $s, t \in S$, there exists $m_{s, t}\geq 1$ such that $(st)^{m_{st}} = 1 \Leftrightarrow sts \cdots = tst \cdots$ ($m_{st}$ terms on both sides).
 By definition, it is a *deformation* of the group algebra $\mathbb{Z}[W]$, where we recover it from $\mathcal{H}(W, S)$ by taking $v = 1$.
-Also, for each $w \in W$, choose a reduced expression $w = s_1 s_2 \cdots s_r$ and define
+Also, for each $x \in W$, choose a reduced expression $x = s_1 s_2 \cdots s_r$ and define
 
 $$
-H_{w} = H_{s_1} H_{s_2} \cdots H_{s_r} \in \mathcal{H}
+H_{x} = H_{s_1} H_{s_2} \cdots H_{s_r} \in \mathcal{H}
 $$
 
-and this is independent of the choices of reduced expression. One might ask why we should define $\mathcal{H}$ as this weird deformation of $\mathbb{Z}[W]$, and one answer is that, after tensoring with $\mathbb{C}$, the algebra becomes isomorphic to the another Hecke algebra $\mathbb{C}[B \backslash G / B]$ of $B$-biinvariant functions on $G$, where $G = G(\mathbb{F}\_{q})$ is a $\mathbb{F}\_{q}$-point of a reductive group $G$ and $B = B(\mathbb{F}\_{q})$ is the Borel subgroup, and the multiplication is given by the convolution product (See Peng Shan's note above).
+then $H_{x}$ is independent of the choices of reduced expression, and $\mathcal{H}$ becomes a free $\mathbb{Z}[v^{\pm 1}]$-module with basis $\\{H\_{x}\\}\_{x \in W}$. 
+
+One might ask why we should define $\mathcal{H}$ as this weird deformation of $\mathbb{Z}[W]$, and one answer is that, after tensoring with $\mathbb{C}$, the algebra becomes isomorphic to the another Hecke algebra $\mathcal{H}(G, B) := k[B(\mathbb{F}\_{q}) \backslash G(\mathbb{F}\_{q}) / B(\mathbb{F}\_{q})]$ of $k$-valued $B(\mathbb{F}\_{q})$-biinvariant functions on $G(\mathbb{F}\_{q})$, where $G$ is a reductive group and $B$ is a Borel subgroup, and the multiplication is given by the convolution product
+
+$$
+(f \ast g)(z) := \frac{1}{\# B(\mathbb{F}_{q})} \sum_{xy = z} f(x)g(y).
+$$
+
+More precisely, consider the Bruhat decomposition
+
+$$
+G = \coprod_{w \in W} BwB
+$$
+
+where $w \in W$ is regarded as an element of $G$. The *Bruhat cell* $BwB$ is independent of the choice of the representative of $w$ in $G$.
+If we define $T_{w} := \mathbf{1}\_{BwB}$ to be the characteristic function, then we have an isomorphism
+
+$$
+\mathcal{H}(G, B) \simeq \mathcal{H}(W, S) \otimes_{\mathbb{Z}} k_{v = q^{-1/2}}, \quad T_{w} \mapsto v^{-\ell(w)} H_{w}.
+$$
 
 
+Define *bar involution* on $\mathcal{H}(W, S)$ as
+
+$$
+\overline{v} = v^{-1}, \quad \overline{H}_{s} = H_{s}^{-1},\, s \in S \Rightarrow \overline{H}_{x} = H_{x^{-1}}^{-1}
+$$
+
+which is a well-defined ring homomorphism on $\mathcal{H}$.
+Then Kazhdan-Lusztig proved that there exists a very special basis of $\mathcal{H}$.
+
+> **Theorem.** (Kazhdan-Lusztig) There exists a unique $\mathbb{Z}[v^{\pm 1}]$-basis $\\{C_{w}\\}_{w \in W}$ such that
+>
+> 1. (Self-duality) $\overline{C_{w}} = C_{w}$
+> 2. (Bruhat upper triangularity) $C_{w} = H_{w} + \sum_{y < w} P_{y, w} H_{y}$ for $P_{y, w} \in v \mathbb{Z}[v]$
+
+Now we are ready to state Kazhdan-Lusztig conjectures:
+
+> **Theorem.** (Kazhdan-Lusztig, Beilinson-Bernstein, Brylinski-Kashiwara, Elias-Williamson) Let $y, w \in W$ with $y \leq w$ and $w_{0} \in W$ be the longest element.
+>
+> 1. (Positivity) Coefficients of the Kazhdan-Lusztig polynomials $P_{y, w}(v)$ are positive.
+> 2. (Multiplicity) Multiplicity of $L_{y}$ in $M_{w}$ is given by
+>
+> $$
+    [M_{w}: L_{y}] = P_{yw_{0}, ww_{0}}(1).
+> $$
 
 ### Perverse sheaves
 
@@ -206,7 +308,7 @@ $$
 P_{y, w}(q) = \sum_{i} \dim \mathrm{IH}^{2i}_{X_{y}} (\overline{X_{w}}) q^i
 $$
 
-where $\mathrm{IH}^{\bullet}$ is the cohomology of *intersection complex* (which is a perverse sheaf) and $X_{w} = BwB \subset G/B$ is a Bruhat cell of $w \in W$.
+where $\mathrm{IH}^{\bullet}$ is the cohomology of *intersection complex* (which is a perverse sheaf), $X_{w} = BwB / B \subset G / B$ is a locally closed subvariety of the flag variety $G / B$, where $BwB \subset G$ is a Bruhat cell of $w \in W$.
 Then the nonnegativity conjecture follows directly - dimensions are nonnegative quantities.
 
 I'll try to explain sligtly in detail about the theory of perverse sheaves and intersection complexes (cohomology).
