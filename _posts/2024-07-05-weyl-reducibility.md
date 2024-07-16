@@ -1,6 +1,6 @@
 ---
 layout: posts
-title:  "Weyl' complete reducibility theorem for semisimple Lie algebra: homological algebra proof"
+title:  "Weyl's complete reducibility theorem for semisimple Lie algebra: homological algebra proof"
 date:   2024-07-05
 categories: jekyll update
 tags: math
