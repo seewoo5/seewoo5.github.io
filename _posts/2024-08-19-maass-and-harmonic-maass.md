@@ -74,7 +74,7 @@ Then we can embed it into a space of Maass wave forms as follows:
 Proof is straightforward calculation from
 
 $$
-\frac{\partial}{\partial \bar{z}} f(z) = \left(\frac{\partial}{\partial x} + i \frac{\partial}{\partial y}\right) f(z) = 0
+\frac{\partial}{\partial \bar{z}} f(z) = \frac{1}{2} \left(\frac{\partial}{\partial x} + i \frac{\partial}{\partial y}\right) f(z) = 0
 $$
 
 by Cauchy-Riemann equation, which gives
