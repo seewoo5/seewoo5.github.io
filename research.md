@@ -11,6 +11,8 @@ permalink: /research/
 
 - **Algebraic proof of modular form inequalities for optimal sphere packings**, [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [presentation](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
 
+- (with J. Baek) **Formalizing Mason–Stothers Theorem and its Corollaries in Lean 4** [arXiv](https://arxiv.org/abs/2408.15180) [github](https://github.com/seewoo5/lean-poly-abc)
+
 **Publications (Math)**
 - (with J. Baek) **An equilateral triangle of side $>n$ cannot be covered by $n^2 + 1$ unit equilateral triangles homothetic to it**, accepted to American Mathematical Monthly [paper](https://arxiv.org/abs/2306.09533) [blog](https://seewoo5.github.io/jekyll/update/2023/12/12/conway-soifer.html)
 - (with D. Choi) **Non-archimedean Sendov's conjecture**, p-adic Numbers, Ultrametric Analysis and Applications 14, 77-80 (2022) [paper](https://link.springer.com/article/10.1134/S2070046622010058)
@@ -30,7 +32,6 @@ permalink: /research/
 
 **In Preparation**
 
-- (with J. Baek) **Formalizing Mason–Stothers Theorem and its consequences** [github](https://github.com/seewoo5/lean-poly-abc)
 
 **Miscellaneous**
 
