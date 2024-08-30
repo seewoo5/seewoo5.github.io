@@ -16,6 +16,10 @@ During the master's program at POSTECH, I was supervised by [YoungJu Choie](http
 
 ---
 
+Office hour: M/T/W 11:00am - 12:00pm.
+
+---
+
 Feel free to email me if you have any questions.
 
 Email: seewoo5 + at + berkeley + dot + edu
