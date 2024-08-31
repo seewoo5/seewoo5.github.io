@@ -14,7 +14,7 @@ Please check the [bCourse website](https://bcourses.berkeley.edu/courses/1537940
 
 - Section 108: Fri 12:00 pm - 12:59 pm, Dwinelle 183
 - Section 110: Fri 1:00 pm - 1:59 pm, Dwinelle 247
-- Section 113: Fri 3:00 pm - 3:59 pm, Wheeler 104
+- Section 114: Fri 3:00 pm - 3:59 pm, Wheeler 124
 
 *We have Berkeley time - discussions will start 10 minutes later than stated above.*
 
