@@ -9,7 +9,7 @@ permalink: /research/
 
 **Preprints**
 
-- **Algebraic proof of modular form inequalities for optimal sphere packings**, [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [presentation](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
+- **Algebraic proof of modular form inequalities for optimal sphere packings**, [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [presentation(short)](https://seewoo5.github.io/assets/presentations/spherepacking-short.pdf) [presentation(long)](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
 
 - (with J. Baek) **Formalizing Mason–Stothers Theorem and its Corollaries in Lean 4** [arXiv](https://arxiv.org/abs/2408.15180) [github](https://github.com/seewoo5/lean-poly-abc)
 
