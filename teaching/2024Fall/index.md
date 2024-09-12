@@ -10,6 +10,8 @@ Professor: [Edward Frenkel](https://www.edwardfrenkel.com/mathematics/)
 
 Please check the [bCourse website](https://bcourses.berkeley.edu/courses/1537940)
 
+Also, [bCourse for the students of my sections](https://bcourses.berkeley.edu/courses/1539728)
+
 #### Discussion
 
 - Section 108: Fri 12:00 pm - 12:59 pm, Dwinelle 183
