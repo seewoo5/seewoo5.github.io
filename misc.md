@@ -24,6 +24,10 @@ I'm a dj, and I mostly play techno / trance / house. Check out my [Soundcloud](h
 <summary>Past events:</summary>
 
 <p align="center">
+<img src="/assets/images/KLUBNACHT240914.jpeg">
+</p>
+
+<p align="center">
 <img src="/assets/images/KLUBNACHT240511.jpeg">
 </p>
 
