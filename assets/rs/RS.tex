@@ -7,6 +7,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{svg}
 
 % \newcommand{\GQ}{\mathrm{Gal}(\overline{\mathbb{Q}}/\mathbb{Q})}
 \newcommand{\GQ}{G_{\mathbb{Q}}}
@@ -15,7 +16,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem*{theorem*}{Theorem}
 
-\pagestyle{empty}
+% \pagestyle{empty}
 
 \begin{document}
 
@@ -31,10 +32,7 @@ My research centers on number theory, particularly delving into the realms of au
 
 \section*{(Relative) Langlands program}
 
-
-
 Introduced by Robert Langlands, the \emph{Langlands Program} constitutes a comprehensive unification theory in number theory and beyond, seeking to establish connections between two seemingly disparate mathematical domains: \emph{Galois Representations} and \emph{Automorphic Forms}.
-
 
 In 1846, Évariste Galois delved into the zeros of polynomial equations by examining their \emph{symmetries}, specifically the \emph{Galois groups}.
 These groups are a fundamental and crucial tool for the study of Diophantine equations.
@@ -42,23 +40,19 @@ For example, after the discovery of the formulas for cubic and quartic equations
 One ultimate goal for number theorists is to understand the structure of the \emph{absolute Galois group} $\mathrm{Gal}_{\mathbb{Q}}$, which encodes all possible symmetries for polynomials with rational coefficients.
 \emph{Galois representations} propose a way to explore the group through the lens of linear algebra.
 
-
 On the other side of the mathematical spectrum are \emph{automorphic forms} - special functions exhibiting profound internal symmetries.
 Take \emph{modular forms}, for instance, which are automorphic forms defined on the space of two by two matrices with specific symmetries.
 They not only encode intricate arithmetic information through \emph{Fourier coefficients} but also play a role in deriving non-trivial formulas in number theory, including the Lagrange's four squares theorem.
 
-
 The crux of the Langlands program lies in its conjecture that Galois representations and automorphic forms share a profound connection, mediated by entities known as \emph{$L$-functions}.
 Evidence of this conjecture can be discovered in Wiles's  proof of Fermat's Last Theorem, where the existence of a non-trivial integer solution necessitated the concurrent construction of a Galois representation and an associated modular form with special properties, ultimately making them impossible to exist.
-
-
-
 
 My research delves into the rich world of automorphic forms within the Langlands program, focusing particularly on \emph{the Langlands functorialities} — the relationships between automorphic forms defined on different spaces.
 Known results for specific pairs of spaces have already yielded significant theorems in number theory, such as the Sato--Tate conjectures \cite{harris2010family,barnet2011family} or generalized Ramanujan conjectures \cite{sarnak2005notes} on the Fourier coefficients of automorphic forms.
 
+(Something on BZSV)
 
-\subsection*{Ichino-Ikeda formula for general spin groups - Bessel case}
+\subsection*{Ichino--Ikeda formula for general spin groups (Bessel case)}
 
 
 % In particular, I am interested in characterizing the images of the functoriality maps: If one can always produce an automorphic form on a group $G$ from another on a different group $G'$, how can we describe the automorphic forms on $G$ coming from $G'$?
@@ -70,19 +64,32 @@ Furthermore, I'm trying to generalize Furusawa and Morimoto's work on the $\math
 My approach involves leveraging exceptional isomorphisms between low-rank general spin groups and other classical groups and reducing the conjecture to the already known cases.
 
 
-\section*{Computational approach in number theory}
+\subsection*{Mao--Rallis trace formula for dual pairs}
 
+I'm also working on the conjectural Ichino--Ikeda type formula for the dual pairs introduced by Mao and Rallis \cite{mao1997trace}.
+For a simple, split, simply laced groups $G'$ which is not of the type $A_n$, Mao and Rallis construct a dual pair $(\mathrm{SL}_{2}, G)$ in $G'$, using Heisenberg groups of $G'$, which includes the case of $(\mathrm{SL}_{2}, \mathrm{SL}_{6})$ in $E_6$.
+They proposed conjectural relative trace formulae for the dual pairs, which should relate the period integrals of automorphic forms on $G$ (resp. $\mathrm{SL}_{2}$) and special $L$-values associated to the automorphic representations of $\mathrm{SL}_{2}$ (resp. $G$).
+The authors proved fundamental lemma for the unit elements in the Hecke algebras of $G$ and $\mathrm{SL}_{2}$.
+Recently, Mao--Wan--Zhang \cite{mao2023bzsv} formulated the refined version of the conjecture (Ichino--Ikeda type formula) in context of the relative Langlands program \cite{ben2023relative}, and proved smooth transfer of the local functions for non-archimedean places.
+With Yuchan Lee, we are working completing the comparision of the relative trace formula for the $(\mathrm{SL}_{2}, \mathrm{SL}_{6})$ case, by proving the fundamental lemma for the full Hecke algebras, along with the smooth transfer at the archimedean places and spectral decomposition of the relative traces.
+Combined with the result of Lapid--Mao \cite{lapid2015conjecture} on Whittaker--Fourier coefficients, this would prove one direction of the non-refined version of the conjecture: if $\Pi$ is a cuspidal automorphic representation of $\mathrm{SL}_{2}$ and $\pi$ is a functorial lift of $\Pi$ to $G$ through the morphism between $L$-groups $\mathrm{PGL}_{2} \to {}^L G$, then the Mao--Rallis automorphic period is nonzero if the adjoint $L$-value $L(1, \Pi, \mathrm{Ad})$ of $\Pi$ is nonzero.
+We also expect to prove the refined formula by proving the local relative character identities, and combine with refined identity of Lapid--Mao for $\mathrm{SL}_{2}$.
+
+
+
+\section*{Computational Approach in Number Theory}
 
 
 In the realm of the Langlands Program, dealing with abstract objects like Galois representations and automorphic forms often benefits from grounding these concepts in tangible, computable counterparts.
-My prior work, exemplified by my undergraduate and master's theses on Maass wave forms and quantum modular forms, provides concrete instances of automorphic forms.
-By experimenting with examples through MATLAB \cite{MATLAB} and SageMath \cite{sagemath}, I found an appropriate definition of \emph{Hecke operators} for the spaces of these automorphic forms, which lead to the discovery of novel and non-trivial number-theoretic identities related to roots of unity \cite{lee2018quantum,lee2019maass}.
+Especialy, these ``classical'' objects (e.g. modular forms and Maass wave forms, instead of automorphic representations of $\mathrm{GL}_{2}(\mathbb{A}_{\mathbb{Q}})$) are usually easy to compute explicitly with help of computer algebra systems like SageMath \cite{sagemath} or MATLAB \cite{MATLAB}.
+
+% My prior work, exemplified by my undergraduate and master's theses on Maass wave forms and quantum modular forms, provides concrete instances of automorphic forms.
+% By experimenting with examples through MATLAB \cite{MATLAB} and SageMath \cite{sagemath}, I found an appropriate definition of \emph{Hecke operators} for the spaces of these automorphic forms, which lead to the discovery of novel and non-trivial number-theoretic identities related to roots of unity \cite{lee2018quantum,lee2019maass}.
 
 
 
 \subsection*{Modular forms and optimal sphere packings}
 
-% Currently, I'm interested in the optimal sphere packing problems and related subjects, using modular forms.
 \emph{Optimal sphere packing problem} asks the densest packing of $d$-dimensional space $\mathbb{R}^{d}$ with unit balls.
 The problem is trivial for $d = 1$, and $d = 2$ case is solved by Thue in 1890.
 The three-dimensional case, known as Kepler's conjecture, was resolved by Thomas Hales based on heavy computer calculations \cite{hales2005proof}.
@@ -98,15 +105,21 @@ Maryna Viazovska used modular forms from number theory to construct a magic func
 To prove these two cases, the authors \cite{viazovska2017sphere,cohn2017sphere} relied on numerical approximations and extensive computer assisted computations to establish desired inequalities between modular forms. However, it is natural to ask if there is a more general and conceptual proof for these inequalities.
 While a more straightforward proof exists for the case of dimension $8$ by Dan Romik \cite{romik2023viazovska}, I found \emph{algebraic} proofs for both of the dimensions $8$ and $24$ cases that circumvents reliance on numerical calculations or approximations \cite{lee2024algebraic}.
 Notably, I develop a theory of \emph{positive} and \emph{completely positive} quasimodular forms, and use the theory to study the \emph{magic modular forms} appear in the optimal sphere packing.
-Especially, I found an interesting connection with Kaneko and Koike's \emph{extremal quasimodular forms} \cite{kaneko2006extremal}, which are conjectured to have nonnegative Fourier coefficients.
-The proofs are based on a simple observation on the monotonicity of quotients of two forms to compare.
+I also found an interesting connection with Kaneko and Koike's \emph{extremal quasimodular forms} \cite{kaneko2006extremal}, which are conjectured to have nonnegative Fourier coefficients.
 The main inegredients are the differential equations satisfied by the modular forms.
-This also opens a new possibility to generalize Viazovska's construction to the dimensions other than $8$ and $24$, based on the construction of Fourier eigenfunctions by Feigenbaum, Grabner, and Hinder \cite{feigenbaum2021eigenfunctions}.
+This also opens a new possibility to generalize Viazovska's construction to the dimensions other than $8$ and $24$, based on the construction of Fourier eigenfunctions by Feigenbaum, Grabner, and Hardin \cite{feigenbaum2021eigenfunctions}.
 Especially, it would imply a new upper bound for the uncertainty principle \cite{bourgain2010principe} in specific dimensions.
 Also, as a byproduct, I proved Kaneko--Koike's conjecture on the positivity of Fourier coefficients of extremal forms in the case of depth $1$.
 
-Again, the above results are hinted a lot from experiments with many examples through SageMath.
-Especially, once I plot the quotient of two modular forms (Figure xxx), it becomes clear that what I should try to prove (monotonicity and limit), which turned out to be true.
+The above proofs are hinted a lot from extensive experiments with SageMath.
+Especially, when I saw the plot of the quotient of two modular forms (Figure \ref{fig:d8graph}), it becomes clear that what I should try to prove (monotonicity and limit as $t \to 0^+$), where both out to be true (Proposition 5.1 and 5.2 of \cite{lee2024algebraic}).
+
+\begin{figure}[h]
+    \centering
+    \includesvg[width=0.6\textwidth]{./d8.svg}
+    \caption{Graph of the quotient $F(it)/G(it)$ of two modular forms as a function in $t > 0$.}
+    \label{fig:d8graph}
+\end{figure}
 % Looking ahead, I envision employing computational approaches for diverse research problems in number theory.
 % My proficiency in programming, honed during my alternative military service, particularly with Python, positions me well for navigating these computational tools and databases like LMFDB \cite{lmfdb} effectively. 
 % This computational arsenal not only facilitates practical research but also opens avenues for exploring interesting applications and connections within number theory.
@@ -121,9 +134,8 @@ As a corollary, this gives a nontrivial identities on ceratin $p$-th root of uni
 Same argument also worked for Li--Ngo--Rhoades' Maass wave form \cite{li2013renormalization}.
 
 
-
-\newpage
-\section*{Other projects}
+% \newpage
+\section*{Other Projects}
 
 My interest is not restricted to number theory. I'm interested in various subjects, including
 \begin{itemize}
@@ -135,9 +147,29 @@ My interest is not restricted to number theory. I'm interested in various subjec
 
 
 
-\subsection*{Formalization of Polynomial Fermat's Last Theorem}
+\subsection*{Formalization of polynomial FLT and sphere packing in $\mathbb{R}^{8}$}
 
-\subsection*{Conway--Soifer Conjecture - homothetic case}
+Formal verification of mathematical proofs is a rapidly growing field, with the aim of ensuring the correctness of mathematical results.
+A lot of the mathematical objects and proofs are formalized, including the Hales' proof of Kepler's conjecture \cite{hales2017formal}, Scheme \cite{buzzard2022schemes}, Perfectoid space \cite{buzzard2020formalising}, and Gowers--Green--Manners--Tao's proof of the polynomial Frieman--Rusza conjecture \cite{gowers2023conjecture,pfr}.
+
+There's also an ongoing project to formalize the proof of Fermat's Last theorem in Lean 4 \cite{fltlean4}, lead by Kevin Buzzard.
+Since the proof of Fermat's Last Theorem is very complicated and requires a lot of advanced mathematics that are not in Lean's \texttt{mathlib4} library \cite{mathlib4}, we expect that the complete formalization would take more than 10 years.
+However, the \emph{polynomial} version of the Fermat's Last Theorem is much easier to prove, and in fact we have a more general result called the Mason--Stothers theorem \cite{stothers81,mason84}, which is an analogue of ABC conjecture for polynomials.
+
+With Jineon Baek, we give a complete formalization of the Mason--Stothers theorem in Lean 4 \cite{baek2024formalizing}.
+In fact, the theorem is already formalized in HOL by Eberl \cite{eberl17} and in Lean 3 by Wagemaker \cite{wagemaker18}.
+We gave extensive comparison between those previous formalizations and ours \cite[Section 7]{baek2024formalizing}, and we also in the process of integrating our formalization of the Mason--Stothers theorem to the \texttt{mathlib4} library.
+The code is available at
+\begin{center}
+    \url{https://github.com/seewoo5/lean-poly-abc}
+\end{center}
+
+Also, I'm working on a project formalizing the Viazovska's \cite{viazovska2017sphere} proof of the optimal sphere packing in $\mathbb{R}^{8}$ in Lean 4, with several people including Sidharth Hariharan (project leader), Chris Birkbeck, Gareth Ma and Maryna Viazovska.
+This may includes the formalization of my algebraic proof of the modular form inequalities \cite{lee2024algebraic}, which help us to completely avoid formalizing  various numerical analysis and the Hardy--Ramanujan formula.
+Currently, we completed to formalize the $E_8$ lattice and its density, and now we are on the stage of formalzing Cohn--Elkies bound and the basic theory of (quasi)modular forms.
+
+
+\subsection*{Conway--Soifer conjecture - homothetic case}
 
 Consider an equilateral triangle of side length $n + \varepsilon$ for an integer $n \geq 1$ and a sufficiently small $\varepsilon > 0$.
 What is the minimum number of unit equilateral triangles needed to cover the whole triangle?
@@ -147,16 +179,17 @@ Conway and Soifer give two different ways to cover the large triangle with $n^2 
 With Jineon Baek, we proved that the conjecture is true \emph{if we restrict our attention to homothetic triangles}, i.e. assuming all the sides of the unit equilateral triangles are parallel to the large triangle ($\bigtriangleup$ or $\bigtriangledown$) \cite{baek2024n2}.
 In fact, we proved the following general statement.
 
-\begin{theorem*}[Baek-Lee]
+\begin{theorem*}[Baek--L.]
 Call a triangle a horizontal triangle of base $b$ and height $h$, if it has a side of length $b$ parallel to the $x$-axis, and the height $h$ measured in the direction of $y$-axis.
 Then $n^2 + 1$ horizontal triangles of base $b$ and height $h$ cannot cover a horizontal triangle of base $nb$ and height $> nh$.
 \end{theorem*}
 
 The proof is elementary, and we also determined the largest possible $\varepsilon$ such that an equilateral triangle of side length $n + \varepsilon$ can be covered by $n^2 + 2$ or $n^2 + 3$ homothetic unit equilateral triangles ($\varepsilon = 1/(n+1)$ and $\varepsilon = 1 / n$, respectively). 
+We expect that our method can be generalized to higher dimensions, or to find the largest side length of an equilateral triangle that can be covered by $n^2 + k$ homothetic unit equilateral triangles for $1 \le k \le 2n$.
 
 \subsection*{Encrypted transfer learning with homomorphic encryption}
 
-While I was working at CryptoLab as a Research Engineer during my alternative military service, I developed privacy-preserving machine learning library called \texttt{HEaaN.SDK} \cite{heaansdk} based on CKKS homomorphic encryption (HE) scheme \cite{cheon2017homomorphic}.
+While I was working at CryptoLab as a Research Engineer during my alternative military service, I developed privacy-preserving machine learning library called \texttt{HEaaN.SDK} \cite{heaansdk} based on Cheon--Kim--Kim--Song (CKKS) homomorphic encryption (HE) scheme \cite{cheon2017homomorphic}.
 In theory, one can compute arbitrary arithmetic circuit over encrypted real and complex numbers (with small errors) using CKKS scheme, and one might think implementing machine learning algorithms with HE is not hard.
 However, encrypted computations over ciphertexts are much slower than over plaintexts, and naive implementations could be highly impractical.
 Hence we need to re-design the algorithm in \emph{HE-friendly} way, which is usually a nontrivial research problem.
