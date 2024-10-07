@@ -561,16 +561,16 @@ $$
 $$
 
 In other words, we have $a_n(f) \equiv \tau(n) \pmod{3}$ for all $n \ge 1$.
-Now, for a prime $p \equiv 2 \pmod{3}$, we have
+Now, for a prime $p \equiv 1 \pmod{3}$, we have
 
 $$
-a_p(f) = a_p(E) = p + 1 - \#E(\mathbb{F}_p) \equiv 0 \pmod{3}
+a_p(f) = a_p(E) = p + 1 - \#E(\mathbb{F}_p) \equiv 2 \pmod{3}
 $$
 
 since $\\#E(\mathbb{F}_{p})$ is a multiple of $3$, and we finally prove the congruence
 
 $$
-\tau(p) \equiv a_p(f) \equiv 0 \pmod{3}.
+\tau(p) \equiv a_p(f) \equiv 2 \pmod{3}.
 $$
 
 [^1]: To be precise, Wiles and Taylor proved the conjecture for semistable elliptic curves (which is enough to prove FLT), and Breuil-Conrad-Diamond-Taylor generalized to any elliptic curves over rationals.
