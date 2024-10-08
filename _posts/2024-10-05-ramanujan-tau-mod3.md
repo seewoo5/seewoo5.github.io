@@ -502,7 +502,7 @@ and similar identity holds for $\eta(9z)$.
 Therefore, it is enough to show
 
 $$
-\epsilon \left(a, 3b, \frac{c}{3}, d\right)^{2} \epsilon \left(a, 9b, \frac{c}{9} d\right)^{2} = 1\qquad (\ast)
+\epsilon \left(a, 3b, \frac{c}{3}, d\right)^{2} \epsilon \left(a, 9b, \frac{c}{9}, d\right)^{2} = 1\qquad (\ast)
 $$
 
 for all $\gamma = \left(\begin{smallmatrix} a & b \\\ c & d \end{smallmatrix} \right) \in \Gamma\_0(27)$.
@@ -549,6 +549,7 @@ for g in Gamma0(27).generators():
 ```
 
 (Total eight $1$'s will be printed.)
+Note that $\epsilon$ is not a character of $\Gamma\_0(4)$, but $\epsilon^2$ is.
 Now, from its product expansion, $f(z)$ is related to the discriminant form; we have
 
 $$

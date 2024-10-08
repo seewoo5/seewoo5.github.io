@@ -50,4 +50,5 @@ I'm also interested in programming (Python, Lean, SageMath, etc) and contributin
     - [Mason-Stothers and Polynomial ABC](https://github.com/seewoo5/lean-poly-abc) (with J. Baek)
 - [SageMath](https://github.com/sagemath/sage/issues?q=author%3Aseewoo5)
     - [Bhargava cube](https://github.com/seewoo5/sage-bhargava-cube)
+    - [Quantum modular form](https://github.com/seewoo5/sage-quantum-modform)
 - [Knowledge Tracing in PyTorch](https://github.com/seewoo5/KT) (archived)
