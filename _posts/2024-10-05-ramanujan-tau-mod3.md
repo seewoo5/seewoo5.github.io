@@ -468,17 +468,17 @@ $$
 
 This is the modular form `27.2.a.a` in [LMFDB](https://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/27/2/a/a/).
 One can prove that $f(z)$ is indeed a modular form of weight $2$ and level $\Gamma\_0(27)$, by showing that $f(z)$ is invariant under the generators of $\Gamma\_0(27)$.
-This is not easy to do by hand, but it can be done efficiently by using Farey symbol implemented in Sage.
+This is not easy to do by hand, but it can be done efficiently by using the congruence subgroup implemented in Sage.
 First of all, the transformation law of Dedekind's eta function is given by
 
 $$
-\eta\left(\frac{az + b}{cz + d}\right) = \epsilon(a, b, c, d) (cz + d)^{\frac{1}{2}} \eta(z)
+\eta\left(\frac{az + b}{cz + d}\right) = \epsilon\left(\begin{pmatrix} a & b \\ c &  d\end{pmatrix}\right) (cz + d)^{\frac{1}{2}} \eta(z)
 $$
 
 with
 
 $$
-\epsilon(a, b, c, d) = \begin{cases} e^{\frac{bi\pi}{12}} & (c, d) = (0, 1) \\ e^{i\pi \left(\frac{a+d}{12c} - s(d, c) - \frac{1}{4}\right)} & c > 0\end{cases},
+\epsilon\left(\begin{pmatrix} a & b \\ c & d\end{pmatrix}\right) = \begin{cases} e^{\frac{bi\pi}{12}} & (c, d) = (0, 1) \\ e^{i\pi \left(\frac{a+d}{12c} - s(d, c) - \frac{1}{4}\right)} & c > 0\end{cases},
 $$
 
 where $s(h, k)$ is the [Dedekind sum](https://en.wikipedia.org/wiki/Dedekind_sum)
@@ -491,18 +491,18 @@ For $\gamma = \left(\begin{smallmatrix} a & b \\\ c & d \end{smallmatrix} \right
 
 $$
 \begin{align*}
-\eta(3 (\gamma z)) &= \eta\left(\frac{3az + 3b}{cz + d}\right) \\
-&= \eta \left(\frac{a(3z) + 3b}{\frac{c}{3}(3z) + d}\right) \\
-&= \eta \left(\begin{pmatrix} a & 3b \\ \frac{c}{3} & d \end{pmatrix}(3z)\right) \\
-&= \epsilon\left(a, 3b, \frac{c}{3}, d\right)^{2} (cz + d) \eta(3z)
+\eta(3 (\gamma z))^{2} &= \eta\left(\frac{3az + 3b}{cz + d}\right)^{2} \\
+&= \eta \left(\frac{a(3z) + 3b}{\frac{c}{3}(3z) + d}\right)^{2} \\
+&= \eta \left(\begin{pmatrix} a & 3b \\ \frac{c}{3} & d \end{pmatrix}(3z)\right)^{2} \\
+&= \epsilon\left(\begin{pmatrix} a & 3b \\ \frac{c}{3} & d \end{pmatrix}\right)^{2} (cz + d) \eta(3z)^{2}
 \end{align*}
 $$
 
-and similar identity holds for $\eta(9z)$.
+and similar identity holds for $\eta(9z)^{2}$.
 Therefore, it is enough to show
 
 $$
-\epsilon \left(a, 3b, \frac{c}{3}, d\right)^{2} \epsilon \left(a, 9b, \frac{c}{9}, d\right)^{2} = 1\qquad (\ast)
+\epsilon \left(\begin{pmatrix} a & 3b \\ \frac{c}{3} & d\end{pmatrix}\right)^{2} \epsilon \left(\begin{pmatrix} a & 9b \\ \frac{c}{9} & d\end{pmatrix}\right)^{2} = 1\qquad (\ast)
 $$
 
 for all $\gamma = \left(\begin{smallmatrix} a & b \\\ c & d \end{smallmatrix} \right) \in \Gamma\_0(27)$.
