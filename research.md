@@ -51,4 +51,5 @@ I'm also interested in programming (Python, Lean, SageMath, etc) and contributin
 - [SageMath](https://github.com/sagemath/sage/issues?q=author%3Aseewoo5)
     - [Bhargava cube](https://github.com/seewoo5/sage-bhargava-cube)
     - [Quantum modular form](https://github.com/seewoo5/sage-quantum-modform)
+    - [Number theory tutorial (guest lecture for Math254A at Berkeley)](https://gist.github.com/seewoo5/400dbb69b8a4a7831ea6f035d35ad08d)
 - [Knowledge Tracing in PyTorch](https://github.com/seewoo5/KT) (archived)
