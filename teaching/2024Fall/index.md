@@ -48,6 +48,15 @@ It’s also a good idea to read ahead. Reading assignments will be given one wee
 - Midterm: 30%
 - Final: 50%
 
-#### Q&A
+#### Discussion notes
 
-TBA
+
+| Notes |
+| --- |
+| [Week1 (240830)](notes/Math110_week1.pdf) |
+| Week2 (none)|
+| [Week3 (240913)](notes/Math110_week3.pdf) |
+| [Week4 (240920)](notes/Math110_week4.pdf) |
+| [Week5 (240927)](notes/Math110_week5.pdf) |
+| [Week6 (241004)](notes/Math110_week6.pdf) |
+
