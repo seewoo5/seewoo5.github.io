@@ -37,9 +37,9 @@ A quiz consisting of 2 problems will be assigned on Gradescope every Monday at 3
 
 #### Homeworks (do NOT submit)
 
-The instructor will also post additional homework problems on bCourses (in Modules) every Tuesday and Thursday after the lecture. Solutions to these problems will be posted there the following Monday morning. They will not be collected or graded. However, it’s in the students' best interest to do these HW problems on a regular basis, as they will be indicative of the problems on the quizzes and the exams.
+The instructor will also post additional homework problems on bCourses (in Modules) every Tuesday and Thursday after the lecture. Solutions to these problems will be posted there the following Monday morning. They will not be collected or graded. However, it's in the students' best interest to do these HW problems on a regular basis, as they will be indicative of the problems on the quizzes and the exams.
 
-It’s also a good idea to read ahead. Reading assignments will be given one week in advance on bCourses (in Modules).
+It's also a good idea to read ahead. Reading assignments will be given one week in advance on bCourses (in Modules).
 
 
 #### Grades
