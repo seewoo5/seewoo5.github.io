@@ -9,7 +9,6 @@
 \usepackage{amsthm}
 \usepackage{svg}
 
-% \newcommand{\GQ}{\mathrm{Gal}(\overline{\mathbb{Q}}/\mathbb{Q})}
 \newcommand{\GQ}{G_{\mathbb{Q}}}
 \newcommand{\newstuff}[1]{\color{blue}{#1}\color{black}}
 
@@ -27,36 +26,36 @@ Research Statement \\
 
 
 
-My research centers on number theory, particularly delving into the realms of automorphic forms and the Langlands program, leveraging computational tools to enhance exploration and understanding.
+My research centers on number theory, particularly delving into the realms of automorphic forms and the (relative) Langlands program, leveraging computational tools to enhance exploration and understanding.
 
 
-\section*{(Relative) Langlands program}
+\section*{Relative Langlands program}
 
-Introduced by Robert Langlands, the \emph{Langlands Program} constitutes a comprehensive unification theory in number theory and beyond, seeking to establish connections between two seemingly disparate mathematical domains: \emph{Galois Representations} and \emph{Automorphic Forms}.
+Introduced by Robert Langlands, the \emph{Langlands Program} constitutes a comprehensive unification theory in number theory and beyond, seeking to establish connections between \emph{automorphic forms / representations} and \emph{Galois representations}.
+More precisely, for a given automorphic representation $\pi$ of a group $G(\mathbb{A}_{\mathbb{Q}})$, one expect that there exists an associated Galois representation $\rho_{\pi}: \mathrm{Gal}(\overline{\mathbb{Q}} / \mathbb{Q}) \to \check{G}(k)$ for $k = \mathbb{C}$ or $\overline{\mathbb{Q}_{\ell}}$ such that the automorphic $L$-function $L(s, \pi)$ is equal to the Artin $L$-function $L(s, \rho_{\pi})$ (here $\check{G}$ is the Langlands dual group of $G$).
+The most well-understood case is when $G = \mathrm{GL}_{1}$, which is essentially the class field theory.
+When $G = \mathrm{GL}_{2}$, the conjecture is known when $\pi$ is associated to the holomorphic modular forms, which is the celebrated modularity theorem by Wiles, Taylor, and others, and also the key step for the proof of Fermat's Last Theorem.
 
-In 1846, Évariste Galois delved into the zeros of polynomial equations by examining their \emph{symmetries}, specifically the \emph{Galois groups}.
-These groups are a fundamental and crucial tool for the study of Diophantine equations.
-For example, after the discovery of the formulas for cubic and quartic equations by Cardano, it took about 300 more years for Abel and Ruffini to provide a negative answer to the question of the solvability of general polynomial equations of degree at least $5$, using Galois theory.
-One ultimate goal for number theorists is to understand the structure of the \emph{absolute Galois group} $\mathrm{Gal}_{\mathbb{Q}}$, which encodes all possible symmetries for polynomials with rational coefficients.
-\emph{Galois representations} propose a way to explore the group through the lens of linear algebra.
+Recently, there's an emerging interest in the \emph{relative} Langlands program, which aims to generalize the classical Langlands program to the case of spherical varieties \cite{sakellaridis2012spherical,sakellaridis2017periods}.
+Especially, one of the main goal of the relative Langlands program is to give a systematic treatment of the abundant examples of the identities bewteen the automorphic periods and the special values of $L$-functions, including the works by Hecke, Iwasawa--Tate, Rankin--Selberg, Godement--Jacquet, Ichino--Ikeda, and Lapid--Mao.
+Also, Ben-Zvi, Sakellaridis, and Venkatesh proposed a conjectural \emph{duality} in relative Langlands program \cite{ben2023relative}, which suggests that one expect a dual pair $\check{G} \curvearrowright \check{M}$ to a given hamiltonian $G$-space $G \curvearrowright M$, where one expect a \emph{dual identity} on the automorphic periods and the special values of $L$-functions associated to the dual pair, by simply exchanging the roles of $(G, M)$ and $(\check{G}, \check{M})$.
 
-On the other side of the mathematical spectrum are \emph{automorphic forms} - special functions exhibiting profound internal symmetries.
-Take \emph{modular forms}, for instance, which are automorphic forms defined on the space of two by two matrices with specific symmetries.
-They not only encode intricate arithmetic information through \emph{Fourier coefficients} but also play a role in deriving non-trivial formulas in number theory, including the Lagrange's four squares theorem.
 
-The crux of the Langlands program lies in its conjecture that Galois representations and automorphic forms share a profound connection, mediated by entities known as \emph{$L$-functions}.
-Evidence of this conjecture can be discovered in Wiles's  proof of Fermat's Last Theorem, where the existence of a non-trivial integer solution necessitated the concurrent construction of a Galois representation and an associated modular form with special properties, ultimately making them impossible to exist.
+\subsection*{Mao--Rallis trace formula for dual pairs}
 
-My research delves into the rich world of automorphic forms within the Langlands program, focusing particularly on \emph{the Langlands functorialities} — the relationships between automorphic forms defined on different spaces.
-Known results for specific pairs of spaces have already yielded significant theorems in number theory, such as the Sato--Tate conjectures \cite{harris2010family,barnet2011family} or generalized Ramanujan conjectures \cite{sarnak2005notes} on the Fourier coefficients of automorphic forms.
+I'm also working on the conjectural Ichino--Ikeda type formula for the dual pairs introduced by Mao and Rallis \cite{mao1997trace}.
+For simple, split, and simply laced groups $G'$ which is not of the type $A_n$, Mao and Rallis construct a dual pair $(\mathrm{SL}_{2}, G)$ in $G'$, using Heisenberg groups of $G'$, which includes the case of $(\mathrm{SL}_{2}, \mathrm{SL}_{6})$ in $E_6$.
+They proposed conjectural relative trace formulae for the dual pairs, which should relate the period integrals of automorphic forms on $G$ (resp. $\mathrm{SL}_{2}$) and special $L$-values associated to the automorphic representations of $\mathrm{SL}_{2}$ (resp. $G$).
+The authors proved fundamental lemma for the unit elements in the Hecke algebras of $G$ and $\mathrm{SL}_{2}$.
+Recently, Mao--Wan--Zhang \cite{mao2023bzsv} formulated the refined version of the conjecture (Ichino--Ikeda type formula) in context of the relative Langlands program \cite{ben2023relative}, and proved smooth transfer of the local functions for non-archimedean places.
+With Yuchan Lee, we are working completing the comparision of the relative trace formula for the $(\mathrm{SL}_{2}, \mathrm{SL}_{6})$ case, by proving the fundamental lemma for the full Hecke algebras, along with the smooth transfer at the archimedean places and spectral decomposition of the relative traces.
+Combined with the result of Lapid--Mao \cite{lapid2015conjecture} on Whittaker--Fourier coefficients, this would prove one direction of the non-refined version of the conjecture: if $\Pi$ is a cuspidal automorphic representation of $\mathrm{SL}_{2}$ and $\pi$ is a functorial lift of $\Pi$ to $G$ through the morphism between $L$-groups $\mathrm{PGL}_{2} \to {}^L G$, then the Mao--Rallis automorphic period is nonzero if the adjoint $L$-value $L(1, \Pi, \mathrm{Ad})$ of $\Pi$ is nonzero.
+We also expect to prove the refined formula by proving the local relative character identities, and combine with refined identity of Lapid--Mao for $\mathrm{SL}_{2}$.
+Note that the refined formula is ``dual'' to the conjectural formula for the Ginzburg--Rallis periods and exterior cube $L$-values of $\mathrm{PGL}_{6}$ \cite{ginzburg2000exterior}.
 
-(Something on BZSV)
 
 \subsection*{Ichino--Ikeda formula for general spin groups (Bessel case)}
 
-
-% In particular, I am interested in characterizing the images of the functoriality maps: If one can always produce an automorphic form on a group $G$ from another on a different group $G'$, how can we describe the automorphic forms on $G$ coming from $G'$?
-% This characterization often hinges on the nonvanishing of specific integrals of automorphic forms referred as \emph{period integrals}. Remarkably, these period integrals are often related to the special values of $L$-functions associated with the automorphic representations. 
 For example, the Gan--Gross--Prasad conjecture \cite{gan2011symplectic} proposes an answer to the restriction problem - restricting an automorphic representation on a group to a subgroup - in terms of non-vanishing of the special values of the  associated $L$-functions. 
 Ichino and Ikeda presented a refined version of the conjecture, an equation directly relates period integrals and $L$-values, and proved certain cases \cite{ichino2010periods}. 
 Building upon the groundwork laid by Liu \cite{liu2016refined} on the special orthogonal groups ($\mathrm{SO}_{2} \times \mathrm{SO}_{5}$ and $\mathrm{SO}_{3} \times \mathrm{SO}_{6}$) and drawing insights from Emory's work \cite{emory2020global} on \emph{general spin groups} ($\mathrm{GSpin}_{n} \times \mathrm{GSpin}_{n+1}$ for $n = 2, 3, 4$), I am working on the Ichino--Ikeda conjecture for general spin groups, particularly in cases involving general Bessel periods.
@@ -64,27 +63,11 @@ Furthermore, I'm trying to generalize Furusawa and Morimoto's work on the $\math
 My approach involves leveraging exceptional isomorphisms between low-rank general spin groups and other classical groups and reducing the conjecture to the already known cases.
 
 
-\subsection*{Mao--Rallis trace formula for dual pairs}
-
-I'm also working on the conjectural Ichino--Ikeda type formula for the dual pairs introduced by Mao and Rallis \cite{mao1997trace}.
-For a simple, split, simply laced groups $G'$ which is not of the type $A_n$, Mao and Rallis construct a dual pair $(\mathrm{SL}_{2}, G)$ in $G'$, using Heisenberg groups of $G'$, which includes the case of $(\mathrm{SL}_{2}, \mathrm{SL}_{6})$ in $E_6$.
-They proposed conjectural relative trace formulae for the dual pairs, which should relate the period integrals of automorphic forms on $G$ (resp. $\mathrm{SL}_{2}$) and special $L$-values associated to the automorphic representations of $\mathrm{SL}_{2}$ (resp. $G$).
-The authors proved fundamental lemma for the unit elements in the Hecke algebras of $G$ and $\mathrm{SL}_{2}$.
-Recently, Mao--Wan--Zhang \cite{mao2023bzsv} formulated the refined version of the conjecture (Ichino--Ikeda type formula) in context of the relative Langlands program \cite{ben2023relative}, and proved smooth transfer of the local functions for non-archimedean places.
-With Yuchan Lee, we are working completing the comparision of the relative trace formula for the $(\mathrm{SL}_{2}, \mathrm{SL}_{6})$ case, by proving the fundamental lemma for the full Hecke algebras, along with the smooth transfer at the archimedean places and spectral decomposition of the relative traces.
-Combined with the result of Lapid--Mao \cite{lapid2015conjecture} on Whittaker--Fourier coefficients, this would prove one direction of the non-refined version of the conjecture: if $\Pi$ is a cuspidal automorphic representation of $\mathrm{SL}_{2}$ and $\pi$ is a functorial lift of $\Pi$ to $G$ through the morphism between $L$-groups $\mathrm{PGL}_{2} \to {}^L G$, then the Mao--Rallis automorphic period is nonzero if the adjoint $L$-value $L(1, \Pi, \mathrm{Ad})$ of $\Pi$ is nonzero.
-We also expect to prove the refined formula by proving the local relative character identities, and combine with refined identity of Lapid--Mao for $\mathrm{SL}_{2}$.
-
-
-
 \section*{Computational Approach in Number Theory}
 
 
 In the realm of the Langlands Program, dealing with abstract objects like Galois representations and automorphic forms often benefits from grounding these concepts in tangible, computable counterparts.
-Especialy, these ``classical'' objects (e.g. modular forms and Maass wave forms, instead of automorphic representations of $\mathrm{GL}_{2}(\mathbb{A}_{\mathbb{Q}})$) are usually easy to compute explicitly with help of computer algebra systems like SageMath \cite{sagemath} or MATLAB \cite{MATLAB}.
-
-% My prior work, exemplified by my undergraduate and master's theses on Maass wave forms and quantum modular forms, provides concrete instances of automorphic forms.
-% By experimenting with examples through MATLAB \cite{MATLAB} and SageMath \cite{sagemath}, I found an appropriate definition of \emph{Hecke operators} for the spaces of these automorphic forms, which lead to the discovery of novel and non-trivial number-theoretic identities related to roots of unity \cite{lee2018quantum,lee2019maass}.
+Especially, these ``classical'' objects (e.g. modular forms and Maass wave forms, instead of automorphic representations of $\mathrm{GL}_{2}(\mathbb{A}_{\mathbb{Q}})$) are usually easy to compute explicitly with help of computer algebra systems like SageMath \cite{sagemath} or MATLAB \cite{MATLAB}.
 
 
 
@@ -120,9 +103,6 @@ Especially, when I saw the plot of the quotient of two modular forms (Figure \re
     \caption{Graph of the quotient $F(it)/G(it)$ of two modular forms as a function in $t > 0$.}
     \label{fig:d8graph}
 \end{figure}
-% Looking ahead, I envision employing computational approaches for diverse research problems in number theory.
-% My proficiency in programming, honed during my alternative military service, particularly with Python, positions me well for navigating these computational tools and databases like LMFDB \cite{lmfdb} effectively. 
-% This computational arsenal not only facilitates practical research but also opens avenues for exploring interesting applications and connections within number theory.
 \subsection*{Maass wave forms, Quantum modular forms, and Hecke operators}
 
 In \cite{cohen1988q}, Cohen construct the first explicit example of maass wave form, based on one of the Ramanujan's $q$-series.
