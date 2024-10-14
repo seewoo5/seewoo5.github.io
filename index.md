@@ -9,10 +9,14 @@ layout: single
 </figure>
 
 
-I'm 3rd year graduate student in Mathematics at UC Berkeley. My advisor is [Sug Woo Shin](https://math.berkeley.edu/~swshin/).
+I'm a 4th year graduate student in Mathematics at UC Berkeley. My advisor is [Sug Woo Shin](https://math.berkeley.edu/~swshin/).
 I'm interested in number theory, especially about automorphic forms and representations in context of relative Langlands program.
 I'm also interested in computer-assisted mathematics, like optimization problems or formalization of mathematics.
 During the master's program at POSTECH, I was supervised by [YoungJu Choie](https://yjchoie.postech.ac.kr/).
+
+---
+
+Office hour: M/T/W 11:00am - 12:00pm.
 
 ---
 
