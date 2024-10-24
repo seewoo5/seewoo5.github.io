@@ -7,6 +7,8 @@ permalink: /research/
 [MathSciNet](https://mathscinet.ams.org/mathscinet/search/author.html?mrauthid=1266901)
 / [Google Scholar](https://scholar.google.com/citations?user=jdFDv6IAAAAJ&hl=en)
 
+[Research Statement](assets/rs/RS.pdf)
+
 **Preprints**
 
 - **Algebraic proof of modular form inequalities for optimal sphere packings**, [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [presentation(short)](https://seewoo5.github.io/assets/presentations/spherepacking-short.pdf) [presentation(long)](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
