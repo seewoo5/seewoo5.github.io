@@ -39,7 +39,7 @@ permalink: /research/
 
 - [This](https://github.com/seewoo5/math-notes) is a link to a GitHub repository for all the LaTeX-ed notes that I wrote.
 - [My qualifying exam syllabus and questions](assets/Qual_report.pdf).
-- [Interview on the Sausage conjecture (Donga Science, Korean)](https://dongascience.com/news.php?idx=63722&fbclid=IwZXh0bgNhZW0CMTAAAR3cGf8asL5SPNsq5i5JsyxxHIx96ZCDQOCCVZxySfDbCgi2GTY8mIl5UBY_aem_AZxrLmd5_NuR9NeXrB2A6d815wH3fycFlji7AcneUtdPR03sRfFZD5DmBCsxrLeJf5fCpIw0edgDdQgA81R6J8wL)
+- [Interview on the Sausage conjecture (Donga Science, Korean)](https://www.dongascience.com/news.php?idx=63722&fbclid=IwY2xjawGLW-ZleHRuA2FlbQIxMAABHRKQTGEnw5B4CvlzO09WRbMxC5MmGSjX7_0-6LdAp4gh-VDzY6gFipqWEw_aem_HoXwlscfyuoDYEDEDHrjxA)
 - [AMM Problem 12413](https://dx.doi.org/10.1080/00029890.2023.2231825)
 
 ---
