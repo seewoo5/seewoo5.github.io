@@ -62,4 +62,5 @@ It's also a good idea to read ahead. Reading assignments will be given one week 
 | Week7 (none) |
 | [Week8 (241018)](notes/Math110_week8.pdf) |
 | [Week9 (241025)](notes/Math110_week9.pdf) |
+| [Week10 (241101)](notes/Math110_week10.pdf) |
 
