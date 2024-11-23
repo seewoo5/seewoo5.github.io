@@ -65,3 +65,5 @@ It's also a good idea to read ahead. Reading assignments will be given one week 
 | [Week10 (241101)](notes/Math110_week10.pdf) |
 | [Week11 (241108)](notes/Math110_week11.pdf) |
 | [Week12 (241115)](notes/Math110_week12.pdf) |
+| [Week13 (241122)](notes/Math110_week13.pdf) |
+| Week14 (*Thanksgiving*) |
