@@ -16,7 +16,7 @@ permalink: /research/
 - (with J. Baek) **Formalizing Mason-Stothers Theorem and its Corollaries in Lean 4** [arXiv](https://arxiv.org/abs/2408.15180) [github](https://github.com/seewoo5/lean-poly-abc)
 
 **Publications (Math)**
-- (with J. Baek) **An equilateral triangle of side $>n$ cannot be covered by $n^2 + 1$ unit equilateral triangles homothetic to it**, The American Mathematical Monthly (2024): 1-9. [paper](https://www.tandfonline.com/doi/full/10.1080/00029890.2024.2416882) [blog](https://seewoo5.github.io/jekyll/update/2023/12/12/conway-soifer.html)
+- (with J. Baek) **An equilateral triangle of side $>n$ cannot be covered by $n^2 + 1$ unit equilateral triangles homothetic to it**, The American Mathematical Monthly 1-9 (2024). [paper](https://www.tandfonline.com/doi/full/10.1080/00029890.2024.2416882) [blog](https://seewoo5.github.io/jekyll/update/2023/12/12/conway-soifer.html)
 - (with D. Choi) **Non-archimedean Sendov's conjecture**, p-adic Numbers, Ultrametric Analysis and Applications 14, 77-80 (2022) [paper](https://link.springer.com/article/10.1134/S2070046622010058)
 - **Maass wave forms, quantum modular forms and Hecke operators**, Res. Mathematical Science 6, 7 (2018), Modular Forms are Everywhere: Celebration of Don Zagier's 65th Birthday [paper](https://link.springer.com/article/10.1007/s40687-018-0170-0)
 - **Quantum modular forms and Hecke operators**. Res. Number Theory 4, 18 (2018) [paper](https://link.springer.com/article/10.1007/s40993-018-0114-1)
