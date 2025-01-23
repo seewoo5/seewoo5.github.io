@@ -14,6 +14,13 @@ I'm interested in number theory, especially about automorphic forms and represen
 I'm also interested in computer-assisted mathematics, like optimization problems or formalization of mathematics.
 During the master's program at POSTECH, I was supervised by [YoungJu Choie](https://yjchoie.postech.ac.kr/).
 
+---
+
+Office hours (Spring 2025):
+
+Math116: Tuesday 9am - 11am
+
+Math125A: Tuesday 1pm - 2pm, Thursday 11am - 12pm
 
 ---
 
