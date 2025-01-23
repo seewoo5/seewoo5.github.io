@@ -368,7 +368,7 @@ $$
 
 where the same argument applies. $\square$
 
-In fact, it seems that LMFDB choose $c_1 \in \\{0, -1\\}$. Anyway, $c_1$ doesn't matter at all, and we only need to look at the sign of $c_0$.
+In fact, it seems that LMFDB choose $c_1 \in \\{0, -1\\}$; by considering $p(x)$ and $p(-x)$, one can always take $c_1$ as above without changing the value of $\|\alpha_1\|^2 + \|\alpha_2\|^2$. Anyway, $c_1$ doesn't matter at all, and we only need to look at the sign of $c_0$.
 In case of the logistic regression model, the model parameters are
 
 ```
@@ -492,6 +492,15 @@ Where's $c_2$?
 Again, this is something hidden in LMFDB's table:
 
 > **Proposition.** Let $p(x) = x^3 + c_2 x^{2} + c_{1}x + c_{0} \in \mathbb{Z}[x]$ be a polynomial with $\mathrm{disc}(p) = c_1^2 c_2^2 - 4 c_1^3 - 27 c_0^2 + 18 c_0 c_1 c_2 \ne 0$. Let $\alpha_1, \alpha_2, \alpha_3$ be the roots of $p(x)$. For given $d$, assume that $(c_0, c_1, c_2)$ minimizes $\|\alpha_1\|^2 + \|\alpha_2\|^2 + \|\alpha_3\|^2$ among all such polynomials. Then $c_2 \in \\{0, \pm 1\\}$.
+
+*Proof.* Replacing $p(x)$ with $q(x) = p(x - a) = x^3 + (c_2 - 3a)x^2 + \cdots$ for $a \in \mathbb{Z}$ does not change the discriminant, while the sum $\sum_{i} \|\alpha_i\|^2$ changes to
+
+$$
+\sum_i |\alpha_i + a|^2 = \sum_i |\alpha_i|^2 + (3a^2 - 2 c_2 a).
+$$
+
+If $c_2 \not \in \\{0, \pm 1\\}$, then choose $a$ to be the nearest integer to $\frac{c_2}{3}$, so that the sum $\sum_i \|\alpha_i\|^2$ becomes smaller.
+Hence, we can always take $c_2$ as $0$ or $\pm 1$. $\square$
 
 You can check that all the $c_2$'s in LMFDB cubic fields table are 0 or -1, and the discriminant reduces to
 
