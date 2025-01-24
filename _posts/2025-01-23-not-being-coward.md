@@ -34,8 +34,8 @@ In this post, we will show that similar proof works for all prime and higher pow
 > **Theorem.** For prime $p$, $\mathbb{Z} / p\mathbb{Z}$ has no nilpotent elements. In other words, for $k \ge 2$, $n^k \equiv 0 \pmod{p}$ implies $n \equiv 0 \pmod{p}$.
 
 First of all, we can reduce to the case when $k = 2$.
-For given $k$, take $a$ with $2^{a} \ge k$. Then we have $n^{2^{a}} = (n^{2^{a} - k}) n^{k} \equiv 0 \pmod{m}$.
-From $n^{2^a} = (n^{2^{a-1}})^{2}$, we have $n^{2^{a-1}} \equiv 0 \pmod{m}$, and repeating this gives $n \equiv 0 \pmod{m}$.
+For given $k$, take $a$ with $2^{a} \ge k$. Then we have $n^{2^{a}} = (n^{2^{a} - k}) n^{k} \equiv 0 \pmod{p}$.
+From $n^{2^a} = (n^{2^{a-1}})^{2}$, we have $n^{2^{a-1}} \equiv 0 \pmod{p}$, and repeating this gives $n \equiv 0 \pmod{p}$.
 
 For $k = 2$, our goal is to express $n$ as a $\mathbb{Z}$-linear combination of integer-valued polynomials, which are (i) divisible by $n^2$, or (ii) every value is divisible by $p$.
 As above,
