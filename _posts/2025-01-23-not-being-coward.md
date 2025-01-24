@@ -6,7 +6,7 @@ categories: jekyll update
 tags: math
 ---
 
-I saw the following proof today (from Twitter, and also from my friend):
+I saw the following proof today (from [Twitter](https://x.com/VinceVatter/status/1882125739111448580), and also from my friend):
 
 <p align="center">
 <img src="/assets/images/coward.jpeg">
