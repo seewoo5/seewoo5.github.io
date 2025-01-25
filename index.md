@@ -4,7 +4,7 @@ layout: single
 
 <figure>
 <div style="text-align: center; margin-bottom: 2em">
-<img src="assets/profile.jpeg" width="200" title="at Stanford"/>
+<img src="assets/profile.jpeg" width="200" title="Me packing one sphere at Stanford"/>
 </div>
 </figure>
 
