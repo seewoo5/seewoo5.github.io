@@ -24,6 +24,10 @@ Math125A: Tuesday 1pm - 2pm, Thursday 11am - 12pm
 
 ---
 
+[🏗️🏛️🏢🏫🏰🏗️🏛️🏢🏫🏰🏗️🏛️🏢🏫🏰🏗️🏛️🏢🏫🏰🏗️🏛️🏢🏫🏰🏗️🏛️🏢🏫🏰🏗️🏛️🏢🏫🏰](seminar/2025spring-bruhat-tits/index.md)
+
+---
+
 Feel free to email me if you have any questions.
 
 Email: seewoo5 + at + berkeley + dot + edu
