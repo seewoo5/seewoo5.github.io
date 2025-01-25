@@ -5,7 +5,9 @@ main:
     url: /research
   - title: "Teaching"
     url: /teaching/index
+  - title: "Seminar"
+    url: /seminar/index
   - title: "Blog"
-    url: /blog/
+    url: /blog
   - title: "Miscellaneous"
     url: /misc
