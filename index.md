@@ -18,9 +18,9 @@ During the master's program at POSTECH, I was supervised by [YoungJu Choie](http
 
 Office hours (Spring 2025):
 
-Math116: Tuesday 9am - 11am
+[Math116](/teaching/2025Spring116/): Tuesday 9am - 11am
 
-Math125A: Tuesday 1pm - 2pm, Thursday 11am - 12pm
+[Math125A](/teaching/2025Spring125A/): Tuesday 1pm - 2pm, Thursday 11am - 12pm
 
 ---
 
