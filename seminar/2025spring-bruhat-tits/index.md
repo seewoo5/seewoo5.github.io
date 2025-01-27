@@ -12,7 +12,7 @@ title: 🏗️🏛️🏢🏫🏰
 
 When: **Friday 5:00 pm - 6:00 pm + $\alpha$** (with Berkeley time)
 
-Where: TBD
+Where: **Evans 748**
 
 Vague Schedule: [Read me](Bruhat_Tits_seminar.pdf)
 
