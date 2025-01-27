@@ -40,7 +40,7 @@ References:
 - Kaletha, T., and Prasad, G. [*Bruhat–Tits theory: a new approach*](https://www.cambridge.org/9781108831963), vol. 44. Cambridge University Press, 2023.
 - Moy, A., and Prasad, G. [*Jacquet functors and unrefined minimal K-types*](https://link.springer.com/article/10.1007/BF02566411). Commentarii
 Mathematici Helvetici 71 (1996), 98–121.
-- Prasad, G, and Moy, A. [*Unrefined minimal K-types for p-adic groups*](https://link.springer.com/article/10.1007/BF01231566). Inventiones mathematicae 116.1-3 (1994): 393-408.
+- Moy, A., and Prasad, G. [*Unrefined minimal K-types for p-adic groups*](https://link.springer.com/article/10.1007/BF01231566). Inventiones mathematicae 116.1-3 (1994): 393-408.
 - Rabinoff, J. [*The Bruhat-Tits building of a p-adic chevalley group and an application to representation theory*](https://services.math.duke.edu/~jdr/papers/building.pdf), 2003.
 - Yu, J.-K. [*Construction of tame supercuspidal representations*](https://www.ams.org/jams/2001-14-03/S0894-0347-01-00363-0/S0894-0347-01-00363-0.pdf). Journal of the American Mathematical Society 14, 3 (2001), 579–622.
 - Anything else you want to read (but related to Bruhat-Tits buildings)
