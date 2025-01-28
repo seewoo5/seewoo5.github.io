@@ -22,6 +22,8 @@ Office hours (Spring 2025):
 
 [Math125A](/teaching/2025Spring125A/): Tuesday 1pm - 2pm, Thursday 11am - 12pm
 
+Both at Evans 1049
+
 ---
 
 [🏗️🏛️🏢🏫🏰🏗️🏛️🏢🏫🏰🏗️🏛️🏢🏫🏰🏗️🏛️🏢🏫🏰🏗️🏛️🏢🏫🏰🏗️🏛️🏢🏫🏰🏗️🏛️🏢🏫🏰](seminar/2025spring-bruhat-tits/index.md)

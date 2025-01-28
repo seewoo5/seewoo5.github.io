@@ -8,6 +8,6 @@ title: 2025 Spring - Math 125A
 
 Professor: [Patrick Lutz](https://math.berkeley.edu/~pglutz/)
 
-Office hours: Tuesday 1pm - 2pm, Thursday 11am - 12pm
+Office hours: Tuesday 1pm - 2pm, Thursday 11am - 12pm at Evans 1049
 
 Most of the course material will be on [bCourses](https://bcourses.berkeley.edu/courses/1541166).
