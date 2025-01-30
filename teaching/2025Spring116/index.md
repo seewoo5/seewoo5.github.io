@@ -8,6 +8,6 @@ title: 2025 Spring - Math 116
 
 Professor: [Tony Feng](https://math.berkeley.edu/~fengt/2025S_116)
 
-Office hours: Tuesday 9am - 11am
+Office hours: Tuesday 9am - 11am at Evans 1049
 
 Most of the course material will be on [bCourses](https://bcourses.berkeley.edu/courses/1541923).
