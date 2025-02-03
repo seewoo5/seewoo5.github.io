@@ -38,3 +38,9 @@
 @import "minimal-mistakes/archive";
 @import "minimal-mistakes/sidebar";
 @import "minimal-mistakes/print";
+
+// https://lazyren.github.io/devlog/use-utterances-for-jekyll-comments.html
+
+.utterances {
+    max-width: 100%;
+  }
