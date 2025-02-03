@@ -16,13 +16,15 @@ Where: **Evans 748**
 
 Vague Schedule: [Read me](Bruhat_Tits_seminar.pdf)
 
-Concise Schedule:
+> The main goal of the seminar is twofold: (i) understand the Bruhat-Tits buildings attached to reductive groups, and (ii) study various applications of buildings. For example, we may talk about Moy-Prasad filtration and Yu's construction of supercuspidal representations, for representation theoriest. But there are a lot of other applications of buildings including (explicit) Local Langlands correspondence, $p$-adic geometry, topology, etc. Feel free to talk about whatever you are interested in, that is related to Bruhat-Tits buildings.
+
+Concise Schedule (which may update frequently):
 
 - Week 1, Jan 31 (Seewoo) : Overview
-- Week 2, Feb 7 (?) : ?
-- Week 3, Feb 14 (?) : ?
-- Week 4, Feb 21 (?) : ?
-- Week 5, Feb 28 (?) : ?
+- Week 2, Feb 7 (Saud) : Representation theory of $\mathrm{SL}\_{2}(\mathbb{F}\_{p})$ and $\mathrm{SL}\_{2}(\mathbb{Q}\_{p})$ (before bulidings)
+- Week 3, Feb 14 (Yuji) : Buildings for $\mathrm{SL}\_{n}(\mathbb{Q}\_{p})$ (Goldman-Iwahori, pre-Bruhat-Tits).
+- Week 4, Feb 21 (?) : Bruhat-Tits buildings
+- Week 5, Feb 28 (?) : Bruhat-Tits buildings
 - Week 6, March 7 : No seminar (AWS)
 - Week 7, March 14 (?) : ?
 - Week 8, March 21 (?) : ?
