@@ -21,10 +21,10 @@ Vague Schedule: [Read me](Bruhat_Tits_seminar.pdf)
 Concise Schedule (which may update frequently):
 
 - Week 1, Jan 31 (Seewoo) : Overview
-- Week 2, Feb 7 (Saud) : Representation theory of $\mathrm{SL}\_{2}(\mathbb{F}\_{p})$ and $\mathrm{SL}\_{2}(\mathbb{Q}\_{p})$ (before bulidings)
-- Week 3, Feb 14 (Yuji) : Buildings for $\mathrm{SL}\_{n}(\mathbb{Q}\_{p})$ (Goldman-Iwahori, pre-Bruhat-Tits).
-- Week 4, Feb 21 (?) : Bruhat-Tits buildings
-- Week 5, Feb 28 (?) : Bruhat-Tits buildings
+- Week 2, Feb 7 (Saud) : Representation theory of $\mathrm{SL}\_{2}(\mathbb{F}\_{p})$ and Drinfeld curve
+- Week 3, Feb 14 (Yuji) : ?
+- Week 4, Feb 21 (?) : Bruhat-Tits buildings?
+- Week 5, Feb 28 (?) : Bruhat-Tits buildings?
 - Week 6, March 7 : No seminar (AWS)
 - Week 7, March 14 (?) : ?
 - Week 8, March 21 (?) : ?
