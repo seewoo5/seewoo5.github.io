@@ -22,7 +22,7 @@ Concise Schedule (which may update frequently):
 
 - Week 1, Jan 31 (Seewoo) : Overview
 - Week 2, Feb 7 (Saud) : Representation theory of $\mathrm{SL}\_{2}(\mathbb{F}\_{p})$ and Drinfeld curve
-- Week 3, Feb 14 (Yuji) : ?
+- Week 3, Feb 14 (Brian) : Building for $\mathrm{SL}\_{2}(\mathbb{Q}\_{p})$ (trees)
 - Week 4, Feb 21 (?) : Bruhat-Tits buildings?
 - Week 5, Feb 28 (?) : Bruhat-Tits buildings?
 - Week 6, March 7 : No seminar (AWS)
