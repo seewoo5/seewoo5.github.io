@@ -1,6 +1,7 @@
 ---
 layout: single
 title: 🏗️🏛️🏢🏫🏰 
+classes: wide
 ---
 
 
@@ -10,32 +11,39 @@ title: 🏗️🏛️🏢🏫🏰
 <img src="/seminar/2025spring-bruhat-tits/BT-SL2Q2.png">
 </p>
 
+> The main goal of the seminar is twofold: (i) understand the Bruhat-Tits buildings attached to reductive groups, and (ii) study various applications of buildings. For example, we may talk about Moy-Prasad filtration and Yu's construction of supercuspidal representations, for representation theoriest. But there are a lot of other applications of buildings including (explicit) Local Langlands correspondence, $p$-adic geometry, topology, etc. Feel free to talk about whatever you are interested in, that is related to Bruhat-Tits buildings.
+
+
 When: **Friday 5:00 pm - 6:00 pm + $\alpha$** (with Berkeley time)
 
 Where: **Evans 748**
 
+### Schedules
+
 Vague Schedule: [Read me](Bruhat_Tits_seminar.pdf)
 
-> The main goal of the seminar is twofold: (i) understand the Bruhat-Tits buildings attached to reductive groups, and (ii) study various applications of buildings. For example, we may talk about Moy-Prasad filtration and Yu's construction of supercuspidal representations, for representation theoriest. But there are a lot of other applications of buildings including (explicit) Local Langlands correspondence, $p$-adic geometry, topology, etc. Feel free to talk about whatever you are interested in, that is related to Bruhat-Tits buildings.
 
 Concise Schedule (which may update frequently):
 
-- Week 1, Jan 31 (Seewoo) : Overview
-- Week 2, Feb 7 (Saud) : Representation theory of $\mathrm{SL}\_{2}(\mathbb{F}\_{p})$ and Drinfeld curve
-- Week 3, Feb 14 (Brian) : Building for $\mathrm{SL}\_{2}(\mathbb{Q}\_{p})$ (trees)
-- Week 4, Feb 21 (?) : Bruhat-Tits buildings?
-- Week 5, Feb 28 (?) : Bruhat-Tits buildings?
-- Week 6, March 7 : No seminar (AWS)
-- Week 7, March 14 (?) : ?
-- Week 8, March 21 (?) : ?
-- Week 9, March 28 (?) : ?
-- Week 10, April 4 (?) : ?
-- Week 11, April 11 (?) : ?
-- Week 12, April 18 (?) : ?
-- Week 13, April 25 (?) : ?
-- Week 14, May 2 (?) : ?
+| When               | Who    | What                                                                              | References / Notes                                                                                                                                                                           |
+|--------------------|--------|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Week 1 (Jan 31)    | Seewoo | Overview                                                                          | Fintzen's [CDM](https://www.math.uni-bonn.de/people/fintzen/Fintzen_CDM.pdf) & [IHES](https://www.math.uni-bonn.de/people/fintzen/IHES_Fintzen.pdf) notes, Serre "Trees"                     |
+| Week 2 (Feb 7)     | Saud   | Representation theory of $\mathrm{SL}\_{2}(\mathbb{F}\_{p})$ and Drinfeld variety | [Andy Gordon's note](https://websites.umich.edu/~charchan/seminar/20211004.pdf), [Paul Garrett's note](https://www-users.cse.umn.edu/~garrett/m/repns/notes_2014-15/04_finite_GL2.pdf), Bump |
+| Week 3 (Feb 14)    | Brian  | Bruhat-Tits building for $\mathrm{SL}\_{2}(\mathbb{Q}\_{p})$                      |                                                                                                                                                                                              |
+| Week 4 (Feb 21)    |        | Bruhat-Tits building I                                                            |                                                                                                                                                                                              |
+| Week 5 (Feb 28)    |        | Bruhat-Tits building II                                                           |                                                                                                                                                                                              |
+| Week 6 (March 7)   | -      | No seminar (AWS)                                                                  | -                                                                                                                                                                                            |
+| Week 7 (March 14)  |        |                                                                                   |                                                                                                                                                                                              |
+| Week 8 (March 21)  |        |                                                                                   |                                                                                                                                                                                              |
+| Week 9 (March 28)  |        |                                                                                   |                                                                                                                                                                                              |
+| Week 10 (April 4)  |        |                                                                                   |                                                                                                                                                                                              |
+| Week 11 (April 11) |        |                                                                                   |                                                                                                                                                                                              |
+| Week 12 (April 18) |        |                                                                                   |                                                                                                                                                                                              |
+| Week 13 (April 25) |        |                                                                                   |                                                                                                                                                                                              |
+| Week 14 (May 2)    |        |                                                                                   |                                                                                                                                                                                              |
 
-References:
+
+### References
 
 - Fintzen, J. [*Representations of p-adic groups*](https://www.math.uni-bonn.de/people/fintzen/Fintzen_CDM.pdf). Current developments in mathematics (2021), 1–42
 - Fintzen, J. [*On the construction of tame supercuspidal representations*](https://www.cambridge.org/core/journals/compositio-mathematica/article/on-the-construction-of-tame-supercuspidal-representations/70256AF7C1BA82B217A2AB03537F992B). Compositio Mathematica 157, 12 (2021), 2733–2746.
