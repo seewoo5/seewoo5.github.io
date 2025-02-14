@@ -16,7 +16,7 @@ classes: wide
 
 When: **Friday 5:00 pm - 6:00 pm + $\alpha$** (with Berkeley time)
 
-Where: **Evans 748**
+Where: ~~Evans 748~~ **Evans 740** (updated!)
 
 ### Schedules
 
@@ -29,9 +29,9 @@ Concise Schedule (which may update frequently):
 |--------------------|--------|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Week 1 (Jan 31)    | Seewoo | Overview                                                                          | Fintzen's [CDM](https://www.math.uni-bonn.de/people/fintzen/Fintzen_CDM.pdf) & [IHES](https://www.math.uni-bonn.de/people/fintzen/IHES_Fintzen.pdf) notes, Serre "Trees"                     |
 | Week 2 (Feb 7)     | Saud   | Representation theory of $\mathrm{SL}\_{2}(\mathbb{F}\_{p})$ and Drinfeld variety | [Andy Gordon's note](https://websites.umich.edu/~charchan/seminar/20211004.pdf), [Paul Garrett's note](https://www-users.cse.umn.edu/~garrett/m/repns/notes_2014-15/04_finite_GL2.pdf), Bump |
-| Week 3 (Feb 14)    | Brian  | Bruhat-Tits building for $\mathrm{SL}\_{2}(\mathbb{Q}\_{p})$                      |                                                                                                                                                                                              |
-| Week 4 (Feb 21)    |        | Bruhat-Tits building I                                                            |                                                                                                                                                                                              |
-| Week 5 (Feb 28)    |        | Bruhat-Tits building II                                                           |                                                                                                                                                                                              |
+| Week 3 (Feb 14)    | Brian  | spherical and affine apartments, parahoric subgroups                              | Rabinoff's [undergrad thesis](https://services.math.duke.edu/~jdr/papers/building.pdf)                                                                                                       |
+| Week 4 (Feb 21)    |        |                                                                                   |                                                                                                                                                                                              |
+| Week 5 (Feb 28)    |        |                                                                                   |                                                                                                                                                                                              |
 | Week 6 (March 7)   | -      | No seminar (AWS)                                                                  | -                                                                                                                                                                                            |
 | Week 7 (March 14)  |        |                                                                                   |                                                                                                                                                                                              |
 | Week 8 (March 21)  |        |                                                                                   |                                                                                                                                                                                              |
@@ -41,7 +41,6 @@ Concise Schedule (which may update frequently):
 | Week 12 (April 18) |        |                                                                                   |                                                                                                                                                                                              |
 | Week 13 (April 25) |        |                                                                                   |                                                                                                                                                                                              |
 | Week 14 (May 2)    |        |                                                                                   |                                                                                                                                                                                              |
-
 
 ### References
 
