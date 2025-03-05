@@ -44,7 +44,7 @@ Concise Schedule (which may update frequently):
 
 ### Topics to be covered (i.e. another vague schedule)
 
-As we understand now (in theory) what are the buildings, we may study more applications of the theory of buildings.
+As we understand now (in theory) what are the buildings, we may study more applications of the theory of buildings or related topics.
 Here are the possible topics that I can think of; please(!) let me know if you want to give a talk on any of these, or have any other topics in your mind.
 
 - Moy-Prasad filtration
