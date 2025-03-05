@@ -42,6 +42,43 @@ Concise Schedule (which may update frequently):
 | Week 13 (April 25) |         |                                                                                   |                                                                                                                                                                                                                                                                                 |
 | Week 14 (May 2)    |         |                                                                                   |                                                                                                                                                                                                                                                                                 |
 
+### Topics to be covered (i.e. another vague schedule)
+
+As we understand now (in theory) what are the buildings, we may study more applications of the theory of buildings or related topics.
+Here are the possible topics that I can think of; please(!) let me know if you want to give a talk on any of these, or have any other topics in your mind.
+
+- Moy-Prasad filtration
+
+    - [Rabinoff's thesis](https://services.math.duke.edu/~jdr/papers/building.pdf) Chapter 5, or [Fintzen's note](https://www.math.uni-bonn.de/people/fintzen/Fintzen_CDM.pdf)
+    - Maybe [categorical Moy-Prasad](https://arxiv.org/abs/2104.12917) (Yang's thesis)?
+
+- Yu's construction of supercuspidal representations
+
+    - [Fintzen's note](https://www.math.uni-bonn.de/people/fintzen/Fintzen_CDM.pdf). There were some historical *corrections* by [Fintzen](https://arxiv.org/abs/1908.09819) and [Fintzen-Kaletha-Spice](https://arxiv.org/abs/2106.09120).
+
+- $p$-adic geometry, Berkovich spaces and compactifications of them
+
+    - [Remy-Thuillier-Werner](https://arxiv.org/abs/1110.1362), use $p$-adic geometry to compactify buildings.
+
+- Mostow strong rigidity theorem
+
+    - [Lizhen Ji's note](https://dept.math.lsa.umich.edu/~lji/building-curve-complex-handbook.pdf) Section 6.2. There are other topological applications in the note, too.
+
+- Local Langlands correspondence
+
+    - [Aubert](https://arxiv.org/abs/2306.06735) and [Aubert-Plymen](https://www.sciencedirect.com/science/article/pii/S0022314X21001992). For example, how the depth in Moy-Prasad filtration behaves under the local Langlands correspondence?
+
+- (co)volume formula of arithmetic groups
+
+    - Originally by [Prasad](http://www.numdam.org/item/PMIHES_1989__69__91_0.pdf), also in Chapter 18 of Kaletha-Prasad
+
+- Deligne-Lusztig theory
+
+    - [Chan's note](https://swc-math.github.io/aws/2025/2025ChanNotes.pdf), including recent developments of "positive depth" cases
+
+There are some dependencies among them (for example, Moy-Prasad should be mentioned ealier than Yu's construction).
+
+
 ### References
 
 - Fintzen, J. [*Representations of p-adic groups*](https://www.math.uni-bonn.de/people/fintzen/Fintzen_CDM.pdf). Current developments in mathematics (2021), 1–42
