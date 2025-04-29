@@ -16,8 +16,7 @@ title: Teaching
 
 * [Lecture on Zero-Knowledge Proof (For Math 116, 2025 Spring)](2025Spring116/Math116_ZKP.pdf)
 
-* [Lecture on Sage for number theory (For Math 254A, 2024 Fall)](Math254A_Sage.pdf)
-    * [Some codes](https://gist.github.com/seewoo5/400dbb69b8a4a7831ea6f035d35ad08d#file-sage-nt-ipynb)
+* [Lecture on Sage for number theory (For Math 254A, 2024 Fall)](Math254A_Sage.pdf) / [Example codes](https://gist.github.com/seewoo5/400dbb69b8a4a7831ea6f035d35ad08d#file-sage-nt-ipynb)
 
 #### Past teaching experiences
 
