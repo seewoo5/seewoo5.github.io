@@ -54,7 +54,7 @@ I'm also interested in programming (Python, Lean, SageMath, etc) and contributin
 
 - [mathlib4](https://github.com/leanprover-community/mathlib4/issues?q=author%3Aseewoo5)
     - [Mason-Stothers and Polynomial ABC](https://github.com/seewoo5/lean-poly-abc) (with J. Baek)
-    - [Sphere packing](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
+    - [Sphere Packing](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
     - [Formal Conjectures (by Google Deepmind)](https://github.com/google-deepmind/formal-conjectures/issues?q=author%3Aseewoo5)
 - [SageMath](https://github.com/sagemath/sage/issues?q=author%3Aseewoo5)
     - [Bhargava cube](https://github.com/seewoo5/sage-bhargava-cube)
