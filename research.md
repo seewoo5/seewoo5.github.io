@@ -35,7 +35,7 @@ permalink: /research/
 **In Preparation**
 
 - On extremal quasimodular forms of higher levels 
-- (with K. Lee) Machines learn number fields, but how?
+- (with K. Lee) Machines Learn Number Fields, But How? The Case of Galois Groups
 - (with F. Hosseinijafari, J. Getz, A. slipper, H. Yao, B. Hu, A. Terradillos, M.-H. Tomé, G. Xi, A. Zhao) Schwartz spaces for reductive monoids and modulation groups
 - (with H. Hong) TBD
 
