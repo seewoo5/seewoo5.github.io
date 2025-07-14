@@ -21,7 +21,7 @@ While using these advanced models for the first time (since I didn’t want to p
 
 These paid models are significantly better than the free versions of ChatGPT. One major difference is that Pro models can access the internet and search, whereas the free ones cannot. In other words, the knowledge of the free ChatGPT is limited to its training data, while Pro models can, in principle, access the most recent information by querying external sources. This explains why free models are already quite adept at literature searches and can "solve" some of the proposed problems by finding relevant papers.
 
-### They are not super good
+### They are not perfect
 
 Obviously, many of the proposed problems remained unsolved. Although I don’t know much about all of the problems, most participants agreed that the models could not tackle problems requiring genuinely new ideas not yet present in the literature. For example, ChatGPT did not even know where to start with one of the Number Theory group’s problems and even *congrats* to the author of the problem (See [this video](https://youtu.be/ALH54xxDOAA?si=9_7bPX8OGQV2jlxm) to find the author of the problem.).
 
