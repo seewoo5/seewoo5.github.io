@@ -3,6 +3,7 @@ layout: single
 title: Teaching
 ---
 
+* [2025 Fall - Math 113 (Introduction to Abstract Algebra)](2025Fall/index)
 * [2025 Spring - Math 116 (Cryptography)](2025Spring116/index)
 * [2025 Spring - Math 125A (Mathematical Logic)](2025Spring125A/index)
 * [2024 Fall - Math 110 (Abstract Linear Algebra)](2024Fall/index)
