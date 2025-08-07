@@ -9,10 +9,14 @@ layout: single
 </figure>
 
 
-I'm a 4th year graduate student in Mathematics at UC Berkeley. My advisor is [Sug Woo Shin](https://math.berkeley.edu/~swshin/).
-I'm interested in number theory, especially about automorphic forms and representations in context of relative Langlands program.
-I'm also interested in computer-assisted mathematics, like optimization problems or formalization of mathematics.
-During the master's program at POSTECH, I was supervised by [YoungJu Choie](https://yjchoie.postech.ac.kr/).
+*I am on the job market for the 2025–2026 academic year.*
+
+I am a fifth-year Ph.D. student in Mathematics at UC Berkeley, advised by [Sug Woo Shin](https://math.berkeley.edu/~swshin/).
+My research interests lie in computational number theory and, more broadly, in computer-assisted mathematics. This includes areas such as optimization problems (e.g., various linear programming problems involving automorphic forms), formalization, and the application of machine learning to pure mathematics.
+I was one of the contributors for the [FrontierMath Tier4 benchmark](https://epoch.ai/frontiermath/tier-4).
+I am also interested in automorphic forms and representations, particularly in the context of the (relative) Langlands program and Ichino-Ikeda type conjectures.
+
+Previously, I completed a master’s program at POSTECH, where I was advised by [YoungJu Choie](https://yjchoie.postech.ac.kr/).
 
 ---
 
