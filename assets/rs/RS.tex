@@ -98,7 +98,7 @@ Notably, after observing the plot of the quotient of two modular forms (Figure \
 \subsection{Function field arithmetic}
 
 During the summer of 2025, I mentored four students at the Berkeley mathematics REU in a project on function field arithmetic, specifically focusing on the function field analogue of Diophantine equations involving Fibonacci polynomials and prime races.
-Both of the works are joint with Bates, Jesubalan, Lu, and Shim, and all the results are motivated by SageMath experiments.
+The first two works below are joint with Bates, Jesubalan, Lu, and Shim, and all the results are motivated by SageMath experiments.
 
 Diophantine equations involving Fibonacci numbers have been studied extensively, with many interesting results.
 For example, Bugeaud, Mignotte, and Siksek \cite{bugeaud2006classical} used modular approach and linear forms to prove that the only perfect powers in the Fibonacci sequence are 0, 1, 8, and 144.
@@ -108,7 +108,7 @@ One noticeable difference from the classical case is that there are infinitely m
 
 The second project of our REU team is about \emph{ties} in function field prime races \cite{bjlls2025tie}.
 For a given monic polynomial \(m \in \bF_q[T]\), ``prime race'' in function field considers the number of irreducible monic polynomials (primes) of degree \(N\) congruent to \(a \in \bF_q[T]\) modulo \(m\), which we denote as \(\pi(a, m, N)\).
-In \cite{cha2008chebyshev}, Cha studied limiting distributions of the error functions, and proved that primes are biased towards non-quadratic residues under certain hypothesis on Dirichlet \(L\)-functions.
+In \cite{cha2008chebyshev}, Cha studied limiting distributions of the error functions, and proved that primes are biased towards non-quadratic residues under certain hypothesis on Dirichlet \(L\)-functions whe \(q\) is odd.
 In our project, we instead focus on the cases when \(\pi(a, m, N) = \pi(b, m, N)\) for distinct congruence classes \(a, b \in (\bF_q[T] / m)^\times\).
 We found that there are infinitely many triples \((m, a, b)\) where \(\pi(a, m, N) = \pi(b, m, N)\) holds for infinitely many \(N\).
 We suggest two ways to prove such ties: (1) by writing an explicit formula for each \(\pi(a, m, N)\) using \(L\)-functions and exploiting unexpected conjugate pairs of elements in cyclotomic fields, and (2) by constructing an explicit bijection using \(\GL_2(\bF_q)\)-action.
@@ -133,7 +133,7 @@ In my undergraduate and master's thesis, I proposed a correct definition of Heck
 \section{Number theory with Lean}
 
 The formal verification of mathematical proofs is a rapidly growing field aimed at ensuring the correctness of mathematical results.
-I worked on several projects using Lean, including
+I worked on several formalization projects using Lean, including
 \begin{itemize}
   \item Formalization of the Viazovska's proof of the optimal sphere packing in $\mathbb{R}^{8}$
   \item Formalization of the Mason--Stothers theorem and polynomial Fermat's Last Theorem
@@ -144,7 +144,7 @@ I worked on several projects using Lean, including
 
 I am working on a project to formalize Viazovska's proof of the optimal sphere packing in $\mathbb{R}^{8}$ \cite{viazovska2017sphere} in Lean 4, alongside a team led by Sidharth Hariharan, which includes Chris Birkbeck, Gareth Ma, Bhavik Mehta, and Maryna Viazovska.
 This also involves formalizing my algebraic proof of the modular form inequalities introduced in Section~\ref{subsec:algproof}, which would allow us to bypass the need for formalizing various aspects of numerical analysis and the Hardy--Ramanujan formula.
-Along with the formalization, we also found several mathematical tricks to reduce the identities for the Serre derivatives of level 2 modular forms to the case of level 1, which allow us to avoid formalization of the dimension formula for the higher levels, which requires formalizing valence formula.
+We also found several mathematical tricks to reduce the identities for the Serre derivatives of level 2 modular forms to the case of level 1, which allow us to avoid formalization of the dimension formula for the higher levels, which requires formalizing valence formula.
 So far, we have completed the formalization of the $E_8$ lattice and its density, and are now working on formalizing the Cohn--Elkies bound and the foundational theory of (quasi)modular forms.
 The project is open to public and available at:
 \begin{center} \href{https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean}{https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean} \end{center}
@@ -178,7 +178,7 @@ Another example is the work of He, Lee, and Oliver \cite{he2020machine} on class
 In a joint work with Kyu-Hwan Lee, we give an answer for \emph{why} machine learning models perform very well in classifying Galois groups of Galois number fields, by reverse engineering the classification logic of the models \cite{lee2025machines}.
 In particular, we studied the classification logic of decision tree models where the zeta coefficients are used as features, and we found that the models only use a small number of the coefficients whose indices are mostly certain powers.
 For example, Figure \ref{fig:nonic_zeta_dt} shows the decision tree predicting the Galois groups of nonic Galois extensions (which obtained 100\% accuracy on a test set) from zeta coefficients up to $a_{1000}(K)$, where the model only uses three coefficients: $a_{1000}$, $a_{343}$, and $a_{27}$, which are all cubic indices.
-Inspired from this, we conjectured and proved the following theorem, which has not been previously established.
+Inspired from this, we conjectured and proved the following theorem, which has not been showed up in the literature before.
 
 \begin{figure}[t]
     \centering
