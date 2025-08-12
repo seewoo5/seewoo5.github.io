@@ -62,7 +62,7 @@ There were problems that I never considered, and they seem very promising ML-bas
 ## Using ML in my own research (Learning Galois group of number fields)
 
 
-After returning from the workshop, I finally finished the paper that I had been working on with Professor [Kyu-Hwan Lee](https://khlee-math.github.io/). A previous paper by He, Lee, and Oliver used logistic regression and decision tree models to classify Galois groups (and other invariants such as degree or class numbers), finding that the models could predict with high accuracy. Our paper explains *why* they work well, by interpreting the trained models.
+After returning from the workshop, I finally finished [the paper](https://arxiv.org/abs/2508.06670) that I had been working on with Professor [Kyu-Hwan Lee](https://khlee-math.github.io/). A previous paper by He, Lee, and Oliver used logistic regression and decision tree models to classify Galois groups (and other invariants such as degree or class numbers), finding that the models could predict with high accuracy. Our paper explains *why* they work well, by interpreting the trained models.
 
 The most interesting case involved degree-9 extensions. If we restrict our attention to Galois extensions, there are two possible Galois groups: $\mathbb{Z}/9\mathbb{Z}$ or $(\mathbb{Z}/3\mathbb{Z})^2$.
 By using the first 1000 Dedekind zeta coefficients (for each $n \ge 1$, $a_n$ is the number of integral ideals $\mathfrak{a} \subseteq \mathcal{O}\_K$ of index $n$), the decision tree model achieved 100%(!) accuracy on a test set[^2] for distinguishing between two groups.
