@@ -11,6 +11,11 @@ permalink: /research/
 
 **Preprints**
 
+
+- **Shanks bias in function fields**
+
+- (with K. Lee) **Machines Learn Number Fields, But How? The Case of Galois Groups** [arXiv](https://arxiv.org/abs/2508.06670)
+
 - **Algebraic proof of modular form inequalities for optimal sphere packings**, [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [slide](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
 
 - (with J. Baek) **Formalizing Mason-Stothers Theorem and its Corollaries in Lean 4** [arXiv](https://arxiv.org/abs/2408.15180) [github](https://github.com/seewoo5/lean-poly-abc)
@@ -23,7 +28,8 @@ permalink: /research/
 - (with Y. Chen, R. Chernov, M. Flores, M. Bourque and B. Yang) **Toy Teichmüller spaces of real dimension 2: the pentagon and the punctured triangle**, Geom. Dedicata 197 (2018), 193-227 [paper](https://link.springer.com/article/10.1007/s10711-018-0325-6)
 
 **Publications (Others)**
-- (with G. Lee, J. Kim, J. Shin, M. Lee) **HETAL: Efficient Privacy-preserving Transfer Learning with Homomomorphic Encryption**, accepted to International Conference on Machine Learning 2023 (Oral) [paper](https://openreview.net/forum?id=jJXuL3hQvt) [github](https://github.com/CryptoLabInc/HETAL) [slide(short)](https://seewoo5.github.io/assets/presentations/hetal-icml.pdf) [slide(long)](https://seewoo5.github.io/assets/presentations/hetal-kias.pdf)
+- (with F. Lin, K. Nagel, J. Jiang, G. Yang, P. Chang, S. Li, N. Sheu) **An Analysis of Silk Density in Spider Webs**, To appear in Royal Society Open Science
+- (with G. Lee, J. Kim, J. Shin, M. Lee) **HETAL: Efficient Privacy-preserving Transfer Learning with Homomomorphic Encryption**, International Conference on Machine Learning 2023 (Oral) [paper](https://proceedings.mlr.press/v202/lee23m.html) [github](https://github.com/CryptoLabInc/HETAL) [slide(short)](https://seewoo5.github.io/assets/presentations/hetal-icml.pdf) [slide(long)](https://seewoo5.github.io/assets/presentations/hetal-kias.pdf)
 - (with J. Kim) **Revisiting the Convergence Theorem for Competitive Bidding in Common Value Actions**, Economic Theory Bulletin 10, 293-302 (2022) [paper](https://link.springer.com/article/10.1007/s40505-022-00234-2)
 - (with K. Kim, J. Shin, J. Park) **Tracing Knowledge for Tracing Dropouts: Multi-Task Training for Study Session Dropout Prediction**, Educational Data Mining 2021 [paper](https://educationaldatamining.org/EDM2021/virtual/static/pdf/EDM21_paper_174.pdf)
 - (with S. Kim, Y. Shim, H. Loh, J. Park) **Behavioral Testing of Deep Neural Network Knowledge Tracing Models**, Educational Data Mining 2021 [paper](https://eric.ed.gov/?id=ED615512)
@@ -34,8 +40,6 @@ permalink: /research/
 
 **In Preparation**
 
-- (with K. Lee) Machines Learn Number Fields, But How? The Case of Galois Groups
-- Shanks bias in function fields
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) Powerful Fibonacci polynomials over finite fields
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) On ties in function field prime race 
 - (with F. Hosseinijafari, J. Getz, A. slipper, H. Yao, B. Hu, A. Terradillos, M.-H. Tomé, G. Xi, A. Zhao) Schwartz spaces for reductive monoids and modulation groups
