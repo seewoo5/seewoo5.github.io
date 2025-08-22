@@ -5,24 +5,6 @@ search: false
 
 @charset "utf-8";
 
-@font-face {
-  font-family: "EBGaramond";
-  src: url("/assets/fonts/EBGaramond-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* Optional: add bold if you have a separate Bold .ttf file */
-@font-face {
-  font-family: "EBGaramond";
-  src: url("/assets/fonts/EBGaramond-Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
-
-$global-font-family: "EBGaramond", sans-serif;
-$header-font-family: "EBGaramond", sans-serif;
-$caption-font-family: "EBGaramond", sans-serif;
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials

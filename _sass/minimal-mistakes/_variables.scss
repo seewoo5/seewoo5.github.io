@@ -28,8 +28,26 @@ $times: Times, serif !default;
 $bodoni: "Bodoni MT", serif !default;
 $calisto: "Calisto MT", serif !default;
 $garamond: Garamond, serif !default;
-$ebgaramond: "EB Garamond", serif !default;
 
+
+@font-face {
+  font-family: "EBGaramond";
+  src: url("/assets/fonts/EBGaramond-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Optional: add bold if you have a separate Bold .ttf file */
+@font-face {
+  font-family: "EBGaramond";
+  src: url("/assets/fonts/EBGaramond-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+$global-font-family: "EBGaramond", sans-serif;
+$header-font-family: "EBGaramond", sans-serif;
+$caption-font-family: "EBGaramond", sans-serif;
 
 // $global-font-family: $sans-serif !default;
 // $header-font-family: $sans-serif !default;
