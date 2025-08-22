@@ -29,9 +29,25 @@ $bodoni: "Bodoni MT", serif !default;
 $calisto: "Calisto MT", serif !default;
 $garamond: Garamond, serif !default;
 
-$global-font-family: $sans-serif !default;
-$header-font-family: $sans-serif !default;
-$caption-font-family: $serif !default;
+
+@font-face {
+  font-family: "EBGaramond";
+  src: url("/assets/fonts/EBGaramond-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Optional: add bold if you have a separate Bold .ttf file */
+@font-face {
+  font-family: "EBGaramond";
+  src: url("/assets/fonts/EBGaramond-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+$global-font-family: "EBGaramond", sans-serif;
+$header-font-family: "EBGaramond", sans-serif;
+$caption-font-family: "EBGaramond", sans-serif;
 
 /* type scale */
 $type-size-1: 2.441em !default; // ~39.056px
