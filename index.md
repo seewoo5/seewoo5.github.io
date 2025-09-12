@@ -20,7 +20,7 @@ Previously, I completed a master’s program at POSTECH, where I was advised by 
 
 ---
 
-Office: Evans 1049
+Office: [See here](https://seewoo5.github.io/jekyll/update/2025/09/12/office-number.html)
 
 ---
 
