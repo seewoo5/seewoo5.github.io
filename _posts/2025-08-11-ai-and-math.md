@@ -1,7 +1,7 @@
 ---
 layout: posts
 title:  "What should we do as mathematicians with AI?"
-date:   2025-08-09
+date:   2025-08-11
 categories: jekyll update
 tags: math machine-learning
 ---
