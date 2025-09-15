@@ -61,7 +61,8 @@ permalink: /research/
 
 I'm also interested in programming (Python, Lean, SageMath, etc) and contributing to open sources. You can find some of my projects and contributions below:
 
-- [mathlib4](https://github.com/leanprover-community/mathlib4/issues?q=author%3Aseewoo5)
+- Lean
+    - [mathlib4](https://github.com/leanprover-community/mathlib4/issues?q=author%3Aseewoo5)
     - [Mason-Stothers and Polynomial ABC](https://github.com/seewoo5/lean-poly-abc) (with J. Baek)
     - [Sphere Packing](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
     - [Formal Conjectures (by Google Deepmind)](https://github.com/google-deepmind/formal-conjectures/issues?q=author%3Aseewoo5)
@@ -69,4 +70,5 @@ I'm also interested in programming (Python, Lean, SageMath, etc) and contributin
     - [Bhargava cube](https://github.com/seewoo5/sage-bhargava-cube)
     - [Quantum modular form](https://github.com/seewoo5/sage-quantum-modform)
     - [Number theory tutorial (guest lecture for Math254A at Berkeley)](https://gist.github.com/seewoo5/400dbb69b8a4a7831ea6f035d35ad08d)
+    - [Murmuration](https://github.com/seewoo5/murmuration)
 - [Knowledge Tracing in PyTorch](https://github.com/seewoo5/KT) (archived)
