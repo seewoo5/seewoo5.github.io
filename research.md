@@ -43,7 +43,9 @@ permalink: /research/
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) Powerful Fibonacci polynomials over finite fields
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) On ties in function field prime race 
 - (with F. Hosseinijafari, J. Getz, A. slipper, H. Yao, B. Hu, A. Terradillos, M.-H. Tomé, G. Xi, A. Zhao) Schwartz spaces for reductive monoids and modulation groups
+- Inequalities involving polynomials and quasimodular forms
 - On extremal quasimodular forms of higher levels 
+- Positive quasimodular forms and uncertainty principle
 - (with H. Hong) TBD
 
 **Miscellaneous**
