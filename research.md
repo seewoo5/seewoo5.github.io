@@ -12,7 +12,7 @@ permalink: /research/
 **Preprints**
 
 
-- **Shanks bias in function fields**
+- **Shanks bias in function fields** [arXiv](https://arxiv.org/abs/2509.16142)
 
 - (with K. Lee) **Machines Learn Number Fields, But How? The Case of Galois Groups** [arXiv](https://arxiv.org/abs/2508.06670) [github](https://github.com/seewoo5/ML-NF)
 
