@@ -16,3 +16,8 @@ Professor: [Christian Gaetz](https://sites.google.com/berkeley.edu/gaetz/teachin
 #### Office hours
 
 * Tue 10:00am - 12:00pm at Evans 1049
+
+#### Worksheets and Notes
+
+* [WS250917](./WS250917.pdf) and [Solution](./WS250917sol.pdf)
+* [Note250929](Note250929.pdf)
