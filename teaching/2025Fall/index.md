@@ -21,3 +21,4 @@ Professor: [Christian Gaetz](https://sites.google.com/berkeley.edu/gaetz/teachin
 
 * [WS250917](./WS250917.pdf) and [Solution](./WS250917sol.pdf)
 * [Note250929](Note250929.pdf)
+* [WS251001](./WS251001.pdf) and [Solution](./WS251001sol.pdf)
