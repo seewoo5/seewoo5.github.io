@@ -216,7 +216,7 @@ Now, we further divide into two cases:
 
 This concludes the proof.
 
-**Exercise.** Do the similar computation with other CM elliptic curves / modular forms in [^2]. For the elliptic curves with CM by $\mathbb{Z}[\zeta_3]$, one may need Jacobsthal sum $\varphi_{p, 3}$ instead of $\varphi_{p, 2}$.
+**Exercise.** Do the similar computation with other CM elliptic curves / modular forms in Martin-Ono [^2]. For the elliptic curves with CM by $\mathbb{Z}[\zeta_3]$, one may need Jacobsthal sum $\varphi_{p, 3}$ instead of $\varphi_{p, 2}$.
 
 
 [^1]: M. Newman, "Construction and application of a class of modular functions", PLMS 1957
