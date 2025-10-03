@@ -50,7 +50,7 @@ permalink: /research/
 
 **Miscellaneous**
 
-- [This](https://seewoo5.github.io/math-notes/) is a link to a website for all the TeXed notes that I wrote.
+- [This](https://seewoo5.github.io/math-notes/) is a link to a GitHub page for all the TeXed notes that I wrote.
 - [My qualifying exam syllabus and questions](assets/Qual_report.pdf).
 - [Interview on the Sausage conjecture (Donga Science, Korean)](https://www.dongascience.com/news.php?idx=63722&fbclid=IwY2xjawGLW-ZleHRuA2FlbQIxMAABHRKQTGEnw5B4CvlzO09WRbMxC5MmGSjX7_0-6LdAp4gh-VDzY6gFipqWEw_aem_HoXwlscfyuoDYEDEDHrjxA)
 - [AMM Problem 12413](https://dx.doi.org/10.1080/00029890.2023.2231825)
@@ -71,4 +71,10 @@ I'm also interested in programming (Python, Lean, SageMath, etc) and contributin
     - [Quantum modular form](https://github.com/seewoo5/sage-quantum-modform)
     - [Number theory tutorial (guest lecture for Math254A at Berkeley)](https://gist.github.com/seewoo5/400dbb69b8a4a7831ea6f035d35ad08d)
     - [Murmuration](https://github.com/seewoo5/murmuration)
-- [Knowledge Tracing in PyTorch](https://github.com/seewoo5/KT) (archived)
+    - [Function field](https://github.com/seewoo5/sage-function-field)
+    - [Machine learning number fields](https://github.com/seewoo5/ML-NF)
+    - [Positive quasimodular forms](https://github.com/seewoo5/posqmf)
+- Miscs
+    - [awesome-ai-for-math](https://seewoo5.github.io/awesome-ai-for-math/)
+    - [Erdős Problems + OEIS (by Terrence Tao)](https://github.com/teorth/erdosproblems/issues?q=author%3Aseewoo5)
+    - [Knowledge Tracing in PyTorch](https://github.com/seewoo5/KT) (archived)
