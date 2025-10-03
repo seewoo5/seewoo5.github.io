@@ -69,11 +69,31 @@ $$
 
 for a set generators of $\Gamma\_0(32)$.
 This can be done by using Sage, as in the [previous blog post](https://seewoo5.github.io/jekyll/update/2024/10/05/ramanujan-tau-mod3.html).
-It is also possible to express $f(z)$ as theta series.
-In Martin-Ono[^1], they proved that the $p$-th cofficient of $f(z)$ is given by
+In fact, Newman[^1] gave a criteria for eta products being a modular form: the product
 
 $$
-a_p(f) = \begin{cases} 0 & p \equiv 3 \pmod{4} \\ (-1)^{n+m} (4n+2) & p = (2n+1)^2 + 4m^2, \,n, m \ge 1\end{cases}
+\prod_{d \mid N} \eta(dz)^{r_d}
+$$
+
+with $r_d \in \mathbb{Z}$ satisfying
+
+$$
+\sum_{d \mid N} d r_d \equiv 0 \pmod{24}, \quad \sum_{d \mid N} \frac{N}{d} r_d \equiv 0 \pmod{24}, \quad s:=\prod_{d \mid N} d^{r_d} \in (\mathbb{Q}^\times)^2
+$$
+
+becomes a weight $k = \frac{1}{2} \sum_{d \mid N} r_d$ modular form of Nebentypus
+
+$$
+\chi(d) = \left(\frac{(-1)^k s}{d}\right).
+$$
+
+For our $f(z)$, $r_4 = r_8 = 2$ and $4 r_4 + 8 r_8 = 24$, $8 r_4 + 4 r_8 = 24$, and $s = 4^{r_4} 8^{r_8} = (32)^2$, so it is a modular form of level $\Gamma_0(32)$ with trivial character.
+
+It is also possible to express $f(z)$ as theta series.
+In Martin-Ono[^2], they proved that the $p$-th cofficient of $f(z)$ is given by
+
+$$
+a_p(f) = \begin{cases} 0 & p \equiv 3 \pmod{4} \\ (-1)^{n+m} (4n+2) & p = (2n+1)^2 + 4m^2, \,n, m \ge 0\end{cases}
 $$
 
 This follows from two identities due to Jacobi:
@@ -91,7 +111,7 @@ $$
 f(z) = \eta(8z)^3 \cdot \frac{\eta(4z)^2}{\eta(8z)} = \left(\sum_{n \ge 0} (-1)^n (2n+1) q^{(2n+1)^2}\right) \left(1 + 2 \sum_{m \ge 1}(-1)^m q^{4m^2}\right)
 $$
 
-and noting that there exists unique $m, n$ satisfying $p = (2n+1)^2 + (2m)^2$ for given $p \equiv 1 \pmod{4}$.
+and noting that there exists unique $m, n \ge 0$ satisfying $p = (2n+1)^2 + (2m)^2$ for given $p \equiv 1 \pmod{4}$.
 
 ## Relation
 
@@ -117,7 +137,7 @@ $$
 
 and is computed for several valus of $n$.
 In particular, $a_p(E) = - \varphi_{p,2}(4)$ and the case of $n = 2$ is studied by Jacobsthal.
-Here we sketch the computation of Berndt and Evans[^2], specalized to $a = 4$.
+Here we sketch the computation of Berndt and Evans[^3], specalized to $a = 4$.
 
 For a Dirichlet character $\chi$ modulo $p$, let $G(\chi) = \sum_{x \in \mathbb{F}\_p} \chi(x) e^{2 \pi i x / p}$ be the Gauss sum of $\chi$.
 If $\psi$ is another Dirichlet character of same modulus, Jacobi sum $J(\chi, \psi)$ is given by
@@ -132,29 +152,75 @@ $$
 J(\chi, \psi) = \frac{G(\chi)G(\psi)}{G(\chi\psi)}, \quad |J(\chi, \psi)| = p^{1/2}.
 $$
 
-Now we define
-
-$$
-K(\chi) := \chi(4) J(\chi, \chi) = J\left(\chi, \left(\frac{\cdot}{p}\right)\right)
-$$
-
-(the second equation requires justification; see Theorem 2.3 of [^2].)
-
 Now, fix a quartic character $\chi$ with $\chi^2 = \left(\frac{\cdot}{p}\right)$.
 Then we can rewrite $\varphi_{p, 2}(4)$ as
 
 $$
 \begin{align*}
-\varphi_{p, 2}(4) &= \sum_{x \in \mathbb{F}_p} \chi^2(x) \chi^2(x^2 + 4) \\
-&= \dots \\
-&= \chi(-1) \left(\frac{2}{p}\right) (K(\chi) + K(\chi^3))
+\varphi_{p, 2}(4) = \sum_{x \in \mathbb{F}_p} \chi^2(x) \chi^2(x^2 + 4)
+= \sum_{x \in \mathbb{F}_p} \chi(x^2) \chi^2(x^2 + 4)
 \end{align*}
 $$
 
-so it reduces to the computation of $K(\chi)$ (and $K(\chi^3)$).
+since $y \in \mathbb{F}\_p^2$ if and only if $\chi^2(y) = 1$, one can rewrite the last sum as
+
+$$
+\begin{align*}
+&\sum_{x \in \mathbb{F}_p} \chi(x) \chi^2(x + 4) (1 + \chi^2(x)) \\
+&= \sum_{x \in \mathbb{F}_p} \chi(-4x) \chi^2(-4x + 4) (1 + \chi^2(-4x)) \qquad(x \leftarrow -4x) \\
+&=\chi(-4) \left(\sum_{x \in \mathbb{F}_p} \chi(x)\chi^2(1-x) + \sum_{x \in \mathbb{F}_p} \chi^3(x) \chi^2(1-x)\right) \\
+&= 2 \chi(-4) \Re[J(\chi, \chi^2)]
+\end{align*}
+$$
+
+(Note that $\chi^2(4) = \chi^2(-4) = 1$.) So it reduces to the computation of $J(\chi, \chi^2)$.
+Since $J(\chi, \chi^2) \in \mathbb{Z}[i]$ and $|J(\chi, \chi^2)| = p$, one can write it as $J(\chi, \chi^2) = a + ib$ for $a, b \in \mathbb{Z}$ and $a^2 + b^2 = p$.
+Then
+
+$$
+J(\chi, \chi^2) = \sum_{m=2}^{p-1} \chi(1 - m) \left(\frac{m}{p}\right) = \sum_{m=2}^{p-1} \chi(1-m) \left[\left(\frac{m}{p}\right) - 1\right] - 1,
+$$
+
+and from $\chi(1-m) \equiv 1 \pmod{(1-i)\mathbb{Z}[i]}$ and $\left(\frac{m}{p}\right) - 1 \equiv 0 \pmod{2}$,
+
+$$
+a + ib = J(\chi, \chi^2) \equiv \sum_{m=2}^{p-1} \left[\left(\frac{m}{p}\right) - 1\right] - 1 \equiv -p \pmod{2(1-i)\mathbb{Z}[i]}
+$$
+
+so $|(a + p) + ib|^2 = p(p+1+2a)$ is divisible by $|2(1-i)| = 8$, thus $a \equiv -\frac{p+1}{2} \equiv -\left(\frac{2}{p}\right) \pmod{4}$, i.e. $a$ is odd.
+For such $a$, we have
+
+$$
+a_p(E) = - 2 \chi(-4) \Re[J(\chi, \chi^2)] = -2\chi(-4)a.
+$$
+
+Comparing with the formula of $a_p(f)$, one only needs to determine the sign of $\chi(-4)$ and $a$.
+From
+
+$$
+\begin{align*}
+\chi(-1) &= (-1)^{\frac{p-1}{4}} = \begin{cases} 1 & p \equiv 1 \pmod{8} \\ -1 & p \equiv 5 \pmod{8} \end{cases} \\
+\chi(4) &= \left(\frac{2}{p}\right) = \begin{cases} 1 & p \equiv 1 \pmod{8} \\ -1 & p \equiv 5 \pmod{8} \end{cases}
+\end{align*}
+$$
+
+we have $\chi(-4) = 1$ for any $p \equiv 1 \pmod{4}$, so $a_p(E) = -2a$.
+Now, we further divide into two cases:
 
 
+- $p \equiv 1 \pmod{8}$. We have $a \equiv -1 \pmod{4}$. If one write $p = (2n + 1)^2 + (2m)^2$, then $m$ has to be even. Also, $(-1)^n (2n+1) \equiv 1 \pmod{4}$ for any $n$, hence $a^2 + b^2 = (2n+1)^2 + (2m)^2$ gives $a = -(-1)^n (2n+1)$. Then
 
-[^1]: Y. Martin, K. Ono, "Eta-quotients and elliptic curves", PAMS 1997
+    $$a_p(E) = -2a = 2(-1)^{n}(2n+1) = 2(-1)^{n+m}(2n+1) = a_p(f).$$
 
-[^2]: B. Berndt, R. Evans, "Sums of Gauss, Jacobi, and Jacobsthal", Journal of Number Theory 1979
+- $p \equiv 5 \pmod{8}$. We have $a \equiv 1 \pmod{4}$. Then similar argument shows $a = (-1)^n (2n+1)$ and $m$ odd, which again implies $a_p(E) = a_p(f)$.
+
+This concludes the proof.
+
+**Exercise.** Do the similar computation with other CM elliptic curves / modular forms in [^2]. For the elliptic curves with CM by $\mathbb{Z}[\zeta_3]$, one may need Jacobsthal sum $\varphi_{p, 3}$ instead of $\varphi_{p, 2}$.
+
+
+[^1]: M. Newman, "Construction and application of a class of modular functions", PLMS 1957
+
+[^2]: Y. Martin, K. Ono, "Eta-quotients and elliptic curves", PAMS 1997
+
+[^3]: B. Berndt, R. Evans, "Sums of Gauss, Jacobi, and Jacobsthal", JNT 1979
