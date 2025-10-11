@@ -46,6 +46,7 @@ permalink: /research/
 - Inequalities involving polynomials and quasimodular forms
 - On extremal quasimodular forms of higher levels 
 - Positive quasimodular forms and uncertainty principle
+- Number of divisors of polynomials over function fields
 - (with H. Hong) TBD
 
 **Miscellaneous**
