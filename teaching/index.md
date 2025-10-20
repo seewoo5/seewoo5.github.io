@@ -3,6 +3,11 @@ layout: single
 title: Teaching
 ---
 
+
+[Thoughts on teaching](./TS_251001.pdf) / [More thoughts on teaching](https://seewoo5.github.io/jekyll/update/2023/10/03/how-to-teach.html)
+
+#### Teaching at UC Berkeley
+
 * [2025 Fall - Math 113 (Introduction to Abstract Algebra)](2025Fall/index)
 * [2025 Spring - Math 116 (Cryptography)](2025Spring116/index)
 * [2025 Spring - Math 125A (Mathematical Logic)](2025Spring125A/index)
