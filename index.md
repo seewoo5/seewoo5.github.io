@@ -9,7 +9,7 @@ layout: single
 </figure>
 
 
-*I am on the job market for the 2025–2026 academic year.*
+*I am on the academic job market in the Fall of 2025.*
 
 I am a fifth-year Ph.D. student in Mathematics at UC Berkeley, advised by [Sug Woo Shin](https://math.berkeley.edu/~swshin/).
 My research interests lie in computational number theory and, more broadly, in computer-assisted mathematics. This includes areas such as optimization problems (e.g., various linear programming problems involving automorphic forms), formalization, and the application of machine learning to pure mathematics.
@@ -21,6 +21,16 @@ Previously, I completed a master’s program at POSTECH, where I was advised by 
 ---
 
 Office: [See here](https://seewoo5.github.io/jekyll/update/2025/09/12/office-number.html)
+
+---
+
+In future, I will be at:
+
+- CMU (Nov 5 - Nov 8)
+- Aarhus U (Nov 13 - Nov 15)
+- EPFL (Nov 16 - Nov 18)
+- [KIAS Winter School on Mathematics and AI](https://chlee-0.github.io/2025-KIAS-Winter-School-Math-AI/) (Dec 2 - Dec 5)
+- [U of Wisconsin-Madison](https://wiki.math.wisc.edu/index.php/NTS_Fall_Semester_2025) (Dec 10 - Dec 12)
 
 ---
 
