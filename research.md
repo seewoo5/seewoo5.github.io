@@ -11,7 +11,7 @@ permalink: /research/
 
 **Preprints**
 
-- (with J. Getz, A. G. Terradillos, F. Hosseinjafari, B. Hu, A. Slipper, M.-H. Tomé, H. Yao, A. Zhao) **Modulation groups** [arXiv](https://arxiv.org/abs/2510.23932)
+- (with J. Getz, A. G. Terradillos, F. Hosseinijafari, B. Hu, A. Slipper, M.-H. Tomé, H. Yao, A. Zhao) **Modulation groups** [arXiv](https://arxiv.org/abs/2510.23932)
 
 - **Shanks bias in function fields** [arXiv](https://arxiv.org/abs/2509.16142)
 
