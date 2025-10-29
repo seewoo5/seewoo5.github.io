@@ -11,6 +11,7 @@ permalink: /research/
 
 **Preprints**
 
+- (with J. Getz, A. G. Terradillos, F. Hosseinjafari, B. Hu, A. Slipper, M.-H. Tomé, H. Yao, A. Zhao) **Modulation groups** [arXiv](https://arxiv.org/abs/2510.23932)
 
 - **Shanks bias in function fields** [arXiv](https://arxiv.org/abs/2509.16142)
 
@@ -42,7 +43,6 @@ permalink: /research/
 
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) Powerful Fibonacci polynomials over finite fields
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) On ties in function field prime race 
-- (with J. Getz, A. G. Terradillos, F. Hosseinjafari, B. Hu, A. Slipper, M.-H. Tomé, H. Yao, A. Zhao) Modulation groups
 - Inequalities involving polynomials and quasimodular forms
 - On extremal quasimodular forms of higher levels 
 - Positive quasimodular forms and uncertainty principle
