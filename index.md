@@ -26,7 +26,6 @@ Office: [See here](https://seewoo5.github.io/jekyll/update/2025/09/12/office-num
 
 In future, I will be at:
 
-- [CMU](https://events.cmu.edu/math/event/27297-special-listing-how-machines-learn-galois-groups) (Nov 5 - Nov 8)
 - Aarhus U (Nov 13 - Nov 15)
 - EPFL (Nov 16 - Nov 18)
 - [KIAS Winter School on Mathematics and AI](https://chlee-0.github.io/2025-KIAS-Winter-School-Math-AI/) (Dec 2 - Dec 5)
