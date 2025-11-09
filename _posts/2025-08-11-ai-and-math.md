@@ -113,6 +113,6 @@ I hope my experiences have convinced you that AI can assist mathematical researc
 
 [^1]: There was one more problem about knot theory, which seems to be an in-progress work and not published yet.
 
-[^2]: We also proved that there are infinitely many nonic Galois extensions that will be classified incorrectly under the tree above. But the discriminant of such fields is probably huge and does not appear in LMFDB.
+[^2]: We also proved that there are infinitely many nonic Galois extensions that will be classified incorrectly under the tree above. But discriminants of such fields are large and do not appear in LMFDB.
 
 [^3]: Again, this is not a well-defined claim, since it is hard to say what is a "new idea". Almost all - probably all - ideas of mathematics are built upon the ideas from the past, so one can claim that all mathematics can be interpolated from the known results. However, some of the pioneering works are definitely based on "novel" ideas that have not appeared before.

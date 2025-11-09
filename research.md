@@ -15,7 +15,7 @@ permalink: /research/
 
 - **Shanks bias in function fields** [arXiv](https://arxiv.org/abs/2509.16142)
 
-- (with K. Lee) **Machines Learn Number Fields, But How? The Case of Galois Groups** [arXiv](https://arxiv.org/abs/2508.06670) [github](https://github.com/seewoo5/ML-NF)
+- (with K. Lee) **Machines Learn Number Fields, But How? The Case of Galois Groups** [arXiv](https://arxiv.org/abs/2508.06670) [github](https://github.com/seewoo5/ML-NF) [blog](https://seewoo5.github.io/jekyll/update/2025/08/11/ai-and-math.html) [slide](https://seewoo5.github.io/assets/presentations/ml-galois.pdf)
 
 - **Algebraic proof of modular form inequalities for optimal sphere packings**, [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [slide](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
 
