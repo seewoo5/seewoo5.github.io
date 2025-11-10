@@ -26,7 +26,7 @@ Office: [See here](https://seewoo5.github.io/jekyll/update/2025/09/12/office-num
 
 In future, I will be at:
 
-- Aarhus U (Nov 13 - Nov 15)
+- [Aarhus U](https://math.au.dk/aktuelt/aktiviteter/event/aktivitet/6859?cHash=dde629fc2e8e508ac899d94da826480f) (Nov 13 - Nov 15)
 - EPFL (Nov 16 - Nov 18)
 - [KIAS Winter School on Mathematics and AI](https://chlee-0.github.io/2025-KIAS-Winter-School-Math-AI/) (Dec 2 - Dec 5)
 - [U of Wisconsin-Madison](https://wiki.math.wisc.edu/index.php/NTS_Fall_Semester_2025) (Dec 10 - Dec 12)
