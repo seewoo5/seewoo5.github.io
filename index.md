@@ -24,10 +24,7 @@ Office: [See here](https://seewoo5.github.io/jekyll/update/2025/09/12/office-num
 
 ---
 
-In future, I will be at:
-
-- [KIAS Winter School on Mathematics and AI](https://chlee-0.github.io/2025-KIAS-Winter-School-Math-AI/) (Dec 2 - Dec 5)
-- [U of Wisconsin-Madison](https://wiki.math.wisc.edu/index.php/NTS_Fall_Semester_2025) (Dec 10 - Dec 12)
+See [travel](travel) to see where I visited, am visiting, and will visit.
 
 ---
 

@@ -3,6 +3,8 @@ main:
     url: "https://seewoo5.github.io/assets/cv/CV.pdf"
   - title: "Research"
     url: /research
+  - title: "Travel"
+    url: /travel
   - title: "Teaching"
     url: /teaching/index
   - title: "Seminar"
