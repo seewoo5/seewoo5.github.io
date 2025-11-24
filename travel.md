@@ -93,29 +93,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var listItem = document.createElement('li');
         var titleContent = city + ' ' + '{{ location.popup_content | markdownify | strip_newlines}}';
-        // listItem.innerHTML = `${city}, ${titleContent}`;
         listItem.innerHTML = `${titleContent}`;
-
-        console.log("Generated HTML for list item:", listItem.innerHTML);
-        console.log("targetList:", targetList);
-        console.log("iconToUse:", iconToUse);
         targetList.appendChild(listItem);
-        // if (targetList) {
-        //     targetList.appendChild(listItem);
-        // }
-        // if (!targetList) {
-        //     // targetList is null (because document.getElementById failed).
-        //     // This logs a detailed error to the browser console.
-        //     console.error("CRITICAL ERROR: List container not found for status in city:", city, "Check if list element IDs exist in your HTML.");
-            
-        //     // Skip the appending step for this location to avoid crashing the script
-        //     // The loop will continue to the next location.
-        //     // We already added a safety check in the previous response, but this is more informative:
-        //     // targetList.appendChild(listItem); 
-        // } else {
-        //     // If targetList is found, proceed with appending
-        //     targetList.appendChild(listItem);
-        // }
+
     {% endfor %}
 
     mymap.addLayer(markers);
