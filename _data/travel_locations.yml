@@ -1,36 +1,100 @@
 # _data/travel_locations.yml
 locations:
-  - city: "Nanyang, Singapore"
-    lat: 1.3483153
-    lng: 103.6805598
-    date_from: "2017-12-27"
-    date_to: "2017-12-29"
+  - city: "Aarhus, Denmark"
+    lat: 56.1659954
+    lng: 10.1974896
+    date_from: "2026-01-27"
+    date_to: "2026-01-30"
     popup_content: |
-      [2017 NCTS-POSTECH Joint Workshop on Number Theory](https://ncts.ntu.edu.tw/events_2_detail.php?nid=169), December 27-29, 2017
+      [Aarhus Mathematics & AI Workshop](https://conferences.au.dk/math-ai-workshop-2026), January 27-30, 2026
 
-  - city: "Trondheim, Norway"
-    lat: 63.4399785
-    lng: 10.3993173
-    date_from: "2022-05-29"
-    date_to: "2022-05-29"
+  - city: "Madison, US"
+    lat: 43.0755182
+    lng: -89.4180275
+    date_from: "2025-12-10"
+    date_to: "2025-12-12"
     popup_content: |
-      [1st FHE.org workshop](https://fhe.org/conferences/conference-2022/), June 12-16, 2023
+      [University of Wisconsin-Madison](https://wiki.math.wisc.edu/index.php/NTS_ABSTRACTFall2025#Dec_11), December 10-12, 2025
 
-  - city: "Daejeon, South Korea"
-    lat: 36.3702017
-    lng: 127.3596955
-    date_from: "2023-05-14"
-    date_to: "2023-05-14"
+  - city: "Jeongseon, South Korea"
+    lat: 37.4747492
+    lng: 128.6086557
+    date_from: "2025-12-02"
+    date_to: "2025-12-05"
     popup_content: |
-      KAIST School of Computing, May 14, 2023
+      [KIAS Winter School on Mathematics and AI](https://chlee-0.github.io/2025-KIAS-Winter-School-Math-AI/), December 2-5, 2025
+
+  - city: "Lausanne, Switzerland"
+    lat: 46.5190594
+    lng: 6.5641827
+    date_from: "2025-11-16"
+    date_to: "2025-11-18"
+    popup_content: |
+      [EPFL](https://memento.epfl.ch/event/sphere-packing-sign-uncertainty-principle-universa/), November 16-18, 2025
+
+  - city: "Aarhus, Denmark"
+    lat: 56.1659954
+    lng: 10.1974896
+    date_from: "2025-11-13"
+    date_to: "2025-11-15"
+    popup_content: |
+      [Aarhus University](https://math.au.dk/aktuelt/aktiviteter/event/aktivitet/6859?cHash=dde629fc2e8e508ac899d94da826480f), November 13-15, 2025
+
+  - city: "Pittsburgh, US"
+    lat: 40.4454081
+    lng: -79.9471358
+    date_from: "2025-11-05"
+    date_to: "2025-11-08"
+    popup_content: |
+      [Carnegie Mellon University](https://events.cmu.edu/math/event/27297-special-listing-how-machines-learn-galois-groups), November 5-8, 2025
+
+  - city: "Davis, US"
+    lat: 38.5382364
+    lng: -121.7642874
+    date_from: "2025-01-14"
+    date_to: "2025-01-14"
+    popup_content: |
+      [UC Davis](https://www.math.ucdavis.edu/research/seminars?talk_id=7283), January 14, 2025
+
+  - city: "Arizona, US"
+    lat: 32.2319026
+    lng: -110.9561156
+    date_from: "2025-03-08"
+    date_to: "2025-03-12"
+    popup_content: |
+      [Arizona Winter School](https://swc-math.github.io/aws/2025/index.html), March 8-12, 2025
+
+  - city: "Berkeley, US"
+    lat: 37.8736167
+    lng: -122.260169
+    date_from: "2025-02-24"
+    date_to: "2025-02-24"
+    popup_content: |
+      [Berkeley RTG Seminar](https://events.berkeley.edu/math/event/292823-arithmetic-geometry-and-number-theory-rtg-seminar), February 24, 2025
+
+  - city: "Luminy, France"
+    lat: 43.2300034
+    lng: 5.4408788
+    date_from: "2024-09-02"
+    date_to: "2024-09-13"
+    popup_content: |
+      [Building Bridges: 6th EU/US Summer School & Workshop on Automorphic Forms and Related Topics](https://conferences.cirm-math.fr/3134.html), September 2-13, 2024
+
+  - city: "Pohang, South Korea"
+    lat: 36.0151842
+    lng: 129.3207473
+    date_from: "2024-05-26"
+    date_to: "2024-05-28"
+    popup_content: |
+      [POSTECH](https://math.postech.ac.kr/bbs/board.php?bo_table=m07_01&wr_id=46), May 26-28, 2024
 
   - city: "Seoul, South Korea"
     lat: 37.5928556
     lng: 127.0431712
-    date_from: "2023-06-13"
-    date_to: "2023-06-13"
+    date_from: "2023-12-29"
+    date_to: "2023-12-29"
     popup_content: |
-      [KIAS AI and Natural Sciences](https://www.kias.re.kr/kias/activities/seminars/view.do?seqno=PGN1720230511-0004&menuNo=404003), June 13, 2023
+      [KIAS HCMC](https://kias.re.kr/kias/activities/seminars/view.do?seqno=PGN1720231226-0002&centrspgmsCd=CMC&menuNo=403009&mjrcdnm=&sdate=2023-12-28&edate=&pageIndex=1), December 29, 2023
 
   - city: "Hawaii, US"
     lat: 21.2896993
@@ -43,95 +107,31 @@ locations:
   - city: "Seoul, South Korea"
     lat: 37.5928556
     lng: 127.0431712
-    date_from: "2023-12-29"
-    date_to: "2023-12-29"
+    date_from: "2023-06-13"
+    date_to: "2023-06-13"
     popup_content: |
-      [KIAS HCMC](https://kias.re.kr/kias/activities/seminars/view.do?seqno=PGN1720231226-0002&centrspgmsCd=CMC&menuNo=403009&mjrcdnm=&sdate=2023-12-28&edate=&pageIndex=1), December 29, 2023
+      [KIAS AI and Natural Sciences](https://www.kias.re.kr/kias/activities/seminars/view.do?seqno=PGN1720230511-0004&menuNo=404003), June 13, 2023
 
-  - city: "Pohang, South Korea"
-    lat: 36.0151842
-    lng: 129.3207473
-    date_from: "2024-05-26"
-    date_to: "2024-05-28"
+  - city: "Daejeon, South Korea"
+    lat: 36.3702017
+    lng: 127.3596955
+    date_from: "2023-05-14"
+    date_to: "2023-05-14"
     popup_content: |
-      [POSTECH](https://math.postech.ac.kr/bbs/board.php?bo_table=m07_01&wr_id=46), May 26-28, 2024
+      KAIST School of Computing, May 14, 2023
 
-  - city: "Luminy, France"
-    lat: 43.2300034
-    lng: 5.4408788
-    date_from: "2024-09-02"
-    date_to: "2024-09-13"
+  - city: "Trondheim, Norway"
+    lat: 63.4399785
+    lng: 10.3993173
+    date_from: "2022-05-29"
+    date_to: "2022-05-29"
     popup_content: |
-      [Building Bridges: 6th EU/US Summer School & Workshop on Automorphic Forms and Related Topics](https://conferences.cirm-math.fr/3134.html), September 2-13, 2024
+      [1st FHE.org workshop](https://fhe.org/conferences/conference-2022/), June 12-16, 2023
 
-  - city: "Berkeley, US"
-    lat: 37.8736167
-    lng: -122.260169
-    date_from: "2025-02-24"
-    date_to: "2025-02-24"
+  - city: "Nanyang, Singapore"
+    lat: 1.3483153
+    lng: 103.6805598
+    date_from: "2017-12-27"
+    date_to: "2017-12-29"
     popup_content: |
-      [Berkeley RTG Seminar](https://events.berkeley.edu/math/event/292823-arithmetic-geometry-and-number-theory-rtg-seminar), February 24, 2025
-
-  - city: "Arizona, US"
-    lat: 32.2319026
-    lng: -110.9561156
-    date_from: "2025-03-08"
-    date_to: "2025-03-12"
-    popup_content: |
-      [Arizona Winter School](https://swc-math.github.io/aws/2025/index.html), March 8-12, 2025
-
-  - city: "Davis, US"
-    lat: 38.5382364
-    lng: -121.7642874
-    date_from: "2025-01-14"
-    date_to: "2025-01-14"
-    popup_content: |
-      [UC Davis](https://www.math.ucdavis.edu/research/seminars?talk_id=7283), January 14, 2025
-
-  - city: "Pittsburgh, US"
-    lat: 40.4454081
-    lng: -79.9471358
-    date_from: "2025-11-05"
-    date_to: "2025-11-08"
-    popup_content: |
-      [Carnegie Mellon University](https://events.cmu.edu/math/event/27297-special-listing-how-machines-learn-galois-groups), November 5-8, 2025
-
-  - city: "Aarhus, Denmark"
-    lat: 56.1659954
-    lng: 10.1974896
-    date_from: "2025-11-13"
-    date_to: "2025-11-15"
-    popup_content: |
-      [Aarhus University](https://math.au.dk/aktuelt/aktiviteter/event/aktivitet/6859?cHash=dde629fc2e8e508ac899d94da826480f), November 13-15, 2025
-
-  - city: "Lausanne, Switzerland"
-    lat: 46.5190594
-    lng: 6.5641827
-    date_from: "2025-11-16"
-    date_to: "2025-11-18"
-    popup_content: |
-      [EPFL](https://memento.epfl.ch/event/sphere-packing-sign-uncertainty-principle-universa/), November 16-18, 2025
-
-  - city: "Jeongseon, South Korea"
-    lat: 37.4747492
-    lng: 128.6086557
-    date_from: "2025-12-02"
-    date_to: "2025-12-05"
-    popup_content: |
-      [KIAS Winter School on Mathematics and AI](https://chlee-0.github.io/2025-KIAS-Winter-School-Math-AI/), December 2-5, 2025
-
-  - city: "Madison, US"
-    lat: 43.0755182
-    lng: -89.4180275
-    date_from: "2025-12-10"
-    date_to: "2025-12-12"
-    popup_content: |
-      [University of Wisconsin-Madison](https://wiki.math.wisc.edu/index.php/NTS_ABSTRACTFall2025#Dec_11), December 10-12, 2025
-
-  - city: "Aarhus, Denmark"
-    lat: 56.1659954
-    lng: 10.1974896
-    date_from: "2026-01-27"
-    date_to: "2026-01-30"
-    popup_content: |
-      [Aarhus Mathematics & AI Workshop](https://conferences.au.dk/math-ai-workshop-2026), January 27-30, 2026
+      [2017 NCTS-POSTECH Joint Workshop on Number Theory](https://ncts.ntu.edu.tw/events_2_detail.php?nid=169), December 27-29, 2017

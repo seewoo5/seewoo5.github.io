@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(mymap);
 
-    var visitedIcon = L.icon({
+    var pastIcon = L.icon({
         iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png', // Red for visited
         iconSize: [25, 41],
         iconAnchor: [12, 41],
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png'
     });
 
-    var plannedIcon = L.icon({
+    var futureIcon = L.icon({
         iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png', // Blue for planned
         iconSize: [25, 41],
         iconAnchor: [12, 41],
@@ -64,35 +64,47 @@ document.addEventListener("DOMContentLoaded", function() {
         var dateFrom = new Date(dateFromString);
         var dateTo = new Date(dateToString);
         
-        var iconToUse = '';
+        var iconToUse;
         var targetList;
+        var status;
         
         // 1. CHECK FOR CURRENT TRIP (dateFrom <= today AND dateTo >= today)
         if (dateFrom <= today && dateTo >= today) {
-            iconToUse = 'currentIcon'; 
+            iconToUse = currentIcon; 
             targetList = currentList;
+            status = 'current';
         } 
         // 2. CHECK FOR PLANNED TRIP (dateFrom > today)
         else if (dateFrom > today) {
-            iconToUse = 'plannedIcon'; 
+            iconToUse = futureIcon;
             targetList = futureList;
+            status = 'future';
         } 
         // 3. DEFAULT: VISITED TRIP (dateTo < today)
         else {
-            iconToUse = 'visitedIcon'; 
-            targetList = pastList
+            iconToUse = pastIcon; 
+            targetList = pastList;
+            status = 'past';
         }
 
         // Define the content for the popup (use Liquid to pull the rich text)
         var popupContent = `{{ location.popup_content | markdownify | strip_newlines }}`;
 
-        var marker = L.marker([lat, lng], {icon: eval(iconToUse)})
+        var marker = L.marker([lat, lng], {icon: iconToUse})
           .bindPopup(popupContent, {maxWidth: 400});
         
         markers.addLayer(marker);
 
         var listItem = document.createElement('li');
-        var titleContent = city + ' ' + '{{ location.popup_content | markdownify | strip_newlines}}';
+        if (status === 'past') {
+            var titleContent = '<span style="color: red;">' + city + '</span>' + ' ' + '{{ location.popup_content | markdownify | strip_newlines}}';
+        }
+        if (status === 'current') {
+            var titleContent = '<span style="color: green; font-weight: bold;">' + city + '</span>' + ' ' + '{{ location.popup_content | markdownify | strip_newlines}}';
+        }
+        if (status === 'future') {
+            var titleContent = '<span style="color: blue;">' + city + '</span>' + ' ' + '{{ location.popup_content | markdownify | strip_newlines}}';
+        }
         listItem.innerHTML = `${titleContent}`;
         targetList.appendChild(listItem);
 
@@ -108,12 +120,9 @@ I <span style="color: red;">was</span>, <span style="color: green;">am</span>, a
 </p>
 
 <div id="travel-list">
-    <h3 style="color: red;">Past Trips:</h3>
-    <ul id="past-trips-list"></ul>
+    <ul id="future-trips-list"></ul>
 
-    <h3 style="color: green;">Current Trip:</h3>
     <ul id="current-trip-list"></ul>
 
-    <h3 style="color: blue;">Future Trips:</h3>
-    <ul id="future-trips-list"></ul>
+    <ul id="past-trips-list"></ul>
 </div>
