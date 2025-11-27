@@ -6,11 +6,13 @@
 
 \begin{document}
 
-\noindent \textbf{Research Statement} \\
-\textbf{Seewoo Lee} \href{mailto:seewoo5@berkeley.edu}{seewoo5@berkeley.edu} \\
-Last updated: \today
+\begin{center}
+\Large\textbf{Research Statement} \\
+\large\textbf{Seewoo Lee} \href{mailto:seewoo5@berkeley.edu}{seewoo5@berkeley.edu} \\
+\end{center}
+% Last updated: \today
 % % \today
-\bigskip
+% \bigskip
 
 
 % --- Add title and table of contents ---
@@ -18,169 +20,155 @@ Last updated: \today
 
 % My research centers on number theory, particularly delving into the realms of automorphic forms and the (relative) Langlands program, leveraging computational tools to enhance exploration and understanding.
 
-My research focuses on number theory, where I solve problems in number theory using various computational tools including computer algebra systems (SageMath, MAGMA), proof assistants (Lean), and Machine Learning.
+My research focuses on number theory, where I solve problems in number theory using various computational tools including \textbf{Computer Algebra Systems} (SageMath, MAGMA), \textbf{Proof Assistants} (Lean), and \textbf{Machine Learning}.
 
 
 
-% \section*{Relative Langlands program}
-
-% Introduced by Robert Langlands, the \emph{Langlands Program} constitutes a comprehensive unification theory in number theory and beyond, seeking to establish connections between \emph{automorphic forms / representations} and \emph{Galois representations}.
-% Specifically, for an ``algebraic'' automorphic representation $\pi$ of a group $G(\mathbb{A}_{\mathbb{Q}})$, it is conjectured that there exists an associated Galois representation $\rho_{\pi}: \mathrm{Gal}(\overline{\mathbb{Q}} / \mathbb{Q}) \to \check{G}(k)$, where $k$ can be $\mathbb{C}$ or $\overline{\mathbb{Q}_{\ell}}$, such that the automorphic $L$-function $L(s, \pi)$ coincides with the Artin $L$-function $L(s, \rho_{\pi})$. Here, $\check{G}$ denotes the Langlands dual group of $G$. The case where $G = \mathrm{GL}_{1}$ is well understood through class field theory, and for $G = \mathrm{GL}_{2}$, the conjecture is proven when $\pi` is associated with holomorphic modular forms, culminating in the celebrated modularity theorem by Wiles, Taylor, and others, which played a key role in the proof of Fermat’s Last Theorem.
-
-% Recently, there has been growing interest in the \emph{relative} Langlands program, which seeks to extend the classical Langlands program to spherical varieties \cite{sakellaridis2012spherical,sakellaridis2017periods}.
-% A major goal of this program is to systematically address the many instances of identities between automorphic periods and special values of $L$-functions (Ichino--Ikeda type formula \cite{ichino2010periods}), as seen in the works of Hecke, Iwasawa--Tate, Rankin--Selberg, Godement--Jacquet, Ichino--Ikeda, and Lapid--Mao. 
-% Moreover, Ben-Zvi, Sakellaridis, and Venkatesh have put forward a conjectural \emph{duality} within the relative Langlands program \cite{ben2023relative}.
-% This duality suggests that for a Hamiltonian $G$-space $G \curvearrowright M$, one should expect a corresponding dual pair $\check{G} \curvearrowright \check{M}$, where a \emph{dual identity} between automorphic periods and special values of $L$-functions arises by exchanging the roles of $(G, M)$ and $(\check{G}, \check{M})$.
+\section{Number Theory with Computer Algebra Systems}
 
 
-% \subsection*{Mao--Rallis trace formula for dual pairs}
-
-% I am working on a conjectural identity relating automorphic periods and $L$-values for the dual pairs introduced by Mao and Rallis \cite{mao1997trace}.
-% For simple, split, and simply-laced groups $G'$, excluding type $A_n$, Mao and Rallis construct a dual pair $(\mathrm{SL}_{2}, G)$ within $G'$ by utilizing Heisenberg groups associated with $G'$.
-% This includes cases such as $(\mathrm{SL}_{2}, \mathrm{SL}_{6})$ within $E_6$.
-% They proposed conjectural relative trace formulae for these dual pairs, suggesting that period integrals of automorphic forms on $G$ (resp. $\mathrm{SL}_{2}$) should correspond to special $L$-values associated with automorphic representations of $\mathrm{SL}_{2}$ (resp. $G$).
-% In their work, they established the fundamental lemma for unit elements in the Hecke algebras of both $G$ and $\mathrm{SL}_{2}$.
-
-% Recently, Mao, Wan, and Zhang \cite{mao2023bzsv} formulated a refined version of this conjecture, in the form of an Ichino--Ikeda type formula, within the framework of the relative Langlands program \cite{ben2023relative}.
-% They also proved smooth transfer for local functions at non-Archimedean places.
-% In collaboration with Yuchan Lee, we are working to complete the comparison of the relative trace formula for the case $(\mathrm{SL}_{2}, \mathrm{SL}_{6})$, focusing on proving the fundamental lemma for the full Hecke algebras, establishing smooth transfer at Archimedean places, and analyzing the spectral decomposition of the relative traces.
-% Together with the result of Lapid--Mao \cite{lapid2015conjecture} on Whittaker--Fourier coefficients, this would confirm one direction of the non-refined conjecture: if $\Pi$ is a cuspidal automorphic representation of $\mathrm{SL}_{2}$ and $\pi$ is its functorial lift to $G$ via the $L$-group morphism $\mathrm{PGL}_{2} \to {}^L G$, then the Mao--Rallis automorphic period is nonzero if the adjoint $L$-value $L(1, \Pi, \mathrm{Ad})$ is nonzero.
-% Additionally, we aim to prove the refined formula by establishing local relative character identities and combining them with the refined identity of Lapid--Mao for $\mathrm{SL}_{2}$.
-% It is worth noting that this refined formula is "dual" to the conjectural formula for the Ginzburg--Rallis periods and the exterior cube $L$-values of $\mathrm{PGL}_{6}$ \cite{ginzburg2000exterior}.
-
-
-% \subsection*{Ichino--Ikeda formula for general spin groups (Bessel case)}
-
-% Building upon the groundwork laid by Liu \cite{liu2016refined} on the special orthogonal groups ($\mathrm{SO}_{2} \times \mathrm{SO}_{5}$ and $\mathrm{SO}_{3} \times \mathrm{SO}_{6}$) and drawing insights from Emory's work \cite{emory2020global} on \emph{general spin groups} ($\mathrm{GSpin}_{n} \times \mathrm{GSpin}_{n+1}$ for $n = 2, 3, 4$), I am working on the Ichino--Ikeda conjecture for general spin groups, particularly in cases involving general Bessel periods.
-% Furthermore, I'm trying to generalize Furusawa and Morimoto's work on the $\mathrm{SO}_{2} \times \mathrm{SO}_{2n+1}$ case and B\"ocher's conjecture \cite{furusawa2020refined} in this direction.
-% My approach involves leveraging exceptional isomorphisms between low-rank general spin groups and other classical groups and reducing the conjecture to the already known cases.
-
-
-\section{Number Theory with computer algebra systems}
-
-In the realm of the Langlands Program, dealing with abstract objects like Galois representations and automorphic forms often benefits from grounding these concepts in tangible, computable counterparts.
-Especially, these ``classical'' objects (e.g. modular forms and Maass wave forms, instead of automorphic representations of $\mathrm{GL}_{2}(\mathbb{A}_{\mathbb{Q}})$) are usually easy to compute explicitly with help of computer algebra systems like SageMath.
-
-
-\subsection{Modular forms and optimal sphere packings}
+\paragraph{Modular forms and optimal sphere packings}
 \label{subsec:algproof}
 
-The \emph{optimal sphere packing problem} seeks the densest arrangement of unit balls in $d$-dimensional space $\mathbb{R}^{d}$.
-While the problem is trivial for $d = 1$, the two-dimensional case was solved by Thue in 1890.
-The three-dimensional case, known as Kepler's conjecture, was settled by Thomas Hales in 2005 using extensive computer calculations \cite{hales2005proof}, with the formal verification completed nearly a decade later through the use of proof assistants HOL Light and Isabelle \cite{hales2017formal}.
+The \emph{optimal sphere packing problem} asks the densest arrangement of unit balls in $\mathbb{R}^{d}$.
+The problem is solved in dimensions $d = 1, 2, 3, 8$ and $24$, where the last two cases are recently resolved by Maryna Viazovska and her collaborators.
+Their method constructs so-called \emph{magic functions} for the Cohn--Elkies linear programming bound, using (quasi)modular forms.
 
-An unexpected link between the $8$- and $24$-dimensional sphere packing problems and number theory emerged through the work of Cohn and Elkies, who introduced the \emph{linear programming bound} \cite{cohn2003new}. 
-This approach hinted that finding specific ``magic functions'' could unlock optimal sphere packings in these dimensions.
-However, constructing such functions, which must satisfy constraints on both the function and its Fourier transform, is challenging due to the uncertainty principle.
-Maryna Viazovska made a breakthrough by using modular forms to construct the magic function for dimension 8 \cite{viazovska2017sphere}, and similar methods soon resolved the case for dimension 24 \cite{cohn2017sphere}.
 
-To prove these two cases, the authors \cite{viazovska2017sphere,cohn2017sphere} relied on numerical approximations and extensive computer assisted computations to establish desired inequalities between modular forms, and it is natural to ask if there is a more general and conceptual proof for these inequalities.
-While a more direct proof exists for the dimension 8 case by Dan Romik \cite{romik2023viazovska}, I have found \emph{algebraic} proofs for both the 8- and 24-dimensional cases that avoid reliance on numerical approximations \cite{lee2024algebraic}.
-In my work, I developed a theory of \emph{positive} and \emph{completely positive} quasimodular forms, which I used to study the \emph{magic modular forms} appearing in the optimal sphere packing problem. 
-Additionally, I discovered connections to Kaneko and Koike's \emph{extremal quasimodular forms} \cite{kaneko2006extremal}, which are conjectured to have non-negative Fourier coefficients.
-A key aspect of my approach involves leveraging the differential equations satisfied by these modular forms.
-My work opens new possibilities for generalizing Viazovska's construction to dimensions beyond 8 and 24, based on Fourier eigenfunctions constructed by Feigenbaum, Grabner, and Hardin \cite{feigenbaum2021eigenfunctions}.
-In particular, this could lead to a new upper bound for the uncertainty principle in specific dimensions \cite{bourgain2010principe}.
-Furthermore, as a byproduct of my research, I proved Kaneko and Koike's conjecture regarding the positivity of Fourier coefficients for extremal forms in the case of depth 1 \cite{kaneko2006extremal}, and currently working on the case of higher levels defined by Sakai and Tsutsumi \cite{sakai2012extremal}.
-I'm also working on improving \emph{lower} bounds for the uncertainty principle, by constructing a new class of summation formulae from other types of automorphic forms, possibly generalizing the work of Cohn and Triantafillou \cite{cohn2022dual}.
+One of the main steps of the proofs is the verification of certain inequalities involving (quasi)modular forms, corresponds to the linear constraints of the magic functions.
+The original arguments relied on numerical approximations and extensive computer assisted computations, and it is natural to ask if there is a more general and conceptual proof for these inequalities.
+A more direct proof is recently given by Dan Romik for the dimension 8 case.
 
-These proofs were inspired by extensive experiments using SageMath. 
-Notably, after observing the plot of the quotient of two modular forms (Figure \ref{fig:d8graph}), I realized the key properties to prove - monotonicity and the limit as $t \to 0^+$ - both of which turned out to hold true (Propositions 5.1 and 5.2 of \cite{lee2024algebraic}).
 
-\begin{figure}[h]
+In \cite{lee2024algebraic}, I have found \emph{algebraic} proofs for both the 8- and 24-dimensional cases that avoid reliance on numerical approximations, by developing a simple yet effective theory of \emph{positive} and \emph{completely positive} quasimodular forms.
+Additionally, I uncovered connections to Kaneko and Koike's \emph{extremal quasimodular forms}, which are the quasimodular forms with largest possible orders at cusp of given weight and depth.
+They are conjectured to have non-negative Fourier coefficients, where I proved the conjecture for the case of depth 1 in \emph{loc. cit}.
+A key ingredient in my approach is the use of modular differential equations satisfied by these forms.
+My work opens new possibilities for generalizing Viazovska's construction to dimensions beyond 8 and 24, based on Fourier eigenfunctions constructed by Feigenbaum, Grabner, and Hardin.
+In particular, this lead to new upper bounds for the sign uncertainty principle \`a la Bourgain--Clozel--Kahane in certain dimensions.
+\begin{theorem*}[L., In progress]
+    The optimal constant $\mathrm{A}_+(d)$ for the $(+1)$-sign uncertainty principle of Bourgain--Clozel--Kahane satisfies $\mathrm{A}_+(d) \le \sqrt{2 \left\lfloor \frac{d}{16}\right\rfloor + 2}$ when $d \equiv 0 \pmod{4}$ and $d \le 14000$.
+\end{theorem*}
+% Furthermore, as a byproduct of my research, I proved Kaneko and Koike's conjecture on positivity of the Fourier coefficients of the extremal forms in the case of depth 1, and currently extending this to the higher-level extremal forms studied by Sakai and Tsutsumi.
+% I am also working on improving \emph{lower} bounds for the uncertainty principle, by constructing new summation formulae from other types of automorphic forms, potentially generalizing the work of Cohn and Triantafillou.
+
+\begin{wrapfigure}{l}{0.3\textwidth} % l for left, r for right
     \centering
-    \includesvg[width=0.6\textwidth]{./d8.svg}
-    \caption{Graph of the quotient $F(it)/G(it)$ of two modular forms as a function in $t > 0$ for 8-dimensional sphere packing.}
+    \includegraphics[width=0.3\textwidth]{./output.png}
+    \caption{Plot of $F(it)/G(it)$.}
     \label{fig:d8graph}
-\end{figure}
+\end{wrapfigure}
 
 
-\subsection{Function field arithmetic}
+These proofs were inspired by experiments using SageMath. For instance, the plot of a quotient of modular forms (Figure \ref{fig:d8graph}) suggested key properties - monotonicity and the limiting behavior as $t \to 0^+$ - to prove the inequality $F(it) < \frac{18}{\pi^2} G(it)$ for dimension 8. Likewise, the quasimodular identities in \cite{lee2024algebraic} can be verified both computationally and by hand.
 
-During the summer of 2025, I mentored four students at the Berkeley mathematics REU in a project on function field arithmetic, specifically focusing on the function field analogue of Diophantine equations involving Fibonacci polynomials and prime races.
-The first two works below are joint with Bates, Jesubalan, Lu, and Shim, and all the results are motivated by SageMath experiments.
-
-Diophantine equations involving Fibonacci numbers have been studied extensively, with many interesting results.
-For example, Bugeaud, Mignotte, and Siksek \cite{bugeaud2006classical} used modular approach and linear forms to prove that the only perfect powers in the Fibonacci sequence are 0, 1, 8, and 144.
-In \cite{bjlls2025fibonacci}, we studied the function field analogue of these Diophantine equations, particularly focusing on the \emph{Fibonacci polynomials} defined as \(F_n(T) = T F_{n-1}(T) + F_{n-2}(T)\) with \(F_0(T) = 0\) and \(F_1(T) = 1\).
-For each \(j > 1\), we give a complete characterization of the perfect \(j\)-th powers in the sequence of Fibonacci polynomials over finite fields.
-One noticeable difference from the classical case is that there are infinitely many perfect \(j\)-powers among Fibonacci polynomials for each \(j\) and a coefficient field \(\mathbb{F}_q\).
-
-The second project of our REU team is about \emph{ties} in function field prime races \cite{bjlls2025tie}.
-For a given monic polynomial \(m \in \bF_q[T]\), ``prime race'' in function field considers the number of irreducible monic polynomials (primes) of degree \(N\) congruent to \(a \in \bF_q[T]\) modulo \(m\), which we denote as \(\pi(a, m, N)\).
-In \cite{cha2008chebyshev}, Cha studied limiting distributions of the error functions, and proved that primes are biased towards non-quadratic residues under certain hypothesis on Dirichlet \(L\)-functions whe \(q\) is odd.
-In our project, we instead focus on the cases when \(\pi(a, m, N) = \pi(b, m, N)\) for distinct congruence classes \(a, b \in (\bF_q[T] / m)^\times\).
-We found that there are infinitely many triples \((m, a, b)\) where \(\pi(a, m, N) = \pi(b, m, N)\) holds for infinitely many \(N\).
-We suggest two ways to prove such ties: (1) by writing an explicit formula for each \(\pi(a, m, N)\) using \(L\)-functions and exploiting unexpected conjugate pairs of elements in cyclotomic fields, and (2) by constructing an explicit bijection using \(\GL_2(\bF_q)\)-action.
-For example, we prove that \(\pi(1, m, N) = \pi(T, m, N)\) holds for \(m = T^3 + T + 1 \in \bF_2[T]\) for all \(N \equiv 1 \pmod{7}\).
-
-As an aside, I studied a function field analogue of Shanks bias.
-In \cite{shanks1959quadratic}, Shanks studied higher-order effects of Chebyshev's bias and proposed several conjectures based on numerical experiments.
-In particular, he conjectured that there are more positive integers \(n\) such that \(\lambda(n) \chi_{-4}(n) = +1\) than those with \(\lambda(n) \chi_{-4}(n) = -1\), where \(\lambda\) is the Liouville function and \(\chi_{-4}\) is the nontrivial quadratic character modulo \(4\).
-Computing the logarithmic density of such \(n\)'s is also proposed as the 22nd problem in the Comparative Prime Number Theory Problem List \cite{hamieh2024comparative}.
-In \cite{lee2025shanks}, I studied the function field analogue of this problem, comparing the number of monic polynomials \(f \in \bF_q[T]\) satisfying \(\lambda(f) \chi(f) = 1\) or \(\lambda(f) \chi(f) = -1\), where \(\chi = \chi_m\) is a quadratic Dirichlet character modulo \(m\).
-Specifically, assuming Grand Simplicity Hypothesis for the Dirichlet \(L\)-function, I proved that \(\lambda \cdot \chi\) is biased towards \(+1\), where the bias can be made arbitrarily small by taking \(m\) to have large enough degree.
-The proof is based on the Kronecker--Weyl equidistribution theorem and elementary trigonometric series computations.
-
-\subsection{Maass wave forms, Quantum modular forms, and Hecke operators}
+Currently, I am extending this theory to higher-level quasimodular forms, aiming to prove analogous conjectures for extremal forms of level $\ge 2$, as studied by Sakai and Tsutsumi, as well as to give algebraic proofs of other modular form inequalities that appear in the proof of the universal optimality of the $E_8$ and Leech lattice.
+I am also working on improving \emph{lower} bounds for the uncertainty principle, by constructing new summation formulae from other types of automorphic forms, potentially generalizing the work of Cohn and Triantafillou on dual LP bounds.
 
 
-In \cite{cohen1988q}, Cohen constructed the first explicit example of a Maass wave form, based on one of Ramanujan's $q$-series. The coefficients of this form are related to a Hecke character of the real quadratic field $\mathbb{Q}(\sqrt{6})$, and Cohen conjectured that this Maass wave form is an eigenform for suitable Hecke operators. However, the usual Hecke operators are not appropriate in this case, as the multiplier system (Nebentypus) of Cohen's Maass wave form does not arise from Dirichlet characters.
-
-In my undergraduate and master's thesis, I proposed a correct definition of Hecke operators that applies to more general multiplier systems, including Cohen's Maass wave form. I further proved that this Maass wave form is indeed an eigenform under these operators \cite{lee2018quantum,lee2019maass}. Additionally, one can associate \emph{quantum modular forms} to the Maass wave form via period integrals, following the work of Lewis and Zagier \cite{lewis2001period,zagier2010quantum}, and I demonstrated that this map is Hecke-equivariant. As a result, this leads to nontrivial identities between certain $p$-th roots of unity and the $p$-th coefficients of the Maass wave form for primes $p$. The same argument applies to the Maass wave form of Li, Ngo, and Rhoades \cite{li2013renormalization}.
-
-
-\section{Number theory with Lean}
-
-The formal verification of mathematical proofs is a rapidly growing field aimed at ensuring the correctness of mathematical results.
-I worked on several formalization projects using Lean, including
-\begin{itemize}
-  \item Formalization of the Viazovska's proof of the optimal sphere packing in $\mathbb{R}^{8}$
-  \item Formalization of the Mason--Stothers theorem and polynomial Fermat's Last Theorem
-  \item Google DeepMind's \emph{Formal Conjectures} project.
-\end{itemize}
-
-\subsection{Formalization of 8-dimensional optimal sphere packing}
-
-I am working on a project to formalize Viazovska's proof of the optimal sphere packing in $\mathbb{R}^{8}$ \cite{viazovska2017sphere} in Lean 4, alongside a team led by Sidharth Hariharan, which includes Chris Birkbeck, Gareth Ma, Bhavik Mehta, and Maryna Viazovska.
-This also involves formalizing my algebraic proof of the modular form inequalities introduced in Section~\ref{subsec:algproof}, which would allow us to bypass the need for formalizing various aspects of numerical analysis and the Hardy--Ramanujan formula.
-We also found several mathematical tricks to reduce the identities for the Serre derivatives of level 2 modular forms to the case of level 1, which allow us to avoid formalization of the dimension formula for the higher levels, which requires formalizing valence formula.
-So far, we have completed the formalization of the $E_8$ lattice and its density, and are now working on formalizing the Cohn--Elkies bound and the foundational theory of (quasi)modular forms.
-The project is open to public and available at:
-\begin{center} \href{https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean}{https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean} \end{center}
+% These proofs were inspired by extensive experiments using SageMath. 
+% Notably, after observing the plot of the quotient of two modular forms (Figure \ref{fig:d8graph}), I realized the key properties to prove - monotonicity and the limit as $t \to 0^+$ - both of which turned out to hold true (Propositions 5.1 and 5.2 of \cite{lee2024algebraic}).
+% Also, all the crucial quasimodular form identities in loc. cit. can be easily checked by SageMath and also by hand.
 
 
-\subsection{Formalization of polynomial FLT}
+\paragraph{Function field arithmetic}
 
-One notable ongoing project in Lean community is the formalization of the (modern) proof of Fermat's Last Theorem, led by Kevin Buzzard \cite{fltlean4}.
-Given the complexity of the proof and the advanced mathematics required, many of which are not yet in Lean's \texttt{mathlib4} library, it is estimated that the complete formalization could take over 10 years.
-In contrast, the \emph{polynomial} version of Fermat's Last Theorem is much simpler to prove, and a more general result, known as the Mason--Stothers theorem, provides an analogue of the ABC conjecture for polynomials \cite{stothers81,mason84}.
+% During the summer of 2025, I mentored four students (Graeme Bates, Ryan Jesubalan, Jane Lu, and Hyewon Shim) at the Berkeley mathematics REU.
+% Our projects was on arithmetic of function fields, specifically focusing on the function field analogue of Diophantine equations involving Fibonacci polynomials and prime races.
 
-In collaboration with Jineon Baek, we give a complete formalization of the Mason--Stothers theorem in Lean 4 \cite{baek2024formalizing}.
-While the theorem has previously been formalized in HOL by Eberl \cite{eberl17} and in Lean 3 by Wagemaker \cite{wagemaker18}, our work provides a detailed comparison with these prior formalizations \cite[Section 7]{baek2024formalizing}.
-Now the whole proofs are fully integrated into the \texttt{mathlib4} library (see \href{https://github.com/leanprover-community/mathlib4/pull/15706}{PR \#15706} and \href{https://github.com/leanprover-community/mathlib4/pull/18882}{PR \#18882}), where the previous codes are available at:
-\begin{center} \href{https://github.com/seewoo5/lean-poly-abc}{https://github.com/seewoo5/lean-poly-abc} \end{center}
+% Bugeaud, Mignotte, and Siksek used modular approach and linear forms to prove that the only perfect powers in the Fibonacci sequence are 0, 1, 8, and 144.
+% We studied the function field analogue of the problem, and give a complete characterization of the perfect \(j\)-th powers in the sequence of Fibonacci polynomials over finite fields for each $j \ge 1$.
+% One noticeable difference from the classical case is that there are infinitely many perfect \(j\)-powers among Fibonacci polynomials for each \(j\) and a coefficient field \(\mathbb{F}_q\).
 
-\subsection{Formal Conjectures project}
+% We also studied about \emph{ties} in function field prime races.
+% We exhibit modulus $m \in \bF_q[T]$ and distinct congruence classes $a, b \in (\bF_q[T] / m)^\times$ satisfying $\pi(a, m, N) = \pi(b, m, N)$, where $\pi(a, m, N)$ (resp. $\pi(b, m, N)$ is the number of  monic irreducible polynomials (primes) of degree \(N\) congruent to \(a\) (resp. $b$) modulo \(m\).
+% We prove that there are infinitely many such quadruples $(m, a, b, N)$, and provide many examples.
+% For example, we prove that \(\pi(1, m, N) = \pi(T^{e}, m, N) = \pi(T^{3e}, m, N)\) holds for \(m = T^3 + T + 1 \in \bF_2[T]\) and any \(N \equiv e \not \equiv 0 \pmod{7}\).
+% We provide two approaches to prove such ties: (1) by using explicit formulas, or (2) by constructing explicit bijections via $\GL_2(\bF_q)$-actions.
+% (1) by writing an explicit formula for each \(\pi(a, m, N)\) using \(L\)-functions and exploiting unexpected conjugate pairs of elements in cyclotomic fields, and (2) by constructing explicit bijections using \(\GL_2(\bF_q)\)-action.
 
-Google DeepMind's \href{https://github.com/google-deepmind/formal-conjectures}{\emph{Formal Conjectures} project} aims to formalize statements of mathematical conjectures and theorems (without proofs) in Lean 4.
-I contributed to the project by formalizing several conjectures and theorems in number theory, including \href{https://github.com/google-deepmind/formal-conjectures/pull/119}{Ramanujan--Petersson conjecture}, \href{https://github.com/google-deepmind/formal-conjectures/pull/139}{Lehmer's conjecture}, \href{https://github.com/google-deepmind/formal-conjectures/issues/184}{Hall's conjecture}, \href{https://github.com/google-deepmind/formal-conjectures/pull/317}{congruent number problem}, and some of the Erd\"os problems (\href{https://github.com/google-deepmind/formal-conjectures/pull/300}{\#9}, \href{https://github.com/google-deepmind/formal-conjectures/pull/301}{\#307}, \href{https://github.com/google-deepmind/formal-conjectures/pull/449}{\#364}).
+
+In the summer of 2025, I mentored four students at the Berkeley Mathematics REU on projects in the arithmetic of function fields. We explored analogues of classical Diophantine problems and prime number races.
+% For instance, we completely characterized all the perfect powers in the sequence of Fibonacci polynomials over finite fields, where there are infinitely many of them, which contrasts to the classical integer case where only finitely many exist.
+For example, we completely characterized all perfect powers in the sequence of Fibonacci polynomials over finite fields, showing that infinitely many occur - in sharp contrast to the classical integer case, where only finitely many exist.
+We also discovered infinite families of \emph{ties} in function field prime races, proving that for certain moduli $m$ and residue classes $a, b$, the counts $\pi(a, m, N)$ and $\pi(b, m, N)$ of monic irreducible polynomials of degree $N$ are equal for infinitely many $N$.
+These results were established both via explicit formulas involving $L$-functions and by constructing bijections using $\GL_2(\bF_q)$-actions.
+
+Separately, I studied a function field analogue of Shanks' higher order Chebyshev's bias \cite{lee2025shanks}.
+% Daniel Shanks studied higher-order effects of Chebyshev's bias and proposed several conjectures based on numerical experiments.
+Shanks conjectured biases in the sign of $\lambda(n)\chi_{-4}(n)$, where $\lambda$ is the Liouville function and $\chi_{-4}$ is the quadratic character mod 4.
+I studied the analogous problem for polynomials over $\bF_q$, comparing the number of monic polynomials \(f\) satisfying \(\lambda(f) \chi(f) = 1\) or \(\lambda(f) \chi(f) = -1\), where \(\chi = \chi_m\) is a quadratic Dirichlet character modulo square-free polynomial \(m\).
+Especially, I proved the following theorem:
 
 
-\section{Number theory with Machine Learning}
+\begin{theorem*}[L. {\cite{lee2025shanks}}]
+    Let \(A_{\pm}^\lambda(n;m)\) be the number of non-constant monic polynomials \(f \in \bF_q[T]\) of degree at most \(n\) with \(\lambda(f) \chi_m(f) = \pm 1\).
+    Assume that Grand Simplicity Hypothesis holds for the Dirichlet \(L\)-function \(L(s, \chi_m)\).
+    Then we have
+    \[
+    \lim_{n \to \infty} \frac{\#\{1 \le k \le n : A_{+}^\lambda(k;m) > A_{-}^\lambda(k;m)\}}{n} > \frac{1}{2}
+    \]
+    where a closed formula for the density is obtained.
+    When \(q \equiv 1 \pmod{4}\), the density can be made arbitrarily close to \(\frac{1}{2}\) by choosing \(m\) appropriately with large enough degree.
+\end{theorem*}
 
-\subsection{Machine Learning Galois Groups}
+This answers a function field analogue of the 22nd problem in the \emph{Comparative Prime Number Theory Problem List} by Hamieh et al.
+I am also working on other problems including the average degree of least degree $k$-th power nonresidue modulo irreducible primes and the average number of divisors of polynomials over function fields, questions whose integer analogues are either classical or still open.
 
-Recently, there has been a growing interest in applying machine learning techniques to number theory.
-One of the most notable example is the recent finding of \emph{murmuration} pattern of elliptic curves \cite{he2024murmurations} by He, Lee, Oliver, and Pozdnyakov, where the authors used machine learning to predict ranks of elliptic curves and found a surprising murmuration pattern of traces of Frobenius of certain families of elliptic curves while analyzing the models.
-Another example is the work of He, Lee, and Oliver \cite{he2020machine} on classifying various invariants of number fields from Dedekind zeta coefficients and polynomial coefficients, where they found the classical machine learning algorithms such as logistic regression and random forest perform very well in classifying Galois groups of number fields.
+% where integer version of the problems are widely studied or open.
 
-In a joint work with Kyu-Hwan Lee, we give an answer for \emph{why} machine learning models perform very well in classifying Galois groups of Galois number fields, by reverse engineering the classification logic of the models \cite{lee2025machines}.
-In particular, we studied the classification logic of decision tree models where the zeta coefficients are used as features, and we found that the models only use a small number of the coefficients whose indices are mostly certain powers.
-For example, Figure \ref{fig:nonic_zeta_dt} shows the decision tree predicting the Galois groups of nonic Galois extensions (which obtained 100\% accuracy on a test set) from zeta coefficients up to $a_{1000}(K)$, where the model only uses three coefficients: $a_{1000}$, $a_{343}$, and $a_{27}$, which are all cubic indices.
-Inspired from this, we conjectured and proved the following theorem, which has not been showed up in the literature before.
 
-\begin{figure}[t]
+\paragraph{Maass wave forms, Quantum modular forms, and Hecke operators}
+
+
+In 1988, Henri Cohen constructed the first explicit example of a Maass wave form, based on one of Ramanujan's $q$-series. The coefficients of this form are related to a Hecke character of the real quadratic field $\mathbb{Q}(\sqrt{6})$, and Cohen conjectured that this Maass wave form is an eigenform for suitable Hecke operators. However, the usual Hecke operators are not appropriate in this case, as the multiplier system (Nebentypus) of Cohen's Maass wave form does not arise from Dirichlet characters.
+
+In my undergraduate and master's thesis, I proposed a correct definition of Hecke operators that applies to more general multiplier systems, including Cohen's Maass wave form. I further proved that this Maass wave form is indeed an eigenform under these operators \cite{lee2018quantum,lee2019maass}. Additionally, one can associate \emph{quantum modular forms} to the Maass wave form via period integrals, following the work of Lewis and Zagier, and I demonstrated that this map is Hecke-equivariant. As a result, this leads to nontrivial identities between certain $p$-th roots of unity and the $p$-th coefficients of the Maass wave form for primes $p$. The same argument applies to the Maass wave form of Li, Ngo, and Rhoades.
+
+\newpage
+\section{Number Theory with Proof Assistant (Lean)}
+
+% The formal verification of mathematical proofs is a rapidly growing field aimed at ensuring the correctness of mathematical results.
+% I worked on several formalization projects using Lean, including
+% \begin{itemize}
+%   \item Formalization of the Viazovska's proof of the optimal sphere packing in $\mathbb{R}^{8}$
+%   \item Formalization of the Mason--Stothers theorem and polynomial Fermat's Last Theorem
+%   \item Google DeepMind's \emph{Formal Conjectures} project.
+% \end{itemize}
+
+\paragraph{Formalization of 8-dimensional optimal sphere packing}
+
+I am one of the maintainers of the project to formalize Viazovska’s proof of the optimal sphere packing in $\mathbb{R}^8$ in Lean 4, led by Sidharth Hariharan and including Chris Birkbeck, Bhavik Mehta, and Maryna Viazovska.
+This also involves formalizing my algebraic proof of the modular form inequalities introduced above, which allow us to bypass the need for formalizing interval arithmetic and the Hardy--Ramanujan formula.
+We also found several mathematical tricks to reduce the identities for the Serre derivatives of level 2 modular forms to the case of level 1, thereby circumventing the need to formalize the dimension formula at higher levels, which relies on the valence formula.
+So far, we have completed the formalization of the $E_8$ lattice and its density, and are now working on formalizing the Cohn--Elkies bound and the foundational theory of (quasi)modular forms and related inequalities.
+The project is publicly available at \href{https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean}{Sphere-Packing-Lean}.
+
+
+\paragraph{Formalization of polynomial FLT}
+
+
+In collaboration with Jineon Baek, we give a complete formalization of the Mason--Stothers theorem in Lean 4 \cite{baek2024formalizing}, which implies Fermat's Last Theorem for polynomials.
+While earlier formalizations existed in HOL (Eberl) and Lean 3 (Wagemaker), our work provides a complete Lean 4 proof and a careful comparison with previous approaches \cite[Section 7]{baek2024formalizing}.
+The entire proof is now integrated into the \texttt{mathlib} library.
+% (see PR \href{https://github.com/leanprover-community/mathlib4/pull/15706}{\#15706} and PR  \href{https://github.com/leanprover-community/mathlib4/pull/18882}{\#18882}).
+
+
+\paragraph{Formal Conjectures project}
+
+I also occasionally contribute to Google DeepMind’s \href{https://github.com/google-deepmind/formal-conjectures}{Formal Conjectures} project, which aims to formalize the statements of mathematical conjectures and theorems (without proofs) in Lean 4.
+My contributions include conjectures in number theory such as the \href{https://github.com/google-deepmind/formal-conjectures/pull/119}{Ramanujan--Petersson conjecture}, \href{https://github.com/google-deepmind/formal-conjectures/pull/139}{Lehmer's conjecture}, \href{https://github.com/google-deepmind/formal-conjectures/issues/184}{Hall's conjecture}, \href{https://github.com/google-deepmind/formal-conjectures/pull/317}{congruent number problem}, and several of Erd\"os problems (\href{https://github.com/google-deepmind/formal-conjectures/pull/300}{\#9}, \href{https://github.com/google-deepmind/formal-conjectures/pull/301}{\#307}, \href{https://github.com/google-deepmind/formal-conjectures/pull/449}{\#364}, \href{https://github.com/google-deepmind/formal-conjectures/pull/665}{\#946}).
+
+
+\section{Number Theory with Machine Learning}
+
+\paragraph{Machine Learning Galois Groups}
+
+% Recently, there has been a growing interest in applying machine learning techniques to number theory.
+% One of the most notable example is the recent finding of \emph{murmuration} pattern of elliptic curves \cite{he2024murmurations} by He, Lee, Oliver, and Pozdnyakov, where the authors used machine learning to predict ranks of elliptic curves and found a surprising murmuration pattern of traces of Frobenius of certain families of elliptic curves while analyzing the models.
+% Another example is the work of He, Lee, and Oliver \cite{he2020machine} on classifying various invariants of number fields from Dedekind zeta coefficients and polynomial coefficients, where they found the classical machine learning algorithms such as logistic regression and random forest perform very well in classifying Galois groups of number fields.
+
+\begin{wrapfigure}{r}{0.3\textwidth} % l for left, r for right
     \centering
     \footnotesize
     \begin{forest}
@@ -208,9 +196,19 @@ Inspired from this, we conjectured and proved the following theorem, which has n
         ]
       ]
     \end{forest}
-    \caption{A decision tree predicts the Galois groups of nonic fields from zeta coefficients up to $a_{1000}(K)$.}
+    \caption{Decision tree classifying Galois group of nonic Galois extensions.}
     \label{fig:nonic_zeta_dt}
-\end{figure}
+\end{wrapfigure}
+
+Recent work by Yang-Hui He, Kyu-Hwan Lee, and Thomas Oliver applied machine learning to study invariants of number fields, including Galois groups.
+While simple algorithms achieved high prediction accuracy, the underlying classification mechanisms were not well understood.
+
+In a joint work with Kyu-Hwan Lee, we addressed this gap by reverse-engineering the decision logic of ML models used to classify Galois groups of Galois number fields \cite{lee2025machines}.
+In particular, we studied the classification logic of decision trees where the Dedekind zeta coefficients are used as features, and we found that the models only use a small number of the coefficients, typically at indices that are perfect powers.
+For example, Figure \ref{fig:nonic_zeta_dt} shows the decision tree predicting the Galois groups of nonic Galois extensions (which obtained 100\% accuracy on a test set) from zeta coefficients up to $a_{1000}(K)$, where the model only uses three coefficients: $a_{1000}$, $a_{343}$, and $a_{27}$, which are all cubic indices.
+This empirical observation inspired the following theorem, previously absent from the literature:
+
+
 
 \begin{theorem*}[Lee--L.]
 \label{thm:ellsqzeta}
@@ -218,55 +216,87 @@ Inspired from this, we conjectured and proved the following theorem, which has n
     Then $\Gal(K / \bQ) \simeq C_{\ell^2}$ if and only if there exists a prime $p$ such that $a_{p^\ell}(K) = 0$.
 \end{theorem*}
 
-We also studied degree \(4, 6, 8, 9, 10\) number fields and established similar results.
+% We also studied degree \(4, 6, 8, 9, 10\) number fields and established similar results, which also show that part of the classification logics are \emph{provably correct}.
+We also studied degree \(4, 6, 8, 9, 10\) number fields, obtaining analogous results and showing that parts of the learned classification logic are, in fact, \emph{provably correct}.
 Our work demonstrates how machine learning can be used as a tool for generating conjectures and aiding in the discovery of rigorous mathematical theorems.
-
+My future goal is to scale-up the research and to discover more new results, possibly discover more efficient algorithms to compute various invariants of number fields or other number theoretic objects (such as automorphic forms and abelian varieties), inspired from machine learning.
 
 
 % \newpage
-\section{Other Projects}
+\section{Additional Projects - Automorphic Representations and Discrete Geometry}
 
-My interest is not restricted to number theory. I'm interested in various subjects, including
+My interest is not restricted to computational number theory. I'm interested in various subjects, including
 \begin{itemize}
-    \item discrete geometry
-    \item homomorphic encryption
+    \item Automorphic representations and Poisson summation formula
+    \item Discrete geometry
+    % \item homomorphic encryption
 \end{itemize}
 
 
+\paragraph{Modulation groups and Poisson summation formula}
 
-\subsection{Conway--Soifer conjecture - homothetic case}
+
+% In a joint work with Jayce Getz, Armando Guti\'errez Terradillos, Farid Hosseinijafari, Bryan Hu, Aaron Slipper, Marie-H\'el\`ene Tom\'e, HaoYun Yao, and Alan Zhao, we defined \emph{modulation groups} and their actions on Schwartz spaces for spherical varieties.
+% More precisely, for a reductive group $H$ over a characteristic zero local field $F$, let $X$ be an affine $H$-scheme with $X^{\mathrm{sm}}(F) \neq \emptyset$.
+% For a given (right) representation $V$ of $H$ and an equivariant map $\omega : X \to V$, one can define a (left) action of $V^\vee(F) \rtimes H(F)$ on the $L^2$-space of $X^{\mathrm{sm}}(F)$.
+% Then the \emph{small} modulation group is the image of $V^\vee(F) \rtimes H(F)$ in abstract group of $\mathrm{Aut}(L^2(X^\mathrm{sm}(F)))$.
+% We compute modulation group when $X = V = \bG_a^n$ is affine space and the equivariant maps are identity or symmetric square.
+% Also, when $V = \bG_a^{2n}$ is an even-dimensional quadratic space with natural action of $\mathrm{GO}_{2n}$ and $X$ is an isotropic subspace of $V$ (with inclusion $X \hookrightarrow V$), then we prove that the modulation group is the image of $\mathrm{GO}_{2n+2}(F)$ under the minimal representation.
+% In fact, the modulation group preserves Schwartz space on $X$ for all the cases mentioned above, and we expect this to be true in some generality.
+
+% Modulation groups can be related to Poisson summation formula in the sense of Braverman--Kazhdan program.
+% More precisely, we prove that the existence of Poisson summation formula is more or less equivalent to the existence of automorphic representation of the global modulation group $\Psi_w\{\mathbb{A}_F\}$.
+
+In a joint work with Jayce R. Getz, Armando Guti\'errez Terradillos, Farid Hosseinijafari, Bryan Hu, Aaron Slipper, Marie-H\'el\`ene Tom\'e, HaoYun Yao, and Alan Zhao, we defined and studied \emph{modulation groups} \cite{getz2025modulation}.
+They can be viewed as generalizations of metaplectic groups acting on suitable Schwartz spaces of spherical varieties. 
+More precisely, for an affine algebraic group $H$ over a local field $F$, a ``nice’’ affine $H$-scheme $X$, an $H$-representation $V$, and a $H$-equivariant map $\omega : X \to V$, the \emph{modulation group} $\Psi_\omega(F)$ is defined as a subgroup of the automorphism group of the Schwartz space $\mathcal{S}(X(F))$, generated by the action of $V^\vee(F)$, $H(F)$, and \emph{Fourier transforms}.
+We compute this group in several cases and show that it consists of the $F$-points of an algebraic group or a metaplectic group.
+In particular, we compute the group when $\omega$ is the identity map or the symmetric square map on $\mathbb{G}_a^n$, or when $\omega : X \hookrightarrow \mathbb{G}_a^{2n}$ is a quadratic cone.
+
+One can also globalize the definition to obtain an adelic version of the modulation group, and we prove that the Poisson summation formula holds if and only if a theta series associated with $\omega$ gives an ``automorphic representation of $\Psi_\omega(\mathbb{A}_F)$,'' although the precise definition of this notion is not yet settled.
+This suggests that modulation groups will play an important role in the Braverman--Kazhdan program, whose goal is to study automorphic $L$-functions and Langlands functoriality via the Poisson summation formula.
+
+This work was initiated through the 2024 Duke Research Scholars program and supported by the Duke Number Theory RTG grant.
+
+% These can be regarded as a generalization of metaplectic groups and Weil representations, and we give many examples for the cases when 
+
+
+
+% This is a work ... Duke Research Scholars program, supported by the Duke Number Theory RTG grant.
+
+\paragraph{Conway--Soifer conjecture - homothetic case}
 
 Consider an equilateral triangle with side length $n + \varepsilon$, where $n \ge 1$ is an integer and $\varepsilon > 0$ is sufficiently small.
 What is the minimum number of unit equilateral triangles required to cover this larger triangle?
 By considering the area, it is straightforward to show that at least $n^2 + 1$ unit triangles are necessary.
-Conway and Soifer provided two different ways to cover the large triangle using $n^2 + 2$ unit triangles \cite{conway2005covering} and conjectured that this is the minimum number needed.
+Conway and Soifer provided two different ways to cover the large triangle using $n^2 + 2$ unit triangles and conjectured that this is the minimum number needed.
 
 In collaboration with Jineon Baek, we proved that this conjecture holds if we restrict the covering to \emph{homothetic} triangles, i.e., when the sides of the unit triangles are parallel to those of the large triangle (aligned either as $\bigtriangleup$ or $\bigtriangledown$) \cite{baek2024equilateral}.
 Specifically, we established the following general result:
 
-\begin{theorem*}[Baek--L.] A triangle is called a horizontal triangle of base $b$ and height $h$ if one of its sides of length $b$ is parallel to the $x$-axis, and its height $h$ is measured along the $y$-axis. Then $n^2 + 1$ horizontal triangles of base $b$ and height $h$ cannot cover a horizontal triangle of base $nb$ and height greater than $nh$. \end{theorem*}
+\begin{theorem*}[Baek--L. {\cite{baek2024equilateral}}] A triangle is called a horizontal triangle of base $b$ and height $h$ if one of its sides of length $b$ is parallel to the $x$-axis, and its height $h$ is measured along the $y$-axis. Then $n^2 + 1$ horizontal triangles of base $b$ and height $h$ cannot cover a horizontal triangle of base $nb$ and height greater than $nh$. \end{theorem*}
 
 Our proof is elementary, and we also determined the largest possible values of $\varepsilon$ such that an equilateral triangle of side length $n + \varepsilon$ can be covered by either $n^2 + 2$ or $n^2 + 3$  homothetic unit triangles.
 Specifically, these values are $\varepsilon= 1 / (n + 1)$ and $\varepsilon = 1 / n$, respectively.
 We believe that our method can be generalized to higher dimensions or extended to determine the largest side length of an equilateral triangle that can be covered by $n^2 + k$ homothetic unit triangles for $1 \le k \le 2n$.
 
 
-\subsection{Encrypted transfer learning with homomorphic encryption}
+% \subsection{Encrypted transfer learning with homomorphic encryption}
 
-During my alternative military service as a Research Engineer at CryptoLab, I developed a privacy-preserving machine learning library called \texttt{HEaaN.SDK}, based on the Cheon--Kim--Kim--Song (CKKS) homomorphic encryption (HE) scheme \cite{cheon2017homomorphic}.
-The CKKS scheme theoretically allows arbitrary arithmetic computations on encrypted real and complex numbers (with small errors), which might lead one to believe that implementing machine learning algorithms using HE is straightforward.
-However, encrypted computations are significantly slower than plaintext computations, and naive implementations can be highly impractical due to performance bottlenecks.
-To address this, algorithms need to be redesigned in an \emph{HE-friendly} way, which is often a complex research problem.
+% During my alternative military service as a Research Engineer at CryptoLab, I developed a privacy-preserving machine learning library called \texttt{HEaaN.SDK}, based on the Cheon--Kim--Kim--Song (CKKS) homomorphic encryption (HE) scheme \cite{cheon2017homomorphic}.
+% The CKKS scheme theoretically allows arbitrary arithmetic computations on encrypted real and complex numbers (with small errors), which might lead one to believe that implementing machine learning algorithms using HE is straightforward.
+% However, encrypted computations are significantly slower than plaintext computations, and naive implementations can be highly impractical due to performance bottlenecks.
+% To address this, algorithms need to be redesigned in an \emph{HE-friendly} way, which is often a complex research problem.
 
-One key challenge I encountered was the lack of HE-based algorithms for \emph{multiclass} classification tasks; most prior work focused on binary classifications with a limited number of features.
-Implementing a multiclass classification algorithm using HE required overcoming two major obstacles: (1) efficiently performing encrypted softmax computations with large inputs and (2) executing large-scale encrypted matrix multiplications.
+% One key challenge I encountered was the lack of HE-based algorithms for \emph{multiclass} classification tasks; most prior work focused on binary classifications with a limited number of features.
+% Implementing a multiclass classification algorithm using HE required overcoming two major obstacles: (1) efficiently performing encrypted softmax computations with large inputs and (2) executing large-scale encrypted matrix multiplications.
 
-These challenges were addressed in HETAL (\textbf{H}omomorphic \textbf{E}ncryption-based \textbf{T}ransfer \textbf{L}earning) \cite{lee2023hetal}. 
-For softmax computation, we used homomorphic comparison techniques \cite{cheon2020efficient} to normalize inputs by subtracting the maximum value, followed by homomorphic domain extension \cite{cheon2022efficient}, which significantly reduced errors and expanded the input range compared to previous approaches.
-To optimize matrix multiplications, we implemented two distinct multiplication methods: $AB^\intercal$ and $A^\intercal B$ which allowed us to bypass the costly transpose operation.
-We further employed tiling and complex packing techniques to minimize the number of required rotations, resulting in matrix multiplication algorithms that were 1.8 to 323 times faster than previous methods.
-As a result, we successfully fine-tuned commonly used vision and language models within an hour on five benchmark datasets, using a single A40 GPU. 
-This demonstrated that HE-based encrypted fine-tuning is not only feasible but also practical for real-world applications.
+% These challenges were addressed in HETAL (\textbf{H}omomorphic \textbf{E}ncryption-based \textbf{T}ransfer \textbf{L}earning) \cite{lee2023hetal}. 
+% For softmax computation, we used homomorphic comparison techniques \cite{cheon2020efficient} to normalize inputs by subtracting the maximum value, followed by homomorphic domain extension \cite{cheon2022efficient}, which significantly reduced errors and expanded the input range compared to previous approaches.
+% To optimize matrix multiplications, we implemented two distinct multiplication methods: $AB^\intercal$ and $A^\intercal B$ which allowed us to bypass the costly transpose operation.
+% We further employed tiling and complex packing techniques to minimize the number of required rotations, resulting in matrix multiplication algorithms that were 1.8 to 323 times faster than previous methods.
+% As a result, we successfully fine-tuned commonly used vision and language models within an hour on five benchmark datasets, using a single A40 GPU. 
+% This demonstrated that HE-based encrypted fine-tuning is not only feasible but also practical for real-world applications.
 
 
 % \newpage
