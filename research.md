@@ -29,7 +29,7 @@ permalink: /research/
 - (with Y. Chen, R. Chernov, M. Flores, M. Bourque and B. Yang) **Toy Teichmüller spaces of real dimension 2: the pentagon and the punctured triangle**, Geom. Dedicata 197 (2018), 193-227 [paper](https://link.springer.com/article/10.1007/s10711-018-0325-6)
 
 **Publications (Others)**
-- (with F. Lin, K. Nagel, J. Jiang, G. Yang, P. Chang, S. Li, N. Sheu) **An Analysis of Silk Density in Spider Webs**, To appear in Royal Society Open Science
+- (with F. Lin, K. Nagel, J. Jiang, G. Yang, P. Chang, S. Li, N. Sheu) **An Analysis of Silk Density in Spider Webs**, Royal Society Open Science 12 (2025) [paper](https://royalsocietypublishing.org/doi/10.1098/rsos.250455)
 - (with G. Lee, J. Kim, J. Shin, M. Lee) **HETAL: Efficient Privacy-preserving Transfer Learning with Homomomorphic Encryption**, International Conference on Machine Learning 2023 (Oral) [paper](https://proceedings.mlr.press/v202/lee23m.html) [github](https://github.com/CryptoLabInc/HETAL) [slide(short)](https://seewoo5.github.io/assets/presentations/hetal-icml.pdf) [slide(long)](https://seewoo5.github.io/assets/presentations/hetal-kias.pdf)
 - (with J. Kim) **Revisiting the Convergence Theorem for Competitive Bidding in Common Value Actions**, Economic Theory Bulletin 10, 293-302 (2022) [paper](https://link.springer.com/article/10.1007/s40505-022-00234-2)
 - (with K. Kim, J. Shin, J. Park) **Tracing Knowledge for Tracing Dropouts: Multi-Task Training for Study Session Dropout Prediction**, Educational Data Mining 2021 [paper](https://educationaldatamining.org/EDM2021/virtual/static/pdf/EDM21_paper_174.pdf)
