@@ -13,8 +13,6 @@ permalink: /research/
 
 - (with J. Getz, A. G. Terradillos, F. Hosseinijafari, B. Hu, A. Slipper, M.-H. Tomé, H. Yao, A. Zhao) **Modulation groups** [arXiv](https://arxiv.org/abs/2510.23932)
 
-- **Shanks bias in function fields** [arXiv](https://arxiv.org/abs/2509.16142)
-
 - (with K. Lee) **Machines Learn Number Fields, But How? The Case of Galois Groups** [arXiv](https://arxiv.org/abs/2508.06670) [github](https://github.com/seewoo5/ML-NF) [blog](https://seewoo5.github.io/jekyll/update/2025/08/11/ai-and-math.html) [slide](https://seewoo5.github.io/assets/presentations/ml-galois.pdf)
 
 - **Algebraic proof of modular form inequalities for optimal sphere packings**, [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [slide](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
@@ -22,6 +20,8 @@ permalink: /research/
 - (with J. Baek) **Formalizing Mason-Stothers Theorem and its Corollaries in Lean 4** [arXiv](https://arxiv.org/abs/2408.15180) [github](https://github.com/seewoo5/lean-poly-abc)
 
 **Publications (Math)**
+
+- **Shanks bias in function fields**, To appear in Journal de Théorie des Nombres de Bordeaux [arXiv](https://arxiv.org/abs/2509.16142)
 - (with J. Baek) **An equilateral triangle of side $>n$ cannot be covered by $n^2 + 1$ unit equilateral triangles homothetic to it**, The American Mathematical Monthly 1-9 (2024). [paper](https://www.tandfonline.com/doi/full/10.1080/00029890.2024.2416882) [blog](https://seewoo5.github.io/jekyll/update/2023/12/12/conway-soifer.html)
 - (with D. Choi) **Non-archimedean Sendov's conjecture**, p-adic Numbers, Ultrametric Analysis and Applications 14, 77-80 (2022) [paper](https://link.springer.com/article/10.1134/S2070046622010058)
 - **Maass wave forms, quantum modular forms and Hecke operators**, Res. Mathematical Science 6, 7 (2018), Modular Forms are Everywhere: Celebration of Don Zagier's 65th Birthday [paper](https://link.springer.com/article/10.1007/s40687-018-0170-0)
