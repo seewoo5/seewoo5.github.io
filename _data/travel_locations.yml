@@ -1,5 +1,14 @@
 # _data/travel_locations.yml
 locations:
+
+  - city: "Arizona, US"
+    lat: 32.2319026
+    lng: -110.9561156
+    date_from: "2026-03-07"
+    date_to: "2026-03-11"
+    popup_content: |
+      [Arizona Winter School](https://swc-math.github.io/aws/2026/index.html), March 7-11, 2026
+
   - city: "Aarhus, Denmark"
     lat: 56.1659954
     lng: 10.1974896
@@ -7,6 +16,14 @@ locations:
     date_to: "2026-01-30"
     popup_content: |
       [Aarhus Mathematics & AI Workshop](https://conferences.au.dk/math-ai-workshop-2026), January 27-30, 2026
+
+  - city: "Seoul, South Korea"
+    lat: 37.5928556
+    lng: 127.0431712
+    date_from: "2026-01-06"
+    date_to: "2026-01-06"
+    popup_content: |
+      [KIAS HCMC](https://kias.re.kr/kias/activities/seminars/view.do?seqno=PGN1720251212-0002&menuNo=404003), January 6, 2026
 
   - city: "Madison, US"
     lat: 43.0755182
@@ -48,13 +65,13 @@ locations:
     popup_content: |
       [Carnegie Mellon University](https://events.cmu.edu/math/event/27297-special-listing-how-machines-learn-galois-groups), November 5-8, 2025
 
-  - city: "Davis, US"
-    lat: 38.5382364
-    lng: -121.7642874
-    date_from: "2025-01-14"
-    date_to: "2025-01-14"
+  - city: "Seoul, South Korea"
+    lat: 37.5928556
+    lng: 127.0431712
+    date_from: "2025-07-07"
+    date_to: "2025-07-11"
     popup_content: |
-      [UC Davis](https://www.math.ucdavis.edu/research/seminars?talk_id=7283), January 14, 2025
+      [Machine Learning and Mathematics](http://events.kias.re.kr/h/MLM2025/), July 7-11, 2025
 
   - city: "Arizona, US"
     lat: 32.2319026
@@ -63,6 +80,14 @@ locations:
     date_to: "2025-03-12"
     popup_content: |
       [Arizona Winter School](https://swc-math.github.io/aws/2025/index.html), March 8-12, 2025
+
+  - city: "Davis, US"
+    lat: 38.5382364
+    lng: -121.7642874
+    date_from: "2025-01-14"
+    date_to: "2025-01-14"
+    popup_content: |
+      [UC Davis](https://www.math.ucdavis.edu/research/seminars?talk_id=7283), January 14, 2025
 
   - city: "Berkeley, US"
     lat: 37.8736167
@@ -127,6 +152,14 @@ locations:
     date_to: "2022-05-29"
     popup_content: |
       [1st FHE.org workshop](https://fhe.org/conferences/conference-2022/), June 12-16, 2023
+
+  - city: "Arizona, US"
+    lat: 32.2319026
+    lng: -110.9561156
+    date_from: "2019-03-02"
+    date_to: "2019-03-06"
+    popup_content: |
+      [Arizona Winter School](https://swc-math.github.io/aws/2019/index.html), March 2-6, 2019
 
   - city: "Nanyang, Singapore"
     lat: 1.3483153
