@@ -81,14 +81,6 @@ locations:
     popup_content: |
       [Arizona Winter School](https://swc-math.github.io/aws/2025/index.html), March 8-12, 2025
 
-  - city: "Davis, US"
-    lat: 38.5382364
-    lng: -121.7642874
-    date_from: "2025-01-14"
-    date_to: "2025-01-14"
-    popup_content: |
-      [UC Davis](https://www.math.ucdavis.edu/research/seminars?talk_id=7283), January 14, 2025
-
   - city: "Berkeley, US"
     lat: 37.8736167
     lng: -122.260169
@@ -96,6 +88,14 @@ locations:
     date_to: "2025-02-24"
     popup_content: |
       [Berkeley RTG Seminar](https://events.berkeley.edu/math/event/292823-arithmetic-geometry-and-number-theory-rtg-seminar), February 24, 2025
+
+  - city: "Davis, US"
+    lat: 38.5382364
+    lng: -121.7642874
+    date_from: "2025-01-14"
+    date_to: "2025-01-14"
+    popup_content: |
+      [UC Davis](https://www.math.ucdavis.edu/research/seminars?talk_id=7283), January 14, 2025
 
   - city: "Luminy, France"
     lat: 43.2300034
