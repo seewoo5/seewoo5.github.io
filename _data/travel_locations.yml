@@ -20,10 +20,10 @@ locations:
   - city: "Seoul, South Korea"
     lat: 37.5928556
     lng: 127.0431712
-    date_from: "2026-01-06"
-    date_to: "2026-01-06"
+    date_from: "2026-01-05"
+    date_to: "2026-01-05"
     popup_content: |
-      [KIAS HCMC](https://kias.re.kr/kias/activities/seminars/view.do?seqno=PGN1720251212-0002&menuNo=404003), January 6, 2026
+      [KIAS HCMC](https://kias.re.kr/kias/activities/seminars/view.do?seqno=PGN1720251212-0002&menuNo=404003), January 5, 2026
 
   - city: "Madison, US"
     lat: 43.0755182
