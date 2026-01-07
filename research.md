@@ -9,7 +9,9 @@ permalink: /research/
 
 [Research Statement](assets/rs/RS.pdf)
 
-**Preprints**
+**Preprints (submitted)**
+
+- (with G. Bates, R. Jesubalan, J. Lu, H. Shim) *Powerful Fibonacci polynomials over finite fields* [arXiv](https://arxiv.org/abs/2601.02664) [github](https://github.com/seewoo5/sage-function-field)
 
 - (with J. Getz, A. G. Terradillos, F. Hosseinijafari, B. Hu, A. Slipper, M.-H. Tomé, H. Yao, A. Zhao) **Modulation groups** [arXiv](https://arxiv.org/abs/2510.23932)
 
@@ -17,11 +19,10 @@ permalink: /research/
 
 - **Algebraic proof of modular form inequalities for optimal sphere packings**, [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [slide](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
 
-- (with J. Baek) **Formalizing Mason-Stothers Theorem and its Corollaries in Lean 4** [arXiv](https://arxiv.org/abs/2408.15180) [github](https://github.com/seewoo5/lean-poly-abc)
 
 **Publications (Math)**
 
-- **Shanks bias in function fields**, To appear in Journal de Théorie des Nombres de Bordeaux [arXiv](https://arxiv.org/abs/2509.16142)
+- **Shanks bias in function fields**, To appear in Journal de Théorie des Nombres de Bordeaux [arXiv](https://arxiv.org/abs/2509.16142) [github](https://github.com/seewoo5/sage-function-field)
 - (with J. Baek) **An equilateral triangle of side $>n$ cannot be covered by $n^2 + 1$ unit equilateral triangles homothetic to it**, The American Mathematical Monthly 1-9 (2024). [paper](https://www.tandfonline.com/doi/full/10.1080/00029890.2024.2416882) [blog](https://seewoo5.github.io/jekyll/update/2023/12/12/conway-soifer.html)
 - (with D. Choi) **Non-archimedean Sendov's conjecture**, p-adic Numbers, Ultrametric Analysis and Applications 14, 77-80 (2022) [paper](https://link.springer.com/article/10.1134/S2070046622010058)
 - **Maass wave forms, quantum modular forms and Hecke operators**, Res. Mathematical Science 6, 7 (2018), Modular Forms are Everywhere: Celebration of Don Zagier's 65th Birthday [paper](https://link.springer.com/article/10.1007/s40687-018-0170-0)
@@ -39,9 +40,16 @@ permalink: /research/
 - (with Y. Choi, Y. Lee, D. Shin, J. Cho, S. Park, J. Baek, B. Kim, Y. Jang) **EdNet: A Large-Scale Hierarchical Dataset in Education**, Artificial Intelligence in Education 2020. Lecture Notes in Computer Science, vol 12164. Springer, Cham. [paper](https://link.springer.com/chapter/10.1007/978-3-030-52240-7_13#citeas)
 - (with J. Kim) **Apportionment of Liability by the Stochastic Shapley Value**, International Review of Law & Economics 60 (2019), 1-8 [paper](https://www.sciencedirect.com/science/article/abs/pii/S014481881930153X)
 
+**Preprints (not for publication)**
+
+- (with J. Baek) **Formalizing Mason-Stothers Theorem and its Corollaries in Lean 4** [arXiv](https://arxiv.org/abs/2408.15180) [github](https://github.com/seewoo5/lean-poly-abc)
+
+- (with Y. Choi, J. Park, B. Kim, J. Shin) **Consistency and Monotonicity Regularization for Neural Knowledge Tracing** [arXiv](https://arxiv.org/abs/2105.00607)
+
+- (with Y. Choi, Y. Lee, J. Cho, J. Baek, D. Shin, H. Yu, Y. Shim, J. Shin, C. Bae, B. Kim, J. Heo) **Assessment Modeling: Fundamental Pre-training Tasks for Interactive Educational Systems** [arXiv](https://arxiv.org/abs/2002.05505)
+
 **In Preparation**
 
-- (with G. Bates, R. Jesubalan, J. Lu, H. Shim) Powerful Fibonacci polynomials over finite fields
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) On ties in function field prime race 
 - Inequalities involving polynomials and quasimodular forms
 - On extremal quasimodular forms of higher levels 
@@ -63,18 +71,18 @@ permalink: /research/
 I'm also interested in programming (Python, Lean, SageMath, etc) and contributing to open sources. You can find some of my projects and contributions below:
 
 - Lean
-    - [mathlib4](https://github.com/leanprover-community/mathlib4/issues?q=author%3Aseewoo5)
-    - [Mason-Stothers and Polynomial ABC](https://github.com/seewoo5/lean-poly-abc) (with J. Baek)
-    - [Sphere Packing](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
+    - [Sphere Packing (with S. Hariharan, C. Birkbeck, B. Mehta, M. Viazovska)](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
+    - [Mason-Stothers and Polynomial ABC (with J. Baek)](https://github.com/seewoo5/lean-poly-abc)
     - [Formal Conjectures (by Google Deepmind)](https://github.com/google-deepmind/formal-conjectures/issues?q=author%3Aseewoo5)
+    - [mathlib4](https://github.com/leanprover-community/mathlib4/issues?q=author%3Aseewoo5)
 - [SageMath](https://github.com/sagemath/sage/issues?q=author%3Aseewoo5)
+    - [Positive quasimodular forms](https://github.com/seewoo5/posqmf)
+    - [Machine learning number fields](https://github.com/seewoo5/ML-NF)
+    - [Function field](https://github.com/seewoo5/sage-function-field)
     - [Bhargava cube](https://github.com/seewoo5/sage-bhargava-cube)
     - [Quantum modular form](https://github.com/seewoo5/sage-quantum-modform)
     - [Number theory tutorial (guest lecture for Math254A at Berkeley)](https://gist.github.com/seewoo5/400dbb69b8a4a7831ea6f035d35ad08d)
     - [Murmuration](https://github.com/seewoo5/murmuration)
-    - [Function field](https://github.com/seewoo5/sage-function-field)
-    - [Machine learning number fields](https://github.com/seewoo5/ML-NF)
-    - [Positive quasimodular forms](https://github.com/seewoo5/posqmf)
 - Miscs
     - [awesome-ai-for-math](https://seewoo5.github.io/awesome-ai-for-math/)
     - [Erdős Problems + OEIS (by Terrence Tao)](https://github.com/teorth/erdosproblems/issues?q=author%3Aseewoo5)
