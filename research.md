@@ -86,5 +86,5 @@ I'm also interested in programming (Python, Lean, SageMath, etc) and contributin
     - [Murmuration](https://github.com/seewoo5/murmuration)
 - Miscs
     - [awesome-ai-for-math](https://seewoo5.github.io/awesome-ai-for-math/)
-    - [Erdős Problems + OEIS (by Terrence Tao)](https://github.com/teorth/erdosproblems/issues?q=author%3Aseewoo5)
+    - [Erdős Problems + OEIS (by Terence Tao)](https://github.com/teorth/erdosproblems/issues?q=author%3Aseewoo5)
     - [Knowledge Tracing in PyTorch](https://github.com/seewoo5/KT) (archived)
