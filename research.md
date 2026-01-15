@@ -4,10 +4,11 @@ title: Research
 permalink: /research/
 ---
 
+I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof assistants (Lean), or machine learning. Check out my [Research Statement](assets/rs/RS.pdf).
+
 [MathSciNet](https://mathscinet.ams.org/mathscinet/search/author.html?mrauthid=1266901)
 / [Google Scholar](https://scholar.google.com/citations?user=jdFDv6IAAAAJ&hl=en)
 
-[Research Statement](assets/rs/RS.pdf)
 
 **Preprints (submitted)**
 
