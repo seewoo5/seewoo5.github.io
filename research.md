@@ -12,7 +12,7 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 
 **Preprints (submitted)**
 
-- (with G. Bates, R. Jesubalan, J. Lu, H. Shim) *Powerful Fibonacci polynomials over finite fields* [arXiv](https://arxiv.org/abs/2601.02664) [github](https://github.com/seewoo5/sage-function-field)
+- (with G. Bates, R. Jesubalan, J. Lu, H. Shim) **Powerful Fibonacci polynomials over finite fields** [arXiv](https://arxiv.org/abs/2601.02664) [github](https://github.com/seewoo5/sage-function-field)
 
 - (with J. Getz, A. G. Terradillos, F. Hosseinijafari, B. Hu, A. Slipper, M.-H. Tomé, H. Yao, A. Zhao) **Modulation groups** [arXiv](https://arxiv.org/abs/2510.23932)
 
