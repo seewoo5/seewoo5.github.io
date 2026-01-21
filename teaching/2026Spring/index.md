@@ -5,4 +5,33 @@ title: 2022 Fall - Math 53
 
 ![Multivatiable Calculus](./multcal.png)
 
-Professor: [Suncica Canic](https://www.math.uh.edu/~canic/)
+Professor: [Sunčica Čanić](https://www.math.uh.edu/~canic/)
+
+#### Check out [bCourse](https://bcourses.berkeley.edu/courses/1551940) for syllabus
+
+#### Discussion (with Berkeley time)
+
+* Section 103: Mon & Wed & Fri, 8-9 am, Cory 241
+* Section 104: Mon & Wed & Fri, 10-11 am, Wheeler 220 
+
+#### **Office hour: Mon 12pm-2pm, Evans 1049**
+
+If this is not available for you but you have any questions to ask, feel free to email me (seewoo5@berkeley.edu).
+
+#### Quizzes
+
+Every Monday.
+
+See `Files/Quizzes/103` or `Files/Quizzes/104` of [bCourse](https://bcourses.berkeley.edu/courses/1551940).
+
+
+#### Worksheets
+
+To be added
+
+#### Review and Overview
+
+[What is... Multivariable Calculus?](intro.pdf) 
+
+(I wrote this note 3.5 years ago - the only difference is that you will learn some of partial differential equations)
+
