@@ -114,7 +114,7 @@ Maybe, it does not matter at all. But I can try to promote the result as follows
 
 - Algebraic method is more well-suited than numerical method to prove some results that are *uniform* in infinitely many dimensions (maybe I'm wrong), since numerical methods cannot be applied easily to prove infinitely many statements (inequalities). In fact, my original goal was to prove a uniform bound (of course, I don't have a proof yet).
 Unfortunately, the conjectural LP bound is weaker than the current best known upper bound.
-- Better for *formalization*. At least in Lean, it is more inclined toward "algebra" than "analysis", so this proof of the inequalities might be more easily formalizable than other analytic proofs.
+- Better for *formalization*. At least in Lean, it is more inclined toward "algebra" than "analysis", so this proof of the inequalities might be more easily formalizable than other analytic proofs. **UPDATE: Check out the ongoing project on formalizing sphere packing in dimension 8: [here](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)**
 
 ### Why computer matters
 
