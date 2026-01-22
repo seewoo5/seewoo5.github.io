@@ -16,6 +16,8 @@ My research interests lie in computational number theory and, more broadly, in c
 I was one of the contributors for the [FrontierMath Tier4 benchmark](https://epoch.ai/frontiermath/tier-4).
 I am also interested in automorphic forms and representations, particularly in the context of the (relative) Langlands program and Ichino-Ikeda type conjectures.
 
+Currently, I'm working at [Axiom](https://axiommath.ai/) as an internship.
+
 Previously, I completed a master’s program at POSTECH, where I was advised by [YoungJu Choie](https://yjchoie.postech.ac.kr/).
 
 ---
