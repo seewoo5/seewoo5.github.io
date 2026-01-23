@@ -27,7 +27,11 @@ See `Files/Quizzes/103` or `Files/Quizzes/104` of [bCourse](https://bcourses.ber
 
 #### Worksheets
 
-To be added
+All the worksheets will be uploaded with solutions.
+
+| | Mon | Wed | Fri |
+| --- | :---: | :---: | :---: |
+| Week1 | - | - | [260123](worksheets/WS260123.pdf)|
 
 #### Review and Overview
 
