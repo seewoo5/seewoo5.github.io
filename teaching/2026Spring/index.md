@@ -35,3 +35,5 @@ To be added
 
 (I wrote this note 3.5 years ago - the only difference is that you will learn some of partial differential equations)
 
+If you need more exercises for studying, check out [this page](https://seewoo5.github.io/teaching/2022Fall/index).
+
