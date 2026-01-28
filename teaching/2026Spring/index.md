@@ -32,7 +32,7 @@ All the worksheets will be uploaded with solutions.
 | | Mon | Wed | Fri |
 | --- | :---: | :---: | :---: |
 | Week1 | - | - | [260123](worksheets/WS260123.pdf) |
-| Week2 | [260126](worksheets/WS260126.pdf) | - | |
+| Week2 | [260126](worksheets/WS260126.pdf) | [260128](worksheets/WS260128.pdf) | |
 
 #### Review and Overview
 
