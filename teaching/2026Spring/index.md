@@ -14,7 +14,7 @@ Professor: [Sunčica Čanić](https://www.math.uh.edu/~canic/)
 * Section 103: Mon & Wed & Fri, 8-9 am, Cory 241
 * Section 104: Mon & Wed & Fri, 10-11 am, Wheeler 220 
 
-#### **Office hour: Mon 12pm-2pm, Evans 1049**
+#### **Office hour: Mon 1pm-3pm, Evans 1049**
 
 If this is not available for you but you have any questions to ask, feel free to email me (seewoo5@berkeley.edu).
 
