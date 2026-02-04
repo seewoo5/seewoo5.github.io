@@ -9,6 +9,14 @@ locations:
     popup_content: |
       [Arizona Winter School](https://swc-math.github.io/aws/2026/index.html), March 7-11, 2026
 
+  - city: "Davis, US"
+    lat: 38.5382364
+    lng: -121.7642874
+    date_from: "2026-02-06"
+    date_to: "2026-02-06"
+    popup_content: |
+      [UC Davis](https://www.math.ucdavis.edu/~romik/math-and-ai-2026/), January 14, 2025
+
   - city: "Aarhus, Denmark"
     lat: 56.1659954
     lng: 10.1974896
