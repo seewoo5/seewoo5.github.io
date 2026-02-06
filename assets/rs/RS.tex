@@ -89,8 +89,7 @@ I am also working on improving \emph{lower} bounds for the uncertainty principle
 
 
 In the summer of 2025, I mentored four students at the Berkeley Mathematics REU on projects in the arithmetic of function fields. We explored analogues of classical Diophantine problems and prime number races.
-% For instance, we completely characterized all the perfect powers in the sequence of Fibonacci polynomials over finite fields, where there are infinitely many of them, which contrasts to the classical integer case where only finitely many exist.
-For example, we completely characterized all perfect powers in the sequence of Fibonacci polynomials over finite fields, showing that infinitely many occur - in sharp contrast to the classical integer case, where only finitely many exist.
+For example, we completely characterized all perfect powers in the sequence of Fibonacci polynomials over finite fields, showing that infinitely many occur - in sharp contrast to the classical integer case, where only finitely many exist \cite{bates2026powerful}.
 We also discovered infinite families of \emph{ties} in function field prime races, proving that for certain moduli $m$ and residue classes $a, b$, the counts $\pi(a, m, N)$ and $\pi(b, m, N)$ of monic irreducible polynomials of degree $N$ are equal for infinitely many $N$.
 These results were established both via explicit formulas involving $L$-functions and by constructing bijections using $\GL_2(\bF_q)$-actions.
 
@@ -114,8 +113,6 @@ Especially, I proved the following theorem:
 
 This answers a function field analogue of the 22nd problem in the \emph{Comparative Prime Number Theory Problem List} by Hamieh et al.
 I am also working on other problems including the average degree of least degree $k$-th power nonresidue modulo irreducible primes and the average number of divisors of polynomials over function fields, questions whose integer analogues are either classical or still open.
-
-% where integer version of the problems are widely studied or open.
 
 
 \paragraph{Maass wave forms, Quantum modular forms, and Hecke operators}
@@ -208,15 +205,12 @@ In particular, we studied the classification logic of decision trees where the D
 For example, Figure \ref{fig:nonic_zeta_dt} shows the decision tree predicting the Galois groups of nonic Galois extensions (which obtained 100\% accuracy on a test set) from zeta coefficients up to $a_{1000}(K)$, where the model only uses three coefficients: $a_{1000}$, $a_{343}$, and $a_{27}$, which are all cubic indices.
 This empirical observation inspired the following theorem, previously absent from the literature:
 
-
-
 \begin{theorem*}[Lee--L.]
 \label{thm:ellsqzeta}
     Let $\ell$ be a prime and $K / \bQ$ be a Galois extension of degree $\ell^2$, hence $\Gal(K/\bQ) \simeq C_{\ell^2}$ or $C_{\ell}^2$.
     Then $\Gal(K / \bQ) \simeq C_{\ell^2}$ if and only if there exists a prime $p$ such that $a_{p^\ell}(K) = 0$.
 \end{theorem*}
 
-% We also studied degree \(4, 6, 8, 9, 10\) number fields and established similar results, which also show that part of the classification logics are \emph{provably correct}.
 We also studied degree \(4, 6, 8, 9, 10\) number fields, obtaining analogous results and showing that parts of the learned classification logic are, in fact, \emph{provably correct}.
 Our work demonstrates how machine learning can be used as a tool for generating conjectures and aiding in the discovery of rigorous mathematical theorems.
 My future goal is to scale-up the research and to discover more new results, possibly discover more efficient algorithms to compute various invariants of number fields or other number theoretic objects (such as automorphic forms and abelian varieties), inspired from machine learning.
@@ -234,18 +228,6 @@ My interest is not restricted to computational number theory. I'm interested in 
 
 
 \paragraph{Modulation groups and Poisson summation formula}
-
-
-% In a joint work with Jayce Getz, Armando Guti\'errez Terradillos, Farid Hosseinijafari, Bryan Hu, Aaron Slipper, Marie-H\'el\`ene Tom\'e, HaoYun Yao, and Alan Zhao, we defined \emph{modulation groups} and their actions on Schwartz spaces for spherical varieties.
-% More precisely, for a reductive group $H$ over a characteristic zero local field $F$, let $X$ be an affine $H$-scheme with $X^{\mathrm{sm}}(F) \neq \emptyset$.
-% For a given (right) representation $V$ of $H$ and an equivariant map $\omega : X \to V$, one can define a (left) action of $V^\vee(F) \rtimes H(F)$ on the $L^2$-space of $X^{\mathrm{sm}}(F)$.
-% Then the \emph{small} modulation group is the image of $V^\vee(F) \rtimes H(F)$ in abstract group of $\mathrm{Aut}(L^2(X^\mathrm{sm}(F)))$.
-% We compute modulation group when $X = V = \bG_a^n$ is affine space and the equivariant maps are identity or symmetric square.
-% Also, when $V = \bG_a^{2n}$ is an even-dimensional quadratic space with natural action of $\mathrm{GO}_{2n}$ and $X$ is an isotropic subspace of $V$ (with inclusion $X \hookrightarrow V$), then we prove that the modulation group is the image of $\mathrm{GO}_{2n+2}(F)$ under the minimal representation.
-% In fact, the modulation group preserves Schwartz space on $X$ for all the cases mentioned above, and we expect this to be true in some generality.
-
-% Modulation groups can be related to Poisson summation formula in the sense of Braverman--Kazhdan program.
-% More precisely, we prove that the existence of Poisson summation formula is more or less equivalent to the existence of automorphic representation of the global modulation group $\Psi_w\{\mathbb{A}_F\}$.
 
 In a joint work with Jayce R. Getz, Armando Guti\'errez Terradillos, Farid Hosseinijafari, Bryan Hu, Aaron Slipper, Marie-H\'el\`ene Tom\'e, HaoYun Yao, and Alan Zhao, we defined and studied \emph{modulation groups} \cite{getz2025modulation}.
 They can be viewed as generalizations of metaplectic groups acting on suitable Schwartz spaces of spherical varieties. 
