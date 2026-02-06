@@ -21,6 +21,8 @@ title: Teaching
 
 #### Miscellaneous
 
+* [Lecture on Mathematics, AI, and Formalization (For MAT280 at UC Davis)](ai-math-formalization.pdf)
+
 * [Lecture on Machine Learning and Number Theory (For Math 254A, 2025 Fall)](Math254A_MLNT.pdf)
 
 * [Lecture on Zero-Knowledge Proof (For Math 116, 2025 Spring)](2025Spring116/Math116_ZKP.pdf)
