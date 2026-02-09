@@ -45,6 +45,8 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 
 **Preprints (not for publication)**
 
+- (with E. Chen, K. Lau, K. Ono, J. Zhang) **Dead ends in square-free digit walks** [arXiv](https://arxiv.org/abs/2602.05095) [github](https://github.com/AxiomMath/dead-ends)
+
 - (with J. Baek) **Formalizing Mason-Stothers Theorem and its Corollaries in Lean 4** [arXiv](https://arxiv.org/abs/2408.15180) [github](https://github.com/seewoo5/lean-poly-abc)
 
 - (with Y. Choi, J. Park, B. Kim, J. Shin) **Consistency and Monotonicity Regularization for Neural Knowledge Tracing** [arXiv](https://arxiv.org/abs/2105.00607)
