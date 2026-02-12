@@ -56,6 +56,8 @@ I expect that the exponent $8$ or $w - \lceil w/6\rceil$ is not optimal. In fact
 One can show that $w - 1$ is the largest possible exponent for those $w$'s.
 All of this will appear in a future paper (and also my thesis). If you wonder why such statements matter, stay tuned (you can already find an answer somewhere).
 
+*Update (26.02.11):* The paper can be found [here](https://arxiv.org/abs/2602.10536).
+
 ## What I tried (without AI)
 
 The goal in proving the Theorem above is to give a weak result toward the Conjecture with a reasonable exponent not far from $w - 1$.
