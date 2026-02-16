@@ -9,6 +9,14 @@ locations:
     popup_content: |
       [Arizona Winter School](https://swc-math.github.io/aws/2026/index.html), March 7-11, 2026
 
+  - city: "Irvine, US"
+    lat: 33.6444528
+    lng: -117.8468719
+    date_from: "2026-02-24"
+    date_to: "2026-02-24"
+    popup_content: |
+      [UC Irvine](https://www.math.uci.edu/node/38600), February 24, 2026
+
   - city: "Davis, US"
     lat: 38.5382364
     lng: -121.7642874
