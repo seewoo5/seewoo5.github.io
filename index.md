@@ -13,7 +13,7 @@ layout: single
 
 I am a fifth-year Ph.D. student in Mathematics at UC Berkeley, advised by [Sug Woo Shin](https://math.berkeley.edu/~swshin/).
 My research interests lie in computational number theory and, more broadly, in computer-assisted mathematics. This includes areas such as optimization problems (e.g., various linear programming problems involving automorphic forms), formalization, and the application of machine learning to pure mathematics.
-I was one of the contributors for the [FrontierMath Tier4 benchmark](https://epoch.ai/frontiermath/tier-4), and also one of the maintainers for the [Sphere Packing in Lean project](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean).
+I am one of the maintainers for the [Sphere Packing in Lean project](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean), and also one of the contributors for the [FrontierMath Tier4 benchmark](https://epoch.ai/frontiermath/tier-4).
 I am also interested in automorphic forms and representations, particularly in the context of the (relative) Langlands program and Ichino-Ikeda type conjectures.
 
 Currently, I'm working at [Axiom](https://axiommath.ai/) as an internship.
