@@ -78,6 +78,7 @@ I'm also interested in programming (Python, Lean, SageMath, etc) and contributin
 
 - Lean
     - [Sphere Packing (with S. Hariharan, C. Birkbeck, B. Mehta, M. Viazovska)](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
+        - There was a recent breakthrough by [Math Inc.'s Gauss](https://www.math.inc/gauss), producing `sorry`-free proof of dimension 8 and 24 sphere packings. See [Math Inc.'s press release](https://www.math.inc/sphere-packing) and [IEEE Spectrum article](https://spectrum.ieee.org/ai-proof-verification).
     - [Mason-Stothers and Polynomial ABC (with J. Baek)](https://github.com/seewoo5/lean-poly-abc)
     - [Formal Conjectures (by Google Deepmind)](https://github.com/google-deepmind/formal-conjectures/issues?q=author%3Aseewoo5)
     - [mathlib4](https://github.com/leanprover-community/mathlib4/issues?q=author%3Aseewoo5)
