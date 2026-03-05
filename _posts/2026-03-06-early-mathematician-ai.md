@@ -1,7 +1,7 @@
 ---
 layout: posts
 title:  "Early-stage mathematicians in the age of AI"
-date:   2026-03-02
+date:   2026-03-06
 categories: jekyll update
 tags: math machine-learning
 ---
