@@ -38,6 +38,7 @@ All the worksheets will be uploaded with solutions.
 | Week5 | holiday | [260218](worksheets/WS260218.pdf) | [260220](worksheets/WS260220.pdf) |
 | Week6 | quiz2 | [260225](worksheets/WS260225.pdf) | [260227](worksheets/WS260227.pdf) |
 | Week7 | quiz3 | [260304](worksheets/WS260304.pdf) | [260306](worksheets/WS260306.pdf) |
+| Week8 | quiz4 | [260311](worksheets/WS260311.pdf) | |
 
 #### Review and Overview
 
