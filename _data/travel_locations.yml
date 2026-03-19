@@ -1,6 +1,22 @@
 # _data/travel_locations.yml
 locations:
 
+  - city: "Seoul, South Korea"
+    lat: 37.5928556
+    lng: 127.0431712
+    date_from: "2026-06-28"
+    date_to: "2026-07-02"
+    popup_content: |
+      [Mathematics x AI: Challenges and Opportunities](https://symposia.kias.re.kr/2026-Math-X-AI), June 28-July 2, 2026
+
+  - city: "Pittsburgh, US"
+    lat: 40.4454081
+    lng: -79.9471358
+    date_from: "2026-04-02"
+    date_to: "2025-04-03"
+    popup_content: |
+      [Carnegie Mellon University](https://events.cmu.edu/math/event/30500-math-colloquium-seewoo-lee-university-of-california-be), April 2-3, 2026
+
   - city: "Arizona, US"
     lat: 32.2319026
     lng: -110.9561156
