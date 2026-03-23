@@ -21,7 +21,7 @@ title: Teaching
 
 #### Miscellaneous
 
-* [Lecture on Mathematics, AI, and Formalization (For MAT280 at UC Davis)](ai-math-formalization.pdf)
+* [Lecture on Mathematics, AI, and Formalization (For MAT280 at UC Davis / Talk at UCI / Talk at UC Berkeley Student NT seminar)](ai-math-formalization.pdf)
 
 * [Lecture on Machine Learning and Number Theory (For Math 254A, 2025 Fall)](Math254A_MLNT.pdf)
 

@@ -36,6 +36,11 @@ All the worksheets will be uploaded with solutions.
 | Week3 | quiz1 | [260204](worksheets/WS260204.pdf) | [260206](worksheets/WS260206.pdf) |
 | Week4 | mid1 prep | no section | [260213](worksheets/WS260213.pdf) |
 | Week5 | holiday | [260218](worksheets/WS260218.pdf) | [260220](worksheets/WS260220.pdf) |
+| Week6 | quiz2 | [260225](worksheets/WS260225.pdf) | [260227](worksheets/WS260227.pdf) |
+| Week7 | quiz3 | [260304](worksheets/WS260304.pdf) | [260306](worksheets/WS260306.pdf) |
+| Week8 | quiz4 | [260311](worksheets/WS260311.pdf) | [260313](worksheets/WS260313.pdf) |
+| Week9 | quiz5 | [260318](worksheets/WS260318.pdf) | [260320](worksheets/WS260320.pdf) |
+| Week10 | Happy | Spring | Break |
 
 #### Review and Overview
 
