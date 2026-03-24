@@ -53,7 +53,7 @@ The proof is simple and is mostly based on the explicit formula for the discrimi
 
 ## REU Project 2: Ties in prime race
 
-Paper: To Be Added
+Paper: [Ties in function field prime race](https://arxiv.org/abs/2603.21005)
 
 The second project is about Chebyshev bias.
 Over integers, it is known that there are "much more" primes of the form $4k + 3$ than of the form $4k + 1$, observed by Chebyshev in 1853.
