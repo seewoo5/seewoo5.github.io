@@ -41,6 +41,8 @@ All the worksheets will be uploaded with solutions.
 | Week8 | quiz4 | [260311](worksheets/WS260311.pdf) | [260313](worksheets/WS260313.pdf) |
 | Week9 | quiz5 | [260318](worksheets/WS260318.pdf) | [260320](worksheets/WS260320.pdf) |
 | Week10 | Happy | Spring | Break |
+| Week11 | mid2 prep | no section | [260403](worksheets/WS260403.pdf) |
+| Week12 | quiz6 | | |
 
 #### Review and Overview
 
