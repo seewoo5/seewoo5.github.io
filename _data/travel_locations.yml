@@ -1,13 +1,20 @@
 # _data/travel_locations.yml
 locations:
+  - city: "Seoul, South Korea"
+    lat: 37.5905713
+    lng: 127.0429186
+    date_from: "2026-07-13"
+    date_to: "2026-07-24"
+    popup_content: |
+      [AI and Mathematics](https://symposia.kias.re.kr/AI-Math2026), July 13-July 24, 2026
 
   - city: "Seoul, South Korea"
     lat: 37.5928556
     lng: 127.0431712
-    date_from: "2026-06-28"
-    date_to: "2026-07-02"
+    date_from: "2026-06-29"
+    date_to: "2026-07-03"
     popup_content: |
-      [Mathematics x AI: Challenges and Opportunities](https://symposia.kias.re.kr/2026-Math-X-AI), June 28-July 2, 2026
+      [Mathematics x AI: Challenges and Opportunities](https://symposia.kias.re.kr/2026-Math-X-AI), June 29-July 3, 2026
 
   - city: "Pittsburgh, US"
     lat: 40.4454081
