@@ -42,7 +42,7 @@ All the worksheets will be uploaded with solutions.
 | Week9 | quiz5 | [260318](worksheets/WS260318.pdf) | [260320](worksheets/WS260320.pdf) |
 | Week10 | Happy | Spring | Break |
 | Week11 | mid2 prep | no section | [260403](worksheets/WS260403.pdf) |
-| Week12 | quiz6 | | |
+| Week12 | quiz6 | [260408](worksheets/WS260408.pdf) | |
 
 #### Review and Overview
 
