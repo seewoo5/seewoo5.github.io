@@ -13,22 +13,16 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 **Preprints (submitted)**
 
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) **Ties in function field prime race** [arXiv](https://arxiv.org/abs/2603.21005) [github](https://github.com/seewoo5/sage-function-field)
-
 - **Inequalities involving polynomials and quasimodular forms**  [arXiv](https://arxiv.org/abs/2602.10536) [github](https://github.com/seewoo5/posqmf)
-
 - (with E. Chen, K. Lau, K. Ono, J. Zhang) **Almost all primes are partially regular** [arXiv](https://arxiv.org/abs/2602.05090) [github](https://github.com/AxiomMath/partial-regularity)
-
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) **Powerful Fibonacci polynomials over finite fields** [arXiv](https://arxiv.org/abs/2601.02664) [github](https://github.com/seewoo5/sage-function-field)
-
 - (with J. Getz, A. G. Terradillos, F. Hosseinijafari, B. Hu, A. Slipper, M.-H. Tomé, H. Yao, A. Zhao) **Modulation groups** [arXiv](https://arxiv.org/abs/2510.23932)
-
 - **Algebraic proof of modular form inequalities for optimal sphere packings**, [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [slide](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
 
 
 **Publications (Math)**
 
 - (with K. Lee) **Machines Learn Number Fields, But How? The Case of Galois Groups**, To appear in Research in Mathematical Sciences, [arXiv](https://arxiv.org/abs/2508.06670) [github](https://github.com/seewoo5/ML-NF) [blog](https://seewoo5.github.io/jekyll/update/2025/08/11/ai-and-math.html) [slide](https://seewoo5.github.io/assets/presentations/ml-galois.pdf)
-
 - **Shanks bias in function fields**, To appear in Journal de Théorie des Nombres de Bordeaux [arXiv](https://arxiv.org/abs/2509.16142) [github](https://github.com/seewoo5/sage-function-field)
 - (with J. Baek) **An equilateral triangle of side $>n$ cannot be covered by $n^2 + 1$ unit equilateral triangles homothetic to it**, The American Mathematical Monthly 1-9 (2024). [paper](https://www.tandfonline.com/doi/full/10.1080/00029890.2024.2416882) [blog](https://seewoo5.github.io/jekyll/update/2023/12/12/conway-soifer.html)
 - (with D. Choi) **Non-archimedean Sendov's conjecture**, p-adic Numbers, Ultrametric Analysis and Applications 14, 77-80 (2022) [paper](https://link.springer.com/article/10.1134/S2070046622010058)
@@ -51,11 +45,8 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 **Preprints (not for publication)**
 
 - (with E. Chen, K. Lau, K. Ono, J. Zhang) **Dead ends in square-free digit walks** [arXiv](https://arxiv.org/abs/2602.05095) [github](https://github.com/AxiomMath/dead-ends)
-
 - (with J. Baek) **Formalizing Mason-Stothers Theorem and its Corollaries in Lean 4** [arXiv](https://arxiv.org/abs/2408.15180) [github](https://github.com/seewoo5/lean-poly-abc)
-
 - (with Y. Choi, J. Park, B. Kim, J. Shin) **Consistency and Monotonicity Regularization for Neural Knowledge Tracing** [arXiv](https://arxiv.org/abs/2105.00607)
-
 - (with Y. Choi, Y. Lee, J. Cho, J. Baek, D. Shin, H. Yu, Y. Shim, J. Shin, C. Bae, B. Kim, J. Heo) **Assessment Modeling: Fundamental Pre-training Tasks for Interactive Educational Systems** [arXiv](https://arxiv.org/abs/2002.05505)
 
 **In Preparation**
