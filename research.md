@@ -12,6 +12,7 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 
 **Preprints (submitted)**
 
+- (with D. Angdinata, E. Chen, K. Ono, J. Zhang) **ABC implies that Ramanujan's tau function misses almost all primes** [arXiv](https://arxiv.org/abs/2603.29970) [github](https://github.com/AxiomMath/ramanujan-tau-misses-primes)
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) **Ties in function field prime race** [arXiv](https://arxiv.org/abs/2603.21005) [github](https://github.com/seewoo5/sage-function-field)
 - **Inequalities involving polynomials and quasimodular forms**  [arXiv](https://arxiv.org/abs/2602.10536) [github](https://github.com/seewoo5/posqmf)
 - (with E. Chen, K. Lau, K. Ono, J. Zhang) **Almost all primes are partially regular** [arXiv](https://arxiv.org/abs/2602.05090) [github](https://github.com/AxiomMath/partial-regularity)
