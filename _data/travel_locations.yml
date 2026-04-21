@@ -6,7 +6,7 @@ locations:
     date_from: "2026-07-13"
     date_to: "2026-07-24"
     popup_content: |
-      [AI and Mathematics](https://symposia.kias.re.kr/AI-Math2026), July 13-July 24, 2026
+      [AI and Mathematics](https://symposia.kias.re.kr/AI-Math2026), July 13-24, 2026
 
   - city: "Seoul, South Korea"
     lat: 37.5928556
@@ -17,10 +17,18 @@ locations:
       [Mathematics x AI: Challenges and Opportunities](https://symposia.kias.re.kr/2026-Math-X-AI), June 29-July 3, 2026
 
   - city: "Pittsburgh, US"
+    lat: 40.4440078
+    lng: -79.9491013
+    date_from: "2026-06-22"
+    date_to: "2026-06-26"
+    popup_content: |
+      [Workshop on Algebraic Geometry and Machine Learning](https://icarm.io/project/workshop-on-algebraic-geometry-and-machine-learning/), June 22-26, 2026
+
+  - city: "Pittsburgh, US"
     lat: 40.4454081
     lng: -79.9471358
     date_from: "2026-04-02"
-    date_to: "2025-04-03"
+    date_to: "2026-04-03"
     popup_content: |
       [Carnegie Mellon University](https://events.cmu.edu/math/event/30500-math-colloquium-seewoo-lee-university-of-california-be), April 2-3, 2026
 
