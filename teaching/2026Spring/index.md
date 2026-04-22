@@ -43,7 +43,8 @@ All the worksheets will be uploaded with solutions.
 | Week10 | Happy | Spring | Break |
 | Week11 | mid2 prep | no section | [260403](worksheets/WS260403.pdf) |
 | Week12 | quiz6 | [260408](worksheets/WS260408.pdf) | [260410](worksheets/WS260410.pdf) |
-| Week13 | quiz7 | [260415](worksheets/WS260415.pdf) | |
+| Week13 | quiz7 | [260415](worksheets/WS260415.pdf) | [260417](worksheets/WS260417.pdf) |
+| Week14 | quiz8 | [260422](worksheets/WS260422.pdf) | |
 
 #### Review and Overview
 
