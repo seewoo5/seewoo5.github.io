@@ -15,7 +15,7 @@ My research interests lie in computational number theory and, more broadly, in c
 I am one of the maintainers for the [Sphere Packing in Lean project](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean), and also one of the contributors for the [FrontierMath Tier4 benchmark](https://epoch.ai/frontiermath/tier-4).
 I am also interested in automorphic forms and representations, particularly in the context of the (relative) Langlands program and Ichino-Ikeda type conjectures.
 
-During my alternative military service in South Korea from 2019 to 2022, I worked at [Riiid](https://corp.socra.ai/) and [CryptoLab](https://www.cryptolab.co.kr/en/home/) as AI Research Scientist and Engineer, respectively. I also worked at [Axiom](https://axiommath.ai/) as an intern in 2026 Spring.
+During my alternative military service in South Korea from 2019 to 2022, I worked at [Riiid](https://corp.socra.ai/) and [CryptoLab](https://www.cryptolab.co.kr/en/home/). I also worked at [Axiom](https://axiommath.ai/) as an intern in 2026 Spring.
 
 I'll be at EPFL from August 2026.
 
