@@ -12,7 +12,7 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 
 **Preprints (submitted)**
 
-- (with S. Hariharan, C. Birkbeck, G. Ma, B. Mehta, A. Poiroux, M. Viazovska) **A Milestone in Formalization: The Sphere Packing Problem in Dimension 8** [arXiv](https://arxiv.org/abs/2603.29971) [github](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
+- (with S. Hariharan, C. Birkbeck, G. Ma, B. Mehta, A. Poiroux, M. Viazovska) **A Milestone in Formalization: The Sphere Packing Problem in Dimension 8** [arXiv](http://arxiv.org/abs/2604.23468) [github](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
 - (with D. Angdinata, E. Chen, K. Ono, J. Zhang) **ABC implies that Ramanujan's tau function misses almost all primes** [arXiv](https://arxiv.org/abs/2603.29970) [github](https://github.com/AxiomMath/ramanujan-tau-misses-primes)
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) **Ties in function field prime race** [arXiv](https://arxiv.org/abs/2603.21005) [github](https://github.com/seewoo5/sage-function-field)
 - **Inequalities involving polynomials and quasimodular forms**  [arXiv](https://arxiv.org/abs/2602.10536) [github](https://github.com/seewoo5/posqmf)
