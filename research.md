@@ -64,6 +64,7 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 - [My qualifying exam syllabus and questions](assets/Qual_report.pdf).
 - [Interview on the Sausage conjecture (Donga Science, Korean)](https://www.dongascience.com/news.php?idx=63722&fbclid=IwY2xjawGLW-ZleHRuA2FlbQIxMAABHRKQTGEnw5B4CvlzO09WRbMxC5MmGSjX7_0-6LdAp4gh-VDzY6gFipqWEw_aem_HoXwlscfyuoDYEDEDHrjxA)
 - [AMM Problem 12413](https://dx.doi.org/10.1080/00029890.2023.2231825)
+- KIAS Horizon webzine article on AI and Mathematics (Korean), [Post 1](https://horizon.kias.re.kr/33345/)
 
 ---
 
@@ -73,7 +74,7 @@ I'm also interested in programming (Python, Lean, SageMath, etc) and contributin
 
 - Lean
     - [Sphere Packing (with S. Hariharan, C. Birkbeck, B. Mehta, M. Viazovska)](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
-        - There was a recent breakthrough by [Math Inc.'s Gauss](https://www.math.inc/gauss), producing `sorry`-free proof of dimension 8 and 24 sphere packings. See [Math Inc.'s press release](https://www.math.inc/sphere-packing), [Lean Community Blog](https://leanprover-community.github.io/blog/posts/SpherePacking-1/), and [IEEE Spectrum article](https://spectrum.ieee.org/ai-proof-verification).
+        - There was a recent breakthrough by [Math Inc.'s Gauss](https://www.math.inc/gauss), producing `sorry`-free proof of dimension 8 and 24 sphere packings. See [Math Inc.'s press release](https://www.math.inc/sphere-packing), [Lean Community Blog 1](https://leanprover-community.github.io/blog/posts/SpherePacking-1/), and [IEEE Spectrum article](https://spectrum.ieee.org/ai-proof-verification).
     - [Mason-Stothers and Polynomial ABC (with J. Baek)](https://github.com/seewoo5/lean-poly-abc)
     - [Formal Conjectures (by Google Deepmind)](https://github.com/google-deepmind/formal-conjectures/issues?q=author%3Aseewoo5)
     - [mathlib4](https://github.com/leanprover-community/mathlib4/issues?q=author%3Aseewoo5)
