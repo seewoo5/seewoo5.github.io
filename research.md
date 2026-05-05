@@ -19,11 +19,11 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 - (with E. Chen, K. Lau, K. Ono, J. Zhang) **Almost all primes are partially regular** [arXiv](https://arxiv.org/abs/2602.05090) [github](https://github.com/AxiomMath/partial-regularity)
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) **Powerful Fibonacci polynomials over finite fields** [arXiv](https://arxiv.org/abs/2601.02664) [github](https://github.com/seewoo5/sage-function-field)
 - (with J. Getz, A. G. Terradillos, F. Hosseinijafari, B. Hu, A. Slipper, M.-H. Tomé, H. Yao, A. Zhao) **Modulation groups** [arXiv](https://arxiv.org/abs/2510.23932)
-- **Algebraic proof of modular form inequalities for optimal sphere packings**, [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [slide](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
 
 
 **Publications (Math)**
 
+- **Algebraic proof of modular form inequalities for optimal sphere packings**, To appear in Algebra and Number Theory [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [slide](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
 - (with K. Lee) **Machines Learn Number Fields, But How? The Case of Galois Groups**, To appear in Research in Mathematical Sciences, [arXiv](https://arxiv.org/abs/2508.06670) [github](https://github.com/seewoo5/ML-NF) [blog](https://seewoo5.github.io/jekyll/update/2025/08/11/ai-and-math.html) [slide](https://seewoo5.github.io/assets/presentations/ml-galois.pdf)
 - **Shanks bias in function fields**, To appear in Journal de Théorie des Nombres de Bordeaux [arXiv](https://arxiv.org/abs/2509.16142) [github](https://github.com/seewoo5/sage-function-field)
 - (with J. Baek) **An equilateral triangle of side $>n$ cannot be covered by $n^2 + 1$ unit equilateral triangles homothetic to it**, The American Mathematical Monthly 1-9 (2024). [paper](https://www.tandfonline.com/doi/full/10.1080/00029890.2024.2416882) [blog](https://seewoo5.github.io/jekyll/update/2023/12/12/conway-soifer.html)
