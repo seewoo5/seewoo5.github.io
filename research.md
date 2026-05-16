@@ -60,6 +60,7 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 
 **Miscellaneous**
 
+- [My Ph.D. Thesis](assets/thesis.pdf)
 - [This](https://seewoo5.github.io/math-notes/) is a link to a GitHub page for all the TeXed notes that I wrote.
 - [My qualifying exam syllabus and questions](assets/Qual_report.pdf).
 - [Interview on the Sausage conjecture (Donga Science, Korean)](https://www.dongascience.com/news.php?idx=63722&fbclid=IwY2xjawGLW-ZleHRuA2FlbQIxMAABHRKQTGEnw5B4CvlzO09WRbMxC5MmGSjX7_0-6LdAp4gh-VDzY6gFipqWEw_aem_HoXwlscfyuoDYEDEDHrjxA)
