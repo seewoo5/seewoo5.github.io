@@ -21,6 +21,10 @@
 {% include analytics.html %}
 {% include /comments-providers/scripts.html %}
 
+{% if content contains 'language-lean' or content contains 'language-lean4' %}
+  <script src="{{ '/assets/js/lean-highlight.js' | relative_url }}"></script>
+{% endif %}
+
 {% if site.after_footer_scripts %}
   {% for script in site.after_footer_scripts %}
     <script src="{{ script | relative_url }}"></script>

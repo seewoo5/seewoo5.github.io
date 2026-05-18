@@ -19,4 +19,62 @@
 <meta name="msapplication-TileImage" content="/assets/favicon/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 
+{% if content contains 'language-lean' or content contains 'language-lean4' %}
+<style>
+  pre > code.language-lean,
+  pre > code.language-lean4 {
+    display: block;
+    padding: 1em;
+    overflow-x: auto;
+    background: #263238;
+    border-radius: 4px;
+    color: #eeffff;
+    font-family: Monaco, Consolas, "Lucida Console", monospace;
+    font-size: 0.75em;
+    line-height: 1.8;
+  }
+
+  code.language-lean .lean-comment,
+  code.language-lean4 .lean-comment {
+    color: #b2ccd6;
+  }
+
+  code.language-lean .lean-keyword,
+  code.language-lean4 .lean-keyword {
+    color: #c792ea;
+  }
+
+  code.language-lean .lean-tactic,
+  code.language-lean4 .lean-tactic {
+    color: #82aaff;
+  }
+
+  code.language-lean .lean-type,
+  code.language-lean4 .lean-type {
+    color: #ffcb6b;
+  }
+
+  code.language-lean .lean-number,
+  code.language-lean4 .lean-number {
+    color: #f78c6c;
+  }
+
+  code.language-lean .lean-string,
+  code.language-lean4 .lean-string {
+    color: #c3e88d;
+  }
+
+  code.language-lean .lean-operator,
+  code.language-lean4 .lean-operator {
+    color: #89ddff;
+  }
+
+  code.language-lean .lean-sorry,
+  code.language-lean4 .lean-sorry {
+    color: #f07178;
+    font-weight: 700;
+  }
+</style>
+{% endif %}
+
 <!-- end custom head snippets -->

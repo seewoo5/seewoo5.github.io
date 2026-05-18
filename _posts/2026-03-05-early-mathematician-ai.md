@@ -44,7 +44,7 @@ But in 2026, you have fancy AI coding agents that write code *very* well, and so
 
 If you just started learning Lean (possibly with the [Natural Number Game](https://adam.math.hhu.de/#/g/leanprover-community/nng4)), you will quickly find that coding agents (general or Lean-specific) are much better than you at writing proofs. For example, the following Lean code was written by Claude Opus 4.5 from a single query (I stated the theorem myself but without proofs):
 
-```
+```lean
 theorem DihedralGroup.odd_ge_three_center_eq_bot (hodd : Odd n) (h3 : 3 ≤ n) :
     Subgroup.center (DihedralGroup n) = ⊥ := by
   haveI : NeZero n := ⟨hodd.pos.ne'⟩
@@ -79,7 +79,7 @@ In particular, if you are only interested in formalizing your own informal proof
 
 First, this is not only about writing Lean code that compiles. Another important part of building `mathlib` is literally as a "library," and we want results to be reusable for other purposes (we are not writing a book that no one will read). For that goal, we need general-purpose and maintainable Lean code, not just specialized and hard-to-read code. Much of this can be done with coding agents and a small amount of effort; they can golf proofs easily. But it is still the role of humans to give AI the right tasks so the code improves in the right direction. Note that the above theorem is actually upstreamed to `mathlib`, where the final golfed code is as follows (see [PR#33971](https://github.com/leanprover-community/mathlib4/pull/33971)):
 
-```
+```lean
 theorem center_eq_bot_of_odd_ne_one (hodd : Odd n) (hne1 : n ≠ 1) :
     Subgroup.center (DihedralGroup n) = ⊥ := by
   simp only [Subgroup.eq_bot_iff_forall, Subgroup.mem_center_iff]

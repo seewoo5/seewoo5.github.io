@@ -12,17 +12,18 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 
 **Preprints (submitted)**
 
-- (with D. Angdinata, E. Chen, K. Ono, J. Zhang) **ABC implies that Ramanujan's tau function misses almost all primes** [arXiv](https://arxiv.org/abs/2603.29970) [github](https://github.com/AxiomMath/ramanujan-tau-misses-primes)
+- (with S. Hariharan, C. Birkbeck, G. Ma, B. Mehta, A. Poiroux, M. Viazovska) **A Milestone in Formalization: The Sphere Packing Problem in Dimension 8** [arXiv](http://arxiv.org/abs/2604.23468) [github](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) **Ties in function field prime race** [arXiv](https://arxiv.org/abs/2603.21005) [github](https://github.com/seewoo5/sage-function-field)
 - **Inequalities involving polynomials and quasimodular forms**  [arXiv](https://arxiv.org/abs/2602.10536) [github](https://github.com/seewoo5/posqmf)
-- (with E. Chen, K. Lau, K. Ono, J. Zhang) **Almost all primes are partially regular** [arXiv](https://arxiv.org/abs/2602.05090) [github](https://github.com/AxiomMath/partial-regularity)
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) **Powerful Fibonacci polynomials over finite fields** [arXiv](https://arxiv.org/abs/2601.02664) [github](https://github.com/seewoo5/sage-function-field)
 - (with J. Getz, A. G. Terradillos, F. Hosseinijafari, B. Hu, A. Slipper, M.-H. Tomé, H. Yao, A. Zhao) **Modulation groups** [arXiv](https://arxiv.org/abs/2510.23932)
-- **Algebraic proof of modular form inequalities for optimal sphere packings**, [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [slide](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
 
 
 **Publications (Math)**
 
+- **Algebraic proof of modular form inequalities for optimal sphere packings**, To appear in Algebra and Number Theory [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [slide](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
+- (with D. Angdinata, E. Chen, K. Ono, J. Zhang) **ABC implies that Ramanujan's tau function misses almost all primes**, To appear in Indagationes Mathematicae [arXiv](https://arxiv.org/abs/2603.29970) [github](https://github.com/AxiomMath/ramanujan-tau-misses-primes)
+- (with E. Chen, K. Lau, K. Ono, J. Zhang) **Almost all primes are partially regular**, To appear in Archiv der Mathematik [arXiv](https://arxiv.org/abs/2602.05090) [github](https://github.com/AxiomMath/partial-regularity)
 - (with K. Lee) **Machines Learn Number Fields, But How? The Case of Galois Groups**, To appear in Research in Mathematical Sciences, [arXiv](https://arxiv.org/abs/2508.06670) [github](https://github.com/seewoo5/ML-NF) [blog](https://seewoo5.github.io/jekyll/update/2025/08/11/ai-and-math.html) [slide](https://seewoo5.github.io/assets/presentations/ml-galois.pdf)
 - **Shanks bias in function fields**, To appear in Journal de Théorie des Nombres de Bordeaux [arXiv](https://arxiv.org/abs/2509.16142) [github](https://github.com/seewoo5/sage-function-field)
 - (with J. Baek) **An equilateral triangle of side $>n$ cannot be covered by $n^2 + 1$ unit equilateral triangles homothetic to it**, The American Mathematical Monthly 1-9 (2024). [paper](https://www.tandfonline.com/doi/full/10.1080/00029890.2024.2416882) [blog](https://seewoo5.github.io/jekyll/update/2023/12/12/conway-soifer.html)
@@ -59,10 +60,12 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 
 **Miscellaneous**
 
+- [My Ph.D. Thesis](assets/thesis.pdf)
 - [This](https://seewoo5.github.io/math-notes/) is a link to a GitHub page for all the TeXed notes that I wrote.
 - [My qualifying exam syllabus and questions](assets/Qual_report.pdf).
 - [Interview on the Sausage conjecture (Donga Science, Korean)](https://www.dongascience.com/news.php?idx=63722&fbclid=IwY2xjawGLW-ZleHRuA2FlbQIxMAABHRKQTGEnw5B4CvlzO09WRbMxC5MmGSjX7_0-6LdAp4gh-VDzY6gFipqWEw_aem_HoXwlscfyuoDYEDEDHrjxA)
 - [AMM Problem 12413](https://dx.doi.org/10.1080/00029890.2023.2231825)
+- KIAS Horizon webzine article on AI and Mathematics (Korean), [Post 1](https://horizon.kias.re.kr/33345/)
 
 ---
 
@@ -72,7 +75,7 @@ I'm also interested in programming (Python, Lean, SageMath, etc) and contributin
 
 - Lean
     - [Sphere Packing (with S. Hariharan, C. Birkbeck, B. Mehta, M. Viazovska)](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
-        - There was a recent breakthrough by [Math Inc.'s Gauss](https://www.math.inc/gauss), producing `sorry`-free proof of dimension 8 and 24 sphere packings. See [Math Inc.'s press release](https://www.math.inc/sphere-packing), [Lean Community Blog](https://leanprover-community.github.io/blog/posts/SpherePacking-1/), and [IEEE Spectrum article](https://spectrum.ieee.org/ai-proof-verification).
+        - There was a recent breakthrough by [Math Inc.'s Gauss](https://www.math.inc/gauss), producing `sorry`-free proof of dimension 8 and 24 sphere packings. See [Math Inc.'s press release](https://www.math.inc/sphere-packing), [Lean Community Blog 1](https://leanprover-community.github.io/blog/posts/SpherePacking-1/), and [IEEE Spectrum article](https://spectrum.ieee.org/ai-proof-verification).
     - [Mason-Stothers and Polynomial ABC (with J. Baek)](https://github.com/seewoo5/lean-poly-abc)
     - [Formal Conjectures (by Google Deepmind)](https://github.com/google-deepmind/formal-conjectures/issues?q=author%3Aseewoo5)
     - [mathlib4](https://github.com/leanprover-community/mathlib4/issues?q=author%3Aseewoo5)
