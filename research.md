@@ -12,15 +12,15 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 
 **Preprints (submitted)**
 
-- (with S. Hariharan, C. Birkbeck, G. Ma, B. Mehta, A. Poiroux, M. Viazovska) **Progress in Formalizing Sphere Packing in Dimension 8** [arXiv](http://arxiv.org/abs/2604.23468) [github](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
+- (with B. Hwang, H. Lim, J. Hyun, I. Choi, Y. Park, J. Baek, H. Hong, K. Lee, J. Heo, H. Baik, C. Lee, K. Lee) **Lean-GAP: A Dataset of Formalized Graduate Algebra Problems** [arXiv](https://arxiv.org/abs/2606.02588) [kaggle](https://www.kaggle.com/datasets/b8d166d6fecce97ae60db6e8a9560e6c015c7db50f609000f72d7cd05b70729d)
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) **Ties in function field prime race** [arXiv](https://arxiv.org/abs/2603.21005) [github](https://github.com/seewoo5/sage-function-field)
 - **Inequalities involving polynomials and quasimodular forms**  [arXiv](https://arxiv.org/abs/2602.10536) [github](https://github.com/seewoo5/posqmf)
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) **Powerful Fibonacci polynomials over finite fields** [arXiv](https://arxiv.org/abs/2601.02664) [github](https://github.com/seewoo5/sage-function-field)
 - (with J. Getz, A. G. Terradillos, F. Hosseinijafari, B. Hu, A. Slipper, M.-H. Tomé, H. Yao, A. Zhao) **Modulation groups** [arXiv](https://arxiv.org/abs/2510.23932)
 
-
 **Publications (Math)**
 
+- (with S. Hariharan, C. Birkbeck, G. Ma, B. Mehta, A. Poiroux, M. Viazovska) **Progress in Formalizing Sphere Packing in Dimension 8**, To appear in Proceedings of International Conference on Mathematical Software 2026 [arXiv](http://arxiv.org/abs/2604.23468) [github](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
 - **Algebraic proof of modular form inequalities for optimal sphere packings**, To appear in Algebra and Number Theory [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [slide](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
 - (with D. Angdinata, E. Chen, K. Ono, J. Zhang) **ABC implies that Ramanujan's tau function misses almost all primes**, To appear in Indagationes Mathematicae [arXiv](https://arxiv.org/abs/2603.29970) [github](https://github.com/AxiomMath/ramanujan-tau-misses-primes)
 - (with E. Chen, K. Lau, K. Ono, J. Zhang) **Almost all primes are partially regular**, To appear in Archiv der Mathematik [arXiv](https://arxiv.org/abs/2602.05090) [github](https://github.com/AxiomMath/partial-regularity)
