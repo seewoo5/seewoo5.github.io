@@ -24,6 +24,22 @@ locations:
     popup_content: |
       [Workshop on Algebraic Geometry and Machine Learning](https://icarm.io/project/workshop-on-algebraic-geometry-and-machine-learning/), June 22-26, 2026
 
+  - city: "Daejeon, South Korea"
+    lat: 36.3698236
+    lng: 127.3645401
+    date_from: "2026-06-15"
+    date_to: "2026-06-15"
+    popup_content: |
+      KAIST Graduate School of AI for Math, June 15, 2026
+
+  - city: "Seoul, South Korea"
+    lat: 37.58513
+    lng: 127.0253956
+    date_from: "2026-06-08"
+    date_to: "2026-06-08"
+    popup_content: |
+      Korea University, June 8, 2026
+
   - city: "Pittsburgh, US"
     lat: 40.4454081
     lng: -79.9471358
