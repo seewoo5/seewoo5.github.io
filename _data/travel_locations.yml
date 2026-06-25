@@ -1,5 +1,13 @@
 # _data/travel_locations.yml
 locations:
+  - city: "Paris, France"
+    lat: 48.8441807
+    lng: 2.3410468
+    date_from: "2026-09-15"
+    date_to: "2026-09-16"
+    popup_content: |
+      [Serre 100](https://serre100.sciencesconf.org/), September 15-16, 2026
+
   - city: "Seoul, South Korea"
     lat: 37.5905713
     lng: 127.0429186
