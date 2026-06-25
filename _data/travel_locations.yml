@@ -8,6 +8,14 @@ locations:
     popup_content: |
       [AI and Mathematics](https://symposia.kias.re.kr/AI-Math2026), July 13-24, 2026
 
+  - city: "Daegu, South Korea"
+    lat: 35.7046918
+    lng: 128.4544876
+    date_from: "2026-07-08"
+    date_to: "2026-07-08"
+    popup_content: |
+      DGIST, July 8, 2026
+
   - city: "Seoul, South Korea"
     lat: 37.5928556
     lng: 127.0431712
