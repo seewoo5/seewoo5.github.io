@@ -34,3 +34,7 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 gem "webrick", "~> 1.7"
 gem "jekyll-spaceship"
+
+# Local copy of the theme, used only for fast local dev builds via
+# _config_dev.yml (production still uses remote_theme from _config.yml).
+gem "minimal-mistakes-jekyll", "~> 4.24"

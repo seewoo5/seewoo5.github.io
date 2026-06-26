@@ -1,0 +1,27 @@
+# Local development overrides. Use with:
+#   bundle exec jekyll serve --incremental --config _config.yml,_config_dev.yml
+#
+# Speeds up local builds by skipping heavy assets and the slow spaceship
+# plugin. NOT used in production (GitHub Pages builds from _config.yml only).
+
+# Use the locally-installed theme gem instead of downloading the theme from
+# GitHub on every build (the real bottleneck). remote_theme is cleared so it
+# doesn't take precedence over `theme`.
+remote_theme: false
+theme: minimal-mistakes-jekyll
+
+# Drop jekyll-spaceship (slow markdown post-processing). Arrays are replaced,
+# not merged, so this is the full plugin list minus spaceship.
+plugins:
+  - jekyll-feed
+  - jekyll-include-cache
+
+# Don't copy multi-hundred-MB asset dirs into _site on every build.
+exclude:
+  - assets/images
+  - assets/presentations
+  - assets/thesis.pdf
+  - vendor
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
