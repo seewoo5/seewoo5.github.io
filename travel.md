@@ -46,6 +46,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const futureList = document.getElementById('future-trips-list');
 
     var today = new Date();
+    today.setHours(0, 0, 0, 0); // normalize to local midnight for day-granularity comparison
+
+    // Parse a "YYYY-MM-DD" string as a local calendar date (avoids UTC offset shifting the day)
+    function parseLocalDate(dateString) {
+        var parts = dateString.split("-");
+        return new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+    }
+
     var markers = L.markerClusterGroup();
 
     // 4. Loop through Jekyll data and add markers
@@ -61,8 +69,8 @@ document.addEventListener("DOMContentLoaded", function() {
         var dateFromString = "{{ location.date_from }}"; 
         var dateToString = "{{ location.date_to }}"; 
         
-        var dateFrom = new Date(dateFromString);
-        var dateTo = new Date(dateToString);
+        var dateFrom = parseLocalDate(dateFromString);
+        var dateTo = parseLocalDate(dateToString);
         
         var iconToUse;
         var targetList;
