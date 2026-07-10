@@ -1,7 +1,7 @@
 ---
 layout: posts
 title:  "Fabling: Puzzles beyond Rubik's Cube with TeX"
-date:   2026-07-09
+date:   2026-07-10
 categories: jekyll update
 tags: ai programming
 ---
