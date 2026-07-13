@@ -36,5 +36,7 @@ I'm interested in programming (Python, Lean, SageMath, etc) and contributing to 
 
 - [awesome-ai-for-math](https://seewoo5.github.io/awesome-ai-for-math/) (Maintainer)
     - List of papers on AI for mathematics
+- [TeX-puzzles](https://github.com/seewoo5/TeX-puzzles)
+    - Latex packages for 12 permutation puzzles beyond Rubik's cube
 - [Erdős Problems + OEIS](https://github.com/teorth/erdosproblems/issues?q=author%3Aseewoo5) (Contributor, by Terence Tao)
 - [Knowledge Tracing in PyTorch](https://github.com/seewoo5/KT) (archived)
