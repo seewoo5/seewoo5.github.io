@@ -12,7 +12,7 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 
 **Preprints (submitted)**
 
-- (with K. Lau, K. Ono) **Formalized $q$-series: The Rogers-Ramanujan Identities and Beyond**, [arXiv](https://arxiv.org/abs/2607.01544) [github](https://github.com/AxiomMath/RogersRamanujan)
+- (with K. Lau, K. Ono) **Formalized $q$-series: The Rogers-Ramanujan Identities and Beyond**, [arXiv](https://arxiv.org/abs/2607.01544) [github](https://github.com/AxiomMath/RogersRamanujan) [slide](https://seewoo5.github.io/assets/presentations/q-series-formalization.pdf)
 - (with B. Hwang, H. Lim, J. Hyun, I. Choi, Y. Park, J. Baek, H. Hong, K. Lee, J. Heo, H. Baik, C. Lee, K. Lee) **Lean-GAP: A Dataset of Formalized Graduate Algebra Problems** [arXiv](https://arxiv.org/abs/2606.02588) [kaggle](https://www.kaggle.com/datasets/b8d166d6fecce97ae60db6e8a9560e6c015c7db50f609000f72d7cd05b70729d)
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) **Ties in function field prime race** [arXiv](https://arxiv.org/abs/2603.21005) [github](https://github.com/seewoo5/sage-function-field)
 - **Inequalities involving polynomials and quasimodular forms**  [arXiv](https://arxiv.org/abs/2602.10536) [github](https://github.com/seewoo5/posqmf)
