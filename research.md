@@ -54,10 +54,12 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 
 **In Preparation**
 
+- (with B. Banwait, X. Huang, K. Lee, T. Oliver, A. Podznyakov) Frobenius traces and Weierstrass coefficients
 - On extremal quasimodular forms of higher levels 
 - Positive quasimodular forms and uncertainty principle
 - Number of divisors of polynomials over function fields
 - (with H. Hong) TBD
+- (with D. Choi, Y. Lee) TBD
 
 **Miscellaneous**
 
