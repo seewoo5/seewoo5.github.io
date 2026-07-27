@@ -66,6 +66,12 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 - [My Ph.D. Thesis](assets/thesis.pdf)
 - [This](https://seewoo5.github.io/math-notes/) is a link to a GitHub page for all the TeXed notes that I wrote.
 - [My qualifying exam syllabus and questions](assets/Qual_report.pdf).
-- [Interview on the Sausage conjecture (Donga Science, Korean)](https://www.dongascience.com/news.php?idx=63722&fbclid=IwY2xjawGLW-ZleHRuA2FlbQIxMAABHRKQTGEnw5B4CvlzO09WRbMxC5MmGSjX7_0-6LdAp4gh-VDzY6gFipqWEw_aem_HoXwlscfyuoDYEDEDHrjxA)
 - [AMM Problem 12413](https://dx.doi.org/10.1080/00029890.2023.2231825)
 - KIAS Horizon webzine article on AI and Mathematics (Korean), [Part 1](https://horizon.kias.re.kr/33345/) [Part 2](https://horizon.kias.re.kr/33348/)
+
+**Random Media Appearances**
+
+- [Knowledge Collapse (Boston Review, English)](https://www.bostonreview.net/articles/knowledge-collapse/)
+- [AI, 필즈상 프로젝트 증명 5일 만에 끝내… 머리 복잡해진 수학계 (Donga Science, Korean)](https://www.donga.com/news/It/article/all/20260619/134139596/2)
+- [¿Están obsoletas las matemáticas? Los investigadores replantean para qué sirven en la era de la IA (El País, Spanish)](https://elpais.com/tecnologia/2026-06-17/estan-obsoletas-las-matematicas-los-investigadores-replantean-para-que-sirven-en-la-era-de-la-ia.html)
+- [귤을 많이 담으려면…귤포장에 숨은 수학 (Donga Science, Korean)](https://www.dongascience.com/news.php?idx=63722&fbclid=IwY2xjawGLW-ZleHRuA2FlbQIxMAABHRKQTGEnw5B4CvlzO09WRbMxC5MmGSjX7_0-6LdAp4gh-VDzY6gFipqWEw_aem_HoXwlscfyuoDYEDEDHrjxA)
