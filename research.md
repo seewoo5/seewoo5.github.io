@@ -74,4 +74,4 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 - [Knowledge Collapse (Boston Review, English)](https://www.bostonreview.net/articles/knowledge-collapse/)
 - [AI, 필즈상 프로젝트 증명 5일 만에 끝내… 머리 복잡해진 수학계 (Donga Science, Korean)](https://www.donga.com/news/It/article/all/20260619/134139596/2)
 - [¿Están obsoletas las matemáticas? Los investigadores replantean para qué sirven en la era de la IA (El País, Spanish)](https://elpais.com/tecnologia/2026-06-17/estan-obsoletas-las-matematicas-los-investigadores-replantean-para-que-sirven-en-la-era-de-la-ia.html)
-- [귤을 많이 담으려면…귤포장에 숨은 수학 (Donga Science, Korean)](https://www.dongascience.com/news.php?idx=63722&fbclid=IwY2xjawGLW-ZleHRuA2FlbQIxMAABHRKQTGEnw5B4CvlzO09WRbMxC5MmGSjX7_0-6LdAp4gh-VDzY6gFipqWEw_aem_HoXwlscfyuoDYEDEDHrjxA)
+- [귤을 많이 담으려면…귤포장에 숨은 수학 (Donga Science, Korean)](https://www.dongascience.com/ko/news/63722)
