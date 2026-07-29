@@ -21,7 +21,7 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 
 **Publications (Math)**
 
-- (with S. Hariharan, C. Birkbeck, G. Ma, B. Mehta, A. Poiroux, M. Viazovska) **Progress in Formalizing Sphere Packing in Dimension 8**, To appear in Proceedings of International Conference on Mathematical Software 2026 [arXiv](http://arxiv.org/abs/2604.23468) [github](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
+- (with S. Hariharan, C. Birkbeck, G. Ma, B. Mehta, A. Poiroux, M. Viazovska) **Progress in Formalizing Sphere Packing in Dimension 8**, To appear in Proceedings of the International Congress on Mathematical Software 2026 [arXiv](http://arxiv.org/abs/2604.23468) [github](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
 - **Algebraic proof of modular form inequalities for optimal sphere packings**, To appear in Algebra Number Theory [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [slide](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
 - (with D. Angdinata, E. Chen, K. Ono, J. Zhang) **ABC implies that Ramanujan's tau function misses almost all primes**, To appear in Indag. Math. [arXiv](https://arxiv.org/abs/2603.29970) [github](https://github.com/AxiomMath/ramanujan-tau-misses-primes)
 - **Shanks bias in function fields**, To appear in J. Théor. Nombres Bordeaux [arXiv](https://arxiv.org/abs/2509.16142) [github](https://github.com/seewoo5/sage-function-field)
