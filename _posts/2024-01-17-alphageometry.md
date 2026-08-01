@@ -3,7 +3,7 @@ layout: posts
 title:  "Solving olympiad geometry without human demonstrations"
 date:   2024-01-17
 categories: jekyll update
-tags: math machine-learning
+tags: math ai
 ---
 
 There are recent initiatives, including [IMO Grand Challenge](https://imo-grand-challenge.github.io/) and [AIMO](https://aimoprize.com/) that seek AI solving international mathematical olympiad problems and win a gold medal.

@@ -3,7 +3,7 @@ layout: posts
 title:  "ChatGPT5.2-Pro proved something for me"
 date:   2026-01-13
 categories: jekyll update
-tags: math machine-learning
+tags: math ai
 ---
 
 The goal of this post is to share an experience where ChatGPT5.2-Pro (Extended Thinking mode) genuinely helped me prove a small lemma.

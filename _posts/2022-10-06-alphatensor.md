@@ -3,7 +3,7 @@ layout: posts
 title:  "AlphaTensor: Discovering faster matrix multiplication algorithms with reinforcement learning"
 date:   2022-10-06
 categories: jekyll update
-tags: math machine-learning
+tags: math ai
 ---
 
 In 2017, Deepmind released AlphaZero [1], which is an upgraded version of AlphaGo Zero (an AI plays Go) and can play Go, Chess, and Shogi.

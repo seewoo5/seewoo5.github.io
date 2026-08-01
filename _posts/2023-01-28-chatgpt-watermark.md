@@ -3,7 +3,7 @@ layout: posts
 title:  "ChatGPT and Watermarking"
 date:   2023-01-28
 categories: jekyll update
-tags: machine-learning
+tags: ai
 ---
 
 In November 30, 2022, OpenAI released [ChatGPT](https://chat.openai.com/chat), and (at least in my opinion) it changed the world a lot, because of its standout performance.

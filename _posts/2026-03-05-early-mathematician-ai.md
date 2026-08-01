@@ -3,7 +3,7 @@ layout: posts
 title:  "Early-stage mathematicians in the age of AI"
 date:   2026-03-05
 categories: jekyll update
-tags: math machine-learning
+tags: math ai
 ---
 
 This is an essay about the role of **early-stage** mathematicians in the age of AI. It is motivated by several articles, including [Daniel Litt's blog](https://www.daniellitt.com/blog/2026/2/20/mathematics-in-the-library-of-babel), [Jeremy Avigad's essay](https://www.andrew.cmu.edu/user/avigad/Papers/mathematicians.pdf), and [Leo de Moura's blog](https://leodemoura.github.io/blog/2026/02/18/proof-assistants-in-the-age-of-ai.html).
@@ -33,7 +33,7 @@ But as of March 2026, I have not seen any AI solve a *major open problem that mo
 It does not need to be a major open problem. If you are a graduate student like me, you may be working on a thesis problem that you will solve at some point. In that case, you are the person who knows the problem better than anyone else. Maybe AI can solve it. If that happens, let us learn something from it and move on to a harder problem. Keep doing this until AI cannot solve it. Then you solve that one, since you are an expert on the problem.
 
 
-The last thing I want to mention is that LLMs are not the only way to do interesting things in mathematics. Good examples include AlphaEvolve, PatternBoost, and variants of them, which are deep-learning models for "mathematical discoveries." Although some of them (for example, AlphaEvolve) are backed by LLMs (for example, Gemini), many can work without LLMs and still be useful for finding nice or rare examples in mathematics. In particular, these examples may give you new mathematical insights and lead you to prove novel theorems (or at least make new conjectures). Sometimes, you do not even need neural networks or transformers. There are many works that use only classical machine-learning algorithms to discover new mathematical phenomena. Such experiments can be done in seconds on your laptop, and I believe there are many directions you can pursue to find something interesting with these classical but powerful tools (oldies are goodies).
+The last thing I want to mention is that LLMs are not the only way to do interesting things in mathematics. Good examples include AlphaEvolve, PatternBoost, and variants of them, which are deep-learning models for "mathematical discoveries." Although some of them (for example, AlphaEvolve) are backed by LLMs (for example, Gemini), many can work without LLMs and still be useful for finding nice or rare examples in mathematics. In particular, these examples may give you new mathematical insights and lead you to prove novel theorems (or at least make new conjectures). Sometimes, you do not even need neural networks or transformers. There are many works that use only classical ai algorithms to discover new mathematical phenomena. Such experiments can be done in seconds on your laptop, and I believe there are many directions you can pursue to find something interesting with these classical but powerful tools (oldies are goodies).
 
 ## Formal mathematics
 

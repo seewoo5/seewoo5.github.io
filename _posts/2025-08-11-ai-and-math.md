@@ -3,7 +3,7 @@ layout: posts
 title:  "What should we do as mathematicians with AI?"
 date:   2025-08-11
 categories: jekyll update
-tags: math machine-learning
+tags: math ai
 ---
 
 In this post, I’m going to share some of my recent experiences using AI (which is an extremely vague word these days) in mathematics.

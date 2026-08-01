@@ -3,7 +3,7 @@ layout: posts
 title:  "Simple code snippet for an offline translation"
 date:   2023-01-13
 categories: jekyll update
-tags: machine-learning development
+tags: ai programming
 ---
 
 I'm reading a French paper by Jacquet on the proof of Waldspurger's formula using Relative Trace Formula.

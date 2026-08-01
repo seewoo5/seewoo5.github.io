@@ -3,7 +3,7 @@ layout: posts
 title:  "Construction in Combinatorics via Neural Network"
 date:   2022-09-21
 categories: jekyll update
-tags: math machine-learning
+tags: math ai
 ---
 
 (This is a post translated from [the original post](https://seewoo5.tistory.com/21) I wrote last year.)
