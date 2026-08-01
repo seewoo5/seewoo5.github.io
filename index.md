@@ -18,7 +18,7 @@ I got my Ph.D. at UC Berkeley in Spring 2026 under the supervision of [Sug Woo S
 
 During my alternative military service in South Korea from 2019 to 2022, I worked at [Riiid](https://corp.socra.ai/) and [CryptoLab](https://www.cryptolab.co.kr/en/home/). I also worked at [Axiom](https://axiommath.ai/) as an intern in 2026 Spring.
 
-Previously, I completed a master’s program at POSTECH, where I was advised by [YoungJu Choie](https://yjchoie.postech.ac.kr/).
+Previously, I completed a master’s program at POSTECH, where I was advised by [YoungJu Choie](https://sites.google.com/view/yjchoie/home).
 
 ---
 
