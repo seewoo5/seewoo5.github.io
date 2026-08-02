@@ -154,7 +154,7 @@ Although there are many other reasons why mathematics is important, these reason
 
 Back to my original question: the reason for my confusion is that I think AI is helpful for mathematics, but not always helpful for mathematicians.
 I think AI will eventually be superhuman in mathematics, probably pretty soon (again, I'm being vague by not defining "superhuman", but whatever the definition is, I'd roughly estimate that it would happen in 5 years at most).
-But I also think that the reason behind the rapid progress of AI in mathematics is that the frontier labs are hiring very talented mathematicians to make their AI models better at mathematics, and I'm 100% sure that these mathematicians play a huge role in making their companies' AI models smarter (otherwise, why would they hire them?).
+But I also think that the reason behind the rapid progress of AI in mathematics is that the frontier labs are hiring very talented mathematicians to make their AI models better at mathematics, and I'm ~~100%~~ pretty sure that these mathematicians play a huge role in making their companies' AI models smarter (otherwise, why would they hire them?).
 I take this as further evidence for what I said above: the combination of AI and mathematicians is much more powerful than AI alone, and I think this is the future of mathematics.
 
 (A draft of this post was written by me, and polished & completed with Claude Fable 5.)
