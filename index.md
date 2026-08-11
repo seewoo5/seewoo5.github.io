@@ -8,13 +8,14 @@ layout: single
 </div>
 </figure>
 
-I'm an incoming postdoc at EPFL, and I'll be working with [Maryna Viazovska](https://people.epfl.ch/maryna.viazovska?lang=en) and [Viktor Kuncak](https://www.epfl.ch/labs/vk/), partially funded by [Renaissance Philanthropy's AI for Math Fund](https://www.renaissancephilanthropy.org/document-level-autoformalization).
+I'm a postdoc at EPFL, working with [Maryna Viazovska](https://people.epfl.ch/maryna.viazovska?lang=en) and [Viktor Kunčak](https://lara.epfl.ch/~kuncak/), partially funded by [Renaissance Philanthropy's AI for Math Fund](https://www.renaissancephilanthropy.org/document-level-autoformalization).
 
 My research interests lie in computational number theory and, more broadly, in computer-assisted mathematics. This includes areas such as optimization problems (e.g., various linear programming problems involving automorphic forms), formalization, and the application of machine learning to pure mathematics.
 I am one of the maintainers for the [Sphere Packing in Lean project](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean), and also one of the contributors for the [FrontierMath Tier4 benchmark](https://epoch.ai/frontiermath/tier-4).
 I am also interested in automorphic forms and representations, particularly in the context of the (relative) Langlands program and Ichino-Ikeda type conjectures.
 
 I got my Ph.D. at UC Berkeley in Spring 2026 under the supervision of [Sug Woo Shin](https://math.berkeley.edu/~swshin/).
+My thesis is titled [*Positive Quasimodular Forms and Linear Programming Bounds*](https://seewoo5.github.io/assets/thesis.pdf), which studies applications of positive quasimodular forms to linear programming bounds for sphere packing and related problems.
 
 During my alternative military service in South Korea from 2019 to 2022, I worked at [Riiid](https://corp.socra.ai/) and [CryptoLab](https://www.cryptolab.co.kr/en/home/). I also worked at [Axiom](https://axiommath.ai/) as an intern in 2026 Spring.
 
