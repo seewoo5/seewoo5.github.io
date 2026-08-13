@@ -4,7 +4,7 @@ title: Teaching
 ---
 
 
-[Thoughts on teaching](./TS_251001.pdf) / [More thoughts on teaching](https://seewoo5.github.io/jekyll/update/2023/10/03/how-to-teach.html)
+[Thoughts on teaching](./TS_260808.pdf) / [More thoughts on teaching](https://seewoo5.github.io/jekyll/update/2023/10/03/how-to-teach.html)
 
 #### Teaching at UC Berkeley
 
