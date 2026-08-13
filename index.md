@@ -31,4 +31,4 @@ See [travel](travel) to see where I visited, am visiting, and will visit.
 
 ---
 
-Email: seewoo5 + at + berkeley + dot + edu
+Email: seewoo + dot + lee + at + epfl + dot + ch
