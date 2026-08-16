@@ -200,7 +200,7 @@ Since $1/\pi$ is the exact limit, one cannot improve the constant further.
 Hence my upper bound is eventually weaker than Astra's for *large* $d$ — but we don't know *how large* "large" has to be.
 
 When I saw the news, as I said, I was quite worried: my main goal had been to complete the proof of the nonpositivity result and get a "new" upper bound on $\mathrm{A}\_{+}(d)$, which would give the first improvement of BCK's upper bound for infinitely many dimensions, and now Astra's result threatened to make mine obsolete.
-But I realized that Astra's result is really about $d \to \infty$, whereas my *claimed* bound holds for *all* $d \equiv 0 \pmod{4}$.
+But I realized that Astra's result is really about $d \to \infty$, whereas my *claimed* bound holds for *all* $d \equiv 0 \pmod{4}$ (although I think one might be able to make the $o(1)$ term explicit, and get better bounds for all but finitely many $d$).
 After talking with some people, I decided to try my best to complete the proof of positivity of the coefficients of $\widetilde{F}\_{w-2}$ and $\widetilde{G}\_{w}$.
 
 And I thought: "why not throw AI at this problem?"
@@ -231,9 +231,13 @@ Note that Ramanujan's identities are already formalized in the [Sphere-Packing-L
 But after working on this project, I realized that it would be good to have Kaneko-Zagier operators in mathlib.
 We certainly need a general theory of quasimodular forms in mathlib, which I'll try to work on in the future.
 
+I haven't read Astra's proof in full detail, but as far as I can tell its method is completely different from mine (and I hope my method of proof is interesting enough).
+Mine is more limited in scope — it only works for dimensions divisible by 4 — but it does give explicit (and simple) bounds.
+
+
 ## What's next?
 
-Although I have mixed feelings about the paper, I'm happy that I finally completed the goal.
+Although I have mixed feelings about the paper, I'm happy that I finally completed the goal (even if an unavoidable event forced me to wrap up the last steps in a single week).
 This is the best I can do at the moment (with Feigenbaum-Grabner-Hardin's construction).
 But I'm interested in related problems, especially figuring out the exact value of $\mathrm{A}_+(1)$, which may or may not need quasimodular forms.
 We'll see.
