@@ -199,16 +199,16 @@ for *sufficiently large $d$* (here $\mathrm{A}_{-}(d)$ is the constant for a sim
 Since $1/\pi$ is the exact limit, one cannot improve the constant further.
 Hence my upper bound is eventually weaker than Astra's for *large* $d$ — but we don't know *how large* "large" has to be.
 
-When I saw the news, as I said, I was quite worried: my main goal had been to complete the proof of the nonpositivity result and get a "new" upper bound on $\mathrm{A}_{+}(d)$, which would give the first improvement of BCK's upper bound for infinitely many dimensions, and now Astra's result threatened to make mine obsolete.
+When I saw the news, as I said, I was quite worried: my main goal had been to complete the proof of the nonpositivity result and get a "new" upper bound on $\mathrm{A}\_{+}(d)$, which would give the first improvement of BCK's upper bound for infinitely many dimensions, and now Astra's result threatened to make mine obsolete.
 But I realized that Astra's result is really about $d \to \infty$, whereas my *claimed* bound holds for *all* $d \equiv 0 \pmod{4}$.
-After talking with some people, I decided to try my best to complete the proof of positivity of the coefficients of $\widetilde{F}_{w-2}$ and $\widetilde{G}_{w}$.
+After talking with some people, I decided to try my best to complete the proof of positivity of the coefficients of $\widetilde{F}\_{w-2}$ and $\widetilde{G}\_{w}$.
 
 And I thought: "why not throw AI at this problem?"
 I had actually tried older ChatGPT Pro models on this positivity problem before, but they failed to give a proof.
 Then I realized that I had only asked for the stronger claim that *all* coefficients are positive, which is not what I need.
-So I tried ChatGPT-5.6 Sol and Claude Fable 5, and ChatGPT gave a clean proof of positivity of the coefficients of $\widetilde{F}_{w-2}$.
+So I tried ChatGPT-5.6 Sol and Claude Fable 5, and ChatGPT gave a clean proof of positivity of the coefficients of $\widetilde{F}\_{w-2}$.
 The argument is quite simple but satisfying, since it is strong enough to prove positivity exactly up to the threshold I need ($n \le \frac{w}{4} - 2$), and no further.
-It applies almost directly to the other family $\widetilde{G}_{w}$, though it needs some extra (nontrivial) work — which ChatGPT also carried out successfully.
+It applies almost directly to the other family $\widetilde{G}\_{w}$, though it needs some extra (nontrivial) work — which ChatGPT also carried out successfully.
 
 The high-level idea is that the $\widetilde{F}\_{w-2}$ satisfy recurrence relations given by second-order Kaneko-Zagier operators, and one can show by induction that these operators preserve positivity of the first $\approx w/4$ coefficients.
 To be honest, I think I should have been able to come up with the same argument myself, but I couldn't.
