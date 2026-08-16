@@ -1,7 +1,7 @@
 ---
 layout: posts
 title:  "Positive quasimodular forms and sign uncertainty principle"
-date:   2026-08-10
+date:   2026-08-16
 categories: jekyll update
 tags: math ai
 ---
