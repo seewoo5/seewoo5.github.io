@@ -226,6 +226,7 @@ All the code is available in the [GitHub repository](https://github.com/seewoo5/
 
 By the way, none of the Lean formalization will be upstreamed to mathlib, since it is not formalized the way things are done in mathlib (whenever I formalize something, one of my primary goals is to figure out whether any part of it can be generalized further so that it can be upstreamed to mathlib).
 We already have a general theory of modular forms and the weight 2 Eisenstein series $E_2$ in mathlib.
+Also, we have [derivative](https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/ModularForms/Derivative.html#Derivative.normalizedDerivOfComplex) and [Serre derivative](https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/ModularForms/Derivative.html#Derivative.serreDerivative) on modular forms, which I contributed to mathlib.
 In our formalization, we formalized quasimodular forms *twice*: once as power series, and once as a polynomial ring in three variables whose generators correspond to $E_2, E_4, E_6$ (which are known to be algebraically independent over $\mathbb{C}$).
 Then I took Ramanujan's identities *as axioms*, and also proved that the two formalizations are equivalent under the $q$-expansion map.
 Note that Ramanujan's identities are already formalized in the [Sphere-Packing-Lean project](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean), and will be upstreamed to mathlib *in the right way* (see [this draft PR](https://github.com/leanprover-community/mathlib4/pull/42211)).
@@ -233,7 +234,7 @@ But after working on this project, I realized that it would be good to have Kane
 We certainly need a general theory of quasimodular forms in mathlib, which I'll try to work on in the future.
 
 I haven't read Astra's proof in full detail, but as far as I can tell its method is completely different from mine (and I hope my method of proof is interesting enough).
-Mine is more limited in scope — it only works for dimensions divisible by 4 — but it does give explicit (and simple) bounds.
+Mine is more limited in scope — it only works for dimensions divisible by 4 — but it does give explicit (and simple) bounds. Also uses (quasi)modular forms!
 
 
 ## What's next?
