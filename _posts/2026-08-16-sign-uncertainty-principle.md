@@ -246,5 +246,4 @@ But I'm interested in related problems, especially figuring out the exact value 
 We'll see.
 
 
-[^1]: To construct a function for Cohn-Elkies' LP bound, the $(-1)$-eigencomponent of a function needs to vanish at the origin, which only happens when $d = 8$ or $d = 24$.
-For other $d$, one needs to subtract another function to make it vanish at the origin, but then it might be hard to verify the nonpositivity and nonnegativity of the function and its Fourier transform, respectively.
+[^1]: To construct a function for Cohn-Elkies' LP bound, the $(-1)$-eigencomponent of a function needs to vanish at the origin, which only happens when $d = 8$ or $d = 24$. For other $d$, one needs to subtract another function to make it vanish at the origin, but then it might be hard to verify the nonpositivity and nonnegativity of the function and its Fourier transform, respectively.
