@@ -188,7 +188,7 @@ $$
 \lim_{d \to \infty} \frac{\mathrm{A}_{+}(d)}{\sqrt{d}} = \lim_{d \to \infty} \frac{\mathrm{A}_{-}(d)}{\sqrt{d}} = \frac{1}{\pi}.
 $$
 
-(Here $\mathrm{A}_{-}(d)$ is the constant for a similar optimization problem, considering the infimum of $\sqrt{r(f)r(-\widehat{f})}$. It is more directly related to the LP bound - if you have an admissible function $g$ for the Cohn-Elkies LP bound, then $f = \widehat{g} - g$ gives an admissible function for the sign uncertainty principle.)
+(Here $\mathrm{A}\_{-}(d)$ is the constant for a similar optimization problem, considering the infimum of $\sqrt{r(f)r(-\widehat{f})}$. It is more directly related to the LP bound - if you have an admissible function $g$ for the Cohn-Elkies LP bound, then $f = \widehat{g} - g$ gives an admissible function for the sign uncertainty principle.)
 It is actually very satisfying to have such a clean limit, especially since the authors of that paper made the conjecture based only on the first four digits from numerical experiments, i.e. $0.3184$.
 As with the LP bound, this gives a new upper bound on $\mathrm{A}_{+}(d)$:
 
