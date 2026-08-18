@@ -15,11 +15,18 @@ bundle install
 Then serve the site locally:
 
 ```sh
-bundle exec jekyll serve --incremental --livereload --limit_posts 5 --config _config.yml,_config_dev.yml
+bundle exec jekyll serve --livereload --limit_posts 5 --config _config.yml,_config_dev.yml
 ```
 
 Open <http://localhost:4000>. The server watches files and rebuilds on save
 (`--livereload` auto-refreshes the browser).
+
+> **Don't add `--incremental`.** With it, a post added while the server is
+> running gets its own page built, but listing pages (`/blog/`, the tag pages,
+> the feed) are *not* regenerated — so the new post is invisible in the blog
+> index even though its URL works. The dev config already builds in ~2-3s, so
+> incremental buys nothing here. If a new post isn't showing up, stop the
+> server, `rm -rf _site .jekyll-metadata`, and start it again.
 
 ### Why the extra flags?
 
@@ -35,7 +42,6 @@ from GitHub via `remote_theme` on every build — slow (~3 min). For local work,
 Flag reference:
 
 - `--config _config.yml,_config_dev.yml` — layer the dev overrides on top.
-- `--incremental` — only rebuild changed pages after the initial build.
 - `--livereload` — auto-refresh the browser on changes.
 - `--limit_posts 5` — build only the 5 newest posts. Drop this if you need the
   full blog archive.

@@ -12,6 +12,7 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 
 **Preprints (submitted)**
 
+- **Positive quasimodular forms and the sign uncertainty principle**, [arXiv](https://arxiv.org/abs/2608.15415) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2026/08/16/sign-uncertainty-principle.html)
 - (with B. Banwait, X. Huang, K. Lee, T. Oliver, A. Podznyakov) **Decision trees, Frobenius traces, and Weierstrass coefficients of elliptic curves**, [arXiv](https://arxiv.org/abs/2607.24251) [github](https://github.com/seewoo5/ML-Weierstrass)
 - (with K. Lau, K. Ono) **Formalized $q$-series: The Rogers-Ramanujan Identities and Beyond**, [arXiv](https://arxiv.org/abs/2607.01544) [github](https://github.com/AxiomMath/RogersRamanujan) [slide](https://seewoo5.github.io/assets/presentations/q-series-formalization.pdf)
 - (with B. Hwang, H. Lim, J. Hyun, I. Choi, Y. Park, J. Baek, H. Hong, K. Lee, J. Heo, H. Baik, C. Lee, K. Lee) **Lean-GAP: A Dataset of Formalized Graduate Algebra Problems** [arXiv](https://arxiv.org/abs/2606.02588) [kaggle](https://www.kaggle.com/datasets/b8d166d6fecce97ae60db6e8a9560e6c015c7db50f609000f72d7cd05b70729d)
@@ -56,7 +57,6 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 **In Preparation**
 
 - On extremal quasimodular forms of higher levels 
-- Positive quasimodular forms and uncertainty principle
 - Number of divisors of polynomials over function fields
 - (with H. Hong) TBD
 - (with D. Choi, Y. Lee) TBD
