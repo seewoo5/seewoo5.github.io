@@ -6,7 +6,7 @@ categories: jekyll update
 tags: math ai
 ---
 
-I uploaded a [new paper on arXiv](link) on quasimodular forms and the sign uncertainty principle.
+I uploaded a [new paper on arXiv](https://arxiv.org/abs/2608.15415) on quasimodular forms and the sign uncertainty principle.
 This is something I really wanted to prove during my Ph.D., and I could finally achieve my goal with some help from ChatGPT and Claude.
 It is also closely related to the first of the [ten problems](https://openai.com/index/ten-advances-in-mathematics/) recently solved by OpenAI's internal model, Astra.
 
