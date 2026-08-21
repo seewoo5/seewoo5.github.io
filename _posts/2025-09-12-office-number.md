@@ -6,9 +6,19 @@ categories: jekyll update
 tags: math
 ---
 
-(Last update: 2025-09-12)
+(Last update: 2026-08-21)
 
-My office number is characterized as follows:
+### Current
+
+My office number has a form of `MA ** ###`, where `**` is a form of alphabet + digit, and `###` is a 3-digit number.
+
+- `**` is closely related to $\mathrm{Sp}_6$.
+- Let $n=$`###`. Then $n - 1$ is square-free and has three prime factors, while $n + 1$ is not square-free and has two prime factors.
+- $n$ is palindromic in base 10, but not in base 2 to 9.
+
+### Past
+
+Berkeley: My office number was characterized as follows:
 
 - It is a prime number.
 - It is a twin prime number.
