@@ -204,11 +204,14 @@ Here is a summarized version of the actual argument in the Lean code.
 Details of the argument are slightly different from the report, but the main idea is the same.
 Here are the differences:
 
-- 
+- A
+- B
+- C
+- D
 
 Now we will see how these steps are formalized.
 
-#### $\frac{1}{2} \le \int\_{-\infty}^{0} \|\varphi\|$
+#### $\frac{1}{2} \le \int\_{-\infty}^{0} \|\varphi(v)\| \mathrm{d}v$
 
 This is an easy step that almost directly follows from the definition of $\varphi$ and the properties of $g$.
 The formal statement is as follows:
@@ -224,8 +227,7 @@ theorem normalizedProfile_negativeHalfline_mass_ge_half {φ : ℝ → ℝ}
 
 #### $\|Z(s + i\sigma\lambda)\| \le e^{H\_{\sigma,D}(s)}$
 
-This is the bound in Lemma 3.2 of the report.
-There's no formalization of it. Instead, we have a *truncated* (capped) version of this:
+This is (truncated version of) Lemma 3.2 of the report, which is formalized as follows:
 
 ```lean
 -- |Z(s + iσλ)| \le exp(∫ P_σ(T) \min{h_λ(s - T), D} dT) for sufficiently large D
@@ -251,12 +253,84 @@ The truncation argument is explained in the last bit of the proof of Lemma 3.2.
 The above truncated bound translates as
 
 $$
-\int_{\mathbb{R}} P_\sigma(T) \min\{h_\lambda(s - T), D\} \mathrm{d}T
+\int_{\mathbb{R}} P_\sigma(T) \min\{h_\lambda(s - \lambda T), D\} \mathrm{d}T
 $$
 
-and taking $D \to \infty$ gives the original bound in Lemma 3.2 (by dominated convergence theorem), which is not formalized.
+and taking $D \to \infty$ gives the original bound in Lemma 3.2 (by dominated convergence theorem), which is not formalized (but we don't need it).
 
-One gets the original inequality by taking $D \to \infty$, which is not done in the Lean code, although we don't need it.
+To prove this, the nonformal proof in the report applied Poisson principle on the upper half plane to the function $\log \|Z \circ \Phi^{-1}\|$.
+However, the formalization is different - at least, it does not exactly follow the argument in the report.
+It uses Phragmén–Lindelöf principle instead:
+
+> **Phragmén–Lindelöf principle for horizontal strip.** Consider a function $f : \mathbb{C} \to \mathbb{C}$ that is holomorphic on the strip $\{z \in \mathbb{C} : a < \Im z < b\}$ and continuous on its closure. Assume that $\|f(z)\| = O(\exp( B\exp(c \|\Re z\|) ))$ for some constants $B$ and $c < \pi / (b - a)$ as $\|\Re z\| \to \infty$.
+> If there exists a constant $C$ such that $\|f(z)\| \le C$ for all $z$ on the boundary of the strip, then $\|f(z)\| \le C$ for all $z$ in the strip.
+
+It is a version of maximum modulus principle for a horizontal strip, and it is formalized as `horizontalStrip_norm_extension_majorization` in the Lean code.
+The formal proof is quite long, and it seems that the model formalized the proof itself.
+This is good, since it is a general theorem that might be useful to other projects!
+Maybe we can upstream it?
+
+...but it is already on the mathlib! See [`PhragmenLindelof.horizontal_strip`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Complex/PhragmenLindelof.html#PhragmenLindelof.horizontal_strip). You can simply use it if mathlib already have one, without wasting time and tokens!
+
+Anyway, the Lean proof goes as follows:
+
+> *Proof (Lean).* For $z \in \mathbb{C}$ and $y \in \mathbb{R}$, define 
+>
+> $$ K_\lambda(z, y) = \frac{i}{4\lambda} \frac{\exp\left(\frac{\pi(z - y + i\lambda)}{2\lambda}\right) + 1}{\exp\left(\frac{\pi(z - y + i\lambda)}{2\lambda}\right) - 1}, \quad \widetilde{K}_\lambda(z, y) = K_\lambda(z, y) - \begin{cases} -\frac{i}{4\lambda} & y \ge 0 \\ \frac{i}{4\lambda} & y < 0 \end{cases}$$
+>
+> where $K\_\lambda$ is a complex version of Poisson kernel and $\widetilde{K}\_\lambda$ is a regularized version of $K\_\lambda$, so that $\widetilde{K}\_\lambda(z, y) \to 0$ as $\|y\| \to \infty$. Define
+>
+> $$W_D(z) = \int_{\mathbb{R}} \widetilde{K}_\lambda(z, y) h_{\lambda, D}(y) \mathrm{d}y.$$
+>
+> On the strip $\|\Im z\| \le \lambda$, the real part of $W\_D$ is
+>
+> $$ \Re W_D(s + i\sigma\lambda) = \int_{\mathbb{R}} P_\sigma(T) h_{\lambda, D}(s - \lambda T). $$
+>
+> Now, consider $F\_D(z) := \exp(-W\_D(z)) Z(z)$. Then $\|F\_D(z)\| \le \exp(-\Re W\_D(z)) \|Z(z)\|$, and on the boundaries of the strip, we have
+>
+> $$ \Im z = \lambda \Rightarrow |Z(z)| \le 1,  $$
+>
+
+
+
+```lean
+theorem antiFourierWitness_capped_poisson_majorization_of_real_extension
+    {d : ℕ} (hd : 0 < d) {R : ℝ}
+    (w : AntiFourierWitness d R) (D : ℝ)
+    (E : ℂ → ℝ)
+    (hE : ContinuousOn E
+      (Complex.im ⁻¹'
+        Icc (-((d : ℝ) / 2)) ((d : ℝ) / 2)))
+    (hEinterior : ∀ z : ℂ,
+      z.im ∈ Ioo (-((d : ℝ) / 2)) ((d : ℝ) / 2) →
+        E z = (lowerStripCappedGammaOuter
+          ((d : ℝ) / 2) R D z).re)
+    (hEbottom : ∀ z : ℂ,
+      z.im = -((d : ℝ) / 2) →
+        E z = lowerGammaBoundaryCapped
+          ((d : ℝ) / 2) R D z.re)
+    (hEtop : ∀ z : ℂ,
+      z.im = (d : ℝ) / 2 → E z = 0)
+    (hcap : ∀ y : ℝ,
+      ‖normalizedRadialMellinStrip hd w.function R
+        ((y : ℂ) -
+          Complex.I * (((d : ℝ) / 2 : ℝ) : ℂ))‖ ≤
+        Real.exp (lowerGammaBoundaryCapped
+          ((d : ℝ) / 2) R D y))
+    {σ : ℝ} (hbelow : -1 < σ) (habove : σ < 1)
+    (s : ℝ) :
+    ‖normalizedRadialMellinStrip hd w.function R
+      ((s : ℂ) + Complex.I *
+        ((σ * ((d : ℝ) / 2) : ℝ) : ℂ))‖ ≤
+      Real.exp
+        (∫ T : ℝ, stripPoissonKernel σ T *
+          lowerGammaBoundaryCapped
+            ((d : ℝ) / 2) R D
+            (s - ((d : ℝ) / 2) * T)) := by ...
+```
+
+
+
 
 `normalizedRadialMellinStrip_top_norm_le_one` and `normalizedRadialMellinStrip_bottom_norm_le_gamma` are also part of Lemma 3.2, which give the bounds on the top and bottom boundaries of the strip.
 There's also `antiFourierWitness_normalizedMellinStrip_bottom_norm_le_gamma`, which is nothing but just stating `normalizedRadialMellinStrip_bottom_norm_le_gamma` again.

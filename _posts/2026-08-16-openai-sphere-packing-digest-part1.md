@@ -293,7 +293,7 @@ The proof of Proposition 3.1 can be divided into the following steps:
 > Then
 >
 > $$
-> |Z(s + i\sigma\lambda)| \le \exp(H_\sigma(s)), \quad H_\sigma(s) = \int_{\mathbb{R}} P_\sigma(T) h_\lambda(s - T) \mathrm{d}T \quad (s \in \mathbb{R}).
+> |Z(s + i\sigma\lambda)| \le \exp(H_\sigma(s)), \quad H_\sigma(s) = \int_{\mathbb{R}} P_\sigma(T) h_\lambda(s - \lambda T) \mathrm{d}T \quad (s \in \mathbb{R}).
 > $$
 
 The bounds on the upper and lower boundary of the strip are just intermediate steps, and the main goal is to bound $Z$ inside the strip.
@@ -327,22 +327,35 @@ This will follow by applying the "upper half plane Poisson principle" to $\log \
 > $$
 >
 > The map is a biholomorphism from the strip $\|\Im z\| < \lambda$ to the upper half plane $\mathbb{H}$. Now, we apply the Poisson principle to the function $u(z) = \log\|Z(\Phi^{-1}(z))\|$ on $\mathbb{H}$, which is subharmonic since $Z$, $\Phi^{-1}$ are holomorphic. 
-> One technical difficulty is that $h\_\lambda(y)$, which will be used to bound $u(z)$ on the boundary $\mathbb{R} = \partial \mathbb{H}$, has a singularity at $y = 0$; we have $h\_\lambda(y) = -\log|y| + O\_\lambda(1)$ as $y \to 0$. To mitigate this, we will truncate $h\_\lambda$: fortunately, one can show that $Z$ is bounded on the lower boundary (actually, on the whole strip).
-> Choose $D > \max\{0, \sup\_{y} \log |Z(y - i\lambda)|\}$ and let $h\_{\lambda, D} := \min \{h\_\lambda, d\}$. Since $\log|Z|$ is bounded above by $0$ on the upper boundary, which maps to the negative real axis $(-\infty, 0)$ under $\Phi$, the corresponding majorant is identically $0$ on $(-\infty, 0)$ and we only need to consider the positive real axis:
+> One technical difficulty is that $h\_\lambda(y)$, which will be used to bound $u(z)$ on the boundary $\mathbb{R} = \partial \mathbb{H}$, has a singularity at $y = 0$:
+>
+> $$h_\lambda(y) = -\log|y| + O_\lambda(1),\quad y \to 0.$$
+>
+> To deal with this, we will truncate $h\_\lambda$: fortunately, one can show that $Z$ is bounded on the lower boundary (actually, on the whole strip).
+> Let
+>
+> $$ h_{\lambda, D}(y) = \min \{h_\lambda(y), D\} $$
+>
+> and choose $D > \max\\{0, \sup\_{y} \log \|Z(y - i\lambda)\|\\}$. Since $\log\|Z\|$ is bounded above by $0$ on the upper boundary, which maps to the negative real axis $(-\infty, 0)$ under $\Phi$, the corresponding majorant is identically $0$ on $(-\infty, 0)$ and we only need to consider the positive real axis:
 >
 > $$
 > \log |Z(s + i\sigma \lambda)| = u(\Phi(s + i\sigma\lambda))  \le \int_{0}^{\infty} \frac{1}{\pi} \cdot \frac{\rho\sin\theta}{(t - \rho\cos\theta)^2 + (\rho\sin\theta)^2} h_{\lambda, D}(\Phi^{-1}(t)) \mathrm{d}t
 > $$
 >
-> where $\Phi(s + i\sigma\lambda) = \rho\cos\theta + i\rho\sin\theta$. Now apply substitution $t = \Phi(y) = \pm e^{\pi y / (2\lambda)}$ and do some calculation to get
+> where $\Phi(s + i\sigma\lambda) = \rho\cos\theta + i\rho\sin\theta$. Now apply substitution $t = \Phi(y) = e^{\pi y / (2\lambda)}$ and do some calculations to get
 >
 > $$
-> \int_{0}^{\infty} \frac{1}{\pi} \cdot \frac{\rho\sin\theta}{(t - \rho\cos\theta)^2 + (\rho\sin\theta)^2} h_{\lambda, D}(\Phi^{-1}(t)) \mathrm{d}t = \int_{\mathbb{R}} \frac{1}{\lambda} P_\sigma\left(\frac{s-y}{\lambda}\right) h_{\lambda, D}(y) \mathrm{d}y = \int_{\mathbb{R}} P_\sigma(T) h_{\lambda, D}(s - \lambda T) \mathrm{d}T
+> \begin{align*}
+> &\int_{0}^{\infty} \frac{1}{\pi} \cdot \frac{\rho\sin\theta}{(t - \rho\cos\theta)^2 + (\rho\sin\theta)^2} h_{\lambda, D}(\Phi^{-1}(t)) \mathrm{d}t \\
+> &= \int_{\mathbb{R}} \frac{1}{\lambda} P_\sigma\left(\frac{s-y}{\lambda}\right) h_{\lambda, D}(y) \mathrm{d}y \\
+> &= \int_{\mathbb{R}} P_\sigma(T) h_{\lambda, D}(s - \lambda T) \mathrm{d}T
+> \end{align*}
 > $$
 >
 > and this proves the claim.
 
-
+Next, we are going to bound $H_\sigma$.
+Lemma 3.3 and Lemma 3.4 are intermediate steps toward Lemma 3.5.
 
 > **Lemma 3.3.** For every $-1 < \sigma < 1$, there exists $C_\sigma > 0$, independent of $d$, $c$, and $g$, such that
 >
@@ -361,6 +374,20 @@ This will follow by applying the "upper half plane Poisson principle" to $\log \
 > $$
 > H_\sigma(s) \le H_\sigma(0) = \lambda M_\sigma (\log(2\pi c^2) + J_\sigma) + O_\sigma(\log(2 + \lambda)).
 > $$
+
+You only need to focus on the last inequality (and of course the definition of $J\_{\sigma}$), where the first inequality is just an intermediate step to bound $H\_{\sigma}(0)$.
+
+> *Proof of Lemma 3.3.* The difference between $h\_\lambda(\lambda T)$ and
+>
+> $$\lambda\left(\log(2\pi c^2) - \int_0^1 \log \sqrt{x^2 + T^2/4} \mathrm{d}x\right)$$
+>
+> is bounded by expressing $h\_\lambda(\lambda T)$ in terms of Riemann sums of the function $f\_T(x) = \log \sqrt{x^2 + T^2/4}$ and bounding the error. For example, $d = 2n$ is even, then $n = \lambda$ and we use the equations $\Gamma(z + 1) = z\Gamma(z)$ and $\|\Gamma(ib)\| = \|\Gamma(-ib)\|$ for $b \in \mathbb{R}$ to get
+>
+> $$ h_n(nT) = n\log(2\pi c^2) - \sum_{k=0}^{n-1} f_T\left(\frac{k}{n}\right) $$
+>
+> and use the fact that $f\_T$ is monotone increasing to get the estimate
+>
+> $$ 0 \le h_n(nT) - n \left(\log(2\pi c^2) - \int_0^1 f_T(x) \mathrm{d}x \right) \le \frac{1}{2} \log \left(1 + \frac{4}{T^2}\right)$$
 
 > **Lemma 3.4.** For $J_\sigma$ defined in Lemma 3.3,
 >
