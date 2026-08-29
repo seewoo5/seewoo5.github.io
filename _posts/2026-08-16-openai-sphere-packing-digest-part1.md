@@ -110,8 +110,9 @@ The LP bound is also closely related to the Bourgain-Clozel-Kahane sign uncertai
 ## Initial thoughts before reading the report thoroughly
 
 - The proof is heavily complex analytic.
-- The result is **asymptotic**, i.e. it says about what happes as $d \to \infty$. In particular, it does not construct optimal (or "magic") functions for any specific dimension $d$. The latter is a much harder problem. Note that the only known exact value of $\mathrm{LP}_d$ is for $d=1,8,24$.
+- The result is **asymptotic**, i.e. it says about what happes as $d \to \infty$. In particular, it does not construct optimal (or "magic") functions for any specific dimension $d$. The latter is a much harder problem. Note that the only known exact value of $\mathrm{LP}_d$ is for $d=1,8,24$. Also, knowing exact value of $\mathrm{LP}_d$ for certain $d$ does not imply that you solve the sphere packing problem in that dimension, since the LP bound is not always tight (which is known for some small dimensions, and conjectured to be true for large dimensions, too).
 - No modular forms.
+- Variable/notation choices are quite inconsistence. You may think this is not a big deal, but actually it is - when you write a paper, you should make sure to use the minimal amount of alphabets and notations for readability. Of course, you don't need to do this if your goal is to just dump result without expecting anyone to read and brag about it.
 - One of the core idea, in my opinion, is to work with the Mellin transform of the function. This idea is originally due to the 2016 paper of [Cohn and Miller](https://arxiv.org/abs/1603.04759) (see Section 5). But the report do not mention about this (it cites CM16 but for radial formulation part, which is standard and less important). This was also mentioned in the [recent article](https://www.scientificamerican.com/article/openais-latest-math-breakthroughs-commit-research-misconduct-experts-say/) in Scientific American, and the report is still not mentioning about the point.
 - OpenAI also shared [reasoning walkthroughs](https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf) for the proofs. In case of sphere packing problem, this is nothing but a sketch/summary of the proof; in particular, it is NOT CoT of Astra. I cannot say if this separate document is helpful - I actually tried to read this first, but it was similarly complicated as the original proof.
 
@@ -263,7 +264,9 @@ $$
 It is easy to check that these two functions are related by
 
 $$
+\begin{equation}
 Z(t) = \int_{\mathbb{R}} \varphi(v) e^{-(\lambda + it)v} \mathrm{d}v.
+\end{equation}
 $$
 
 The proof of Proposition 3.1 can be divided into the following steps:
@@ -293,7 +296,53 @@ The proof of Proposition 3.1 can be divided into the following steps:
 > |Z(s + i\sigma\lambda)| \le \exp(H_\sigma(s)), \quad H_\sigma(s) = \int_{\mathbb{R}} P_\sigma(T) h_\lambda(s - T) \mathrm{d}T \quad (s \in \mathbb{R}).
 > $$
 
-> *Proof.*
+The bounds on the upper and lower boundary of the strip are just intermediate steps, and the main goal is to bound $Z$ inside the strip.
+This will follow by applying the "upper half plane Poisson principle" to $\log \|Z\|$.
+
+> **Upper half plane Poisson principle.** Let $b : \mathbb{R} \to \mathbb{R}$. Define $P[b] : \mathbb{H} \to \mathbb{R}$ by
+>
+> $$
+> P[b](x + iy) = \frac{1}{\pi} \int_{\mathbb{R}} \frac{y}{(t - x)^2 + y^2} b(t) \mathrm{d}t.
+> $$
+>
+> If $u$ is a subharmonic function where $u \le b$ on $\mathbb{R}$, then $u \le P[b]$ on $\mathbb{H}$.
+
+
+> *Proof of Lemma 3.2.* We first prove the bounds on the upper and lower boundary of the strip. The upper-boundary bound $\|Z(y + i\lambda)\| \le 1$ almost immediately follows from (3), and the lower-boundary bound follows from the functional equation for Mellin transform, which gives
+>
+> $$
+> Z(y-i\lambda) = \varsigma (\pi R^2)^{\lambda + iy} \frac{\Gamma(-iy/2)}{\Gamma(\lambda + iy/2)} Z(-y + i\lambda).
+> $$
+>
+> To prove the bound inside the strip, we will apply a conformal map from the strip to the upper half plane, then apply the Poisson formula for the upper half plane. The conformal map is given by
+>
+> $$
+> \Phi(z) = \exp\left(\frac{\pi(z + i\lambda)}{2\lambda}\right)
+> $$
+>
+> which maps the boundary $\Im z = \lambda$ and $\Im z = -\lambda$ to $(0, \infty)$ and $(-\infty, 0)$, respectively, and $z = s + i\sigma\lambda$ to
+>
+> $$
+> \Phi(s + i\sigma\lambda) = \rho e^{i\theta}, \quad \rho = \exp\left(\frac{\pi s}{2\lambda}\right), \quad \theta = \frac{\pi(1+\sigma)}{2}.
+> $$
+>
+> The map is a biholomorphism from the strip $\|\Im z\| < \lambda$ to the upper half plane $\mathbb{H}$. Now, we apply the Poisson principle to the function $u(z) = \log\|Z(\Phi^{-1}(z))\|$ on $\mathbb{H}$, which is subharmonic since $Z$, $\Phi^{-1}$ are holomorphic. 
+> One technical difficulty is that $h\_\lambda(y)$, which will be used to bound $u(z)$ on the boundary $\mathbb{R} = \partial \mathbb{H}$, has a singularity at $y = 0$; we have $h\_\lambda(y) = -\log|y| + O\_\lambda(1)$ as $y \to 0$. To mitigate this, we will truncate $h\_\lambda$: fortunately, one can show that $Z$ is bounded on the lower boundary (actually, on the whole strip).
+> Choose $D > \max\{0, \sup\_{y} \log |Z(y - i\lambda)|\}$ and let $h\_{\lambda, D} := \min \{h\_\lambda, d\}$. Since $\log|Z|$ is bounded above by $0$ on the upper boundary, which maps to the negative real axis $(-\infty, 0)$ under $\Phi$, the corresponding majorant is identically $0$ on $(-\infty, 0)$ and we only need to consider the positive real axis:
+>
+> $$
+> \log |Z(s + i\sigma \lambda)| = u(\Phi(s + i\sigma\lambda))  \le \int_{0}^{\infty} \frac{1}{\pi} \cdot \frac{\rho\sin\theta}{(t - \rho\cos\theta)^2 + (\rho\sin\theta)^2} h_{\lambda, D}(\Phi^{-1}(t)) \mathrm{d}t
+> $$
+>
+> where $\Phi(s + i\sigma\lambda) = \rho\cos\theta + i\rho\sin\theta$. Now apply substitution $t = \Phi(y) = \pm e^{\pi y / (2\lambda)}$ and do some calculation to get
+>
+> $$
+> \int_{0}^{\infty} \frac{1}{\pi} \cdot \frac{\rho\sin\theta}{(t - \rho\cos\theta)^2 + (\rho\sin\theta)^2} h_{\lambda, D}(\Phi^{-1}(t)) \mathrm{d}t = \int_{\mathbb{R}} \frac{1}{\lambda} P_\sigma\left(\frac{s-y}{\lambda}\right) h_{\lambda, D}(y) \mathrm{d}y = \int_{\mathbb{R}} P_\sigma(T) h_{\lambda, D}(s - \lambda T) \mathrm{d}T
+> $$
+>
+> and this proves the claim.
+
+
 
 > **Lemma 3.3.** For every $-1 < \sigma < 1$, there exists $C_\sigma > 0$, independent of $d$, $c$, and $g$, such that
 >
@@ -412,6 +461,7 @@ Cohn-Miller
 
 ## Conclusion
 
+
 > Q. Does this proof give any further insight on the problems?
 >
-> A. `¯\_(ツ)_/¯`
+> A. idk `¯\_(ツ)_/¯` but I learned a lot about complex analysis!

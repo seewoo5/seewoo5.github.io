@@ -26,7 +26,12 @@ It is a single Lean file of 55616 lines.
 - Some parts of the code are borrowed from the [sphere packing project](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean).
 - There's no blueprint!
 
-So how can I read 55K lines of Lean code? There are several choices: 1) don't read, 2) read for months and keep important stuffs behind 3) use AI. I choose 3), and I used ChatGPT, since the code is also written by (some version of) ChatGPT.
+So how can I read 55K lines of Lean code? There are several choices:
+1. Don't read, 
+2. Read for months and keep important stuffs behind,
+3. Use AI.
+
+I choose 3), and I used ChatGPT and Claude, probably expect more to ChatGPT since the Lean code is also written by (some version of) ChatGPT.
 I asked it to give a table of mappings between theorems and lemmas in the report and the Lean code.
 
 The conclusion is that the Lean code *almost* reflect the report, but there are some missing results in the Lean code.
