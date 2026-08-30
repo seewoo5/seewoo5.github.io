@@ -1,6 +1,6 @@
 ---
 layout: posts
-title:  "Digesting Astra's result on the high-dimensional sphere-packing problem — Part 2: Formalization"
+title:  "Understanding Astra's result on the high-dimensional sphere-packing problem — Part 2: Formalization"
 date:   2026-08-27
 categories: jekyll update
 tags: math ai

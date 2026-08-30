@@ -1,6 +1,6 @@
 ---
 layout: posts
-title:  "Digesting Astra's result on the high-dimensional sphere-packing problem — Part 1: Digestion"
+title:  "Understanding Astra's result on the high-dimensional sphere-packing problem — Part 1: Digestion"
 date:   2026-08-27
 categories: jekyll update
 tags: math ai
@@ -22,6 +22,7 @@ The main results are the following:
 >
 > $$ \lim_{d \to \infty} \frac{\mathsf{A}_{+}(d)}{\sqrt{d}} = \lim_{d \to \infty} \frac{\mathsf{A}_{-}(d)}{\sqrt{d}} = \frac{1}{\pi}. $$
 
+Note that this blog post is also written with help of AI.
 
 ## Problem setting and background
 
@@ -131,11 +132,12 @@ for all $d \equiv 0 \pmod{4}$ (prompted by OpenAI's announcement; see [the blog 
 
 I guess the above introduction is enough to understand the main results (Theorem 1.1 and Theorem 1.2). Here are some initial thoughts after reading the report superficially:
 
+- Overall proof is not very long.
 - The proof relies heavily on complex analysis.
 - The result is **asymptotic**: it describes what happens as $d \to \infty$. In particular, it does not construct an optimal (or "magic") function in any specific dimension $d$, which is a much harder problem. The only dimensions in which the exact value of $\mathrm{LP}\_d$ is known are $d=1,8,24$. Moreover, knowing $\mathrm{LP}\_d$ exactly does not by itself solve sphere packing in dimension $d$, because the LP bound need not be tight; it is known to be suboptimal in several small dimensions (including 3, 4, 5, 6, 7 by [Li](https://www.sciencedirect.com/science/article/abs/pii/S0001870824005590)) and is conjectured to be suboptimal in high dimensions as well.
 - No modular forms.
-- The choices of variables and notation are quite inconsistent. This may sound minor, but minimizing the number of symbols and using them consistently matters a great deal for readability.
-- One of the core ideas, in my opinion, is to work with the Mellin transform. Such an idea first appears in Section 5 of the 2016 paper by [Cohn and Miller](https://arxiv.org/abs/1603.04759). The report cites CM16 for the radial formulation but does not discuss this particular precedent, which is also mentioned int the [recent *Scientific American* article](https://www.scientificamerican.com/article/openais-latest-math-breakthroughs-commit-research-misconduct-experts-say/).
+- The choices of variables and notation are quite inconsistent. This may sound minor, but minimizing the number of symbols and using them consistently matters a great deal for readability. Of course, many humans are also not good at this.
+- One of the core ideas, in my opinion, is to work with the Mellin transform. Such an idea first appears in Section 5 of the 2016 paper by [Cohn and Miller](https://arxiv.org/abs/1603.04759). The report cites CM16 for the radial formulation but does not discuss this particular precedent, which is also mentioned in the [recent *Scientific American* article](https://www.scientificamerican.com/article/openais-latest-math-breakthroughs-commit-research-misconduct-experts-say/).
 - OpenAI also shared [reasoning walkthroughs](https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf) for the proofs. For the sphere-packing problem, the walkthrough is a sketch or summary rather than Astra's chain of thought. I first tried reading it before the report, but it wasn't helpful. It would be more helpful if it was a detailed Chain of Thought.
 
 
@@ -287,7 +289,7 @@ $$
 This satisfies the following properties:
 
 $$
-\|\varphi\|_1 = 1, \quad \int_{\mathbb{R}} \varphi = 0, \quad \int_{-\infty}^{0} |\varphi(v)| \mathrm{d}v = \frac{1}{\|g\|_1} \int_{|x| < R} |g(x)| \mathrm{d}x.
+\|\varphi\|_1 = 1, \quad \int_{\mathbb{R}} \varphi(v) \mathrm{d}v = 0, \quad \int_{-\infty}^{0} |\varphi(v)| \mathrm{d}v = \frac{1}{\|g\|_1} \int_{|x| < R} |g(x)| \mathrm{d}x.
 $$
 
 It is easy to check that these two functions are related by
@@ -304,6 +306,7 @@ The proof of Proposition 3.1 can be divided into the following steps:
 4. Combine uniform negativity with a logarithmic frequency tail to obtain an exponentially small $L^1$ bound for $Z$ (Lemma 3.5).
 5. Apply shifted Mellin/Fourier inversion to transfer the $L^1$ bound for $Z$ to the negative-half-line mass of $\varphi$ (Lemma 3.6).
 
+Let's start with the first step.
 
 > **Lemma 3.2.** For every $-1 < \sigma < 1$, the function $Z$ is bounded and holomorphic on a neighborhood of the strip $\lvert \Im t\rvert\le\lambda$. Its boundary values satisfy $\lvert Z(y+i\lambda)\rvert\le1$ and $\log\lvert Z(y-i\lambda)\rvert\le h\_\lambda(y)$ for $y\ne0$, where the lower-boundary majorant is
 >
@@ -361,7 +364,7 @@ This follows by applying an upper-half-plane Poisson principle to $\log\lvert Z\
 >
 > To deal with this, truncate $h\_\lambda$. Fortunately, $Z$ is bounded on the lower boundary:
 >
-> $$ \sup_{y \in \mathbb{R}} |Z(y - i\lambda)| \le \frac{S_d R^{1 - \lambda}}{\|g\|_1} \int_{0}^{\infty} \frac{|g(r)|}{r} \mathrm{d}r < \infty. $$
+> $$ \sup_{y \in \mathbb{R}} |Z(y - i\lambda)| \le \frac{S_d R^d}{\|g\|_1} \int_{0}^{\infty} \frac{|g(r)|}{r} \mathrm{d}r < \infty. $$
 >
 > ($g(r) = O(r^2)$ as $r \to 0$, and $g$ is Schwartz, so the integral converges.)
 > Let
@@ -383,13 +386,37 @@ This follows by applying an upper-half-plane Poisson principle to $\log\lvert Z\
 > \end{align*}
 > $$
 >
-> where $\Phi(s+i\sigma\lambda)=\rho\cos\theta+i\rho\sin\theta$. Now substitute $t=e^{\pi y/(2\lambda)}$, corresponding to the lower-boundary point $y-i\lambda$, and simplify:
+> where $\Phi(s+i\sigma\lambda)=\rho\cos\theta+i\rho\sin\theta$. Now substitute $t=e^{\pi y/(2\lambda)}$, corresponding to the lower-boundary point $y-i\lambda$. Since
+>
+> $$
+> \mathrm{d}t=\frac{\pi t}{2\lambda}\,\mathrm{d}y,
+> \qquad
+> (t-\rho\cos\theta)^2+(\rho\sin\theta)^2
+> =t^2-2\rho t\cos\theta+\rho^2,
+> $$
+>
+> the usual upper-half-plane Poisson measure becomes
+>
+> $$
+> \begin{aligned}
+> \frac{1}{\pi}
+> \frac{\rho\sin\theta}
+> {(t-\rho\cos\theta)^2+(\rho\sin\theta)^2}\,\mathrm{d}t &=
+> \frac{\sin\theta}{2\lambda} \frac{\rho t}{t^2-2\rho t\cos\theta+\rho^2}\,\mathrm{d}y\\
+> &= \frac{\sin\theta}{2\lambda\left(t/\rho+\rho/t-2\cos\theta\right)}\,\mathrm{d}y \\
+> &= \frac{\sin\theta}
+> {4\lambda\left(\cosh\left(\frac{\pi(s-y)}{2\lambda}\right)-\cos\theta\right)}\,\mathrm{d}y \\
+> &= \frac{1}{\lambda} P_\sigma\left(\frac{s-y}{\lambda}\right)\,\mathrm{d}y.
+> \end{aligned}
+> $$
+>
+> Substituting this identity in the Poisson integral gives
 >
 > $$
 > \begin{align*}
-> &\int_{0}^{\infty} \frac{1}{\pi} \cdot \frac{\rho\sin\theta}{(t - \rho\cos\theta)^2 + (\rho\sin\theta)^2} h_{\lambda, D}\!\left(\frac{2\lambda}{\pi}\log t\right) \mathrm{d}t \\
+> \int_{0}^{\infty} \frac{1}{\pi} \cdot \frac{\rho\sin\theta}{(t - \rho\cos\theta)^2 + (\rho\sin\theta)^2} h_{\lambda, D}\!\left(\frac{2\lambda}{\pi}\log t\right) \mathrm{d}t 
 > &= \int_{\mathbb{R}} \frac{1}{\lambda} P_\sigma\left(\frac{s-y}{\lambda}\right) h_{\lambda, D}(y) \mathrm{d}y \\
-> &= \int_{\mathbb{R}} P_\sigma(T) h_{\lambda, D}(s - \lambda T) \mathrm{d}T
+> &= \int_{\mathbb{R}} P_\sigma(T) h_{\lambda, D}(s - \lambda T) \mathrm{d}T.
 > \end{align*}
 > $$
 >
@@ -416,7 +443,20 @@ Lemma 3.3 and Lemma 3.4 are intermediate steps toward Lemma 3.5.
 > H_\sigma(s) \le H_\sigma(0) = \lambda M_\sigma (\log(2\pi c^2) + J_\sigma) + O_\sigma(\log(2 + \lambda)).
 > $$
 
-The key information is the last estimate and the definition of $J\_\sigma$; the centered-maximum inequality is the step that makes the estimate uniform in $s$.
+We have
+
+$$
+H_\sigma(0) = \int_{\mathbb{R}} P_\sigma(T) h_\lambda(-\lambda T) \mathrm{d}T = \int_{\mathbb{R}} P_\sigma(T) h_\lambda(\lambda T) \mathrm{d}T
+$$
+
+since $P\_\sigma$ and $h\_\lambda$ are even functions. So the first inequality implies
+
+$$
+\lvert H_\sigma(0) - \lambda M_\sigma (\log(2\pi c^2) + J_\sigma)\rvert \le C_\sigma \log(2 + \lambda)
+$$
+
+which is the last estimate in the lemma.
+We will focus on proving the first inequality and $H\_\sigma(s) \le H\_\sigma(0)$.
 
 > *Proof of Lemma 3.3.* The difference between $h\_\lambda(\lambda T)$ and
 >
@@ -428,12 +468,52 @@ The key information is the last estimate and the definition of $J\_\sigma$; the 
 >
 > and monotonicity of $f\_T$ gives
 >
-> $$ 0 \le h_n(nT) - n \left(\log(2\pi c^2) - \int_0^1 f_T(x) \mathrm{d}x \right) \le f_T(1) - f_T(0) = \frac{1}{2} \log \left(1 + \frac{4}{T^2}\right)$$
+> $$ 0 \le h_n(nT) - n \left(\log(2\pi c^2) - \int_0^1 f_T(x) \mathrm{d}x \right) \le f_T(1) - f_T(0) = \frac{1}{2} \log \left(1 + \frac{4}{T^2}\right).$$
 >
+> The product of the above bound with Poisson kernel $P\_\sigma(T)$ over $\mathbb{R}$ is integrable (by splitting the integral into $\lvert T\rvert\le1$ and $\lvert T\rvert>1$), which can be bounded by a constant only depending on $\sigma$, but not in $n$, $c$, or $g$.
 >
-> In odd dimension, the same Gamma recurrence produces a midpoint Riemann sum together with a half-integer endpoint correction involving $\log\coth(\pi\lambda\lvert T\rvert/2)$. Its error is still integrable against the exponentially decaying kernel $P\_\sigma$, yielding the stated $O\_\sigma(\log(2+\lambda))$ bound in both parities.
+> When $d=2n+1$ is odd, so that $\lambda=n+\tfrac12$, use
 >
-> It remains to locate the maximum of $H\_\sigma$. Both $h\_\lambda$ and $P\_\sigma$ are even and decreasing on $(0,\infty)$. Set $q\_N=(h\_\lambda+N)\_+$. The convolution of the nonnegative symmetric-decreasing functions $P\_\sigma$ and $q\_N$ is largest at zero. Subtracting the constant $NM\_\sigma$ and passing to the limit $N\to\infty$ gives $H\_\sigma(s)\le H\_\sigma(0)$.
+> $$
+>\frac{\lvert\Gamma(-ib)\rvert^2}
+> {\lvert\Gamma(\frac12+ib)\rvert^2}
+> =\frac{\coth(\pi\lvert b\rvert)}{\lvert b\rvert}
+> $$
+>
+> to have
+>
+> $$
+> h_\lambda(\lambda T)
+> =\lambda\log(2\pi c^2)
+> -\sum_{k=0}^{n-1}f_T\left(\frac{k+1/2}{\lambda}\right)
+> +\frac12\log\lambda
+> +\frac12\log\frac{\coth(\pi \lambda \lvert T\rvert /2)}{\lambda\lvert T\rvert/2}.
+> $$
+>
+> In this case, we consider the error between the integral $\int\_0^1 = \int\_0^{\frac{n}{\lambda}} + \int\_{\frac{n}{\lambda}}^{1}$ and the midpoint sum:
+>
+> $$
+> \begin{aligned}
+> &h_\lambda(\lambda T) -\lambda\left(\log(2\pi c^2)-\int_0^1f_T(x)\,\mathrm{d}x\right)\\
+> &=\lambda \left(\int_0^{\frac{n}{\lambda}} f_T(x)\,\mathrm{d}x -\frac{1}{\lambda}\sum_{k=0}^{n-1}f_T\left(\frac{k+1/2}{\lambda}\right) \right)
+> +\lambda\int_{\frac{n}{\lambda}}^1f_T(x)\,\mathrm{d}x \\
+> &\quad +\frac12\log\lambda + \frac12\log\frac{\coth(\pi \lambda \lvert T\rvert /2)}{\lambda\lvert T\rvert/2}.
+> \end{aligned}
+> $$
+>
+> The difference between the integral and the midpoint sum is bounded by $\lambda (f\_T(\frac{n}{\lambda}) - f\_T(0)) \le \lambda(f\_T(1) - f\_T(0)) = \frac12 \log (1 + \frac{4}{T^2})$, and the second integral is bounded by $\lambda \cdot (1 - \frac{n}{\lambda}) f\_T(1) = \frac14 \log(1 + \frac{T^2}{4})$. Including the last two logarithmic terms, the total error is bounded by
+>
+> $$ C_\sigma\left(1 + \log(2 + \lvert T \rvert) + \log (2 + \lvert T \rvert^{-1}) + \log(2 + \lambda)\right) $$
+>
+> and integrating over $P\_\sigma(T)$ gives the desired bound.
+>
+> It remains to prove that $H\_\sigma(s)$ is maximized at $s=0$. Since $P\_\sigma$ and $h\_\lambda$ are even, $H\_\sigma$ is even. Consider $q\_{\lambda, N}(T) := \max\lbrace h\_\lambda(\lambda T) + N, 0\rbrace$, which is nonnegative, even, and decreasing on $(0,\infty)$.
+> Then convolution of two such functions is largest at zero, so $(P\_\sigma * q\_{\lambda, N})(s) \le (P\_\sigma * q\_{\lambda, N})(0)$ for all $s \in \mathbb{R}$. Subtracting the constant $NM\_\sigma$ and $q\_{\lambda, N} - N = \max\lbrace h\_\lambda, -N\rbrace$ gives
+>
+> $$ \int_{\mathbb{R}} P_\sigma(T) \max\lbrace h_\lambda(-\lambda T), -N \rbrace \mathrm{d}T \le \int_{\mathbb{R}} P_\sigma(T) \max\lbrace h_\lambda(s - \lambda T), -N\rbrace \mathrm{d}{T} $$
+>
+> and passing to the limit $N \to \infty$ gives $H\_\sigma(s) \le H\_\sigma(0)$.
+
 
 > **Lemma 3.4.** For $J\_\sigma$ defined in Lemma 3.3,
 >
