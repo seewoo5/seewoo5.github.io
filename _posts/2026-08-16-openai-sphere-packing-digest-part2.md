@@ -91,9 +91,9 @@ def UniformAntiFourierSignRadius : Prop :=
       IsEmpty (AntiFourierWitness d (c * Real.sqrt (d : ℝ)))
 ```
 
-Thus the formalization gives the sharp constant $1/\pi$ a dedicated name `criticalRadius`.
+Note that it has a dedicated name for the constant $1/\pi$, `criticalRadius`!
 `UniformAntiFourierSignRadius` asserts that for every $0<c<1/\pi$, there exists a dimension threshold $d_0(c)$ such that, for all $d\ge d_0(c)$, there is no nonzero radial Schwartz function $g$ satisfying $\widehat g=-g$, $g(0)=0$, and $g(x)\ge0$ for $\lvert x\rvert\ge c\sqrt d$.
-Eventually, we obtain a proof term of it:
+The final theorem supplies a proof of this proposition:
 
 ```lean
 theorem uniformAntiFourierSignRadius :
@@ -132,6 +132,7 @@ def radialProfile {d : ℕ} (hd : 0 < d)
     (f : TestFunction d) (r : ℝ) : ℂ :=
   f (r • radialUnitDirection hd)
 
+-- M
 def radialMellinStrip {d : ℕ}
     (hd : 0 < d) (f : TestFunction d) (z : ℂ) : ℂ :=
   mellin (radialProfile hd f)
@@ -163,13 +164,13 @@ The paper's main analytic estimate for the lower bound is Proposition 3.1:
 > $$
 
 Where is this statement in the Lean code?
-The answer is, *nowhere*!
+The answer is: *nowhere*!
 There is no single named theorem proving the above inequality.
-Is that a problem? *Not really*, since an *equivalent* statement in terms of $\varphi$ is formalized, which is enough (and will show up later).
-But that is only for $\varsigma = -1$; as mentioned above, there's no formalized statement for self-Fourier functions ($\varsigma = +1$, which is genuinely missing).
+Is that a problem? *Not really*: Lean instead formalizes an *equivalent* statement in terms of $\varphi$, which is sufficient (and will appear later).
+However, this covers only $\varsigma=-1$; as mentioned above, there is no formalized statement for self-Fourier functions ($\varsigma=+1$), which is a genuine omission.
 
-Here is a summarized version of the actual argument in the Lean code.
-The difference from the report is that everything is written in terms of $\varphi$ and $Z$, not in $g$.
+Here is a summary of the actual argument in the Lean code.
+Unlike the report, the formalization expresses everything in terms of $\varphi$ and $Z$, rather than directly in terms of $g$.
 
 > *Proof (Lean).* One checks that $\lVert \varphi\rVert\_1=1$, $\int\varphi=0$, and $\varphi(v)\ge0$ for $v\ge0$. Therefore
 >
@@ -177,13 +178,13 @@ The difference from the report is that everything is written in terms of $\varph
 > \int_{-\infty}^{0} |\varphi(v)| \mathrm{d}v \ge \frac{1}{2}.
 > $$
 >
-> There exists $D\_0\in\mathbb R$ such that, for every $D\ge D\_0$, the normalized Mellin transform satisfies, at every interior point $\lvert \Im t\rvert<\lambda$ of the strip,
+> There exists $D\_0\in\mathbb R$ such that, for every $D\ge D\_0$, every $-1<\sigma<1$, and every $s\in\mathbb R$, the normalized Mellin transform satisfies
 >
 > $$
 > |Z(s + i\sigma\lambda)| \le e^{H_{\sigma, D}(s)}
 > $$
 >
-> where $-1 < \sigma < 1$ and
+> where
 >
 > $$
 > H_{\sigma,D}(s)=\int_{\mathbb R}P_\sigma(T)\min\{h_\lambda(s-\lambda T),D\}\,\mathrm dT\le H_\sigma(s).
@@ -193,33 +194,33 @@ The difference from the report is that everything is written in terms of $\varph
 >
 > $$
 > \begin{align*}
-> H_\sigma(0) &\le \lambda M_\sigma \underbrace{\left(\log(2\pi e c^2) + \int_{\mathbb{R}} \frac{P_\sigma(T)}{M_\sigma} \left(-\frac{|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)\mathrm{d}T\right)}_{A_\sigma} \\
-> &\quad + \int_{\mathbb{R}} \frac{P_\sigma(T)}{M_\sigma} \left(3 \log \frac{|T|}{2} + \log\left(1 + \frac{T^2}{4} \right) + \frac12 \log\coth\frac{\pi|T|}{2}\right) \mathrm{d}T
+> H_\sigma(0) &\le \lambda M_\sigma \underbrace{\left(\log(2\pi e c^2) + \int_{\mathbb{R}} \frac{P_\sigma(T)}{M_\sigma} \left(-\frac{\pi|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)\mathrm{d}T\right)}_{A_\sigma} \\
+> &\quad + \int_{\mathbb{R}} P_\sigma(T) \left(3 \left|\log \frac{|T|}{2}\right| + \log\left(1 + \frac{T^2}{4} \right) + \frac12 \log\coth\frac{\pi|T|}{2}\right) \mathrm{d}T
 > \end{align*}
 > $$
 >
-> Now, take $\sigma \to 1^{-}$ on the right hand side gives
+> Taking $\sigma \to 1^{-}$ on the right-hand side gives
 >
-> $$ \lim_{\sigma \to 1^{-}} \frac{P_\sigma(T)}{M_\sigma} = \frac{\pi}{4\left(\cosh\frac{\pi T}{2} + 1\right)}, \quad \lim_{\sigma \to 1^{-}} A_\sigma = \log(\pi^2 c^2) $$
+> $$ \lim_{\sigma \to 1^{-}} \frac{P_\sigma(T)}{M_\sigma} = \frac{\pi}{4\left(\cosh\frac{\pi T}{2} + 1\right)}, \qquad \lim_{\sigma \to 1^{-}} A_\sigma = \log(\pi^2 c^2) $$
 >
-> where the last term is negative for $c<1/\pi$. Hence, for given $0 < c < 1/\pi$, we can choose $\sigma = \sigma(c) < 1$ and $\gamma = \gamma(c) > 0$ such that
+> where the latter limit is negative when $c<1/\pi$. Hence, for any given $0<c<1/\pi$, we can choose $\sigma=\sigma(c)<1$ and $\gamma=\gamma(c)>0$ such that
 >
 > $$H_\sigma(s) \le -\gamma \lambda$$
 >
 > for sufficiently large $\lambda = d/2$ and all $s \in \mathbb{R}$.
-> We also have a separate logarithmic estimate at tail; for suitable $A,B,\kappa>0$,
+> We also have a separate logarithmic tail estimate: for suitable $A,B,\kappa>0$,
 >
 > $$ H_\sigma(\lambda S)\le-\kappa\lambda\log\frac{|S|}{A} \qquad (|S|\ge B). $$
 >
-> By combining (averaging) two estimates, we have
+> By averaging these two estimates, we obtain
 >
 > $$ e^{H_\sigma(\lambda S)} \le C \frac{e^{-\gamma\lambda}}{(1 + |S|)^2} $$
 >
-> for some constants $C,\gamma>0$, all sufficiently large $d$, and every $S\in\mathbb R$. Combining this with the pointwise estimate $\lvert Z(s+i\sigma\lambda)\rvert\le e^{H_\sigma(s)}$ above, then changing variables by $s=\lambda S$, we get
+> for some constants $C,\gamma>0$, all sufficiently large $d$, and every $S\in\mathbb R$. Combining this with the pointwise estimate $\lvert Z(s+i\sigma\lambda)\rvert\le e^{H_\sigma(s)}$ above and then making the change of variables $s=\lambda S$, we obtain
 >
 > $$ \int_{\mathbb R}|Z(s+i\sigma\lambda)|\,\mathrm ds \le CJ\lambda e^{-\gamma\lambda}, $$
 >
-> where $J = \int\_{\mathbb{R}} \mathrm{d}S / (1 + \lvert S\rvert)^2$.
+> where $J=\int\_{\mathbb R}(1+\lvert S\rvert)^{-2}\,\mathrm dS$.
 > Mellin inversion gives
 >
 > $$ \int_{-\infty}^{0} |\varphi(v)| \mathrm{d}v \le \frac{1}{2\pi (1 - \sigma) \lambda} \int_{\mathbb{R}} |Z(s + i\sigma\lambda)| \mathrm{d}s $$
@@ -232,9 +233,9 @@ The difference from the report is that everything is written in terms of $\varph
 
 Here is how these steps are formalized.
 
-#### $\frac12\le\int\_{-\infty}^{0}\lvert \varphi(v)\rvert\,\mathrm dv$
+#### The lower bound $\frac12\le\int\_{-\infty}^{0}\lvert \varphi(v)\rvert\,\mathrm dv$
 
-This is an easy step that almost directly follows from the definition of $\varphi$ and the properties of $g$.
+This straightforward step follows almost directly from the definition of $\varphi$ and the properties of $g$.
 The formal statement is as follows:
 
 ```lean
@@ -246,7 +247,7 @@ theorem normalizedProfile_negativeHalfline_mass_ge_half {φ : ℝ → ℝ}
     (1 / 2 : ℝ) ≤ ∫ v in Iic (0 : ℝ), |φ v| := by ...
 ```
 
-#### $\lvert Z(s+i\sigma\lambda)\rvert\le e^{H\_{\sigma,D}(s)}$
+#### The upper bound $\lvert Z(s+i\sigma\lambda)\rvert\le e^{H\_{\sigma,D}(s)}$
 
 This is a capped version of Lemma 3.2, formalized as follows:
 
@@ -270,14 +271,14 @@ theorem exists_antiFourierWitness_capped_poisson_majorization
                       (s - ((d : ℝ) / 2) * T)) := by ...
 ```
 
-The truncation argument is explained in the last bit of the proof of Lemma 3.2.
+The truncation argument is explained in the final part of the proof of Lemma 3.2.
 The exponent on the right-hand side is the capped Poisson majorant
 
 $$
 \int_{\mathbb{R}} P_\sigma(T) \min\{h_\lambda(s - \lambda T), D\} \mathrm{d}T
 $$
 
-Taking $D\to\infty$ gives the uncapped bound from Lemma 3.2. This is formalized: `lowerStripCappedPoisson_tendsto_radius` proves convergence of the capped Poisson integrals, and `antiFourierWitness_norm_le_poisson_of_eventually_capped_radius` transfers the norm bound to the limit.
+Taking $D\to\infty$ gives the uncapped bound from Lemma 3.2. This is formalized as follows: `lowerStripCappedPoisson_tendsto_radius` proves convergence of the capped Poisson integrals, and `antiFourierWitness_norm_le_poisson_of_eventually_capped_radius` transfers the norm bound to the limit.
 
 ```lean
 theorem lowerStripCappedPoisson_tendsto_radius
@@ -336,7 +337,7 @@ The Lean argument proceeds as follows.
 > \end{cases}
 > $$
 >
-> Here $K\_\lambda$ is a holomorphic version of the Poisson kernel, while $\widetilde K\_\lambda$ is regularized so that it tends to zero as $\lvert y\rvert\to\infty$. Define
+> Here $K\_\lambda$ is a holomorphic version of the Poisson kernel, while $\widetilde K\_\lambda$ is regularized so that $\widetilde K\_\lambda(z,y)\to0$ as $\lvert y\rvert\to\infty$. Define
 >
 > $$
 > h_{\lambda,D}(y)=
@@ -350,20 +351,20 @@ The Lean argument proceeds as follows.
 >
 > $$W_D(z) = \int_{\mathbb{R}} \widetilde{K}_\lambda(z, y) h_{\lambda, D}(y) \mathrm{d}y.$$
 >
-> In the open strip, for $-1<\sigma<1$, its real part is
+> At $z=s+i\sigma\lambda$ in the open strip, with $-1<\sigma<1$, the real part of $W_D$ is
 >
 > $$
 > \Re W_D(s+i\sigma\lambda)
 > =\int_{\mathbb R}P_\sigma(T)h_{\lambda,D}(s-\lambda T)\,\mathrm dT.
 > $$
 >
-> The function $\Re W\_D$ continously extends to the boundaries of the strip, where $\Re W\_D(s-i\lambda)=h\_{\lambda,D}(s)$ and $\Re W\_D(s+i\lambda)=0$ for all $s \in \mathbb{R}$.
-> Then the function $F\_D(z)=e^{-W\_D(z)}Z(z)$ is holomorphic in the open strip and continuous on its closure, satisfying $\lvert F\_D(z)\rvert\le1$ on boundaries.
+> The function $\Re W\_D$ extends continuously to the boundary of the strip, where $\Re W\_D(s-i\lambda)=h\_{\lambda,D}(s)$ and $\Re W\_D(s+i\lambda)=0$ for all $s\in\mathbb R$.
+> The function $F\_D(z)=e^{-W\_D(z)}Z(z)$ is then holomorphic in the open strip and continuous on its closure, with $\lvert F\_D(z)\rvert\le1$ on both boundary lines.
 > Thus the Phragmén-Lindelöf principle gives $\lvert F\_D(z)\rvert\le1$ in the interior, and hence $\lvert Z(z)\rvert\le e^{\Re W\_D(z)}$.
 
-So it starts with the complex version of the Poisson kernel, and take the real part to get the Poisson kernel itself, which is another difference from the report.
-Note that it is using variable `ℓ` which is the same as $\lambda$.
-There's also `stripComplexPoissonKernel` which is the same as $K\_\lambda(s + i\sigma\lambda, y)$, but I don't think this is necessary or useful.
+Thus, the proof starts with the complex Poisson kernel and takes its real part to recover the Poisson kernel itself; this is another difference from the report.
+Note that the code uses the variable `ℓ`, which is the same as $\lambda$.
+There is also a definition named `stripComplexPoissonKernel`, which is the same as $K\_\lambda(s+i\sigma\lambda,y)$, but I do not think it is necessary or useful here.
 
 ```lean
 -- K_λ(z,y) = i/(4λ) * (exp(π(z-y+iλ)/(2λ)) + 1)/(exp(π(z-y+iλ)/(2λ)) - 1)
@@ -420,12 +421,12 @@ theorem lowerStripCappedGammaOuter_re_dimension
           (s - ((d : ℝ) / 2) * T) := by ...
 ```
 
-The non-formal proof in the report applies the upper half plane Poisson principle to the subharmonic function $\log\lvert Z\circ\Phi^{-1}\rvert$.
-The formalized proof is slightly different: it uses a horizontal-strip version of the Phragmén-Lindelöf principle, which is a maximum-principle argument for holomorphic functions on a horizontal strip (and *essentially* the same).
+The informal proof in the report applies the upper-half-plane Poisson principle to the subharmonic function $\log\lvert Z\circ\Phi^{-1}\rvert$.
+The formalized proof is slightly different: it uses a horizontal-strip version of the Phragmén-Lindelöf principle, which is a maximum-principle argument for holomorphic functions on a horizontal strip, although the underlying argument is essentially the same.
 
-> **Phragmén–Lindelöf principle for a horizontal strip.** Let $f:\mathbb C\to\mathbb C$ be holomorphic on $\lbrace z:a<\Im z<b\rbrace$ and continuous on its closure. Suppose that $\lvert f(z)\rvert=O(\exp(B\exp(c\lvert \Re z\rvert)))$ for constants $B$ and $c<\pi/(b-a)$ as $\lvert \Re z\rvert\to\infty$. If $\lvert f(z)\rvert\le C$ on the two boundary lines, then $\lvert f(z)\rvert\le C$ throughout the strip.
+> **Phragmén–Lindelöf principle for a horizontal strip.** Let $f:\mathbb C\to\mathbb C$ be holomorphic on $\lbrace z:a<\Im z<b\rbrace$ and continuous on its closure. Suppose that $\lvert f(z)\rvert=O(\exp(B\exp(c\lvert \Re z\rvert)))$ for some constants $B$ and $c$ with $c<\pi/(b-a)$ as $\lvert \Re z\rvert\to\infty$. If $\lvert f(z)\rvert\le C$ on the two boundary lines, then $\lvert f(z)\rvert\le C$ throughout the strip.
 
-This is a version of the maximum-modulus principle for a horizontal strip. The file proves a custom theorem, `horizontalStrip_norm_extension_majorization`. Mathlib already contains the related theorem [`PhragmenLindelof.horizontal_strip`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Complex/PhragmenLindelof.html#PhragmenLindelof.horizontal_strip), and I think it should be possible to replace the custom theorem with the Mathlib version (instead of reproducing the standard proof).
+This is a version of the maximum-modulus principle for a horizontal strip. The file proves a custom theorem, `horizontalStrip_norm_extension_majorization`. Mathlib already contains the related theorem [`PhragmenLindelof.horizontal_strip`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Complex/PhragmenLindelof.html#PhragmenLindelof.horizontal_strip), and I think the custom theorem could be replaced with the Mathlib version instead of reproducing the standard proof.
 
 ```lean
 theorem horizontalStrip_norm_extension_majorization
@@ -470,8 +471,8 @@ theorem lowerStripPoissonMajorant_dimension_centered_max
         (c * Real.sqrt d) σ 0 := by ...
 ```
 
-As mentioned in part 1, it uses the fact that the convolution of even nonnegative and monotone degreasing functions (on $(0,\infty)$) is maximized at the origin.
-The Lean code have a formalization of it, specialized to the Poisson kernel:
+As mentioned in part 1, the convolution of two even, nonnegative functions that are nonincreasing on $(0,\infty)$ is maximized at the origin.
+The Lean code includes a formalization of this fact, specialized to the Poisson kernel:
 
 ```lean
 theorem even_antitone_poisson_convolution_max
@@ -490,20 +491,21 @@ theorem even_antitone_poisson_convolution_max
 
 #### $H\_\sigma(0) \le \lambda M\_\sigma (\log(2\pi c^2) + J\_\sigma) + O\_\sigma(\log(2 + \lambda))$
 
-Recall that the upper bound of $H\_\sigma(0)$ is proved in Lemma 3.3, where the case of even and odd dimensions are treated separately to estimate the difference
+Recall that Lemma 3.3 proves the upper bound for $H\_\sigma(0)$, treating the even- and odd-dimensional cases separately in order to estimate the difference
 
 $$
 h_\lambda(\lambda T) - \lambda\left(\log(2\pi c^2) - \int_0^1 f_T(x) \mathrm{d}x\right).
 $$
 
-Lean proof almost follows the same structure, but it combines the two estimates into one.
-`lowerStripPoissonMajorant_dimension_central_bound` is the formalization of the upper bound of $H_\sigma(0)$.
+The Lean proof follows almost the same structure, but combines the two estimates into one.
+`lowerStripPoissonMajorant_dimension_central_bound` formalizes the upper bound for $H_\sigma(0)$.
 
 ```lean
 -- f_T
 def lowerRiemannLog (T x : ℝ) : ℝ :=
   Real.log (Real.sqrt (x ^ 2 + T ^ 2 / 4))
 
+-- Combined error term
 def lowerRiemannErrorMajorant (T : ℝ) : ℝ :=
   3 * |lowerRiemannLog T 0| +
     2 * |lowerRiemannLog T 1| +
@@ -543,7 +545,7 @@ For example, the main estimate reads
 
 $$
 \begin{align*}
-H_\sigma(0) &\le \lambda M_\sigma \left(\log(2\pi e c^2) + \int_{\mathbb{R}} \frac{P_\sigma(T)}{M_\sigma} \left(-\frac{|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)\mathrm{d}T\right) \\
+H_\sigma(0) &\le \lambda M_\sigma \left(\log(2\pi e c^2) + \int_{\mathbb{R}} \frac{P_\sigma(T)}{M_\sigma} \left(-\frac{\pi|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)\mathrm{d}T\right) \\
 &\quad + \int_{\mathbb{R}} P_\sigma(T) \left(3 |f_T(0)| + 2 |f_T(1)| + \frac12 \log\coth\frac{\pi|T|}{2}\right) \mathrm{d}T
 \end{align*}
 $$
@@ -552,13 +554,13 @@ which looks different from the one in the report.
 In fact, we have
 
 $$
--\int_{0}^{1} f_T(x)\mathrm{d}x = 1 + \left(-\frac{|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)
+-\int_{0}^{1} f_T(x)\mathrm{d}x = 1 + \left(-\frac{\pi|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)
 $$
 
-so we have
+Therefore, we have
 
 $$
-\log(2\pi e c^2) + \int_{\mathbb{R}} \frac{P_\sigma(T)}{M_\sigma} \left(-\frac{|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)\mathrm{d}T = \log(2\pi c^2) + J_\sigma.
+\log(2\pi e c^2) + \int_{\mathbb{R}} \frac{P_\sigma(T)}{M_\sigma} \left(-\frac{\pi|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)\mathrm{d}T = \log(2\pi c^2) + J_\sigma.
 $$
 
 ```lean
@@ -568,23 +570,23 @@ theorem integral_lowerRiemannLog
       1 + lowerEndpointPhase T := by ...
 ```
 
-The expression of $h\_\lambda(\lambda T$ in terms of Riemann sum of $f\_T$ and the error estimate of the Riemann sum are formalized as
+The expression for $h\_\lambda(\lambda T)$ in terms of a Riemann sum for $f\_T$, together with an error estimate for that Riemann sum, is formalized by:
 
 - for even $d$: `lowerGammaBoundaryLog_integer_scaled` and `lower_integer_leftRiemann_error`;
-- for odd $d$: `lowerGammaBoundaryLog_halfInteger_scaled`, `lower_halfInteger_midpointRiemann_error`, and `lowerRiemannLog_halfInteger_tail_integral_le`
+- for odd $d$: `lowerGammaBoundaryLog_halfInteger_scaled`, `lower_halfInteger_midpointRiemann_error`, and `lowerRiemannLog_halfInteger_tail_integral_le`.
 
-But the error term is a bit different - it use the unified bound for both even and odd dimensions, which is `lowerRiemannErrorMajorant`:
+The error term is slightly different: it uses the unified bound `lowerRiemannErrorMajorant` for both even and odd dimensions:
 
 $$
 3 |f_T(0)| + 2 |f_T(1)| + \frac12 \log\coth\frac{\pi|T|}{2}
 $$
 
-(`lowerCoth` is just $\coth$... but with fancier name!)
-The even and odd cases are later combined in the proof of `lowerGammaBoundaryLog_dimension_riemann_le` (you can see that the proof starts with `rcases d.even_or_odd ...`).
-This proves the upper bound for $h\_\lambda(\lambda T)$, which is used to prove the upper bound of $H\_\sigma(0)$.
+(`lowerCoth` is just $\coth$, but with a fancier name!)
+The even- and odd-dimensional cases are then combined in the proof of `lowerGammaBoundaryLog_dimension_riemann_le` (the proof begins with `rcases d.even_or_odd ...`).
+This proves the upper bound for $h\_\lambda(\lambda T)$, which is then used to prove the upper bound for $H\_\sigma(0)$.
 
 ```lean
--- h_λ(λT) ≤ λ(log(2πc^2)+J_σ) + error
+-- h_λ(λT) ≤ λ(log(2πe c^2) + lowerEndpointPhase T) + error
 theorem lowerGammaBoundaryLog_dimension_scaled_riemann_le
     {d : ℕ} (hd : 2 ≤ d) {c T : ℝ}
     (hc : 0 < c) (hT : T ≠ 0) :
@@ -598,19 +600,19 @@ theorem lowerGammaBoundaryLog_dimension_scaled_riemann_le
 
 #### The limit $A\_\sigma \to \log(\pi^2 c^2)$ as $\sigma\to1^{-}$
 
-This is essentially Lemma 3.4 of the report, which follows from
+This is essentially Lemma 3.4 of the report. More precisely, it proves
 
 $$
-\lim_{\sigma\to1^{-1}} \int_{\mathbb{R}} \frac{P_\sigma(T)}{M_\sigma} \left(-\frac{|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)\mathrm{d}T = \log\left(\frac{\pi}{2}\right) - 1.
+\lim_{\sigma\to1^{-}} \int_{\mathbb{R}} \frac{P_\sigma(T)}{M_\sigma} \left(-\frac{\pi|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)\mathrm{d}T = \log\left(\frac{\pi}{2}\right) - 1.
 $$
 
-This is proved by
+The argument uses the pointwise limit
 
 $$
 \lim_{\sigma\to1^{-}} \frac{P_\sigma(T)}{M_\sigma} = \frac{\pi}{4\left(\cosh\frac{\pi T}{2} + 1\right)}
 $$
 
-and applying the dominated convergence theorem to the integral (you can find `apply tendsto_integral_filter_of_dominated_convergence` in the proof of `tendsto_integral_stripNormalizedPoissonKernel_mul`).
+and the dominated convergence theorem. In Lean, this appears as `apply tendsto_integral_filter_of_dominated_convergence` in the proof of `tendsto_integral_stripNormalizedPoissonKernel_mul`.
 
 ```lean
 def limitingStripPoissonDensity (T : ℝ) : ℝ :=
@@ -634,10 +636,9 @@ theorem limitingPoissonEndpointExpectation_eq_log_pi_div_two_sub_one :
       Real.log (Real.pi / 2) - 1 := by ...
 ```
 
+#### $H\_\sigma(s) \le -\gamma \lambda$ for some $0 < \sigma < 1$ and $\gamma>0$, and for all sufficiently large $\lambda=d/2$
 
-#### $H\_\sigma(s) \le -\gamma \lambda$ for some $0 < \sigma < 1$, $\gamma>0$ and all sufficiently large $\lambda=d/2$.
-
-By combining the previous estimates, we can prove the first half of Lemma 3.5, which is the uniform negativity of $H\_\sigma(s)$ linear in $\lambda=d/2$.
+By combining the previous estimates, we obtain the first half of Lemma 3.5: $H\_\sigma(s)$ is uniformly negative, with a bound linear in $\lambda=d/2$.
 
 ```lean
 theorem exists_lowerStripPoissonMajorant_uniform_negative
@@ -668,7 +669,7 @@ theorem exists_lowerStripPoissonMajorant_integrable_majorant
               (1 + |S|) ^ 2 := by ...
 ```
 
-To prove this, we need to combine the uniform-negative estimate (`exists_lowerStripPoissonMajorant_uniform_negative`) with the logarithmic estimate (`exists_lowerStripPoissonMajorant_logarithmic_tail`), which is a separate theorem:
+To prove this, we combine the uniform-negativity estimate (`exists_lowerStripPoissonMajorant_uniform_negative`) with the separate logarithmic-tail estimate (`exists_lowerStripPoissonMajorant_logarithmic_tail`):
 
 ```lean
 theorem exists_lowerStripPoissonMajorant_logarithmic_tail
@@ -682,13 +683,13 @@ theorem exists_lowerStripPoissonMajorant_logarithmic_tail
               -κ * ((d : ℝ) / 2) * Real.log (|S| / A) := by ...
 ```
 
-which translates as: there exists constants $A,B,\kappa>0$ such that for all $d\ge2$ and $\lvert S\rvert\ge B$,
+This says that there exist constants $A,B,\kappa>0$ such that, for all $d\ge2$ and $\lvert S\rvert\ge B$,
 
 $$
 H_\sigma(\lambda S) \le -\kappa \lambda \log\left(\frac{\lvert S\rvert}{A}\right).
 $$
 
-Note that $\kappa$ is chosen as
+Here $\kappa$ is chosen as
 
 $$
 \kappa = \frac{1}{2} \int_{-1}^{1} P_\sigma(T) \mathrm{d}T.
@@ -721,21 +722,18 @@ theorem antiFourierWitness_interiorMellinL1_le_of_integrable_majorant
         ((d : ℝ) / 2) * Real.exp (-γ * ((d : ℝ) / 2)) := by ...
 ```
 
-
-
-The other input is `exists_lowerStripPoissonMajorant_logarithmic_tail`. Thus the inverse-quadratic estimate is a convenient corollary of the two estimates already present in Lemma 3.5, not a substantively stronger theorem than the report. The declaration `antiFourierWitness_interiorMellinL1_le_of_integrable_majorant` then integrates this profile and obtains
+The inverse-quadratic estimate is therefore a convenient corollary of the uniform-negativity and logarithmic-tail estimates already present in Lemma 3.5; it is not substantively stronger than the result in the report. The declaration `antiFourierWitness_interiorMellinL1_le_of_integrable_majorant` then integrates this and obtains
 
 $$
 \int_{\mathbb R}|Z(s+i\sigma\lambda)|\,\mathrm ds
-\le C I\lambda e^{-\gamma\lambda},
+\le C J\lambda e^{-\gamma\lambda},
 \qquad
-I=\int_{\mathbb R}\frac{\mathrm dS}{(1+|S|)^2}.
+J=\int_{\mathbb R}\frac{\mathrm dS}{(1+|S|)^2}.
 $$
-
 
 #### $\int\_{-\infty}^{0} \lvert \varphi(v)\rvert \mathrm{d}v \le \frac{1}{2\pi (1 - \sigma) \lambda} \int\_{\mathbb{R}} \lvert Z(s + i\sigma\lambda)\rvert \mathrm{d}s$
 
-This is the first inequality in Equation (27) of the report, formalized abstractly as follows:
+This is the first inequality in equation (27) of the report, formalized abstractly as follows:
 
 ```lean
 theorem negativeHalfline_le_of_fourierInversion
@@ -751,17 +749,17 @@ theorem negativeHalfline_le_of_fourierInversion
 `𝓕⁻` is the [inverse Fourier transform](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Fourier/Notation.html#FourierTransformInv), and the `hinversion` hypothesis is the identity
 
 $$
-\varphi(v) = \frac{e^{(1-\sigma)\lambda v}}{2\pi} \int_{\mathbb{R}} Z(s + i\sigma\lambda) e^{i s v} \mathrm{d}s
+\varphi(v) = \frac{e^{(1-\sigma)\lambda v}}{2\pi} \int_{\mathbb{R}} Z(s + i\sigma\lambda) e^{i s v} \mathrm{d}s.
 $$
 
 But what is $a$?
-In the eventual application, it is
+In the final application, it is
 
 $$
 a=(1-\sigma)\frac d2=(1-\sigma)\lambda.
 $$
 
-This becomes visible only after following four small wrapper theorems to `no_antiFourierWitness_of_interiorMellinL1_lt_half`:
+This choice becomes visible only after tracing a chain of four small wrapper theorems down to `no_antiFourierWitness_of_interiorMellinL1_lt_half`:
 
 ```lean
 theorem no_antiFourierWitness_of_interiorMellinL1_lt_half
@@ -792,19 +790,18 @@ theorem no_antiFourierWitness_of_interiorMellinL1_lt_half
   simpa [hheight] using! hsmall
 ```
 
-The local hypothesis `ha` proves that this value of $a$ is positive. After specialization, `negativeHalfline_le_of_fourierInversion` gives
+The local hypothesis `ha` proves that this choice of $a$ is positive. After this specialization, `negativeHalfline_le_of_fourierInversion` gives
 
 $$
-\int_{-\infty}^{0} |\varphi(v)| \mathrm{d}v \le \frac{1}{2\pi (1 - \sigma) \lambda} \int_{\mathbb{R}} |Z(s + i\sigma\lambda)| \mathrm{d}s
+\int_{-\infty}^{0} |\varphi(v)| \mathrm{d}v \le \frac{1}{2\pi (1 - \sigma) \lambda} \int_{\mathbb{R}} |Z(s + i\sigma\lambda)| \mathrm{d}s.
 $$
 
-The proof takes absolute values in the inversion identity and integrates over $v\in(-\infty,0]$, using
+The proof takes absolute values in the inversion formula and integrates over $v\in(-\infty,0]$, using
 
 $$
 \int_{-\infty}^{0}e^{(1-\sigma)\lambda v}\,\mathrm dv
 =\frac{1}{(1-\sigma)\lambda}.
 $$
-
 
 ### Upper bound
 
