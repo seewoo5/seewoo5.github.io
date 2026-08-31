@@ -795,7 +795,7 @@ $$
 
 To prove the upper bounds, one needs to construct *asymptotically optimal* functions. The report does not construct exact optimizers in every dimension, which would be much harder.
 
-For each sufficiently small fixed $\varepsilon>0$ and all sufficiently large $d$, Theorem 4.1 constructs radial Schwartz functions $f\_-$, $f\_+$, and $f\_0$, together with a radius $R\_{\varepsilon,d}$, such that
+For each sufficiently small fixed $\epsilon>0$ and all sufficiently large $d$, Theorem 4.1 constructs radial Schwartz functions $f\_-$, $f\_+$, and $f\_0$, together with a radius $R\_{\epsilon,d}$, such that
 
 $$
 \widehat f_-=f_+>0,\qquad \widehat f_0=f_0,\qquad
@@ -805,18 +805,18 @@ $$
 and
 
 $$
-f_-(x)<0<f_0(x)\qquad(|x|\ge R_{\varepsilon,d}).
+f_-(x)<0<f_0(x)\qquad(|x|\ge R_{\epsilon,d}).
 $$
 
 Moreover,
 
 $$
-\lim_{\varepsilon\downarrow0}\lim_{d\to\infty}\frac{R_{\varepsilon,d}}{\sqrt d}=\frac1\pi.
+\lim_{\epsilon\to 0^+}\lim_{d\to\infty}\frac{R_{\epsilon,d}}{\sqrt d}=\frac1\pi.
 $$
 
-A diagonal choice $\varepsilon=\varepsilon\_d\downarrow0$ gives a single radius sequence $R\_d=(1/\pi+o(1))\sqrt d$. The three upper bounds use the construction in different ways:
+The three upper bounds use the construction in different ways:
 
-- For the LP bound, set $F(x)=f\_-(R\_{\varepsilon,d}x)$. Then $F\in\mathcal A\_d$ and $F(0)/\widehat F(0)=R\_{\varepsilon,d}^d$.
+- For the LP bound, set $F(x)=f\_-(R\_{\epsilon,d}x)$. Then $F\in\mathcal A\_d$ and $F(0)/\widehat F(0)=R\_{\epsilon,d}^d$.
 - For $\mathsf A\_-(d)$, use $g\_-=f\_+-f\_-$, which satisfies $\widehat g\_-=-g\_-$ and $g\_-(0)=0$.
 - For $\mathsf A\_+(d)$, use the self-Fourier function $f\_0$.
 
@@ -824,22 +824,53 @@ The first bullet closes the LP upper bound, because
 
 $$
 \mathrm{LP}_d^{1/d}
-\le \frac{v_d^{1/d}}{2}R_d
+\le \frac{v_d^{1/d}}{2}R_{\epsilon,d}
 \longrightarrow \sqrt{\frac{e}{2\pi}}.
 $$
 
-The construction begins by prescribing the Mellin transforms of the functions:
+The second and third bullets give the upper bounds for $\mathsf A\_-(d)$ and $\mathsf A\_+(d)$, respectively (which match the lower bounds from Proposition 3.7).
+
+### Construction of the functions
+
+
+The construction begins by prescribing the Mellin transforms of the functions.
+We introduce "cutoffs" $0 < a\_0 < A < B$ and "amplitude" $Q > 0$, defined as
 
 $$
 \begin{align*}
-E_\lambda(t) &= \pi^{it/2} \Gamma\left(\frac{\lambda - it}{2}\right) e^{\lambda h_\varepsilon(t/\lambda)} \\
-P_{\pm}(\zeta) &= 1 + \zeta^2 + \beta \pm i\zeta(1 + \zeta^2), \quad P_0(\zeta) = - (1 + \zeta^2) \\
+a_0 &= \epsilon^2, \qquad A = \log(1/\epsilon), \qquad B = \epsilon^{-3}, \\
+q_\epsilon &= \frac{(u_0 - 1) + (U - 1)}{2},\qquad Q=e^{-q_\epsilon B}
+\end{align*}.
+$$
+
+Although the definitions look random, they are chosen to satisfy certain growth conditions as $\epsilon \to 0$, which will be explained later.
+Define
+
+$$
+\begin{align*}
+b(a) &= 1 - 2\epsilon (1 + a) \\
+w(a) &= - \frac{b(a) e^{-2a}}{2a^2 \cosh a} \mathbf{1}_{[a_0, A]}(a) + \frac{Q}{\cosh a} \mathbf{1}_{[B, B+1]}(a), \\
+h_\epsilon(\zeta) &= \int_{0}^{\infty} w(a) (\cos(a\zeta) - 1) \mathrm{d}a.
+\end{align*}
+$$
+
+Note that $h\_\epsilon$ is even. We also introduce "saddle parameters"
+
+$$
+u_0 = 1 + \frac{\epsilon}{4}, \qquad U = 1 + \frac{\epsilon}{2}, \qquad C_0 = A + a_0^{-1}.
+$$
+
+Then we can write down the Mellin transforms of the three functions $f\_-$, $f\_+$, and $f\_0$ in terms of the above parameters:
+
+$$
+\begin{align*}
+E_\lambda(t) &= \pi^{it/2} \Gamma\left(\frac{\lambda - it}{2}\right) e^{\lambda h_\epsilon(t/\lambda)} \\
+P_{\pm}(\zeta) &= 1 + \zeta^2 + \frac{\epsilon}{4} \pm i\zeta(1 + \zeta^2), \quad P_0(\zeta) = - (1 + \zeta^2) \\
 X_{f_j}(t) &= E_\lambda(t) P_j(t/\lambda), \\
 \quad f_j(r) &= \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} dt, \quad (j \in \{-, +, 0\})
 \end{align*}
 $$
 
-The substantial missing piece in this draft is the proof behind this ansatz: the signed density defining $h\_\varepsilon$, the choices of $\beta$ and the shell parameters, the damping estimates, the saddle-point analysis establishing the exterior signs, and the contour-shift argument proving that $f\_+$ is positive even at small radii.
 
 
 
