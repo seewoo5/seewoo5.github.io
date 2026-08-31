@@ -24,10 +24,10 @@ The Lean code can be found in [`SpherePacking.lean`](https://github.com/openai/t
 So how can I read 55K lines of Lean code? There are several choices:
 
 1. Do not read it.
-2. Spend months reading it and write down the important parts.
+2. Spend months reading it manually and put other important work aside.
 3. Use AI.
 
-I chose option 3 and used ChatGPT and Claude, relying somewhat more on ChatGPT because the Lean code was itself produced by an OpenAI model.
+I chose option 3 and used ChatGPT and Claude, relying somewhat more on ChatGPT for reading the code because the Lean code was itself produced by an OpenAI model.
 I asked the models to build a table matching the theorems and lemmas in the report with declarations in the Lean file, and then checked the suggested declarations against the source.
 
 The current file fully formalizes the Cohn-Elkies LP asymptotic in Theorem 1.1, including the passage from unrestricted admissible functions to radial ones and the bridge to the packing-density bound. Its coverage of the sign-uncertainty theorem is more limited:
@@ -64,7 +64,6 @@ def IsRealValued {d : ℕ} (f : TestFunction d) : Prop :=
 def IsRadial {d : ℕ} (f : TestFunction d) : Prop :=
   ∀ x y : Euclidean d, ‖x‖ = ‖y‖ → f x = f y
 
-
 structure AntiFourierWitness (d : ℕ) (R : ℝ) where
   function : TestFunction d
   real : IsRealValued function
@@ -76,7 +75,7 @@ structure AntiFourierWitness (d : ℕ) (R : ℝ) where
     ∀ x : Euclidean d, R ≤ ‖x‖ → 0 ≤ (function x).re
 ```
 
-An `AntiFourierWitness` is the main object in the formal lower-bound argument. It consists of a nonzero real-valued radial Schwartz function $g$ satisfying $\widehat g=-g$, $g(0)=0$, and $g(x)\ge0$ for $\lVert x\rVert\ge R$. There is no analogous `SelfFourierWitness` for $\widehat g=g$ in the Lean file.
+An `AntiFourierWitness` is the main object in the formal lower-bound argument. It consists of a nonzero real-valued radial Schwartz function $g$ satisfying $\widehat g=-g$, $g(0)=0$, and $g(x)\ge0$ for $\lVert x\rVert\ge R$. There is no analogous "`SelfFourierWitness`" for $\widehat g=g$ in the Lean file.
 
 
 ### Lower bound
@@ -92,7 +91,15 @@ def UniformAntiFourierSignRadius : Prop :=
       IsEmpty (AntiFourierWitness d (c * Real.sqrt (d : ℝ)))
 ```
 
-Thus the formalization gives the sharp constant $1/\pi$ a dedicated name.
+Thus the formalization gives the sharp constant $1/\pi$ a dedicated name `criticalRadius`.
+`UniformAntiFourierSignRadius` asserts that for every $0<c<1/\pi$, there exists a dimension threshold $d_0(c)$ such that, for all $d\ge d_0(c)$, there is no nonzero radial Schwartz function $g$ satisfying $\widehat g=-g$, $g(0)=0$, and $g(x)\ge0$ for $\lvert x\rvert\ge c\sqrt d$.
+Eventually, we obtain a proof term of it:
+
+```lean
+theorem uniformAntiFourierSignRadius :
+    UniformAntiFourierSignRadius := by ...
+```
+
 To prove this, recall that we worked with the normalization $\varphi$ of $g$ and its (normalized) Mellin transform $Z$.
 These definitions are formalized as follows:
 
@@ -155,9 +162,14 @@ The paper's main analytic estimate for the lower bound is Proposition 3.1:
 > \int_{|x| < c \sqrt{d}} |g(x)| \mathrm{d}x \le C_c e^{-\gamma_c d} \|g\|_1.
 > $$
 
-Where is this statement in the Lean code? There is no single named theorem with this quantitative ball-mass conclusion. Most of its analytic ingredients are present, but they are specialized to the anti-self-Fourier witness needed for the eventual contradiction. The file also does not export the restricted ball/profile change-of-variables identity or cover the $+1$ eigenvalue case.
+Where is this statement in the Lean code?
+The answer is, *nowhere*!
+There is no single named theorem proving the above inequality.
+Is that a problem? *Not really*, since an *equivalent* statement in terms of $\varphi$ is formalized, which is enough (and will show up later).
+But that is only for $\varsigma = -1$; as mentioned above, there's no formalized statement for self-Fourier functions ($\varsigma = +1$, which is genuinely missing).
 
 Here is a summarized version of the actual argument in the Lean code.
+The difference from the report is that everything is written in terms of $\varphi$ and $Z$, not in $g$.
 
 > *Proof (Lean).* One checks that $\lVert \varphi\rVert\_1=1$, $\int\varphi=0$, and $\varphi(v)\ge0$ for $v\ge0$. Therefore
 >
@@ -177,47 +189,46 @@ Here is a summarized version of the actual argument in the Lean code.
 > H_{\sigma,D}(s)=\int_{\mathbb R}P_\sigma(T)\min\{h_\lambda(s-\lambda T),D\}\,\mathrm dT\le H_\sigma(s).
 > $$
 >
-> At the singular point $s-\lambda T=0$, the capped boundary function is defined to have value $D$.
->
-> Lean combines a uniform negative bound with a logarithmic tail bound to obtain
+> We can show that $H\_\sigma(s)$ is maximized at $s=0$, and $H\_\sigma(0)$ is bounded above by
 >
 > $$
-> e^{H_\sigma(\lambda S)} \le C \frac{e^{-\gamma\lambda}}{(1 + |S|)^2}
+> \begin{align*}
+> H_\sigma(0) &\le \lambda M_\sigma \underbrace{\left(\log(2\pi e c^2) + \int_{\mathbb{R}} \frac{P_\sigma(T)}{M_\sigma} \left(-\frac{|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)\mathrm{d}T\right)}_{A_\sigma} \\
+> &\quad + \int_{\mathbb{R}} \frac{P_\sigma(T)}{M_\sigma} \left(3 \log \frac{|T|}{2} + \log\left(1 + \frac{T^2}{4} \right) + \frac12 \log\coth\frac{\pi|T|}{2}\right) \mathrm{d}T
+> \end{align*}
 > $$
 >
-> for a selected $0<\sigma<1$, constants $C,\gamma>0$, all sufficiently large $d$, and every $S\in\mathbb R$. After the change of variables $s=\lambda S$, integration gives
+> Now, take $\sigma \to 1^{-}$ on the right hand side gives
 >
-> $$
-> \frac{1}{2\pi(1-\sigma)\lambda}\int_{\mathbb R}|Z(s+i\sigma\lambda)|\,\mathrm ds
-> \le K e^{-\gamma\lambda},
-> $$
+> $$ \lim_{\sigma \to 1^{-}} \frac{P_\sigma(T)}{M_\sigma} = \frac{\pi}{4\left(\cosh\frac{\pi T}{2} + 1\right)}, \quad \lim_{\sigma \to 1^{-}} A_\sigma = \log(\pi^2 c^2) $$
 >
-> where
+> where the last term is negative for $c<1/\pi$. Hence, for given $0 < c < 1/\pi$, we can choose $\sigma = \sigma(c) < 1$ and $\gamma = \gamma(c) > 0$ such that
 >
-> $$
-> K=\frac{C}{2\pi(1-\sigma)}\int_{\mathbb R}\frac{\mathrm dS}{(1+|S|)^2}.
-> $$
+> $$H_\sigma(s) \le -\gamma \lambda$$
 >
-> Shifted Mellin/Fourier inversion gives
+> for sufficiently large $\lambda = d/2$ and all $s \in \mathbb{R}$.
+> We also have a separate logarithmic estimate at tail; for suitable $A,B,\kappa>0$,
 >
-> $$
-> \int_{-\infty}^{0} |\varphi(v)| \mathrm{d}v \le \frac{1}{2\pi (1 - \sigma) \lambda} \int_{\mathbb{R}} |Z(s + i\sigma\lambda)| \mathrm{d}s
-> $$
+> $$ H_\sigma(\lambda S)\le-\kappa\lambda\log\frac{|S|}{A} \qquad (|S|\ge B). $$
+>
+> By combining (averaging) two estimates, we have
+>
+> $$ e^{H_\sigma(\lambda S)} \le C \frac{e^{-\gamma\lambda}}{(1 + |S|)^2} $$
+>
+> for some constants $C,\gamma>0$, all sufficiently large $d$, and every $S\in\mathbb R$. Combining this with the pointwise estimate $\lvert Z(s+i\sigma\lambda)\rvert\le e^{H_\sigma(s)}$ above, then changing variables by $s=\lambda S$, we get
+>
+> $$ \int_{\mathbb R}|Z(s+i\sigma\lambda)|\,\mathrm ds \le CJ\lambda e^{-\gamma\lambda}, $$
+>
+> where $J = \int\_{\mathbb{R}} \mathrm{d}S / (1 + \lvert S\rvert)^2$.
+> Mellin inversion gives
+>
+> $$ \int_{-\infty}^{0} |\varphi(v)| \mathrm{d}v \le \frac{1}{2\pi (1 - \sigma) \lambda} \int_{\mathbb{R}} |Z(s + i\sigma\lambda)| \mathrm{d}s $$
 >
 > and hence
 >
-> $$
-> \frac12\le\int_{-\infty}^{0}|\varphi(v)|\,\mathrm dv\le K e^{-\gamma\lambda},
-> $$
+> $$ \frac12\le\int_{-\infty}^{0}|\varphi(v)|\,\mathrm dv\le K e^{-\gamma\lambda}, $$
 >
 > which is a contradiction for sufficiently large $\lambda = d/2$.
-
-The details differ slightly from those in the report, although the main analytic mechanism is the same:
-
-- Lean specializes to the eigenvalue $-1$ and bundles exterior nonnegativity into `AntiFourierWitness`.
-- It does not export Proposition 3.1 or the restricted ball/profile identity; instead it uses the negative-half-line estimate immediately in a $<1/2$ contradiction.
-- The Poisson step is implemented using capped boundary data, a holomorphic outer function, and Phragmén-Lindelöf, rather than directly invoking subharmonic Poisson theory for $\log\lvert Z\rvert$.
-- The report integrates a central region and a dimension-dependent power tail. Lean packages the same information into the fixed integrable profile $(1+\lvert S\rvert)^{-2}$.
 
 Here is how these steps are formalized.
 
@@ -266,13 +277,44 @@ $$
 \int_{\mathbb{R}} P_\sigma(T) \min\{h_\lambda(s - \lambda T), D\} \mathrm{d}T
 $$
 
-Taking $D\to\infty$ gives the uncapped bound from Lemma 3.2. This passage *is* formalized: `lowerStripCappedPoisson_tendsto_radius` proves convergence of the capped Poisson integrals, and `antiFourierWitness_norm_le_poisson_of_eventually_capped_radius` transfers the norm bound to the limit.
+Taking $D\to\infty$ gives the uncapped bound from Lemma 3.2. This is formalized: `lowerStripCappedPoisson_tendsto_radius` proves convergence of the capped Poisson integrals, and `antiFourierWitness_norm_le_poisson_of_eventually_capped_radius` transfers the norm bound to the limit.
 
-The informal proof applies the upper-half-plane Poisson principle to $\log\lvert Z\circ\Phi^{-1}\rvert$. Lean encodes the same Poisson extension through a holomorphic outer function, then uses a Phragmén-Lindelöf principle as its maximum-principle step:
+```lean
+theorem lowerStripCappedPoisson_tendsto_radius
+    {d : ℕ} (hd : 0 < d) {R σ : ℝ}
+    (hσbelow : -1 < σ) (hσabove : σ < 1) (s : ℝ) :
+    Tendsto
+      (fun n : ℕ =>
+        ∫ T : ℝ,
+          stripPoissonKernel σ T *
+            lowerGammaBoundaryCapped ((d : ℝ) / 2)
+              R (n : ℝ)
+              (s - ((d : ℝ) / 2) * T))
+      atTop
+      (𝓝 (lowerStripPoissonMajorant ((d : ℝ) / 2)
+        R σ s)) := by ...
 
-> **Phragmén–Lindelöf principle for a horizontal strip.** Let $f:\mathbb C\to\mathbb C$ be holomorphic on $\lbrace z:a<\Im z<b\rbrace$ and continuous on its closure. Suppose that $\lvert f(z)\rvert=O(\exp(B\exp(c\lvert \Re z\rvert)))$ for constants $B$ and $c<\pi/(b-a)$ as $\lvert \Re z\rvert\to\infty$. If $\lvert f(z)\rvert\le C$ on the two boundary lines, then $\lvert f(z)\rvert\le C$ throughout the strip.
-
-This is a version of the maximum-modulus principle for a horizontal strip. The file proves a custom theorem, `horizontalStrip_norm_extension_majorization`. Mathlib already contains the related theorem [`PhragmenLindelof.horizontal_strip`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Complex/PhragmenLindelof.html#PhragmenLindelof.horizontal_strip), but it is not quite a drop-in replacement: the custom theorem permits a separate continuous extension of the norm to the closed strip.
+theorem antiFourierWitness_norm_le_poisson_of_eventually_capped_radius
+    {d : ℕ} (hd : 0 < d) {R σ : ℝ}
+    (w : AntiFourierWitness d R)
+    (hσbelow : -1 < σ) (hσabove : σ < 1) (s : ℝ)
+    (hcapped : ∀ᶠ n : ℕ in atTop,
+      ‖normalizedRadialMellinStrip hd w.function R
+        ((s : ℂ) + Complex.I *
+          (((σ * ((d : ℝ) / 2) : ℝ) : ℂ)))‖ ≤
+        Real.exp
+          (∫ T : ℝ,
+            stripPoissonKernel σ T *
+              lowerGammaBoundaryCapped ((d : ℝ) / 2)
+                R (n : ℝ)
+                  (s - ((d : ℝ) / 2) * T))) :
+      ‖normalizedRadialMellinStrip hd w.function R
+        ((s : ℂ) + Complex.I *
+          (((σ * ((d : ℝ) / 2) : ℝ) : ℂ)))‖ ≤
+        Real.exp
+          (lowerStripPoissonMajorant ((d : ℝ) / 2)
+            R σ s) := by ...
+```
 
 The Lean argument proceeds as follows.
 
@@ -287,10 +329,10 @@ The Lean argument proceeds as follows.
 > and
 >
 > $$
-> \widetilde K_\lambda(z,y)=K_\lambda(z,y)-
+> \widetilde K_\lambda(z,y)=K_\lambda(z,y)+
 > \begin{cases}
-> -\dfrac{i}{4\lambda},&y\ge0,\\[2mm]
-> \dfrac{i}{4\lambda},&y<0.
+> \dfrac{i}{4\lambda},&y\ge0,\\
+> -\dfrac{i}{4\lambda},&y<0.
 > \end{cases}
 > $$
 >
@@ -315,70 +357,303 @@ The Lean argument proceeds as follows.
 > =\int_{\mathbb R}P_\sigma(T)h_{\lambda,D}(s-\lambda T)\,\mathrm dT.
 > $$
 >
-> Formally, Lean constructs a separate continuous function $E$ on the closed strip. It agrees with $\Re W\_D$ in the interior and has edge values $E=h\_{\lambda,D}$ on the bottom and $E=0$ on the top. Set $F\_D(z)=e^{-W\_D(z)}Z(z)$ in the open strip and define the closed-strip norm extension $N(z)=e^{-E(z)}\lvert Z(z)\rvert$. In the interior, $N=\lvert F\_D\rvert$. The two boundary estimates give $N\le1$ on both edges, and the growth estimate and Phragmén-Lindelöf then give $\lvert F\_D\rvert\le1$ inside. Therefore
->
-> $$
-> |Z(z)|\le e^{\Re W_D(z)}.
-> $$
+> The function $\Re W\_D$ continously extends to the boundaries of the strip, where $\Re W\_D(s-i\lambda)=h\_{\lambda,D}(s)$ and $\Re W\_D(s+i\lambda)=0$ for all $s \in \mathbb{R}$.
+> Then the function $F\_D(z)=e^{-W\_D(z)}Z(z)$ is holomorphic in the open strip and continuous on its closure, satisfying $\lvert F\_D(z)\rvert\le1$ on boundaries.
+> Thus the Phragmén-Lindelöf principle gives $\lvert F\_D(z)\rvert\le1$ in the interior, and hence $\lvert Z(z)\rvert\le e^{\Re W\_D(z)}$.
+
+So it starts with the complex version of the Poisson kernel, and take the real part to get the Poisson kernel itself, which is another difference from the report.
+Note that it is using variable `ℓ` which is the same as $\lambda$.
+There's also `stripComplexPoissonKernel` which is the same as $K\_\lambda(s + i\sigma\lambda, y)$, but I don't think this is necessary or useful.
 
 ```lean
-theorem antiFourierWitness_capped_poisson_majorization_of_real_extension
-    {d : ℕ} (hd : 0 < d) {R : ℝ}
-    (w : AntiFourierWitness d R) (D : ℝ)
-    (E : ℂ → ℝ)
-    (hE : ContinuousOn E
-      (Complex.im ⁻¹'
-        Icc (-((d : ℝ) / 2)) ((d : ℝ) / 2)))
-    (hEinterior : ∀ z : ℂ,
-      z.im ∈ Ioo (-((d : ℝ) / 2)) ((d : ℝ) / 2) →
-        E z = (lowerStripCappedGammaOuter
-          ((d : ℝ) / 2) R D z).re)
-    (hEbottom : ∀ z : ℂ,
-      z.im = -((d : ℝ) / 2) →
-        E z = lowerGammaBoundaryCapped
-          ((d : ℝ) / 2) R D z.re)
-    (hEtop : ∀ z : ℂ,
-      z.im = (d : ℝ) / 2 → E z = 0)
-    (hcap : ∀ y : ℝ,
-      ‖normalizedRadialMellinStrip hd w.function R
-        ((y : ℂ) -
-          Complex.I * (((d : ℝ) / 2 : ℝ) : ℂ))‖ ≤
-        Real.exp (lowerGammaBoundaryCapped
-          ((d : ℝ) / 2) R D y))
-    {σ : ℝ} (hbelow : -1 < σ) (habove : σ < 1)
-    (s : ℝ) :
-    ‖normalizedRadialMellinStrip hd w.function R
+-- K_λ(z,y) = i/(4λ) * (exp(π(z-y+iλ)/(2λ)) + 1)/(exp(π(z-y+iλ)/(2λ)) - 1)
+-- ℓ = λ
+def stripHolomorphicPoissonKernel (ℓ : ℝ) (z : ℂ) (y : ℝ) : ℂ :=
+  (Complex.I *
+      ((Complex.exp
+          (((Real.pi : ℂ) *
+            (z - (y : ℂ) + Complex.I * (ℓ : ℂ))) /
+              (2 * (ℓ : ℂ))) + 1) /
+        (Complex.exp
+          (((Real.pi : ℂ) *
+            (z - (y : ℂ) + Complex.I * (ℓ : ℂ))) /
+              (2 * (ℓ : ℂ))) - 1)) /
+    4) / (ℓ : ℂ)
+
+-- K̃_λ(z,y) = K_λ(z,y) + (if 0 ≤ y then i/(4λ) else -i/(4λ))
+def stripRegularizedHolomorphicPoissonKernel
+    (ℓ : ℝ) (z : ℂ) (y : ℝ) : ℂ :=
+  stripHolomorphicPoissonKernel ℓ z y +
+    (if 0 ≤ y then Complex.I else -Complex.I) /
+      ((4 * ℓ : ℝ) : ℂ)
+
+-- W[b](z) = ∫ K̃_λ(z,y) b(y) dy
+def stripRegularizedOuter (ℓ : ℝ) (b : ℝ → ℝ) (z : ℂ) : ℂ :=
+  ∫ y : ℝ,
+    stripRegularizedHolomorphicPoissonKernel ℓ z y *
+      (b y : ℂ)
+
+-- W_D(z) = W[h_{λ,D}](z) = ∫ K̃_λ(z,y) h_{λ,D}(y) dy
+def lowerStripCappedGammaOuter
+    (ℓ R D : ℝ) (z : ℂ) : ℂ :=
+  stripRegularizedOuter ℓ
+    (lowerGammaBoundaryCapped ℓ R D) z
+
+-- Re K_λ(s + iσλ, y) = P_σ((s - y)/λ)/λ
+theorem stripHolomorphicPoissonKernel_re
+    {ℓ σ : ℝ} (hℓ : 0 < ℓ)
+    (hbelow : -1 < σ) (habove : σ < 1) (s y : ℝ) :
+    (stripHolomorphicPoissonKernel ℓ
+      ((s : ℂ) + Complex.I * ((σ * ℓ : ℝ) : ℂ)) y).re =
+      stripPoissonKernel σ ((s - y) / ℓ) / ℓ := by ...
+
+-- Re W_D(s + iσλ) = ∫ P_σ(T) h_{λ,D}(s - λT) dT
+theorem lowerStripCappedGammaOuter_re_dimension
+    {d : ℕ} (hd : 0 < d) {σ R D : ℝ}
+    (hσbelow : -1 < σ) (hσabove : σ < 1) (s : ℝ) :
+    (lowerStripCappedGammaOuter ((d : ℝ) / 2) R D
       ((s : ℂ) + Complex.I *
-        ((σ * ((d : ℝ) / 2) : ℝ) : ℂ))‖ ≤
-      Real.exp
-        (∫ T : ℝ, stripPoissonKernel σ T *
-          lowerGammaBoundaryCapped
-            ((d : ℝ) / 2) R D
-            (s - ((d : ℝ) / 2) * T)) := by ...
+        ((σ * ((d : ℝ) / 2) : ℝ) : ℂ))).re =
+      ∫ T : ℝ, stripPoissonKernel σ T *
+        lowerGammaBoundaryCapped
+          ((d : ℝ) / 2) R D
+          (s - ((d : ℝ) / 2) * T) := by ...
+```
+
+The non-formal proof in the report applies the upper half plane Poisson principle to the subharmonic function $\log\lvert Z\circ\Phi^{-1}\rvert$.
+The formalized proof is slightly different: it uses a horizontal-strip version of the Phragmén-Lindelöf principle, which is a maximum-principle argument for holomorphic functions on a horizontal strip (and *essentially* the same).
+
+> **Phragmén–Lindelöf principle for a horizontal strip.** Let $f:\mathbb C\to\mathbb C$ be holomorphic on $\lbrace z:a<\Im z<b\rbrace$ and continuous on its closure. Suppose that $\lvert f(z)\rvert=O(\exp(B\exp(c\lvert \Re z\rvert)))$ for constants $B$ and $c<\pi/(b-a)$ as $\lvert \Re z\rvert\to\infty$. If $\lvert f(z)\rvert\le C$ on the two boundary lines, then $\lvert f(z)\rvert\le C$ throughout the strip.
+
+This is a version of the maximum-modulus principle for a horizontal strip. The file proves a custom theorem, `horizontalStrip_norm_extension_majorization`. Mathlib already contains the related theorem [`PhragmenLindelof.horizontal_strip`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Complex/PhragmenLindelof.html#PhragmenLindelof.horizontal_strip), and I think it should be possible to replace the custom theorem with the Mathlib version (instead of reproducing the standard proof).
+
+```lean
+theorem horizontalStrip_norm_extension_majorization
+    {a b C : ℝ} (hab : a < b) (hC : 0 < C)
+    (f : ℂ → ℂ) (N : ℂ → ℝ)
+    (hf : DifferentiableOn ℂ f
+      (Complex.im ⁻¹' Ioo a b))
+    (hN : ContinuousOn N
+      (Complex.im ⁻¹' Icc a b))
+    (hNnonneg : ∀ w : ℂ,
+      w.im ∈ Icc a b → 0 ≤ N w)
+    (hinterior : ∀ w : ℂ,
+      w.im ∈ Ioo a b → N w = ‖f w‖)
+    (hbottom : ∀ w : ℂ, w.im = a → N w ≤ C)
+    (htop : ∀ w : ℂ, w.im = b → N w ≤ C)
+    (hgrowth :
+      ∃ c < Real.pi / (b - a), ∃ B : ℝ,
+        Asymptotics.IsBigO
+          (Filter.comap (fun w : ℂ => |w.re|)
+              Filter.atTop ⊓
+            Filter.principal
+              (Complex.im ⁻¹' Ioo a b))
+          f
+          (fun w : ℂ =>
+            Real.exp (B * Real.exp (c * |w.re|))))
+    {z : ℂ} (hza : a ≤ z.im) (hzb : z.im ≤ b) :
+    N z ≤ C := by ...
+```
+
+#### $H\_\sigma(s)\le H\_\sigma(0)$
+
+Here is the formalization of the inequality:
+
+```lean
+theorem lowerStripPoissonMajorant_dimension_centered_max
+    {d : ℕ} (hd : 2 ≤ d) {c σ : ℝ}
+    (hc : 0 < c)
+    (hbelow : -1 < σ) (habove : σ < 1) (s : ℝ) :
+    lowerStripPoissonMajorant ((d : ℝ) / 2)
+      (c * Real.sqrt d) σ s ≤
+      lowerStripPoissonMajorant ((d : ℝ) / 2)
+        (c * Real.sqrt d) σ 0 := by ...
+```
+
+As mentioned in part 1, it uses the fact that the convolution of even nonnegative and monotone degreasing functions (on $(0,\infty)$) is maximized at the origin.
+The Lean code have a formalization of it, specialized to the Poisson kernel:
+
+```lean
+theorem even_antitone_poisson_convolution_max
+    {σ : ℝ} (hbelow : -1 < σ) (habove : σ < 1)
+    {f : ℝ → ℝ} {B : ℝ}
+    (hf : Integrable f)
+    (hfmeas : Measurable f)
+    (hfnonneg : ∀ x : ℝ, 0 ≤ f x)
+    (heven : ∀ x : ℝ, f (-x) = f x)
+    (hanti : AntitoneOn f (Ici (0 : ℝ)))
+    (hsupport : Function.support f ⊆ Icc (-B) B)
+    (s : ℝ) :
+    (∫ x : ℝ, stripPoissonKernel σ (s - x) * f x) ≤
+      ∫ x : ℝ, stripPoissonKernel σ (0 - x) * f x := by ...
+```
+
+#### $H\_\sigma(0) \le \lambda M\_\sigma (\log(2\pi c^2) + J\_\sigma) + O\_\sigma(\log(2 + \lambda))$
+
+Recall that the upper bound of $H\_\sigma(0)$ is proved in Lemma 3.3, where the case of even and odd dimensions are treated separately to estimate the difference
+
+$$
+h_\lambda(\lambda T) - \lambda\left(\log(2\pi c^2) - \int_0^1 f_T(x) \mathrm{d}x\right).
+$$
+
+Lean proof almost follows the same structure, but it combines the two estimates into one.
+`lowerStripPoissonMajorant_dimension_central_bound` is the formalization of the upper bound of $H_\sigma(0)$.
+
+```lean
+-- f_T
+def lowerRiemannLog (T x : ℝ) : ℝ :=
+  Real.log (Real.sqrt (x ^ 2 + T ^ 2 / 4))
+
+def lowerRiemannErrorMajorant (T : ℝ) : ℝ :=
+  3 * |lowerRiemannLog T 0| +
+    2 * |lowerRiemannLog T 1| +
+      (1 / 2 : ℝ) *
+        Real.log (lowerCoth (Real.pi * |T| / 2))
+
+def lowerRiemannPoissonError (σ : ℝ) : ℝ :=
+  ∫ T : ℝ,
+    stripPoissonKernel σ T * lowerRiemannErrorMajorant T
+
+-- P_σ(T)/M_σ
+def stripNormalizedPoissonKernel (σ T : ℝ) : ℝ :=
+  stripPoissonKernel σ T / stripBottomMass σ
+
+def lowerEndpointPhase (T : ℝ) : ℝ :=
+  -Real.pi * |T| / 4 - (1 / 2 : ℝ) * Real.log (1 + T ^ 2 / 4) +
+    |T| / 2 * Real.arctan (|T| / 2)
+
+def lowerPoissonEndpointExpectation (σ : ℝ) : ℝ :=
+  ∫ T : ℝ,
+    stripNormalizedPoissonKernel σ T * lowerEndpointPhase T
+
+-- H_σ(0) ≤ λ M_σ (log(2πc^2)+J_σ) + error
+theorem lowerStripPoissonMajorant_dimension_central_bound
+    {d : ℕ} (hd : 2 ≤ d) {c σ : ℝ}
+    (hc : 0 < c) (hzero : 0 ≤ σ) (habove : σ < 1) :
+    lowerStripPoissonMajorant ((d : ℝ) / 2)
+        (c * Real.sqrt d) σ 0 ≤
+      ((d : ℝ) / 2) * stripBottomMass σ *
+        (Real.log (2 * Real.pi * Real.exp 1 * c ^ 2) +
+          lowerPoissonEndpointExpectation σ) +
+        lowerRiemannPoissonError σ := by ...
+```
+
+There are some differences between the formalization and the report.
+For example, the main estimate reads
+
+$$
+\begin{align*}
+H_\sigma(0) &\le \lambda M_\sigma \left(\log(2\pi e c^2) + \int_{\mathbb{R}} \frac{P_\sigma(T)}{M_\sigma} \left(-\frac{|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)\mathrm{d}T\right) \\
+&\quad + \int_{\mathbb{R}} P_\sigma(T) \left(3 |f_T(0)| + 2 |f_T(1)| + \frac12 \log\coth\frac{\pi|T|}{2}\right) \mathrm{d}T
+\end{align*}
+$$
+
+which looks different from the one in the report.
+In fact, we have
+
+$$
+-\int_{0}^{1} f_T(x)\mathrm{d}x = 1 + \left(-\frac{|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)
+$$
+
+so we have
+
+$$
+\log(2\pi e c^2) + \int_{\mathbb{R}} \frac{P_\sigma(T)}{M_\sigma} \left(-\frac{|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)\mathrm{d}T = \log(2\pi c^2) + J_\sigma.
+$$
+
+```lean
+theorem integral_lowerRiemannLog
+    {T : ℝ} (hT : T ≠ 0) :
+    -(∫ x in (0 : ℝ)..1, lowerRiemannLog T x) =
+      1 + lowerEndpointPhase T := by ...
+```
+
+The expression of $h\_\lambda(\lambda T$ in terms of Riemann sum of $f\_T$ and the error estimate of the Riemann sum are formalized as
+
+- for even $d$: `lowerGammaBoundaryLog_integer_scaled` and `lower_integer_leftRiemann_error`;
+- for odd $d$: `lowerGammaBoundaryLog_halfInteger_scaled`, `lower_halfInteger_midpointRiemann_error`, and `lowerRiemannLog_halfInteger_tail_integral_le`
+
+But the error term is a bit different - it use the unified bound for both even and odd dimensions, which is `lowerRiemannErrorMajorant`:
+
+$$
+3 |f_T(0)| + 2 |f_T(1)| + \frac12 \log\coth\frac{\pi|T|}{2}
+$$
+
+(`lowerCoth` is just $\coth$... but with fancier name!)
+The even and odd cases are later combined in the proof of `lowerGammaBoundaryLog_dimension_riemann_le` (you can see that the proof starts with `rcases d.even_or_odd ...`).
+This proves the upper bound for $h\_\lambda(\lambda T)$, which is used to prove the upper bound of $H\_\sigma(0)$.
+
+```lean
+-- h_λ(λT) ≤ λ(log(2πc^2)+J_σ) + error
+theorem lowerGammaBoundaryLog_dimension_scaled_riemann_le
+    {d : ℕ} (hd : 2 ≤ d) {c T : ℝ}
+    (hc : 0 < c) (hT : T ≠ 0) :
+    lowerGammaBoundaryLog ((d : ℝ) / 2)
+        (c * Real.sqrt d) (((d : ℝ) / 2) * T) ≤
+      ((d : ℝ) / 2) *
+        (Real.log (2 * Real.pi * Real.exp 1 * c ^ 2) +
+          lowerEndpointPhase T) +
+        lowerRiemannErrorMajorant T := by ...
+```
+
+#### The limit $A\_\sigma \to \log(\pi^2 c^2)$ as $\sigma\to1^{-}$
+
+This is essentially Lemma 3.4 of the report, which follows from
+
+$$
+\lim_{\sigma\to1^{-1}} \int_{\mathbb{R}} \frac{P_\sigma(T)}{M_\sigma} \left(-\frac{|T|}{4} - \frac{1}{2} \log \left(1 + \frac{T^2}{4}\right) + \frac{|T|}{2} \arctan \left(\frac{|T|}{2}\right)\right)\mathrm{d}T = \log\left(\frac{\pi}{2}\right) - 1.
+$$
+
+This is proved by
+
+$$
+\lim_{\sigma\to1^{-}} \frac{P_\sigma(T)}{M_\sigma} = \frac{\pi}{4\left(\cosh\frac{\pi T}{2} + 1\right)}
+$$
+
+and applying the dominated convergence theorem to the integral (you can find `apply tendsto_integral_filter_of_dominated_convergence` in the proof of `tendsto_integral_stripNormalizedPoissonKernel_mul`).
+
+```lean
+def limitingStripPoissonDensity (T : ℝ) : ℝ :=
+  Real.pi /
+    (4 * (Real.cosh (Real.pi * T / 2) + 1))
+
+theorem tendsto_stripNormalizedPoissonKernel (T : ℝ) :
+    Tendsto (fun σ : ℝ => stripNormalizedPoissonKernel σ T)
+      (𝓝[<] 1) (𝓝 (limitingStripPoissonDensity T)) := by ...
+
+def limitingPoissonEndpointExpectation : ℝ :=
+  ∫ T : ℝ,
+    limitingStripPoissonDensity T * lowerEndpointPhase T
+
+theorem tendsto_lowerPoissonEndpointExpectation :
+    Tendsto lowerPoissonEndpointExpectation (𝓝[<] 1)
+      (𝓝 limitingPoissonEndpointExpectation) := by ...
+
+theorem limitingPoissonEndpointExpectation_eq_log_pi_div_two_sub_one :
+    limitingPoissonEndpointExpectation =
+      Real.log (Real.pi / 2) - 1 := by ...
 ```
 
 
+#### $H\_\sigma(s) \le -\gamma \lambda$ for some $0 < \sigma < 1$, $\gamma>0$ and all sufficiently large $\lambda=d/2$.
 
-
-`normalizedRadialMellinStrip_top_norm_le_one` and `normalizedRadialMellinStrip_bottom_norm_le_gamma` provide the top- and bottom-edge bounds from Lemma 3.2. The declaration `antiFourierWitness_normalizedMellinStrip_bottom_norm_le_gamma` is a convenience wrapper specializing the latter to an `AntiFourierWitness`.
-
-The eventual capped bottom-edge estimate is packaged as follows:
+By combining the previous estimates, we can prove the first half of Lemma 3.5, which is the uniform negativity of $H\_\sigma(s)$ linear in $\lambda=d/2$.
 
 ```lean
-theorem exists_antiFourierWitness_eventually_capped_bottom_majorant
-    {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 < R)
-    (w : AntiFourierWitness d R) :
-    ∃ D₀ : ℝ, ∀ D : ℝ, D₀ ≤ D → ∀ y : ℝ,
-      ‖normalizedRadialMellinStrip hd w.function R
-        ((y : ℂ) -
-          Complex.I * (((d : ℝ) / 2 : ℝ) : ℂ))‖ ≤
-        Real.exp (lowerGammaBoundaryCapped
-          ((d : ℝ) / 2) R D y) := by ...
+theorem exists_lowerStripPoissonMajorant_uniform_negative
+    {c : ℝ} (hc : 0 < c)
+    (hsharp : c < Real.pi⁻¹) :
+    ∃ σ γ : ℝ, 0 < σ ∧ σ < 1 ∧ 0 < γ ∧
+      ∀ᶠ d : ℕ in atTop,
+        ∀ s : ℝ,
+          lowerStripPoissonMajorant ((d : ℝ) / 2)
+            (c * Real.sqrt d) σ s ≤
+              -γ * ((d : ℝ) / 2) := by ...
 ```
 
 #### $e^{H\_\sigma(\lambda S)}\le C\dfrac{e^{-\gamma\lambda}}{(1+\lvert S\rvert)^2}$
 
-The report's uniform negativity and logarithmic tail are packaged into a fixed inverse-quadratic majorant:
+The estimate is formalized as follows:
 
 ```lean
 theorem exists_lowerStripPoissonMajorant_integrable_majorant
@@ -393,19 +668,60 @@ theorem exists_lowerStripPoissonMajorant_integrable_majorant
               (1 + |S|) ^ 2 := by ...
 ```
 
-Its uniform-negative input is a separate theorem:
+To prove this, we need to combine the uniform-negative estimate (`exists_lowerStripPoissonMajorant_uniform_negative`) with the logarithmic estimate (`exists_lowerStripPoissonMajorant_logarithmic_tail`), which is a separate theorem:
 
 ```lean
-theorem exists_lowerStripPoissonMajorant_uniform_negative
-    {c : ℝ} (hc : 0 < c)
-    (hsharp : c < Real.pi⁻¹) :
-    ∃ σ γ : ℝ, 0 < σ ∧ σ < 1 ∧ 0 < γ ∧
-      ∀ᶠ d : ℕ in atTop,
-        ∀ s : ℝ,
+theorem exists_lowerStripPoissonMajorant_logarithmic_tail
+    {c σ : ℝ} (hc : 0 < c)
+    (hσ : 0 ≤ σ) (hσone : σ < 1) :
+    ∃ A B κ : ℝ, 0 < A ∧ 0 < B ∧ 0 < κ ∧
+      ∀ d : ℕ, 2 ≤ d →
+        ∀ S : ℝ, B ≤ |S| →
           lowerStripPoissonMajorant ((d : ℝ) / 2)
-            (c * Real.sqrt d) σ s ≤
-              -γ * ((d : ℝ) / 2) := by ...
+            (c * Real.sqrt d) σ (((d : ℝ) / 2) * S) ≤
+              -κ * ((d : ℝ) / 2) * Real.log (|S| / A) := by ...
 ```
+
+which translates as: there exists constants $A,B,\kappa>0$ such that for all $d\ge2$ and $\lvert S\rvert\ge B$,
+
+$$
+H_\sigma(\lambda S) \le -\kappa \lambda \log\left(\frac{\lvert S\rvert}{A}\right).
+$$
+
+Note that $\kappa$ is chosen as
+
+$$
+\kappa = \frac{1}{2} \int_{-1}^{1} P_\sigma(T) \mathrm{d}T.
+$$
+
+#### $\int_{\mathbb R}|Z(s+i\sigma\lambda)|\,\mathrm ds \le CJ\lambda e^{-\gamma\lambda}$
+
+```lean
+theorem antiFourierWitness_interiorMellinL1_le_of_integrable_majorant
+    {d : ℕ} (hd : 0 < d) {R σ γ C : ℝ}
+    (hR : 0 < R) (hσbelow : -1 < σ) (hσabove : σ < 1)
+    (w : AntiFourierWitness d R)
+    (hpoint : ∀ s : ℝ,
+      ‖normalizedRadialMellinStrip hd w.function R
+        ((s : ℂ) + Complex.I *
+          (((σ * ((d : ℝ) / 2) : ℝ) : ℂ)))‖ ≤
+        Real.exp
+          (lowerStripPoissonMajorant ((d : ℝ) / 2) R σ s))
+    (hmajor : ∀ S : ℝ,
+      Real.exp
+        (lowerStripPoissonMajorant ((d : ℝ) / 2)
+          R σ (((d : ℝ) / 2) * S)) ≤
+        C * Real.exp (-γ * ((d : ℝ) / 2)) /
+          (1 + |S|) ^ 2) :
+    (∫ s : ℝ,
+      ‖normalizedRadialMellinStrip hd w.function R
+        ((s : ℂ) + Complex.I *
+          (((σ * ((d : ℝ) / 2) : ℝ) : ℂ)))‖) ≤
+      (C * lowerInverseQuadraticMass) *
+        ((d : ℝ) / 2) * Real.exp (-γ * ((d : ℝ) / 2)) := by ...
+```
+
+
 
 The other input is `exists_lowerStripPoissonMajorant_logarithmic_tail`. Thus the inverse-quadratic estimate is a convenient corollary of the two estimates already present in Lemma 3.5, not a substantively stronger theorem than the report. The declaration `antiFourierWitness_interiorMellinL1_le_of_integrable_majorant` then integrates this profile and obtains
 
@@ -415,9 +731,6 @@ $$
 \qquad
 I=\int_{\mathbb R}\frac{\mathrm dS}{(1+|S|)^2}.
 $$
-
-
-
 
 
 #### $\int\_{-\infty}^{0} \lvert \varphi(v)\rvert \mathrm{d}v \le \frac{1}{2\pi (1 - \sigma) \lambda} \int\_{\mathbb{R}} \lvert Z(s + i\sigma\lambda)\rvert \mathrm{d}s$
@@ -441,7 +754,8 @@ $$
 \varphi(v) = \frac{e^{(1-\sigma)\lambda v}}{2\pi} \int_{\mathbb{R}} Z(s + i\sigma\lambda) e^{i s v} \mathrm{d}s
 $$
 
-In the eventual application, the abstract parameter is
+But what is $a$?
+In the eventual application, it is
 
 $$
 a=(1-\sigma)\frac d2=(1-\sigma)\lambda.
@@ -491,57 +805,6 @@ $$
 =\frac{1}{(1-\sigma)\lambda}.
 $$
 
----
-
-#### Putting the lower-bound pieces together
-
-The theorem `no_antiFourierWitness_of_interiorMellinL1_lt_half` is written contrapositively. In ordinary mathematical language, it says that, for $d>0$, $R>0$, and $-1<\sigma<1$, every `AntiFourierWitness d R` must satisfy
-
-$$
-\frac{1}{2\pi(1-\sigma)\lambda}
-\int_{\mathbb R}|Z(s+i\sigma\lambda)|\,\mathrm ds\ge\frac12.
-$$
-
-The proof has two parallel analytic inputs, so its dependency shape is
-
-```text
-capped Poisson majorization + capped-to-uncapped limit
-    └──→ uncapped pointwise bound ──────────────────────┐
-                                                        │
-uniform negativity + logarithmic tail                   │
-    └──→ integrable inverse-quadratic majorant ──────────┤
-                                                        ↓
-                                  interior Mellin L¹ bound
-                                                        ↓
-                                      < 1/2 contradiction
-                                                        ↓
-                                         uniform sign radius
-```
-
-`uniformAntiFourierSignRadius_of_poisson_majorization` performs most of the assembly from the uncapped pointwise bound onward. The wrapper `uniformAntiFourierSignRadius_of_capped_poisson_majorization` first uses `lowerStripCappedPoisson_tendsto_radius` to remove the cap, and `uniformAntiFourierSignRadius` supplies the capped majorization theorem. This final result is logically closer to the anti-self-Fourier case of Proposition 3.7 than to Proposition 3.1 itself. The Mellin $L^1$ estimate is present inside the proof, but the ball-mass conclusion of Proposition 3.1 is not exported as a theorem.
-
-#### Where $1/\pi$ appears in Lean
-
-The report writes the decisive central coefficient as
-
-$$
-\log(2\pi c^2)+J_\sigma,
-\qquad J_\sigma\longrightarrow\log(\pi/2).
-$$
-
-Lean uses an alternative sufficient one-sided endpoint estimate in `lowerStripPoissonMajorant_dimension_central_bound`. Its coefficient is
-
-$$
-\log(2\pi e c^2)+\operatorname{lowerPoissonEndpointExpectation}(\sigma).
-$$
-
-The theorems `tendsto_lowerPoissonEndpointExpectation` and `limitingPoissonEndpointExpectation_eq_log_pi_div_two_sub_one` show that the second term tends to $\log(\pi/2)-1$. Therefore the whole coefficient tends to
-
-$$
-\log(2\pi e c^2)+\log(\pi/2)-1=\log(\pi^2c^2),
-$$
-
-which is negative exactly when $c<1/\pi$. Thus this portion of Lean is an alternative sufficient formulation of Lemmas 3.3 and 3.4, rather than a line-by-line transcription of them.
 
 ### Upper bound
 
@@ -580,3 +843,18 @@ The exported conclusion is substantially more complete than the lower-bound sect
 - `PackingBounds.sharpFullCohnElkiesManuscriptConclusions` collects the manuscript-level LP conclusions.
 
 What is absent is the other half of Theorem 4.1: Lean does not construct the self-Fourier function $f\_0$, so the $\mathsf A\_+(d)$ upper construction is missing. Although the pair $(f\_-,f\_+)$ could also yield the $\mathsf A\_-(d)$ upper bound, the file never defines $\mathsf A\_\pm(d)$ or packages either asymptotic. It also does not formalize Appendix A's strict inequality $\mathsf A\_+(d)<\mathsf A\_-(d)$.
+
+## Reformalization
+
+<!-- (add later) -->
+
+## Conclusion
+
+I'd say that the proof is *almost* formalized, but definitely not *all*.
+Someone may say that I'm to picky, since all the *essence* of the proof are formalized, which is true.
+There are a lot of autoformalized results (and there will be more in the future) where the formalized statement $A'$ is not exactly the same as the natural language statement $A$, but $A'$ is just a few *trivial* steps away from $A$ so that you can think it is fine.
+But if that is really the case, why don't you just formalize $A$ directly?
+The reason is because most of the time people don't read the AI's autoformalized proof and just believe them.
+This belief will makes more sense as AI gets better and better, but then it will generate longer slop formalizations, and similar issue will keep persists.
+If you want to autoformalize a natural language proof, the best thing you can to is to make every formal statement and argument as close to the natural language proof as possible - using the same notations, no more or less lemmas, and more importantly, make a blueprint.
+If your AI is good enough to autoformalize a natural language proof, then it should be good enough to automatically write *a* blueprint that is *not too bad* for a human to read and understand (just push the button few more times), which is way better than having no blueprint at all.

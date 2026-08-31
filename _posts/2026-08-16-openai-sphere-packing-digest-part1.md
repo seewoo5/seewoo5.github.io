@@ -134,7 +134,7 @@ I guess the above introduction is enough to understand the main results (Theorem
 
 - Overall proof is not very long.
 - The proof relies heavily on complex analysis.
-- The result is **asymptotic**: it describes what happens as $d \to \infty$. In particular, it does not construct an optimal (or "magic") function in any specific dimension $d$, which is a much harder problem. The only dimensions in which the exact value of $\mathrm{LP}\_d$ is known are $d=1,8,24$. Moreover, knowing $\mathrm{LP}\_d$ exactly does not by itself solve sphere packing in dimension $d$, because the LP bound need not be tight; it is known to be suboptimal in several small dimensions (including 3, 4, 5, 6, 7 by [Li](https://www.sciencedirect.com/science/article/abs/pii/S0001870824005590)) and is conjectured to be suboptimal in high dimensions as well.
+- The result is **asymptotic**: it describes what happens as $d \to \infty$. In particular, it does not construct an optimal (or "magic") function in any specific dimension $d$, which is a much harder problem. The only dimensions in which the exact value of $\mathrm{LP}\_d$ is known are $d=1,8,24$. Moreover, knowing $\mathrm{LP}\_d$ exactly does not by itself solve sphere packing in dimension $d$, because the LP bound need not be tight; it is known to be suboptimal in several small dimensions (including 3, 4, 5, 6, 7 by [de Courcy-Ireland, Dostert, Viazovska](https://www.google.com/goto?url=CAEShQEB6zswFQBTboPFHBueMxcPsQ8ubiC_du8x_DPlTiUeYGRD3fxU3gzNLjoMrza4OjPSXwhZJhXqI1aEH-wU_nKdYE4i0p4qoODkcG6ICrlXiz9Ea3piatxDsQyKLuuRnzfTBi2Irq_eihZ7Gvd99HVyRDnK3nuN9Y3H2krMlNMVjMZXTAuI) and [Li](https://www.sciencedirect.com/science/article/abs/pii/S0001870824005590)) and is conjectured to be suboptimal in high dimensions as well.
 - No modular forms.
 - The choices of variables and notation are quite inconsistent. This may sound minor, but minimizing the number of symbols and using them consistently matters a great deal for readability. Of course, many humans are also not good at this.
 - One of the core ideas, in my opinion, is to work with the Mellin transform. Such an idea first appears in Section 5 of the 2016 paper by [Cohn and Miller](https://arxiv.org/abs/1603.04759). The report cites CM16 for the radial formulation but does not discuss this particular precedent, which is also mentioned in the [recent *Scientific American* article](https://www.scientificamerican.com/article/openais-latest-math-breakthroughs-commit-research-misconduct-experts-say/).
@@ -224,7 +224,7 @@ The following proposition is a direct corollary of Proposition 3.1.
 
 > **Proposition 3.7.** For every $0 < c < 1/\pi$, there exists $d\_0(c) \in \mathbb{N}$ such that, for every $d \ge d\_0(c)$ and $\varsigma \in \lbrace-1,+1\rbrace$, no nonzero $g \in L^1(\mathbb{R}^d;\mathbb{R})$ satisfies $\widehat{g} = \varsigma g$, $g(0) = 0$, and $g(x) \ge 0$ for $\lVert x\rVert \ge c \sqrt{d}$. Here $g$ denotes its continuous Fourier-inversion representative.
 
-> *Proof.* If $g$ is a radial Schwartz function, then $\int g = \widehat{g}(0) = \varsigma g(0) = 0$, and hence its negative part $g\_- = \max\lbrace-g,0\rbrace$ has integral $\lVert g\rVert\_1/2$. If $g(x) \ge 0$ for $\lVert x\rVert \ge c \sqrt{d}$, then $g\_-$ vanishes outside the ball of radius $c \sqrt{d}$ and
+> *Proof of Proposition 3.7.* If $g$ is a radial Schwartz function, then $\int g = \widehat{g}(0) = \varsigma g(0) = 0$, and hence its negative part $g\_- = \max\lbrace-g,0\rbrace$ has integral $\lVert g\rVert\_1/2$. If $g(x) \ge 0$ for $\lVert x\rVert \ge c \sqrt{d}$, then $g\_-$ vanishes outside the ball of radius $c \sqrt{d}$ and
 >
 > $$
 > \frac{\|g\|_{1}}{2} = \int_{\mathbb{R}^d} g_{-}(x) \mathrm{d}x = \int_{|x| < c \sqrt{d}} g_{-}(x) \mathrm{d}x \le \int_{|x| < c \sqrt{d}} |g(x)| \mathrm{d}x \le C_c e^{-\gamma_c d} \|g\|_1
@@ -239,7 +239,7 @@ The following proposition is a direct corollary of Proposition 3.1.
 > \le \int_{|x|<R}|h_n(x)|\,\mathrm dx+\|h_n-h\|_1.
 > $$
 >
-> Proposition 3.1 bounds the first term. Letting $n\to\infty$ gives $\lVert h\rVert\_1/2\le C\_ce^{-\gamma\_cd}\lVert h\rVert\_1$, again a contradiction for large $d$.
+> Proposition 3.1 bounds the first term. Letting $n\to\infty$ gives $\lVert h\rVert\_1/2\le C\_ce^{-\gamma\_cd}\lVert h\rVert\_1$, again a contradiction for large $d$. $\square$
 
 
 How this is used to prove the lower bound for $\mathrm{LP}\_d$ and $\mathsf A\_{\pm}(d)$?
@@ -420,7 +420,7 @@ This follows by applying an upper-half-plane Poisson principle to $\log\lvert Z\
 > \end{align*}
 > $$
 >
-> The exponential decay of $P\_\sigma$ dominates both the locally integrable logarithmic singularity and the logarithmic growth at infinity. Dominated convergence therefore permits $D\to\infty$, proving the upper bound in $H\_\sigma(s)$.
+> The exponential decay of $P\_\sigma$ dominates both the locally integrable logarithmic singularity and the logarithmic growth at infinity. Dominated convergence therefore permits $D\to\infty$, proving the upper bound in $H\_\sigma(s)$. $\square$
 
 Next, we bound $H\_\sigma$.
 Lemma 3.3 and Lemma 3.4 are intermediate steps toward Lemma 3.5.
@@ -457,6 +457,23 @@ $$
 
 which is the last estimate in the lemma.
 We will focus on proving the first inequality and $H\_\sigma(s) \le H\_\sigma(0)$.
+The following lemma is also used in the last step of the proof, which I think worth mentioning.
+
+> **Lemma (Convolution of even nonnegative monotone functions).** Let $f$ and $g$ be two nonnegative even functions on $\mathbb{R}$ decreasing on $[0,\infty)$. Then their convolution $f * g$ is maximized at $0$.
+
+> *Proof.* We have
+>
+> $$f(x) = \int_0^\infty \mathbf{1}_{\{f(x) > a\}} \mathrm{d}a, \quad g(x) \int_0^\infty \mathbf{1}_{\{g(x) > b\}} \mathrm{d}b$$
+>
+> Let
+>
+> $$(-r_a, r_a) = \{f(x) > a\}, \quad (-R_b, R_b) = \{g(x) > b\} $$
+>
+> Then Tonelli's theorem gives
+>
+> $$(f * g)(x) = \int_{0}^{\infty} \int_{0}^{\infty} |(-R_b, R_b) \cap (x - r_a, x + r_a)| \mathrm{d} a \mathrm{d}b$$
+>
+> and the intersection is maximized at $x=0$. $\square$
 
 > *Proof of Lemma 3.3.* The difference between $h\_\lambda(\lambda T)$ and
 >
@@ -507,12 +524,17 @@ We will focus on proving the first inequality and $H\_\sigma(s) \le H\_\sigma(0)
 >
 > and integrating over $P\_\sigma(T)$ gives the desired bound.
 >
-> It remains to prove that $H\_\sigma(s)$ is maximized at $s=0$. Since $P\_\sigma$ and $h\_\lambda$ are even, $H\_\sigma$ is even. Consider $q\_{\lambda, N}(T) := \max\lbrace h\_\lambda(\lambda T) + N, 0\rbrace$, which is nonnegative, even, and decreasing on $(0,\infty)$.
+> It remains to prove that $H\_\sigma(s)$ is maximized at $s=0$. Since $P\_\sigma$ and $h\_\lambda$ are even, $H\_\sigma$ is even. It is clear that $P\_\sigma(T)$ is decreasing on $(0, \infty)$, and the same is true for $h\_\lambda(T)$ since
+>
+> $$h_\lambda'(y) = \frac{\Im\psi(\lambda + iy/2) - \Im\psi(iy/2)}{2} < 0$$
+>
+> for $y > 0$, where $\psi = \Gamma'/\Gamma$ is the digamma function and $\Im\psi(a + bi) = \sum\_{k \ge 0} \frac{b}{(k+a)^2 + b^2}$.
+> Consider $q\_{\lambda, N}(T) := \max\lbrace h\_\lambda(\lambda T) + N, 0\rbrace$, which is nonnegative, even, and decreasing on $(0,\infty)$.
 > Then convolution of two such functions is largest at zero, so $(P\_\sigma * q\_{\lambda, N})(s) \le (P\_\sigma * q\_{\lambda, N})(0)$ for all $s \in \mathbb{R}$. Subtracting the constant $NM\_\sigma$ and $q\_{\lambda, N} - N = \max\lbrace h\_\lambda, -N\rbrace$ gives
 >
 > $$ \int_{\mathbb{R}} P_\sigma(T) \max\lbrace h_\lambda(-\lambda T), -N \rbrace \mathrm{d}T \le \int_{\mathbb{R}} P_\sigma(T) \max\lbrace h_\lambda(s - \lambda T), -N\rbrace \mathrm{d}{T} $$
 >
-> and passing to the limit $N \to \infty$ gives $H\_\sigma(s) \le H\_\sigma(0)$.
+> and passing to the limit $N \to \infty$ gives $H\_\sigma(s) \le H\_\sigma(0)$. $\square$
 
 
 > **Lemma 3.4.** For $J\_\sigma$ defined in Lemma 3.3,
@@ -521,7 +543,7 @@ We will focus on proving the first inequality and $H\_\sigma(s) \le H\_\sigma(0)
 > \lim_{\sigma \to 1^{-}} J_\sigma = \log\frac{\pi}{2}.
 > $$
 >
-> Consequently, for every $0<c<1/\pi$, there exists $\sigma\_c\in(-1,1)$ such that $\log(2\pi c^2)+J\_{\sigma\_c}<0$.
+> Consequently, for every $0<c<1/\pi$, there exists $\sigma(c)\in(-1,1)$ such that $\log(2\pi c^2)+J\_{\sigma(c)}<0$.
 
 This is precisely where the constant $1/\pi$ enters, since
 
@@ -530,7 +552,7 @@ $$
 \quad\Longleftrightarrow\quad c<1/\pi.
 $$
 
-> *Proof sketch.* After writing $T=2u$ and normalizing by the mass $M\_\sigma$, the lower-edge harmonic measure becomes a probability density $p\_\sigma(u)$. As $\sigma\uparrow1$, these densities converge in $L^1$ to
+> *Proof of Lemma 3.4.* After writing $T=2u$ and normalizing by the mass $M\_\sigma$, the lower-edge harmonic measure becomes a probability density $p\_\sigma(u)$. As $\sigma\uparrow1$, these densities converge in $L^1$ to
 >
 > $$
 > p(u)=\frac\pi4\operatorname{sech}^2\left(\frac{\pi u}{2}\right).
