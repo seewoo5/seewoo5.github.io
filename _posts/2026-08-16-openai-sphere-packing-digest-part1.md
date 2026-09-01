@@ -136,6 +136,7 @@ I guess the above introduction is enough to understand the main results (Theorem
 - The proof relies heavily on complex analysis.
 - The result is **asymptotic**: it describes what happens as $d \to \infty$. In particular, it does not construct an optimal (or "magic") function in any specific dimension $d$, which is a much harder problem. The only dimensions in which the exact value of $\mathrm{LP}\_d$ is known are $d=1,8,24$. Moreover, knowing $\mathrm{LP}\_d$ exactly does not by itself solve sphere packing in dimension $d$, because the LP bound need not be tight; it is known to be suboptimal in several small dimensions (including 3, 4, 5, 6, 7 by [de Courcy-Ireland, Dostert, Viazovska](https://www.google.com/goto?url=CAEShQEB6zswFQBTboPFHBueMxcPsQ8ubiC_du8x_DPlTiUeYGRD3fxU3gzNLjoMrza4OjPSXwhZJhXqI1aEH-wU_nKdYE4i0p4qoODkcG6ICrlXiz9Ea3piatxDsQyKLuuRnzfTBi2Irq_eihZ7Gvd99HVyRDnK3nuN9Y3H2krMlNMVjMZXTAuI) and [Li](https://www.sciencedirect.com/science/article/abs/pii/S0001870824005590)) and is conjectured to be suboptimal in high dimensions as well.
 - No modular forms.
+- Personally, I found that understanding the proof of lower bounds is easier than understanding the proof of upper bounds.
 - The choices of variables and notation are quite inconsistent. This may sound minor, but minimizing the number of symbols and using them consistently matters a great deal for readability. Of course, many humans are also not good at this.
 - One of the core ideas, in my opinion, is to work with the Mellin transform. Such an idea first appears in Section 5 of the 2016 paper by [Cohn and Miller](https://arxiv.org/abs/1603.04759). The report cites CM16 for the radial formulation but does not discuss this particular precedent, which is also mentioned in the [recent *Scientific American* article](https://www.scientificamerican.com/article/openais-latest-math-breakthroughs-commit-research-misconduct-experts-say/).
 - OpenAI also shared [reasoning walkthroughs](https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf) for the proofs. For the sphere-packing problem, the walkthrough is a sketch or summary rather than Astra's chain of thought. I first tried reading it before the report, but it wasn't helpful. It would be more helpful if it was a detailed Chain of Thought.
@@ -232,7 +233,7 @@ The following proposition is a direct corollary of Proposition 3.1.
 >
 > This is a contradiction for large $d$.
 >
-> For a general $g\in L^1$, first replace it by its radialization $h=\mathcal Rg$. This radialization is still nonzero: if $h=0$, then outside a ball the function $g$ is nonnegative with zero spherical average, so it vanishes there. The identity $\widehat g=\varsigma g$ and Fourier analyticity would then force $g=0$. Let $h\_n$ be the radial Schwartz eigenfunctions constructed above. They need not remain nonnegative outside the ball, but $(h\_n)_\-\le \lvert h\_n-h\rvert$ outside the ball. Thus, with $R=c\sqrt d$,
+> For a general $g\in L^1$, first replace it by its radialization $h=\mathcal Rg$. This radialization is still nonzero: if $h=0$, then outside a ball the function $g$ is nonnegative with zero spherical average, so it vanishes there. The identity $\widehat g=\varsigma g$ and Fourier analyticity would then force $g=0$. Let $h\_n$ be the radial Schwartz eigenfunctions constructed above. They need not remain nonnegative outside the ball, but $(h\_n)_-\le \lvert h\_n-h \rvert$ outside the ball. Thus, with $R=c\sqrt d$,
 >
 > $$
 > \frac12\|h_n\|_1=\int_{\mathbb R^d}(h_n(x))_-\,\mathrm{d}x
@@ -830,10 +831,116 @@ $$
 
 The second and third bullets give the upper bounds for $\mathsf A\_-(d)$ and $\mathsf A\_+(d)$, respectively (which match the lower bounds from Proposition 3.7).
 
-### Construction of the functions
+
+### Ansatz for the construction
 
 
-The construction begins by prescribing the Mellin transforms of the functions.
+In the proof, one construct the Mellin transforms of the functions $f\_-$, $f\_+$, and $f\_0$, then invert them to obtain the functions themselves.
+The ansatz is based on the perturbation of Mellin transform of Gaussian.
+
+We start with Gaussian and its Mellin transform:
+
+$$
+g_G(r) = 2\pi^{\lambda/2} e^{-\pi r^2}, \qquad E_\lambda^G(t) = X_{g_G}(t) = \pi^{it/2} \Gamma\left(\frac{\lambda - it}{2}\right).
+$$
+
+Now, for each $j \in \lbrace -, +, 0 \rbrace$, we will choose polynomials $P_j$ and a *perturbation* $h$ so that
+
+$$
+X_{f_j}(t) = E_\lambda^G(t) P_j(t/\lambda) e^{\lambda h(t/\lambda)}, \quad f_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} dt.
+$$
+
+Here $h$ will have the form of
+
+$$
+h(\zeta) = \int_0^\infty w(a) (\cos(a\zeta) - 1) \mathrm{d}a,
+$$
+
+where $w(a)$ is a signed density function to be chosen later.
+After changing the contour from $\mathbb{R}$ to $\mathbb{R} + i u\lambda$ with change of variable $t = \lambda(T + iu)$ (note that we don't have any poles in the strip, so the integral is unchanged), and writing $r = e^{v(u)}$ (where $v(u)$ is a function to be chosen later), we have
+
+$$
+\begin{align*}
+f_j(r) &= \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} dt \\
+&= \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} E_\lambda(\lambda(T + iu)) P_j(T + iu)  r^{i\lambda(T + iu)} \lambda \mathrm{d}T \\
+&= \frac{\lambda E_\lambda(i\lambda u)}{2\pi} r^{-(1 + u)\lambda} \int_{\mathbb{R}} \left(\frac{E_\lambda(\lambda(T+iu))}{E_\lambda(i\lambda u)} r^{i\lambda T}\right) P_j(T + iu) \mathrm{d}T \\
+&= \frac{\lambda E_\lambda(i\lambda u)}{2\pi} r^{-(1 + u)\lambda} \int_{\mathbb{R}} e^{\mathcal{L}_u(T)} P_j(T + iu) \mathrm{d}T,
+\end{align*}
+$$
+
+where $\mathcal{L}\_u(T)$ is defined as
+
+$$
+\mathcal{L}_u(T) = \log\frac{E_\lambda(\lambda(T+iu))}{E_\lambda(i\lambda u)} + i\lambda T v(u).
+$$
+
+Now, we will *define* $v(u)$ so that $\mathcal{L}\_u(T)$ has a critical point at $T = 0$, i.e. $\mathcal{L}\_u'(0) = 0$. One can explicitly compute $\mathcal{L}\_u'(T)$ and set $T = 0$ to get
+
+$$
+v(u) = -\frac{1}{2}\log \pi + \frac{1}{2} \psi\left(\frac{\lambda(1+u)}{2}\right) + \int_0^\infty w(a) a \sinh(ua) \mathrm{d}a.
+$$
+
+$$
+V(u) = v'(u) = \frac{\lambda}{4} \psi^{(1)}\left(\frac{\lambda(1+u)}{2}\right) + \int_0^\infty w(a) a^2 \cosh(ua) \mathrm{d}a.
+$$
+
+
+$$
+D_u(T) = -\Re \mathcal{L}_u(T) = D_\gamma(T) + \lambda \int_0^{\infty} w(a) \cosh(ua) (1 - \cos(aT)) \mathrm{d}a,
+$$
+
+we want $D_u(T) > 0$ for all $T \ne 0$ and $V(u) > 0$ for all $u > u_*$
+
+
+We will show that the last integral in the expression of $f_j$ is positive when $r \ge v(u_j)$, where
+
+$$
+u_+ = -1 + \frac{\log \lambda}{4\lambda}, \qquad u_- = u_0 = 1 + \frac{\epsilon}{4}.
+$$
+
+This will follow from the fact that, for large enough $d$, 
+
+$$
+\int_{\mathbb{R}} e^{\mathcal{L}_u(T)} P_j(T + iu) \mathrm{d}T = P_j(iu) \sqrt{\frac{2\pi}{\lambda V(u)}} (1 + o_\epsilon(1))
+$$
+
+uniformly for $u \ge u_j$ (for each $j$). Note that the integral is concentrated around $T = 0$.
+Then our choice of $P_j$ will ensure that $P_+(iu) > 0$ (resp. $P_0(iu) > 0$) for $u > u_+$ (resp. $u > u_0$), and $P_-(iu) < 0$ for $u > u_-$, which shows that $f_j(r)$ has the desired sign for $r \ge v(u_j)$.
+One also needs to show that $f_j(r) > 0$ for $0 \le r < v(u_j)$, which follows from:
+
+> **Lemma 4.10.** Fix $0 < \epsilon < \epsilon_0$, let $\lambda = d/2$ and $r_+ = e^{v(u_+)}$, and
+>
+> $$h_1' = \int_0^\infty w(a) a \sinh(a) \mathrm{d}a.$$
+>
+> As $d \to \infty$,
+>
+> $$ \sup_{0 \le r \le r_+} \left\lvert e^{\pi e^{2h_1'} r^2} \frac{f_+(r)}{f_+(0)} - 1 \right\rvert \longrightarrow 0. $$
+
+
+The lemma shows that $f_+$ is positive on $[0, r_+]$ for large enough $d$, hence for all $r$.
+If we set
+
+$$
+R_{\epsilon,d} = e^{v(u_0)} = \frac{1}{\sqrt{\pi}} \exp\left(\frac{1}{2} \psi\left(\frac{\lambda(1+u)}{2}\right)\right) \exp\left(\int_0^\infty w(a)a\sinh(u_0 a)\mathrm{d}A\right)
+$$
+
+then, using the asymptotic expansion of the digamma function
+
+$$
+\psi(z) = \log z - \frac{1}{2z} + O\left(\frac{1}{z^2}\right) \quad |z| \to \infty, \quad |\arg z| < \pi,
+$$
+
+we have
+
+$$
+\lim_{d \to\infty} \frac{R_{\epsilon,d}}{\sqrt d} = \sqrt{\frac{1+u_0}{4\pi}} \exp\left(\int_0^\infty w(a) a \sinh(u_0 a) \mathrm{d}a\right).
+$$
+
+
+
+### Choice of parameters
+
+
 We introduce "cutoffs" $0 < a\_0 < A < B$ and "amplitude" $Q > 0$, defined as
 
 $$
@@ -849,12 +956,14 @@ Define
 $$
 \begin{align*}
 b(a) &= 1 - 2\epsilon (1 + a) \\
-w(a) &= - \frac{b(a) e^{-2a}}{2a^2 \cosh a} \mathbf{1}_{[a_0, A]}(a) + \frac{Q}{\cosh a} \mathbf{1}_{[B, B+1]}(a), \\
+w_s(a) &= - \frac{b(a) e^{-2a}}{2a^2 \cosh a} \mathbf{1}_{[a_0, A]}(a) \\
+w_B(a) &= \frac{Q}{\cosh a} \mathbf{1}_{[B, B+1]}(a) \\
+w(a) &= w_s(a) + w_B(a), \\
 h_\epsilon(\zeta) &= \int_{0}^{\infty} w(a) (\cos(a\zeta) - 1) \mathrm{d}a.
 \end{align*}
 $$
 
-Note that $h\_\epsilon$ is even. We also introduce "saddle parameters"
+Note that $h\_\epsilon$ is even, and $b(a) > 0$ on $[a\_0, A]$ for sufficiently small $\epsilon$. We also introduce "saddle parameters"
 
 $$
 u_0 = 1 + \frac{\epsilon}{4}, \qquad U = 1 + \frac{\epsilon}{2}, \qquad C_0 = A + a_0^{-1}.
@@ -872,6 +981,7 @@ X_{f_j}(t) &= E_\lambda(t) P_j(t/\lambda), \\
 $$
 
 
+### Proofs of lemmas
 
 
 ## Sign uncertainty principle
@@ -904,4 +1014,6 @@ The lower-bound mechanism is now reasonably complete: Mellin transform, strip Po
 
 > Q. Does this proof give any further insight into these problems?
 >
-> A. `¯\_(ツ)_/¯`
+> A. `¯\_(ツ)_/¯`[^1]
+
+[^1]: Even if I have some new insights, I won't share them here since I don't want to be scooped again (especially by AI not controlled by myself) - two times are enough!
