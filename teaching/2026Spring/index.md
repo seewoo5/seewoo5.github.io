@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 2022 Fall - Math 53
+title: 2026 Spring - Math 53
 ---
 
 ![Multivatiable Calculus](./multcal.png)
