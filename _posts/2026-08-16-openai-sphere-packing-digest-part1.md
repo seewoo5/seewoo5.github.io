@@ -6,7 +6,7 @@ categories: jekyll update
 tags: math ai
 ---
 
-The goal of this post is to *digest* Astra's proof of the exact asymptotic rate of the optimal Cohn-Elkies linear program and the sharp sign-uncertainty constant.
+The goal of this post is to *digest* Astra's proof of the exact asymptotic rate of the optimal Cohn-Elkies linear program and the sign-uncertainty constant.
 The proof appears in Chapter 1 of [OpenAI's report](https://cdn.openai.com/pdf/ten-proofs-oai.pdf).
 The main results are the following:
 
@@ -22,11 +22,10 @@ The main results are the following:
 >
 > $$ \lim_{d \to \infty} \frac{\mathsf{A}_{+}(d)}{\sqrt{d}} = \lim_{d \to \infty} \frac{\mathsf{A}_{-}(d)}{\sqrt{d}} = \frac{1}{\pi}. $$
 
-Note that this blog post is also written with help of AI.
 
 ## Problem setting and background
 
-The sphere-packing problem is a well-studied problem in discrete geometry. It asks for the densest packing of congruent spheres in $\mathbb{R}^d$.
+The sphere-packing problem is a very well-known problem in discrete geometry. It asks for the densest packing of congruent spheres in $\mathbb{R}^d$.
 We denote the optimal packing density by $\Delta\_d$.
 $d = 1$ is trivial ($\Delta\_1 = 1$), while the $d = 2$ case was solved by L. Fejes Tóth in the 1940s: the hexagonal ($A\_2$-lattice) packing is optimal.
 The $d = 3$ case is the famous Kepler conjecture, which T. Hales proved in 1998 and the Flyspeck project later formally verified using HOL Light and Isabelle.
@@ -128,15 +127,17 @@ $$
 for all $d \equiv 0 \pmod{4}$ (prompted by OpenAI's announcement; see [the blog post](https://seewoo5.github.io/jekyll/update/2026/08/16/sign-uncertainty-principle.html)).
 
 
-## Initial thoughts before reading the report thoroughly
+## Thoughts on the report
 
-I guess the above introduction is enough to understand the main results (Theorem 1.1 and Theorem 1.2). Here are some initial thoughts after reading the report superficially:
+I guess the above introduction is enough to understand the main results (Theorem 1.1 and Theorem 1.2). Here are some thoughts after reading the report:
 
+- I will call it as "report", not "paper". I don't think this "report" did a good job in explaining the proof, which is a necessary condition for being a "paper" (for communication purpose). Also this is not peer-reviewed and (may or) may not be submitted to a journal - just exists on OpenAI's website.
 - Overall proof is not very long.
 - The proof relies heavily on complex analysis.
 - The result is **asymptotic**: it describes what happens as $d \to \infty$. In particular, it does not construct an optimal (or "magic") function in any specific dimension $d$, which is a much harder problem. The only dimensions in which the exact value of $\mathrm{LP}\_d$ is known are $d=1,8,24$. Moreover, knowing $\mathrm{LP}\_d$ exactly does not by itself solve sphere packing in dimension $d$, because the LP bound need not be tight; it is known to be suboptimal in several small dimensions (including 3, 4, 5, 6, 7 by [de Courcy-Ireland, Dostert, Viazovska](https://www.google.com/goto?url=CAEShQEB6zswFQBTboPFHBueMxcPsQ8ubiC_du8x_DPlTiUeYGRD3fxU3gzNLjoMrza4OjPSXwhZJhXqI1aEH-wU_nKdYE4i0p4qoODkcG6ICrlXiz9Ea3piatxDsQyKLuuRnzfTBi2Irq_eihZ7Gvd99HVyRDnK3nuN9Y3H2krMlNMVjMZXTAuI) and [Li](https://www.sciencedirect.com/science/article/abs/pii/S0001870824005590)) and is conjectured to be suboptimal in high dimensions as well.
 - No modular forms.
 - Personally, I found that understanding the proof of lower bounds is easier than understanding the proof of upper bounds.
+-  I still don't understand how the lower and upper bound exponents match, which seems to be the most interesting point.
 - The choices of variables and notation are quite inconsistent. This may sound minor, but minimizing the number of symbols and using them consistently matters a great deal for readability. Of course, many humans are also not good at this.
 - One of the core ideas, in my opinion, is to work with the Mellin transform. Such an idea first appears in Section 5 of the 2016 paper by [Cohn and Miller](https://arxiv.org/abs/1603.04759). The report cites CM16 for the radial formulation but does not discuss this particular precedent, which is also mentioned in the [recent *Scientific American* article](https://www.scientificamerican.com/article/openais-latest-math-breakthroughs-commit-research-misconduct-experts-say/).
 - OpenAI also shared [reasoning walkthroughs](https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf) for the proofs. For the sphere-packing problem, the walkthrough is a sketch or summary rather than Astra's chain of thought. I first tried reading it before the report, but it wasn't helpful. It would be more helpful if it was a detailed Chain of Thought.
@@ -844,7 +845,56 @@ $$
 g_G(r) = 2\pi^{\lambda/2} e^{-\pi r^2}, \qquad E_\lambda^G(t) = X_{g_G}(t) = \pi^{it/2} \Gamma\left(\frac{\lambda - it}{2}\right).
 $$
 
-Now, for each $j \in \lbrace -, +, 0 \rbrace$, we will choose polynomials $P_j$ and a *perturbation* $h$ so that
+Now, for each $j \in \lbrace -, +, 0 \rbrace$, we will choose polynomials $P_j$ and set
+
+$$
+X_{g_j}(t) = E_\lambda^G(t) P_j(t/\lambda), \qquad g_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{g_j}(t) r^{it} dt.
+$$
+
+The Fourier symmetry of $g_j$ (i.e. $\widehat{g}\_+ = g\_-$, $\widehat{g}\_0 = g\_0$) corresponds to
+
+$$
+P_-
+$$
+
+$$
+\begin{align*}
+P_+(\zeta) &= 1 + \zeta^2 + \beta + i\zeta(1+\zeta^2) \\
+P_-(\zeta) &= 1 + \zeta^2 + \beta - i\zeta(1+\zeta^2) \\
+P_0(\zeta) &= -(1 + \zeta^2)
+\end{align*}
+$$
+
+with $\beta > 0$, and set
+
+$$
+X_{g_j}(t) = E_\lambda^G(t) P_j(t/\lambda).
+$$
+
+Then the corresponding $g_j$'s (so here we are defining the Mellin transforms $M\_{g\_j}$ first) are given by
+
+$$
+\begin{align*}
+g_+(r) &= g_G(r) \left[\beta + \frac{8\pi r^2}{\lambda^2}(\pi^2 r^4 - (2\lambda + 3) \pi r^2 + (\lambda + 1)^2)\right] \\
+g_-(r) &= g_G(r) \left[\beta + \frac{8\pi r^2}{\lambda^2}(- \pi^2 r^4 + (\lambda + 3) \pi r^2 - (\lambda + 1))\right] \\
+g_0(r) &= g_G(r) \frac{4\pi r^2(\pi r^2 - \lambda - 1)}{\lambda^2}
+\end{align*}
+$$
+
+Which all have a form of (Gaussian) $\times$ (polynomial). These functions give upper bounds for $\mathsf{A}\_{\pm}(d)$ and $\mathrm{LP}_d$; for example, $g_0$ gives
+
+$$
+\mathsf{A}_+(d) \le \sqrt{\frac{\lambda + 1}{\pi}} = \sqrt{\frac{d+2}{2\pi}},
+$$
+
+which is the same as the upper bound obtained in Bourgain-Clozel-Kahane.
+$g_+$ and $g = g_+ - g_-$ gives upper bounds for $\Delta_d$ and $\mathsf{A}_-(d)$, respectively.
+Most of the prevous works on the upper bounds considered only the Gaussian $\times$ polynomial functions, where one can try to optimize the polynomial part for fixed $d$ (using Laguerre basis); see Cohn-Gonçalves for numerical results in low dimensions.
+Also, it was shown in Cohn-Dong-Gonçalves that such class of functions cannot pass the limit $\sqrt{d/(2\pi)}$ with degree of polynomial sublinear in $d$.
+<!-- ADD PUBLISHED JOURNAL REFERENCE LINKS TO THE TWO PAPERS ABOVE -->
+
+To make the last sign change radius smaller, we will *perturb* the functions.
+More precisely, we will perturb the Mellin transforms $X_{g_j}$, by choosing a function $h = h_\epsilon$ which will depend on a small parameter $\epsilon > 0$, and set
 
 $$
 X_{f_j}(t) = E_\lambda^G(t) P_j(t/\lambda) e^{\lambda h(t/\lambda)}, \quad f_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} dt.
@@ -1007,8 +1057,7 @@ See [Part 2]({% post_url 2026-08-16-openai-sphere-packing-digest-part2 %}).
 ## Conclusion
 
 I spend almost a week to read whole report and also some part of Lean code.
-After reading, I still don't understand how the lower and upper bound exponents match, which seems to be the most interesting point.
-But also, I'm fairly sure that this proof *cannot* be used to construct *optimal* Cohn-Elkies function on any specific dimension, because of its heavily approximate nature.
+
 
 
 > Q. Does this proof give any further insight into these problems?
