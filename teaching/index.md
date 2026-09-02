@@ -6,6 +6,10 @@ title: Teaching
 
 [Thoughts on teaching](./TS_260808.pdf) / [More thoughts on teaching](https://seewoo5.github.io/jekyll/update/2023/10/03/how-to-teach.html)
 
+#### Teaching at EPFL
+
+* [2026 Fall - Algèbre I - structures fondamentales](2026Fall/index)
+
 #### Teaching at UC Berkeley
 
 * [2026 Spring - Math 53 (Multivariable Calculus)](2026Spring/index)
