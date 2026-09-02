@@ -836,7 +836,7 @@ The second and third bullets give the upper bounds for $\mathsf A\_-(d)$ and $\m
 
 
 In the proof, one construct the Mellin transforms of the functions $f\_-$, $f\_+$, and $f\_0$, then invert them to obtain the functions themselves.
-The ansatz is based on the perturbation of Mellin transform of Gaussian.
+The ansatz is based on perturbations of Mellin transform of Gaussian.
 
 We start with Gaussian and its Mellin transform:
 
@@ -924,7 +924,7 @@ $$
 R_{\epsilon,d} = e^{v(u_0)} = \frac{1}{\sqrt{\pi}} \exp\left(\frac{1}{2} \psi\left(\frac{\lambda(1+u)}{2}\right)\right) \exp\left(\int_0^\infty w(a)a\sinh(u_0 a)\mathrm{d}A\right)
 $$
 
-then, using the asymptotic expansion of the digamma function
+then $f_+(r), f_0(r) > 0$ and $f_-(r) < 0$ when $r \ge R_{\epsilon, d}$. By the asymptotic expansion of the digamma function
 
 $$
 \psi(z) = \log z - \frac{1}{2z} + O\left(\frac{1}{z^2}\right) \quad |z| \to \infty, \quad |\arg z| < \pi,
@@ -936,6 +936,7 @@ $$
 \lim_{d \to\infty} \frac{R_{\epsilon,d}}{\sqrt d} = \sqrt{\frac{1+u_0}{4\pi}} \exp\left(\int_0^\infty w(a) a \sinh(u_0 a) \mathrm{d}a\right).
 $$
 
+Since we want to minimize the radius $R_{\epsilon,d}$, we want $w(a)$ to be as small as possible
 
 
 ### Choice of parameters
@@ -1003,14 +1004,12 @@ How faithfully does it reflect the report?
 See [Part 2]({% post_url 2026-08-16-openai-sphere-packing-digest-part2 %}).
 
 
-
-## Extra comments
-
-- The paper defines the same term more than once. This is not a serious issue, but it makes an already notation-heavy argument harder to follow.
-
 ## Conclusion
 
-The lower-bound mechanism is now reasonably complete: Mellin transform, strip Poisson estimate, the $1/\pi$ threshold, and Fourier inversion. A full digestion of the upper construction remains future work.
+I spend almost a week to read whole report and also some part of Lean code.
+After reading, I still don't understand how the lower and upper bound exponents match, which seems to be the most interesting point.
+But also, I'm fairly sure that this proof *cannot* be used to construct *optimal* Cohn-Elkies function on any specific dimension, because of its heavily approximate nature.
+
 
 > Q. Does this proof give any further insight into these problems?
 >
