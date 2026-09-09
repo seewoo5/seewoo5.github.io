@@ -1,6 +1,6 @@
 ---
 layout: posts
-title:  "Understanding Astra's result on the high-dimensional sphere-packing problem — Part 1: Digestion"
+title:  "Understanding Astra's result on the high-dimensional sphere packing — Part 1: Digestion"
 date:   2026-08-27
 categories: jekyll update
 tags: math ai
@@ -21,6 +21,10 @@ The main results are the following:
 > **Theorem 1.2.**
 >
 > $$ \lim_{d \to \infty} \frac{\mathsf{A}_{+}(d)}{\sqrt{d}} = \lim_{d \to \infty} \frac{\mathsf{A}_{-}(d)}{\sqrt{d}} = \frac{1}{\pi}. $$
+
+I mostly focused on figuring out intuitions for the proof, and making it more readable.
+Some of the statements of theorems and lemmas are rephrased for clarity.
+Some proofs are expanded with more details, while some proofs are shortened if they are not important compared to the main ideas.
 
 
 ## Problem setting and background
@@ -131,16 +135,16 @@ for all $d \equiv 0 \pmod{4}$ (prompted by OpenAI's announcement; see [the blog 
 
 I guess the above introduction is enough to understand the main results (Theorem 1.1 and Theorem 1.2). Here are some thoughts after reading the report:
 
-- I will call it as "report", not "paper". I don't think this "report" did a good job in explaining the proof, which is a necessary condition for being a "paper" (for communication purpose). Also this is not peer-reviewed and (may or) may not be submitted to a journal - just exists on OpenAI's website.
 - Overall proof is not very long.
 - The proof relies heavily on complex analysis.
 - The result is **asymptotic**: it describes what happens as $d \to \infty$. In particular, it does not construct an optimal (or "magic") function in any specific dimension $d$, which is a much harder problem. The only dimensions in which the exact value of $\mathrm{LP}\_d$ is known are $d=1,8,24$. Moreover, knowing $\mathrm{LP}\_d$ exactly does not by itself solve sphere packing in dimension $d$, because the LP bound need not be tight; it is known to be suboptimal in several small dimensions (including 3, 4, 5, 6, 7 by [de Courcy-Ireland, Dostert, Viazovska](https://www.google.com/goto?url=CAEShQEB6zswFQBTboPFHBueMxcPsQ8ubiC_du8x_DPlTiUeYGRD3fxU3gzNLjoMrza4OjPSXwhZJhXqI1aEH-wU_nKdYE4i0p4qoODkcG6ICrlXiz9Ea3piatxDsQyKLuuRnzfTBi2Irq_eihZ7Gvd99HVyRDnK3nuN9Y3H2krMlNMVjMZXTAuI) and [Li](https://www.sciencedirect.com/science/article/abs/pii/S0001870824005590)) and is conjectured to be suboptimal in high dimensions as well.
 - No modular forms.
-- Personally, I found that understanding the proof of lower bounds is easier than understanding the proof of upper bounds.
--  I still don't understand how the lower and upper bound exponents match, which seems to be the most interesting point.
-- The choices of variables and notation are quite inconsistent. This may sound minor, but minimizing the number of symbols and using them consistently matters a great deal for readability. Of course, many humans are also not good at this.
+- It is easier to understand the proof of lower bounds than the proof of upper bounds.
+- For lower bound, previously known approach is by [Cohn-Triantafillou](ADD LINK), where they developed dual formation of Cohn-Elkies bound in terms of measures and their Fourier transforms, and they constructed some examples via modular forms to show that Cohn-Elkies bound is not strong enough to show conjectural optimality of certain lattices in dimension 12 and 16. This method is also adapted in the above Li's paper to prove the same suboptimality in dimensions 3,4,5,6,7. Astra's proof of lower bound is different from this approach, and it is more elementary and analytic - it does not use Cohn and Triantafillou's dual formulation.
+- I still don't understand how the lower and upper bound exponents match, which seems to be the most interesting point.
+- The choices of variables and notation are quite inconsistent. This may sound minor, but minimizing the number of symbols and using them consistently matters a great deal for readability. Of course, many humans are also not good at this. Also there are some alien languages like "Mellin envelope".
 - One of the core ideas, in my opinion, is to work with the Mellin transform. Such an idea first appears in Section 5 of the 2016 paper by [Cohn and Miller](https://arxiv.org/abs/1603.04759). The report cites CM16 for the radial formulation but does not discuss this particular precedent, which is also mentioned in the [recent *Scientific American* article](https://www.scientificamerican.com/article/openais-latest-math-breakthroughs-commit-research-misconduct-experts-say/).
-- OpenAI also shared [reasoning walkthroughs](https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf) for the proofs. For the sphere-packing problem, the walkthrough is a sketch or summary rather than Astra's chain of thought. I first tried reading it before the report, but it wasn't helpful. It would be more helpful if it was a detailed Chain of Thought.
+- OpenAI also shared [reasoning walkthroughs](https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf) for the proofs. For the sphere-packing problem, the walkthrough is a sketch or summary rather than Astra's chain of thought. I first tried reading it before the report, but it wasn't helpful. It would be more helpful if it was a detailed *raw* Chain of Thought (although it seems becoming harder to track them these days...).
 
 
 ## Radial and Schwartz reductions
@@ -183,7 +187,7 @@ Then $g\_n \in \mathcal{S}\_{\mathrm{rad}}(\mathbb{R}^d;\mathbb{R})$, $\widehat{
 
 ## Mellin transform
 
-The key analytic move is to work with the Mellin transform of the radial profile $g$ rather than directly with $g$.
+The key analytic move is to work with the Mellin transform of the radialization $g$ rather than directly with $g$.
 As noted above, the idea first appears in CM16.
 
 We define
@@ -192,7 +196,7 @@ $$
 \lambda = \frac{d}{2}, \quad S_d = \frac{2\pi^{d/2}}{\Gamma(d/2)}
 $$
 
-where $S\_d$ is the surface area of the unit sphere in $\mathbb{R}^d$. Write $g(r)$ for the one-variable radial profile. For $\Re z>0$, define
+where $S\_d$ is the surface area of the unit sphere in $\mathbb{R}^d$. Write $g(r)$ for the one-variable radialization. For $\Re z>0$, define
 
 $$
 M_g(z) = \int_0^{\infty} g(r) r^{z - 1} \mathrm{d}r
@@ -795,7 +799,7 @@ $$
 
 ## Upper bound
 
-To prove the upper bounds, one needs to construct *asymptotically optimal* functions. The report does not construct exact optimizers in every dimension, which would be much harder.
+To prove the upper bounds, one needs to construct *asymptotically optimal* functions. The report does not construct exact optimizers in any dimension, which is much harder.
 
 For each sufficiently small fixed $\epsilon>0$ and all sufficiently large $d$, Theorem 4.1 constructs radial Schwartz functions $f\_-$, $f\_+$, and $f\_0$, together with a radius $R\_{\epsilon,d}$, such that
 
@@ -854,8 +858,20 @@ $$
 The Fourier symmetry of $g_j$ (i.e. $\widehat{g}\_+ = g\_-$, $\widehat{g}\_0 = g\_0$) corresponds to
 
 $$
-P_-
+P_+(-\zeta) = P_-(\zeta), \qquad P_0(-\zeta) = P_0(\zeta),
 $$
+
+and also we want $P_j(x) = \overline{P_j(-x)}$ for $x \in \mathbb{R}$ to make $g_j$ real-valued. In other words, it should be of the form
+
+$$
+P_j(\zeta) = P_j^{\text{even}}(\zeta) + i P_j^{\text{odd}}(\zeta),
+$$
+
+for some real polynomials $P_j^{\text{even}}$ and $P_j^{\text{odd}}$.
+
+<!-- Explain perturbation here -->
+
+
 
 $$
 \begin{align*}
@@ -881,14 +897,16 @@ g_0(r) &= g_G(r) \frac{4\pi r^2(\pi r^2 - \lambda - 1)}{\lambda^2}
 \end{align*}
 $$
 
-Which all have a form of (Gaussian) $\times$ (polynomial). These functions give upper bounds for $\mathsf{A}\_{\pm}(d)$ and $\mathrm{LP}_d$; for example, $g_0$ gives
+which all have a form of (Gaussian) $\times$ (polynomial).
+Note that multiplying $t$ on $X_f(t)$ corresponds to applying the operator $-i\left(r \frac{\mathrm{d}}{\mathrm{d}r} + \lambda \right)$ on $f(r)$.
+These functions give upper bounds for $\mathsf{A}\_{\pm}(d)$ and $\mathrm{LP}_d$; for example, $g_0$ gives
 
 $$
 \mathsf{A}_+(d) \le \sqrt{\frac{\lambda + 1}{\pi}} = \sqrt{\frac{d+2}{2\pi}},
 $$
 
 which is the same as the upper bound obtained in Bourgain-Clozel-Kahane.
-$g_+$ and $g = g_+ - g_-$ gives upper bounds for $\Delta_d$ and $\mathsf{A}_-(d)$, respectively.
+$g_+$ and $g = g_+ - g_-$ gives upper bounds for $\Delta_d$ and $\mathsf{A}_-(d)$, respectively, with same asymptotic growth.
 Most of the prevous works on the upper bounds considered only the Gaussian $\times$ polynomial functions, where one can try to optimize the polynomial part for fixed $d$ (using Laguerre basis); see Cohn-Gonçalves for numerical results in low dimensions.
 Also, it was shown in Cohn-Dong-Gonçalves that such class of functions cannot pass the limit $\sqrt{d/(2\pi)}$ with degree of polynomial sublinear in $d$.
 <!-- ADD PUBLISHED JOURNAL REFERENCE LINKS TO THE TWO PAPERS ABOVE -->
@@ -897,7 +915,7 @@ To make the last sign change radius smaller, we will *perturb* the functions.
 More precisely, we will perturb the Mellin transforms $X_{g_j}$, by choosing a function $h = h_\epsilon$ which will depend on a small parameter $\epsilon > 0$, and set
 
 $$
-X_{f_j}(t) = E_\lambda^G(t) P_j(t/\lambda) e^{\lambda h(t/\lambda)}, \quad f_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} dt.
+X_{f_j}(t) = X_{g_j}(t) e^{\lambda h(t/\lambda)} = E_\lambda^G(t) P_j(t/\lambda) e^{\lambda h(t/\lambda)}, \quad f_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} dt.
 $$
 
 Here $h$ will have the form of
@@ -907,6 +925,11 @@ h(\zeta) = \int_0^\infty w(a) (\cos(a\zeta) - 1) \mathrm{d}a,
 $$
 
 where $w(a)$ is a signed density function to be chosen later.
+These $f_j$'s are still Schwartz functions with desired Fourier symmetry and values at the origin.
+
+> **Lemma 4.3.** $f_j$'s define real-valued Schwartz functions on $\mathbb{R}^d$ with $\widehat{f}\_+ = f_-$, $\widehat{f}\_0 = f_0$, and $f_-(0) = f_+(0) > 0$, $f_0(0) = 0$.
+
+
 After changing the contour from $\mathbb{R}$ to $\mathbb{R} + i u\lambda$ with change of variable $t = \lambda(T + iu)$ (note that we don't have any poles in the strip, so the integral is unchanged), and writing $r = e^{v(u)}$ (where $v(u)$ is a function to be chosen later), we have
 
 $$
@@ -948,13 +971,34 @@ $$
 u_+ = -1 + \frac{\log \lambda}{4\lambda}, \qquad u_- = u_0 = 1 + \frac{\epsilon}{4}.
 $$
 
-This will follow from the fact that, for large enough $d$, 
+
+The following lemma shows that the sign of the integral is determined by the sign of $P_j(iu)$, as $d \to \infty$.
+
+> **Lemma 4.8.** For $u > -1$, let
+>
+> $$ I_{\lambda, P}(u) = \int_{\mathbb{R}} e^{\mathcal{L}_u(T)} P(T + iu) \mathrm{dT} $$
+>
+> where $P \in \{P_-, P_+, P_0\}$. As $d \to \infty$,
+>
+> $$ I_{\lambda, P}(u) = P(iu) \sqrt{\frac{2\pi}{\lambda V(u)}} (1 + o_\epsilon(1)) $$
+>
+> uniformly for $u \ge -1 + 4\lambda / \log \lambda$ when $P = P_+$, and uniformly for $u \ge 1 + \epsilon/4$ when $P = P_-$ or $P = P_0$. More precisely,
+>
+> $$
+> \begin{align*}
+> \sup_{u \ge -1 + 4\lambda / \log \lambda} \left| \frac{\sqrt{\lambda V(u)}I_{\lambda, P_+}(u)}{\sqrt{2\pi} P_+(iu)} - 1 \right| &\longrightarrow 0, \\
+> \max_{j \in \{-, 0\}} \sup_{u \ge 1 + \epsilon/4} \left| \frac{\sqrt{\lambda V(u)}I_{\lambda, P_j}(u)}{\sqrt{2\pi} P_j(iu)} - 1 \right| &\longrightarrow 0.
+> \end{align*}
+> $$
+
+
+<!-- This will follow from the fact that, for large enough $d$, 
 
 $$
 \int_{\mathbb{R}} e^{\mathcal{L}_u(T)} P_j(T + iu) \mathrm{d}T = P_j(iu) \sqrt{\frac{2\pi}{\lambda V(u)}} (1 + o_\epsilon(1))
 $$
 
-uniformly for $u \ge u_j$ (for each $j$). Note that the integral is concentrated around $T = 0$.
+uniformly for $u \ge u_j$ (for each $j$). Note that the integral is concentrated around $T = 0$. -->
 Then our choice of $P_j$ will ensure that $P_+(iu) > 0$ (resp. $P_0(iu) > 0$) for $u > u_+$ (resp. $u > u_0$), and $P_-(iu) < 0$ for $u > u_-$, which shows that $f_j(r)$ has the desired sign for $r \ge v(u_j)$.
 One also needs to show that $f_j(r) > 0$ for $0 \le r < v(u_j)$, which follows from:
 
@@ -964,10 +1008,9 @@ One also needs to show that $f_j(r) > 0$ for $0 \le r < v(u_j)$, which follows f
 >
 > As $d \to \infty$,
 >
-> $$ \sup_{0 \le r \le r_+} \left\lvert e^{\pi e^{2h_1'} r^2} \frac{f_+(r)}{f_+(0)} - 1 \right\rvert \longrightarrow 0. $$
+> $$ \sup_{0 \le r \le r_+} \left\lvert e^{\pi r^2 e^{2h_1'}} \frac{f_+(r)}{f_+(0)} - 1 \right\rvert \longrightarrow 0. $$
 
-
-The lemma shows that $f_+$ is positive on $[0, r_+]$ for large enough $d$, hence for all $r$.
+It says that $f_+(r)$ is approximately a scaled Gaussian near $r = 0$ ($0 \le r \le r_\ast$), where the error is small enough to ensure that $f_+(r) > 0$ for $0 \le r \le r_\ast$ (note that $f_+(0) > 0$ by Lemma 4.3).
 If we set
 
 $$
@@ -1020,7 +1063,7 @@ $$
 u_0 = 1 + \frac{\epsilon}{4}, \qquad U = 1 + \frac{\epsilon}{2}, \qquad C_0 = A + a_0^{-1}.
 $$
 
-Then we can write down the Mellin transforms of the three functions $f\_-$, $f\_+$, and $f\_0$ in terms of the above parameters:
+<!-- Then we can write down the Mellin transforms of the three functions $f\_-$, $f\_+$, and $f\_0$ in terms of the above parameters:
 
 $$
 \begin{align*}
@@ -1029,10 +1072,277 @@ P_{\pm}(\zeta) &= 1 + \zeta^2 + \frac{\epsilon}{4} \pm i\zeta(1 + \zeta^2), \qua
 X_{f_j}(t) &= E_\lambda(t) P_j(t/\lambda), \\
 \quad f_j(r) &= \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} dt, \quad (j \in \{-, +, 0\})
 \end{align*}
-$$
+$$ -->
 
 
 ### Proofs of lemmas
+
+#### Lemma 4.2
+
+#### Lemma 4.3
+
+In the inverse Mellin transform
+
+$$
+f_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} \mathrm{d}t = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} \pi^{\frac{it}{2}} \Gamma\left(\frac{\lambda  - it}{2}\right) e^{\lambda h(t/\lambda)}P_j\left(\frac{t}{\lambda}\right) r^{it} \mathrm{d}t,
+$$
+
+the only possible pole of the integrand come from the gamma function, which are at
+
+$$
+\frac{\lambda - it}{2} = -n \Leftrightarrow t = -i(\lambda + 2n), \quad n \in \mathbb{Z}_{\ge 0}.
+$$
+
+In particular, all the poles have imaginary part $-\lambda < 0$.
+Also, by using the asymptotic formula of the gamma function, we have
+
+$$
+|X_{f_j}(s + i\tau)| \le C (1 + |s|)^{(\lambda + \tau - 1)/2 + 3} e^{-\pi|s|/4}
+$$
+
+for $C = C_{d,\tau,h} > 0$, hence it vanishes as $|s| \to \infty$.
+From this, one can deform the contour of integration from $\mathbb{R}$ to $\mathbb{R} + i\tau$ for any $\tau > 0$, and the integral becomes
+
+$$
+f_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(s + i\tau) r^{i(s + i\tau)} \mathrm{d}s = \frac{r^{-\lambda -\tau}}{2\pi} \int_{\mathbb{R}} X_{f_j}(s + i\tau) r^{is} \mathrm{d}s.
+$$
+
+Hence $\lvert f\_j(r) \rvert = O\_\tau(r^{-\lambda - \tau})$ for any $\tau > 0$ as $r \to \infty$, which shows that $f_j$ is rapidly decreasing. One can similarly check for the derivatives of $f_j$.
+
+For the values at the origin, we will shift the contour *downward* to $\mathbb{R} - i(\lambda + 1)$ (you can choose any value bewteen $\lambda$ and $\lambda + 2$ instead of $\lambda + 1$).
+Then we pick up the residue at $t = -i\lambda$, which is
+
+$$
+\mathrm{Res}_{t = -i\lambda} X_{f_j}(t) r^{it} = \pi^{\frac{\lambda}{2}} e^{\lambda h(-i)} P_j(-i)r^{\lambda} \cdot \mathrm{Res}_{t=-i\lambda} \Gamma\left(\frac{\lambda - it}{2}\right) = 2i\pi^{\frac{\lambda}{2}} e^{\lambda h(-i)} P_j(-i) r^{\lambda}.
+$$
+
+Hence we have
+
+$$
+\begin{align*}
+f_j(r) &= \frac{r^{-\lambda}}{2\pi} \left(-2\pi i \cdot 2i\pi^{\frac{\lambda}{2}} e^{\lambda h(-i)} P_j(-i) r^{\lambda} + r^{\lambda + 1}\int_{\mathbb{R}} X_{f_j}(s - i(\lambda + 1)) r^{is} \mathrm{d}s\right) \\
+&= 2 \pi^{\frac{\lambda}{2}} e^{\lambda h(-i)} P_j(-i) + \frac{r}{2\pi} \int_{\mathbb{R}} X_{f_j}(s - i(\lambda + 1)) r^{is} \mathrm{d}s.
+\end{align*}
+$$
+
+and the second term vanishes as $r \to 0$, thus
+
+$$
+f_j(0) = 2 \pi^{\frac{\lambda}{2}} e^{\lambda h(-i)} P_j(-i).
+$$
+
+In particular, we have $f_+(0) = f_-(0) = \beta > 0$ and $f_0(0) = 0$. $\square$
+
+
+#### Lemma 4.4 - 4.7
+
+Let $U = 1 + \epsilon / 2$, $\delta = u - 1$, and $\eta + 1 + u$.
+
+> **Lemma 4.4.** There are absolute constants $c, C > 0$ such that, for every $\lambda > 0$, $u > -1$ satisfying $\lambda(1 + u) \ge 1$, and $T \in \mathbb{R}$, we have
+>
+> $$ \left\lvert \mathcal{L}_u(T) + \frac{\lambda V(u)}{2} T^2 \right\rvert \le C \lambda M_3 |T|^3 $$
+>
+> Moreover,
+>
+> $$
+> \begin{align*}
+> \frac{1}{2\eta} &\le V_\gamma \le \frac{C}{\eta}, \\
+> \frac{1}{\lambda} \int_0^{\infty} a^3 \mu_{\lambda, \eta}(a) \mathrm{d} a \le \frac{C}{\eta^2}, \\
+> D_\gamma(T) &\ge c\lambda \min \left\lbrace \frac{T^2}{\eta}, |T| \right\rbrace, \qquad (T \in \mathbb{R}).
+> \end{align*}
+> $$
+
+> **Lemma 4.5.** There is $\epsilon_0 > 0$ and an absolute $c > 0$ such that, for every $0 < \epsilon < \epsilon_0$, there are constantes $C_\epsilon, \lambda_\epsilon > 0$ with the following property. For every $\lambda \ge \lambda_\epsilon$, every $u_* \le u \le U$,
+>
+> $$
+> \begin{align*}
+> \lambda |w_s(a)| \cosh(ua) &\le (1 - c\epsilon) \mu_{\lambda, \eta}(a), \qquad &(a_0 \le a \le A) \\
+> D_u(T) &\ge c\epsilon D_\gamma(T), \qquad &(T \in \mathbb{R}) \\
+> \frac{c\epsilon}{\eta} &\le V(u) \le \frac{C_\epsilon}{\eta}, \\
+> M_3 &\le \frac{C_\epsilon}{\eta^2}.
+> \end{align*}
+> $$
+>
+> Morever, $\lambda \eta \ge \log \lambda / 4$.
+
+> **Lemma 4.6.** There are absolute constants $c, C > 0$ and $\epsilon_0 > 0$ such that, for every $0 < \epsilon < \epsilon_0$, there are constants $\lambda_\epsilon, C_\epsilon, c_\epsilon > 0$ with the following property. For every $\lambda \ge \lambda_\epsilon$ and $u \ge U$, and every $T \in \mathbb{R}$, one has
+>
+> $$
+> \begin{align*}
+> D_s(T) &\le C \lambda C_0 e^{\delta A} \min \{T^2, 1\}, \\
+> D_B(T) &\ge c\lambda Q e^{\delta B} \min \{T^2, 1\}.
+> \end{align*}
+> $$
+>
+> Consequently,
+>
+> $$
+> \begin{align*}
+> D_s(T) &\le C \rho_\epsilon D_B(T), \\
+> D_u(T) &\ge D_\gamma(T) + cD_B(T), \\
+> cV_B &\le V(u) \le CV_B.
+> \end{align*}
+> $$
+>
+> The shell variance and third moments obey
+>
+> $$
+> \begin{align*}
+> c B^2 Q e^{\delta B} &\le V_B \le (B+1)^2 Q e^{\delta(B+1)}, \\
+> \int_{a_0}^{A} |w_s(a)| a^3 \cosh(ua) \mathrm{d}a &\le CA\rho_\epsilon V_B, \\
+> \int_{B}^{B+1} w_B(a) a^3 \cosh(ua) \mathrm{d}a &\le (B+1) V_B.
+> \end{align*}
+> $$
+>
+> In particular,
+>
+> $$ M_3 \le C_\epsilon V(u), \qquad V(u) \ge c_\epsilon > 0 \quad (u \ge U). $$
+
+
+> **Lemma 4.7.** (Estimates for $D_u(T)$) There is $\epsilon_0 > 0$ and an absolute $c > 0$ such that, for every $0 < \epsilon < epsilon_0$, there are constants $c_\epsilon, \lambda_\epsilon > 0$ with the following property. For every $\lambda \ge \lambda_\epsilon$ and $u \ge U$, set $\eta = 1 + u$ and $\delta = u - 1$. Then
+>
+> $$
+> \begin{align*}
+> D_u(T) &\ge c_\epsilon \lambda V(u) T^2, \qquad &(|T| \le T_0) \\
+> D_u(T) &\ge c_\epsilon \lambda Q e^{\delta B}, \qquad &(T_0 \le |T| \le \eta) \\
+> D_u(T) &\ge c \lambda |T| + c_\epsilon \lambda Q e^{\delta B}. \qquad &(|T| \ge \eta)
+> \end{align*}
+> $$
+
+<!-- #### Lemma 4.5
+
+#### Lemma 4.6
+
+#### Lemma 4.7 -->
+
+#### Lemma 4.8
+
+We will divide the integral into two parts: small $\lvert T\rvert$ and large $\lvert T\rvert$, where the first integral will dominate the second one.
+More precisely, we choose
+
+$$
+T_* = \frac{K}{\sqrt{\lambda V(u)}}
+$$
+
+where $K$, depending on $d$, will be chosen later so that $K \to \infty$ as $d \to \infty$.
+By Lemma 4.4, we have
+
+$$
+\mathcal{L}_u(T) = -\frac{\lambda V(u)}{2} T^2 + O(\lambda M_3 |T|^3)
+$$
+
+and the approximation becomes uniform if the interval shrinks and the cubic error term tends to zero:
+
+$$
+T_* = o_\epsilon(1), \qquad \frac{K^3 M_3}{\sqrt{\lambda} V(u)^{3/2}} = o_\epsilon(1).
+$$
+
+The polynomials $P \in \lbrace P_-, P_+, P_0\rbrace$ have fixed degrees and satisfy
+
+$$
+\frac{|P(T + iu)|}{|P(iu)|} \ll_\epsilon 1 + |T|^3, \qquad \frac{P(T + iu)}{P(iu)} = 1 + O_\epsilon(|T| + |T|^3)
+$$
+
+as $T \to 0$, so the integral over $[-T_\ast, T_\ast]$ can be approximated by
+
+$$
+\begin{align*}
+\int_{|T| \le T_*} e^{\mathcal{L}_u(T)} P(T + iu) \mathrm{d}T &= \int_{|x| \le K} e^{\mathcal{L}_u(x/\sqrt{\lambda V(u)})} P\left(\frac{x}{\sqrt{\lambda V(u)}} + iu\right) \frac{\mathrm{d}x}{\sqrt{\lambda V(u)}} \\
+&\approx \int_{|x| \le K} e^{-\frac{\lambda V(u)}{2} \frac{x^2}{\lambda V(u)}} P(iu) \frac{\mathrm{d}x}{\sqrt{\lambda V(u)}} \\
+&= P(iu) \sqrt{\frac{2\pi}{\lambda V(u)}} (1 + o_\epsilon(1)).
+\end{align*}
+$$
+
+where we use dominated convergence theorem to make the approximation precise.
+
+It remains to show that the integral over $\lvert T\rvert > T_*$ becomes negligible as $d \to \infty$, i.e. $o\_\epsilon(\lvert P(iu) \rvert / \sqrt{\lambda V(u)})$.
+This follows from the estimates proved in Lemma 4.4, 4.5, 4.6, and 4.7.
+You may understand that the parameters are chosen to make this part work. $\square$
+<!-- ADD MORE DETAILS LATER IF NEEDED -->
+
+
+#### Lemma 4.10
+
+We want to show that $f_+(r)$ is close to the scaled Gaussian $f_+(0) e^{-y}$ for $y = \pi r^2 e^{2h_1'}$ near $r = 0$, so is positive for small $r$.
+The idea is the following: we shift the contour of integration downward from $\mathbb{R}$ to $\mathbb{R} - i(\lambda + 2p)$ for $p = N + 1/2$, where $N$ is a large (but not too large) integer.
+Then we can write $f_+(r) / f_+(0)$ as a sum of residues at the poles in the strip, plus an integral over the shifted contour.
+The sum will approximate the Taylor expansion of $e^{-y}$, and the integral will be small enough to be negligible.
+
+There are $(N+1)$ poles in the strip, at $t = -i(\lambda + 2n)$ for $n = 0, 1, \ldots, N$, and we will pick up the residues at these poles.
+By applying the residue theorem to $f_+(r) / f_+(0)$, we have
+
+$$
+\begin{align*}
+    \frac{f_+(r)}{f_+(0)} &= \frac{r^{-\lambda}}{2\pi^{\lambda/2} e^{\lambda h(-i)}P_+(-i)} \int_{\mathbb{R}} X_{f_+}(t) r^{it} \mathrm{d}t \\
+    &= \frac{r^{-\lambda}}{2\pi^{\lambda/2} e^{\lambda h(-i)}P_+(-i)} \left[-2\pi i \sum_{n=0}^{N} \mathrm{Res}_{t = -i(\lambda + 2n)} (X_{f_+}(t) r^{it}) + \int_{\mathbb{R} - i(\lambda + 2N + 1)} X_{f_+}(t) r^{it} \mathrm{d}t\right] \\
+    &= \sum_{n=0}^{N} \frac{(-y)^n}{n!} A_{\lambda, n} + \mathcal{R}_{\lambda}(r),
+\end{align*}
+$$
+
+The residues can be computed as follows:
+
+$$
+\begin{align*}
+\mathrm{Res}_{t = -i(\lambda + 2n)} (X_{f_+}(t) r^{it}) &= \pi^{\frac{\lambda}{2} +n} e^{\lambda h(-i(1 + 2n/\lambda))} P_+(-i(1 + 2n/\lambda)) r^{\lambda + 2n} \cdot \mathrm{Res}_{t=-i(\lambda + 2n)} \Gamma\left(\frac{\lambda - it}{2}\right) \\
+&= 2i \cdot \frac{(-1)^n}{n!} \pi^{\frac{\lambda}{2} + n} e^{\lambda h(-i(1 + 2n/\lambda))} P_+(-i(1 + 2n/\lambda)) r^{\lambda + 2n}.
+\end{align*}
+$$
+
+Hence, we can write
+
+$$
+\begin{align*}
+    \frac{f_+(r)}{f_+(0)} &= \sum_{n=0}^{N} \frac{(-y)^n}{n!} A_{\lambda, n} + \mathcal{R}_{\lambda}(r),
+\end{align*}
+$$
+
+where
+
+$$
+\begin{align*}
+A_{\lambda, n} &= e^{\lambda [h(i(1 + 2n/\lambda)) - h(i)] - 2n h_1'} \frac{P_+(-i(1 + 2n/\lambda))}{P_+(-i)}, \\
+\mathcal{R}_{\lambda}(r) &= \frac{\pi^{\frac{\lambda}{2} + p}}{2\pi f_+(0)} \int_{\mathbb{R}} \pi^{\frac{is}{2}} \Gamma\left(-p - \frac{is}{2}\right) e^{\lambda h(s/\lambda - i(1 + 2p/\lambda))} P_+\left(\frac{s}{\lambda} - i\left(1+\frac{2p}{\lambda}\right)\right) r^{is} \mathrm{d}s
+\end{align*}
+$$
+
+Now, we want $N$ to be "small" compared to $d$, so that $N = o(\lambda)$, and then we can approximate $h$ and $P_+$ by their Taylor expansions to get
+
+$$
+\lambda \left[ h\left(i\left(1 + \frac{2n}{\lambda}\right)\right) - h(i)\right] = 2nh_1' + O_\epsilon\left(\frac{n^2}{\lambda}\right), \qquad \frac{P_+(-i(1 + 2n/\lambda))}{P_+(-i)} = 1 + O_\epsilon\left(\frac{n}{\lambda}\right).
+$$
+
+which gives
+
+$$
+|A_{\lambda, n} - 1| = O_{\epsilon} \left(\frac{n(1+n)}{\lambda}\right)
+$$
+
+for $0 \le n \le N$, so the summation is close to the degree $N$ Taylor expansion of $e^{-y}$.
+
+The remainder term $\mathcal{R}_\lambda(r)$ can be bounded by using the reflection formula for the gamma function and the definition of $h$. By considering these estimates and the tail of the Taylor expansion of $e^{-y}$, we get the main estimate and two tail estimates:
+
+$$
+\begin{align*}
+    e^y \sum_{n=1}^{N} \frac{y^n}{n!} |A_{\lambda, n} - 1| &\ll_\epsilon \frac{(1+y)^2 e^{2y}}{\lambda}, \\
+    e^y |\mathcal{R}_{\lambda}(r)| &\ll_\epsilon \frac{e^y y^p}{\Gamma(1+p)}, \\
+    e^y \sum_{n > N} \frac{y^n}{n!} &\ll_\epsilon \frac{e^y y^{N+1}}{(N+1)!}.
+\end{align*}
+$$
+
+If we choose $N = \lceil \log \lambda \rceil$, the asymptotic formula for the digamma function $\psi$ gives
+
+$$
+y \le y(r_\ast) = \frac{1}{8} \log \lambda + O_\epsilon(1),
+$$
+
+and such a choice also makes all the error terms negligible, which implies
+
+$$
+\frac{f_+(r)}{f_+(0)} = e^{-y} \left(1 + O_\epsilon\left(\frac{(\log \lambda)^2}{\lambda^{3/4}}\right)\right)
+$$
+
+uniformly on $0 \le r \le r_\ast$. $\square$
+
 
 
 ## Sign uncertainty principle
