@@ -1,6 +1,6 @@
 ---
 layout: posts
-title:  "Understanding Astra's result on the high-dimensional sphere packing — Part 1: Digestion"
+title:  "Understanding Astra's result on high-dimensional sphere packing — Part 1: Digestion"
 date:   2026-08-27
 categories: jekyll update
 tags: math ai
@@ -22,9 +22,9 @@ The main results are the following:
 >
 > $$ \lim_{d \to \infty} \frac{\mathsf{A}_{+}(d)}{\sqrt{d}} = \lim_{d \to \infty} \frac{\mathsf{A}_{-}(d)}{\sqrt{d}} = \frac{1}{\pi}. $$
 
-I mostly focused on figuring out intuitions for the proof, and making it more readable.
-Some of the statements of theorems and lemmas are rephrased for clarity.
-Some proofs are expanded with more details, while some proofs are shortened if they are not important compared to the main ideas.
+I have mostly focused on understanding the intuition behind the proof and making it more readable.
+Some theorem and lemma statements are rephrased for clarity.
+Some proofs are expanded with more details, while others are shortened when they are less central to the main ideas.
 
 
 ## Problem setting and background
@@ -47,7 +47,7 @@ as $d \to \infty$.
 
 The exponent $0.5990\ldots$ remained unchanged, but the multiplicative constant was sharpened: [Cohn and Zhao (2014)](https://projecteuclid.org/journals/duke-mathematical-journal/volume-163/issue-10/Sphere-packing-bounds-via-spherical-codes/10.1215/00127094-2738857.full) obtained an average multiplier $1/1.2635\ldots$, [Sardari and Zargar (2024)](https://link.springer.com/article/10.1007/s00208-023-02738-z) obtained $0.4325+51/d$ for $d\ge2000$, and [Zargar (2024)](https://arxiv.org/abs/2407.10697) later obtained $(1+o(1))/e$. These refinements improve the prefactor, not the exponential rate $2^{-(0.5990\ldots+o(1))d}$.
 
-The sphere packing problem is closely related to the following optimization problem.
+The sphere-packing problem is closely related to the following optimization problem.
 We work with "nice" $\mathbb{R}$-valued functions $f$ on $\mathbb{R}^d$, mostly Schwartz functions (denoted by $\mathcal{S}(\mathbb{R}^d;\mathbb{R})$), with Fourier transform
 
 $$
@@ -67,13 +67,13 @@ $$
 \mathcal{A}_d := \{f \in \mathcal{S}(\mathbb{R}^d;\mathbb{R}) : \widehat{f}(0) > 0, \quad \widehat{f} \ge 0 \,\,\text{on}\,\,\mathbb{R}^d, \quad f(x) \le 0 \,\,\text{on}\,\, |x| \ge 1\}
 $$
 
-and the associated linear programming bound
+and the associated linear-programming bound
 
 $$
 \mathrm{LP}_d := \frac{v_d}{2^d} \inf_{f \in \mathcal{A}_d} \frac{f(0)}{\widehat{f}(0)}.
 $$
 
-The Cohn-Elkies theorem states that the optimal sphere packing density $\Delta\_d$ in $\mathbb{R}^d$ is bounded by
+The Cohn-Elkies theorem states that the optimal sphere-packing density $\Delta\_d$ in $\mathbb{R}^d$ is bounded by
 
 $$
 \Delta_d \le \mathrm{LP}_d.
@@ -81,7 +81,8 @@ $$
 
 The proof is based on the Poisson summation formula and is conceptually simple, but the resulting bound is remarkably powerful.
 It was used to prove the optimality of the $E\_8$ and Leech lattices in dimensions 8 and 24: Viazovska and then Cohn, Kumar, Miller, Radchenko, and Viazovska constructed "magic" functions $f$ in $\mathcal{A}\_d$ using modular forms that match the densities of those lattice packings.
-It is also known that the LP bound is *suboptimal* in dimensions $3,4,5,6,7$ (see [Li25](https://www.sciencedirect.com/science/article/pii/S0001870824005590)).
+It is also known that the LP bound is *suboptimal* in dimensions $3,4,5$, by [Li](https://www.sciencedirect.com/science/article/pii/S0001870824005590), and in dimension $6$, by [de Courcy-Ireland, Dostert, and Viazovska](https://doi.org/10.1090/mcom/3959).
+<!-- In dimension $7$, Li proves that it exceeds the best-known packing density, which does not by itself prove that it exceeds the true optimum. -->
 
 [Cohn and Zhao](https://projecteuclid.org/journals/duke-mathematical-journal/volume-163/issue-10/Sphere-packing-bounds-via-spherical-codes/10.1215/00127094-2738857.pdf) showed that the LP bound is at least as strong as the KL bound.
 Later, [Afkhami-Jeddi, Cohn, Hartman, de Laat, and Tajdini](https://link.springer.com/article/10.1007/JHEP12(2020)066) conjectured that the optimal asymptotic exponent obtainable from the LP bound is better than the KL exponent. More precisely, Conjecture 3.2 in their paper predicts that
@@ -114,18 +115,18 @@ $$
 \mathsf A_{\varsigma}(d):=\inf\{r(g):0\ne g\in L^1(\mathbb R^d;\mathbb R),\ \widehat g=\varsigma g,\ g(0)=0\}.
 $$
 
-It was known that $\mathsf A\_+(d)$ and $\mathsf A\_-(d)$ are both finite, and has a growth rate of $c\sqrt{d}$.
+It was known that $\mathsf A\_+(d)$ and $\mathsf A\_-(d)$ are both finite and grow on the order of $\sqrt{d}$.
 Prior to Astra's work, the best uniform lower and upper bounds were
 
 $$
-\sqrt{\frac{d}{4\pi}} \le \mathrm{A}_+(d) \le \sqrt{\frac{d+2}{2\pi}}.
+\sqrt{\frac{d}{4\pi}} \le \mathsf A_+(d) \le \sqrt{\frac{d+2}{2\pi}}\qquad(d\ge5).
 $$
 
-The upper bound is by Bourgain-Clozel-Kahane, and the lower bound (for $d \ge 5$) is by [Edwin](https://arxiv.org/abs/2505.15994).
-Recently, I proved [new upper bound](https://arxiv.org/abs/2608.15415)
+The upper bound, valid for all $d\ge1$, is by [Bourgain-Clozel-Kahane](https://doi.org/10.5802/aif.2552), and the lower bound for $d\ge5$ is by [Edwin](https://arxiv.org/abs/2505.15994).
+Recently, I proved the [new upper bound](https://arxiv.org/abs/2608.15415)
 
 $$
-\mathrm{A}_+(d) \le \sqrt{2\left\lfloor \frac{d}{16}\right\rfloor + 2}
+\mathsf A_+(d) \le \sqrt{2\left\lfloor \frac{d}{16}\right\rfloor + 2}
 $$
 
 for all $d \equiv 0 \pmod{4}$ (prompted by OpenAI's announcement; see [the blog post](https://seewoo5.github.io/jekyll/update/2026/08/16/sign-uncertainty-principle.html)).
@@ -135,16 +136,19 @@ for all $d \equiv 0 \pmod{4}$ (prompted by OpenAI's announcement; see [the blog 
 
 I guess the above introduction is enough to understand the main results (Theorem 1.1 and Theorem 1.2). Here are some thoughts after reading the report:
 
-- Overall proof is not very long.
+- The overall proof is not very long.
 - The proof relies heavily on complex analysis.
-- The result is **asymptotic**: it describes what happens as $d \to \infty$. In particular, it does not construct an optimal (or "magic") function in any specific dimension $d$, which is a much harder problem. The only dimensions in which the exact value of $\mathrm{LP}\_d$ is known are $d=1,8,24$. Moreover, knowing $\mathrm{LP}\_d$ exactly does not by itself solve sphere packing in dimension $d$, because the LP bound need not be tight; it is known to be suboptimal in several small dimensions (including 3, 4, 5, 6, 7 by [de Courcy-Ireland, Dostert, Viazovska](https://www.google.com/goto?url=CAEShQEB6zswFQBTboPFHBueMxcPsQ8ubiC_du8x_DPlTiUeYGRD3fxU3gzNLjoMrza4OjPSXwhZJhXqI1aEH-wU_nKdYE4i0p4qoODkcG6ICrlXiz9Ea3piatxDsQyKLuuRnzfTBi2Irq_eihZ7Gvd99HVyRDnK3nuN9Y3H2krMlNMVjMZXTAuI) and [Li](https://www.sciencedirect.com/science/article/abs/pii/S0001870824005590)) and is conjectured to be suboptimal in high dimensions as well.
+- The result is **asymptotic**: it describes what happens as $d\to\infty$. In particular, it does not construct an optimal (or "magic") function in any specific dimension $d$, which is a much harder problem. The only dimensions in which the exact value of $\mathrm{LP}_d$ is known are $d=1,8,24$. Moreover, knowing $\mathrm{LP}_d$ exactly does not by itself solve sphere packing in dimension $d$, because the LP bound need not be tight: the results cited above prove this in dimensions 3–6, and it is conjectured to be suboptimal in high dimensions as well.
 - No modular forms.
-- It is easier to understand the proof of lower bounds than the proof of upper bounds.
-- For lower bound, previously known approach is by [Cohn-Triantafillou](ADD LINK), where they developed dual formation of Cohn-Elkies bound in terms of measures and their Fourier transforms, and they constructed some examples via modular forms to show that Cohn-Elkies bound is not strong enough to show conjectural optimality of certain lattices in dimension 12 and 16. This method is also adapted in the above Li's paper to prove the same suboptimality in dimensions 3,4,5,6,7. Astra's proof of lower bound is different from this approach, and it is more elementary and analytic - it does not use Cohn and Triantafillou's dual formulation.
+- It is easier to understand the proof of the lower bounds than the proof of the upper bounds.
+- A previous approach to lower bounds is due to [Cohn-Triantafillou](https://doi.org/10.1090/mcom/3662). They used a dual formulation of the Cohn-Elkies bound in terms of measures and their Fourier transforms, and constructed examples using modular forms.
+<!-- Combined with known packing upper bounds, their results prove that the LP bound is suboptimal in dimensions 12 and 16. Li obtained further dual bounds using a discrete reduction, proving suboptimality in dimensions 3, 4, and 5.  -->
+Astra's proof takes a different, more elementary and analytic approach: it does not use this dual formulation.
 - I still don't understand how the lower and upper bound exponents match, which seems to be the most interesting point.
-- The choices of variables and notation are quite inconsistent. This may sound minor, but minimizing the number of symbols and using them consistently matters a great deal for readability. Of course, many humans are also not good at this. Also there are some alien languages like "Mellin envelope".
+- The proof has weird choices of words, such as "Mellin envelope". I like the proof, but I didn't enjoy reading the proof.
 - One of the core ideas, in my opinion, is to work with the Mellin transform. Such an idea first appears in Section 5 of the 2016 paper by [Cohn and Miller](https://arxiv.org/abs/1603.04759). The report cites CM16 for the radial formulation but does not discuss this particular precedent, which is also mentioned in the [recent *Scientific American* article](https://www.scientificamerican.com/article/openais-latest-math-breakthroughs-commit-research-misconduct-experts-say/).
-- OpenAI also shared [reasoning walkthroughs](https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf) for the proofs. For the sphere-packing problem, the walkthrough is a sketch or summary rather than Astra's chain of thought. I first tried reading it before the report, but it wasn't helpful. It would be more helpful if it was a detailed *raw* Chain of Thought (although it seems becoming harder to track them these days...).
+- OpenAI also shared [reasoning walkthroughs](https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf) for the proofs. For the sphere-packing problem, the walkthrough is a sketch or summary rather than Astra's chain of thought. I first tried reading it before the report, but it wasn't helpful. It would be more helpful if it were a detailed, *raw* chain of thought (although these seem to be becoming harder to track these days...).
+- I also wonder if Astra would be able to find this proof if the conjectured asymptotic exponent were not given. I think it still might be possible, assuming that it does the numerical experiments itself. However, I do think that knowing about the conjectured exponent $\sqrt{e/2\pi}$ and the uncertainty principle constant $1/\pi$ might be helpful a lot.
 
 
 ## Radial and Schwartz reductions
@@ -187,7 +191,7 @@ Then $g\_n \in \mathcal{S}\_{\mathrm{rad}}(\mathbb{R}^d;\mathbb{R})$, $\widehat{
 
 ## Mellin transform
 
-The key analytic move is to work with the Mellin transform of the radialization $g$ rather than directly with $g$.
+The key idea is to work with the Mellin transform of the radialization $g$ rather than directly with $g$.
 As noted above, the idea first appears in CM16.
 
 We define
@@ -199,7 +203,7 @@ $$
 where $S\_d$ is the surface area of the unit sphere in $\mathbb{R}^d$. Write $g(r)$ for the one-variable radialization. For $\Re z>0$, define
 
 $$
-M_g(z) = \int_0^{\infty} g(r) r^{z - 1} \mathrm{d}r
+M_g(z) = \int_0^{\infty} g(r) r^{z - 1} \mathrm{d}r.
 $$
 
 On the critical line, set $X\_g(t)=M\_g(\lambda-it)$. Mellin inversion then gives, for $r>0$,
@@ -208,7 +212,7 @@ $$
 g(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_g(t) r^{it} \,\mathrm dt.
 $$
 
-The important property of the Mellin transform is that it converts the Fourier transform into simple functional equations:
+The important property of the Mellin transform is that it converts the Fourier transform into simple functional equations. For $0<\Re z<d$, and on the critical line $z=\lambda-it$ with $t\in\mathbb{R}$, respectively, these are
 
 $$
 M_{\widehat{g}}(z) = \pi^{\lambda - z} \frac{\Gamma(\frac{z}{2})}{\Gamma(\frac{d - z}{2})} M_g(d - z), \quad X_{\widehat{g}}(t) = m_\lambda(t) X_g(-t), \quad m_\lambda(t) = \pi^{it} \frac{\Gamma(\frac{\lambda - it}{2})}{\Gamma(\frac{\lambda + it}{2})}.
@@ -216,7 +220,7 @@ $$
 
 ## Lower bound
 
-To prove lower bounds for $\mathrm{LP}\_d$ and $\mathsf A\_{\pm}(d)$, one needs a lower bound for the eventual-nonnegativity radius of *every* relevant function.
+To prove (asymptotic) lower bounds for $\mathrm{LP}\_d$ and $\mathsf A\_{\pm}(d)$, one needs a lower bound for the eventual-nonnegativity radius of *every* relevant function.
 The key input is the following proposition.
 
 > **Proposition 3.1.** For every $0 < c < 1/\pi$, there exist $C\_c, \gamma\_c > 0$ and $d\_0(c) \in \mathbb{N}$ such that, for every $d \ge d\_0(c)$, every $\varsigma \in \lbrace-1,+1\rbrace$, and every nonzero $g \in \mathcal{S}\_{\mathrm{rad}}(\mathbb{R}^d;\mathbb{R})$ satisfying $\widehat{g} = \varsigma g$ and $g(0) = 0$, one has
@@ -230,10 +234,10 @@ The following proposition is a direct corollary of Proposition 3.1.
 
 > **Proposition 3.7.** For every $0 < c < 1/\pi$, there exists $d\_0(c) \in \mathbb{N}$ such that, for every $d \ge d\_0(c)$ and every $\varsigma \in \lbrace-1,+1\rbrace$, no nonzero $g \in L^1(\mathbb{R}^d;\mathbb{R})$ satisfies $\widehat{g} = \varsigma g$, $g(0) = 0$, and $g(x) \ge 0$ for $\lVert x\rVert \ge c \sqrt{d}$. Here $g$ denotes its continuous Fourier-inversion representative.
 
-> *Proof of Proposition 3.7.* If $g$ is a radial Schwartz function, then $\int g = \widehat{g}(0) = \varsigma g(0) = 0$, and hence its negative part $g\_- = \max\lbrace-g,0\rbrace$ has integral $\lVert g\rVert\_1/2$. If $g(x) \ge 0$ for $\lVert x\rVert \ge c \sqrt{d}$, then $g\_-$ vanishes outside the ball of radius $c \sqrt{d}$ and
+<!-- > *Proof of Proposition 3.7.* If $g$ is a radial Schwartz function, then $\int g = \widehat{g}(0) = \varsigma g(0) = 0$, and hence its negative part $g\_- = \max\lbrace-g,0\rbrace$ has integral $\lVert g\rVert\_1/2$. If $g(x) \ge 0$ for $\lVert x\rVert \ge c \sqrt{d}$, then $g\_-$ vanishes outside the ball of radius $c \sqrt{d}$ and
 >
 > $$
-> \frac{\|g\|_{1}}{2} = \int_{\mathbb{R}^d} g_{-}(x) \mathrm{d}x = \int_{|x| < c \sqrt{d}} g_{-}(x) \mathrm{d}x \le \int_{|x| < c \sqrt{d}} |g(x)| \mathrm{d}x \le C_c e^{-\gamma_c d} \|g\|_1
+> \frac{\|g\|_{1}}{2} = \int_{\mathbb{R}^d} g_{-}(x) \mathrm{d}x = \int_{|x| < c \sqrt{d}} g_{-}(x) \mathrm{d}x \le \int_{|x| < c \sqrt{d}} |g(x)| \mathrm{d}x \le C_c e^{-\gamma_c d} \|g\|_1.
 > $$
 >
 > This is a contradiction for large $d$.
@@ -245,7 +249,7 @@ The following proposition is a direct corollary of Proposition 3.1.
 > \le \int_{|x|<R}|h_n(x)|\,\mathrm{d}x+\|h_n-h\|_1.
 > $$
 >
-> Proposition 3.1 bounds the first term. Letting $n\to\infty$ gives $\lVert h\rVert\_1/2\le C\_ce^{-\gamma\_cd}\lVert h\rVert\_1$, again a contradiction for large $d$. $\square$
+> Proposition 3.1 bounds the first term. Letting $n\to\infty$ gives $\lVert h\rVert\_1/2\le C\_ce^{-\gamma\_cd}\lVert h\rVert\_1$, again a contradiction for large $d$. $\square$ -->
 
 
 How is this used to prove the lower bounds for $\mathrm{LP}\_d$ and $\mathsf A\_{\pm}(d)$?
@@ -397,7 +401,7 @@ This follows by applying an upper-half-plane Poisson principle to $\log\lvert Z\
 >
 > $$h_\lambda(y) = -\log|y| + O_\lambda(1),\quad y \to 0.$$
 >
-> To deal with this, truncate $h\_\lambda$. As mentioned above, $Z$ is bounded on the closed strip, hence on the lower boundary. So we can truncate $h\_\lambda$ to a bounded function $h\_{\lambda,D}$:
+> To deal with this, truncate $h\_\lambda$. As mentioned above, $Z$ is bounded on the closed strip, hence on the lower boundary. So we can truncate $h\_\lambda$ to a function $h\_{\lambda,D}$ that is bounded above:
 >
 > $$
 > h_{\lambda,D}(y)=
@@ -450,7 +454,7 @@ This follows by applying an upper-half-plane Poisson principle to $\log\lvert Z\
 > \end{align*}
 > $$
 >
-> The exponential decay of $P\_\sigma$ dominates both the locally integrable logarithmic singularity at zero and the logarithmic growth at infinity. Dominated convergence therefore permits $D\to\infty$ and proves $\log\lvert Z(s+i\sigma\lambda)\rvert\le H\_\sigma(s)$. $\square$
+> The logarithmic singularity of $h\_\lambda$ is locally integrable, and the exponential decay of $P\_\sigma$ controls its logarithmic growth in absolute value at infinity. Dominated convergence therefore permits $D\to\infty$ and proves $\log\lvert Z(s+i\sigma\lambda)\rvert\le H\_\sigma(s)$. $\square$
 
 Next, we bound $H\_\sigma$.
 Lemma 3.3 and Lemma 3.4 are intermediate steps toward Lemma 3.5.
@@ -495,7 +499,7 @@ The following elementary lemma is used in the last step of the proof and is wort
 >
 > $$f(x) = \int_0^\infty \mathbf{1}_{\{f(x) > a\}} \,\mathrm{d}a, \qquad g(x) = \int_0^\infty \mathbf{1}_{\{g(x) > b\}} \,\mathrm{d}b.$$
 >
-> Let
+> Up to endpoints, write
 >
 > $$(-r_a, r_a) = \{f(x) > a\}, \qquad (-R_b, R_b) = \{g(x) > b\}.$$
 >
@@ -503,7 +507,7 @@ The following elementary lemma is used in the last step of the proof and is wort
 >
 > $$(f * g)(x) = \int_{0}^{\infty} \int_{0}^{\infty} \lvert(-R_b, R_b) \cap (x - r_a, x + r_a)\rvert \,\mathrm{d}a\,\mathrm{d}b,$$
 >
-> and the intersection is maximized at $x=0$. $\square$
+> and the length of the intersection is maximized at $x=0$. $\square$
 
 > *Proof of Lemma 3.3.* The difference between $h\_\lambda(\lambda T)$ and
 >
@@ -519,12 +523,12 @@ The following elementary lemma is used in the last step of the proof and is wort
 >
 > Multiplying this bound by the Poisson kernel $P\_\sigma(T)$ gives an integrable function. Near $T=0$, the bound is $O(1+\log(1/\lvert T\rvert))$, which is locally integrable; for $\lvert T\rvert>1$, it is $O(T^{-2})$, while $P\_\sigma$ decays exponentially. Its integral is therefore bounded by a constant depending only on $\sigma$, not on $n$, $c$, or $g$.
 >
-> When $d=2n+1$ is odd, so that $\lambda=n+\tfrac12$, use, with $b=\lambda T/2$,
+> When $d=2n+1$ is odd, so that $\lambda=n+\tfrac12$, set $b=\lambda T/2$ and use the identity
 >
 > $$
 >\frac{\lvert\Gamma(-ib)\rvert^2}
 > {\lvert\Gamma(\frac12+ib)\rvert^2}
-> =\frac{\coth(\pi\lvert b\rvert)}{\lvert b\rvert},
+> =\frac{\coth(\pi\lvert b\rvert)}{\lvert b\rvert}
 > $$
 >
 > to obtain
@@ -580,7 +584,7 @@ The following elementary lemma is used in the last step of the proof and is wort
 >
 > $$h_\lambda'(y) = \frac{\Im\psi(\lambda + iy/2) - \Im\psi(iy/2)}{2} < 0,$$
 >
-> for $y > 0$, where $\psi = \Gamma'/\Gamma$ is the digamma function and $\Im\psi(a + bi) = \sum\_{k \ge 0} \frac{b}{(k+a)^2 + b^2}$.
+> for $y > 0$, where $\psi = \Gamma^{\prime}/\Gamma$ is the digamma function and $\Im\psi(a + bi) = \sum\_{k \ge 0} \frac{b}{(k+a)^2 + b^2}$.
 > Consider $q\_{\lambda, N}(u) := \max\lbrace h\_\lambda(\lambda u) + N, 0\rbrace$. It is nonnegative, even, and decreasing on $(0,\infty)$; it is also integrable because the singularity at zero is logarithmic and $h\_\lambda(y)\to-\infty$ as $|y|\to\infty$. The convolution lemma therefore gives
 >
 > $$
@@ -598,7 +602,7 @@ The following elementary lemma is used in the last step of the proof and is wort
 >
 > The exponential decay of $P\_\sigma$ controls the logarithmic behavior of $h\_\lambda$, so passing to the limit $N \to \infty$ gives $H\_\sigma(s) \le H\_\sigma(0)$. $\square$
 
-Now, our goal is to bound $H\_\sigma(0)$ from above, which will be exponentially small in $\lambda=d/2$.
+Now, our goal is to show that $H\_\sigma(0)\le-\gamma\lambda$ for some $\gamma>0$, making $e^{H\_\sigma(0)}$ exponentially small in $\lambda=d/2$.
 First, we compute the limit of $J\_\sigma$ as $\sigma \to 1^{-}$.
 
 > **Lemma 3.4.** For $J\_\sigma$ defined in Lemma 3.3,
@@ -633,16 +637,16 @@ $$
 >
 > Define
 >
-> $$ I(x)=\int_{\mathbb R}p(u)\log\sqrt{x^2+u^2}\,\mathrm{d}u, $$
+> $$ I(x)=\int_{\mathbb R}p(u)\log\sqrt{x^2+u^2}\,\mathrm{d}u. $$
 >
-> then the Laplace representation of $x/(x^2+u^2)$ gives, for $x>0$,
+> Then the Laplace representation of $x/(x^2+u^2)$ gives, for $x>0$,
 >
 > $$
 > I'(x)=\int_0^\infty e^{-xt}\frac{t}{\sinh t}\,\mathrm{d}t
 > =\frac12\psi'\left(\frac{x+1}{2}\right),
 > $$
 >
-> where $\psi = \Gamma'/\Gamma$ is the digamma function. Matching the constants from the common asymptotic $\log x+o(1)$ as $x\to\infty$ therefore gives
+> where $\psi = \Gamma^{\prime}/\Gamma$ is the digamma function. Matching the constants from the common asymptotic $\log x+o(1)$ as $x\to\infty$ therefore gives
 >
 > $$
 > \int_{\mathbb R}p(u)\log\sqrt{x^2+u^2}\,\mathrm{d}u
@@ -660,7 +664,7 @@ $$
 
 From now on, fix $\sigma=\sigma(c)$ such that $\log(2\pi c^2)+J_\sigma<0$.
 
-> **Lemma 3.5.** There exist $\gamma\_c, C\_c', B\_c > 0$, depending only on $c$, such that, for every sufficiently large $d$,
+> **Lemma 3.5.** There exist $\gamma\_c, C\_c^{\prime}, B\_c > 0$, depending only on $c$, such that, for every sufficiently large $d$,
 >
 > $$
 > H_\sigma(s) \le -\gamma_c \lambda \quad(s \in \mathbb{R}), \quad \int_{\mathbb{R}} |Z(s + i\sigma\lambda)| \mathrm{d}s \le C_c' \lambda e^{-\gamma_c \lambda}.
@@ -685,7 +689,7 @@ From now on, fix $\sigma=\sigma(c)$ such that $\log(2\pi c^2)+J_\sigma<0$.
 > \le-\gamma_c\lambda,
 > $$
 >
-> for every $s$ once $d$ is sufficiently large. The resulting constant majorant $e^{H_\sigma(s)}\le e^{-\gamma_c\lambda}$ is not integrable over $\mathbb{R}$, so we also need a tail estimate (i.e. bound for large $\lvert s \rvert$). The gamma-function identities give, for $U\ne0$,
+> for every $s$ once $d$ is sufficiently large. The resulting constant upper bound $e^{-\gamma_c\lambda}$ for $e^{H_\sigma(s)}$ is not integrable over $\mathbb{R}$, so we also need a tail estimate (i.e., a bound for large $\lvert s \rvert$). The gamma-function identities give, for $U\ne0$,
 >
 > $$
 > h_\lambda(\lambda U)
@@ -728,9 +732,9 @@ From now on, fix $\sigma=\sigma(c)$ such that $\log(2\pi c^2)+J_\sigma<0$.
 > \qquad(|S|\ge B_c),
 > $$
 >
-> which yields the stated logarithmic tail bound after enlarging $C_c'$ if necessary.
+> which yields the stated logarithmic tail bound after enlarging $C_c^{\prime}$ if necessary.
 >
-> Finally, choose $B>\max\lbrace B_c,C_c'\rbrace$ and put $q=M_\sigma\lambda/2>1$. On the central interval, uniform negativity gives
+> Finally, choose $B>\max\lbrace B_c,C_c^{\prime}\rbrace$ and put $q=M_\sigma\lambda/2>1$. On the central interval, uniform negativity gives
 >
 > $$
 > \int_{|s|\le B\lambda}e^{H_\sigma(s)}\,\mathrm{d}s
@@ -787,7 +791,7 @@ Using Lemma 3.5, we can bound the integral of $\lvert \varphi\rvert$ over $(-\in
 > \end{align*}
 > $$
 >
-> where $\lambda=d/2$. Absorbing $C\_c'/(2\pi(1-\sigma))$ and the factor $1/2$ in the exponent into new positive constants gives the asserted form $C\_ce^{-\gamma\_cd}$. $\square$
+> where $\lambda=d/2$. Absorbing $C\_c^{\prime}/(2\pi(1-\sigma))$ and the factor $1/2$ in the exponent into new positive constants gives the asserted form $C\_ce^{-\gamma\_cd}$. $\square$
 
 Proposition 3.1 now follows from the identity
 
@@ -795,6 +799,27 @@ $$
 \int_{-\infty}^{0}|\varphi(v)|\,\mathrm dv
 =\frac1{\|g\|_1}\int_{|x|<c\sqrt d}|g(x)|\,\mathrm dx.
 $$
+
+### Proof of intermediate results
+
+#### Proposition 3.7
+
+If $g$ is a radial Schwartz function, then $\int g = \widehat{g}(0) = \varsigma g(0) = 0$, and hence its negative part $g\_- = \max\lbrace-g,0\rbrace$ has integral $\lVert g\rVert\_1/2$. If $g(x) \ge 0$ for $\lVert x\rVert \ge c \sqrt{d}$, then $g\_-$ vanishes outside the ball of radius $c \sqrt{d}$ and
+
+$$
+\frac{\|g\|_{1}}{2} = \int_{\mathbb{R}^d} g_{-}(x) \mathrm{d}x = \int_{|x| < c \sqrt{d}} g_{-}(x) \mathrm{d}x \le \int_{|x| < c \sqrt{d}} |g(x)| \mathrm{d}x \le C_c e^{-\gamma_c d} \|g\|_1.
+$$
+
+This is a contradiction for large $d$.
+
+For a general $g\in L^1$, first replace it by its radialization $h=\mathcal Rg$. This radialization is still nonzero: if $h=0$, then outside a ball the function $g$ is nonnegative with zero spherical average, so it vanishes there. The identity $\widehat g=\varsigma g$ and Fourier analyticity would then force $g=0$. Let $h\_n$ be the radial Schwartz eigenfunctions constructed above. They need not remain nonnegative outside the ball, but $(h\_n)_-\le \lvert h\_n-h \rvert$ outside the ball. Thus, with $R=c\sqrt d$,
+
+$$
+\frac12\|h_n\|_1=\int_{\mathbb R^d}(h_n(x))_-\,\mathrm{d}x
+\le \int_{|x|<R}|h_n(x)|\,\mathrm{d}x+\|h_n-h\|_1.
+$$
+
+Proposition 3.1 bounds the first term. Letting $n\to\infty$ gives $\lVert h\rVert\_1/2\le C\_ce^{-\gamma\_cd}\lVert h\rVert\_1$, again a contradiction for large $d$. $\square$
 
 
 ## Upper bound
@@ -824,15 +849,17 @@ This is Theorem 4.1 of the report.
 The three upper bounds use the construction in different ways:
 
 - For the LP bound, set $F(x)=f\_-(R\_{\epsilon,d}x)$. Then $F\in\mathcal A\_d$ and $F(0)/\widehat F(0)=R\_{\epsilon,d}^d$.
-- For $\mathsf A\_-(d)$, use $g\_-=f\_+-f\_-$, which satisfies $\widehat g\_-=-g\_-$ and $g\_-(0)=0$.
+- For $\mathsf A\_-(d)$, use $f_+-f_-$, which is an anti-self-Fourier function vanishing at the origin.
 - For $\mathsf A\_+(d)$, use the self-Fourier function $f\_0$.
 
-The first bullet closes the LP upper bound, because
+The first bullet gives the LP upper bound: first let $d\to\infty$ and then $\epsilon\to0^+$ in
 
 $$
 \mathrm{LP}_d^{1/d}
-\le \frac{v_d^{1/d}}{2}R_{\epsilon,d}
-\longrightarrow \sqrt{\frac{e}{2\pi}}.
+\le \frac{v_d^{1/d}}{2}R_{\epsilon,d},
+\qquad
+\lim_{\epsilon\to0^+}\lim_{d\to\infty}\frac{v_d^{1/d}}{2}R_{\epsilon,d}
+=\sqrt{\frac{e}{2\pi}}.
 $$
 
 The second and third bullets give the upper bounds for $\mathsf A\_-(d)$ and $\mathsf A\_+(d)$, respectively (which match the lower bounds from Proposition 3.7).
@@ -841,10 +868,10 @@ The second and third bullets give the upper bounds for $\mathsf A\_-(d)$ and $\m
 ### Ansatz for the construction
 
 
-In the proof, one construct the Mellin transforms of the functions $f\_-$, $f\_+$, and $f\_0$, then invert them to obtain the functions themselves.
-The ansatz is based on perturbations of Mellin transform of Gaussian.
+In the proof, we construct the Mellin transforms of the functions $f\_-$, $f\_+$, and $f\_0$, then invert them to obtain the functions themselves.
+The ansatz is based on perturbations of the Mellin transform of a Gaussian.
 
-We start with Gaussian and its Mellin transform:
+We start with a Gaussian and its Mellin transform:
 
 $$
 g_G(r) = 2\pi^{\lambda/2} e^{-\pi r^2}, \qquad E_\lambda^G(t) = X_{g_G}(t) = \pi^{it/2} \Gamma\left(\frac{\lambda - it}{2}\right).
@@ -856,23 +883,23 @@ $$
 X_{g_j}(t) = E_\lambda^G(t) P_j(t/\lambda), \qquad g_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{g_j}(t) r^{it} dt.
 $$
 
-Then we will *perturb* $X_{g_j}$ to obtain $X_{f_j}$ by multiplying $\exp (\lambda h(t/\lambda))$ and take Mellin inverse transform to get $f_j$:
+Then we will *perturb* $X_{g_j}$ to obtain $X_{f_j}$ by multiplying by $\exp (\lambda h(t/\lambda))$ and take the inverse Mellin transform to get $f_j$:
 
 $$
 X_{f_j}(t) = X_{g_j}(t) e^{\lambda h(t/\lambda)}, \qquad f_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} dt.
 $$
 
-Now the main task is to choose $P_j$ and $h$ so that the resulting $f_j$'s have the desired properties.
-Later, the polynomials $P_j$ will be chosen to control the signs of $f_j$'s, and the function $h$ will be chosen to make the last sign change radius smaller.
+Now the main task is to choose $P_j$ and $h$ so that the resulting functions $f_j$ have the desired properties.
+The polynomials $P_j$ will control their signs, and the function $h$ will make the last-sign-change radius smaller.
 
 Let's first discuss the choice of $P_j$. We will ignore the perturbation $h$ for now.
 The Fourier symmetry of $g_j$ (i.e. $\widehat{g}\_+ = g\_-$, $\widehat{g}\_0 = g\_0$) corresponds to
 
 $$
-P_+(-\zeta) = P_-(\zeta), \qquad P_0(-\zeta) = P_0(\zeta),
+P_+(-\zeta) = P_-(\zeta), \qquad P_0(-\zeta) = P_0(\zeta).
 $$
 
-and also we want $P_j(x) = \overline{P_j(-x)}$ for $x \in \mathbb{R}$ to make $g_j$ real-valued. In other words, it should be of the form
+We also want $P_j(x) = \overline{P_j(-x)}$ for $x \in \mathbb{R}$ to make $g_j$ real-valued. In other words, each polynomial should be of the form
 
 $$
 P_j(\zeta) = P_j^{\text{even}}(\zeta) + i P_j^{\text{odd}}(\zeta),
@@ -880,8 +907,8 @@ $$
 
 for some real polynomials $P_j^{\text{even}}$ and $P_j^{\text{odd}}$ that are even and odd, respectively.
 Furthermore, the values $P_j(-i)$ will determine the values of $g_j(0)$, so we want $P_+(-i) = P_-(-i) > 0$ and $P_0(-i) = 0$ (Lemma 4.3).
-At last, the sign of $P_j(iu)$ for some range of $u$ will determine the sign of $g_j(r)$; we want $P_-(iu) < 0 < P_0(iu)$ for $u$ slightly larger than 1, while $P_+(iu) > 0$ for $u$ slightly larger than $-1$ (Lemma 4.8).
-The simplest choice of polynomials that satisfy all these conditions is
+Finally, after adding the perturbation, the sign of $P_j(iu)$ will determine the sign of $f_j(r)$ over the relevant range of $u$; we want $P_-(iu) < 0 < P_0(iu)$ for $u$ slightly larger than 1, while $P_+(iu) > 0$ for $u$ slightly larger than $-1$ (Lemma 4.8).
+A simple choice of polynomials satisfying these conditions is
 
 $$
 \begin{align*}
@@ -891,61 +918,40 @@ P_0(\zeta) &= -(1 + \zeta^2)
 \end{align*}
 $$
 
-with $\beta > 0$, and set
-
-$$
-X_{g_j}(t) = E_\lambda^G(t) P_j(t/\lambda).
-$$
-
-Then the corresponding $g_j$'s (so here we are defining the Mellin transforms $M\_{g\_j}$ first) are given by
+with $\beta>0$, which we will later set to $\epsilon/4$.
+The corresponding functions $g_j$ are given by
 
 $$
 \begin{align*}
-g_+(r) &= g_G(r) \left[\beta + \frac{8\pi r^2}{\lambda^2}(\pi^2 r^4 - (2\lambda + 3) \pi r^2 + (\lambda + 1)^2)\right] \\
-g_-(r) &= g_G(r) \left[\beta + \frac{8\pi r^2}{\lambda^2}(- \pi^2 r^4 + (\lambda + 3) \pi r^2 - (\lambda + 1))\right] \\
+g_+(r) &= g_G(r) \left[\beta + \frac{8\pi r^2}{\lambda^3}(\pi^2 r^4 - (2\lambda + 3) \pi r^2 + (\lambda + 1)^2)\right] \\
+g_-(r) &= g_G(r) \left[\beta + \frac{8\pi r^2}{\lambda^3}(- \pi^2 r^4 + (\lambda + 3) \pi r^2 - (\lambda + 1))\right] \\
 g_0(r) &= g_G(r) \frac{4\pi r^2(\pi r^2 - \lambda - 1)}{\lambda^2}
 \end{align*}
 $$
 
-which all have a form of (Gaussian) $\times$ (polynomial).
-Note that multiplying $t$ on $X_f(t)$ corresponds to applying the operator $-i\left(r \frac{\mathrm{d}}{\mathrm{d}r} + \lambda \right)$ on $f(r)$.
-These functions give upper bounds for $\mathsf{A}\_{\pm}(d)$ and $\mathrm{LP}_d$; for example, $g_0$ gives
+All three have the form (Gaussian) $\times$ (polynomial).
+These formulas follow because multiplying $X_f(t)$ by $t$ corresponds to applying the operator $-i\left(r \frac{\mathrm{d}}{\mathrm{d}r} + \lambda \right)$ to $f(r)$.
+For example, $g_0$ gives the upper bound
 
 $$
 \mathsf{A}_+(d) \le \sqrt{\frac{\lambda + 1}{\pi}} = \sqrt{\frac{d+2}{2\pi}},
 $$
 
-which is the same as the upper bound obtained in Bourgain-Clozel-Kahane.
-$g_+$ and $g = g_+ - g_-$ gives upper bounds for $\Delta_d$ and $\mathsf{A}_-(d)$, respectively, with same asymptotic growth.
-Most of the prevous works on the upper bounds considered only the Gaussian $\times$ polynomial functions, where one can try to optimize the polynomial part for fixed $d$ (using Laguerre basis); see [Cohn-Gonçalves](ADD LINK) for numerical results in low dimensions.
-Also, it was shown in [Cohn-Dong-Gonçalves](ADD LINK) that such class of functions cannot pass the limit $\sqrt{d/(2\pi)}$ with degree of polynomial sublinear in $d$.
-<!-- ADD PUBLISHED JOURNAL REFERENCE LINKS TO THE TWO PAPERS ABOVE -->
+which is the upper bound of [Bourgain-Clozel-Kahane](https://doi.org/10.5802/aif.2552).
+For fixed $\beta>0$ and sufficiently large $d$, $g_+>0$, so $g_-$ can be rescaled to give an LP test function. The difference $g_+-g_-$ also gives an upper bound for $\mathsf{A}_-(d)$, with a last-sign-change radius asymptotic to $\sqrt{d/(2\pi)}$.
+Many numerical approaches use Gaussian $\times$ polynomial functions, optimizing the polynomial part for fixed $d$ in a Laguerre basis; see Section 4 of [Cohn-Gonçalves](https://link.springer.com/article/10.1007/s00222-019-00875-4) for numerical sign-uncertainty bounds.
+[Cohn-Dong-Gonçalves, Theorem 1.2](https://doi.org/10.1090/bproc/219) showed that, for either sign-uncertainty problem, this class of Fourier eigenfunctions cannot improve the leading constant in $\sqrt{d/(2\pi)}$ when the polynomial degree is sublinear in $d$.
 
-Now we are going to add perturbation to decrease the last sign change radius.
-In particular, we are going to multiply $X_{g_j}$ by $\exp(\lambda h(t/\lambda))$, where $h$ will be a function of the form
-<!-- More precisely, we will perturb the Mellin transforms $X_{g_j}$, by choosing a function $h = h_\epsilon$ which will depend on a small parameter $\epsilon > 0$, and set
+Now we multiply $X_{g_j}$ by the perturbation term $\exp(\lambda h(t/\lambda))$.
+We choose $h$ to be even and real-valued on the real and imaginary axes, preserving the Fourier and conjugate symmetries of the Mellin data.
+We also need growth bounds: being holomorphic alone is not enough to justify the contour shifts.
+The compactly supported weight constructed below makes $h$ entire and bounded on every fixed horizontal strip, which gives the following result.
 
-$$
-X_{f_j}(t) = X_{g_j}(t) e^{\lambda h(t/\lambda)} = E_\lambda^G(t) P_j(t/\lambda) e^{\lambda h(t/\lambda)}, \quad f_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} dt.
-$$ -->
+> **Lemma 4.3.** The functions $f_j$ extend to real-valued radial Schwartz functions on $\mathbb{R}^d$ with $\widehat{f}\_+ = f_-$, $\widehat{f}\_0 = f_0$, $f_-(0) = f_+(0) > 0$, and $f_0(0) = 0$.
 
-<!-- THE BELOW NEEDS GOOD EXPLANATION -->
+The proof is given below. In short, shifting the contour upward proves rapid decay at infinity, while shifting it downward past the gamma poles gives smoothness at the origin. The value at the origin comes from the first possible pole, $t=-i\lambda$, and is determined by $P_j(-i)$.
 
-<!-- Here $h$ will have the form of -->
-
-$$
-h(\zeta) = \int_0^\infty w(a) (\cos(a\zeta) - 1) \mathrm{d}a,
-$$
-
-for some $w(a)$.
-<!-- where $w(a)$ is a signed density function to be chosen later. -->
-These $f_j$'s are still Schwartz functions with desired Fourier symmetry and values at the origin.
-
-> **Lemma 4.3.** $f_j$'s define real-valued Schwartz functions on $\mathbb{R}^d$ with $\widehat{f}\_+ = f_-$, $\widehat{f}\_0 = f_0$, and $f_-(0) = f_+(0) > 0$, $f_0(0) = 0$.
-
-Proof can be found below. In short, the Scwartzness follows from moving the contour of integration upward (i.e. from $\Im z = 0$ to $\Im z = \tau$ for sufficiently large $\tau > 0$), while the values at the origin can be related to the "first pole" $t = -i\lambda$, which corresponds to the value $P_j(-i)$.
-
-After changing the contour from $\mathbb{R}$ to $\mathbb{R} + i u\lambda$ with change of variable $t = \lambda(T + iu)$ for $u > -1$ (note that we don't have any poles in the strip, so the integral is unchanged), and writing $r = e^{v(u)}$ (where $v(u)$ is a function to be chosen later), we have
+Shift the contour from $\mathbb{R}$ to $\mathbb{R}+iu\lambda$ and substitute $t=\lambda(T+iu)$, with $u>-1$. No poles lie between the two contours, so the integral is unchanged. Writing $r=e^{v(u)}$, where $v(u)$ will be chosen below, gives
 
 $$
 \begin{align*}
@@ -963,7 +969,7 @@ E_\lambda(t) = \pi^{\frac{it}{2}} \Gamma\left(\frac{\lambda - it}{2}\right) e^{\
 \mathcal{L}_u(T) = \log\frac{E_\lambda(\lambda(T+iu))}{E_\lambda(i\lambda u)} + i\lambda T v(u).
 $$
 
-Now, we *define* $v(u)$ so that $\mathcal{L}\_u(T)$ has a critical point at $T = 0$, i.e. $\mathcal{L}\_u'(0) = 0$. One can explicitly compute $\mathcal{L}\_u'(T)$ and set $T = 0$ to get
+Now, we *define* $v(u)$ so that $\mathcal{L}\_u(T)$ has a critical point at $T=0$, i.e. $\mathcal{L}\_u^{\prime}(0)=0$. One can explicitly compute $\mathcal{L}\_u^{\prime}(T)$ and set $T=0$ to get
 
 $$
 v(u) = -\frac{1}{2}\log \pi + \frac{1}{2} \psi\left(\frac{\lambda(1+u)}{2}\right) + ih'(iu),
@@ -975,7 +981,7 @@ $$
 \mathcal{L}_u(T) = \log \frac{\Gamma\left(\frac{\lambda(1+u)-i\lambda T}{2}\right)}{\Gamma\left(\frac{\lambda(1+u)}{2}\right)} + \frac{i\lambda T}{2} \psi\left(\frac{\lambda(1+u)}{2}\right) + \lambda (h(T+iu) - h(iu) - T h'(iu)).
 $$
 
-Then we can compute the second derivative of $\mathcal{L}\_u(T)$ at $T = 0$, to get
+Computing the second derivative of $\mathcal{L}\_u(T)$ at $T=0$ gives
 
 $$
 \mathcal{L}_u(T) = \frac{\mathcal{L}_u''(0)}{2} T^2 + O(T^3), \qquad \mathcal{L}_u''(0) = -\frac{\lambda^2}{4} \psi^{(1)}\left(\frac{\lambda(1+u)}{2}\right) + \lambda h''(iu) = -\lambda v'(u).
@@ -988,108 +994,293 @@ V(u) = v'(u) = \frac{\lambda}{4} \psi^{(1)}\left(\frac{\lambda(1+u)}{2}\right) -
 $$
 
 so that $\mathcal{L}_u(T) = -\lambda V(u) T^2/2 + O(T^3)$.
-
-
-
-
-<!-- $$
-v(u) = -\frac{1}{2}\log \pi + \frac{1}{2} \psi\left(\frac{\lambda(1+u)}{2}\right) + \int_0^\infty w(a) a \sinh(ua) \mathrm{d}a.
-$$ -->
-
-$$
-V(u) = v'(u) = \frac{\lambda}{4} \psi^{(1)}\left(\frac{\lambda(1+u)}{2}\right) + \int_0^\infty w(a) a^2 \cosh(ua) \mathrm{d}a.
-$$
-
-
-$$
-D_u(T) = -\Re \mathcal{L}_u(T) = D_\gamma(T) + \lambda \int_0^{\infty} w(a) \cosh(ua) (1 - \cos(aT)) \mathrm{d}a,
-$$
-
-we want $D_u(T) > 0$ for all $T \ne 0$ and $V(u) > 0$ for all $u > u_*$
-
-
-We will show that the integral factor in the last expression of $f_j$, namely
+Lemma 4.8 shows that the integral factor in the last expression of $f_j$, namely
 
 $$
 I_{\lambda, P_j}(u) = \int_{\mathbb{R}} e^{\mathcal{L}_u(T)} P_j(T + iu) \mathrm{d}T
 $$
 
-has the same sign as $P_j(iu)$ for sufficiently large $d$, for certain range of $u$ (depending on $j$).
-This will show that $f_j(r)$ has the desired sign for $r \ge v(u_j)$, where the threshold $u_j$ for $j \in \lbrace -, +, 0 \rbrace$ is defined as:
+has the same sign as $P_j(iu)$ for sufficiently large $d$, over a range of $u$ depending on $j$.
+Hence $P_j$ will control the sign of $f_j(r)$.
 
-$$
-u_+ = -1 + \frac{\log \lambda}{4\lambda}, \qquad u_- = u_0 = 1 + \frac{\epsilon}{4}.
-$$
-
-The following lemma makes this precise.
-
-> **Lemma 4.8.** For $u > -1$, let
+> **Lemma 4.8.** Let $u\_\ast = -1 + \frac{\log \lambda}{4\lambda}$ and $u_0 = 1 + \epsilon / 4$. For $u > -1$, let
 >
-> $$ I_{\lambda, P}(u) = \int_{\mathbb{R}} e^{\mathcal{L}_u(T)} P(T + iu) \mathrm{dT} $$
+> $$ I_{\lambda, P}(u) = \int_{\mathbb{R}} e^{\mathcal{L}_u(T)} P(T + iu) \mathrm{d}T $$
 >
-> where $P \in \{P_-, P_+, P_0\}$. As $d \to \infty$,
+> where $P \in \lbrace P_-, P_+, P_0\rbrace$. As $d \to \infty$,
 >
 > $$ I_{\lambda, P}(u) = P(iu) \sqrt{\frac{2\pi}{\lambda V(u)}} (1 + o_\epsilon(1)) $$
 >
-> uniformly for $u \ge -1 + \log \lambda / 4\lambda$ when $P = P_+$, and uniformly for $u \ge 1 + \epsilon/4$ when $P = P_-$ or $P = P_0$. More precisely,
+> uniformly for $u \ge u_\ast$ when $P = P_+$, and uniformly for $u \ge u_0$ when $P = P_-$ or $P = P_0$. More precisely,
 >
 > $$
 > \begin{align*}
-> \sup_{u \ge -1 + 4\lambda / \log \lambda} \left| \frac{\sqrt{\lambda V(u)}I_{\lambda, P_+}(u)}{\sqrt{2\pi} P_+(iu)} - 1 \right| &\longrightarrow 0, \\
+> \sup_{u \ge -1 + \frac{\log \lambda}{4\lambda}} \left| \frac{\sqrt{\lambda V(u)}I_{\lambda, P_+}(u)}{\sqrt{2\pi} P_+(iu)} - 1 \right| &\longrightarrow 0, \\
 > \max_{j \in \{-, 0\}} \sup_{u \ge 1 + \epsilon/4} \left| \frac{\sqrt{\lambda V(u)}I_{\lambda, P_j}(u)}{\sqrt{2\pi} P_j(iu)} - 1 \right| &\longrightarrow 0.
 > \end{align*}
 > $$
 
-See below for the proof.
-The main idea is to show that the integral is concentrated around $T = 0$ (the critical point of $\mathcal{L}\_u(T)$), where the parameters defining $h$ are carefully chosen so that the argument works.
-
-One also needs to show that $f_j(r) > 0$ for $0 \le r < v(u_j)$, which follows from:
-
-> **Lemma 4.10.** Fix $0 < \epsilon < \epsilon_0$, let $\lambda = d/2$ and $r_+ = e^{v(u_+)}$, and
->
-> $$h_1' = \int_0^\infty w(a) a \sinh(a) \mathrm{d}a.$$
->
-> As $d \to \infty$,
->
-> $$ \sup_{0 \le r \le r_+} \left\lvert e^{\pi r^2 e^{2h_1'}} \frac{f_+(r)}{f_+(0)} - 1 \right\rvert \longrightarrow 0. $$
-
-It says that $f_+(r)$ is approximately a scaled Gaussian near $r = 0$ ($0 \le r \le r_\ast$), where the error is small enough to ensure that $f_+(r) > 0$ for $0 \le r \le r_\ast$ (note that $f_+(0) > 0$ by Lemma 4.3).
-If we set
+Here is the main idea; a more detailed proof is given below.
+We choose $h$ so that the integral is concentrated around $T=0$, the critical point of $\mathcal{L}\_u(T)$.
+Write $\mathcal{L}\_u(T)$ as
 
 $$
-R_{\epsilon,d} = e^{v(u_0)} = \frac{1}{\sqrt{\pi}} \exp\left(\frac{1}{2} \psi\left(\frac{\lambda(1+u_0)}{2}\right)\right) \exp\left(\int_0^\infty w(a)a\sinh(u_0 a)\mathrm{d}A\right)
+\begin{align*}
+\mathcal{L}_u(T) &= G_{\lambda, u}(T) + \lambda (h(T+iu) - h(iu) - T h'(iu)), \\
+G_{\lambda, u}(T) &= \log \frac{\Gamma\left(\frac{\lambda(1+u)-i\lambda T}{2}\right)}{\Gamma\left(\frac{\lambda(1+u)}{2}\right)} + \frac{i\lambda T}{2} \psi\left(\frac{\lambda(1+u)}{2}\right) \\
+&= \int_0^{\infty} (e^{iaT} - 1 - iaT) \cdot \frac{e^{-(1+u)a}}{a(1 - e^{-2a/\lambda})} \mathrm{d}a \\
+&= \int_0^{\infty} (e^{iaT} - 1 - iaT) \mu_{\lambda, u}(a) \mathrm{d}a, \\
+\mu_{\lambda, u}(a) &= \frac{e^{-(1+u)a}}{a(1 - e^{-2a/\lambda})}.
+\end{align*}
 $$
 
-then $f_+(r), f_0(r) > 0$ and $f_-(r) < 0$ when $r \ge R_{\epsilon, d}$. By the asymptotic expansion of the digamma function
+(Here we are using a slightly different notation for $\mu_{\lambda, u}$ than the report.)
+We also define
 
 $$
-\psi(z) = \log z - \frac{1}{2z} + O\left(\frac{1}{z^2}\right) \quad |z| \to \infty, \quad |\arg z| < \pi,
+\begin{align*}
+D_\gamma(T) &:= -\Re G_{\lambda, u}(T) = \int_{0}^{\infty} (1 - \cos(aT)) \mu_{\lambda, u}(a) \mathrm{d}a, \\
+D_u(T) &:= -\Re \mathcal{L}_u(T) = D_\gamma(T) - \lambda (\Re h(T + iu) - h(iu)).
+\end{align*}
 $$
 
-we have
+Then $\lvert e^{\mathcal{L}\_u(T)}\rvert=e^{-D\_u(T)}$, and we want $D_u(T)>0$ for all $T\ne0$ and $V(u)>0$ for all $u\ge u_\ast$, where $u_\ast=-1+\frac{\log\lambda}{4\lambda}$.
+Why this choice of $u_\ast$? It approaches $-1$, the normalized height of the first gamma pole, while the gamma argument $\lambda(1+u_\ast)/2=(\log\lambda)/8$ still tends to infinity, as required for the uniform estimates in Lemma 4.8.
+At the same time, the variable $y=\pi r^2e^{2h_1^{\prime}}$ used in Lemma 4.10 satisfies $y(e^{v(u_\ast)})=(\log\lambda)/8+O_\epsilon(1)$, so a Taylor polynomial of degree about $\log\lambda$ can cover the remaining radii.
+Thus this cutoff lets the two positivity arguments meet; the factor $1/4$ is a convenient choice, not an optimized constant.
+
+In other words, we want $D_\gamma(T)$ to dominate the perturbation term $\lambda(\Re h(T+iu)-h(iu))$ for all $T\ne0$.
+To make the comparison easier, we choose $h$ of the form[^1]
+
+$$
+h(\zeta) = \int_0^\infty w(a) (\cos(a\zeta) - 1) \mathrm{d}a,
+$$
+
+so that the contribution of $h$ to $D_u(T)$ is
+
+$$
+\begin{align*}
+\lambda[h(iu) - \Re h(T + iu)] &= \lambda \int_0^\infty w(a) (\cosh(au) - \cos(aT)\cosh(au)) \mathrm{d}a \\
+&= \lambda \int_0^\infty w(a) \cosh(au) (1 - \cos(aT)) \mathrm{d}a
+\end{align*}
+$$
+
+and the total $D_u(T)$ is
+
+$$
+D_u(T) = \int_0^\infty [\mu_{\lambda, u}(a) + \lambda w(a) \cosh(au)] (1 - \cos(aT)) \mathrm{d}a.
+$$
+
+This tells us that $w(a)$ cannot be too negative if we want $D_u(T)$ to stay positive.
+At the same time, the cutoff $u=u_0$ in Lemma 4.8 gives the following upper bound for the last-sign-change radius:
+
+$$
+R_{\epsilon,d} = e^{v(u_0)} = \frac{1}{\sqrt{\pi}} \exp\left(\frac{1}{2} \psi\left(\frac{\lambda(1+u_0)}{2}\right)\right) \exp\left(\int_0^\infty w(a)a\sinh(u_0 a)\mathrm{d}a\right)
+$$
+
+Namely, $f_+(r),f_0(r)>0$ and $f_-(r)<0$ when $r\ge R_{\epsilon,d}$.
+The digamma asymptotic expansion
+
+$$
+\psi(z) = \log z - \frac{1}{2z} + O\left(\frac{1}{z^2}\right) \qquad (z\to+\infty)
+$$
+
+gives
 
 $$
 \lim_{d \to\infty} \frac{R_{\epsilon,d}}{\sqrt d} = \sqrt{\frac{1+u_0}{4\pi}} \exp\left(\int_0^\infty w(a) a \sinh(u_0 a) \mathrm{d}a\right).
 $$
 
-Since we want to minimize the radius $R_{\epsilon,d}$, we want $w(a)$ to be as small as possible
+In particular, making $w(a)$ more negative decreases the radius.
+A sufficient pointwise condition for $D_u(T)\ge0$ is
 
-<!-- ADD DETAILS -->
+$$
+\mu_{\lambda, u}(a) + \lambda w(a) \cosh(au) \ge 0 \Leftrightarrow w(a) \ge -\frac{e^{-(1+u)a}}{\lambda a(1 - e^{-2a/\lambda}) \cosh(au)}.
+$$
+
+As $\lambda\to\infty$ and $u\to1$, this lower bound for $w(a)$ converges to
+
+$$
+w_\ast(a) = -\frac{e^{-2a}}{2a^2 \cosh(a)}
+$$
+
+and the corresponding limit of $R_{\epsilon,d}/\sqrt d$ is
+
+$$
+\frac{1}{\sqrt{2\pi}} \exp \left(-\frac12\int_0^\infty \frac{e^{-2a}\tanh(a)}{a} \mathrm{d}a \right) = \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{1}{2} \log \frac{\pi}{2}\right) = \frac{1}{\pi},
+$$
+
+which (surprisingly) matches the constant in the lower bound.
+
+We also need to show that $f_+(r)>0$ for $0\le r<e^{v(u_\ast)}$. This follows from the next lemma.
+
+> **Lemma 4.10.** Fix $0 < \epsilon < \epsilon_0$, let $\lambda = d/2$ and $r_\ast = e^{v(u_\ast)}$, and
+>
+> $$h_1' = \int_0^\infty w(a) a \sinh(a) \mathrm{d}a.$$
+>
+> As $d \to \infty$,
+>
+> $$ \sup_{0 \le r \le r_\ast} \left\lvert e^{\pi r^2 e^{2h_1'}} \frac{f_+(r)}{f_+(0)} - 1 \right\rvert \longrightarrow 0. $$
+
+It says that $f_+(r)$ is approximately a scaled Gaussian near $r = 0$ ($0 \le r \le r_\ast$), where the error is small enough to ensure that $f_+(r) > 0$ for $0 \le r \le r_\ast$ (note that $f_+(0) > 0$ by Lemma 4.3).
+
+However, one cannot simply take $w(a) = w_\ast(a)$, because this choice cancels too much of the gamma function's decay and does not give the bounds needed for the contour shifts.
+We will modify it in two steps: first cut off its support and make it slightly less negative, then add a small positive term supported farther out.
+The precise choices of the parameters will follow in the next section.
+
+First, what does the report mean by saying that $w_\ast$ has "infinite mass at zero"?
+As $a \to 0$, we have
+
+$$
+w_\ast(a) = -\frac{1}{2a^2} + \frac{1}{a} + O(1),
+\qquad
+\int_0^1 \lvert w_\ast(a)\rvert\,\mathrm{d}a = \infty.
+$$
+
+This does not mean that the integral defining $h_\ast$ diverges at zero.
+Indeed,
+
+$$
+\cos(a\zeta)-1 = -\frac{a^2\zeta^2}{2}+O(a^4),
+\qquad
+w_\ast(a)(\cos(a\zeta)-1) \longrightarrow \frac{\zeta^2}{4}.
+$$
+
+The factor $a^2$ cancels the singularity.
+Similarly, $w_\ast(a)a\sinh a \to -1/2$, so the integral used to compute the radius also converges at zero.
+We must keep these factors together: the two integrals obtained by separating $\cos(a\zeta)$ and $-1$ would diverge.
+
+There is another issue at infinity.
+Since $w_\ast(a) \sim -e^{-3a}/a^2$, the integral defining $h_\ast$ is holomorphic for $\lvert\Im\zeta\rvert<3$, but it does not give an entire function.
+For example, at $\zeta=iu$ with $u>3$, the factor $\cosh(au)$ makes the integral diverge at infinity.
+Thus we cannot use the arbitrary contour shifts from Lemma 4.3.
+
+Next, "saturating the gamma damping" means that the negative contribution cancels the leading positive contribution from gamma.
+At $u=1$, using our notation for $\mu_{\lambda,u}$, we have
+
+$$
+\frac{\mu_{\lambda,1}(a)}{\lambda}
+\longrightarrow \frac{e^{-2a}}{2a^2},
+\qquad
+w_\ast(a)\cosh a = -\frac{e^{-2a}}{2a^2}.
+$$
+
+Hence the leading terms cancel in $D_1(T)/\lambda$.
+The damping is not exactly zero at finite $\lambda$, but the concentration needed for Lemma 4.8 is lost.
+For example, with this formal choice,
+
+$$
+V(1)
+= \frac{\lambda}{4}\psi^{(1)}(\lambda)
+  + \int_0^\infty w_\ast(a)a^2\cosh a\,\mathrm{d}a
+= \frac{\lambda}{4}\psi^{(1)}(\lambda)-\frac14
+\sim \frac{1}{8\lambda}.
+$$
+
+Therefore the Gaussian width $1/\sqrt{\lambda V(1)}$ stays of constant size instead of tending to zero.
+There is also no room to increase $u$ slightly above $1$: the negative term grows with $\cosh(ua)$, while the gamma density decreases with $u$.
+
+To fix these problems near $u=1$, we replace $w_\ast$ by
+
+$$
+w_s(a)=b(a)w_\ast(a)\mathbf{1}_{[a_0,A]}(a),
+\qquad
+b(a)=1-2\epsilon(1+a),
+$$
+
+where $0<a_0<A<\infty$ and $0<b(a)<1$ on this interval.
+The lower cutoff removes the infinite mass at zero, and the upper cutoff makes the support bounded.
+For each fixed $\epsilon>0$, the resulting function $h$ is entire and bounded on every fixed horizontal strip.
+Thus the gamma factor again gives enough decay for the contour shifts.
+Multiplying by $b(a)$ makes $w_s$ slightly less negative, so it leaves some of the gamma damping unused.
+
+These changes do not cost much in the radius calculation.
+The parts removed by the cutoffs satisfy
+
+$$
+\int_0^{a_0}\lvert w_\ast(a)\rvert a\sinh a\,\mathrm{d}a=O(a_0),
+\qquad
+\int_A^\infty\lvert w_\ast(a)\rvert a\sinh a\,\mathrm{d}a
+=O\left(\frac{e^{-2A}}{A}\right),
+$$
+
+and the change caused by $b(a)$ is $O(\epsilon)$.
+We choose the cutoffs so that the two displayed errors are $o(\epsilon)$.
+Replacing $\sinh a$ by $\sinh(u_0a)$, where $u_0-1=O(\epsilon)$, contributes another $O(\epsilon)$ error to the radius exponent.
+This preserves the desired change in the logarithm of the radius up to $O(\epsilon)$.
+
+The dependence of $b(a)$ on $a$ also has a purpose.
+When moving from $u=1$ to $u\le U=1+\epsilon/2$, the ratio of the negative contribution to the gamma density can increase by a factor as large as $e^{\epsilon a}$.
+The chosen factor compensates for this:
+
+$$
+\frac{\lambda\lvert w_s(a)\rvert\cosh(ua)}{\mu_{\lambda,u}(a)}
+\le b(a)e^{\epsilon a}
+\le e^{-2\epsilon-\epsilon a}
+\le 1-c\epsilon
+\qquad (-1<u\le U,\ a_0\le a\le A).
+$$
+
+Here $c>0$ is a constant, and $\epsilon$ is sufficiently small.
+This leaves a positive amount of damping throughout the range containing $u_0$.
+
+Why do we need another term $w_B$?
+The preceding comparison only works up to $U$, whereas the sign argument must cover arbitrarily large radii and hence arbitrarily large $u$.
+If we use only $w_s$, then
+
+$$
+V(u)=\frac{\lambda}{4}\psi^{(1)}\left(\frac{\lambda(1+u)}2\right)
+-\int_{a_0}^{A}\lvert w_s(a)\rvert a^2\cosh(ua)\,\mathrm{d}a.
+$$
+
+As $u\to\infty$, the first term is asymptotic to $1/[2(1+u)]$, while the second term grows exponentially.
+Thus $V(u)$ eventually becomes negative.
+The exponential factor then grows in modulus as we move a little away from $T=0$, and $v^{\prime}(u)<0$, so this saddle argument can no longer give the signs at all large radii.
+The functions obtained from $w_s$ alone are still Schwartz; the problem here is the argument for their signs.
+
+To repair this, we add
+
+$$
+w_B(a)=\frac{Q}{\cosh a}\mathbf{1}_{[B,B+1]}(a),
+\qquad B>A,\quad Q>0.
+$$
+
+Its positive contribution to $V(u)$ is at least a constant times $Qe^{(u-1)B}$, while the negative contribution grows no faster than a constant times $e^{(u-1)A}$.
+Since $B>A$, the positive term eventually dominates.
+We choose $B$ large and $Q$ small so that this already happens for $u\ge U$, but its effect on the radius at $u=u_0$ is negligible.
+With the parameters below,
+
+$$
+Qe^{(u_0-1)B}=e^{-1/(8\epsilon^2)},
+\qquad
+Qe^{(U-1)B}=e^{1/(8\epsilon^2)}.
+$$
+
+Thus even the small change from $u_0$ to $U$ makes a large difference to the size of this term.
+Finally, using an interval $[B,B+1]$ rather than a single value of $a$ prevents the added damping from vanishing at nonzero frequencies where $\cos(aT)=1$.
+The sum $w=w_s+w_B$ therefore keeps the radius improvement near $u_0$ while allowing the sign proof to continue to all larger radii.
 
 
 ### Choice of parameters
 
 
-We introduce "cutoffs" $0 < a\_0 < A < B$ and "amplitude" $Q > 0$, defined as
+We use the cutoffs $0<a_0<A<B$ and the positive amplitude $Q>0$ defined by
 
 $$
 \begin{align*}
 a_0 &= \epsilon^2, \qquad A = \log(1/\epsilon), \qquad B = \epsilon^{-3}, \\
-q_\epsilon &= \frac{(u_0 - 1) + (U - 1)}{2},\qquad Q=e^{-q_\epsilon B}
-\end{align*}.
+q_\epsilon &= \frac{(u_0 - 1) + (U - 1)}{2}=\frac{3\epsilon}{8},\qquad Q=e^{-q_\epsilon B}.
+\end{align*}
 $$
 
-Although the definitions look random, they are chosen to satisfy certain growth conditions as $\epsilon \to 0$, which will be explained later.
+These choices satisfy the requirements discussed above:
+
+$$
+a_0=o(\epsilon),\qquad \frac{e^{-2A}}{A}=o(\epsilon),\qquad
+\epsilon A=o(1),\qquad A=o(B).
+$$
+
+The first two make the omitted parts of the radius integral small, the third keeps $b(a)$ positive, and the fourth places the positive term well beyond the negative one.
 Define
 
 $$
@@ -1102,22 +1293,29 @@ h_\epsilon(\zeta) &= \int_{0}^{\infty} w(a) (\cos(a\zeta) - 1) \mathrm{d}a.
 \end{align*}
 $$
 
-Note that $h\_\epsilon$ is even, and $b(a) > 0$ on $[a\_0, A]$ for sufficiently small $\epsilon$. We also introduce "saddle parameters"
+Note that $h\_\epsilon$ is even and entire, and $b(a)>0$ on $[a_0,A]$ for sufficiently small $\epsilon$.
+For clarity, the remaining parameters are
 
 $$
-u_0 = 1 + \frac{\epsilon}{4}, \qquad U = 1 + \frac{\epsilon}{2}, \qquad C_0 = A + a_0^{-1}.
+u_0 = 1 + \frac{\epsilon}{4}, \qquad U = 1 + \frac{\epsilon}{2}, \qquad
+\beta=u_0-1=\frac{\epsilon}{4},\qquad C_0 = A + a_0^{-1}.
 $$
 
-<!-- Then we can write down the Mellin transforms of the three functions $f\_-$, $f\_+$, and $f\_0$ in terms of the above parameters:
+The choice of $\beta$ gives $P_+(iu)>0$ for $u>-1$, and $P_-(iu)<0<P_0(iu)$ for $u\ge u_0$, since
 
 $$
-\begin{align*}
-E_\lambda(t) &= \pi^{it/2} \Gamma\left(\frac{\lambda - it}{2}\right) e^{\lambda h_\epsilon(t/\lambda)} \\
-P_{\pm}(\zeta) &= 1 + \zeta^2 + \frac{\epsilon}{4} \pm i\zeta(1 + \zeta^2), \quad P_0(\zeta) = - (1 + \zeta^2) \\
-X_{f_j}(t) &= E_\lambda(t) P_j(t/\lambda), \\
-\quad f_j(r) &= \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} dt, \quad (j \in \{-, +, 0\})
-\end{align*}
-$$ -->
+P_+(iu)=\beta+(1-u)^2(1+u),\qquad
+P_-(iu)=\beta+(1-u)(1+u)^2,\qquad P_0(iu)=u^2-1.
+$$
+
+We also write
+
+$$
+\rho_\epsilon=C_0Q^{-1}e^{-(U-1)(B-A)}.
+$$
+
+The parameters above make both $BQe^{(u_0-1)B}$ and $\rho_\epsilon$ exponentially small in $1/\epsilon^2$.
+The first controls how much $w_B$ changes the radius at $u_0$; the second controls how much of its damping can be canceled by $w_s$ when $u\ge U$.
 
 
 ### Proofs of lemmas
@@ -1126,7 +1324,7 @@ $$ -->
 
 > **Lemma 4.2.** There are absolute constants $\epsilon_0, c, C > 0$ such that, for every $0 < \epsilon < \epsilon_0$ and for all $\lambda > 0$, $-1 < u \le U$, and $a_0 \le a \le A$, we have
 >
-> $$ \lambda |w_s(a)| \cosh(ua) \le (1 - c\epsilon) \mu_{\lambda, 1 + u}(a). $$
+> $$ \lambda |w_s(a)| \cosh(ua) \le (1 - c\epsilon) \mu_{\lambda,u}(a). $$
 >
 > At $u = u_0$, we have
 >
@@ -1136,8 +1334,9 @@ $$ -->
 > 0 \le \int_{B}^{B+1} w_B(a) a \sinh(u_0 a) \mathrm{d}a \le Ce^{-c/\epsilon^2}.
 > \end{align*}
 > $$
->
-> 
+
+The cutoff and taper estimates above give the first integral, while $\sinh(u_0a)/\cosh a\le e^{(u_0-1)a}$ bounds the second by $(B+1)Qe^{(u_0-1)(B+1)}$.
+Thus the negative term preserves the desired radius improvement, and the positive term changes it only negligibly.
 
 #### Lemma 4.3
 
@@ -1147,29 +1346,30 @@ $$
 f_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} \mathrm{d}t = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} \pi^{\frac{it}{2}} \Gamma\left(\frac{\lambda  - it}{2}\right) e^{\lambda h(t/\lambda)}P_j\left(\frac{t}{\lambda}\right) r^{it} \mathrm{d}t,
 $$
 
-the only possible pole of the integrand come from the gamma function, which are at
+the only possible poles of the integrand come from the gamma function. They occur at
 
 $$
 \frac{\lambda - it}{2} = -n \Leftrightarrow t = -i(\lambda + 2n), \quad n \in \mathbb{Z}_{\ge 0}.
 $$
 
-In particular, all the poles have imaginary part $-\lambda < 0$.
-Also, by using the asymptotic formula of the gamma function, we have
+In particular, their imaginary parts are at most $-\lambda<0$.
+Using the asymptotic formula for the gamma function, we have
 
 $$
 |X_{f_j}(s + i\tau)| \le C (1 + |s|)^{(\lambda + \tau - 1)/2 + 3} e^{-\pi|s|/4}
 $$
 
-for $C = C_{d,\tau,h} > 0$, hence it vanishes as $|s| \to \infty$.
-From this, one can deform the contour of integration from $\mathbb{R}$ to $\mathbb{R} + i\tau$ for any $\tau > 0$, and the integral becomes
+for $C=C_{d,\tau,h}>0$, so the integrand decays as $|s|\to\infty$.
+The same estimate holds uniformly as $\tau$ varies over a compact pole-free interval, so the integrals over the vertical sides of a rectangular contour tend to zero.
+We can therefore shift the contour from $\mathbb{R}$ to $\mathbb{R}+i\tau$ for any $\tau>0$, giving
 
 $$
 f_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(s + i\tau) r^{i(s + i\tau)} \mathrm{d}s = \frac{r^{-\lambda -\tau}}{2\pi} \int_{\mathbb{R}} X_{f_j}(s + i\tau) r^{is} \mathrm{d}s.
 $$
 
-Hence $\lvert f\_j(r) \rvert = O\_\tau(r^{-\lambda - \tau})$ for any $\tau > 0$ as $r \to \infty$, which shows that $f_j$ is rapidly decreasing. One can similarly check for the derivatives of $f_j$.
+Hence $\lvert f_j(r)\rvert=O_\tau(r^{-\lambda-\tau})$ for any $\tau>0$ as $r\to\infty$, which shows that $f_j$ is rapidly decreasing. The same argument applies to its derivatives.
 
-For the values at the origin, we will shift the contour *downward* to $\mathbb{R} - i(\lambda + 1)$ (you can choose any value bewteen $\lambda$ and $\lambda + 2$ instead of $\lambda + 1$).
+For the values at the origin, we shift the contour *downward* to $\mathbb{R}-i(\lambda+1)$ (any height strictly between $-\lambda-2$ and $-\lambda$ would work).
 Then we pick up the residue at $t = -i\lambda$, which is
 
 $$
@@ -1185,21 +1385,40 @@ f_j(r) &= \frac{r^{-\lambda}}{2\pi} \left(-2\pi i \cdot 2i\pi^{\frac{\lambda}{2}
 \end{align*}
 $$
 
-and the second term vanishes as $r \to 0$, thus
+The second term vanishes as $r\to0$, so
 
 $$
 f_j(0) = 2 \pi^{\frac{\lambda}{2}} e^{\lambda h(-i)} P_j(-i).
 $$
 
-In particular, we have $f_+(0) = f_-(0) = \beta > 0$ and $f_0(0) = 0$. $\square$
+In particular, $f_+(0)=f_-(0)=2\pi^{\lambda/2}e^{\lambda h(-i)}\beta>0$, while $f_0(0)=0$.
+Shifting farther down gives expansions in even powers $r^{2n}$, with remainders of arbitrarily high order, including after differentiation. This proves smoothness at the origin as a radial function on $\mathbb{R}^d$.
+Finally, the evenness of $h$ and the reflection identities for $P_j$ give the Fourier symmetries, while conjugate symmetry of the Mellin data makes the functions real-valued. $\square$
 
 
-#### Lemma 4.4 - 4.7
+#### Lemmas 4.4–4.7
 
-These four lemmas are used for Lemma 4.8, i.e. to show that $f_j(r)$ has the same sign as $P_j(iu)$ for sufficiently large $d$ and for certain range of $u$.
+These four lemmas are used in Lemma 4.8 to show that $f_j(r)$ has the same sign as $P_j(iu)$ for sufficiently large $d$ over the relevant range of $u$.
 The proofs are elementary but technical, so I'll only state the results here without further "digestion".
 
-Let $U = 1 + \epsilon / 2$, $\delta = u - 1$, and $\eta + 1 + u$.
+Let $U=1+\epsilon/2$, $\delta=u-1$, and $\eta=1+u$.
+The lemmas use the following quantities (with our notation for $\mu_{\lambda,u}$):
+
+$$
+\begin{align*}
+V_\gamma&=\frac1\lambda\int_0^\infty a^2\mu_{\lambda,u}(a)\,\mathrm{d}a
+=\frac\lambda4\psi^{(1)}\left(\frac{\lambda\eta}{2}\right),\\
+M_3&=\frac1\lambda\int_0^\infty a^3\mu_{\lambda,u}(a)\,\mathrm{d}a
++\int_0^\infty (|w_s(a)|+w_B(a))a^3\cosh(ua)\,\mathrm{d}a,\\
+D_s(T)&=\lambda\int_{a_0}^A |w_s(a)|\cosh(ua)(1-\cos(aT))\,\mathrm{d}a,\\
+D_B(T)&=\lambda\int_B^{B+1}w_B(a)\cosh(ua)(1-\cos(aT))\,\mathrm{d}a,\\
+V_s&=\int_{a_0}^A|w_s(a)|a^2\cosh(ua)\,\mathrm{d}a,\qquad
+V_B=\int_B^{B+1}w_B(a)a^2\cosh(ua)\,\mathrm{d}a.
+\end{align*}
+$$
+
+Thus $D_u=D_\gamma-D_s+D_B$ and $V(u)=V_\gamma-V_s+V_B$.
+The quantity $M_3$ bounds the cubic error without relying on cancellation between the positive and negative terms.
 
 > **Lemma 4.4.** There are absolute constants $c, C > 0$ such that, for every $\lambda > 0$, $u > -1$ satisfying $\lambda(1 + u) \ge 1$, and $T \in \mathbb{R}$, we have
 >
@@ -1210,23 +1429,23 @@ Let $U = 1 + \epsilon / 2$, $\delta = u - 1$, and $\eta + 1 + u$.
 > $$
 > \begin{align*}
 > \frac{1}{2\eta} &\le V_\gamma \le \frac{C}{\eta}, \\
-> \frac{1}{\lambda} \int_0^{\infty} a^3 \mu_{\lambda, \eta}(a) \mathrm{d} a &\le \frac{C}{\eta^2}, \\
+> \frac{1}{\lambda} \int_0^{\infty} a^3 \mu_{\lambda,u}(a) \mathrm{d} a &\le \frac{C}{\eta^2}, \\
 > D_\gamma(T) &\ge c\lambda \min \left\lbrace \frac{T^2}{\eta}, |T| \right\rbrace, \qquad (T \in \mathbb{R}).
 > \end{align*}
 > $$
 
-> **Lemma 4.5.** There is $\epsilon_0 > 0$ and an absolute $c > 0$ such that, for every $0 < \epsilon < \epsilon_0$, there are constantes $C_\epsilon, \lambda_\epsilon > 0$ with the following property. For every $\lambda \ge \lambda_\epsilon$, every $u_* \le u \le U$,
+> **Lemma 4.5.** There is $\epsilon_0>0$ and an absolute $c>0$ such that, for every $0<\epsilon<\epsilon_0$, there are constants $C_\epsilon,\lambda_\epsilon>0$ with the following property. For every $\lambda\ge\lambda_\epsilon$ and $u_\ast\le u\le U$,
 >
 > $$
 > \begin{align*}
-> \lambda |w_s(a)| \cosh(ua) &\le (1 - c\epsilon) \mu_{\lambda, \eta}(a), \qquad &(a_0 \le a \le A) \\
+> \lambda |w_s(a)| \cosh(ua) &\le (1 - c\epsilon) \mu_{\lambda,u}(a), \qquad &(a_0 \le a \le A) \\
 > D_u(T) &\ge c\epsilon D_\gamma(T), \qquad &(T \in \mathbb{R}) \\
 > \frac{c\epsilon}{\eta} &\le V(u) \le \frac{C_\epsilon}{\eta}, \\
 > M_3 &\le \frac{C_\epsilon}{\eta^2}.
 > \end{align*}
 > $$
 >
-> Morever, $\lambda \eta \ge \log \lambda / 4$.
+> Moreover, $\lambda\eta\ge(\log\lambda)/4$.
 
 > **Lemma 4.6.** There are absolute constants $c, C > 0$ and $\epsilon_0 > 0$ such that, for every $0 < \epsilon < \epsilon_0$, there are constants $\lambda_\epsilon, C_\epsilon, c_\epsilon > 0$ with the following property. For every $\lambda \ge \lambda_\epsilon$ and $u \ge U$, and every $T \in \mathbb{R}$, one has
 >
@@ -1247,7 +1466,7 @@ Let $U = 1 + \epsilon / 2$, $\delta = u - 1$, and $\eta + 1 + u$.
 > \end{align*}
 > $$
 >
-> The shell variance and third moments obey
+> The positive contribution $V_B$ and the third moments satisfy
 >
 > $$
 > \begin{align*}
@@ -1262,7 +1481,9 @@ Let $U = 1 + \epsilon / 2$, $\delta = u - 1$, and $\eta + 1 + u$.
 > $$ M_3 \le C_\epsilon V(u), \qquad V(u) \ge c_\epsilon > 0 \quad (u \ge U). $$
 
 
-> **Lemma 4.7.** (Estimates for $D_u(T)$) There is $\epsilon_0 > 0$ and an absolute $c > 0$ such that, for every $0 < \epsilon < epsilon_0$, there are constants $c_\epsilon, \lambda_\epsilon > 0$ with the following property. For every $\lambda \ge \lambda_\epsilon$ and $u \ge U$, set $\eta = 1 + u$ and $\delta = u - 1$. Then
+Set $T_0=1/[2(B+1)]$.
+
+> **Lemma 4.7.** (Estimates for $D_u(T)$.) There is $\epsilon_0>0$ and an absolute $c>0$ such that, for every $0<\epsilon<\epsilon_0$, there are constants $c_\epsilon,\lambda_\epsilon>0$ with the following property. For every $\lambda\ge\lambda_\epsilon$ and $u\ge U$, set $\eta=1+u$ and $\delta=u-1$. Then
 >
 > $$
 > \begin{align*}
@@ -1275,14 +1496,14 @@ Let $U = 1 + \epsilon / 2$, $\delta = u - 1$, and $\eta + 1 + u$.
 
 #### Lemma 4.8
 
-We will divide the integral into two parts: small $\lvert T\rvert$ and large $\lvert T\rvert$, where the first integral will dominate the second one.
+We divide the integral into two parts, with small and large $\lvert T\rvert$, and show that the first dominates the second.
 More precisely, we choose
 
 $$
-T_* = \frac{K}{\sqrt{\lambda V(u)}}
+T_* = \frac{K}{\sqrt{\lambda V(u)}}.
 $$
 
-where $K$, depending on $d$, will be chosen later so that $K \to \infty$ as $d \to \infty$.
+Here $K$ may depend on $d$ and $u$, and will tend to infinity uniformly over the relevant range of $u$ as $d\to\infty$.
 By Lemma 4.4, we have
 
 $$
@@ -1295,13 +1516,13 @@ $$
 T_* = o_\epsilon(1), \qquad \frac{K^3 M_3}{\sqrt{\lambda} V(u)^{3/2}} = o_\epsilon(1).
 $$
 
-The polynomials $P \in \lbrace P_-, P_+, P_0\rbrace$ have fixed degrees and satisfy
+On the ranges of $u$ stated in Lemma 4.8, the polynomials $P\in\lbrace P_-,P_+,P_0\rbrace$ have fixed degrees and satisfy
 
 $$
 \frac{|P(T + iu)|}{|P(iu)|} \ll_\epsilon 1 + |T|^3, \qquad \frac{P(T + iu)}{P(iu)} = 1 + O_\epsilon(|T| + |T|^3)
 $$
 
-as $T \to 0$, so the integral over $[-T_\ast, T_\ast]$ can be approximated by
+uniformly in $u$. Thus the integral over $[-T_\ast,T_\ast]$ can be approximated by
 
 $$
 \begin{align*}
@@ -1311,17 +1532,42 @@ $$
 \end{align*}
 $$
 
-where we use dominated convergence theorem to make the approximation precise.
+To make the approximation precise, the two uniform error bounds above give
+$e^{\mathcal{L}\_u(x/\sqrt{\lambda V(u)})}=e^{-x^2/2}(1+o\_\epsilon(1))$ and
+$P(x/\sqrt{\lambda V(u)}+iu)=P(iu)(1+o_\epsilon(1))$ for $|x|\le K$.
+We can pull these uniform relative errors outside the integral, and $\int_{-K}^K e^{-x^2/2}\,\mathrm{d}x\to\sqrt{2\pi}$ because $K\to\infty$.
 
 It remains to show that the integral over $\lvert T\rvert > T_*$ becomes negligible as $d \to \infty$, i.e. $o\_\epsilon(\lvert P(iu) \rvert / \sqrt{\lambda V(u)})$.
-This follows from the estimates proved in Lemma 4.4, 4.5, 4.6, and 4.7.
-You may understand that the parameters are chosen to make this part work. $\square$
-<!-- ADD MORE DETAILS LATER IF NEEDED -->
+Here are the choices of $K$ that make both the approximation and the tail bounds work.
+
+For $u_\ast\le u\le U$, put $L=\lambda(1+u)\ge(\log\lambda)/4$ and take $K=L^{1/12}$.
+Lemma 4.5 gives $V(u)\asymp_\epsilon(1+u)^{-1}$ and $M_3\ll_\epsilon(1+u)^{-2}$, so
+
+$$
+\frac{T_\ast}{1+u}\ll_\epsilon L^{-5/12},\qquad
+\frac{K^3M_3}{\sqrt\lambda V(u)^{3/2}}\ll_\epsilon L^{-1/4}.
+$$
+
+Both tend to zero uniformly. Between $T_\ast$ and $1+u$, the quadratic damping from Lemmas 4.4–4.5 gives a normalized tail of size $O_\epsilon(e^{-c_\epsilon K^2})$; beyond $1+u$, the linear damping gives $O_\epsilon(e^{-c_\epsilon L})$.
+These are ordinary Gaussian and exponential tail estimates. For instance,
+
+$$
+\int_K^\infty e^{-cx^2}\,\mathrm{d}x
+\le \frac1K\int_K^\infty xe^{-cx^2}\,\mathrm{d}x
+=\frac{e^{-cK^2}}{2cK}\qquad(K>0).
+$$
+
+For $u\ge U$, take $K=\lambda^{1/12}$.
+Lemma 4.6 gives $V(u)\ge c_\epsilon>0$ and $M_3\ll_\epsilon V(u)$, so $T_\ast\ll_\epsilon\lambda^{-5/12}$ and the cubic error is $O_\epsilon(\lambda^{-1/4})$.
+The quadratic bound in Lemma 4.7 handles $T_\ast<|T|\le T_0$.
+Beyond $T_0$, the factor $e^{-c_\epsilon\lambda Qe^{(u-1)B}}$ makes the integral small even as $u\to\infty$; its decay absorbs the growth of $\sqrt{V(u)}$ and the polynomial factors.
+For $|T|\ge1+u$, the additional exponential decay in $|T|$ makes the remaining tail integrable.
+Thus the tails are negligible uniformly in both ranges. $\square$
 
 
 #### Lemma 4.10
 
-We want to show that $f_+(r)$ is close to the scaled Gaussian $f_+(0) e^{-y}$ for $y = \pi r^2 e^{2h_1'}$ near $r = 0$, so is positive for small $r$.
+We want to show that $f_+(r)$ is close to the scaled Gaussian $f_+(0)e^{-y}$, where $y=\pi r^2e^{2h_1^{\prime}}$, and hence is positive for $0\le r\le r_\ast$.
 The idea is the following: we shift the contour of integration downward from $\mathbb{R}$ to $\mathbb{R} - i(\lambda + 2p)$ for $p = N + 1/2$, where $N$ is a large (but not too large) integer.
 Then we can write $f_+(r) / f_+(0)$ as a sum of residues at the poles in the strip, plus an integral over the shifted contour.
 The sum will approximate the Taylor expansion of $e^{-y}$, and the integral will be small enough to be negligible.
@@ -1331,9 +1577,9 @@ By applying the residue theorem to $f_+(r) / f_+(0)$, we have
 
 $$
 \begin{align*}
-    \frac{f_+(r)}{f_+(0)} &= \frac{r^{-\lambda}}{2\pi^{\lambda/2} e^{\lambda h(-i)}P_+(-i)} \int_{\mathbb{R}} X_{f_+}(t) r^{it} \mathrm{d}t \\
-    &= \frac{r^{-\lambda}}{2\pi^{\lambda/2} e^{\lambda h(-i)}P_+(-i)} \left[-2\pi i \sum_{n=0}^{N} \mathrm{Res}_{t = -i(\lambda + 2n)} (X_{f_+}(t) r^{it}) + \int_{\mathbb{R} - i(\lambda + 2N + 1)} X_{f_+}(t) r^{it} \mathrm{d}t\right] \\
-    &= \sum_{n=0}^{N} \frac{(-y)^n}{n!} A_{\lambda, n} + \mathcal{R}_{\lambda}(r),
+    \frac{f_+(r)}{f_+(0)} &= \frac{r^{-\lambda}}{2\pi f_+(0)} \int_{\mathbb{R}} X_{f_+}(t) r^{it} \mathrm{d}t \\
+    &= \frac{r^{-\lambda}}{2\pi f_+(0)} \left[-2\pi i \sum_{n=0}^{N} \mathrm{Res}_{t = -i(\lambda + 2n)} (X_{f_+}(t) r^{it}) + \int_{\mathbb{R} - i(\lambda + 2N + 1)} X_{f_+}(t) r^{it} \mathrm{d}t\right] \\
+    &= \sum_{n=0}^{N} \frac{(-y)^n}{n!} A_{\lambda, n} + \mathcal{R}_{\lambda}(r).
 \end{align*}
 $$
 
@@ -1359,25 +1605,27 @@ where
 $$
 \begin{align*}
 A_{\lambda, n} &= e^{\lambda [h(i(1 + 2n/\lambda)) - h(i)] - 2n h_1'} \frac{P_+(-i(1 + 2n/\lambda))}{P_+(-i)}, \\
-\mathcal{R}_{\lambda}(r) &= \frac{\pi^{\frac{\lambda}{2} + p}}{2\pi f_+(0)} \int_{\mathbb{R}} \pi^{\frac{is}{2}} \Gamma\left(-p - \frac{is}{2}\right) e^{\lambda h(s/\lambda - i(1 + 2p/\lambda))} P_+\left(\frac{s}{\lambda} - i\left(1+\frac{2p}{\lambda}\right)\right) r^{is} \mathrm{d}s
+\mathcal{R}_{\lambda}(r) &= \frac{\pi^{\frac{\lambda}{2} + p}r^{2p}}{2\pi f_+(0)} \int_{\mathbb{R}} \pi^{\frac{is}{2}} \Gamma\left(-p - \frac{is}{2}\right) e^{\lambda h(s/\lambda - i(1 + 2p/\lambda))} P_+\left(\frac{s}{\lambda} - i\left(1+\frac{2p}{\lambda}\right)\right) r^{is} \mathrm{d}s.
 \end{align*}
 $$
 
-Now, we want $N$ to be "small" compared to $d$, so that $N = o(\lambda)$, and then we can approximate $h$ and $P_+$ by their Taylor expansions to get
+We want $N$ to be small enough that $N^2/\lambda=o(1)$.
+Taylor expansion of $h$ and $P_+$ then gives, uniformly for $0\le n\le N$,
 
 $$
 \lambda \left[ h\left(i\left(1 + \frac{2n}{\lambda}\right)\right) - h(i)\right] = 2nh_1' + O_\epsilon\left(\frac{n^2}{\lambda}\right), \qquad \frac{P_+(-i(1 + 2n/\lambda))}{P_+(-i)} = 1 + O_\epsilon\left(\frac{n}{\lambda}\right).
 $$
 
-which gives
+It follows that
 
 $$
 |A_{\lambda, n} - 1| = O_{\epsilon} \left(\frac{n(1+n)}{\lambda}\right)
 $$
 
-for $0 \le n \le N$, so the summation is close to the degree $N$ Taylor expansion of $e^{-y}$.
+for $0\le n\le N$, so the sum is close to the degree-$N$ Taylor polynomial of $e^{-y}$.
 
-The remainder term $\mathcal{R}_\lambda(r)$ can be bounded by using the reflection formula for the gamma function and the definition of $h$. By considering these estimates and the tail of the Taylor expansion of $e^{-y}$, we get the main estimate and two tail estimates:
+The remainder $\mathcal{R}_\lambda(r)$ is bounded using the reflection formula for the gamma function and the definition of $h$.
+Together with the omitted terms of the exponential series, this gives three error estimates:
 
 $$
 \begin{align*}
@@ -1387,13 +1635,15 @@ $$
 \end{align*}
 $$
 
-If we choose $N = \lceil \log \lambda \rceil$, the asymptotic formula for the digamma function $\psi$ gives
+The choice of $u_\ast$, together with the digamma asymptotic, gives
 
 $$
-y \le y(r_\ast) = \frac{1}{8} \log \lambda + O_\epsilon(1),
+y \le y(r_\ast) = \frac{1}{8} \log \lambda + O_\epsilon(1).
 $$
 
-and such a choice also makes all the error terms negligible, which implies
+Taking $N=\lceil\log\lambda\rceil$ satisfies $N^2/\lambda=o(1)$ and makes all three errors negligible relative to $e^{-y}$ throughout this growing interval.
+In particular, Stirling's formula bounds the logarithm of either tail by $(1/8+1-\log8)\log\lambda+O_\epsilon(\log\log\lambda)$, whose leading coefficient is negative.
+Thus
 
 $$
 \frac{f_+(r)}{f_+(0)} = e^{-y} \left(1 + O_\epsilon\left(\frac{(\log \lambda)^2}{\lambda^{3/4}}\right)\right)
@@ -1405,7 +1655,7 @@ uniformly on $0 \le r \le r_\ast$. $\square$
 
 ## Sign uncertainty principle
 
-Proposition 3.7 supplies the common lower bound for both sign-uncertainty constants, while the functions $g\_-$ and $f\_0$ above supply the matching upper bounds. Thus
+Proposition 3.7 supplies the common lower bound for both sign-uncertainty constants, while the functions $f_+-f_-$ and $f_0$ above supply the matching upper bounds. Thus
 
 $$
 \frac{\mathsf A_+(d)}{\sqrt d}\longrightarrow\frac1\pi,
@@ -1424,12 +1674,14 @@ See [Part 2]({% post_url 2026-08-16-openai-sphere-packing-digest-part2 %}).
 
 ## Conclusion
 
-I spend almost a week to read whole report and also some part of Lean code.
+I spent almost a week reading the whole report and parts of the Lean code.
 
 
 
 > Q. Does this proof give any further insight into these problems?
 >
-> A. `¯\_(ツ)_/¯`[^1]
+> A. `¯\_(ツ)_/¯`[^2]
 
-[^1]: Even if I have some new insights, I won't share them here since I don't want to be scooped again (especially by AI not controlled by myself) - two times are enough!
+[^1]: The report also explains the choice through radial dilations: multiplying the Mellin transform by $\cos(at/\lambda)-1$ replaces $g(r)$ by $\frac{e^a g(re^{a/\lambda})+e^{-a}g(re^{-a/\lambda})}{2}-g(r)$. This describes the linear factor, not the full exponential multiplier $\exp(\lambda h(t/\lambda))$ used in the construction.
+
+[^2]: Even if I have some new insights, I won't share them here since I don't want to be scooped again (especially by AI I don't control) — twice is enough!
