@@ -801,7 +801,7 @@ $$
 
 To prove the upper bounds, one needs to construct *asymptotically optimal* functions. The report does not construct exact optimizers in any dimension, which is much harder.
 
-For each sufficiently small fixed $\epsilon>0$ and all sufficiently large $d$, Theorem 4.1 constructs radial Schwartz functions $f\_-$, $f\_+$, and $f\_0$, together with a radius $R\_{\epsilon,d}$, such that
+For each sufficiently small fixed $\epsilon>0$ and all sufficiently large $d$, the proof constructs radial Schwartz functions $f\_-$, $f\_+$, and $f\_0$, together with a radius $R\_{\epsilon,d}$, such that
 
 $$
 \widehat f_-=f_+>0,\qquad \widehat f_0=f_0,\qquad
@@ -820,6 +820,7 @@ $$
 \lim_{\epsilon\to 0^+}\lim_{d\to\infty}\frac{R_{\epsilon,d}}{\sqrt d}=\frac1\pi.
 $$
 
+This is Theorem 4.1 of the report.
 The three upper bounds use the construction in different ways:
 
 - For the LP bound, set $F(x)=f\_-(R\_{\epsilon,d}x)$. Then $F\in\mathcal A\_d$ and $F(0)/\widehat F(0)=R\_{\epsilon,d}^d$.
@@ -855,6 +856,16 @@ $$
 X_{g_j}(t) = E_\lambda^G(t) P_j(t/\lambda), \qquad g_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{g_j}(t) r^{it} dt.
 $$
 
+Then we will *perturb* $X_{g_j}$ to obtain $X_{f_j}$ by multiplying $\exp (\lambda h(t/\lambda))$ and take Mellin inverse transform to get $f_j$:
+
+$$
+X_{f_j}(t) = X_{g_j}(t) e^{\lambda h(t/\lambda)}, \qquad f_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} dt.
+$$
+
+Now the main task is to choose $P_j$ and $h$ so that the resulting $f_j$'s have the desired properties.
+Later, the polynomials $P_j$ will be chosen to control the signs of $f_j$'s, and the function $h$ will be chosen to make the last sign change radius smaller.
+
+Let's first discuss the choice of $P_j$. We will ignore the perturbation $h$ for now.
 The Fourier symmetry of $g_j$ (i.e. $\widehat{g}\_+ = g\_-$, $\widehat{g}\_0 = g\_0$) corresponds to
 
 $$
@@ -867,11 +878,10 @@ $$
 P_j(\zeta) = P_j^{\text{even}}(\zeta) + i P_j^{\text{odd}}(\zeta),
 $$
 
-for some real polynomials $P_j^{\text{even}}$ and $P_j^{\text{odd}}$.
-
-<!-- Explain perturbation here -->
-
-
+for some real polynomials $P_j^{\text{even}}$ and $P_j^{\text{odd}}$ that are even and odd, respectively.
+Furthermore, the values $P_j(-i)$ will determine the values of $g_j(0)$, so we want $P_+(-i) = P_-(-i) > 0$ and $P_0(-i) = 0$ (Lemma 4.3).
+At last, the sign of $P_j(iu)$ for some range of $u$ will determine the sign of $g_j(r)$; we want $P_-(iu) < 0 < P_0(iu)$ for $u$ slightly larger than 1, while $P_+(iu) > 0$ for $u$ slightly larger than $-1$ (Lemma 4.8).
+The simplest choice of polynomials that satisfy all these conditions is
 
 $$
 \begin{align*}
@@ -907,30 +917,35 @@ $$
 
 which is the same as the upper bound obtained in Bourgain-Clozel-Kahane.
 $g_+$ and $g = g_+ - g_-$ gives upper bounds for $\Delta_d$ and $\mathsf{A}_-(d)$, respectively, with same asymptotic growth.
-Most of the prevous works on the upper bounds considered only the Gaussian $\times$ polynomial functions, where one can try to optimize the polynomial part for fixed $d$ (using Laguerre basis); see Cohn-Gonçalves for numerical results in low dimensions.
-Also, it was shown in Cohn-Dong-Gonçalves that such class of functions cannot pass the limit $\sqrt{d/(2\pi)}$ with degree of polynomial sublinear in $d$.
+Most of the prevous works on the upper bounds considered only the Gaussian $\times$ polynomial functions, where one can try to optimize the polynomial part for fixed $d$ (using Laguerre basis); see [Cohn-Gonçalves](ADD LINK) for numerical results in low dimensions.
+Also, it was shown in [Cohn-Dong-Gonçalves](ADD LINK) that such class of functions cannot pass the limit $\sqrt{d/(2\pi)}$ with degree of polynomial sublinear in $d$.
 <!-- ADD PUBLISHED JOURNAL REFERENCE LINKS TO THE TWO PAPERS ABOVE -->
 
-To make the last sign change radius smaller, we will *perturb* the functions.
-More precisely, we will perturb the Mellin transforms $X_{g_j}$, by choosing a function $h = h_\epsilon$ which will depend on a small parameter $\epsilon > 0$, and set
+Now we are going to add perturbation to decrease the last sign change radius.
+In particular, we are going to multiply $X_{g_j}$ by $\exp(\lambda h(t/\lambda))$, where $h$ will be a function of the form
+<!-- More precisely, we will perturb the Mellin transforms $X_{g_j}$, by choosing a function $h = h_\epsilon$ which will depend on a small parameter $\epsilon > 0$, and set
 
 $$
 X_{f_j}(t) = X_{g_j}(t) e^{\lambda h(t/\lambda)} = E_\lambda^G(t) P_j(t/\lambda) e^{\lambda h(t/\lambda)}, \quad f_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} dt.
-$$
+$$ -->
 
-Here $h$ will have the form of
+<!-- THE BELOW NEEDS GOOD EXPLANATION -->
+
+<!-- Here $h$ will have the form of -->
 
 $$
 h(\zeta) = \int_0^\infty w(a) (\cos(a\zeta) - 1) \mathrm{d}a,
 $$
 
-where $w(a)$ is a signed density function to be chosen later.
+for some $w(a)$.
+<!-- where $w(a)$ is a signed density function to be chosen later. -->
 These $f_j$'s are still Schwartz functions with desired Fourier symmetry and values at the origin.
 
 > **Lemma 4.3.** $f_j$'s define real-valued Schwartz functions on $\mathbb{R}^d$ with $\widehat{f}\_+ = f_-$, $\widehat{f}\_0 = f_0$, and $f_-(0) = f_+(0) > 0$, $f_0(0) = 0$.
 
+Proof can be found below. In short, the Scwartzness follows from moving the contour of integration upward (i.e. from $\Im z = 0$ to $\Im z = \tau$ for sufficiently large $\tau > 0$), while the values at the origin can be related to the "first pole" $t = -i\lambda$, which corresponds to the value $P_j(-i)$.
 
-After changing the contour from $\mathbb{R}$ to $\mathbb{R} + i u\lambda$ with change of variable $t = \lambda(T + iu)$ (note that we don't have any poles in the strip, so the integral is unchanged), and writing $r = e^{v(u)}$ (where $v(u)$ is a function to be chosen later), we have
+After changing the contour from $\mathbb{R}$ to $\mathbb{R} + i u\lambda$ with change of variable $t = \lambda(T + iu)$ for $u > -1$ (note that we don't have any poles in the strip, so the integral is unchanged), and writing $r = e^{v(u)}$ (where $v(u)$ is a function to be chosen later), we have
 
 $$
 \begin{align*}
@@ -941,17 +956,45 @@ f_j(r) &= \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{f_j}(t) r^{it} dt \\
 \end{align*}
 $$
 
-where $\mathcal{L}\_u(T)$ is defined as
+where $E_\lambda$ and $\mathcal{L}\_u$ are defined as
 
 $$
+E_\lambda(t) = \pi^{\frac{it}{2}} \Gamma\left(\frac{\lambda - it}{2}\right) e^{\lambda h(t/\lambda)}, \qquad
 \mathcal{L}_u(T) = \log\frac{E_\lambda(\lambda(T+iu))}{E_\lambda(i\lambda u)} + i\lambda T v(u).
 $$
 
-Now, we will *define* $v(u)$ so that $\mathcal{L}\_u(T)$ has a critical point at $T = 0$, i.e. $\mathcal{L}\_u'(0) = 0$. One can explicitly compute $\mathcal{L}\_u'(T)$ and set $T = 0$ to get
+Now, we *define* $v(u)$ so that $\mathcal{L}\_u(T)$ has a critical point at $T = 0$, i.e. $\mathcal{L}\_u'(0) = 0$. One can explicitly compute $\mathcal{L}\_u'(T)$ and set $T = 0$ to get
 
 $$
-v(u) = -\frac{1}{2}\log \pi + \frac{1}{2} \psi\left(\frac{\lambda(1+u)}{2}\right) + \int_0^\infty w(a) a \sinh(ua) \mathrm{d}a.
+v(u) = -\frac{1}{2}\log \pi + \frac{1}{2} \psi\left(\frac{\lambda(1+u)}{2}\right) + ih'(iu),
 $$
+
+so that
+
+$$
+\mathcal{L}_u(T) = \log \frac{\Gamma\left(\frac{\lambda(1+u)-i\lambda T}{2}\right)}{\Gamma\left(\frac{\lambda(1+u)}{2}\right)} + \frac{i\lambda T}{2} \psi\left(\frac{\lambda(1+u)}{2}\right) + \lambda (h(T+iu) - h(iu) - T h'(iu)).
+$$
+
+Then we can compute the second derivative of $\mathcal{L}\_u(T)$ at $T = 0$, to get
+
+$$
+\mathcal{L}_u(T) = \frac{\mathcal{L}_u''(0)}{2} T^2 + O(T^3), \qquad \mathcal{L}_u''(0) = -\frac{\lambda^2}{4} \psi^{(1)}\left(\frac{\lambda(1+u)}{2}\right) + \lambda h''(iu) = -\lambda v'(u).
+$$
+
+We will write
+
+$$
+V(u) = v'(u) = \frac{\lambda}{4} \psi^{(1)}\left(\frac{\lambda(1+u)}{2}\right) - h''(iu)
+$$
+
+so that $\mathcal{L}_u(T) = -\lambda V(u) T^2/2 + O(T^3)$.
+
+
+
+
+<!-- $$
+v(u) = -\frac{1}{2}\log \pi + \frac{1}{2} \psi\left(\frac{\lambda(1+u)}{2}\right) + \int_0^\infty w(a) a \sinh(ua) \mathrm{d}a.
+$$ -->
 
 $$
 V(u) = v'(u) = \frac{\lambda}{4} \psi^{(1)}\left(\frac{\lambda(1+u)}{2}\right) + \int_0^\infty w(a) a^2 \cosh(ua) \mathrm{d}a.
@@ -965,14 +1008,20 @@ $$
 we want $D_u(T) > 0$ for all $T \ne 0$ and $V(u) > 0$ for all $u > u_*$
 
 
-We will show that the last integral in the expression of $f_j$ is positive when $r \ge v(u_j)$, where
+We will show that the integral factor in the last expression of $f_j$, namely
+
+$$
+I_{\lambda, P_j}(u) = \int_{\mathbb{R}} e^{\mathcal{L}_u(T)} P_j(T + iu) \mathrm{d}T
+$$
+
+has the same sign as $P_j(iu)$ for sufficiently large $d$, for certain range of $u$ (depending on $j$).
+This will show that $f_j(r)$ has the desired sign for $r \ge v(u_j)$, where the threshold $u_j$ for $j \in \lbrace -, +, 0 \rbrace$ is defined as:
 
 $$
 u_+ = -1 + \frac{\log \lambda}{4\lambda}, \qquad u_- = u_0 = 1 + \frac{\epsilon}{4}.
 $$
 
-
-The following lemma shows that the sign of the integral is determined by the sign of $P_j(iu)$, as $d \to \infty$.
+The following lemma makes this precise.
 
 > **Lemma 4.8.** For $u > -1$, let
 >
@@ -982,7 +1031,7 @@ The following lemma shows that the sign of the integral is determined by the sig
 >
 > $$ I_{\lambda, P}(u) = P(iu) \sqrt{\frac{2\pi}{\lambda V(u)}} (1 + o_\epsilon(1)) $$
 >
-> uniformly for $u \ge -1 + 4\lambda / \log \lambda$ when $P = P_+$, and uniformly for $u \ge 1 + \epsilon/4$ when $P = P_-$ or $P = P_0$. More precisely,
+> uniformly for $u \ge -1 + \log \lambda / 4\lambda$ when $P = P_+$, and uniformly for $u \ge 1 + \epsilon/4$ when $P = P_-$ or $P = P_0$. More precisely,
 >
 > $$
 > \begin{align*}
@@ -991,15 +1040,9 @@ The following lemma shows that the sign of the integral is determined by the sig
 > \end{align*}
 > $$
 
+See below for the proof.
+The main idea is to show that the integral is concentrated around $T = 0$ (the critical point of $\mathcal{L}\_u(T)$), where the parameters defining $h$ are carefully chosen so that the argument works.
 
-<!-- This will follow from the fact that, for large enough $d$, 
-
-$$
-\int_{\mathbb{R}} e^{\mathcal{L}_u(T)} P_j(T + iu) \mathrm{d}T = P_j(iu) \sqrt{\frac{2\pi}{\lambda V(u)}} (1 + o_\epsilon(1))
-$$
-
-uniformly for $u \ge u_j$ (for each $j$). Note that the integral is concentrated around $T = 0$. -->
-Then our choice of $P_j$ will ensure that $P_+(iu) > 0$ (resp. $P_0(iu) > 0$) for $u > u_+$ (resp. $u > u_0$), and $P_-(iu) < 0$ for $u > u_-$, which shows that $f_j(r)$ has the desired sign for $r \ge v(u_j)$.
 One also needs to show that $f_j(r) > 0$ for $0 \le r < v(u_j)$, which follows from:
 
 > **Lemma 4.10.** Fix $0 < \epsilon < \epsilon_0$, let $\lambda = d/2$ and $r_+ = e^{v(u_+)}$, and
@@ -1014,7 +1057,7 @@ It says that $f_+(r)$ is approximately a scaled Gaussian near $r = 0$ ($0 \le r 
 If we set
 
 $$
-R_{\epsilon,d} = e^{v(u_0)} = \frac{1}{\sqrt{\pi}} \exp\left(\frac{1}{2} \psi\left(\frac{\lambda(1+u)}{2}\right)\right) \exp\left(\int_0^\infty w(a)a\sinh(u_0 a)\mathrm{d}A\right)
+R_{\epsilon,d} = e^{v(u_0)} = \frac{1}{\sqrt{\pi}} \exp\left(\frac{1}{2} \psi\left(\frac{\lambda(1+u_0)}{2}\right)\right) \exp\left(\int_0^\infty w(a)a\sinh(u_0 a)\mathrm{d}A\right)
 $$
 
 then $f_+(r), f_0(r) > 0$ and $f_-(r) < 0$ when $r \ge R_{\epsilon, d}$. By the asymptotic expansion of the digamma function
@@ -1030,6 +1073,8 @@ $$
 $$
 
 Since we want to minimize the radius $R_{\epsilon,d}$, we want $w(a)$ to be as small as possible
+
+<!-- ADD DETAILS -->
 
 
 ### Choice of parameters
@@ -1078,6 +1123,21 @@ $$ -->
 ### Proofs of lemmas
 
 #### Lemma 4.2
+
+> **Lemma 4.2.** There are absolute constants $\epsilon_0, c, C > 0$ such that, for every $0 < \epsilon < \epsilon_0$ and for all $\lambda > 0$, $-1 < u \le U$, and $a_0 \le a \le A$, we have
+>
+> $$ \lambda |w_s(a)| \cosh(ua) \le (1 - c\epsilon) \mu_{\lambda, 1 + u}(a). $$
+>
+> At $u = u_0$, we have
+>
+> $$
+> \begin{align*}
+> \int_{a_0}^{A} w_s(a) a\sinh (u_0 a) \mathrm{d}a = - \frac{1}{2} \log \frac{\pi}{2} + O(\epsilon), \\
+> 0 \le \int_{B}^{B+1} w_B(a) a \sinh(u_0 a) \mathrm{d}a \le Ce^{-c/\epsilon^2}.
+> \end{align*}
+> $$
+>
+> 
 
 #### Lemma 4.3
 
@@ -1136,6 +1196,9 @@ In particular, we have $f_+(0) = f_-(0) = \beta > 0$ and $f_0(0) = 0$. $\square$
 
 #### Lemma 4.4 - 4.7
 
+These four lemmas are used for Lemma 4.8, i.e. to show that $f_j(r)$ has the same sign as $P_j(iu)$ for sufficiently large $d$ and for certain range of $u$.
+The proofs are elementary but technical, so I'll only state the results here without further "digestion".
+
 Let $U = 1 + \epsilon / 2$, $\delta = u - 1$, and $\eta + 1 + u$.
 
 > **Lemma 4.4.** There are absolute constants $c, C > 0$ such that, for every $\lambda > 0$, $u > -1$ satisfying $\lambda(1 + u) \ge 1$, and $T \in \mathbb{R}$, we have
@@ -1147,7 +1210,7 @@ Let $U = 1 + \epsilon / 2$, $\delta = u - 1$, and $\eta + 1 + u$.
 > $$
 > \begin{align*}
 > \frac{1}{2\eta} &\le V_\gamma \le \frac{C}{\eta}, \\
-> \frac{1}{\lambda} \int_0^{\infty} a^3 \mu_{\lambda, \eta}(a) \mathrm{d} a \le \frac{C}{\eta^2}, \\
+> \frac{1}{\lambda} \int_0^{\infty} a^3 \mu_{\lambda, \eta}(a) \mathrm{d} a &\le \frac{C}{\eta^2}, \\
 > D_\gamma(T) &\ge c\lambda \min \left\lbrace \frac{T^2}{\eta}, |T| \right\rbrace, \qquad (T \in \mathbb{R}).
 > \end{align*}
 > $$
@@ -1209,11 +1272,6 @@ Let $U = 1 + \epsilon / 2$, $\delta = u - 1$, and $\eta + 1 + u$.
 > \end{align*}
 > $$
 
-<!-- #### Lemma 4.5
-
-#### Lemma 4.6
-
-#### Lemma 4.7 -->
 
 #### Lemma 4.8
 
