@@ -25,6 +25,7 @@ The main results are the following:
 I have mostly focused on understanding the intuition behind the proof and making it more readable.
 Some theorem and lemma statements are rephrased for clarity.
 Some proofs are expanded with more details, while others are shortened when they are less central to the main ideas.
+Also, typos and grammatical errors in earlier verions of this post have been fixed with the help of ChatGPT.
 
 
 ## Problem setting and background
@@ -134,7 +135,7 @@ for all $d \equiv 0 \pmod{4}$ (prompted by OpenAI's announcement; see [the blog 
 
 ## Thoughts on the report
 
-I guess the above introduction is enough to understand the main results (Theorem 1.1 and Theorem 1.2). Here are some thoughts after reading the report:
+I guess the above introduction is enough to understand the main results (Theorem 1.1 and Theorem 1.2). Here are some comments after reading the report:
 
 - The overall proof is not very long.
 - The proof relies heavily on complex analysis.
@@ -148,7 +149,7 @@ Astra's proof takes a different, more elementary and analytic approach: it does 
 - The proof has weird choices of words, such as "Mellin envelope". I like the proof, but I didn't enjoy reading the proof.
 - One of the core ideas, in my opinion, is to work with the Mellin transform. Such an idea first appears in Section 5 of the 2016 paper by [Cohn and Miller](https://arxiv.org/abs/1603.04759). The report cites CM16 for the radial formulation but does not discuss this particular precedent, which is also mentioned in the [recent *Scientific American* article](https://www.scientificamerican.com/article/openais-latest-math-breakthroughs-commit-research-misconduct-experts-say/).
 - OpenAI also shared [reasoning walkthroughs](https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf) for the proofs. For the sphere-packing problem, the walkthrough is a sketch or summary rather than Astra's chain of thought. I first tried reading it before the report, but it wasn't helpful. It would be more helpful if it were a detailed, *raw* chain of thought (although these seem to be becoming harder to track these days...).
-- I also wonder if Astra would be able to find this proof if the conjectured asymptotic exponent were not given. I think it still might be possible, assuming that it does the numerical experiments itself. However, I do think that knowing about the conjectured exponent $\sqrt{e/2\pi}$ and the uncertainty principle constant $1/\pi$ might be helpful a lot.
+- I also wonder if Astra would be able to find this proof if the conjectured asymptotic exponent were not given. I think it still might be possible, assuming that it does the numerical experiments itself. However, I do think that knowing about the conjectured exponent $\sqrt{e/2\pi}$ and the uncertainty principle constant $1/\pi$ might helped a lot.
 
 
 ## Radial and Schwartz reductions
@@ -234,23 +235,6 @@ The following proposition is a direct corollary of Proposition 3.1.
 
 > **Proposition 3.7.** For every $0 < c < 1/\pi$, there exists $d\_0(c) \in \mathbb{N}$ such that, for every $d \ge d\_0(c)$ and every $\varsigma \in \lbrace-1,+1\rbrace$, no nonzero $g \in L^1(\mathbb{R}^d;\mathbb{R})$ satisfies $\widehat{g} = \varsigma g$, $g(0) = 0$, and $g(x) \ge 0$ for $\lVert x\rVert \ge c \sqrt{d}$. Here $g$ denotes its continuous Fourier-inversion representative.
 
-<!-- > *Proof of Proposition 3.7.* If $g$ is a radial Schwartz function, then $\int g = \widehat{g}(0) = \varsigma g(0) = 0$, and hence its negative part $g\_- = \max\lbrace-g,0\rbrace$ has integral $\lVert g\rVert\_1/2$. If $g(x) \ge 0$ for $\lVert x\rVert \ge c \sqrt{d}$, then $g\_-$ vanishes outside the ball of radius $c \sqrt{d}$ and
->
-> $$
-> \frac{\|g\|_{1}}{2} = \int_{\mathbb{R}^d} g_{-}(x) \mathrm{d}x = \int_{|x| < c \sqrt{d}} g_{-}(x) \mathrm{d}x \le \int_{|x| < c \sqrt{d}} |g(x)| \mathrm{d}x \le C_c e^{-\gamma_c d} \|g\|_1.
-> $$
->
-> This is a contradiction for large $d$.
->
-> For a general $g\in L^1$, first replace it by its radialization $h=\mathcal Rg$. This radialization is still nonzero: if $h=0$, then outside a ball the function $g$ is nonnegative with zero spherical average, so it vanishes there. The identity $\widehat g=\varsigma g$ and Fourier analyticity would then force $g=0$. Let $h\_n$ be the radial Schwartz eigenfunctions constructed above. They need not remain nonnegative outside the ball, but $(h\_n)_-\le \lvert h\_n-h \rvert$ outside the ball. Thus, with $R=c\sqrt d$,
->
-> $$
-> \frac12\|h_n\|_1=\int_{\mathbb R^d}(h_n(x))_-\,\mathrm{d}x
-> \le \int_{|x|<R}|h_n(x)|\,\mathrm{d}x+\|h_n-h\|_1.
-> $$
->
-> Proposition 3.1 bounds the first term. Letting $n\to\infty$ gives $\lVert h\rVert\_1/2\le C\_ce^{-\gamma\_cd}\lVert h\rVert\_1$, again a contradiction for large $d$. $\square$ -->
-
 
 How is this used to prove the lower bounds for $\mathrm{LP}\_d$ and $\mathsf A\_{\pm}(d)$?
 Let $F\in\mathcal{A}\_d$ be a nonzero function.
@@ -266,7 +250,7 @@ $$
 \widehat h(\xi)=a^{-d}\widehat F(\xi/a),\qquad h(0)=\widehat h(0)=F(0).
 $$
 
-Consequently, $\widehat g=-g$, $g(0)=0$, and the admissibility conditions imply $g(x)\ge0$ for $\lvert x\rvert\ge1/a$. Moreover, $g\ne0$: otherwise $h=\widehat h\ge0$, while $h(x)\le0$ for $\lvert x\rvert\ge1/a$. Thus $h$ would be a nonzero compactly supported self-Fourier function, contradicting Fourier analyticity. Proposition 3.7 therefore forces $1/a>c\sqrt d$ for every fixed $c<1/\pi$ and all sufficiently large $d$, and hence
+Consequently, $\widehat g=-g$, $g(0)=0$, and the admissibility conditions imply $g(x)\ge0$ for $\lvert x\rvert\ge1/a$. Moreover, $g\ne0$: otherwise $h=\widehat h\ge0$, while $h(x)\le0$ for $\lvert x\rvert\ge1/a$. Thus $h$ would be a nonzero compactly supported self-Fourier function, which is impossible. Proposition 3.7 therefore forces $1/a>c\sqrt d$ for every fixed $c<1/\pi$ and all sufficiently large $d$, and hence
 
 $$
 \liminf_{d \to \infty} \frac{1}{\sqrt{d}} \inf_{F \in \mathcal{A}_d} \left(\frac{F(0)}{\widehat{F}(0)}\right)^{1/d} \ge c.
@@ -292,9 +276,11 @@ $$
 \liminf_{d\to\infty}\mathrm{LP}_d^{1/d} =\liminf_{d\to\infty}\left[\frac{v_d^{1/d}}{2}\cdot\inf_{F\in\mathcal A_d}\left(\frac{F(0)}{\widehat F(0)}\right)^{1/d}\right] \ge \sqrt{\frac{e}{2\pi}}.
 $$
 
-Now let's prove Proposition 3.1.
+We now turn to Proposition 3.1.
 
-### Proof of Proposition 3.1
+### Proof overview for Proposition 3.1
+
+The detailed proofs of the intermediate results are collected [at the end of this section](#proofs-of-intermediate-results).
 
 Set $R=c\sqrt d$. We estimate the mass of $g$ inside this ball using the normalized Mellin transform
 
@@ -348,113 +334,8 @@ Let's start with the first step.
 > |Z(s + i\sigma\lambda)| \le \exp(H_\sigma(s)), \quad H_\sigma(s) = \int_{\mathbb{R}} P_\sigma(T) h_\lambda(s - \lambda T) \mathrm{d}T \quad (s \in \mathbb{R}).
 > $$
 
-The bounds on the upper and lower boundaries of the strip are just intermediate steps, and the main goal is to bound $Z$ inside the strip.
-This follows by applying an upper-half-plane Poisson principle to $\log\lvert Z\rvert$.
-
-> **Informal upper-half-plane Poisson principle.** Let $b : \mathbb{R} \to \mathbb{R}$ satisfy the weighted integrability needed below, and define $P[b] : \mathbb{H} \to \mathbb{R}$ by
->
-> $$
-> P[b](x + iy) = \frac{1}{\pi} \int_{\mathbb{R}} \frac{y}{(t - x)^2 + y^2} b(t) \mathrm{d}t.
-> $$
->
-> If $u$ is subharmonic and bounded above on $\mathbb H$, and its boundary values on $\mathbb R = \partial\mathbb H$ are bounded above by $b$, then $u\le P[b]$ on $\mathbb H$.
->
-
-
-> *Proof of Lemma 3.2.* Since $g(0)=\widehat g(0)=0$, smooth radiality gives $g(r),\widehat g(r)=O(r^2)$ at the origin. The Mellin transforms therefore continue past $\operatorname{Re}z=0$, and $Z$ is holomorphic on a neighborhood of the closed strip. On its upper boundary,
->
-> $$
-> Z(y+i\lambda)=\int_{\mathbb R}\varphi(v)e^{-iyv}\,\mathrm{d}v,
-> \qquad |Z(y+i\lambda)|\le\|\varphi\|_1=1.
-> $$
->
-> The Mellin functional equation gives the lower-boundary identity
->
-> $$
-> Z(y-i\lambda) = \varsigma (\pi R^2)^{\lambda + iy} \frac{\Gamma(-iy/2)}{\Gamma(\lambda + iy/2)} Z(-y + i\lambda).
-> $$
->
-> Taking absolute values proves the claimed lower-boundary estimate for $y\ne0$. At $y=0$, the zero $Z(i\lambda)=\int\varphi=0$ cancels the apparent pole of $\Gamma(-iy/2)$, so $Z$ remains bounded there. More generally, for $-\lambda\le\eta\le\lambda$,
->
-> $$
-> |Z(s+i\eta)|
-> \le \frac{S_dR^{\lambda-\eta}}{\|g\|_1}
-> \int_0^\infty |g(r)|r^{\lambda+\eta-1}\,\mathrm{d}r.
-> $$
->
-> Splitting the integral at $r=1$, using $g(r)=O(r^2)$ near zero and rapid decay at infinity, makes this bound uniform in $s$ and $\eta$. Thus $Z$ is bounded on the whole closed strip.
->
-> To prove the interior bound, map the strip to the upper half-plane and invoke the Poisson formula there. The conformal map is
->
-> $$
-> \Phi(z) = \exp\left(\frac{\pi(z + i\lambda)}{2\lambda}\right)
-> $$
->
-> which maps the lower boundary $\Im z=-\lambda$ to $(0,\infty)$ and the upper boundary $\Im z=\lambda$ to $(-\infty,0)$. It maps $z=s+i\sigma\lambda$ to
->
-> $$
-> \Phi(s + i\sigma\lambda) = \rho e^{i\theta}, \quad \rho = \exp\left(\frac{\pi s}{2\lambda}\right), \quad \theta = \frac{\pi(1+\sigma)}{2}.
-> $$
->
-> The map is a biholomorphism from the strip $\lvert \Im z\rvert<\lambda$ to the upper half-plane $\mathbb{H}$. Since $Z\circ\Phi^{-1}$ is holomorphic, $u(z)=\log\lvert Z(\Phi^{-1}(z))\rvert$ is subharmonic, with the value $-\infty$ allowed at its zeros.
-> One technical difficulty is that $h\_\lambda(y)$, which bounds the lower-edge data carried to the positive real axis, has a singularity at $y=0$:
->
-> $$h_\lambda(y) = -\log|y| + O_\lambda(1),\quad y \to 0.$$
->
-> To deal with this, truncate $h\_\lambda$. As mentioned above, $Z$ is bounded on the closed strip, hence on the lower boundary. So we can truncate $h\_\lambda$ to a function $h\_{\lambda,D}$ that is bounded above:
->
-> $$
-> h_{\lambda,D}(y)=
-> \begin{cases}
-> \min\{h_\lambda(y),D\},&y\ne0,\\
-> D,&y=0.
-> \end{cases}
-> $$
->
-> and choose $D>\max\lbrace0,\sup\_{y \in \mathbb{R}}\log\lvert Z(y-i\lambda)\rvert\rbrace$. Since $\log\lvert Z\rvert\le0$ on the upper boundary, which maps to the negative real axis under $\Phi$, we may majorize its boundary data there by zero and only integrate the nontrivial data over the positive real axis:
->
-> $$
-> \begin{align*}
-> \log |Z(s + i\sigma \lambda)| &= u(\Phi(s + i\sigma\lambda)) \\
-> &\le \int_{0}^{\infty} \frac{1}{\pi} \cdot \frac{\rho\sin\theta}{(t - \rho\cos\theta)^2 + (\rho\sin\theta)^2} h_{\lambda, D}\!\left(\frac{2\lambda}{\pi}\log t\right) \mathrm{d}t,
-> \end{align*}
-> $$
->
-> where $\Phi(s+i\sigma\lambda)=\rho\cos\theta+i\rho\sin\theta$. Now substitute $t=e^{\pi y/(2\lambda)}$, corresponding to the lower-boundary point $y-i\lambda$. Since
->
-> $$
-> \mathrm{d}t=\frac{\pi t}{2\lambda}\,\mathrm{d}y,
-> \qquad
-> (t-\rho\cos\theta)^2+(\rho\sin\theta)^2
-> =t^2-2\rho t\cos\theta+\rho^2,
-> $$
->
-> the usual upper-half-plane Poisson measure becomes
->
-> $$
-> \begin{aligned}
-> \frac{1}{\pi}
-> \frac{\rho\sin\theta}
-> {(t-\rho\cos\theta)^2+(\rho\sin\theta)^2}\,\mathrm{d}t &=
-> \frac{\sin\theta}{2\lambda} \frac{\rho t}{t^2-2\rho t\cos\theta+\rho^2}\,\mathrm{d}y\\
-> &= \frac{\sin\theta}{2\lambda\left(t/\rho+\rho/t-2\cos\theta\right)}\,\mathrm{d}y \\
-> &= \frac{\sin\theta}
-> {4\lambda\left(\cosh\left(\frac{\pi(s-y)}{2\lambda}\right)-\cos\theta\right)}\,\mathrm{d}y \\
-> &= \frac{1}{\lambda} P_\sigma\left(\frac{s-y}{\lambda}\right)\,\mathrm{d}y.
-> \end{aligned}
-> $$
->
-> Substituting this identity into the Poisson integral gives
->
-> $$
-> \begin{align*}
-> \int_{0}^{\infty} \frac{1}{\pi} \cdot \frac{\rho\sin\theta}{(t - \rho\cos\theta)^2 + (\rho\sin\theta)^2} h_{\lambda, D}\!\left(\frac{2\lambda}{\pi}\log t\right) \mathrm{d}t 
-> &= \int_{\mathbb{R}} \frac{1}{\lambda} P_\sigma\left(\frac{s-y}{\lambda}\right) h_{\lambda, D}(y) \mathrm{d}y \\
-> &= \int_{\mathbb{R}} P_\sigma(T) h_{\lambda, D}(s - \lambda T) \mathrm{d}T.
-> \end{align*}
-> $$
->
-> The logarithmic singularity of $h\_\lambda$ is locally integrable, and the exponential decay of $P\_\sigma$ controls its logarithmic growth in absolute value at infinity. Dominated convergence therefore permits $D\to\infty$ and proves $\log\lvert Z(s+i\sigma\lambda)\rvert\le H\_\sigma(s)$. $\square$
+It is easy to boud $\lvert Z \rvert$ on the upper boundary $\Im t = \lambda$, and the bound for the lower boundary $\Im t = -\lambda$ follows from the functional equation.
+For the general bound inside the strip, we use a conformal map the strip to the upper half plane and apply the Poisson principle there.
 
 Next, we bound $H\_\sigma$.
 Lemma 3.3 and Lemma 3.4 are intermediate steps toward Lemma 3.5.
@@ -476,6 +357,169 @@ Lemma 3.3 and Lemma 3.4 are intermediate steps toward Lemma 3.5.
 > $$
 > H_\sigma(s) \le H_\sigma(0) = \lambda M_\sigma (\log(2\pi c^2) + J_\sigma) + O_\sigma(\log(2 + \lambda)).
 > $$
+
+The error estimate is based on the Riemann sum approximation of $h\_\lambda(\lambda T)$.
+
+Now, our goal is to show that $H\_\sigma(0)\le-\gamma\lambda$ for some $\gamma>0$, making $e^{H\_\sigma(0)}$ exponentially small in $\lambda=d/2$.
+First, we compute the limit of $J\_\sigma$ as $\sigma \to 1^{-}$.
+
+> **Lemma 3.4.** For $J\_\sigma$ defined in Lemma 3.3,
+>
+> $$
+> \lim_{\sigma \to 1^{-}} J_\sigma = \log\frac{\pi}{2}.
+> $$
+>
+> Consequently, for every $0<c<1/\pi$, there exists $\sigma(c)\in(-1,1)$ such that $\log(2\pi c^2)+J\_{\sigma(c)}<0$.
+
+This is precisely where the constant $1/\pi$ enters, since
+
+$$
+\log(2\pi c^2)+\log(\pi/2)=\log(\pi^2c^2)<0
+\quad\Longleftrightarrow\quad c<1/\pi.
+$$
+
+From now on, fix $\sigma=\sigma(c)$ such that $\log(2\pi c^2)+J_\sigma<0$.
+
+> **Lemma 3.5.** There exist $\gamma\_c, C\_c^{\prime}, B\_c > 0$, depending only on $c$, such that, for every sufficiently large $d$,
+>
+> $$
+> H_\sigma(s) \le -\gamma_c \lambda \quad(s \in \mathbb{R}), \quad \int_{\mathbb{R}} |Z(s + i\sigma\lambda)| \mathrm{d}s \le C_c' \lambda e^{-\gamma_c \lambda}.
+> $$
+>
+> Moreover, after increasing $B\_c$ if necessary,
+>
+> $$
+> H_\sigma(\lambda S) \le - \frac{M_\sigma \lambda}{2} \log \frac{|S|}{C_c'} \quad (|S| \ge B_c).
+> $$
+
+Using Lemma 3.5, we can bound the integral of $\lvert \varphi\rvert$ over $(-\infty,0)$.
+
+> **Lemma 3.6.** For every $0 < c < 1/\pi$, there exist $C\_c, \gamma\_c > 0$ and $d\_0(c) \in \mathbb{N}$, independent of $g$ and $\varsigma$, such that
+>
+> $$
+> \int_{-\infty}^{0} |\varphi(v)| \mathrm{d}v \le C_c e^{-\gamma_c d}.
+> $$
+
+Proposition 3.1 now follows from the identity
+
+$$
+\int_{-\infty}^{0}|\varphi(v)|\,\mathrm dv
+=\frac1{\|g\|_1}\int_{|x|<c\sqrt d}|g(x)|\,\mathrm dx.
+$$
+
+### Proofs of intermediate results
+
+#### Lemma 3.2
+
+The bounds on the upper and lower boundaries of the strip are just intermediate steps, and the main goal is to bound $Z$ inside the strip.
+This follows by applying an upper-half-plane Poisson principle to $\log\lvert Z\rvert$.
+
+> **Informal upper-half-plane Poisson principle.** Let $b : \mathbb{R} \to \mathbb{R}$ satisfy the weighted integrability needed below, and define $P[b] : \mathbb{H} \to \mathbb{R}$ by
+>
+> $$
+> P[b](x + iy) = \frac{1}{\pi} \int_{\mathbb{R}} \frac{y}{(t - x)^2 + y^2} b(t) \mathrm{d}t.
+> $$
+>
+> If $u$ is subharmonic and bounded above on $\mathbb H$, and its boundary values on $\mathbb R = \partial\mathbb H$ are bounded above by $b$, then $u\le P[b]$ on $\mathbb H$.
+>
+
+Since $g(0)=\widehat g(0)=0$, smooth radiality gives $g(r),\widehat g(r)=O(r^2)$ at the origin. The Mellin transforms therefore continue past $\operatorname{Re}z=0$, and $Z$ is holomorphic on a neighborhood of the closed strip. On its upper boundary,
+
+$$
+Z(y+i\lambda)=\int_{\mathbb R}\varphi(v)e^{-iyv}\,\mathrm{d}v,
+\qquad |Z(y+i\lambda)|\le\|\varphi\|_1=1.
+$$
+
+The Mellin functional equation gives the lower-boundary identity
+
+$$
+Z(y-i\lambda) = \varsigma (\pi R^2)^{\lambda + iy} \frac{\Gamma(-iy/2)}{\Gamma(\lambda + iy/2)} Z(-y + i\lambda).
+$$
+
+Taking absolute values proves the claimed lower-boundary estimate for $y\ne0$. At $y=0$, the zero $Z(i\lambda)=\int\varphi=0$ cancels the apparent pole of $\Gamma(-iy/2)$, so $Z$ remains bounded there. More generally, for $-\lambda\le\eta\le\lambda$,
+
+$$
+|Z(s+i\eta)|
+\le \frac{S_dR^{\lambda-\eta}}{\|g\|_1}
+\int_0^\infty |g(r)|r^{\lambda+\eta-1}\,\mathrm{d}r.
+$$
+
+Splitting the integral at $r=1$, using $g(r)=O(r^2)$ near zero and rapid decay at infinity, makes this bound uniform in $s$ and $\eta$. Thus $Z$ is bounded on the whole closed strip.
+
+To prove the interior bound, map the strip to the upper half-plane and invoke the Poisson formula there. The conformal map is
+
+$$
+\Phi(z) = \exp\left(\frac{\pi(z + i\lambda)}{2\lambda}\right)
+$$
+
+which maps the lower boundary $\Im z=-\lambda$ to $(0,\infty)$ and the upper boundary $\Im z=\lambda$ to $(-\infty,0)$. It maps $z=s+i\sigma\lambda$ to
+
+$$
+\Phi(s + i\sigma\lambda) = \rho e^{i\theta}, \quad \rho = \exp\left(\frac{\pi s}{2\lambda}\right), \quad \theta = \frac{\pi(1+\sigma)}{2}.
+$$
+
+The map is a biholomorphism from the strip $\lvert \Im z\rvert<\lambda$ to the upper half-plane $\mathbb{H}$. Since $Z\circ\Phi^{-1}$ is holomorphic, $u(z)=\log\lvert Z(\Phi^{-1}(z))\rvert$ is subharmonic, with the value $-\infty$ allowed at its zeros.
+One technical difficulty is that $h\_\lambda(y)$, which bounds the lower-edge data carried to the positive real axis, has a singularity at $y=0$:
+
+$$h_\lambda(y) = -\log|y| + O_\lambda(1),\quad y \to 0.$$
+
+To deal with this, truncate $h\_\lambda$. As mentioned above, $Z$ is bounded on the closed strip, hence on the lower boundary. So we can truncate $h\_\lambda$ to a function $h\_{\lambda,D}$ that is bounded above:
+
+$$
+h_{\lambda,D}(y)=
+\begin{cases}
+\min\{h_\lambda(y),D\},&y\ne0,\\
+D,&y=0.
+\end{cases}
+$$
+
+and choose $D>\max\lbrace0,\sup\_{y \in \mathbb{R}}\log\lvert Z(y-i\lambda)\rvert\rbrace$. Since $\log\lvert Z\rvert\le0$ on the upper boundary, which maps to the negative real axis under $\Phi$, we may majorize its boundary data there by zero and only integrate the nontrivial data over the positive real axis:
+
+$$
+\begin{align*}
+\log |Z(s + i\sigma \lambda)| &= u(\Phi(s + i\sigma\lambda)) \\
+&\le \int_{0}^{\infty} \frac{1}{\pi} \cdot \frac{\rho\sin\theta}{(t - \rho\cos\theta)^2 + (\rho\sin\theta)^2} h_{\lambda, D}\!\left(\frac{2\lambda}{\pi}\log t\right) \mathrm{d}t,
+\end{align*}
+$$
+
+where $\Phi(s+i\sigma\lambda)=\rho\cos\theta+i\rho\sin\theta$. Now substitute $t=e^{\pi y/(2\lambda)}$, corresponding to the lower-boundary point $y-i\lambda$. Since
+
+$$
+\mathrm{d}t=\frac{\pi t}{2\lambda}\,\mathrm{d}y,
+\qquad
+(t-\rho\cos\theta)^2+(\rho\sin\theta)^2
+=t^2-2\rho t\cos\theta+\rho^2,
+$$
+
+the usual upper-half-plane Poisson measure becomes
+
+$$
+\begin{aligned}
+\frac{1}{\pi}
+\frac{\rho\sin\theta}
+{(t-\rho\cos\theta)^2+(\rho\sin\theta)^2}\,\mathrm{d}t &=
+\frac{\sin\theta}{2\lambda} \frac{\rho t}{t^2-2\rho t\cos\theta+\rho^2}\,\mathrm{d}y\\
+&= \frac{\sin\theta}{2\lambda\left(t/\rho+\rho/t-2\cos\theta\right)}\,\mathrm{d}y \\
+&= \frac{\sin\theta}
+{4\lambda\left(\cosh\left(\frac{\pi(s-y)}{2\lambda}\right)-\cos\theta\right)}\,\mathrm{d}y \\
+&= \frac{1}{\lambda} P_\sigma\left(\frac{s-y}{\lambda}\right)\,\mathrm{d}y.
+\end{aligned}
+$$
+
+Substituting this identity into the Poisson integral gives
+
+$$
+\begin{align*}
+\int_{0}^{\infty} \frac{1}{\pi} \cdot \frac{\rho\sin\theta}{(t - \rho\cos\theta)^2 + (\rho\sin\theta)^2} h_{\lambda, D}\!\left(\frac{2\lambda}{\pi}\log t\right) \mathrm{d}t
+&= \int_{\mathbb{R}} \frac{1}{\lambda} P_\sigma\left(\frac{s-y}{\lambda}\right) h_{\lambda, D}(y) \mathrm{d}y \\
+&= \int_{\mathbb{R}} P_\sigma(T) h_{\lambda, D}(s - \lambda T) \mathrm{d}T.
+\end{align*}
+$$
+
+The logarithmic singularity of $h\_\lambda$ is locally integrable, and the exponential decay of $P\_\sigma$ controls its logarithmic growth in absolute value at infinity. Dominated convergence therefore permits $D\to\infty$ and proves $\log\lvert Z(s+i\sigma\lambda)\rvert\le H\_\sigma(s)$. $\square$
+
+
+#### Lemma 3.3
 
 We have
 
@@ -509,298 +553,259 @@ The following elementary lemma is used in the last step of the proof and is wort
 >
 > and the length of the intersection is maximized at $x=0$. $\square$
 
-> *Proof of Lemma 3.3.* The difference between $h\_\lambda(\lambda T)$ and
->
-> $$\lambda\left(\log(2\pi c^2) - \int_0^1 \log \sqrt{x^2 + \frac{T^2}{4}} \mathrm{d}x\right)$$
->
-> is bounded by expressing $h\_\lambda(\lambda T)$ in terms of Riemann sums of $f\_T(x)=\log\sqrt{x^2+T^2/4}$ and controlling the error. For example, if $d=2n$ is even, then $n=\lambda$. For $T\ne0$, the identities $\Gamma(z+1)=z\Gamma(z)$ and $\lvert \Gamma(ib)\rvert=\lvert \Gamma(-ib)\rvert$ for $b \in \mathbb{R}$ give
->
-> $$ h_n(nT) = n\log(2\pi c^2) - \sum_{k=0}^{n-1} f_T\left(\frac{k}{n}\right) $$
->
-> and monotonicity of $f\_T$ gives
->
-> $$ 0 \le h_n(nT) - n \left(\log(2\pi c^2) - \int_0^1 f_T(x) \mathrm{d}x \right) \le f_T(1) - f_T(0) = \frac{1}{2} \log \left(1 + \frac{4}{T^2}\right).$$
->
-> Multiplying this bound by the Poisson kernel $P\_\sigma(T)$ gives an integrable function. Near $T=0$, the bound is $O(1+\log(1/\lvert T\rvert))$, which is locally integrable; for $\lvert T\rvert>1$, it is $O(T^{-2})$, while $P\_\sigma$ decays exponentially. Its integral is therefore bounded by a constant depending only on $\sigma$, not on $n$, $c$, or $g$.
->
-> When $d=2n+1$ is odd, so that $\lambda=n+\tfrac12$, set $b=\lambda T/2$ and use the identity
->
-> $$
->\frac{\lvert\Gamma(-ib)\rvert^2}
-> {\lvert\Gamma(\frac12+ib)\rvert^2}
-> =\frac{\coth(\pi\lvert b\rvert)}{\lvert b\rvert}
-> $$
->
-> to obtain
->
-> $$
-> h_\lambda(\lambda T)
-> =\lambda\log(2\pi c^2)
-> -\sum_{k=0}^{n-1}f_T\left(\frac{k+1/2}{\lambda}\right)
-> +\frac12\log\lambda
-> +\frac12\log\frac{\coth(\pi \lambda \lvert T\rvert /2)}{\lambda\lvert T\rvert/2}.
-> $$
->
-> In this case, split
->
-> $$
-> \int_0^1 f_T(x)\,\mathrm{d}x
-> =\int_0^{n/\lambda}f_T(x)\,\mathrm{d}x
-> +\int_{n/\lambda}^1f_T(x)\,\mathrm{d}x,
-> $$
->
-> and compare the first integral with the midpoint sum:
->
-> $$
-> \begin{aligned}
-> &h_\lambda(\lambda T) -\lambda\left(\log(2\pi c^2)-\int_0^1f_T(x)\,\mathrm{d}x\right)\\
-> &=\lambda \left(\int_0^{\frac{n}{\lambda}} f_T(x)\,\mathrm{d}x -\frac{1}{\lambda}\sum_{k=0}^{n-1}f_T\left(\frac{k+1/2}{\lambda}\right) \right)
-> +\lambda\int_{\frac{n}{\lambda}}^1f_T(x)\,\mathrm{d}x \\
-> &\quad +\frac12\log\lambda + \frac12\log\frac{\coth(\pi \lambda \lvert T\rvert /2)}{\lambda\lvert T\rvert/2}.
-> \end{aligned}
-> $$
->
-> By monotonicity, the first term on the right, including its prefactor $\lambda$, has absolute value at most
->
-> $$
-> f_T(n/\lambda)-f_T(0)
-> \le f_T(1)-f_T(0)
-> =\frac12\log\left(1+\frac4{T^2}\right).
-> $$
->
-> The remaining interval has length $1/(2\lambda)$. Together, these two contributions are bounded by
->
-> $$
-> C\left(1+\log(2+|T|)+\log(2+|T|^{-1})\right).
-> $$
->
-> The endpoint correction is controlled by the same $T$-dependent logarithms, together with an additional $C\log(2+\lambda)$. Thus the total error is bounded by
->
-> $$ C\left(1 + \log(2 + \lvert T \rvert) + \log (2 + \lvert T \rvert^{-1}) + \log(2 + \lambda)\right), $$
->
-> and integrating against $P\_\sigma(T)\,\mathrm{d}T$ gives the desired bound, with a constant depending on $\sigma$.
->
-> It remains to prove that $H\_\sigma(s)$ is maximized at $s=0$. Since $P\_\sigma$ and $h\_\lambda$ are even, $H\_\sigma$ is even. It is clear that $P\_\sigma(T)$ is decreasing on $(0, \infty)$, and $h\_\lambda(y)$ is also decreasing for $y>0$, since
->
-> $$h_\lambda'(y) = \frac{\Im\psi(\lambda + iy/2) - \Im\psi(iy/2)}{2} < 0,$$
->
-> for $y > 0$, where $\psi = \Gamma^{\prime}/\Gamma$ is the digamma function and $\Im\psi(a + bi) = \sum\_{k \ge 0} \frac{b}{(k+a)^2 + b^2}$.
-> Consider $q\_{\lambda, N}(u) := \max\lbrace h\_\lambda(\lambda u) + N, 0\rbrace$. It is nonnegative, even, and decreasing on $(0,\infty)$; it is also integrable because the singularity at zero is logarithmic and $h\_\lambda(y)\to-\infty$ as $|y|\to\infty$. The convolution lemma therefore gives
->
-> $$
-> (P_\sigma*q_{\lambda,N})(s/\lambda)
-> \le (P_\sigma*q_{\lambda,N})(0).
-> $$
->
-> Subtracting the constant $NM\_\sigma$ and using $q_{\lambda,N}(u)-N=\max\lbrace h_\lambda(\lambda u),-N\rbrace$ turns this into
->
-> $$
-> \int_{\mathbb{R}} P_\sigma(T) \max\lbrace h_\lambda(s-\lambda T),-N\rbrace\,\mathrm{d}T
-> \le
-> \int_{\mathbb{R}} P_\sigma(T) \max\lbrace h_\lambda(-\lambda T),-N\rbrace\,\mathrm{d}T.
-> $$
->
-> The exponential decay of $P\_\sigma$ controls the logarithmic behavior of $h\_\lambda$, so passing to the limit $N \to \infty$ gives $H\_\sigma(s) \le H\_\sigma(0)$. $\square$
+*Proof of Lemma 3.3.* The difference between $h\_\lambda(\lambda T)$ and
 
-Now, our goal is to show that $H\_\sigma(0)\le-\gamma\lambda$ for some $\gamma>0$, making $e^{H\_\sigma(0)}$ exponentially small in $\lambda=d/2$.
-First, we compute the limit of $J\_\sigma$ as $\sigma \to 1^{-}$.
+$$\lambda\left(\log(2\pi c^2) - \int_0^1 \log \sqrt{x^2 + \frac{T^2}{4}} \mathrm{d}x\right)$$
 
-> **Lemma 3.4.** For $J\_\sigma$ defined in Lemma 3.3,
->
-> $$
-> \lim_{\sigma \to 1^{-}} J_\sigma = \log\frac{\pi}{2}.
-> $$
->
-> Consequently, for every $0<c<1/\pi$, there exists $\sigma(c)\in(-1,1)$ such that $\log(2\pi c^2)+J\_{\sigma(c)}<0$.
+is bounded by expressing $h\_\lambda(\lambda T)$ in terms of Riemann sums of $f\_T(x)=\log\sqrt{x^2+T^2/4}$ and controlling the error. For example, if $d=2n$ is even, then $n=\lambda$. For $T\ne0$, the identities $\Gamma(z+1)=z\Gamma(z)$ and $\lvert \Gamma(ib)\rvert=\lvert \Gamma(-ib)\rvert$ for $b \in \mathbb{R}$ give
 
-This is precisely where the constant $1/\pi$ enters, since
+$$ h_n(nT) = n\log(2\pi c^2) - \sum_{k=0}^{n-1} f_T\left(\frac{k}{n}\right) $$
+
+and monotonicity of $f\_T$ gives
+
+$$ 0 \le h_n(nT) - n \left(\log(2\pi c^2) - \int_0^1 f_T(x) \mathrm{d}x \right) \le f_T(1) - f_T(0) = \frac{1}{2} \log \left(1 + \frac{4}{T^2}\right).$$
+
+Multiplying this bound by the Poisson kernel $P\_\sigma(T)$ gives an integrable function. Near $T=0$, the bound is $O(1+\log(1/\lvert T\rvert))$, which is locally integrable; for $\lvert T\rvert>1$, it is $O(T^{-2})$, while $P\_\sigma$ decays exponentially. Its integral is therefore bounded by a constant depending only on $\sigma$, not on $n$, $c$, or $g$.
+
+When $d=2n+1$ is odd, so that $\lambda=n+\tfrac12$, set $b=\lambda T/2$ and use the identity
 
 $$
-\log(2\pi c^2)+\log(\pi/2)=\log(\pi^2c^2)<0
-\quad\Longleftrightarrow\quad c<1/\pi.
+\frac{\lvert\Gamma(-ib)\rvert^2}
+{\lvert\Gamma(\frac12+ib)\rvert^2}
+=\frac{\coth(\pi\lvert b\rvert)}{\lvert b\rvert}
 $$
 
-> *Proof of Lemma 3.4.* After making the substitution $T=2u$ and normalizing by the mass $M\_\sigma$, the lower-edge harmonic measure becomes the probability density
->
-> $$
-> p_\sigma(u)=\frac{2P_\sigma(2u)}{M_\sigma}
-> =\frac{\sin\theta}{(1-\sigma)(\cosh(\pi u)-\cos\theta)}.
-> $$
->
-> As $\sigma\to1^{-}$, these densities converge in $L^1$ to
->
-> $$ p(u)=\frac\pi4\operatorname{sech}^2\left(\frac{\pi u}{2}\right). $$
->
-> Its characteristic function is 
->
-> $$ \int_{\mathbb{R}} p(u) e^{itu} \mathrm{d}u = \frac{t}{\sinh t}. $$
->
-> Define
->
-> $$ I(x)=\int_{\mathbb R}p(u)\log\sqrt{x^2+u^2}\,\mathrm{d}u. $$
->
-> Then the Laplace representation of $x/(x^2+u^2)$ gives, for $x>0$,
->
-> $$
-> I'(x)=\int_0^\infty e^{-xt}\frac{t}{\sinh t}\,\mathrm{d}t
-> =\frac12\psi'\left(\frac{x+1}{2}\right),
-> $$
->
-> where $\psi = \Gamma^{\prime}/\Gamma$ is the digamma function. Matching the constants from the common asymptotic $\log x+o(1)$ as $x\to\infty$ therefore gives
->
-> $$
-> \int_{\mathbb R}p(u)\log\sqrt{x^2+u^2}\,\mathrm{d}u
-> =\psi\left(\frac{x+1}{2}\right)+\log2.
-> $$
->
-> Local integrability of $\log\lvert u\rvert$ extends this identity to $x=0$. The uniform exponential bound $p\_\sigma(u)\ll e^{-\pi\lvert u\rvert}$ then justifies dominated convergence in $J\_\sigma$. Finally,
->
-> $$
-> \int_0^1\psi\left(\frac{x+1}{2}\right)\,\mathrm{d}x
-> =2\log\frac{\Gamma(1)}{\Gamma(1/2)}=-\log\pi,
-> $$
->
-> and integrating the preceding identity over $0\le x\le1$ yields $\lim\_{\sigma\to1^-}J\_\sigma=\log(\pi/2)$. $\square$
-
-From now on, fix $\sigma=\sigma(c)$ such that $\log(2\pi c^2)+J_\sigma<0$.
-
-> **Lemma 3.5.** There exist $\gamma\_c, C\_c^{\prime}, B\_c > 0$, depending only on $c$, such that, for every sufficiently large $d$,
->
-> $$
-> H_\sigma(s) \le -\gamma_c \lambda \quad(s \in \mathbb{R}), \quad \int_{\mathbb{R}} |Z(s + i\sigma\lambda)| \mathrm{d}s \le C_c' \lambda e^{-\gamma_c \lambda}.
-> $$
->
-> Moreover, after increasing $B\_c$ if necessary,
->
-> $$
-> H_\sigma(\lambda S) \le - \frac{M_\sigma \lambda}{2} \log \frac{|S|}{C_c'} \quad (|S| \ge B_c).
-> $$
-
-> *Proof.* Set
->
-> $$
-> \delta_c=-\bigl(\log(2\pi c^2)+J_\sigma\bigr)>0.
-> $$
->
-> Lemma 3.3 gives
->
-> $$
-> H_\sigma(s)\le-\lambda M_\sigma\delta_c+O_\sigma(\log\lambda)
-> \le-\gamma_c\lambda,
-> $$
->
-> for every $s$ once $d$ is sufficiently large. The resulting constant upper bound $e^{-\gamma_c\lambda}$ for $e^{H_\sigma(s)}$ is not integrable over $\mathbb{R}$, so we also need a tail estimate (i.e., a bound for large $\lvert s \rvert$). The gamma-function identities give, for $U\ne0$,
->
-> $$
-> h_\lambda(\lambda U)
-> \le \lambda\log\frac{4\pi c^2}{|U|}+E_\lambda(U),
-> $$
->
-> because every gamma-recurrence factor has modulus at least $\lvert \lambda U\rvert/2$; in odd dimensions, the remaining half-integer ratio contributes the error $E\_\lambda(U)$. Here
->
-> $$
-> E_\lambda(U)=
-> \begin{cases}
-> 0,&\lambda\in\mathbb N,\\
-> \dfrac12\log\coth\left(\dfrac{\pi\lambda|U|}{2}\right),
-> &\lambda\in\mathbb N+\dfrac12.
-> \end{cases}
-> $$
->
-> In the odd-dimensional case,
->
-> $$
-> \int_{\mathbb R}E_\lambda(U)\,\mathrm{d}U
-> =\frac{2}{\pi\lambda}\int_0^\infty\log\coth x\,\mathrm{d}x
-> =\frac{\pi}{4\lambda}.
-> $$
->
-> Hence the $P\_\sigma$-convolution of $E\_\lambda$ is $O\_\sigma(\lambda^{-1})$ in both parities, and
->
-> $$
-> H_\sigma(\lambda S)
-> \le \lambda M_\sigma\log(4\pi c^2)
-> -\lambda\int_{\mathbb R}P_\sigma(T)\log|S-T|\,\mathrm{d}T
-> +O_\sigma(\lambda^{-1}).
-> $$
->
-> Split the logarithmic integral at $\lvert T\rvert =\lvert S\rvert /2$. On the inner part, $\lvert S-T\rvert \ge \lvert S\rvert /2$ and the omitted $P_\sigma$-mass is exponentially small. On the outer part, the only possible negative contribution occurs near $T=S$; exponential decay of $P_\sigma(T)$ and local integrability of $\log \lvert S-T\rvert$ control it. Thus there are $B_c,A_c>0$ such that
->
-> $$
-> \int_{\mathbb R}P_\sigma(T)\log|S-T|\,\mathrm{d}T
-> \ge\frac{M_\sigma}{2}\log|S|-A_c
-> \qquad(|S|\ge B_c),
-> $$
->
-> which yields the stated logarithmic tail bound after enlarging $C_c^{\prime}$ if necessary.
->
-> Finally, choose $B>\max\lbrace B_c,C_c^{\prime}\rbrace$ and put $q=M_\sigma\lambda/2>1$. On the central interval, uniform negativity gives
->
-> $$
-> \int_{|s|\le B\lambda}e^{H_\sigma(s)}\,\mathrm{d}s
-> \le2B\lambda e^{-\gamma_c\lambda}.
-> $$
->
-> On its complement, substitute $s=\lambda S$ and use the logarithmic tail:
->
-> $$
-> \int_{|s|>B\lambda}e^{H_\sigma(s)}\,\mathrm{d}s
-> \le\frac{2\lambda C_c'}{q-1}
-> \left(\frac{B}{C_c'}\right)^{1-q}.
-> $$
->
-> The second expression also decays exponentially in $\lambda$. After decreasing $\gamma_c$ and enlarging the constant, Lemma 3.2 gives
->
-> $$
-> \int_{\mathbb R}|Z(s+i\sigma\lambda)|\,\mathrm{d}s
-> \le C_c'\lambda e^{-\gamma_c\lambda}.
-> $$
->
-> This proves the lemma. $\square$
-
-Using Lemma 3.5, we can bound the integral of $\lvert \varphi\rvert$ over $(-\infty,0)$.
-
-> **Lemma 3.6.** For every $0 < c < 1/\pi$, there exist $C\_c, \gamma\_c > 0$ and $d\_0(c) \in \mathbb{N}$, independent of $g$ and $\varsigma$, such that
->
-> $$
-> \int_{-\infty}^{0} |\varphi(v)| \mathrm{d}v \le C_c e^{-\gamma_c d}.
-> $$
-
-> *Proof.* Set $G(v)=e^{(\sigma-1)\lambda v}\varphi(v)$. The required integrability follows directly from
->
-> $$
-> \int_{\mathbb R}|G(v)|\,\mathrm{d}v
-> =\frac{S_dR^{(1-\sigma)\lambda}}{\|g\|_1}
-> \int_0^\infty|g(r)|r^{(1+\sigma)\lambda-1}\,\mathrm{d}r
-> <\infty.
-> $$
->
-> Its angular-frequency Fourier transform is $Z(s+i\sigma\lambda)$. Lemma 3.5 makes this transform integrable, so Fourier inversion gives
->
-> $$
-> \varphi(v) = \frac{e^{(1 - \sigma)\lambda v}}{2\pi} \int_{\mathbb{R}} Z(s + i\sigma\lambda) e^{isv} \mathrm{d}s.
-> $$
->
-> Taking absolute values and integrating over $v \in (-\infty, 0)$, we get
->
-> $$
-> \begin{align*}
-> \int_{-\infty}^{0} |\varphi(v)| \mathrm{d}v &\le \frac{1}{2\pi} \int_{-\infty}^{0} e^{(1 - \sigma)\lambda v} \mathrm{d}v \int_{\mathbb{R}} |Z(s + i\sigma\lambda)| \mathrm{d}s \\
-> &= \frac{1}{2\pi (1 - \sigma)\lambda} \int_{\mathbb{R}} |Z(s + i\sigma\lambda)| \mathrm{d}s
-> \le \frac{C_c'}{2\pi(1-\sigma)}e^{-\gamma_c d/2},
-> \end{align*}
-> $$
->
-> where $\lambda=d/2$. Absorbing $C\_c^{\prime}/(2\pi(1-\sigma))$ and the factor $1/2$ in the exponent into new positive constants gives the asserted form $C\_ce^{-\gamma\_cd}$. $\square$
-
-Proposition 3.1 now follows from the identity
+to obtain
 
 $$
-\int_{-\infty}^{0}|\varphi(v)|\,\mathrm dv
-=\frac1{\|g\|_1}\int_{|x|<c\sqrt d}|g(x)|\,\mathrm dx.
+h_\lambda(\lambda T)
+=\lambda\log(2\pi c^2)
+-\sum_{k=0}^{n-1}f_T\left(\frac{k+1/2}{\lambda}\right)
++\frac12\log\lambda
++\frac12\log\frac{\coth(\pi \lambda \lvert T\rvert /2)}{\lambda\lvert T\rvert/2}.
 $$
 
-### Proof of intermediate results
+In this case, split
+
+$$
+\int_0^1 f_T(x)\,\mathrm{d}x
+=\int_0^{n/\lambda}f_T(x)\,\mathrm{d}x
++\int_{n/\lambda}^1f_T(x)\,\mathrm{d}x,
+$$
+
+and compare the first integral with the midpoint sum:
+
+$$
+\begin{aligned}
+&h_\lambda(\lambda T) -\lambda\left(\log(2\pi c^2)-\int_0^1f_T(x)\,\mathrm{d}x\right)\\
+&=\lambda \left(\int_0^{\frac{n}{\lambda}} f_T(x)\,\mathrm{d}x -\frac{1}{\lambda}\sum_{k=0}^{n-1}f_T\left(\frac{k+1/2}{\lambda}\right) \right)
++\lambda\int_{\frac{n}{\lambda}}^1f_T(x)\,\mathrm{d}x \\
+&\quad +\frac12\log\lambda + \frac12\log\frac{\coth(\pi \lambda \lvert T\rvert /2)}{\lambda\lvert T\rvert/2}.
+\end{aligned}
+$$
+
+By monotonicity, the first term on the right, including its prefactor $\lambda$, has absolute value at most
+
+$$
+f_T(n/\lambda)-f_T(0)
+\le f_T(1)-f_T(0)
+=\frac12\log\left(1+\frac4{T^2}\right).
+$$
+
+The remaining interval has length $1/(2\lambda)$. Together, these two contributions are bounded by
+
+$$
+C\left(1+\log(2+|T|)+\log(2+|T|^{-1})\right).
+$$
+
+The endpoint correction is controlled by the same $T$-dependent logarithms, together with an additional $C\log(2+\lambda)$. Thus the total error is bounded by
+
+$$ C\left(1 + \log(2 + \lvert T \rvert) + \log (2 + \lvert T \rvert^{-1}) + \log(2 + \lambda)\right), $$
+
+and integrating against $P\_\sigma(T)\,\mathrm{d}T$ gives the desired bound, with a constant depending on $\sigma$.
+
+It remains to prove that $H\_\sigma(s)$ is maximized at $s=0$. Since $P\_\sigma$ and $h\_\lambda$ are even, $H\_\sigma$ is even. It is clear that $P\_\sigma(T)$ is decreasing on $(0, \infty)$, and $h\_\lambda(y)$ is also decreasing for $y>0$, since
+
+$$h_\lambda'(y) = \frac{\Im\psi(\lambda + iy/2) - \Im\psi(iy/2)}{2} < 0,$$
+
+for $y > 0$, where $\psi = \Gamma^{\prime}/\Gamma$ is the digamma function and $\Im\psi(a + bi) = \sum\_{k \ge 0} \frac{b}{(k+a)^2 + b^2}$.
+Consider $q\_{\lambda, N}(u) := \max\lbrace h\_\lambda(\lambda u) + N, 0\rbrace$. It is nonnegative, even, and decreasing on $(0,\infty)$; it is also integrable because the singularity at zero is logarithmic and $h\_\lambda(y)\to-\infty$ as $|y|\to\infty$. The convolution lemma therefore gives
+
+$$
+(P_\sigma*q_{\lambda,N})(s/\lambda)
+\le (P_\sigma*q_{\lambda,N})(0).
+$$
+
+Subtracting the constant $NM\_\sigma$ and using $q_{\lambda,N}(u)-N=\max\lbrace h_\lambda(\lambda u),-N\rbrace$ turns this into
+
+$$
+\int_{\mathbb{R}} P_\sigma(T) \max\lbrace h_\lambda(s-\lambda T),-N\rbrace\,\mathrm{d}T
+\le
+\int_{\mathbb{R}} P_\sigma(T) \max\lbrace h_\lambda(-\lambda T),-N\rbrace\,\mathrm{d}T.
+$$
+
+The exponential decay of $P\_\sigma$ controls the logarithmic behavior of $h\_\lambda$, so passing to the limit $N \to \infty$ gives $H\_\sigma(s) \le H\_\sigma(0)$. $\square$
+
+
+#### Lemma 3.4
+
+After making the substitution $T=2u$ and normalizing by the mass $M\_\sigma$, the lower-edge harmonic measure becomes the probability density
+
+$$
+p_\sigma(u)=\frac{2P_\sigma(2u)}{M_\sigma}
+=\frac{\sin\theta}{(1-\sigma)(\cosh(\pi u)-\cos\theta)}.
+$$
+
+As $\sigma\to1^{-}$, these densities converge in $L^1$ to
+
+$$ p(u)=\frac\pi4\operatorname{sech}^2\left(\frac{\pi u}{2}\right). $$
+
+Its characteristic function is
+
+$$ \int_{\mathbb{R}} p(u) e^{itu} \mathrm{d}u = \frac{t}{\sinh t}. $$
+
+Define
+
+$$ I(x)=\int_{\mathbb R}p(u)\log\sqrt{x^2+u^2}\,\mathrm{d}u. $$
+
+Then the Laplace representation of $x/(x^2+u^2)$ gives, for $x>0$,
+
+$$
+I'(x)=\int_0^\infty e^{-xt}\frac{t}{\sinh t}\,\mathrm{d}t
+=\frac12\psi'\left(\frac{x+1}{2}\right),
+$$
+
+where $\psi = \Gamma^{\prime}/\Gamma$ is the digamma function. Matching the constants from the common asymptotic $\log x+o(1)$ as $x\to\infty$ therefore gives
+
+$$
+\int_{\mathbb R}p(u)\log\sqrt{x^2+u^2}\,\mathrm{d}u
+=\psi\left(\frac{x+1}{2}\right)+\log2.
+$$
+
+Local integrability of $\log\lvert u\rvert$ extends this identity to $x=0$. The uniform exponential bound $p\_\sigma(u)\ll e^{-\pi\lvert u\rvert}$ then justifies dominated convergence in $J\_\sigma$. Finally,
+
+$$
+\int_0^1\psi\left(\frac{x+1}{2}\right)\,\mathrm{d}x
+=2\log\frac{\Gamma(1)}{\Gamma(1/2)}=-\log\pi,
+$$
+
+and integrating the preceding identity over $0\le x\le1$ yields $\lim\_{\sigma\to1^-}J\_\sigma=\log(\pi/2)$. $\square$
+
+
+#### Lemma 3.5
+
+Set
+
+$$
+\delta_c=-\bigl(\log(2\pi c^2)+J_\sigma\bigr)>0.
+$$
+
+Lemma 3.3 gives
+
+$$
+H_\sigma(s)\le-\lambda M_\sigma\delta_c+O_\sigma(\log\lambda)
+\le-\gamma_c\lambda,
+$$
+
+for every $s$ once $d$ is sufficiently large. The resulting constant upper bound $e^{-\gamma_c\lambda}$ for $e^{H_\sigma(s)}$ is not integrable over $\mathbb{R}$, so we also need a tail estimate (i.e., a bound for large $\lvert s \rvert$). The gamma-function identities give, for $U\ne0$,
+
+$$
+h_\lambda(\lambda U)
+\le \lambda\log\frac{4\pi c^2}{|U|}+E_\lambda(U),
+$$
+
+because every gamma-recurrence factor has modulus at least $\lvert \lambda U\rvert/2$; in odd dimensions, the remaining half-integer ratio contributes the error $E\_\lambda(U)$. Here
+
+$$
+E_\lambda(U)=
+\begin{cases}
+0,&\lambda\in\mathbb N,\\
+\dfrac12\log\coth\left(\dfrac{\pi\lambda|U|}{2}\right),
+&\lambda\in\mathbb N+\dfrac12.
+\end{cases}
+$$
+
+In the odd-dimensional case,
+
+$$
+\int_{\mathbb R}E_\lambda(U)\,\mathrm{d}U
+=\frac{2}{\pi\lambda}\int_0^\infty\log\coth x\,\mathrm{d}x
+=\frac{\pi}{4\lambda}.
+$$
+
+Hence the $P\_\sigma$-convolution of $E\_\lambda$ is $O\_\sigma(\lambda^{-1})$ in both parities, and
+
+$$
+H_\sigma(\lambda S)
+\le \lambda M_\sigma\log(4\pi c^2)
+-\lambda\int_{\mathbb R}P_\sigma(T)\log|S-T|\,\mathrm{d}T
++O_\sigma(\lambda^{-1}).
+$$
+
+Split the logarithmic integral at $\lvert T\rvert =\lvert S\rvert /2$. On the inner part, $\lvert S-T\rvert \ge \lvert S\rvert /2$ and the omitted $P_\sigma$-mass is exponentially small. On the outer part, the only possible negative contribution occurs near $T=S$; exponential decay of $P_\sigma(T)$ and local integrability of $\log \lvert S-T\rvert$ control it. Thus there are $B_c,A_c>0$ such that
+
+$$
+\int_{\mathbb R}P_\sigma(T)\log|S-T|\,\mathrm{d}T
+\ge\frac{M_\sigma}{2}\log|S|-A_c
+\qquad(|S|\ge B_c),
+$$
+
+which yields the stated logarithmic tail bound after enlarging $C_c^{\prime}$ if necessary.
+
+Finally, choose $B>\max\lbrace B_c,C_c^{\prime}\rbrace$ and put $q=M_\sigma\lambda/2>1$. On the central interval, uniform negativity gives
+
+$$
+\int_{|s|\le B\lambda}e^{H_\sigma(s)}\,\mathrm{d}s
+\le2B\lambda e^{-\gamma_c\lambda}.
+$$
+
+On its complement, substitute $s=\lambda S$ and use the logarithmic tail:
+
+$$
+\int_{|s|>B\lambda}e^{H_\sigma(s)}\,\mathrm{d}s
+\le\frac{2\lambda C_c'}{q-1}
+\left(\frac{B}{C_c'}\right)^{1-q}.
+$$
+
+The second expression also decays exponentially in $\lambda$. After decreasing $\gamma_c$ and enlarging the constant, Lemma 3.2 gives
+
+$$
+\int_{\mathbb R}|Z(s+i\sigma\lambda)|\,\mathrm{d}s
+\le C_c'\lambda e^{-\gamma_c\lambda}.
+$$
+
+This proves the lemma. $\square$
+
+
+#### Lemma 3.6
+
+Set $G(v)=e^{(\sigma-1)\lambda v}\varphi(v)$. The required integrability follows directly from
+
+$$
+\int_{\mathbb R}|G(v)|\,\mathrm{d}v
+=\frac{S_dR^{(1-\sigma)\lambda}}{\|g\|_1}
+\int_0^\infty|g(r)|r^{(1+\sigma)\lambda-1}\,\mathrm{d}r
+<\infty.
+$$
+
+Its angular-frequency Fourier transform is $Z(s+i\sigma\lambda)$. Lemma 3.5 makes this transform integrable, so Fourier inversion gives
+
+$$
+\varphi(v) = \frac{e^{(1 - \sigma)\lambda v}}{2\pi} \int_{\mathbb{R}} Z(s + i\sigma\lambda) e^{isv} \mathrm{d}s.
+$$
+
+Taking absolute values and integrating over $v \in (-\infty, 0)$, we get
+
+$$
+\begin{align*}
+\int_{-\infty}^{0} |\varphi(v)| \mathrm{d}v &\le \frac{1}{2\pi} \int_{-\infty}^{0} e^{(1 - \sigma)\lambda v} \mathrm{d}v \int_{\mathbb{R}} |Z(s + i\sigma\lambda)| \mathrm{d}s \\
+&= \frac{1}{2\pi (1 - \sigma)\lambda} \int_{\mathbb{R}} |Z(s + i\sigma\lambda)| \mathrm{d}s
+\le \frac{C_c'}{2\pi(1-\sigma)}e^{-\gamma_c d/2},
+\end{align*}
+$$
+
+where $\lambda=d/2$. Absorbing $C\_c^{\prime}/(2\pi(1-\sigma))$ and the factor $1/2$ in the exponent into new positive constants gives the asserted form $C\_ce^{-\gamma\_cd}$. $\square$
+
 
 #### Proposition 3.7
 
@@ -943,15 +948,16 @@ Many numerical approaches use Gaussian $\times$ polynomial functions, optimizing
 [Cohn-Dong-Gonçalves, Theorem 1.2](https://doi.org/10.1090/bproc/219) showed that, for either sign-uncertainty problem, this class of Fourier eigenfunctions cannot improve the leading constant in $\sqrt{d/(2\pi)}$ when the polynomial degree is sublinear in $d$.
 
 Now we multiply $X_{g_j}$ by the perturbation term $\exp(\lambda h(t/\lambda))$.
-We choose $h$ to be even and real-valued on the real and imaginary axes, preserving the Fourier and conjugate symmetries of the Mellin data.
-We also need growth bounds: being holomorphic alone is not enough to justify the contour shifts.
-The compactly supported weight constructed below makes $h$ entire and bounded on every fixed horizontal strip, which gives the following result.
+The function $h$ will depend on a parameter $\epsilon > 0$.
+We choose $h$ to be holomorphic, and also even and real-valued on the real and imaginary axes, so that we preserve the Fourier symmetry and keep $f_j(r)$ real-valued.
+We will also choose $h$ so that it is bounded on every fixed horizontal strip, which is used to prove that $f_j$ is a Schwartz function.
+This will be done by choosing "$w(a)$" (which appears later) to be compactly supported.
 
 > **Lemma 4.3.** The functions $f_j$ extend to real-valued radial Schwartz functions on $\mathbb{R}^d$ with $\widehat{f}\_+ = f_-$, $\widehat{f}\_0 = f_0$, $f_-(0) = f_+(0) > 0$, and $f_0(0) = 0$.
 
-The proof is given below. In short, shifting the contour upward proves rapid decay at infinity, while shifting it downward past the gamma poles gives smoothness at the origin. The value at the origin comes from the first possible pole, $t=-i\lambda$, and is determined by $P_j(-i)$.
+The proof is given below. In short, shifting the contour upward proves rapid decay at infinity, while shifting it downward past the gamma poles gives smoothness at the origin. The value at the origin comes from the "first pole", $t=-i\lambda$, and is determined by $P_j(-i)$.
 
-Shift the contour from $\mathbb{R}$ to $\mathbb{R}+iu\lambda$ and substitute $t=\lambda(T+iu)$, with $u>-1$. No poles lie between the two contours, so the integral is unchanged. Writing $r=e^{v(u)}$, where $v(u)$ will be chosen below, gives
+Shift the contour from $\mathbb{R}$ to $\mathbb{R}+iu\lambda$ and substitute $t=\lambda(T+iu)$, with $u>-1$. No poles lie between the two contours, so the integral remains unchanged. Writing $r=e^{v(u)}$, where $v(u)$ will be chosen below, gives
 
 $$
 \begin{align*}
@@ -1003,7 +1009,7 @@ $$
 has the same sign as $P_j(iu)$ for sufficiently large $d$, over a range of $u$ depending on $j$.
 Hence $P_j$ will control the sign of $f_j(r)$.
 
-> **Lemma 4.8.** Let $u\_\ast = -1 + \frac{\log \lambda}{4\lambda}$ and $u_0 = 1 + \epsilon / 4$. For $u > -1$, let
+> **Lemma 4.8.** Let $u\_\ast = -1 + \frac{\log \lambda}{4\lambda}$ and $u_0 = 1 + \frac{\epsilon}{4}$. For $u > -1$, let
 >
 > $$ I_{\lambda, P}(u) = \int_{\mathbb{R}} e^{\mathcal{L}_u(T)} P(T + iu) \mathrm{d}T $$
 >
@@ -1015,12 +1021,24 @@ Hence $P_j$ will control the sign of $f_j(r)$.
 >
 > $$
 > \begin{align*}
-> \sup_{u \ge -1 + \frac{\log \lambda}{4\lambda}} \left| \frac{\sqrt{\lambda V(u)}I_{\lambda, P_+}(u)}{\sqrt{2\pi} P_+(iu)} - 1 \right| &\longrightarrow 0, \\
-> \max_{j \in \{-, 0\}} \sup_{u \ge 1 + \epsilon/4} \left| \frac{\sqrt{\lambda V(u)}I_{\lambda, P_j}(u)}{\sqrt{2\pi} P_j(iu)} - 1 \right| &\longrightarrow 0.
+> \sup_{u \ge u_\ast} \left| \frac{\sqrt{\lambda V(u)}I_{\lambda, P_+}(u)}{\sqrt{2\pi} P_+(iu)} - 1 \right| &\longrightarrow 0, \\
+> \max_{j \in \{-, 0\}} \sup_{u \ge u_0} \left| \frac{\sqrt{\lambda V(u)}I_{\lambda, P_j}(u)}{\sqrt{2\pi} P_j(iu)} - 1 \right| &\longrightarrow 0.
 > \end{align*}
 > $$
 
-Here is the main idea; a more detailed proof is given below.
+We also need to show that $f_+(r)>0$ for $0\le r<e^{v(u_\ast)}$. This follows from the next lemma.
+
+> **Lemma 4.10.** Fix $0 < \epsilon < \epsilon_0$, let $\lambda = d/2$ and $r_\ast = e^{v(u_\ast)}$, and
+>
+> $$h_1' = \int_0^\infty w(a) a \sinh(a) \mathrm{d}a.$$
+>
+> As $d \to \infty$,
+>
+> $$ \sup_{0 \le r \le r_\ast} \left\lvert e^{\pi r^2 e^{2h_1'}} \frac{f_+(r)}{f_+(0)} - 1 \right\rvert \longrightarrow 0. $$
+
+It says that $f_+(r)$ is approximately a scaled Gaussian near $r = 0$ ($0 \le r \le r_\ast$), where the error is small enough to ensure that $f_+(r) > 0$ for $0 \le r \le r_\ast$ (note that $f_+(0) > 0$ by Lemma 4.3).
+
+Here is the main idea with explanation for the choice of $h$; a more detailed proof is given below.
 We choose $h$ so that the integral is concentrated around $T=0$, the critical point of $\mathcal{L}\_u(T)$.
 Write $\mathcal{L}\_u(T)$ as
 
@@ -1045,9 +1063,10 @@ D_u(T) &:= -\Re \mathcal{L}_u(T) = D_\gamma(T) - \lambda (\Re h(T + iu) - h(iu))
 $$
 
 Then $\lvert e^{\mathcal{L}\_u(T)}\rvert=e^{-D\_u(T)}$, and we want $D_u(T)>0$ for all $T\ne0$ and $V(u)>0$ for all $u\ge u_\ast$, where $u_\ast=-1+\frac{\log\lambda}{4\lambda}$.
-Why this choice of $u_\ast$? It approaches $-1$, the normalized height of the first gamma pole, while the gamma argument $\lambda(1+u_\ast)/2=(\log\lambda)/8$ still tends to infinity, as required for the uniform estimates in Lemma 4.8.
-At the same time, the variable $y=\pi r^2e^{2h_1^{\prime}}$ used in Lemma 4.10 satisfies $y(e^{v(u_\ast)})=(\log\lambda)/8+O_\epsilon(1)$, so a Taylor polynomial of degree about $\log\lambda$ can cover the remaining radii.
-Thus this cutoff lets the two positivity arguments meet; the factor $1/4$ is a convenient choice, not an optimized constant.
+This choice of cutoff is made so that
+
+- $u_\ast \to -1$ as $d \to \infty$, hence Lemma 4.8 covers enough range of $r = e^{v(u)}$ (i.e. make $r_\ast = e^{v(u_\ast)}$ small)
+- $\lambda (1 + u_\ast) / 2$ tends to infinity, but slowly enough that the uniform estimates in Lemma 4.10 work (which covers $0 \le r < r\_\ast$).
 
 In other words, we want $D_\gamma(T)$ to dominate the perturbation term $\lambda(\Re h(T+iu)-h(iu))$ for all $T\ne0$.
 To make the comparison easier, we choose $h$ of the form[^1]
@@ -1101,10 +1120,64 @@ $$
 As $\lambda\to\infty$ and $u\to1$, this lower bound for $w(a)$ converges to
 
 $$
-w_\ast(a) = -\frac{e^{-2a}}{2a^2 \cosh(a)}
+w_\ast(a) = -\frac{e^{-2a}}{2a^2 \cosh(a)}.
 $$
 
-and the corresponding limit of $R_{\epsilon,d}/\sqrt d$ is
+However, one cannot simply take $w(a) = w_\ast(a)$, because this choice cancels too much of the gamma function's decay and does not give the bounds needed for the contour shifts.
+It is not integrable near zero, since $w_\ast(a) \approx -\frac{1}{2a^2} + \frac{1}{a} + O(1)$ as $a \to 0$.
+Also, when $u = 1$, we have
+
+$$
+\frac{\mu_{\lambda,1}(a)}{\lambda}
+\longrightarrow \frac{e^{-2a}}{2a^2},
+\qquad
+w_\ast(a)\cosh a = -\frac{e^{-2a}}{2a^2}.
+$$
+
+Hence the leading terms cancel in $D_1(T)/\lambda$.
+With this choice,
+
+$$
+V(1)
+= \frac{\lambda}{4}\psi^{(1)}(\lambda)
+  + \int_0^\infty w_\ast(a)a^2\cosh a\,\mathrm{d}a
+= \frac{\lambda}{4}\psi^{(1)}(\lambda)-\frac14
+\sim \frac{1}{8\lambda}.
+$$
+
+Therefore the Gaussian width $1/\sqrt{\lambda V(1)}$ stays of constant size instead of tending to zero.
+
+To mitigate this problem, we truncate the support of $w_\ast$ to a finite interval $[a_0, A]$ where the cutoffs $a_0, A$ will depend on $\epsilon > 0$.
+Also, we will make it slightly less negative to ...
+<!-- ADD EXPLANATION -->
+At the end, we consider
+
+$$
+w_s(a) = b(a) w_\ast(a) \mathbf{1}_{[a_0, A]}(a), \qquad b(a) = 1 - 2\epsilon(1 + a),
+$$
+
+and $a_0, A$ will be chosen so that the errors introduced by the cutoffs and the change in $b(a)$ are small enough.
+<!-- ADD DETAILS? -->
+
+However, if we take $w = w_s$, then
+
+$$
+V(u) = \frac{\lambda}{4}\psi^{(1)}\left(\frac{\lambda(1+u)}2\right)
+-\int_{a_0}^{A}\lvert w_s(a)\rvert a^2\cosh(ua)\,\mathrm{d}a,
+$$
+
+and the first term is asympotic to $\frac{1+u}{2}$ by $\psi^{(1)}(z) = 1/z + O(1/z^2)$ as $z \to \infty$, while the second term grows exponentially in $u$.
+Then $V(u)$ eventually becomes negative, and the argument for Lemma 4.8 can no longer give the signs at all large radii.
+In the proof, this is fixed by adding a (compactly supported) positive term
+
+$$
+w_B(a)=\frac{Q}{\cosh a}\mathbf{1}_{[B,B+1]}(a),
+$$
+
+which well-chosen parameters $B, Q > 0$.
+
+
+With these choices, the corresponding limit of $R_{\epsilon,d}/\sqrt d$ is
 
 $$
 \frac{1}{\sqrt{2\pi}} \exp \left(-\frac12\int_0^\infty \frac{e^{-2a}\tanh(a)}{a} \mathrm{d}a \right) = \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{1}{2} \log \frac{\pi}{2}\right) = \frac{1}{\pi},
@@ -1112,19 +1185,59 @@ $$
 
 which (surprisingly) matches the constant in the lower bound.
 
-We also need to show that $f_+(r)>0$ for $0\le r<e^{v(u_\ast)}$. This follows from the next lemma.
 
-> **Lemma 4.10.** Fix $0 < \epsilon < \epsilon_0$, let $\lambda = d/2$ and $r_\ast = e^{v(u_\ast)}$, and
->
-> $$h_1' = \int_0^\infty w(a) a \sinh(a) \mathrm{d}a.$$
->
-> As $d \to \infty$,
->
-> $$ \sup_{0 \le r \le r_\ast} \left\lvert e^{\pi r^2 e^{2h_1'}} \frac{f_+(r)}{f_+(0)} - 1 \right\rvert \longrightarrow 0. $$
+<!-- Why do we need another term $w_B$?
+The preceding comparison only works up to $U$, whereas the sign argument must cover arbitrarily large radii and hence arbitrarily large $u$.
+If we use only $w_s$, then
 
-It says that $f_+(r)$ is approximately a scaled Gaussian near $r = 0$ ($0 \le r \le r_\ast$), where the error is small enough to ensure that $f_+(r) > 0$ for $0 \le r \le r_\ast$ (note that $f_+(0) > 0$ by Lemma 4.3).
+$$
+V(u)=\frac{\lambda}{4}\psi^{(1)}\left(\frac{\lambda(1+u)}2\right)
+-\int_{a_0}^{A}\lvert w_s(a)\rvert a^2\cosh(ua)\,\mathrm{d}a.
+$$
 
-However, one cannot simply take $w(a) = w_\ast(a)$, because this choice cancels too much of the gamma function's decay and does not give the bounds needed for the contour shifts.
+As $u\to\infty$, the first term is asymptotic to $1/[2(1+u)]$, while the second term grows exponentially.
+Thus $V(u)$ eventually becomes negative.
+The exponential factor then grows in modulus as we move a little away from $T=0$, and $v^{\prime}(u)<0$, so this saddle argument can no longer give the signs at all large radii.
+The functions obtained from $w_s$ alone are still Schwartz; the problem here is the argument for their signs. -->
+
+<!-- To repair this, we add
+
+$$
+w_B(a)=\frac{Q}{\cosh a}\mathbf{1}_{[B,B+1]}(a),
+\qquad B>A,\quad Q>0.
+$$ -->
+<!-- 
+Its positive contribution to $V(u)$ is at least a constant times $Qe^{(u-1)B}$, while the negative contribution grows no faster than a constant times $e^{(u-1)A}$.
+Since $B>A$, the positive term eventually dominates.
+We choose $B$ large and $Q$ small so that this already happens for $u\ge U$, but its effect on the radius at $u=u_0$ is negligible.
+With the parameters below,
+
+$$
+Qe^{(u_0-1)B}=e^{-1/(8\epsilon^2)},
+\qquad
+Qe^{(U-1)B}=e^{1/(8\epsilon^2)}.
+$$
+
+Thus even the small change from $u_0$ to $U$ makes a large difference to the size of this term.
+Finally, using an interval $[B,B+1]$ rather than a single value of $a$ prevents the added damping from vanishing at nonzero frequencies where $\cos(aT)=1$.
+The sum $w=w_s+w_B$ therefore keeps the radius improvement near $u_0$ while allowing the sign proof to continue to all larger radii. -->
+
+
+<!-- The parts removed by the cutoffs satisfy
+
+$$
+\int_0^{a_0}\lvert w_\ast(a)\rvert a\sinh a\,\mathrm{d}a=O(a_0),
+\qquad
+\int_A^\infty\lvert w_\ast(a)\rvert a\sinh a\,\mathrm{d}a
+=O\left(\frac{e^{-2A}}{A}\right),
+$$
+
+and the change caused by $b(a)$ is $O(\epsilon)$.
+We choose the cutoffs so that the two displayed errors are $o(\epsilon)$.
+Replacing $\sinh a$ by $\sinh(u_0a)$, where $u_0-1=O(\epsilon)$, contributes another $O(\epsilon)$ error to the radius exponent.
+This preserves the desired change in the logarithm of the radius up to $O(\epsilon)$. -->
+
+<!-- However, one cannot simply take $w(a) = w_\ast(a)$, because this choice cancels too much of the gamma function's decay and does not give the bounds needed for the contour shifts.
 We will modify it in two steps: first cut off its support and make it slightly less negative, then add a small positive term supported farther out.
 The precise choices of the parameters will follow in the next section.
 
@@ -1177,8 +1290,8 @@ V(1)
 \sim \frac{1}{8\lambda}.
 $$
 
-Therefore the Gaussian width $1/\sqrt{\lambda V(1)}$ stays of constant size instead of tending to zero.
-There is also no room to increase $u$ slightly above $1$: the negative term grows with $\cosh(ua)$, while the gamma density decreases with $u$.
+Therefore the Gaussian width $1/\sqrt{\lambda V(1)}$ stays of constant size instead of tending to zero. -->
+<!-- There is also no room to increase $u$ slightly above $1$: the negative term grows with $\cosh(ua)$, while the gamma density decreases with $u$.
 
 To fix these problems near $u=1$, we replace $w_\ast$ by
 
@@ -1207,58 +1320,9 @@ $$
 and the change caused by $b(a)$ is $O(\epsilon)$.
 We choose the cutoffs so that the two displayed errors are $o(\epsilon)$.
 Replacing $\sinh a$ by $\sinh(u_0a)$, where $u_0-1=O(\epsilon)$, contributes another $O(\epsilon)$ error to the radius exponent.
-This preserves the desired change in the logarithm of the radius up to $O(\epsilon)$.
+This preserves the desired change in the logarithm of the radius up to $O(\epsilon)$. -->
 
-The dependence of $b(a)$ on $a$ also has a purpose.
-When moving from $u=1$ to $u\le U=1+\epsilon/2$, the ratio of the negative contribution to the gamma density can increase by a factor as large as $e^{\epsilon a}$.
-The chosen factor compensates for this:
 
-$$
-\frac{\lambda\lvert w_s(a)\rvert\cosh(ua)}{\mu_{\lambda,u}(a)}
-\le b(a)e^{\epsilon a}
-\le e^{-2\epsilon-\epsilon a}
-\le 1-c\epsilon
-\qquad (-1<u\le U,\ a_0\le a\le A).
-$$
-
-Here $c>0$ is a constant, and $\epsilon$ is sufficiently small.
-This leaves a positive amount of damping throughout the range containing $u_0$.
-
-Why do we need another term $w_B$?
-The preceding comparison only works up to $U$, whereas the sign argument must cover arbitrarily large radii and hence arbitrarily large $u$.
-If we use only $w_s$, then
-
-$$
-V(u)=\frac{\lambda}{4}\psi^{(1)}\left(\frac{\lambda(1+u)}2\right)
--\int_{a_0}^{A}\lvert w_s(a)\rvert a^2\cosh(ua)\,\mathrm{d}a.
-$$
-
-As $u\to\infty$, the first term is asymptotic to $1/[2(1+u)]$, while the second term grows exponentially.
-Thus $V(u)$ eventually becomes negative.
-The exponential factor then grows in modulus as we move a little away from $T=0$, and $v^{\prime}(u)<0$, so this saddle argument can no longer give the signs at all large radii.
-The functions obtained from $w_s$ alone are still Schwartz; the problem here is the argument for their signs.
-
-To repair this, we add
-
-$$
-w_B(a)=\frac{Q}{\cosh a}\mathbf{1}_{[B,B+1]}(a),
-\qquad B>A,\quad Q>0.
-$$
-
-Its positive contribution to $V(u)$ is at least a constant times $Qe^{(u-1)B}$, while the negative contribution grows no faster than a constant times $e^{(u-1)A}$.
-Since $B>A$, the positive term eventually dominates.
-We choose $B$ large and $Q$ small so that this already happens for $u\ge U$, but its effect on the radius at $u=u_0$ is negligible.
-With the parameters below,
-
-$$
-Qe^{(u_0-1)B}=e^{-1/(8\epsilon^2)},
-\qquad
-Qe^{(U-1)B}=e^{1/(8\epsilon^2)}.
-$$
-
-Thus even the small change from $u_0$ to $U$ makes a large difference to the size of this term.
-Finally, using an interval $[B,B+1]$ rather than a single value of $a$ prevents the added damping from vanishing at nonzero frequencies where $\cos(aT)=1$.
-The sum $w=w_s+w_B$ therefore keeps the radius improvement near $u_0$ while allowing the sign proof to continue to all larger radii.
 
 
 ### Choice of parameters
@@ -1587,7 +1651,8 @@ The residues can be computed as follows:
 
 $$
 \begin{align*}
-\mathrm{Res}_{t = -i(\lambda + 2n)} (X_{f_+}(t) r^{it}) &= \pi^{\frac{\lambda}{2} +n} e^{\lambda h(-i(1 + 2n/\lambda))} P_+(-i(1 + 2n/\lambda)) r^{\lambda + 2n} \cdot \mathrm{Res}_{t=-i(\lambda + 2n)} \Gamma\left(\frac{\lambda - it}{2}\right) \\
+&\mathrm{Res}_{t = -i(\lambda + 2n)} (X_{f_+}(t) r^{it}) \\
+&= \pi^{\frac{\lambda}{2} +n} e^{\lambda h(-i(1 + 2n/\lambda))} P_+(-i(1 + 2n/\lambda)) r^{\lambda + 2n} \cdot \mathrm{Res}_{t=-i(\lambda + 2n)} \Gamma\left(\frac{\lambda - it}{2}\right) \\
 &= 2i \cdot \frac{(-1)^n}{n!} \pi^{\frac{\lambda}{2} + n} e^{\lambda h(-i(1 + 2n/\lambda))} P_+(-i(1 + 2n/\lambda)) r^{\lambda + 2n}.
 \end{align*}
 $$
@@ -1604,7 +1669,7 @@ where
 
 $$
 \begin{align*}
-A_{\lambda, n} &= e^{\lambda [h(i(1 + 2n/\lambda)) - h(i)] - 2n h_1'} \frac{P_+(-i(1 + 2n/\lambda))}{P_+(-i)}, \\
+A_{\lambda, n} &= \exp\left(\lambda [h(i(1 + 2n/\lambda)) - h(i)] - 2n h_1'\right) \frac{P_+(-i(1 + 2n/\lambda))}{P_+(-i)}, \\
 \mathcal{R}_{\lambda}(r) &= \frac{\pi^{\frac{\lambda}{2} + p}r^{2p}}{2\pi f_+(0)} \int_{\mathbb{R}} \pi^{\frac{is}{2}} \Gamma\left(-p - \frac{is}{2}\right) e^{\lambda h(s/\lambda - i(1 + 2p/\lambda))} P_+\left(\frac{s}{\lambda} - i\left(1+\frac{2p}{\lambda}\right)\right) r^{is} \mathrm{d}s.
 \end{align*}
 $$
