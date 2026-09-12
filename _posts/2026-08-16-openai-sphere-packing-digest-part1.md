@@ -25,7 +25,8 @@ The main results are the following:
 I have mostly focused on understanding the intuition behind the proof and making it more readable.
 Some theorem and lemma statements are rephrased for clarity.
 Some proofs are expanded with more details, while others are shortened when they are less central to the main ideas.
-Also, typos and grammatical errors in earlier verions of this post have been fixed with the help of ChatGPT.
+
+Also, LLMs are used to assist in understanding the report and writing this post. Details can be found at the end of the [Part 2 of the post](ADD LINK).
 
 
 ## Problem setting and background
@@ -83,7 +84,6 @@ $$
 The proof is based on the Poisson summation formula and is conceptually simple, but the resulting bound is remarkably powerful.
 It was used to prove the optimality of the $E\_8$ and Leech lattices in dimensions 8 and 24: Viazovska and then Cohn, Kumar, Miller, Radchenko, and Viazovska constructed "magic" functions $f$ in $\mathcal{A}\_d$ using modular forms that match the densities of those lattice packings.
 It is also known that the LP bound is *suboptimal* in dimensions $3,4,5$, by [Li](https://www.sciencedirect.com/science/article/pii/S0001870824005590), and in dimension $6$, by [de Courcy-Ireland, Dostert, and Viazovska](https://doi.org/10.1090/mcom/3959).
-<!-- In dimension $7$, Li proves that it exceeds the best-known packing density, which does not by itself prove that it exceeds the true optimum. -->
 
 [Cohn and Zhao](https://projecteuclid.org/journals/duke-mathematical-journal/volume-163/issue-10/Sphere-packing-bounds-via-spherical-codes/10.1215/00127094-2738857.pdf) showed that the LP bound is at least as strong as the KL bound.
 Later, [Afkhami-Jeddi, Cohn, Hartman, de Laat, and Tajdini](https://link.springer.com/article/10.1007/JHEP12(2020)066) conjectured that the optimal asymptotic exponent obtainable from the LP bound is better than the KL exponent. More precisely, Conjecture 3.2 in their paper predicts that
@@ -143,13 +143,12 @@ I guess the above introduction is enough to understand the main results (Theorem
 - No modular forms.
 - It is easier to understand the proof of the lower bounds than the proof of the upper bounds.
 - A previous approach to lower bounds is due to [Cohn-Triantafillou](https://doi.org/10.1090/mcom/3662). They used a dual formulation of the Cohn-Elkies bound in terms of measures and their Fourier transforms, and constructed examples using modular forms.
-<!-- Combined with known packing upper bounds, their results prove that the LP bound is suboptimal in dimensions 12 and 16. Li obtained further dual bounds using a discrete reduction, proving suboptimality in dimensions 3, 4, and 5.  -->
 Astra's proof takes a different, more elementary and analytic approach: it does not use this dual formulation.
 - I still don't understand how the lower and upper bound exponents match, which seems to be the most interesting point.
 - The proof has weird choices of words, such as "Mellin envelope". I like the proof, but I didn't enjoy reading the proof.
 - One of the core ideas, in my opinion, is to work with the Mellin transform. Such an idea first appears in Section 5 of the 2016 paper by [Cohn and Miller](https://arxiv.org/abs/1603.04759). The report cites CM16 for the radial formulation but does not discuss this particular precedent, which is also mentioned in the [recent *Scientific American* article](https://www.scientificamerican.com/article/openais-latest-math-breakthroughs-commit-research-misconduct-experts-say/).
 - OpenAI also shared [reasoning walkthroughs](https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf) for the proofs. For the sphere-packing problem, the walkthrough is a sketch or summary rather than Astra's chain of thought. I first tried reading it before the report, but it wasn't helpful. It would be more helpful if it were a detailed, *raw* chain of thought (although these seem to be becoming harder to track these days...).
-- I also wonder if Astra would be able to find this proof if the conjectured asymptotic exponent were not given. I think it still might be possible, assuming that it does the numerical experiments itself. However, I do think that knowing about the conjectured exponent $\sqrt{e/2\pi}$ and the uncertainty principle constant $1/\pi$ might helped a lot.
+- I also wonder if Astra would be able to find this proof if the conjectured asymptotic exponent were not given. I think it still might be possible, assuming that it does the numerical experiments itself. However, I do think that knowing about the conjectured exponent $\log_2 \sqrt{e/2\pi}$ and the uncertainty principle constant $1/\pi$ might helped a lot.
 
 
 ## Radial and Schwartz reductions
@@ -882,7 +881,7 @@ $$
 g_G(r) = 2\pi^{\lambda/2} e^{-\pi r^2}, \qquad E_\lambda^G(t) = X_{g_G}(t) = \pi^{it/2} \Gamma\left(\frac{\lambda - it}{2}\right).
 $$
 
-Now, for each $j \in \lbrace -, +, 0 \rbrace$, we will choose polynomials $P_j$ and set
+Now, for each $j \in \lbrace -, +, 0 \rbrace$, we will choose a polynomial $P_j$ and set
 
 $$
 X_{g_j}(t) = E_\lambda^G(t) P_j(t/\lambda), \qquad g_j(r) = \frac{r^{-\lambda}}{2\pi} \int_{\mathbb{R}} X_{g_j}(t) r^{it} dt.
@@ -898,7 +897,7 @@ Now the main task is to choose $P_j$ and $h$ so that the resulting functions $f_
 The polynomials $P_j$ will control their signs, and the function $h$ will make the last-sign-change radius smaller.
 
 Let's first discuss the choice of $P_j$. We will ignore the perturbation $h$ for now.
-The Fourier symmetry of $g_j$ (i.e. $\widehat{g}\_+ = g\_-$, $\widehat{g}\_0 = g\_0$) corresponds to
+The Fourier symmetries of $g_j$ (i.e., $\widehat{g}\_+ = g\_-$ and $\widehat{g}\_0 = g\_0$) correspond to
 
 $$
 P_+(-\zeta) = P_-(\zeta), \qquad P_0(-\zeta) = P_0(\zeta).
@@ -951,11 +950,11 @@ Now we multiply $X_{g_j}$ by the perturbation term $\exp(\lambda h(t/\lambda))$.
 The function $h$ will depend on a parameter $\epsilon > 0$.
 We choose $h$ to be holomorphic, and also even and real-valued on the real and imaginary axes, so that we preserve the Fourier symmetry and keep $f_j(r)$ real-valued.
 We will also choose $h$ so that it is bounded on every fixed horizontal strip, which is used to prove that $f_j$ is a Schwartz function.
-This will be done by choosing "$w(a)$" (which appears later) to be compactly supported.
+We will achieve this by choosing an integrable, compactly supported weight $w(a)$, introduced below.
 
 > **Lemma 4.3.** The functions $f_j$ extend to real-valued radial Schwartz functions on $\mathbb{R}^d$ with $\widehat{f}\_+ = f_-$, $\widehat{f}\_0 = f_0$, $f_-(0) = f_+(0) > 0$, and $f_0(0) = 0$.
 
-The proof is given below. In short, shifting the contour upward proves rapid decay at infinity, while shifting it downward past the gamma poles gives smoothness at the origin. The value at the origin comes from the "first pole", $t=-i\lambda$, and is determined by $P_j(-i)$.
+The proof is given below. In short, shifting the contour upward proves rapid decay at infinity, while shifting it downward past the gamma poles gives smoothness at the origin. The value at the origin comes from the first pole, $t=-i\lambda$, and is determined by $P_j(-i)$.
 
 Shift the contour from $\mathbb{R}$ to $\mathbb{R}+iu\lambda$ and substitute $t=\lambda(T+iu)$, with $u>-1$. No poles lie between the two contours, so the integral remains unchanged. Writing $r=e^{v(u)}$, where $v(u)$ will be chosen below, gives
 
@@ -975,7 +974,7 @@ E_\lambda(t) = \pi^{\frac{it}{2}} \Gamma\left(\frac{\lambda - it}{2}\right) e^{\
 \mathcal{L}_u(T) = \log\frac{E_\lambda(\lambda(T+iu))}{E_\lambda(i\lambda u)} + i\lambda T v(u).
 $$
 
-Now, we *define* $v(u)$ so that $\mathcal{L}\_u(T)$ has a critical point at $T=0$, i.e. $\mathcal{L}\_u^{\prime}(0)=0$. One can explicitly compute $\mathcal{L}\_u^{\prime}(T)$ and set $T=0$ to get
+Now, we *define* $v(u)$ so that $\mathcal{L}\_u(T)$ has a critical point at $T=0$, i.e., $\mathcal{L}\_u^{\prime}(0)=0$. Computing $\mathcal{L}\_u^{\prime}(T)$ and setting $T=0$ gives
 
 $$
 v(u) = -\frac{1}{2}\log \pi + \frac{1}{2} \psi\left(\frac{\lambda(1+u)}{2}\right) + ih'(iu),
@@ -1036,9 +1035,9 @@ We also need to show that $f_+(r)>0$ for $0\le r<e^{v(u_\ast)}$. This follows fr
 >
 > $$ \sup_{0 \le r \le r_\ast} \left\lvert e^{\pi r^2 e^{2h_1'}} \frac{f_+(r)}{f_+(0)} - 1 \right\rvert \longrightarrow 0. $$
 
-It says that $f_+(r)$ is approximately a scaled Gaussian near $r = 0$ ($0 \le r \le r_\ast$), where the error is small enough to ensure that $f_+(r) > 0$ for $0 \le r \le r_\ast$ (note that $f_+(0) > 0$ by Lemma 4.3).
+This says that $f_+(r)$ is approximately a scaled Gaussian on $0 \le r \le r_\ast$, with a relative error small enough to ensure positivity there (recall that $f_+(0) > 0$ by Lemma 4.3).
 
-Here is the main idea with explanation for the choice of $h$; a more detailed proof is given below.
+We now explain the choice of $h$; the detailed estimates are given in the proofs below.
 We choose $h$ so that the integral is concentrated around $T=0$, the critical point of $\mathcal{L}\_u(T)$.
 Write $\mathcal{L}\_u(T)$ as
 
@@ -1052,7 +1051,7 @@ G_{\lambda, u}(T) &= \log \frac{\Gamma\left(\frac{\lambda(1+u)-i\lambda T}{2}\ri
 \end{align*}
 $$
 
-(Here we are using a slightly different notation for $\mu_{\lambda, u}$ than the report.)
+(Here our notation $\mu_{\lambda, u}$ corresponds to $\mu_{\lambda,1+u}$ in the report.)
 We also define
 
 $$
@@ -1065,8 +1064,8 @@ $$
 Then $\lvert e^{\mathcal{L}\_u(T)}\rvert=e^{-D\_u(T)}$, and we want $D_u(T)>0$ for all $T\ne0$ and $V(u)>0$ for all $u\ge u_\ast$, where $u_\ast=-1+\frac{\log\lambda}{4\lambda}$.
 This choice of cutoff is made so that
 
-- $u_\ast \to -1$ as $d \to \infty$, hence Lemma 4.8 covers enough range of $r = e^{v(u)}$ (i.e. make $r_\ast = e^{v(u_\ast)}$ small)
-- $\lambda (1 + u_\ast) / 2$ tends to infinity, but slowly enough that the uniform estimates in Lemma 4.10 work (which covers $0 \le r < r\_\ast$).
+- $u_\ast \to -1$ as $d \to \infty$, so the lower endpoint $r_\ast = e^{v(u_\ast)}$ of the range covered by Lemma 4.8 is small relative to $\sqrt d$.
+- $\lambda (1 + u_\ast) / 2$ tends to infinity, as required for the gamma estimates in Lemma 4.8, but slowly enough for Lemma 4.10 to cover the remaining interval $0 \le r < r\_\ast$.
 
 In other words, we want $D_\gamma(T)$ to dominate the perturbation term $\lambda(\Re h(T+iu)-h(iu))$ for all $T\ne0$.
 To make the comparison easier, we choose $h$ of the form[^1]
@@ -1094,7 +1093,7 @@ This tells us that $w(a)$ cannot be too negative if we want $D_u(T)$ to stay pos
 At the same time, the cutoff $u=u_0$ in Lemma 4.8 gives the following upper bound for the last-sign-change radius:
 
 $$
-R_{\epsilon,d} = e^{v(u_0)} = \frac{1}{\sqrt{\pi}} \exp\left(\frac{1}{2} \psi\left(\frac{\lambda(1+u_0)}{2}\right)\right) \exp\left(\int_0^\infty w(a)a\sinh(u_0 a)\mathrm{d}a\right)
+R_{\epsilon,d} = e^{v(u_0)} = \frac{1}{\sqrt{\pi}} \exp\left(\frac{1}{2} \psi\left(\frac{\lambda(1+u_0)}{2}\right)\right) \exp\left(\int_0^\infty w(a)a\sinh(u_0 a)\mathrm{d}a\right).
 $$
 
 Namely, $f_+(r),f_0(r)>0$ and $f_-(r)<0$ when $r\ge R_{\epsilon,d}$.
@@ -1124,7 +1123,7 @@ w_\ast(a) = -\frac{e^{-2a}}{2a^2 \cosh(a)}.
 $$
 
 However, one cannot simply take $w(a) = w_\ast(a)$, because this choice cancels too much of the gamma function's decay and does not give the bounds needed for the contour shifts.
-It is not integrable near zero, since $w_\ast(a) \approx -\frac{1}{2a^2} + \frac{1}{a} + O(1)$ as $a \to 0$.
+It is not integrable near zero, since $w_\ast(a) = -\frac{1}{2a^2} + \frac{1}{a} + O(1)$ as $a \to 0$.
 Also, when $u = 1$, we have
 
 $$
@@ -1147,26 +1146,24 @@ $$
 
 Therefore the Gaussian width $1/\sqrt{\lambda V(1)}$ stays of constant size instead of tending to zero.
 
-To mitigate this problem, we truncate the support of $w_\ast$ to a finite interval $[a_0, A]$ where the cutoffs $a_0, A$ will depend on $\epsilon > 0$.
-Also, we will make it slightly less negative to ...
-<!-- ADD EXPLANATION -->
-At the end, we consider
+To address these problems, we truncate $w_\ast$ to a finite interval $[a_0, A]$, where the cutoffs depend on $\epsilon > 0$.
+We also make it slightly less negative to leave some positive damping near $u=1$.
+Specifically, we take
 
 $$
-w_s(a) = b(a) w_\ast(a) \mathbf{1}_{[a_0, A]}(a), \qquad b(a) = 1 - 2\epsilon(1 + a),
+w_s(a) = b(a) w_\ast(a) \mathbf{1}_{[a_0, A]}(a), \qquad b(a) = 1 - 2\epsilon(1 + a).
 $$
 
-and $a_0, A$ will be chosen so that the errors introduced by the cutoffs and the change in $b(a)$ are small enough.
-<!-- ADD DETAILS? -->
+We choose $a_0$ and $A$ so that these modifications change the radius exponent by only $O(\epsilon)$; the estimates are given in the proof of Lemma 4.2.
 
 However, if we take $w = w_s$, then
 
 $$
 V(u) = \frac{\lambda}{4}\psi^{(1)}\left(\frac{\lambda(1+u)}2\right)
--\int_{a_0}^{A}\lvert w_s(a)\rvert a^2\cosh(ua)\,\mathrm{d}a,
+-\int_{a_0}^{A}\lvert w_s(a)\rvert a^2\cosh(ua)\,\mathrm{d}a.
 $$
 
-and the first term is asympotic to $\frac{1+u}{2}$ by $\psi^{(1)}(z) = 1/z + O(1/z^2)$ as $z \to \infty$, while the second term grows exponentially in $u$.
+As $u\to\infty$, the first term is asymptotic to $1/[2(1+u)]$, by $\psi^{(1)}(z) = 1/z + O(1/z^2)$ as $z \to \infty$, while the second term grows exponentially in $u$.
 Then $V(u)$ eventually becomes negative, and the argument for Lemma 4.8 can no longer give the signs at all large radii.
 In the proof, this is fixed by adding a (compactly supported) positive term
 
@@ -1174,212 +1171,36 @@ $$
 w_B(a)=\frac{Q}{\cosh a}\mathbf{1}_{[B,B+1]}(a),
 $$
 
-which well-chosen parameters $B, Q > 0$.
+with suitable parameters $B>A$ and $Q>0$. We then set $w=w_s+w_B$.
 
 
-With these choices, the corresponding limit of $R_{\epsilon,d}/\sqrt d$ is
+With the parameter choices below, first letting $d\to\infty$ and then $\epsilon\to0^+$ gives
 
 $$
-\frac{1}{\sqrt{2\pi}} \exp \left(-\frac12\int_0^\infty \frac{e^{-2a}\tanh(a)}{a} \mathrm{d}a \right) = \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{1}{2} \log \frac{\pi}{2}\right) = \frac{1}{\pi},
+\lim_{\epsilon\to0^+}\lim_{d\to\infty}\frac{R_{\epsilon,d}}{\sqrt d}
+=\frac{1}{\sqrt{2\pi}} \exp \left(-\frac12\int_0^\infty \frac{e^{-2a}\tanh(a)}{a} \mathrm{d}a \right) = \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{1}{2} \log \frac{\pi}{2}\right) = \frac{1}{\pi},
 $$
 
 which (surprisingly) matches the constant in the lower bound.
 
 
-<!-- Why do we need another term $w_B$?
-The preceding comparison only works up to $U$, whereas the sign argument must cover arbitrarily large radii and hence arbitrarily large $u$.
-If we use only $w_s$, then
-
-$$
-V(u)=\frac{\lambda}{4}\psi^{(1)}\left(\frac{\lambda(1+u)}2\right)
--\int_{a_0}^{A}\lvert w_s(a)\rvert a^2\cosh(ua)\,\mathrm{d}a.
-$$
-
-As $u\to\infty$, the first term is asymptotic to $1/[2(1+u)]$, while the second term grows exponentially.
-Thus $V(u)$ eventually becomes negative.
-The exponential factor then grows in modulus as we move a little away from $T=0$, and $v^{\prime}(u)<0$, so this saddle argument can no longer give the signs at all large radii.
-The functions obtained from $w_s$ alone are still Schwartz; the problem here is the argument for their signs. -->
-
-<!-- To repair this, we add
-
-$$
-w_B(a)=\frac{Q}{\cosh a}\mathbf{1}_{[B,B+1]}(a),
-\qquad B>A,\quad Q>0.
-$$ -->
-<!-- 
-Its positive contribution to $V(u)$ is at least a constant times $Qe^{(u-1)B}$, while the negative contribution grows no faster than a constant times $e^{(u-1)A}$.
-Since $B>A$, the positive term eventually dominates.
-We choose $B$ large and $Q$ small so that this already happens for $u\ge U$, but its effect on the radius at $u=u_0$ is negligible.
-With the parameters below,
-
-$$
-Qe^{(u_0-1)B}=e^{-1/(8\epsilon^2)},
-\qquad
-Qe^{(U-1)B}=e^{1/(8\epsilon^2)}.
-$$
-
-Thus even the small change from $u_0$ to $U$ makes a large difference to the size of this term.
-Finally, using an interval $[B,B+1]$ rather than a single value of $a$ prevents the added damping from vanishing at nonzero frequencies where $\cos(aT)=1$.
-The sum $w=w_s+w_B$ therefore keeps the radius improvement near $u_0$ while allowing the sign proof to continue to all larger radii. -->
-
-
-<!-- The parts removed by the cutoffs satisfy
-
-$$
-\int_0^{a_0}\lvert w_\ast(a)\rvert a\sinh a\,\mathrm{d}a=O(a_0),
-\qquad
-\int_A^\infty\lvert w_\ast(a)\rvert a\sinh a\,\mathrm{d}a
-=O\left(\frac{e^{-2A}}{A}\right),
-$$
-
-and the change caused by $b(a)$ is $O(\epsilon)$.
-We choose the cutoffs so that the two displayed errors are $o(\epsilon)$.
-Replacing $\sinh a$ by $\sinh(u_0a)$, where $u_0-1=O(\epsilon)$, contributes another $O(\epsilon)$ error to the radius exponent.
-This preserves the desired change in the logarithm of the radius up to $O(\epsilon)$. -->
-
-<!-- However, one cannot simply take $w(a) = w_\ast(a)$, because this choice cancels too much of the gamma function's decay and does not give the bounds needed for the contour shifts.
-We will modify it in two steps: first cut off its support and make it slightly less negative, then add a small positive term supported farther out.
-The precise choices of the parameters will follow in the next section.
-
-First, what does the report mean by saying that $w_\ast$ has "infinite mass at zero"?
-As $a \to 0$, we have
-
-$$
-w_\ast(a) = -\frac{1}{2a^2} + \frac{1}{a} + O(1),
-\qquad
-\int_0^1 \lvert w_\ast(a)\rvert\,\mathrm{d}a = \infty.
-$$
-
-This does not mean that the integral defining $h_\ast$ diverges at zero.
-Indeed,
-
-$$
-\cos(a\zeta)-1 = -\frac{a^2\zeta^2}{2}+O(a^4),
-\qquad
-w_\ast(a)(\cos(a\zeta)-1) \longrightarrow \frac{\zeta^2}{4}.
-$$
-
-The factor $a^2$ cancels the singularity.
-Similarly, $w_\ast(a)a\sinh a \to -1/2$, so the integral used to compute the radius also converges at zero.
-We must keep these factors together: the two integrals obtained by separating $\cos(a\zeta)$ and $-1$ would diverge.
-
-There is another issue at infinity.
-Since $w_\ast(a) \sim -e^{-3a}/a^2$, the integral defining $h_\ast$ is holomorphic for $\lvert\Im\zeta\rvert<3$, but it does not give an entire function.
-For example, at $\zeta=iu$ with $u>3$, the factor $\cosh(au)$ makes the integral diverge at infinity.
-Thus we cannot use the arbitrary contour shifts from Lemma 4.3.
-
-Next, "saturating the gamma damping" means that the negative contribution cancels the leading positive contribution from gamma.
-At $u=1$, using our notation for $\mu_{\lambda,u}$, we have
-
-$$
-\frac{\mu_{\lambda,1}(a)}{\lambda}
-\longrightarrow \frac{e^{-2a}}{2a^2},
-\qquad
-w_\ast(a)\cosh a = -\frac{e^{-2a}}{2a^2}.
-$$
-
-Hence the leading terms cancel in $D_1(T)/\lambda$.
-The damping is not exactly zero at finite $\lambda$, but the concentration needed for Lemma 4.8 is lost.
-For example, with this formal choice,
-
-$$
-V(1)
-= \frac{\lambda}{4}\psi^{(1)}(\lambda)
-  + \int_0^\infty w_\ast(a)a^2\cosh a\,\mathrm{d}a
-= \frac{\lambda}{4}\psi^{(1)}(\lambda)-\frac14
-\sim \frac{1}{8\lambda}.
-$$
-
-Therefore the Gaussian width $1/\sqrt{\lambda V(1)}$ stays of constant size instead of tending to zero. -->
-<!-- There is also no room to increase $u$ slightly above $1$: the negative term grows with $\cosh(ua)$, while the gamma density decreases with $u$.
-
-To fix these problems near $u=1$, we replace $w_\ast$ by
-
-$$
-w_s(a)=b(a)w_\ast(a)\mathbf{1}_{[a_0,A]}(a),
-\qquad
-b(a)=1-2\epsilon(1+a),
-$$
-
-where $0<a_0<A<\infty$ and $0<b(a)<1$ on this interval.
-The lower cutoff removes the infinite mass at zero, and the upper cutoff makes the support bounded.
-For each fixed $\epsilon>0$, the resulting function $h$ is entire and bounded on every fixed horizontal strip.
-Thus the gamma factor again gives enough decay for the contour shifts.
-Multiplying by $b(a)$ makes $w_s$ slightly less negative, so it leaves some of the gamma damping unused.
-
-These changes do not cost much in the radius calculation.
-The parts removed by the cutoffs satisfy
-
-$$
-\int_0^{a_0}\lvert w_\ast(a)\rvert a\sinh a\,\mathrm{d}a=O(a_0),
-\qquad
-\int_A^\infty\lvert w_\ast(a)\rvert a\sinh a\,\mathrm{d}a
-=O\left(\frac{e^{-2A}}{A}\right),
-$$
-
-and the change caused by $b(a)$ is $O(\epsilon)$.
-We choose the cutoffs so that the two displayed errors are $o(\epsilon)$.
-Replacing $\sinh a$ by $\sinh(u_0a)$, where $u_0-1=O(\epsilon)$, contributes another $O(\epsilon)$ error to the radius exponent.
-This preserves the desired change in the logarithm of the radius up to $O(\epsilon)$. -->
-
-
-
-
 ### Choice of parameters
 
-
-We use the cutoffs $0<a_0<A<B$ and the positive amplitude $Q>0$ defined by
+Fix a sufficiently small $\epsilon>0$, and let $\lambda=d/2$. The parameters are
 
 $$
 \begin{align*}
 a_0 &= \epsilon^2, \qquad A = \log(1/\epsilon), \qquad B = \epsilon^{-3}, \\
-q_\epsilon &= \frac{(u_0 - 1) + (U - 1)}{2}=\frac{3\epsilon}{8},\qquad Q=e^{-q_\epsilon B}.
+u_\ast &= -1+\frac{\log\lambda}{4\lambda}, \qquad
+u_0 = 1+\frac{\epsilon}{4}, \qquad U = 1+\frac{\epsilon}{2}, \\
+\beta &= u_0-1=\frac{\epsilon}{4}, \qquad
+q_\epsilon = \frac{(u_0-1)+(U-1)}{2}=\frac{3\epsilon}{8}, \\
+Q &= e^{-q_\epsilon B}=e^{-3/(8\epsilon^2)}.
 \end{align*}
 $$
 
-These choices satisfy the requirements discussed above:
-
-$$
-a_0=o(\epsilon),\qquad \frac{e^{-2A}}{A}=o(\epsilon),\qquad
-\epsilon A=o(1),\qquad A=o(B).
-$$
-
-The first two make the omitted parts of the radius integral small, the third keeps $b(a)$ positive, and the fourth places the positive term well beyond the negative one.
-Define
-
-$$
-\begin{align*}
-b(a) &= 1 - 2\epsilon (1 + a) \\
-w_s(a) &= - \frac{b(a) e^{-2a}}{2a^2 \cosh a} \mathbf{1}_{[a_0, A]}(a) \\
-w_B(a) &= \frac{Q}{\cosh a} \mathbf{1}_{[B, B+1]}(a) \\
-w(a) &= w_s(a) + w_B(a), \\
-h_\epsilon(\zeta) &= \int_{0}^{\infty} w(a) (\cos(a\zeta) - 1) \mathrm{d}a.
-\end{align*}
-$$
-
-Note that $h\_\epsilon$ is even and entire, and $b(a)>0$ on $[a_0,A]$ for sufficiently small $\epsilon$.
-For clarity, the remaining parameters are
-
-$$
-u_0 = 1 + \frac{\epsilon}{4}, \qquad U = 1 + \frac{\epsilon}{2}, \qquad
-\beta=u_0-1=\frac{\epsilon}{4},\qquad C_0 = A + a_0^{-1}.
-$$
-
-The choice of $\beta$ gives $P_+(iu)>0$ for $u>-1$, and $P_-(iu)<0<P_0(iu)$ for $u\ge u_0$, since
-
-$$
-P_+(iu)=\beta+(1-u)^2(1+u),\qquad
-P_-(iu)=\beta+(1-u)(1+u)^2,\qquad P_0(iu)=u^2-1.
-$$
-
-We also write
-
-$$
-\rho_\epsilon=C_0Q^{-1}e^{-(U-1)(B-A)}.
-$$
-
-The parameters above make both $BQe^{(u_0-1)B}$ and $\rho_\epsilon$ exponentially small in $1/\epsilon^2$.
-The first controls how much $w_B$ changes the radius at $u_0$; the second controls how much of its damping can be canceled by $w_s$ when $u\ge U$.
+Use these values in the definitions of $b$, $w_s$, $w_B$, and $w=w_s+w_B$ above, and write $h=h_\epsilon$ for the resulting perturbation.
+We keep $\epsilon$ fixed while taking $d\to\infty$, and then let $\epsilon\to0^+$.
 
 
 ### Proofs of lemmas
@@ -1399,11 +1220,56 @@ The first controls how much $w_B$ changes the radius at $u_0$; the second contro
 > \end{align*}
 > $$
 
-The cutoff and taper estimates above give the first integral, while $\sinh(u_0a)/\cosh a\le e^{(u_0-1)a}$ bounds the second by $(B+1)Qe^{(u_0-1)(B+1)}$.
-Thus the negative term preserves the desired radius improvement, and the positive term changes it only negligibly.
+The cutoffs satisfy
+
+$$
+a_0=o(\epsilon),\qquad \frac{e^{-2A}}{A}=o(\epsilon),\qquad
+\epsilon A=o(1),\qquad A=o(B).
+$$
+
+In particular, $0<b(a)<1$ on $[a_0,A]$ and $B>A+1$ for sufficiently small $\epsilon$.
+To prove the damping bound, divide the negative density by the gamma density:
+
+$$
+\frac{\lambda|w_s(a)|\cosh(ua)}{\mu_{\lambda,u}(a)}
+=b(a)\frac{1-e^{-2a/\lambda}}{2a/\lambda}
+e^{(u-1)a}\frac{\cosh(ua)}{\cosh a}.
+$$
+
+The fraction involving $\lambda$ is at most $1$.
+For $-1<u\le1$, the last two factors are also at most $1$, so the ratio is at most $b(a)\le1-2\epsilon$.
+For $1\le u\le U$, use $\cosh(ua)\le e^{(u-1)a}\cosh a$ and $2(U-1)=\epsilon$ to bound the ratio by
+
+$$
+b(a)e^{\epsilon a}
+\le e^{-2\epsilon(1+a)+\epsilon a}
+\le e^{-2\epsilon}\le1-c\epsilon.
+$$
+
+For the radius estimate, the parts omitted from the ideal weight satisfy
+
+$$
+\int_0^{a_0}|w_\ast(a)|a\sinh a\,\mathrm{d}a=O(a_0),\qquad
+\int_A^\infty|w_\ast(a)|a\sinh a\,\mathrm{d}a
+=O\left(\frac{e^{-2A}}{A}\right).
+$$
+
+These are $o(\epsilon)$. Multiplication by $b(a)$ changes the integral by $O(\epsilon)$, and replacing $\sinh a$ by $\sinh(u_0a)$ costs another $O(\epsilon)$ because $u_0-1=\epsilon/4$.
+Thus the first integral in the statement differs from the ideal value $-\frac12\log(\pi/2)$ by only $O(\epsilon)$.
+
+For the positive term, $\sinh(u_0a)/\cosh a\le e^{(u_0-1)a}$ bounds its contribution by
+
+$$
+(B+1)Qe^{(u_0-1)(B+1)}
+=(B+1)e^{-1/(8\epsilon^2)+\epsilon/4}
+\le Ce^{-c/\epsilon^2}.
+$$
+
+This is where choosing $q_\epsilon>u_0-1$ makes the effect of $w_B$ on the radius negligible. $\square$
 
 #### Lemma 4.3
 
+Since $w$ is integrable and compactly supported, $h_\epsilon$ is even and entire, and is bounded on every fixed horizontal strip.
 In the inverse Mellin transform
 
 $$
@@ -1463,9 +1329,9 @@ Finally, the evenness of $h$ and the reflection identities for $P_j$ give the Fo
 #### Lemmas 4.4–4.7
 
 These four lemmas are used in Lemma 4.8 to show that $f_j(r)$ has the same sign as $P_j(iu)$ for sufficiently large $d$ over the relevant range of $u$.
-The proofs are elementary but technical, so I'll only state the results here without further "digestion".
+The proofs are elementary but technical, so I'll state the results and briefly indicate how the parameters enter the estimates.
 
-Let $U=1+\epsilon/2$, $\delta=u-1$, and $\eta=1+u$.
+Let $\delta=u-1$ and $\eta=1+u$.
 The lemmas use the following quantities (with our notation for $\mu_{\lambda,u}$):
 
 $$
@@ -1511,6 +1377,24 @@ The quantity $M_3$ bounds the cubic error without relying on cancellation betwee
 >
 > Moreover, $\lambda\eta\ge(\log\lambda)/4$.
 
+The choice $U=1+\epsilon/2$ keeps the negative term below the gamma contribution throughout this range, by Lemma 4.2.
+For $u\ge U$, we instead use the positive term to control the negative one.
+Write
+
+$$
+C_0=A+a_0^{-1},\qquad
+\rho_\epsilon=C_0Q^{-1}e^{-(U-1)(B-A)}.
+$$
+
+With the chosen parameters,
+
+$$
+\rho_\epsilon=C_0e^{-1/(8\epsilon^2)+(\epsilon/2)A}
+\le Ce^{-c/\epsilon^2}.
+$$
+
+This is where $q_\epsilon<U-1$ and the separation $A=o(B)$ are used: they make the negative contribution small relative to the positive one in the following lemma.
+
 > **Lemma 4.6.** There are absolute constants $c, C > 0$ and $\epsilon_0 > 0$ such that, for every $0 < \epsilon < \epsilon_0$, there are constants $\lambda_\epsilon, C_\epsilon, c_\epsilon > 0$ with the following property. For every $\lambda \ge \lambda_\epsilon$ and $u \ge U$, and every $T \in \mathbb{R}$, one has
 >
 > $$
@@ -1544,6 +1428,15 @@ The quantity $M_3$ bounds the cubic error without relying on cancellation betwee
 >
 > $$ M_3 \le C_\epsilon V(u), \qquad V(u) \ge c_\epsilon > 0 \quad (u \ge U). $$
 
+Indeed, dividing the first two estimates gives, for $T\ne0$,
+
+$$
+\frac{D_s(T)}{D_B(T)}
+\le C C_0Q^{-1}e^{-(u-1)(B-A)}
+\le C\rho_\epsilon.
+$$
+
+Thus $U$ is where the proof switches between two sufficient damping estimates; it need not be a point where the contributions are equal.
 
 Set $T_0=1/[2(B+1)]$.
 
@@ -1553,7 +1446,7 @@ Set $T_0=1/[2(B+1)]$.
 > \begin{align*}
 > D_u(T) &\ge c_\epsilon \lambda V(u) T^2, \qquad &(|T| \le T_0) \\
 > D_u(T) &\ge c_\epsilon \lambda Q e^{\delta B}, \qquad &(T_0 \le |T| \le \eta) \\
-> D_u(T) &\ge c \lambda |T| + c_\epsilon \lambda Q e^{\delta B}. \qquad &(|T| \ge \eta)
+> D_u(T) &\ge c \lambda |T| + c_\epsilon \lambda Q e^{\delta B}, \qquad &(|T| \ge \eta).
 > \end{align*}
 > $$
 
@@ -1601,7 +1494,7 @@ $e^{\mathcal{L}\_u(x/\sqrt{\lambda V(u)})}=e^{-x^2/2}(1+o\_\epsilon(1))$ and
 $P(x/\sqrt{\lambda V(u)}+iu)=P(iu)(1+o_\epsilon(1))$ for $|x|\le K$.
 We can pull these uniform relative errors outside the integral, and $\int_{-K}^K e^{-x^2/2}\,\mathrm{d}x\to\sqrt{2\pi}$ because $K\to\infty$.
 
-It remains to show that the integral over $\lvert T\rvert > T_*$ becomes negligible as $d \to \infty$, i.e. $o\_\epsilon(\lvert P(iu) \rvert / \sqrt{\lambda V(u)})$.
+It remains to show that the integral over $\lvert T\rvert > T_*$ becomes negligible as $d \to \infty$, i.e., that it is $o\_\epsilon(\lvert P(iu) \rvert / \sqrt{\lambda V(u)})$.
 Here are the choices of $K$ that make both the approximation and the tail bounds work.
 
 For $u_\ast\le u\le U$, put $L=\lambda(1+u)\ge(\log\lambda)/4$ and take $K=L^{1/12}$.
@@ -1628,6 +1521,26 @@ Beyond $T_0$, the factor $e^{-c_\epsilon\lambda Qe^{(u-1)B}}$ makes the integral
 For $|T|\ge1+u$, the additional exponential decay in $|T|$ makes the remaining tail integrable.
 Thus the tails are negligible uniformly in both ranges. $\square$
 
+To obtain the signs of $f_j$, recall that
+
+$$
+P_+(iu)=\beta+(1-u)^2(1+u),\qquad
+P_-(iu)=\beta-(u-1)(1+u)^2,\qquad P_0(iu)=u^2-1.
+$$
+
+The first is positive for every $u>-1$.
+Our choice $\beta=u_0-1>0$ gives
+
+$$
+P_-(iu_0)=-\beta(3+4\beta+\beta^2)<0,\qquad
+P_0(iu_0)=\beta(2+\beta)>0,
+$$
+
+and these signs persist for all $u\ge u_0$.
+For sufficiently large $d$, Lemma 4.8 and the positive prefactor in the inverse Mellin formula transfer these signs to $f_j(e^{v(u)})$.
+Since $v^{\prime}(u)=V(u)>0$ and $v(u)\to\infty$, this gives $f_+(r)>0$ for $r\ge r_\ast$, and $f_-(r)<0<f_0(r)$ for $r\ge R_{\epsilon,d}=e^{v(u_0)}$.
+Thus $u_0$ is a cutoff from which the exterior signs are guaranteed, not an exact sign-change point.
+
 
 #### Lemma 4.10
 
@@ -1636,7 +1549,7 @@ The idea is the following: we shift the contour of integration downward from $\m
 Then we can write $f_+(r) / f_+(0)$ as a sum of residues at the poles in the strip, plus an integral over the shifted contour.
 The sum will approximate the Taylor expansion of $e^{-y}$, and the integral will be small enough to be negligible.
 
-There are $(N+1)$ poles in the strip, at $t = -i(\lambda + 2n)$ for $n = 0, 1, \ldots, N$, and we will pick up the residues at these poles.
+There are $N+1$ poles in the strip, at $t = -i(\lambda + 2n)$ for $n = 0, 1, \ldots, N$, and we pick up their residues.
 By applying the residue theorem to $f_+(r) / f_+(0)$, we have
 
 $$
@@ -1657,15 +1570,7 @@ $$
 \end{align*}
 $$
 
-Hence, we can write
-
-$$
-\begin{align*}
-    \frac{f_+(r)}{f_+(0)} &= \sum_{n=0}^{N} \frac{(-y)^n}{n!} A_{\lambda, n} + \mathcal{R}_{\lambda}(r),
-\end{align*}
-$$
-
-where
+Thus the coefficients and remainder in the residue expansion are
 
 $$
 \begin{align*}
@@ -1717,19 +1622,6 @@ $$
 uniformly on $0 \le r \le r_\ast$. $\square$
 
 
-
-## Sign uncertainty principle
-
-Proposition 3.7 supplies the common lower bound for both sign-uncertainty constants, while the functions $f_+-f_-$ and $f_0$ above supply the matching upper bounds. Thus
-
-$$
-\frac{\mathsf A_+(d)}{\sqrt d}\longrightarrow\frac1\pi,
-\qquad
-\frac{\mathsf A_-(d)}{\sqrt d}\longrightarrow\frac1\pi.
-$$
-
-The common asymptotic does not mean the constants are equal in each dimension: Appendix A proves the strict inequality $\mathsf A\_+(d)<\mathsf A\_-(d)$.
-
 ## Formalization
 
 There's also an accompanying formalization of the proof in Lean.
@@ -1737,16 +1629,4 @@ How faithfully does it reflect the report?
 See [Part 2]({% post_url 2026-08-16-openai-sphere-packing-digest-part2 %}).
 
 
-## Conclusion
-
-I spent almost a week reading the whole report and parts of the Lean code.
-
-
-
-> Q. Does this proof give any further insight into these problems?
->
-> A. `¯\_(ツ)_/¯`[^2]
-
 [^1]: The report also explains the choice through radial dilations: multiplying the Mellin transform by $\cos(at/\lambda)-1$ replaces $g(r)$ by $\frac{e^a g(re^{a/\lambda})+e^{-a}g(re^{-a/\lambda})}{2}-g(r)$. This describes the linear factor, not the full exponential multiplier $\exp(\lambda h(t/\lambda))$ used in the construction.
-
-[^2]: Even if I have some new insights, I won't share them here since I don't want to be scooped again (especially by AI I don't control) — twice is enough!

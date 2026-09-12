@@ -845,7 +845,22 @@ What is absent is the other half of Theorem 4.1: Lean does not construct the sel
 
 <!-- (add later) -->
 
+## Use of LLM
+
+LLMs - ChatGPT and Claude - were used to help understanding the original proof and the formalization. In particular, I had a conversation with ChatGPT in Codex app where I moastly asked questions about the intuitions and choice of parameters in the proof.
+For example, I asked why the perturbation $h$ is chosen of the form $h(\zeta) = \int_0^\infty w(a) (\cos(a\zeta) - 1) \mathrm{d} a$, and why $u_\ast$ is chosen as $-1 + \log \lambda / 4\lambda$, not something like $-1 + \log \lambda / 2\lambda$ or $-1 + \delta$ for some fixed $\delta > 0$.
+Most of the proofs are very analytical and the technical details are mostly about "how to choose the right parameters so that this is larger than that".
+
+Also, these were used to understand the formalization.
+My first question was to give one-to-one correspondence between the nonformal statement and proof of the report and the formal statements and proof in Lean, and found the missing formalizations.
+I also asked it to make a bluprint out of it (not with official Lean blueprint or Verso), which was not helpful at all.
+I could make it better, but I found that it is not worth the time, and I decided to refactor it first.
+
+
 ## Conclusion
+
+My guess for why the formalization is incomplete is that the original input for Astra was only sphere packing and Cohn-Elkies linear programming bound, but not on sign uncertainty principle.
+It is only used as intermediate step, so they do not need to formalize all of them (e.g. $L^1$ formulation, self-Fourier function, etc.).
 
 I'd say that the proof is *almost* formalized, but definitely not *all*.
 Someone may say that I'm to picky, since all the *essence* of the proof are formalized, which is true.
@@ -855,3 +870,11 @@ The reason is because most of the time people don't read the AI's autoformalized
 This belief will makes more sense as AI gets better and better, but then it will generate longer slop formalizations, and similar issue will keep persists.
 If you want to autoformalize a natural language proof, the best thing you can to is to make every formal statement and argument as close to the natural language proof as possible - using the same notations, no more or less lemmas, and more importantly, make a blueprint.
 If your AI is good enough to autoformalize a natural language proof, then it should be good enough to automatically write *a* blueprint that is *not too bad* for a human to read and understand (just push the button few more times), which is way better than having no blueprint at all.
+I recently wrote a blog post about this (prompted by [other news](https://www.anthropic.com/research/formalizing-fermats-last-theorem)) - check it out [here](https://proofsandprompts.com/2026/09/08/autoformalization-but-why/).
+
+
+Let me end this post with a question and answer:
+
+> Q. Does this proof give any further insight into these problems?
+>
+> A. `¯\_(ツ)_/¯`
