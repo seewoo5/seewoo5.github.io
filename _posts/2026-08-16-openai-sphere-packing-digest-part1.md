@@ -1147,7 +1147,7 @@ $$
 Therefore the Gaussian width $1/\sqrt{\lambda V(1)}$ stays of constant size instead of tending to zero.
 
 To address these problems, we truncate $w_\ast$ to a finite interval $[a_0, A]$, where the cutoffs depend on $\epsilon > 0$.
-We also make it slightly less negative to leave some positive damping near $u=1$.
+We also make it slightly less negative to leave some positive decay near $u=1$.
 Specifically, we take
 
 $$
@@ -1228,7 +1228,7 @@ a_0=o(\epsilon),\qquad \frac{e^{-2A}}{A}=o(\epsilon),\qquad
 $$
 
 In particular, $0<b(a)<1$ on $[a_0,A]$ and $B>A+1$ for sufficiently small $\epsilon$.
-To prove the damping bound, divide the negative density by the gamma density:
+To prove the decay bound, divide the negative density by the gamma density:
 
 $$
 \frac{\lambda|w_s(a)|\cosh(ua)}{\mu_{\lambda,u}(a)}
@@ -1436,7 +1436,7 @@ $$
 \le C\rho_\epsilon.
 $$
 
-Thus $U$ is where the proof switches between two sufficient damping estimates; it need not be a point where the contributions are equal.
+Thus $U$ is where the proof switches between two sufficient decay estimates; it need not be a point where the contributions are equal.
 
 Set $T_0=1/[2(B+1)]$.
 
@@ -1505,7 +1505,7 @@ $$
 \frac{K^3M_3}{\sqrt\lambda V(u)^{3/2}}\ll_\epsilon L^{-1/4}.
 $$
 
-Both tend to zero uniformly. Between $T_\ast$ and $1+u$, the quadratic damping from Lemmas 4.4–4.5 gives a normalized tail of size $O_\epsilon(e^{-c_\epsilon K^2})$; beyond $1+u$, the linear damping gives $O_\epsilon(e^{-c_\epsilon L})$.
+Both tend to zero uniformly. Between $T_\ast$ and $1+u$, the quadratic decay from Lemmas 4.4–4.5 gives a normalized tail of size $O_\epsilon(e^{-c_\epsilon K^2})$; beyond $1+u$, the linear decay gives $O_\epsilon(e^{-c_\epsilon L})$.
 These are ordinary Gaussian and exponential tail estimates. For instance,
 
 $$
