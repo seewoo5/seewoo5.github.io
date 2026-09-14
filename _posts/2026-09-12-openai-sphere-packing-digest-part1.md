@@ -1626,7 +1626,13 @@ uniformly on $0 \le r \le r_\ast$. $\square$
 
 There's also an accompanying formalization of the proof in Lean.
 How faithfully does it reflect the report?
-See [Part 2]({% post_url 2026-08-16-openai-sphere-packing-digest-part2 %}).
+See [Part 2]({% post_url 2026-09-12-openai-sphere-packing-digest-part2 %}).
+
+## Use of LLM
+
+LLMs - mostly ChatGPT - were used to help understanding the original proof and the formalization. In particular, I had a conversation with ChatGPT in Codex app where I moastly asked questions about the intuitions and choice of parameters in the proof.
+For example, I asked why the perturbation $h$ is chosen of the form $h(\zeta) = \int_0^\infty w(a) (\cos(a\zeta) - 1) \mathrm{d} a$, and why $u_\ast$ is chosen as $-1 + \log \lambda / 4\lambda$, not something like $-1 + \log \lambda / 2\lambda$ or $-1 + \delta$ for some fixed $\delta > 0$.
+Most of the proofs are very analytical and the technical details are mostly about "how to choose the right parameters so that this is larger than that".
 
 
 [^1]: The report also explains the choice through radial dilations: multiplying the Mellin transform by $\cos(at/\lambda)-1$ replaces $g(r)$ by $\frac{e^a g(re^{a/\lambda})+e^{-a}g(re^{-a/\lambda})}{2}-g(r)$. This describes the linear factor, not the full exponential multiplier $\exp(\lambda h(t/\lambda))$ used in the construction.
