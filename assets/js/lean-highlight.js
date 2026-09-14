@@ -19,6 +19,7 @@
     end: true,
     by: true,
     where: true,
+    abbrev: true,
     match: true,
     with: true,
     fun: true,
