@@ -1,6 +1,6 @@
 ---
 layout: posts
-title:  "Understanding Astra's result on the high-dimensional sphere packing — Part 2: Formalization"
+title:  "Understanding Astra's result on high-dimensional sphere packing — Part 2: Formalization"
 date:   2026-09-12
 categories: jekyll update
 tags: math ai
@@ -8,7 +8,7 @@ tags: math ai
 
 In the [previous post]({% post_url 2026-09-12-openai-sphere-packing-digest-part1 %}), I explained the main ideas behind Astra's proof of the optimal Cohn-Elkies LP exponent and the sharp sign-uncertainty constant.
 OpenAI released [Lean formalizations](https://github.com/openai/ten-proofs) accompanying all ten results in the report, including the sphere-packing result.
-Here I dig into the sphere-packing formalization and ask how faithfully it follows the report: what is the same, what is different, but more importantly, what is missing?
+Here I dig into the sphere-packing formalization and ask how faithfully it follows the report: what is the same, what is different, and, more importantly, what is missing?
 My aim is to match the informal statements and proofs with their Lean counterparts. Comments inside the displayed Lean snippets are sometimes added for explanation and are not part of the original source.
 
 ## Overview of the formalization
@@ -30,17 +30,17 @@ So how can I read 55K lines of Lean code? There are several choices:
 I chose option 3 and used ChatGPT and Claude, relying somewhat more on ChatGPT for reading the code because the Lean code was itself produced by an OpenAI model.
 I asked the models to build a table matching the theorems and lemmas in the report with declarations in the Lean file, and then checked the suggested declarations against the source.
 
-In short, the file proves the result on the exponent of Cohn-Elkies LP bound (Theorem 1.1).
-However, several intermediate results and half of the Theorem 1.2 are missing.
-More precisely,
+In short, the file proves the result on the exponent of the Cohn-Elkies LP bound (Theorem 1.1).
+However, several intermediate results and half of Theorem 1.2 are missing.
+More precisely:
 
-- Section 2.1 of the report is on radial and $L^1$-to-Schwartz reduction of the problems. The formalization does not prove these reductions, rather only considering the Schwartz functions.
-- The definition of $\mathsf{A}_+(d)$ is missing. It only considers anti-self-Fourier functions and the Fourier pairs, but not self-Fourier functions.
-- Proposition A.1 of the Appendix is not formalized (which is obvious, considering that $\mathsf{A}_+(d)$ is not formalized).
+- Section 2.1 of the report discusses the radial and $L^1$-to-Schwartz reductions of the problems. The formalization does not prove these reductions; it considers only Schwartz functions.
+- The definition of $\mathsf{A}_+(d)$ is missing. The formalization considers anti-self-Fourier functions and Fourier pairs, but not self-Fourier functions.
+- Proposition A.1 of the appendix is not formalized (which is obvious, considering that $\mathsf{A}_+(d)$ is not formalized).
 
-Absence of these results make sense if you imagine that the main goal of Astra is to prove the optimal Cohn-Elkies exponent, where the sign uncertainty principle naturally arises, but $\mathsf{A}_+(d)$ is not needed for it.
+The absence of these results makes sense if you imagine that Astra's main goal is to prove the optimal Cohn-Elkies exponent. The sign uncertainty principle naturally arises in this argument, but $\mathsf{A}_+(d)$ is not needed.
 
-Now, let's read Lean code!
+Now, let's read the Lean code!
 
 
 ## Basic definitions
@@ -74,7 +74,7 @@ An `AntiFourierWitness` is the main object in the formal lower-bound argument. I
 
 ### Lower bound
 
-The main goal of the lower bound argument is to prove the following statement:
+The main goal of the lower-bound argument is to prove the following statement:
 
 ```lean
 def criticalRadius : ℝ := (Real.pi)⁻¹
@@ -469,7 +469,7 @@ theorem lowerStripPoissonMajorant_dimension_centered_max
         (c * Real.sqrt d) σ 0 := by ...
 ```
 
-As mentioned in part 1, the convolution of two even, nonnegative functions that are nonincreasing on $(0,\infty)$ is maximized at the origin.
+As mentioned in Part 1, the convolution of two even, nonnegative functions that are nonincreasing on $(0,\infty)$ is maximized at the origin.
 The Lean code includes a formalization of this fact, specialized to the Poisson kernel:
 
 ```lean
@@ -810,7 +810,7 @@ Finally, `balancedAntiFourierWitness` implements the dilation and the difference
 
 The formalized proof of the upper bound is similar to the original proof in the report.
 However, there are still some differences in the details, including the fact that the formalization does not construct $f_0$ and uses slightly different parameters in the construction of $h$.
-The natural language translation of the Lean proof is given below.
+The natural-language translation of the Lean proof is given below.
 
 > *Proof (Lean).* Fix a sufficiently small $\varepsilon>0$, put $\lambda=d/2$ and $\beta=\varepsilon/4$, and use the negative and positive weights $w=w\_s+w\_B$ to define
 >
@@ -828,7 +828,7 @@ The natural language translation of the Lean proof is given below.
 > \qquad(r>0).
 > $$
 >
-> Upward contour shifts prove rapid decay at infinity. Downward shifts past the poles $t=-i(\lambda+2n)$ give polynomials in $r^2$ with controlled remainders, proving smoothness at zero. The first residue gives
+> Moving the contour upward proves rapid decay of $f\_\pm$ at infinity, while moving it downward past the poles $t=-i(\lambda+2n)$ approximates $f\_\pm$ by a polynomial in $r^2$ with controlled remainders, proving smoothness at zero. The first residue gives
 >
 > $$
 > f_-(0)=f_+(0)=2\pi^{\lambda/2}e^{\lambda h(-i)}\beta>0.
@@ -913,12 +913,12 @@ The natural language translation of the Lean proof is given below.
 > \mathrm{LP}_d^{1/d}\le\frac{v_d^{1/d}}2 R_{\varepsilon,d}.
 > $$
 >
-> Here $v\_d$ is the unit-ball volume. Stirling's formula, first letting $d\to\infty$ and then $\varepsilon\to0^+$, gives $\limsup\_{d\to\infty}\mathrm{LP}\_d^{1/d}\le\sqrt{e/(2\pi)}$, matching the lower bound. $\square$
+> Here $v\_d$ is the unit-ball volume. Using Stirling's formula, we first let $d\to\infty$ and then $\varepsilon\to0^+$ to obtain $\limsup\_{d\to\infty}\mathrm{LP}\_d^{1/d}\le\sqrt{e/(2\pi)}$, matching the lower bound. $\square$
 
 
 #### Definition of $f\_\pm$ and parameter choices
 
-The following definitions are the parameters $a_0$, $A$, $B$, $Q$, $b(a)$, $\beta$, the weight functions $w_s$, $w_B$, perturbation $h$, and the polynomials $P_+, P_-$, in terms of $\varepsilon$.
+The following definitions give the parameters $a_0$, $A$, $B$, $Q$, $b(a)$, $\beta$, the weight functions $w_s$, $w_B$, the perturbation $h$, and the polynomials $P_+, P_-$ in terms of $\varepsilon$.
 
 ```lean
 -- a₀ = ε³.
@@ -967,7 +967,7 @@ def minusPolynomial (ε : ℝ) (z : ℂ) : ℂ :=
   1 + z ^ 2 + (beta ε : ℂ) - Complex.I * z * (1 + z ^ 2)
 ```
 
-You can see that the parameter choices are slightly different from the report (their "scales" are the same). The following table summarizes the differences.
+You can see that the parameter choices are slightly different from those in the report (their "scales" are the same). The following table summarizes the differences.
 
 | Parameter | Report | Lean |
 |---|---|---|
@@ -976,23 +976,23 @@ You can see that the parameter choices are slightly different from the report (t
 | Factor $b(a)$ in the negative weight $w_s$ | $1-2\varepsilon(1+a)$ | $1-10\varepsilon(1+a)$ (`shortMargin`) |
 | Residue cutoff $N$ | $\lceil\log\lambda\rceil$ | $\lceil20\log\lambda\rceil$ (`saddleSmallResidueTruncation`) |
 
-Note that there is an another pdf on OpenAI's website, called [`reasoning-walkthroughts.pdf`](https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf), which is a summarized version of the original report.
-Interestingly, the parameter choice of this second pdf is the same as Lean's, but different from the original report!
+Note that there is another PDF on OpenAI's website, called [`reasoning-walkthroughs.pdf`](https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf), which is a summarized version of the original report.
+Interestingly, the parameter choices in this second PDF are the same as Lean's, but different from those in the original report!
 
 <p align="center">
 <img src="/assets/images/openai-cohn-elkies-param1.png">
-<figcaption align="center">Parameter choices in the `ten-proofs-oai.pdf`.</figcaption>
+<figcaption align="center">Parameter choices in `ten-proofs-oai.pdf`.</figcaption>
 </p>
 
 <p align="center">
 <img src="/assets/images/openai-cohn-elkies-param2.png">
-<figcaption align="center">Parameter choices in the `reasoning-walkthroughs.pdf`.</figcaption>
+<figcaption align="center">Parameter choices in `reasoning-walkthroughs.pdf`.</figcaption>
 </p>
 
-I have no idea how these pdfs are written, but obviously, the difference suggests that they are not written by humans.
-Fortunately, the choice is not important for the final result, and the original choice is also valid - see the later section on reformalization.
+I have no idea how these PDFs were written, but obviously, the difference suggests that they were not written by humans.
+Fortunately, the choice is not important for the final result, and the original choice is also valid—see the later section on reformalization.
 
-The next three definitions are exactly the perturbed Gamma factor $E_\lambda(t) := E_\lambda^G(T) \exp(\lambda h(t/\lambda))$ and the Mellin transforms $X_+$, $X_-$.
+The next three definitions give exactly the perturbed Gamma factor $E_\lambda(t) := E_\lambda^G(T) \exp(\lambda h(t/\lambda))$ and the Mellin transforms $X_+$, $X_-$.
 
 ```lean
 -- Eλ(t) = π^(it/2) Γ((λ − it)/2) exp(λh(t/λ)).
@@ -1014,7 +1014,7 @@ def minusSaddleSpectrum (ε ℓ t : ℝ) : ℂ :=
     minusPolynomial ε ((t : ℂ) / (ℓ : ℂ))
 ```
 
-For contour integration, Lean switches to the usual variable $z=\lambda-it$. Thus $t/\lambda=i(z-\lambda)/\lambda$, and the Gamma factor becomes $\Gamma(z/2)$. The following definitions express the same functions in this coordinate; `plusSaddleMellinData_vertical` checks the correspondence explicitly. There is an analogous theorem for the minus sign.
+For contour integration, formal proof uses the usual variable $z=\lambda-it$. Thus $t/\lambda=i(z-\lambda)/\lambda$, and the Gamma factor becomes $\Gamma(z/2)$. The following definitions express the same functions in this coordinate; `plusSaddleMellinData_vertical` checks the correspondence explicitly. There is an analogous theorem for the minus sign.
 
 ```lean
 -- Eλ in the coordinate z = λ − it.
@@ -1045,7 +1045,7 @@ theorem plusSaddleMellinData_vertical (ε ℓ t : ℝ) :
         plusSaddleSpectrum ε ℓ t := by ...
 ```
 
-The radializations $f\_\pm(r)$ are inverse Mellin transforms away from zero. Their common value at zero is defined as `saddleOriginValue`, whose agreement with the smooth extension is justified in the next subsection. The functions on $\mathbb R^d$ are obtained by substituting $r=\lVert x\rVert$.
+The radializations $f\_\pm(r)$ are inverse Mellin transforms away from zero. Their common value at zero is defined as `saddleOriginValue`, whose agreement with the smooth extension is justified in the Smoothness and Values at the origin subsections below. The functions on $\mathbb R^d$ are obtained by substituting $r=\lVert x\rVert$.
 
 ```lean
 -- f₊(r): inverse Mellin transform for r ≠ 0, prescribed value at r = 0.
@@ -1065,11 +1065,6 @@ def plusSaddleFunction (ε : ℝ) (d : ℕ) (x : Euclidean d) : ℂ :=
 -- x ↦ f₋(‖x‖), with λ = d/2.
 def minusSaddleFunction (ε : ℝ) (d : ℕ) (x : Euclidean d) : ℂ :=
   minusSaddleProfile ε ((d : ℝ) / 2) ‖x‖
-
--- The common value at the origin.
-def saddleOriginValue (ε ℓ : ℝ) : ℝ :=
-  2 * Real.pi ^ (ℓ / 2) *
-    Real.exp (ℓ * realHyperbolicShellPhase ε 1) * beta ε
 ```
 
 To see the normalization hidden in `mellinInv`, one can use the next identity. It parametrizes the upward vertical line by $z=\lambda+it$, so $\mathrm{d}z=i\,\mathrm{d}t$ cancels the $i$ in $1/(2\pi i)$. Replacing $t$ by $-t$ recovers the inverse-transform formula in the overview.
@@ -1102,44 +1097,100 @@ theorem minusSaddleProfile_eq_normalized_vertical_integral
               ((ℓ : ℂ) + (t : ℂ) * Complex.I)) := by ...
 ```
 
-These functions are also real-valued.
+#### Rapid decay at infinity
+
+In the coordinate $z=\lambda-it$, rapid decay comes from moving the inverse-Mellin contour from $\Re z=\lambda$ to $\Re z=a$ with $a>\lambda$. No Gamma poles are crossed, and the factor $r^{-z}$ has absolute value $r^{-a}$ on the new line. Bounds on the Mellin data make the shifted integral and its differentiated versions converge. Taking $a$ arbitrarily large gives decay faster than every inverse power of $r$. This is the upward contour shift in the $t$-coordinate used in the proof summary.
+
+#### Smoothness
+
+To study smoothness at zero, shift the contour to the left past finitely many Gamma poles. First, factor the Mellin data as $\Gamma(z/2)$ times a holomorphic factor. The residues at $z=-2n$ are then $2(-1)^n/n!$ times that factor.
 
 ```lean
--- Im f₊(x) = 0.
-theorem plusSaddleFunction_real (ε : ℝ) (d : ℕ)
-    (x : Euclidean d) :
-    (plusSaddleFunction ε d x).im = 0 := by ...
+-- The common Mellin factor after removing Γ(z/2).
+def saddleRegularMellinFactor (ε ℓ : ℝ) (z : ℂ) : ℂ :=
+  Complex.exp
+      (((ℓ : ℂ) - z) * (Real.log Real.pi : ℂ) / 2) *
+    Complex.exp ((ℓ : ℂ) *
+      mellinShellPhase ε
+        (Complex.I * (z - (ℓ : ℂ)) / (ℓ : ℂ)))
 
--- Im f₋(x) = 0.
-theorem minusSaddleFunction_real (ε : ℝ) (d : ℕ)
-    (x : Euclidean d) :
-    (minusSaddleFunction ε d x).im = 0 := by ...
+-- M₊(z) = Γ(z/2) times this holomorphic factor.
+def plusSaddleRegularMellinFactor (ε ℓ : ℝ) (z : ℂ) : ℂ :=
+  saddleRegularMellinFactor ε ℓ z *
+    plusPolynomial ε
+      (Complex.I * (z - (ℓ : ℂ)) / (ℓ : ℂ))
+
+-- M₋(z) = Γ(z/2) times this holomorphic factor.
+def minusSaddleRegularMellinFactor (ε ℓ : ℝ) (z : ℂ) : ℂ :=
+  saddleRegularMellinFactor ε ℓ z *
+    minusPolynomial ε
+      (Complex.I * (z - (ℓ : ℂ)) / (ℓ : ℂ))
+
+-- Residue of M₊ at z = −2n.
+def plusSaddlePoleResidue (ε ℓ : ℝ) (n : ℕ) : ℂ :=
+  (2 : ℂ) * (-1 : ℂ) ^ n / (n.factorial : ℂ) *
+    plusSaddleRegularMellinFactor ε ℓ
+      (-((2 * n : ℕ) : ℂ))
+
+-- Residue of M₋ at z = −2n.
+def minusSaddlePoleResidue (ε ℓ : ℝ) (n : ℕ) : ℂ :=
+  (2 : ℂ) * (-1 : ℂ) ^ n / (n.factorial : ℂ) *
+    minusSaddleRegularMellinFactor ε ℓ
+      (-((2 * n : ℕ) : ℂ))
 ```
 
-`plusSaddleSchwartz` shows that $f_+$ is a Schwartz function on $\mathbb R^d$.
-We also have `minusSaddleSchwartz` for $f_-$.
+For the remainder, Lean shifts the Mellin contour to $\Re z=-(2N+1)$, between the poles $-2N$ and $-2(N+1)$. The next definition is the remaining contour integral before dividing by $f\_+(0)$.
 
 ```lean
-def plusSaddleSchwartz
+-- The shifted line has Re z = −(2N + 1).
+def saddleTaylorContour (N : ℕ) : ℝ :=
+  -((2 * N + 1 : ℕ) : ℝ)
+
+-- The unnormalized contour remainder after crossing N + 1 poles.
+def plusSaddleTaylorRemainder
+    (ε ℓ : ℝ) (N : ℕ) (r : ℝ) : ℂ :=
+  ((1 / (2 * Real.pi) : ℝ) : ℂ) *
+    (∫ t : ℝ,
+      saddleMellinInversePower r
+        ((saddleTaylorContour N : ℂ) +
+          (t : ℂ) * Complex.I) *
+        plusSaddleMellinData ε ℓ
+          ((saddleTaylorContour N : ℂ) +
+            (t : ℂ) * Complex.I))
+```
+
+The contour-shift identity below makes the connection with the radial function. It expresses the function as a polynomial in $r^2$ plus a contour remainder. The $n=0$ term is evaluated in the Values at the origin subsection below. The minus version is `minusSaddleProfile_eq_residue_sum_add_remainder`.
+
+```lean
+-- f₊(r) = Σₙ₌₀ᴺ Resₙ r²ⁿ + contour remainder.
+theorem plusSaddleProfile_eq_residue_sum_add_remainder
+    {ε ℓ r : ℝ}
+    (hε : 0 < ε) (hℓ : 0 < ℓ)
+    (horder : shortCutoff ε ≤ shortEndpoint ε)
+    (hr : 0 < r) (N : ℕ) :
+    plusSaddleProfile ε ℓ r =
+      (∑ n ∈ Finset.range (N + 1),
+        plusSaddlePoleResidue ε ℓ n *
+          ((r ^ (2 * n) : ℝ) : ℂ)) +
+      plusSaddleTaylorRemainder ε ℓ N r := by ...
+```
+
+The residue expansion and the bounds on its differentiated remainders prove smoothness at the origin; away from zero, one differentiates the inverse Mellin integral. Lean carries out the origin argument in the squared-radius variable, so the conclusion is smoothness of the functions on $\mathbb R^d$, not just of their radial profiles:
+
+```lean
+-- The radial function f₊ is C∞, including at x = 0.
+theorem plusSaddleFunction_contDiff
     {ε : ℝ} (hε : 0 < ε)
     {d : ℕ} (hd : 0 < d)
     (horder : shortCutoff ε ≤ shortEndpoint ε) :
-    TestFunction d where ...
-```
+    ContDiff ℝ ∞ (plusSaddleFunction ε d) := by ...
 
-Finally, `saddleSource_fourier_minus_eq_plus` proves that the Fourier transform of `fminus` is `fplus`.
-
-```lean
--- Fourier(f₋) = f₊.
-theorem saddleSource_fourier_minus_eq_plus
-    {ε : ℝ} (hε : 0 < ε) {d : ℕ} (hd : 0 < d)
-    (horder : shortCutoff ε ≤ shortEndpoint ε)
-    (fminus fplus : TestFunction d)
-    (hminus : ∀ x : Euclidean d,
-      fminus x = minusSaddleFunction ε d x)
-    (hplus : ∀ x : Euclidean d,
-      fplus x = plusSaddleFunction ε d x) :
-    (𝓕 fminus : TestFunction d) = fplus := by ...
+-- The radial function f₋ is C∞, including at x = 0.
+theorem minusSaddleFunction_contDiff
+    {ε : ℝ} (hε : 0 < ε)
+    {d : ℕ} (hd : 0 < d)
+    (horder : shortCutoff ε ≤ shortEndpoint ε) :
+    ContDiff ℝ ∞ (minusSaddleFunction ε d) := by ...
 ```
 
 #### Values at the origin
@@ -1177,41 +1228,9 @@ theorem minusPolynomial_neg_I (ε : ℝ) :
     minusPolynomial ε (-Complex.I) = (beta ε : ℂ) := by ...
 ```
 
-To relate this assigned value to the inverse Mellin integral, factor the Mellin data as $\Gamma(z/2)$ times a holomorphic factor. The residues at $z=-2n$ are then $2(-1)^n/n!$ times that factor.
+The first residue, at $z=0$, agrees with the prescribed common value:
 
 ```lean
--- The common Mellin factor after removing Γ(z/2).
-def saddleRegularMellinFactor (ε ℓ : ℝ) (z : ℂ) : ℂ :=
-  Complex.exp
-      (((ℓ : ℂ) - z) * (Real.log Real.pi : ℂ) / 2) *
-    Complex.exp ((ℓ : ℂ) *
-      mellinShellPhase ε
-        (Complex.I * (z - (ℓ : ℂ)) / (ℓ : ℂ)))
-
--- M₊(z) = Γ(z/2) times this holomorphic factor.
-def plusSaddleRegularMellinFactor (ε ℓ : ℝ) (z : ℂ) : ℂ :=
-  saddleRegularMellinFactor ε ℓ z *
-    plusPolynomial ε
-      (Complex.I * (z - (ℓ : ℂ)) / (ℓ : ℂ))
-
--- M₋(z) = Γ(z/2) times this holomorphic factor.
-def minusSaddleRegularMellinFactor (ε ℓ : ℝ) (z : ℂ) : ℂ :=
-  saddleRegularMellinFactor ε ℓ z *
-    minusPolynomial ε
-      (Complex.I * (z - (ℓ : ℂ)) / (ℓ : ℂ))
-
--- Residue of M₊ at z = −2n.
-def plusSaddlePoleResidue (ε ℓ : ℝ) (n : ℕ) : ℂ :=
-  (2 : ℂ) * (-1 : ℂ) ^ n / (n.factorial : ℂ) *
-    plusSaddleRegularMellinFactor ε ℓ
-      (-((2 * n : ℕ) : ℂ))
-
--- Residue of M₋ at z = −2n.
-def minusSaddlePoleResidue (ε ℓ : ℝ) (n : ℕ) : ℂ :=
-  (2 : ℂ) * (-1 : ℂ) ^ n / (n.factorial : ℂ) *
-    minusSaddleRegularMellinFactor ε ℓ
-      (-((2 * n : ℕ) : ℂ))
-
 -- The residue at z = 0 equals to f₊(0).
 theorem plusSaddlePoleResidue_zero
     {ε ℓ : ℝ} (hℓ : 0 < ℓ) :
@@ -1225,40 +1244,9 @@ theorem minusSaddlePoleResidue_zero
       (saddleOriginValue ε ℓ : ℂ) := by ...
 ```
 
-The contour-shift identity below makes the connection with the radial function. The term $n=0$ is the origin value, and all other residue terms contain positive powers of $r^2$. The minus version is `minusSaddleProfile_eq_residue_sum_add_remainder`.
+Finally, the following simplification lemmas evaluate the defined functions at zero. Together with the smoothness proved above and the first-residue computation, this identifies the value of the continuous extension of the inverse Mellin integral.
 
 ```lean
--- f₊(r) = Σₙ₌₀ᴺ Resₙ r²ⁿ + contour remainder.
-theorem plusSaddleProfile_eq_residue_sum_add_remainder
-    {ε ℓ r : ℝ}
-    (hε : 0 < ε) (hℓ : 0 < ℓ)
-    (horder : shortCutoff ε ≤ shortEndpoint ε)
-    (hr : 0 < r) (N : ℕ) :
-    plusSaddleProfile ε ℓ r =
-      (∑ n ∈ Finset.range (N + 1),
-        plusSaddlePoleResidue ε ℓ n *
-          ((r ^ (2 * n) : ℝ) : ℂ)) +
-      plusSaddleTaylorRemainder ε ℓ N r := by ...
-```
-
-`plusSaddleFunction_contDiff` and `minusSaddleFunction_contDiff` prove that the radial functions are smooth, including at the origin.
-`plusSaddleFunction_zero` and `minusSaddleFunction_zero` show that the assigned value at the origin agrees with the limit of the inverse Mellin integral.
-
-```lean
--- The radial function f₊ is C∞, including at x = 0.
-theorem plusSaddleFunction_contDiff
-    {ε : ℝ} (hε : 0 < ε)
-    {d : ℕ} (hd : 0 < d)
-    (horder : shortCutoff ε ≤ shortEndpoint ε) :
-    ContDiff ℝ ∞ (plusSaddleFunction ε d) := by ...
-
--- The radial function f₋ is C∞, including at x = 0.
-theorem minusSaddleFunction_contDiff
-    {ε : ℝ} (hε : 0 < ε)
-    {d : ℕ} (hd : 0 < d)
-    (horder : shortCutoff ε ≤ shortEndpoint ε) :
-    ContDiff ℝ ∞ (minusSaddleFunction ε d) := by ...
-
 -- The defined f₊ takes the common origin value at x = 0.
 @[simp] theorem plusSaddleFunction_zero (ε : ℝ) (d : ℕ) :
     plusSaddleFunction ε d (0 : Euclidean d) =
@@ -1270,11 +1258,53 @@ theorem minusSaddleFunction_contDiff
       (saddleOriginValue ε ((d : ℝ) / 2) : ℂ) := by ...
 ```
 
+#### Reality, Schwartz regularity, and the Fourier identity
+
+These functions are also real-valued.
+
+```lean
+-- Im f₊(x) = 0.
+theorem plusSaddleFunction_real (ε : ℝ) (d : ℕ)
+    (x : Euclidean d) :
+    (plusSaddleFunction ε d x).im = 0 := by ...
+
+-- Im f₋(x) = 0.
+theorem minusSaddleFunction_real (ε : ℝ) (d : ℕ)
+    (x : Euclidean d) :
+    (minusSaddleFunction ε d x).im = 0 := by ...
+```
+
+Combining smoothness with rapid decay, `plusSaddleSchwartz` packages $f_+$ as a Schwartz function on $\mathbb R^d$.
+We also have `minusSaddleSchwartz` for $f_-$. Radiality follows from the definitions through $\lVert x\rVert$.
+
+```lean
+def plusSaddleSchwartz
+    {ε : ℝ} (hε : 0 < ε)
+    {d : ℕ} (hd : 0 < d)
+    (horder : shortCutoff ε ≤ shortEndpoint ε) :
+    TestFunction d where ...
+```
+
+Finally, `saddleSource_fourier_minus_eq_plus` proves that the Fourier transform of `fminus` is `fplus`.
+
+```lean
+-- Fourier(f₋) = f₊.
+theorem saddleSource_fourier_minus_eq_plus
+    {ε : ℝ} (hε : 0 < ε) {d : ℕ} (hd : 0 < d)
+    (horder : shortCutoff ε ≤ shortEndpoint ε)
+    (fminus fplus : TestFunction d)
+    (hminus : ∀ x : Euclidean d,
+      fminus x = minusSaddleFunction ε d x)
+    (hplus : ∀ x : Euclidean d,
+      fplus x = plusSaddleFunction ε d x) :
+    (𝓕 fminus : TestFunction d) = fplus := by ...
+```
+
 #### Sign analysis
 
 First, here are the logarithmic radius $v(u)$ and the two radius thresholds. The integral terms in `saddleLogRadius` equal $ih^{\prime}(iu)$. Notice that the parameter `ε` in `saddleSmallRadiusStarOrdinate` is unused mathematically: $u\_\ast$ depends only on $d$.
 Note that the complex digamma function [is in mathlib](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/SpecialFunctions/Gamma/Digamma.html#Complex.digamma), but not the real one.
-Also, for some reason, there's also `saddleSourceStationaryLogRadius`, which is essentially the same as `saddleLogRadius` with $\lambda = d/2$.
+For some reason, there's also `saddleSourceStationaryLogRadius`, which is essentially the same as `saddleLogRadius` with $\lambda = d/2$.
 I don't know why there are two of them.
 
 ```lean
@@ -1610,25 +1640,9 @@ def plusSaddleSmallRadiusCoefficient
       beta ε)
 ```
 
-To make the remainder precise, Lean shifts the Mellin contour to $\Re z=-(2N+1)$, between the poles $-2N$ and $-2(N+1)$. The next definition is the remaining contour integral before dividing by $f\_+(0)$.
+Using the contour remainder defined in the Smoothness subsection, Lean rewrites the residue expansion in terms of $y$ and divides by the common origin value:
 
 ```lean
--- The shifted line has Re z = −(2N + 1).
-def saddleTaylorContour (N : ℕ) : ℝ :=
-  -((2 * N + 1 : ℕ) : ℝ)
-
--- The unnormalized contour remainder after crossing N + 1 poles.
-def plusSaddleTaylorRemainder
-    (ε ℓ : ℝ) (N : ℕ) (r : ℝ) : ℂ :=
-  ((1 / (2 * Real.pi) : ℝ) : ℂ) *
-    (∫ t : ℝ,
-      saddleMellinInversePower r
-        ((saddleTaylorContour N : ℂ) +
-          (t : ℂ) * Complex.I) *
-        plusSaddleMellinData ε ℓ
-          ((saddleTaylorContour N : ℂ) +
-            (t : ℂ) * Complex.I))
-
 -- f₊(r)/f₊(0) = Σₙ₌₀ᴺ (−y)ⁿAλ,n/n! + normalized remainder.
 theorem plusSaddleProfile_div_origin_eq_small_radius_residue_series
     {ε ℓ r : ℝ}
@@ -1770,31 +1784,53 @@ def SaddleSourceEventualSigns : Prop :=
 theorem saddleSourceEventualSigns : SaddleSourceEventualSigns := by ...
 ```
 
+#### Radius asymptotics and the LP upper bound
+
+The Fourier identity, common positive origin value, and sign conditions now give the functions needed for the LP construction. As in the last step of the proof summary, the digamma asymptotic and the weight integrals give
+
+$$
+\frac{R_{\varepsilon,d}}{\sqrt d}\longrightarrow\alpha_\varepsilon
+\quad(d\to\infty),
+\qquad
+\alpha_\varepsilon\longrightarrow\frac1\pi
+\quad(\varepsilon\to0^+).
+$$
+
+Rescaling by $F(x)=f\_-(R\_{\varepsilon,d}x)$ makes the exterior sign condition hold for $\lVert x\rVert\ge1$. Fourier scaling and the equal origin values then give
+
+$$
+\frac{F(0)}{\widehat F(0)}=R_{\varepsilon,d}^{\,d},
+\qquad
+\mathrm{LP}_d^{1/d}\le\frac{v_d^{1/d}}2R_{\varepsilon,d}.
+$$
+
+Using $v\_d^{1/d}\sqrt d\to\sqrt{2\pi e}$, first let $d\to\infty$ and then $\varepsilon\to0^+$. This gives the upper bound $\limsup\_{d\to\infty}\mathrm{LP}\_d^{1/d}\le\sqrt{e/(2\pi)}$, completing the argument.
+
 
 ## Reformalization
 
 After checking the original proof and the formalization, I decided to refactor the formalization.
 There were several goals for this:
 
-- Make it more readable, with comments and blueprint.
+- Make it more readable, with comments and a blueprint.
 - Make it more modular and complete.
 - Figure out if the change of parameter choices in the formalization is necessary, or if the original choices are sufficient.
 - Formalize missing results.
 - Figure out which parts can be upstreamed to mathlib.
-- No change of default `maxHeartbeats`
+- Keep the default `maxHeartbeats` unchanged.
 
 The result can be found [here](https://github.com/seewoo5/cohn-elkies-refactor).
-Refactoring is done by Claude (orchastrated by Fable 5.1 until limit reached) with Max (x20) subscription (I used to have x5, but I decided to upgrade to x20 for this project).
-I started with writing [`RefactoringPlan.md`](https://github.com/seewoo5/cohn-elkies-refactor/blob/main/RefactoringPlan.md) myself, and simply asked Claude to follow it.
-It uses the original report, the original formalization, and drafts of the blog posts (this and part 1).
-I also made additional guides while refactoring, after I realized that the initial planning was not complete.
+The refactoring was done by Claude (orchestrated by Fable 5.1 until I reached the usage limit) with a Max (x20) subscription. I used to have x5, but I decided to upgrade to x20 for this project.
+I started by writing [`RefactoringPlan.md`](https://github.com/seewoo5/cohn-elkies-refactor/blob/main/RefactoringPlan.md) myself, and simply asked Claude to follow it.
+It uses the original report, the original formalization, and drafts of the blog posts (this post and Part 1).
+I also added further guidance while refactoring, after I realized that the initial plan was incomplete.
 
-As a result, the refactored formalization is almost half of the size of the original formalization if you put everything into a single file (see [`SpherePackingRefactored.lean`](https://github.com/seewoo5/cohn-elkies-refactor/blob/main/SpherePackingRefactored.lean)).
-You should not compare it directly with the original formalization, since it proves more results but also removes some unnecessary results (also, I can make it shorter by removing all the comments, but I didn't).
-I also asked Claude to record important changes in [`RefactoringResult.md`](https://github.com/seewoo5/cohn-elkies-refactor/blob/main/RefactoringResult.md), which is a complete slop document but contains notable updates.
+As a result, the refactored formalization is almost half the size of the original formalization if you put everything into a single file (see [`SpherePackingRefactored.lean`](https://github.com/seewoo5/cohn-elkies-refactor/blob/main/SpherePackingRefactored.lean)).
+You should not compare it directly with the original formalization, since it proves more results but also removes some unnecessary results (I could also make it shorter by removing all the comments, but I haven't).
+I also asked Claude to record important changes in [`RefactoringResult.md`](https://github.com/seewoo5/cohn-elkies-refactor/blob/main/RefactoringResult.md), which is complete slop but contains notable updates.
 The main differences are:
 
-- Both $(+1)$ and $(-1)$ sign uncertainty principles are formalized, in terms of $L^1$ (integrable) functions, not only Schwartz functions. In particular, the reduction from $L^1$ to Schwartz functions is formalized, which is not in the original formalization.
+- Both the $(+1)$ and $(-1)$ sign-uncertainty principles are formalized in terms of $L^1$ (integrable) functions, not only Schwartz functions. In particular, the reduction from $L^1$ to Schwartz functions is formalized, which is not in the original formalization.
 
   ```lean
   structure SignEigenfunction (d : ℕ) (ς : ℤˣ) where
@@ -1811,7 +1847,7 @@ The main differences are:
         Tendsto (fun n ↦ ∫ x, ‖q n x - (h x : ℂ)‖) atTop (𝓝 0) := by ...
   ```
 
-- Radial reduction is also formalized. Radialization of a function $f$ is defined as the average of $f$ over the orthogonal group. `LP_eq_radial` proves that the Cohn-Elkies linear programming bound can be restricted to radial functions, and `signUncertaintyConstant_eq_radial` proves the similar result for the sign uncertainty principle.
+- Radial reduction is also formalized. Radialization of a function $f$ is defined as the average of $f$ over the orthogonal group. `LP_eq_radial` proves that the Cohn-Elkies linear programming bound can be restricted to radial functions, and `signUncertaintyConstant_eq_radial` proves a similar result for the sign uncertainty principle.
 
   ```lean
   def radialSymmetrizationAverage {d : ℕ} (f : TestFunction d) (x : Euclidean d) : ℂ :=
@@ -1843,7 +1879,7 @@ The main differences are:
       ⨅ (g : SignEigenfunction d ς) (_ : IsRadial (g : Euclidean d → ℝ)), signRadius g := by
   ```
 
-- The refactored formalization uses the original choices of parameters, hence validates the original proof. Also, the names of the parameters are changed so that they are more consistent with the report.
+- The refactored formalization uses the original choices of parameters and hence validates the original proof. The parameter names have also been changed to make them more consistent with the report.
 
   ```lean
   def a₀ε (ε : ℝ) : ℝ := ε ^ 2
@@ -1859,32 +1895,32 @@ The main differences are:
   def β (ε : ℝ) : ℝ := ε / 4
   ```
 
-- `CohnElkiesForMathlib` directory contains part of the formalization that might be upstreamed to mathlib. Since these are all chosen by Claude, we cannot guarantee that they are indeed upstreamable. But after checking, I found that most of them are indeed useful. This includes
+- The `CohnElkiesForMathlib` directory contains parts of the formalization that might be upstreamed to mathlib. Since these were all chosen by Claude, we cannot guarantee that they are indeed upstreamable. But after checking, I found that most of them are indeed useful. They include:
 
   - `fourier_comp_linearEquiv`: if $g(x) = f(Ax)$ for a linear map $A$, then $\hat g(\xi) = \frac{1}{\lvert\det A\rvert}\hat f(A^{-T}\xi)$.
   - `integrable_fourierIntegral_of_deriv_deriv`: if $f$ and its first two derivatives are integrable, then $\hat f$ is integrable.
-  - `PhragmenLindelof.horizontal_strip_norm_extension`: Phargmen-Lindelöf principle for functions whose norm is bounded and extends continuously to the boundary of a horizontal strip. This generalizes [`PhragmenLindelof.horizontal_strip_norm`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Complex/PhragmenLindelof.html#PhragmenLindelof.horizontal_strip) in mathlib.
-  - `Complex.tendsto_add_natCast_mul_Gamma_nhdsNE`: residue of Gamma function at negative integers. Mathlib only has [`Complex.Gammaℝ_residue_zero`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/SpecialFunctions/Gamma/Deligne.html#Complex.Gamma%E2%84%9D_residue_zero).
-  - `Real.digamma` and asymptotes: Mathlib only has [`Complex.digamma`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/SpecialFunctions/Gamma/Digamma.html#Complex.digamma). Also, `tendsto_digamma_sub_log_atTop` proves $\psi(x)-\log x\to0$ as $x\to\infty$.
+  - `PhragmenLindelof.horizontal_strip_norm_extension`: the Phragmén-Lindelöf principle for functions whose norm is bounded and extends continuously to the boundary of a horizontal strip. This generalizes [`PhragmenLindelof.horizontal_strip_norm`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Complex/PhragmenLindelof.html#PhragmenLindelof.horizontal_strip) in mathlib.
+  - `Complex.tendsto_add_natCast_mul_Gamma_nhdsNE`: residue of the Gamma function at negative integers. Mathlib only has [`Complex.Gammaℝ_residue_zero`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/SpecialFunctions/Gamma/Deligne.html#Complex.Gamma%E2%84%9D_residue_zero).
+  - `Real.digamma` and its asymptotics: Mathlib only has [`Complex.digamma`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/SpecialFunctions/Gamma/Digamma.html#Complex.digamma). Also, `tendsto_digamma_sub_log_atTop` proves $\psi(x)-\log x\to0$ as $x\to\infty$.
   - `coth`: Mathlib only has `sinh`, `cosh`, and `tanh` (but it has `cot`!).
 
-- There's no change of `maxHeartbeats` anymore. It guess that the primary reason for it was the 30-digit approximation of the Cohn-Elkies exponent exists in the original formalization, which requires huge numerical certificates, but also not important at all. So I simply removed it.
+- The default `maxHeartbeats` is no longer changed. I guess the main reason for increasing it was the 30-digit approximation of the Cohn-Elkies exponent in the original formalization, which requires huge numerical certificates but is not important at all. So I simply removed it.
 
-- Proposition A.1 of the appendix, is not yet formalized. It seems bit technical than I initially thought (in terms of formalization, not the original proof), but I'll try to add this later.
+- Proposition A.1 of the appendix is not yet formalized. It seems a bit more technical than I initially thought (in terms of formalization, not the original proof), but I'll try to add it later.
 
 
 ## Conclusion
 
-We went through OpenAI's formalization of their result, and found that it is incomplete.
+We went through OpenAI's formalization of their result and found that it is incomplete.
 Someone may say that I'm too picky, since the main LP argument is formalized. But the report makes additional sign-uncertainty claims, and those deserve separate statements and proofs.
 
-There are a lot of autoformalized results (and there will be more in the future) where the formalized statement $A^{\prime}$ is not exactly the same as the natural language statement $A$, but $A^{\prime}$ is just a few *trivial* steps away from $A$ so that you can think it is fine.
+There are a lot of autoformalized results (and there will be more in the future) in which the formalized statement $A^{\prime}$ is not exactly the same as the natural-language statement $A$, but $A^{\prime}$ is just a few *trivial* steps away from $A$, so you might think this is fine.
 But if that is really the case, why don't you just formalize $A$ directly?
-The reason is because most of the time people don't read the AI's autoformalized proof and just believe them.
-This belief will makes more sense as AI gets better and better, but then it will generate longer slop formalizations, and similar issue will keep persists.
-If you want to autoformalize a natural language proof, the best thing you can to is to make every formal statement and argument as close to the natural language proof as possible - using the same notations, no more or less lemmas, and more importantly, make a blueprint.
-If your AI is good enough to autoformalize a natural language proof, then it should be good enough to automatically write *a* blueprint that is *not too bad* for a human to read and understand (just push the button few more times), which is way better than having no blueprint at all.
-I recently wrote a blog post about this (prompted by [other news](https://www.anthropic.com/research/formalizing-fermats-last-theorem)) - check it out [here](https://proofsandprompts.com/2026/09/08/autoformalization-but-why/).
+This is because, most of the time, people don't read the AI's autoformalized proofs and just believe them.
+This belief will make more sense as AI gets better and better, but then it will generate longer slop formalizations, and similar issues will persist.
+If you want to autoformalize a natural-language proof, the best thing you can do is to make every formal statement and argument as close to the natural-language proof as possible, using the same notation and no more or fewer lemmas. More importantly, make a blueprint.
+If your AI is good enough to autoformalize a natural-language proof, then it should be good enough to automatically write *a* blueprint that is *not too bad* for a human to read and understand (just push the button a few more times), which is way better than having no blueprint at all.
+I recently wrote a blog post about this on the [Proos and Prompts](https://proofsandprompts.com/) community blog (prompted by [other news](https://www.anthropic.com/research/formalizing-fermats-last-theorem))—check it out [here](https://proofsandprompts.com/2026/09/08/autoformalization-but-why/).
 
 Let me end the series of posts with a question and answer:
 
@@ -1893,8 +1929,8 @@ Let me end the series of posts with a question and answer:
 > A. `¯\_(ツ)_/¯`
 
 
-## Use of LLM
+## Use of LLMs
 
 Both ChatGPT and Claude were used to understand the formalization.
-My first question (prompt) was to give one-to-one correspondence between the nonformal statement and proof of the report and the formal statements and proof in Lean, where both LLMs spotted the same missing statements.
+My first prompt asked for a one-to-one correspondence between the informal statements and proofs in the report and the formal statements and proofs in Lean. Both LLMs spotted the same missing statements.
 As mentioned above, I used Claude to refactor the formalization.
