@@ -45,7 +45,7 @@ $$
 
 as $d \to \infty$.
 
-The exponent $0.5990\ldots$ remained unchanged, but the multiplicative constant was sharpened: [Cohn and Zhao (2014)](https://projecteuclid.org/journals/duke-mathematical-journal/volume-163/issue-10/Sphere-packing-bounds-via-spherical-codes/10.1215/00127094-2738857.full) obtained an average multiplier $1/1.2635\ldots$, [Sardari and Zargar (2024)](https://link.springer.com/article/10.1007/s00208-023-02738-z) obtained $0.4325+51/d$ for $d\ge2000$, and [Zargar (2024)](https://arxiv.org/abs/2407.10697) later obtained $(1+o(1))/e$. These refinements improve the prefactor, not the exponential rate $2^{-(0.5990\ldots+o(1))d}$.
+The exponent $0.5990\ldots$ remained unchanged, but the multiplicative constant was sharpened: [Cohn and Zhao (2014)](https://projecteuclid.org/journals/duke-mathematical-journal/volume-163/issue-10/Sphere-packing-bounds-via-spherical-codes/10.1215/00127094-2738857.full) obtained a multiplier whose geometric average over dimensions is $1/1.2635\ldots$, [Sardari and Zargar (2024)](https://link.springer.com/article/10.1007/s00208-023-02738-z) obtained $0.4325+51/d$ for $d\ge2000$, and [Zargar (2024)](https://arxiv.org/abs/2407.10697) later obtained $(1+o(1))/e$. These refinements improve the prefactor, not the exponential rate $2^{-(0.5990\ldots+o(1))d}$.
 
 The sphere-packing problem is closely related to the following optimization problem.
 We work with "nice" $\mathbb{R}$-valued functions $f$ on $\mathbb{R}^d$, mostly Schwartz functions (denoted by $\mathcal{S}(\mathbb{R}^d;\mathbb{R})$), with Fourier transform
@@ -114,6 +114,8 @@ $$
 \mathsf A_{\varsigma}(d):=\inf\{r(g):0\ne g\in L^1(\mathbb R^d;\mathbb R),\ \widehat g=\varsigma g,\ g(0)=0\}.
 $$
 
+Pointwise values are taken using the continuous representative supplied by Fourier inversion.
+
 It was known that $\mathsf A\_+(d)$ and $\mathsf A\_-(d)$ are both finite and grow on the order of $\sqrt{d}$.
 Prior to Astra's work, the best uniform lower and upper bounds were
 
@@ -144,9 +146,9 @@ I guess the above introduction is enough to understand the main results (Theorem
 Astra's proof takes a different, more elementary and analytic approach: it does not use this dual formulation.
 - I still don't understand how the lower and upper bound exponents match, which seems to be the most interesting point.
 - The proof has weird choices of words, such as "Mellin envelope". I like the proof, but I didn't enjoy reading the proof.
-- One of the core ideas, in my opinion, is to work with the Mellin transform. Such an idea first appears in Section 5 of the 2016 paper by [Cohn and Miller](https://arxiv.org/abs/1603.04759). The report cites CM16 for the radial formulation but does not discuss this particular precedent, which is also mentioned in the [recent *Scientific American* article](https://www.scientificamerican.com/article/openais-latest-math-breakthroughs-commit-research-misconduct-experts-say/).
+- One of the core ideas, in my opinion, is to work with the Mellin transform. This idea already appears in Section 5 of the 2016 paper by [Cohn and Miller](https://arxiv.org/abs/1603.04759). The report cites CM16 for the radial formulation but does not discuss this particular precedent, which is also mentioned in the [recent *Scientific American* article](https://www.scientificamerican.com/article/openais-latest-math-breakthroughs-commit-research-misconduct-experts-say/).
 - OpenAI also shared [reasoning walkthroughs](https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf) for the proofs. For the sphere-packing problem, the walkthrough is a sketch or summary rather than Astra's chain of thought. I first tried reading it before the report, but it wasn't helpful. It would be more helpful if it were a detailed, *raw* chain of thought (although these seem to be becoming harder to track these days...).
-- I also wonder if Astra would be able to find this proof if the conjectured asymptotic exponent were not given. I think it still might be possible, assuming that it does the numerical experiments itself. However, I do think that knowing about the conjectured exponent $\log_2 \sqrt{e/2\pi}$ and the uncertainty principle constant $1/\pi$ might helped a lot.
+- I also wonder if Astra would be able to find this proof if the conjectured asymptotic exponent were not given. I think it still might be possible, assuming that it does the numerical experiments itself. However, I do think that knowing about the conjectured decay exponent $\log_2 \sqrt{2\pi/e}$ and the uncertainty principle constant $1/\pi$ might have helped a lot.
 
 
 ## Radial and Schwartz reductions
@@ -189,8 +191,8 @@ Then $g\_n \in \mathcal{S}\_{\mathrm{rad}}(\mathbb{R}^d;\mathbb{R})$, $\widehat{
 
 ## Mellin transform
 
-The key idea is to work with the Mellin transform of the radialization $g$ rather than directly with $g$.
-As noted above, the idea first appears in CM16.
+The key idea is to work with the Mellin transform of the radial profile of $g$ rather than directly with $g$.
+As noted above, this idea already appears in CM16.
 
 We define
 
@@ -198,7 +200,7 @@ $$
 \lambda = \frac{d}{2}, \quad S_d = \frac{2\pi^{d/2}}{\Gamma(d/2)}
 $$
 
-where $S\_d$ is the surface area of the unit sphere in $\mathbb{R}^d$. Write $g(r)$ for the one-variable radialization. For $\Re z>0$, define
+where $S\_d$ is the surface area of the unit sphere in $\mathbb{R}^d$. For a radial Schwartz function $g$, write $g(r)$ for its one-variable profile. For $\Re z>0$, define
 
 $$
 M_g(z) = \int_0^{\infty} g(r) r^{z - 1} \mathrm{d}r.
@@ -331,7 +333,7 @@ Let's start with the first step.
 > |Z(s + i\sigma\lambda)| \le \exp(H_\sigma(s)), \quad H_\sigma(s) = \int_{\mathbb{R}} P_\sigma(T) h_\lambda(s - \lambda T) \mathrm{d}T \quad (s \in \mathbb{R}).
 > $$
 
-It is easy to boud $\lvert Z \rvert$ on the upper boundary $\Im t = \lambda$, and the bound for the lower boundary $\Im t = -\lambda$ follows from the functional equation.
+It is easy to bound $\lvert Z \rvert$ on the upper boundary $\Im t = \lambda$, and the bound for the lower boundary $\Im t = -\lambda$ follows from the functional equation.
 For the general bound inside the strip, we use a conformal map that sends the strip to the upper half plane, and apply the Poisson principle there.
 
 Next, we bound $H\_\sigma$.
@@ -391,7 +393,7 @@ From now on, fix $\sigma=\sigma(c)$ such that $\log(2\pi c^2)+J_\sigma<0$.
 
 Using Lemma 3.5, we can bound the integral of $\lvert \varphi\rvert$ over $(-\infty,0)$.
 
-> **Lemma 3.6.** For every $0 < c < 1/\pi$, there exist $C\_c, \gamma\_c > 0$ and $d\_0(c) \in \mathbb{N}$, independent of $g$ and $\varsigma$, such that
+> **Lemma 3.6.** For every $0 < c < 1/\pi$, there exist $C\_c, \gamma\_c > 0$ and $d\_0(c) \in \mathbb{N}$, independent of $g$ and $\varsigma$, such that, for every $d\ge d\_0(c)$,
 >
 > $$
 > \int_{-\infty}^{0} |\varphi(v)| \mathrm{d}v \le C_c e^{-\gamma_c d}.
@@ -785,7 +787,7 @@ $$
 <\infty.
 $$
 
-Its Fourier transform is $Z(s+i\sigma\lambda)$. Lemma 3.5 makes this transform integrable, so Fourier inversion gives
+Its Fourier transform $\int_{\mathbb R}G(v)e^{-isv}\,\mathrm{d}v$ is $Z(s+i\sigma\lambda)$. Lemma 3.5 makes this transform integrable, so Fourier inversion gives
 
 $$
 \varphi(v) = \frac{e^{(1 - \sigma)\lambda v}}{2\pi} \int_{\mathbb{R}} Z(s + i\sigma\lambda) e^{isv} \mathrm{d}s.
@@ -971,6 +973,8 @@ $$
 E_\lambda(t) = \pi^{\frac{it}{2}} \Gamma\left(\frac{\lambda - it}{2}\right) e^{\lambda h(t/\lambda)}, \qquad
 \mathcal{L}_u(T) = \log\frac{E_\lambda(\lambda(T+iu))}{E_\lambda(i\lambda u)} + i\lambda T v(u).
 $$
+
+Here the logarithm is the continuous branch that vanishes at $T=0$. Equivalently, we use the holomorphic branch of $\log\Gamma$ on $\Re z>0$ that is real on the positive axis.
 
 Now, we *define* $v(u)$ so that $\mathcal{L}\_u(T)$ has a critical point at $T=0$, i.e., $\mathcal{L}\_u^{\prime}(0)=0$. Computing $\mathcal{L}\_u^{\prime}(T)$ and setting $T=0$ gives
 
@@ -1609,7 +1613,7 @@ $$
 y \le y(r_\ast) = \frac{1}{8} \log \lambda + O_\epsilon(1).
 $$
 
-Taking $N=\lceil\log\lambda\rceil$ satisfies $N^2/\lambda=o(1)$ and makes all three errors negligible relative to $e^{-y}$ throughout this growing interval.
+Taking $N=\lceil\log\lambda\rceil$ satisfies $N^2/\lambda=o(1)$ and makes all three displayed relative errors tend to zero uniformly throughout this growing interval. The exponential-series tail estimate uses $y/(N+2)\le1/2$, which holds uniformly for these choices.
 In particular, Stirling's formula bounds the logarithm of either tail by $(1/8+1-\log8)\log\lambda+O_\epsilon(\log\log\lambda)$, whose leading coefficient is negative.
 Thus
 
@@ -1626,11 +1630,11 @@ There's also an accompanying formalization of the proof in Lean.
 How faithfully does it reflect the report?
 See [Part 2]({% post_url 2026-09-12-openai-sphere-packing-digest-part2 %}).
 
-## Use of LLM
+## Use of LLMs
 
-LLMs - mostly ChatGPT - were used to help understanding the original proof and the formalization. In particular, I had a conversation with ChatGPT in Codex app where I moastly asked questions about the intuitions and choice of parameters in the proof.
-For example, I asked why the perturbation $h$ is chosen of the form $h(\zeta) = \int_0^\infty w(a) (\cos(a\zeta) - 1) \mathrm{d} a$, and why $u_\ast$ is chosen as $-1 + \log \lambda / 4\lambda$, not something like $-1 + \log \lambda / 2\lambda$ or $-1 + \delta$ for some fixed $\delta > 0$.
-Most of the proofs are very analytical and the technical details are mostly about "how to choose the right parameters so that this is larger than that".
+LLMs—mostly ChatGPT—were used to help me understand the original proof and the formalization. In particular, I had a conversation with ChatGPT in the Codex app where I mostly asked questions about the intuition and choice of parameters in the proof.
+For example, I asked why the perturbation $h$ is chosen to have the form $h(\zeta) = \int_0^\infty w(a) (\cos(a\zeta) - 1) \mathrm{d} a$, and why $u_\ast$ is chosen as $-1 + \frac{\log \lambda}{4\lambda}$, not something like $-1 + \frac{\log \lambda}{2\lambda}$ or $-1 + \delta$ for some fixed $\delta > 0$.
+Most of the proofs are very analytical, and the technical details are mostly about "how to choose the right parameters so that this is larger than that".
 
 
 [^1]: The report also explains the choice through radial dilations: multiplying the Mellin transform by $\cos(at/\lambda)-1$ replaces $g(r)$ by $\frac{e^a g(re^{a/\lambda})+e^{-a}g(re^{-a/\lambda})}{2}-g(r)$. This describes the linear factor, not the full exponential multiplier $\exp(\lambda h(t/\lambda))$ used in the construction.

@@ -34,7 +34,7 @@ In short, the file proves the result on the exponent of the Cohn-Elkies LP bound
 However, several intermediate results and half of Theorem 1.2 are missing.
 More precisely:
 
-- Section 2.1 of the report discusses the radial and $L^1$-to-Schwartz reductions of the problems. The formalization does not prove these reductions; it considers only Schwartz functions.
+- Section 2.1 of the report discusses radial and $L^1$-to-Schwartz reductions. The formalization prove radial reduction for the Schwartz LP problem (`FullAdmissible.radialization` and `fullLinearProgram_eq_radial`), but it does not prove the $L^1$-to-Schwartz reduction.
 - The definition of $\mathsf{A}_+(d)$ is missing. The formalization considers anti-self-Fourier functions and Fourier pairs, but not self-Fourier functions.
 - Proposition A.1 of the appendix is not formalized (which is obvious, considering that $\mathsf{A}_+(d)$ is not formalized).
 
@@ -354,7 +354,7 @@ The Lean argument proceeds as follows.
 > The growth condition also needs checking: boundedness of $Z$ and the bound $\lvert\Re W\_D(z)\rvert\le B(1+\lvert\Re z\rvert)$ give $\lvert F\_D(z)\rvert\le C\exp(B\lvert\Re z\rvert)$, which is sufficient for the strip Phragmén-Lindelöf principle. It follows that $N\_D\le1$ throughout the strip, and hence $\lvert Z(z)\rvert\le e^{\Re W\_D(z)}$ in the interior.
 
 Thus, the proof starts with the complex Poisson kernel and takes its real part to recover the Poisson kernel itself; this is another difference from the report.
-Note that the code uses the variable `ℓ`, which is the same as $\lambda$ (unfortunately, you cannot use `λ` for variable names).
+Note that the code uses the variable `ℓ`, which is the same as $\lambda$.
 
 ```lean
 -- K_λ(z,y) = i/(4λ) * (exp(π(z-y+iλ)/(2λ)) + 1)/(exp(π(z-y+iλ)/(2λ)) - 1)
@@ -843,6 +843,8 @@ The natural-language translation of the Lean proof is given below.
 > \mathcal{L}_u(T) = \log\frac{E_\lambda(\lambda(T+iu))}{E_\lambda(i\lambda u)} + i\lambda T v(u).
 > $$
 >
+> As in Part 1, the logarithm uses the continuous branch that vanishes at $T=0$.
+>
 > Then we can rewrite $f\_\pm(r(u))$ as
 >
 > $$
@@ -961,7 +963,7 @@ def minusPolynomial (ε : ℝ) (z : ℂ) : ℂ :=
   1 + z ^ 2 + (beta ε : ℂ) - Complex.I * z * (1 + z ^ 2)
 ```
 
-You can see that the parameter choices are slightly different from those in the report (their "scales" are the same). The following table summarizes the differences.
+You can see that the parameter choices are slightly different from those in the report, although they play the same roles. The following table summarizes the differences.
 
 | Parameter | Report | Lean |
 |---|---|---|
@@ -975,18 +977,18 @@ Interestingly, the parameter choices in this second PDF are the same as Lean's, 
 
 <p align="center">
 <img src="/assets/images/openai-cohn-elkies-param1.png">
-<figcaption align="center">Parameter choices in `ten-proofs-oai.pdf`.</figcaption>
+<figcaption align="center">Parameter choices in <code>ten-proofs-oai.pdf</code>.</figcaption>
 </p>
 
 <p align="center">
 <img src="/assets/images/openai-cohn-elkies-param2.png">
-<figcaption align="center">Parameter choices in `reasoning-walkthroughs.pdf`.</figcaption>
+<figcaption align="center">Parameter choices in <code>reasoning-walkthroughs.pdf</code>.</figcaption>
 </p>
 
 I have no idea how these PDFs were written, but obviously, the difference suggests that they were not written by humans.
 Fortunately, the choice is not important for the final result, and the original choice is also valid—see the later section on reformalization.
 
-The next three definitions give exactly the perturbed Gamma factor $E_\lambda(t) := E_\lambda^G(T) \exp(\lambda h(t/\lambda))$ and the Mellin transforms $X_+$, $X_-$.
+The next three definitions give exactly the perturbed Gamma factor $E_\lambda(t) := E_\lambda^G(t) \exp(\lambda h(t/\lambda))$ and the Mellin transforms $X_+$, $X_-$.
 
 ```lean
 -- Eλ(t) = π^(it/2) Γ((λ − it)/2) exp(λh(t/λ)).
@@ -1008,7 +1010,7 @@ def minusSaddleSpectrum (ε ℓ t : ℝ) : ℂ :=
     minusPolynomial ε ((t : ℂ) / (ℓ : ℂ))
 ```
 
-For contour integration, formal proof uses the usual variable $z=\lambda-it$. Thus $t/\lambda=i(z-\lambda)/\lambda$, and the Gamma factor becomes $\Gamma(z/2)$. The following definitions express the same functions in this coordinate; `plusSaddleMellinData_vertical` checks the correspondence explicitly. There is an analogous theorem for the minus sign.
+For contour integration, the formal proof uses the usual variable $z=\lambda-it$. Thus $t/\lambda=i(z-\lambda)/\lambda$, and the Gamma factor becomes $\Gamma(z/2)$. The following definitions express the same functions in this coordinate; `plusSaddleMellinData_vertical` checks the correspondence explicitly. There is an analogous theorem for the minus sign.
 
 ```lean
 -- Eλ in the coordinate z = λ − it.
@@ -1033,7 +1035,7 @@ theorem plusSaddleMellinData_vertical (ε ℓ t : ℝ) :
         plusSaddleSpectrum ε ℓ t := by ...
 ```
 
-The radializations $f\_\pm(r)$ are inverse Mellin transforms away from zero. Their common value at zero is defined as `saddleOriginValue`, whose agreement with the smooth extension is justified in the Smoothness and Values at the origin subsections below. The functions on $\mathbb R^d$ are obtained by substituting $r=\lVert x\rVert$.
+The radial profiles $f\_\pm(r)$ are inverse Mellin transforms away from zero. Their common value at zero is defined as `saddleOriginValue`, whose agreement with the smooth extension is justified in the Smoothness and Values at the origin subsections below. The functions on $\mathbb R^d$ are obtained by substituting $r=\lVert x\rVert$.
 
 ```lean
 -- f₊(r): inverse Mellin transform for r ≠ 0, prescribed value at r = 0.
@@ -1067,9 +1069,9 @@ theorem plusSaddleProfile_eq_normalized_vertical_integral
 
 #### Rapid decay at infinity
 
-In $t$-coordinate, we moved the contour $\Im t = 0$ to upward $\Im t = \lambda$ to obtain rapid decay.
-In the new coordinate $z = \lambda - it$, this corresponds to moving the contour $\Re z = \lambda$ to the right, $\Re z = a > \lambda$.
-Taking $a$ arbitrarily large gives decay faster than every inverse power of $r$ (it does not cross any poles, and $\lVert r^{-z}\rVert = r^{-a}$).
+In the $t$-coordinate, we move the contour upward from $\Im t=0$ to an arbitrary positive height $\Im t=a-\lambda$, with $a>\lambda$.
+In the new coordinate $z=\lambda-it$, this corresponds to moving the contour from $\Re z=\lambda$ to $\Re z=a$.
+No poles are crossed, and $|r^{-z}|=r^{-a}$ on the new line. Taking $a$ arbitrarily large gives decay faster than every inverse power of $r$.
 
 The following statements give the integrability and contour-shift identity for $f_+$. Their $f_-$ counterparts have the same names with `plus` replaced by `minus`. The condition `hpole` excludes the Gamma poles; it holds automatically when $a>0$.
 
@@ -1196,7 +1198,7 @@ def plusSaddleTaylorRemainder
             (t : ℂ) * Complex.I))
 ```
 
-The below identity makes the connection with the radial function. It expresses the function as a polynomial in $r^2$ plus a remainder term. The $n=0$ term is evaluated in the "Values at the origin" subsection below. The minus version is `minusSaddleProfile_eq_residue_sum_add_remainder`.
+The identity below makes the connection with the radial function. It expresses the function as a polynomial in $r^2$ plus a remainder term. The $n=0$ term is evaluated in the "Values at the origin" subsection below. The minus version is `minusSaddleProfile_eq_residue_sum_add_remainder`.
 
 ```lean
 -- f₊(r) = Σₙ₌₀ᴺ Resₙ r²ⁿ + contour remainder.
@@ -1212,7 +1214,7 @@ theorem plusSaddleProfile_eq_residue_sum_add_remainder
       plusSaddleTaylorRemainder ε ℓ N r := by ...
 ```
 
-The residue expansion and the bounds on its differentiated remainders prove smoothness at the origin; away from zero, one differentiates the inverse Mellin integral. The formal proof carries out the origin argument in $u = r^2$, so the conclusion is smoothness of the functions on $\mathbb R^d$, not just of their radializations:
+The residue expansion and the bounds on its differentiated remainders prove smoothness at the origin; away from zero, one differentiates the inverse Mellin integral. The formal proof carries out the origin argument in $u = r^2$, so the conclusion is smoothness of the functions on $\mathbb R^d$, not just of their radial profiles:
 
 ```lean
 -- The radial function f₊ is C∞, including at x = 0.
@@ -1723,7 +1725,7 @@ theorem exists_eventually_y_star_le_log_eighth_add
               Real.log ((d : ℝ) / 2) / 8 + C := by ...
 ```
 
-There are two separate sources of error in the finite residue sum. The first is that the coefficients $A\_{\lambda,n}$ are not exactly $1$, and the second is that the exponential series has been truncated. The following two theorems provide bounds on these errors, both expressed as relative errors after multiplying by $e^y$.
+The finite residue sum has two errors: its coefficients $A\_{\lambda,n}$ differ from $1$, and the exponential series is truncated. The first theorem below controls their combined error; the second controls the contour remainder. Both bounds are relative errors, obtained after multiplying by $e^y$.
 
 ```lean
 -- Uniformly on 0 ≤ r ≤ r★, eʸ|S_N(y) − e⁻ʸ| < 1/2.
@@ -1888,7 +1890,7 @@ def normalizedProgram (d : ℕ) : ℝ :=
   sInf (Set.range (normalizedCost (d := d)))
 ```
 
-The two radius limits and the admissible functions are combined into `OrderedEpsilonUpperConstruction`. 
+The two radius limits and the admissible functions are combined into `OrderedEpsilonUpperConstruction`.
 
 ```lean
 -- Record the limits in d and ε, together with eventual admissible witnesses.
@@ -2007,18 +2009,19 @@ The main differences are:
     ne_zero : toFun ≠ 0
     zero : toFun 0 = 0
 
-  theorem exists_schwartz_approximation (hd : 0 < d) (h : SignEigenfunction d ς)
-      (hrad : ∀ x y : Euclidean d, ‖x‖ = ‖y‖ → h x = h y) :
+  theorem exists_schwartz_approximation (hd : 0 < d) (h : SignEigenfunction d ς) (hrad : IsRadial h) :
       ∃ q : ℕ → TestFunction d, (∀ n, IsRealValued (q n) ∧ IsRadial (q n) ∧
         (𝓕 (q n) : TestFunction d) = ((ς : ℤ) : ℂ) • q n ∧ q n 0 = 0) ∧
         Tendsto (fun n ↦ ∫ x, ‖q n x - (h x : ℂ)‖) atTop (𝓝 0) := by ...
   ```
 
-- Radial reduction is also formalized. Radialization of a function $f$ is defined as the average of $f$ over the orthogonal group. `LP_eq_radial` proves that the Cohn-Elkies linear programming bound can be restricted to radial functions, and `signUncertaintyConstant_eq_radial` proves a similar result for the sign uncertainty principle.
+- Radial reduction is formalized for both problems; in particular, the refactored formalization includes the radial reduction for the $L^1$ sign-uncertainty problem. Radialization averages a function over the orthogonal group. `LP_eq_radial` and `signUncertaintyConstant_eq_radial` state the two reductions. Here `Admissible` abbreviates `PackingBounds.FullAdmissible`.
 
   ```lean
-  def radialSymmetrizationAverage {d : ℕ} (f : TestFunction d) (x : Euclidean d) : ℂ :=
-    ∫ U : OrthogonalGroup d, f (orthogonalAction U⁻¹ x) ∂radialOrthogonalHaar d
+  variable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+
+  def rotationalAverage (g : Euclidean d → E) (x : Euclidean d) : E :=
+    ∫ U : OrthogonalGroup d, g (orthogonalAction U⁻¹ x) ∂radialOrthogonalHaar d
 
   structure FullAdmissible (d : ℕ) where
     function : CohnElkies.TestFunction d
@@ -2030,7 +2033,7 @@ The main differences are:
     fourier_zero_pos :
       0 < ((𝓕 function) (0 : CohnElkies.Euclidean d)).re
     outside_nonpos :
-      ∀ x : CohnElkies.Euclidean d, 1 ≤ ‖x‖ → (function x).re ≤ 
+      ∀ x : CohnElkies.Euclidean d, 1 ≤ ‖x‖ → (function x).re ≤ 0
 
   structure RadialAdmissible (d : ℕ) extends toAdmissible : Admissible d where
     /-- The function is radial. -/
@@ -2040,13 +2043,13 @@ The main differences are:
 
   theorem LP_eq_radial (d : ℕ) : LP d = unitBallVolume d / 2 ^ d *
       sInf (Set.range fun f : RadialAdmissible d ↦ quotient f.toAdmissible) := ...
-  
+
   theorem signUncertaintyConstant_eq_radial (hd : 0 < d) (ς : ℤˣ) :
     signUncertaintyConstant ς d =
-      ⨅ (g : SignEigenfunction d ς) (_ : IsRadial (g : Euclidean d → ℝ)), signRadius g := by
+      ⨅ (g : SignEigenfunction d ς) (_ : IsRadial (g : Euclidean d → ℝ)), signRadius g := by ...
   ```
 
-- The refactored formalization uses the original choices of parameters and hence validates the original proof. The parameter names have also been changed to make them more consistent with the report.
+- The refactored formalization uses the original parameter choices, showing that they suffice for the argument. The parameter names have also been changed to make them more consistent with the report.
 
   ```lean
   def a₀ε (ε : ℝ) : ℝ := ε ^ 2
@@ -2064,10 +2067,10 @@ The main differences are:
 
 - The `CohnElkiesForMathlib` directory contains parts of the formalization that might be upstreamed to mathlib. Since these were all chosen by Claude, we cannot guarantee that they are indeed upstreamable. But after checking, I found that most of them are indeed useful. They include:
 
-  - `fourier_comp_linearEquiv`: if $g(x) = f(Ax)$ for a linear map $A$, then $\hat g(\xi) = \frac{1}{\lvert\det A\rvert}\hat f(A^{-T}\xi)$.
-  - `integrable_fourierIntegral_of_deriv_deriv`: if $f$ and its first two derivatives are integrable, then $\hat f$ is integrable.
-  - `PhragmenLindelof.horizontal_strip_norm_extension`: the Phragmén-Lindelöf principle for functions whose norm is bounded and extends continuously to the boundary of a horizontal strip. This generalizes [`PhragmenLindelof.horizontal_strip_norm`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Complex/PhragmenLindelof.html#PhragmenLindelof.horizontal_strip) in mathlib.
-  - `Complex.tendsto_add_natCast_mul_Gamma_nhdsNE`: residue of the Gamma function at negative integers. Mathlib only has [`Complex.Gammaℝ_residue_zero`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/SpecialFunctions/Gamma/Deligne.html#Complex.Gamma%E2%84%9D_residue_zero).
+  - `fourier_comp_linearEquiv`: if $g(x) = f(Ax)$ for an invertible linear map $A$, then $\hat g(\xi) = \frac{1}{\lvert\det A\rvert}\hat f(A^{-T}\xi)$.
+  - `integrable_fourierIntegral_of_deriv_deriv`: if $f:\mathbb R\to\mathbb C$ is twice differentiable and $f,f^{\prime},f^{\prime\prime}$ are integrable, then $\hat f$ is integrable.
+  - `PhragmenLindelof.horizontal_strip_norm_extension`: the Phragmén-Lindelöf principle for holomorphic functions whose norm extends continuously to the boundary of a horizontal strip, with the appropriate growth condition. This generalizes [`PhragmenLindelof.horizontal_strip`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Complex/PhragmenLindelof.html#PhragmenLindelof.horizontal_strip) in mathlib.
+  - `Complex.tendsto_add_natCast_mul_Gamma_nhdsNE`: residues of the Gamma function at all nonpositive integers. Mathlib already has the residue at zero as [`Complex.tendsto_self_mul_Gamma_nhds_zero`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/SpecialFunctions/Gamma/Deriv.html#Complex.tendsto_self_mul_Gamma_nhds_zero), as well as the corresponding result for the completed Gamma factor, `Complex.Gammaℝ_residue_zero`.
   - `Real.digamma` and its asymptotics: Mathlib only has [`Complex.digamma`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/SpecialFunctions/Gamma/Digamma.html#Complex.digamma). Also, `tendsto_digamma_sub_log_atTop` proves $\psi(x)-\log x\to0$ as $x\to\infty$.
   - `coth`: Mathlib only has `sinh`, `cosh`, and `tanh` (but it has `cot`!).
 
@@ -2087,7 +2090,7 @@ This is because, most of the time, people don't read the AI's autoformalized pro
 This belief will make more sense as AI gets better and better, but then it will generate longer slop formalizations, and similar issues will persist.
 If you want to autoformalize a natural-language proof, the best thing you can do is to make every formal statement and argument as close to the natural-language proof as possible, using the same notation and no more or fewer lemmas. More importantly, make a blueprint.
 If your AI is good enough to autoformalize a natural-language proof, then it should be good enough to automatically write *a* blueprint that is *not too bad* for a human to read and understand (just push the button a few more times), which is way better than having no blueprint at all.
-I recently wrote a blog post about this on the [Proos and Prompts](https://proofsandprompts.com/) community blog (prompted by [other news](https://www.anthropic.com/research/formalizing-fermats-last-theorem))—check it out [here](https://proofsandprompts.com/2026/09/08/autoformalization-but-why/).
+I recently wrote a blog post about this on the [Proofs and Prompts](https://proofsandprompts.com/) community blog (prompted by [other news](https://www.anthropic.com/research/formalizing-fermats-last-theorem))—check it out [here](https://proofsandprompts.com/2026/09/08/autoformalization-but-why/).
 
 Let me end the series of posts with a question and answer:
 
