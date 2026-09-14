@@ -26,8 +26,6 @@ I have mostly focused on understanding the intuition behind the proof and making
 Some theorem and lemma statements are rephrased for clarity.
 Some proofs are expanded with more details, while others are shortened when they are less central to the main ideas.
 
-Also, LLMs are used to assist in understanding the report and writing this post. Details can be found at the end of the [Part 2 of the post](ADD LINK).
-
 
 ## Problem setting and background
 
@@ -334,7 +332,7 @@ Let's start with the first step.
 > $$
 
 It is easy to boud $\lvert Z \rvert$ on the upper boundary $\Im t = \lambda$, and the bound for the lower boundary $\Im t = -\lambda$ follows from the functional equation.
-For the general bound inside the strip, we use a conformal map the strip to the upper half plane and apply the Poisson principle there.
+For the general bound inside the strip, we use a conformal map that sends the strip to the upper half plane, and apply the Poisson principle there.
 
 Next, we bound $H\_\sigma$.
 Lemma 3.3 and Lemma 3.4 are intermediate steps toward Lemma 3.5.
@@ -411,9 +409,9 @@ $$
 #### Lemma 3.2
 
 The bounds on the upper and lower boundaries of the strip are just intermediate steps, and the main goal is to bound $Z$ inside the strip.
-This follows by applying an upper-half-plane Poisson principle to $\log\lvert Z\rvert$.
+This follows by applying the upper half plane Poisson principle to $\log\lvert Z\rvert$.
 
-> **Informal upper-half-plane Poisson principle.** Let $b : \mathbb{R} \to \mathbb{R}$ satisfy the weighted integrability needed below, and define $P[b] : \mathbb{H} \to \mathbb{R}$ by
+> **Informal upper half plane Poisson principle.** Let $b : \mathbb{R} \to \mathbb{R}$ satisfy the weighted integrability needed below, and define $P[b] : \mathbb{H} \to \mathbb{R}$ by
 >
 > $$
 > P[b](x + iy) = \frac{1}{\pi} \int_{\mathbb{R}} \frac{y}{(t - x)^2 + y^2} b(t) \mathrm{d}t.
@@ -422,7 +420,7 @@ This follows by applying an upper-half-plane Poisson principle to $\log\lvert Z\
 > If $u$ is subharmonic and bounded above on $\mathbb H$, and its boundary values on $\mathbb R = \partial\mathbb H$ are bounded above by $b$, then $u\le P[b]$ on $\mathbb H$.
 >
 
-Since $g(0)=\widehat g(0)=0$, smooth radiality gives $g(r),\widehat g(r)=O(r^2)$ at the origin. The Mellin transforms therefore continue past $\operatorname{Re}z=0$, and $Z$ is holomorphic on a neighborhood of the closed strip. On its upper boundary,
+We have $g(r),\widehat g(r)=O(r^2)$ at the origin. The Mellin transforms therefore continue past $\operatorname{Re}z=0$, and $Z$ is holomorphic on a neighborhood of the closed strip. On its upper boundary,
 
 $$
 Z(y+i\lambda)=\int_{\mathbb R}\varphi(v)e^{-iyv}\,\mathrm{d}v,
@@ -445,7 +443,7 @@ $$
 
 Splitting the integral at $r=1$, using $g(r)=O(r^2)$ near zero and rapid decay at infinity, makes this bound uniform in $s$ and $\eta$. Thus $Z$ is bounded on the whole closed strip.
 
-To prove the interior bound, map the strip to the upper half-plane and invoke the Poisson formula there. The conformal map is
+To prove the interior bound, map the strip to the upper half plane and invoke the Poisson principle there. The conformal map is
 
 $$
 \Phi(z) = \exp\left(\frac{\pi(z + i\lambda)}{2\lambda}\right)
@@ -458,7 +456,7 @@ $$
 $$
 
 The map is a biholomorphism from the strip $\lvert \Im z\rvert<\lambda$ to the upper half-plane $\mathbb{H}$. Since $Z\circ\Phi^{-1}$ is holomorphic, $u(z)=\log\lvert Z(\Phi^{-1}(z))\rvert$ is subharmonic, with the value $-\infty$ allowed at its zeros.
-One technical difficulty is that $h\_\lambda(y)$, which bounds the lower-edge data carried to the positive real axis, has a singularity at $y=0$:
+One technical difficulty is that $h\_\lambda(y)$ has a singularity at $y=0$:
 
 $$h_\lambda(y) = -\log|y| + O_\lambda(1),\quad y \to 0.$$
 
@@ -648,7 +646,7 @@ The exponential decay of $P\_\sigma$ controls the logarithmic behavior of $h\_\l
 
 #### Lemma 3.4
 
-After making the substitution $T=2u$ and normalizing by the mass $M\_\sigma$, the lower-edge harmonic measure becomes the probability density
+After making the substitution $T=2u$ and normalizing by the mass $M\_\sigma$, we get
 
 $$
 p_\sigma(u)=\frac{2P_\sigma(2u)}{M_\sigma}
@@ -787,7 +785,7 @@ $$
 <\infty.
 $$
 
-Its angular-frequency Fourier transform is $Z(s+i\sigma\lambda)$. Lemma 3.5 makes this transform integrable, so Fourier inversion gives
+Its Fourier transform is $Z(s+i\sigma\lambda)$. Lemma 3.5 makes this transform integrable, so Fourier inversion gives
 
 $$
 \varphi(v) = \frac{e^{(1 - \sigma)\lambda v}}{2\pi} \int_{\mathbb{R}} Z(s + i\sigma\lambda) e^{isv} \mathrm{d}s.

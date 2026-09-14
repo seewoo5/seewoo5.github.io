@@ -354,13 +354,7 @@ The Lean argument proceeds as follows.
 > The growth condition also needs checking: boundedness of $Z$ and the bound $\lvert\Re W\_D(z)\rvert\le B(1+\lvert\Re z\rvert)$ give $\lvert F\_D(z)\rvert\le C\exp(B\lvert\Re z\rvert)$, which is sufficient for the strip Phragmén-Lindelöf principle. It follows that $N\_D\le1$ throughout the strip, and hence $\lvert Z(z)\rvert\le e^{\Re W\_D(z)}$ in the interior.
 
 Thus, the proof starts with the complex Poisson kernel and takes its real part to recover the Poisson kernel itself; this is another difference from the report.
-Note that the code uses the variable `ℓ`, which is the same as $\lambda$.
-The definition `stripComplexPoissonKernel σ T` is the dimensionless version: its real part is $P\_\sigma(T)$, as proved by `stripComplexPoissonKernel_re`. More precisely,
-
-$$
-K_\lambda(s+i\sigma\lambda,y)
-=\frac1\lambda\,\texttt{stripComplexPoissonKernel}\left(\sigma,\frac{s-y}{\lambda}\right).
-$$
+Note that the code uses the variable `ℓ`, which is the same as $\lambda$ (unfortunately, you cannot use `λ` for variable names).
 
 ```lean
 -- K_λ(z,y) = i/(4λ) * (exp(π(z-y+iλ)/(2λ)) + 1)/(exp(π(z-y+iλ)/(2λ)) - 1)
@@ -424,7 +418,7 @@ The formalized proof is slightly different: it uses a horizontal-strip version o
 
 This is a version of the maximum-modulus principle for a horizontal strip. The file proves it as `horizontalStrip_norm_extension_majorization`. The distinction between continuity of $f$ and continuity of its modulus matters here: the proof constructs the latter, not a continuous boundary extension of $F\_D$ itself. Mathlib's related theorem [`PhragmenLindelof.horizontal_strip`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Complex/PhragmenLindelof.html#PhragmenLindelof.horizontal_strip) assumes that $f$ is continuous on the closed strip, so it is not a direct replacement without additional boundary regularity.
 
-The application is `antiFourierWitness_capped_poisson_majorization_of_real_extension`; the growth estimate comes from `lowerStripCappedGammaOuter_abs_re_le_linear` and `antiFourierWitness_cappedWeightedMellinStrip_growth`.
+<!-- The application is `antiFourierWitness_capped_poisson_majorization_of_real_extension`; the growth estimate comes from `lowerStripCappedGammaOuter_abs_re_le_linear` and `antiFourierWitness_cappedWeightedMellinStrip_growth`. -->
 
 ```lean
 theorem horizontalStrip_norm_extension_majorization
@@ -1032,12 +1026,6 @@ def plusSaddleMellinData (ε ℓ : ℝ) (z : ℂ) : ℂ :=
     plusPolynomial ε
       (Complex.I * (z - (ℓ : ℂ)) / (ℓ : ℂ))
 
--- M₋(z) = Eλ(i(z − λ))P₋(i(z − λ)/λ).
-def minusSaddleMellinData (ε ℓ : ℝ) (z : ℂ) : ℂ :=
-  saddleMellinEnvelope ε ℓ z *
-    minusPolynomial ε
-      (Complex.I * (z - (ℓ : ℂ)) / (ℓ : ℂ))
-
 -- M₊(λ − it) = X₊(t).
 theorem plusSaddleMellinData_vertical (ε ℓ t : ℝ) :
     plusSaddleMellinData ε ℓ
@@ -1053,18 +1041,9 @@ def plusSaddleProfile (ε ℓ r : ℝ) : ℂ :=
   if r = 0 then (saddleOriginValue ε ℓ : ℂ)
   else mellinInv ℓ (plusSaddleMellinData ε ℓ) r
 
--- f₋(r): inverse Mellin transform for r ≠ 0, the same value at r = 0.
-def minusSaddleProfile (ε ℓ r : ℝ) : ℂ :=
-  if r = 0 then (saddleOriginValue ε ℓ : ℂ)
-  else mellinInv ℓ (minusSaddleMellinData ε ℓ) r
-
 -- x ↦ f₊(‖x‖), with λ = d/2.
 def plusSaddleFunction (ε : ℝ) (d : ℕ) (x : Euclidean d) : ℂ :=
   plusSaddleProfile ε ((d : ℝ) / 2) ‖x‖
-
--- x ↦ f₋(‖x‖), with λ = d/2.
-def minusSaddleFunction (ε : ℝ) (d : ℕ) (x : Euclidean d) : ℂ :=
-  minusSaddleProfile ε ((d : ℝ) / 2) ‖x‖
 ```
 
 To see the normalization hidden in `mellinInv`, one can use the next identity. It parametrizes the upward vertical line by $z=\lambda+it$, so $\mathrm{d}z=i\,\mathrm{d}t$ cancels the $i$ in $1/(2\pi i)$. Replacing $t$ by $-t$ recovers the inverse-transform formula in the overview.
@@ -1084,29 +1063,99 @@ theorem plusSaddleProfile_eq_normalized_vertical_integral
             ((ℓ : ℂ) + (t : ℂ) * Complex.I) *
             plusSaddleMellinData ε ℓ
               ((ℓ : ℂ) + (t : ℂ) * Complex.I)) := by ...
-
--- f₋(r) = (1/2π) ∫ r^(−λ−it) M₋(λ + it) dt, for r > 0.
-theorem minusSaddleProfile_eq_normalized_vertical_integral
-    {ε ℓ r : ℝ} (hr : 0 < r) :
-    minusSaddleProfile ε ℓ r =
-      ((1 / (2 * Real.pi) : ℝ) : ℂ) *
-        (∫ t : ℝ,
-          saddleMellinInversePower r
-            ((ℓ : ℂ) + (t : ℂ) * Complex.I) *
-            minusSaddleMellinData ε ℓ
-              ((ℓ : ℂ) + (t : ℂ) * Complex.I)) := by ...
 ```
 
 #### Rapid decay at infinity
 
-In the coordinate $z=\lambda-it$, rapid decay comes from moving the inverse-Mellin contour from $\Re z=\lambda$ to $\Re z=a$ with $a>\lambda$. No Gamma poles are crossed, and the factor $r^{-z}$ has absolute value $r^{-a}$ on the new line. Bounds on the Mellin data make the shifted integral and its differentiated versions converge. Taking $a$ arbitrarily large gives decay faster than every inverse power of $r$. This is the upward contour shift in the $t$-coordinate used in the proof summary.
+In $t$-coordinate, we moved the contour $\Im t = 0$ to upward $\Im t = \lambda$ to obtain rapid decay.
+In the new coordinate $z = \lambda - it$, this corresponds to moving the contour $\Re z = \lambda$ to the right, $\Re z = a > \lambda$.
+Taking $a$ arbitrarily large gives decay faster than every inverse power of $r$ (it does not cross any poles, and $\lVert r^{-z}\rVert = r^{-a}$).
+
+The following statements give the integrability and contour-shift identity for $f_+$. Their $f_-$ counterparts have the same names with `plus` replaced by `minus`. The condition `hpole` excludes the Gamma poles; it holds automatically when $a>0$.
+
+```lean
+-- Every polynomial moment of M₊(a + it) is integrable away from pole lines.
+theorem plusSaddleMellinData_shiftedLine_moment_integrable
+    {ε ℓ a : ℝ} (hε : 0 < ε) (hℓ : 0 < ℓ)
+    (horder : shortCutoff ε ≤ shortEndpoint ε)
+    (hpole : ∀ n : ℕ, a ≠ -((2 * n : ℕ) : ℝ))
+    (j : ℕ) :
+    Integrable (fun t : ℝ =>
+      (t : ℂ) ^ j * plusSaddleMellinData ε ℓ
+        ((a : ℂ) + (t : ℂ) * Complex.I)) := by ...
+
+-- The inverse Mellin contour can be placed on any line Re z = a > 0.
+theorem plusSaddleProfile_eq_positive_contour
+    {ε ℓ r a : ℝ}
+    (hε : 0 < ε) (hℓ : 0 < ℓ)
+    (horder : shortCutoff ε ≤ shortEndpoint ε)
+    (hr : 0 < r) (ha : 0 < a) :
+    plusSaddleProfile ε ℓ r =
+      ((1 / (2 * Real.pi) : ℝ) : ℂ) *
+        (∫ t : ℝ,
+          saddleMellinInversePower r
+              ((a : ℂ) + (t : ℂ) * Complex.I) *
+            plusSaddleMellinData ε ℓ
+              ((a : ℂ) + (t : ℂ) * Complex.I)) := by ...
+```
+
+The contour identity uses `plusSaddleMellinData_positive_vertical_integral_eq`: apply Cauchy's theorem to a rectangle in the right half-plane, then let its height tend to infinity. The horizontal integrals tend to zero.
+
+For derivatives, Lean works with the squared radius $u=r^2$; this `u` is not the saddle ordinate. For $u>1$, the integral `saddlePositiveContourMoment a j D u` is the $j$-th derivative of $\int u^{-(a+it)/2}D(t)\,\mathrm dt$. Differentiation contributes a degree-$j$ polynomial in $t$, whose integrability follows from the moment bound above.
+
+```lean
+-- The shifted inverse Mellin integral, written as a function of u = r².
+def plusSaddlePositiveSquaredContour
+    (ε ℓ a u : ℝ) : ℂ :=
+  ((1 / (2 * Real.pi) : ℝ) : ℂ) *
+    saddlePositiveContourMoment a 0
+      (fun t : ℝ =>
+        plusSaddleMellinData ε ℓ
+          ((a : ℂ) + (t : ℂ) * Complex.I)) u
+
+-- Recover f₊ by substituting u = r².
+theorem plusSaddleProfile_eq_positive_squaredContour
+    {ε ℓ r a : ℝ}
+    (hε : 0 < ε) (hℓ : 0 < ℓ)
+    (horder : shortCutoff ε ≤ shortEndpoint ε)
+    (hr : 0 < r) (ha : 0 < a) :
+    plusSaddleProfile ε ℓ r =
+      plusSaddlePositiveSquaredContour ε ℓ a (r ^ 2) := by ...
+```
+
+The estimate `saddlePositiveContourMoment_norm_le` bounds the $j$-th derivative by $C_{a,j}u^{-a/2-j}$. To bound it after multiplication by $u^k$, Lean takes $a=2(k+1)$. It also inserts a smooth cutoff, equal to zero for $u\le2$ and one for $u\ge3$, to separate the tail from the origin argument.
+
+```lean
+-- A smooth cutoff: 0 for u ≤ 2, and 1 for u ≥ 3.
+def saddleOuterCutoff (u : ℝ) : ℂ :=
+  (Real.smoothTransition (u - 2) : ℂ)
+
+-- The outer parts agree with f₊(√u) for u ≥ 3.
+def plusSaddleOuterSquaredProfile (ε ℓ u : ℝ) : ℂ :=
+  saddleOuterCutoff u *
+    plusSaddlePositiveSquaredContour ε ℓ 2 u
+
+-- Every derivative of the outer plus profile decays faster than any power.
+theorem plusSaddleOuterSquaredProfile_schwartz_decay
+    {ε ℓ : ℝ}
+    (hε : 0 < ε) (hℓ : 0 < ℓ)
+    (horder : shortCutoff ε ≤ shortEndpoint ε)
+    (k n : ℕ) :
+    ∃ C : ℝ, ∀ u : ℝ,
+      ‖u‖ ^ k *
+        ‖iteratedFDeriv ℝ n
+          (plusSaddleOuterSquaredProfile ε ℓ) u‖ ≤ C := by ...
+```
+
+Although the outer profiles are defined using the line $a=2$, contour independence lets the proof choose a larger $a$ for each decay estimate. Finally, `saddleSquaredSchwartzPullback` substitutes $u=\lVert x\rVert^2$ to obtain Schwartz tails on $\mathbb R^d$. Once smoothness at the origin is proved, the difference between each function and its tail is smooth and compactly supported, completing Schwartz regularity.
+
 
 #### Smoothness
 
-To study smoothness at zero, shift the contour to the left past finitely many Gamma poles. First, factor the Mellin data as $\Gamma(z/2)$ times a holomorphic factor. The residues at $z=-2n$ are then $2(-1)^n/n!$ times that factor.
+To study smoothness at the origin, shift the contour to the left past finitely many Gamma poles. First, factor the Mellin data as $\Gamma(z/2)$ times a holomorphic factor. The residues at $z=-2n$ are then $2(-1)^n/n!$ times that factor.
 
 ```lean
--- The common Mellin factor after removing Γ(z/2).
+-- The common Mellin factor without Γ(z/2).
 def saddleRegularMellinFactor (ε ℓ : ℝ) (z : ℂ) : ℂ :=
   Complex.exp
       (((ℓ : ℂ) - z) * (Real.log Real.pi : ℂ) / 2) *
@@ -1114,16 +1163,10 @@ def saddleRegularMellinFactor (ε ℓ : ℝ) (z : ℂ) : ℂ :=
       mellinShellPhase ε
         (Complex.I * (z - (ℓ : ℂ)) / (ℓ : ℂ)))
 
--- M₊(z) = Γ(z/2) times this holomorphic factor.
+-- M₊(z) = Γ(z/2) times this holomorphic factor and the polynomial P₊.
 def plusSaddleRegularMellinFactor (ε ℓ : ℝ) (z : ℂ) : ℂ :=
   saddleRegularMellinFactor ε ℓ z *
     plusPolynomial ε
-      (Complex.I * (z - (ℓ : ℂ)) / (ℓ : ℂ))
-
--- M₋(z) = Γ(z/2) times this holomorphic factor.
-def minusSaddleRegularMellinFactor (ε ℓ : ℝ) (z : ℂ) : ℂ :=
-  saddleRegularMellinFactor ε ℓ z *
-    minusPolynomial ε
       (Complex.I * (z - (ℓ : ℂ)) / (ℓ : ℂ))
 
 -- Residue of M₊ at z = −2n.
@@ -1131,15 +1174,9 @@ def plusSaddlePoleResidue (ε ℓ : ℝ) (n : ℕ) : ℂ :=
   (2 : ℂ) * (-1 : ℂ) ^ n / (n.factorial : ℂ) *
     plusSaddleRegularMellinFactor ε ℓ
       (-((2 * n : ℕ) : ℂ))
-
--- Residue of M₋ at z = −2n.
-def minusSaddlePoleResidue (ε ℓ : ℝ) (n : ℕ) : ℂ :=
-  (2 : ℂ) * (-1 : ℂ) ^ n / (n.factorial : ℂ) *
-    minusSaddleRegularMellinFactor ε ℓ
-      (-((2 * n : ℕ) : ℂ))
 ```
 
-For the remainder, Lean shifts the Mellin contour to $\Re z=-(2N+1)$, between the poles $-2N$ and $-2(N+1)$. The next definition is the remaining contour integral before dividing by $f\_+(0)$.
+We shift the Mellin contour to $\Re z=-(2N+1)$, between the poles $-2N$ and $-2(N+1)$. The next definition is the remaining contour integral before dividing by $f\_+(0)$.
 
 ```lean
 -- The shifted line has Re z = −(2N + 1).
@@ -1159,7 +1196,7 @@ def plusSaddleTaylorRemainder
             (t : ℂ) * Complex.I))
 ```
 
-The contour-shift identity below makes the connection with the radial function. It expresses the function as a polynomial in $r^2$ plus a contour remainder. The $n=0$ term is evaluated in the Values at the origin subsection below. The minus version is `minusSaddleProfile_eq_residue_sum_add_remainder`.
+The below identity makes the connection with the radial function. It expresses the function as a polynomial in $r^2$ plus a remainder term. The $n=0$ term is evaluated in the "Values at the origin" subsection below. The minus version is `minusSaddleProfile_eq_residue_sum_add_remainder`.
 
 ```lean
 -- f₊(r) = Σₙ₌₀ᴺ Resₙ r²ⁿ + contour remainder.
@@ -1175,7 +1212,7 @@ theorem plusSaddleProfile_eq_residue_sum_add_remainder
       plusSaddleTaylorRemainder ε ℓ N r := by ...
 ```
 
-The residue expansion and the bounds on its differentiated remainders prove smoothness at the origin; away from zero, one differentiates the inverse Mellin integral. Lean carries out the origin argument in the squared-radius variable, so the conclusion is smoothness of the functions on $\mathbb R^d$, not just of their radial profiles:
+The residue expansion and the bounds on its differentiated remainders prove smoothness at the origin; away from zero, one differentiates the inverse Mellin integral. The formal proof carries out the origin argument in $u = r^2$, so the conclusion is smoothness of the functions on $\mathbb R^d$, not just of their radializations:
 
 ```lean
 -- The radial function f₊ is C∞, including at x = 0.
@@ -1184,18 +1221,11 @@ theorem plusSaddleFunction_contDiff
     {d : ℕ} (hd : 0 < d)
     (horder : shortCutoff ε ≤ shortEndpoint ε) :
     ContDiff ℝ ∞ (plusSaddleFunction ε d) := by ...
-
--- The radial function f₋ is C∞, including at x = 0.
-theorem minusSaddleFunction_contDiff
-    {ε : ℝ} (hε : 0 < ε)
-    {d : ℕ} (hd : 0 < d)
-    (horder : shortCutoff ε ≤ shortEndpoint ε) :
-    ContDiff ℝ ∞ (minusSaddleFunction ε d) := by ...
 ```
 
 #### Values at the origin
 
-Lean names the real function $u\mapsto h(iu)$ separately as `realHyperbolicShellPhase`. Since $h$ is even, its value at $u=1$ is also $h(-i)$. This explains the formula for `saddleOriginValue`.
+The real-valued function $u\mapsto h(iu)$ is defined as `realHyperbolicShellPhase`. Since $h$ is even, its value at $u=1$ is also $h(-i)$. This explains the formula for `saddleOriginValue`.
 
 ```lean
 -- h(iu) = ∫ w(a)(cosh(au) − 1) da, as a real number.
@@ -1258,7 +1288,7 @@ Finally, the following simplification lemmas evaluate the defined functions at z
       (saddleOriginValue ε ((d : ℝ) / 2) : ℂ) := by ...
 ```
 
-#### Reality, Schwartz regularity, and the Fourier identity
+#### Realness, Schwartzness, and the Fourier identity
 
 These functions are also real-valued.
 
@@ -1299,6 +1329,7 @@ theorem saddleSource_fourier_minus_eq_plus
       fplus x = plusSaddleFunction ε d x) :
     (𝓕 fminus : TestFunction d) = fplus := by ...
 ```
+
 
 #### Sign analysis
 
@@ -1528,7 +1559,7 @@ theorem eventually_saddleSourceSecondBranch_fullGaussianErrors :
                 saddleSourceGaussianKernel ε ℓ (1 + δ) T)) := by ...
 ```
 
-In these statements, `∀ᶠ ε in 𝓝[>] 0` means “for every sufficiently small positive $\varepsilon$”, and `∀ᶠ ℓ in atTop` means “for every sufficiently large $\lambda$”. Since these quantifiers come before `∀ u` or `∀ δ`, the threshold is uniform over the indicated range. Substituting $\lambda=d/2$ gives the eventual dimension statements.
+Since the quantifiers `∀ᶠ ε in 𝓝[>] 0` and `∀ᶠ ℓ in atTop` come before `∀ u` or `∀ δ`, the threshold is uniform over the indicated range. Substituting $\lambda=d/2$ gives the eventual dimension statements.
 
 Each proof combines three estimates: the error on the central interval, the tail of the original integrand, and the Gaussian tail. For example, the first range uses `eventually_saddleSourceFirstBranch_centralGaussianErrors`, `eventually_saddleSourceFirstBranch_sourceL1Tails`, and `eventually_saddleSourceFirstBranch_gaussianL1Tails`. The second range has the corresponding `SecondBranch` lemmas. This is the same splitting as in Part 1; the final statements retain the strict inequality needed for signs rather than the full relative asymptotic.
 
@@ -1612,7 +1643,7 @@ Combining these with the sign estimates proves $f\_+(r)>0$ for $r\ge r\_\ast$ an
 
 #### Positivity of $f\_+$ for small radii
 
-Here are the scaled variable $y$ and the coefficients $A\_{\lambda,n}$ in the residue expansion. The quantity `saddleShellDerivativeOne` is $ih^{\prime}(i)=\int w(a)a\sinh(a)\,da$, not a derivative at the real point $1$.
+Here are the scaled variable $y$ and the coefficients $A\_{\lambda,n}$ in the residue expansion. The quantity `saddleShellDerivativeOne` is $ih^{\prime}(i)=\int w(a)a\sinh(a)\,da$.
 
 ```lean
 -- h₁′ = ih′(i) = ∫ w(a)a sinh(a) da.
@@ -1692,7 +1723,7 @@ theorem exists_eventually_y_star_le_log_eighth_add
               Real.log ((d : ℝ) / 2) / 8 + C := by ...
 ```
 
-The finite residue sum differs from $e^{-y}$ for two reasons: its coefficients are not exactly $1$, and the exponential series has been truncated. Bounding these two errors gives the first theorem below. The separate contour estimate gives the second. Both are **relative** errors, after multiplying by $e^y$.
+There are two separate sources of error in the finite residue sum. The first is that the coefficients $A\_{\lambda,n}$ are not exactly $1$, and the second is that the exponential series has been truncated. The following two theorems provide bounds on these errors, both expressed as relative errors after multiplying by $e^y$.
 
 ```lean
 -- Uniformly on 0 ≤ r ≤ r★, eʸ|S_N(y) − e⁻ʸ| < 1/2.
@@ -1731,7 +1762,7 @@ theorem eventually_plusSaddleTaylorRemainder_relative_lt_half_on_star
 
 The first bound allows $r=0$; the contour bound is stated only for $r>0$. The extra `hmargin` assumption says that $b(a)\ge0$ on the short interval, so the designated negative weight really is nonpositive. All these parameter conditions hold for sufficiently small positive $\varepsilon$.
 
-The final implication is now elementary: the finite sum is greater than $e^{-y}/2$, while the real part of the normalized remainder is greater than $-e^{-y}/2$. Their sum is positive. Lean packages this as follows:
+The final implication is now elementary: the finite sum is greater than $e^{-y}/2$, while the real part of the normalized remainder is greater than $-e^{-y}/2$. Their sum is positive.
 
 ```lean
 -- The two strict relative errors below 1/2 imply f₊(r) > 0.
@@ -1765,9 +1796,8 @@ theorem eventually_plusSaddleProfile_re_pos_on_star :
           0 < (plusSaddleProfile ε ((d : ℝ) / 2) r).re := by ...
 ```
 
-The last theorem handles $r=0$ using `saddleOriginValue_pos`. Compared with Lemma 4.10 in Part 1, it uses the larger cutoff $N=\lceil20\log\lambda\rceil$ and states the positivity consequence rather than the full uniform relative asymptotic.
-
-Combining this with the saddle-radius argument completes the signs required by the LP construction. The final interface keeps only weak inequalities, which are sufficient for admissibility.
+The last theorem handles $r=0$ using `saddleOriginValue_pos`.
+Combining this with the critical point argument completes the signs required by the LP construction.
 
 ```lean
 -- For small ε and large d: f₊ ≥ 0 everywhere, and f₋ ≤ 0 for ‖x‖ ≥ Rε,d.
@@ -1780,7 +1810,6 @@ def SaddleSourceEventualSigns : Prop :=
         saddleSourceRadius ε d ≤ ‖x‖ →
           (minusSaddleFunction ε d x).re ≤ 0)
 
--- Assemble the small-radius and saddle-radius sign proofs.
 theorem saddleSourceEventualSigns : SaddleSourceEventualSigns := by ...
 ```
 
@@ -1796,6 +1825,31 @@ $$
 \quad(\varepsilon\to0^+).
 $$
 
+Here $\alpha_\varepsilon$ is `limitingSaddleRadius ε`.
+
+```lean
+-- αε = √((1 + u₀)/(4π)) exp(∫ w(a)a sinh(u₀a) da).
+def limitingSaddleRadius (ε : ℝ) : ℝ :=
+  Real.sqrt ((2 + ε / 4) / (4 * Real.pi)) *
+    Real.exp (shortShellRadiusContribution ε +
+      positiveShellRadiusContribution ε)
+
+-- For fixed ε > 0, Rε,d/√d → αε as d → ∞.
+theorem tendsto_saddleSourceRadius_normalized
+    {ε : ℝ} (hε : 0 < ε) :
+    Tendsto
+      (fun d : ℕ =>
+        saddleSourceRadius ε d / Real.sqrt (d : ℝ))
+      atTop (𝓝 (limitingSaddleRadius ε)) := by ...
+
+-- αε → 1/π as ε → 0⁺.
+theorem tendsto_limitingSaddleRadius :
+    Tendsto limitingSaddleRadius (𝓝[>] (0 : ℝ))
+      (nhds criticalRadius) := by ...
+```
+
+The first limit uses `tendsto_saddleDigamma_sub_log`, which says $\psi(x)-\log x\to0$. For the second, the contribution of $w_s$ tends to $-\frac12\log(\pi/2)$, while the contribution of $w_B$ tends to zero; these are `tendsto_shortShellRadiusContribution`, `integral_wallisRadiusIntegrand`, and `tendsto_positiveShellRadiusContribution`.
+
 Rescaling by $F(x)=f\_-(R\_{\varepsilon,d}x)$ makes the exterior sign condition hold for $\lVert x\rVert\ge1$. Fourier scaling and the equal origin values then give
 
 $$
@@ -1804,7 +1858,120 @@ $$
 \mathrm{LP}_d^{1/d}\le\frac{v_d^{1/d}}2R_{\varepsilon,d}.
 $$
 
+The constructor `saddleSourceAdmissible` performs this rescaling. The next theorem computes its quotient; `saddleSourceAdmissible_normalizedCost` then takes the $d$-th root and divides by $\sqrt d$, giving exactly $R/\sqrt d$.
+
+```lean
+-- The rescaled admissible function has F(0)/F̂(0) = Rᵈ.
+theorem saddleSourceAdmissible_quotient
+    {ε : ℝ} (hε : 0 < ε) {d : ℕ} (hd : 0 < d)
+    (horder : shortCutoff ε ≤ shortEndpoint ε)
+    {R : ℝ} (hR : 0 < R)
+    (fminus fplus : TestFunction d)
+    (hminus : ∀ x : Euclidean d,
+      fminus x = minusSaddleFunction ε d x)
+    (hplus : ∀ x : Euclidean d,
+      fplus x = plusSaddleFunction ε d x)
+    (hplusnonneg : ∀ x : Euclidean d,
+      0 ≤ (plusSaddleFunction ε d x).re)
+    (hminusoutside : ∀ x : Euclidean d,
+      R ≤ ‖x‖ → (minusSaddleFunction ε d x).re ≤ 0) :
+    quotient (saddleSourceAdmissible hε hd horder hR
+      fminus fplus hminus hplus hplusnonneg
+      hminusoutside) = R ^ d := by ...
+
+-- The normalized objective is the d-th root of the quotient, divided by √d.
+def normalizedCost {d : ℕ} (f : Admissible d) : ℝ :=
+  quotient f ^ ((d : ℝ)⁻¹) / Real.sqrt (d : ℝ)
+
+-- Take the infimum over admissible functions.
+def normalizedProgram (d : ℕ) : ℝ :=
+  sInf (Set.range (normalizedCost (d := d)))
+```
+
+The two radius limits and the admissible functions are combined into `OrderedEpsilonUpperConstruction`. 
+
+```lean
+-- Record the limits in d and ε, together with eventual admissible witnesses.
+structure OrderedEpsilonUpperConstruction where
+  epsilonBound : ℝ
+  epsilonBound_pos : 0 < epsilonBound
+  normalizedRadius : ℝ → ℕ → ℝ
+  limitingRadius : ℝ → ℝ
+  limitingRadius_tendsto :
+    Tendsto limitingRadius (𝓝[>] (0 : ℝ)) (𝓝 criticalRadius)
+  normalizedRadius_tendsto :
+    ∀ ε : ℝ, 0 < ε → ε < epsilonBound →
+      Tendsto (normalizedRadius ε) atTop (𝓝 (limitingRadius ε))
+  admissibleWitness :
+    ∀ ε : ℝ, 0 < ε → ε < epsilonBound →
+      ∀ᶠ d : ℕ in atTop,
+        ∃ f : Admissible d, normalizedCost f ≤ normalizedRadius ε d
+
+-- Assemble this data from the Schwartz functions and their sign estimates.
+noncomputable def saddleOrderedUpperConstruction_of_sourceSigns
+    (hsigns : SaddleSourceEventualSigns) :
+    OrderedEpsilonUpperConstruction :=
+  saddleOrderedUpperConstruction
+    saddleSourceSchwartzRealization hsigns
+
+-- Every c > 1/π eventually bounds the normalized cost of some admissible f.
+def ConstructivePrimalUpperBound : Prop :=
+  ∀ c : ℝ, criticalRadius < c →
+    ∀ᶠ d : ℕ in atTop,
+      ∃ f : Admissible d, normalizedCost f ≤ c
+
+theorem constructivePrimal_of_orderedEpsilon
+    (construction : OrderedEpsilonUpperConstruction) :
+    ConstructivePrimalUpperBound := by ...
+```
+
+The last proof fixes $c>1/\pi$, chooses a sufficiently small $\varepsilon$ with $\alpha_\varepsilon<c$, and then takes $d$ large enough that $R_{\varepsilon,d}/\sqrt d<c$ and the sign conditions hold. Thus the required dimension may depend on $\varepsilon$.
+
 Using $v\_d^{1/d}\sqrt d\to\sqrt{2\pi e}$, first let $d\to\infty$ and then $\varepsilon\to0^+$. This gives the upper bound $\limsup\_{d\to\infty}\mathrm{LP}\_d^{1/d}\le\sqrt{e/(2\pi)}$, completing the argument.
+
+In Lean, the upper bound is first combined with the lower bound to prove `normalizedProgram d → 1/π`. The geometric factor then converts this to the limit of $\mathrm{LP}_d^{1/d}$.
+
+```lean
+-- The normalized LP objective tends to 1/π.
+def SharpQuotientAsymptotic : Prop :=
+  Tendsto normalizedProgram atTop (nhds criticalRadius)
+
+theorem sharpQuotient_of_uniform_lower_and_ordered_upper
+    (hlower : UniformAdmissibleLowerBound)
+    (construction : OrderedEpsilonUpperConstruction) :
+    SharpQuotientAsymptotic := by ...
+
+-- The geometric factor is v_d^(1/d) √d / 2, for d > 0.
+def packingGeometricRoot (d : ℕ) : ℝ :=
+  (unitBallVolume d / (2 : ℝ) ^ d) ^ ((d : ℝ)⁻¹) *
+    Real.sqrt (d : ℝ)
+
+-- LP_d^(1/d) = geometric factor × normalized objective.
+theorem linearProgram_root_eq_geometric_mul_normalizedProgram_unconditional
+    {d : ℕ} (hd : 0 < d) :
+    (linearProgram d) ^ ((d : ℝ)⁻¹) =
+      packingGeometricRoot d * normalizedProgram d := by ...
+
+-- Stirling's formula gives the geometric limit √(2πe)/2.
+theorem tendsto_packingGeometricRoot :
+    Tendsto packingGeometricRoot atTop
+      (nhds (Real.sqrt (2 * Real.pi * Real.exp 1) / 2)) := by ...
+
+def criticalPackingBase : ℝ :=
+  Real.sqrt (Real.exp 1 / (2 * Real.pi))
+
+-- The final limit is LP_d^(1/d) → √(e/(2π)).
+def SharpPackingRootAsymptotic : Prop :=
+  Tendsto (fun d : ℕ => (linearProgram d) ^ ((d : ℝ)⁻¹))
+    atTop (nhds criticalPackingBase)
+
+theorem sharpPackingRoot_of_sharpQuotient
+    (hquotient : SharpQuotientAsymptotic) :
+    SharpPackingRootAsymptotic := by ...
+
+theorem sharpPackingRootAsymptotic : SharpPackingRootAsymptotic :=
+  sharpAsymptotics.2.1
+```
 
 
 ## Reformalization
