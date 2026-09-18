@@ -1,5 +1,13 @@
 # _data/travel_locations.yml
 locations:
+  - city: "Toronto, Canada"
+    lat: 43.6587275
+    lng: -79.3998971
+    date_from: "2027-04-12"
+    date_to: "2027-04-16"
+    popup_content: |
+      [2027 Fields Medal Symposium: Maryna Viazovska](https://www.fields.utoronto.ca/activities/26-27/Fields-Medal-Symposium), April 12-16, 2027
+
   - city: "Paris, France"
     lat: 48.8441807
     lng: 2.3410468
