@@ -2065,6 +2065,74 @@ The main differences are:
   def β (ε : ℝ) : ℝ := ε / 4
   ```
 
+- (Updated 2026.09.20) Proposition A.1 is also formalized, showing $\mathsf{A}\_+(d) < \mathsf{A}\_-(d)$ for all $d\ge1$. The operator $T_d$ is defined in [`TailIntegral.lean`](https://github.com/seewoo5/cohn-elkies-refactor/blob/main/CohnElkies/SignUncertainty/TailIntegral.lean):
+
+  ```lean
+  def tailIntegral (d : ℕ) (g : Euclidean d → ℝ) (x : Euclidean d) : ℝ :=
+    if x = 0 then 0 else (d / 2 : ℝ) / 2 * ∫ t in Ioi (1 : ℝ), t ^ ((d / 2 : ℝ) - 1) * g (t • x)
+  ```
+
+  As in the report, the vanishing central Mellin moment gives a second formula integrating over $(0,1)$. This proves continuity at the origin; Tonelli gives the $L^1$ bound, and Fourier scaling gives the $(+1)$-eigenfunction property. Strict positivity at and beyond $r(g)$, followed by continuity, gives the smaller sign radius in [`AppendixA.lean`](https://github.com/seewoo5/cohn-elkies-refactor/blob/main/CohnElkies/SignUncertainty/AppendixA.lean).
+
+  ```lean
+  namespace SignEigenfunction
+
+  variable (hd : 0 < d) (g : SignEigenfunction d (-1)) (hg : IsRadial (g : Euclidean d → ℝ))
+  include hd hg
+
+  -- ‖T_d g‖₁ ≤ ½ ‖g‖₁.
+  theorem integral_norm_tailIntegral_le : ∫ x, ‖tailIntegral d g x‖ ≤ 1 / 2 * ∫ x, ‖g x‖ := by ...
+
+  -- A finite last-sign radius strictly decreases.
+  theorem signRadius_tailIntegral_lt (hfin : signRadius (g : Euclidean d → ℝ) < ⊤) :
+      signRadius (tailIntegral d g) < signRadius g := by ...
+
+  end SignEigenfunction
+
+  -- Package T_d g as a nonzero, integrable (+1)-eigenfunction vanishing at 0.
+  def SignEigenfunction.tailIntegral (hd : 0 < d) (g : SignEigenfunction d (-1))
+      (hg : IsRadial (g : Euclidean d → ℝ)) : SignEigenfunction d 1 where
+    toFun := _root_.CohnElkies.tailIntegral d g
+    integrable := g.integrable_tailIntegral hd hg
+    fourier_eq ξ := by
+      rw [g.fourier_tailIntegral hd hg ξ]
+      simp
+    ne_zero := g.tailIntegral_ne_zero hd hg
+    zero := tailIntegral_zero _
+  ```
+
+  To obtain a strict inequality between the infima, we also need an extremizer for $\mathsf{A}_-(d)$, whose existence is established in Theorem 1.4 of [Cohn–Gonçalves (2019), §3.2](https://arxiv.org/pdf/1712.04438#page=15). Both proofs take a weak $L^2$ limit of an $L^1$-normalized minimizing sequence. The main difference is how they prevent the limit from being zero: Cohn–Gonçalves use the Nazarov–Jaming uncertainty principle, while the formalization proves the following qualitative substitute by compactness in [`EigenfunctionConcentration.lean`](https://github.com/seewoo5/cohn-elkies-refactor/blob/main/CohnElkiesForMathlib/Analysis/Fourier/EigenfunctionConcentration.lean).
+
+  ```lean
+  namespace Real
+
+  variable {V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V] [FiniteDimensional ℝ V]
+    [MeasurableSpace V] [BorelSpace V]
+
+  -- A normalized Fourier eigenfunction has uniformly positive mass outside any fixed ball.
+  theorem exists_pos_le_setIntegral_norm_compl_closedBall_of_fourier_eq_mul [Nontrivial V] {c : ℂ}
+      (hc : c ≠ 0) (R : ℝ) :
+      ∃ κ : ℝ, 0 < κ ∧ ∀ f : V → ℂ, Integrable f → (∀ ξ, 𝓕 f ξ = c * f ξ) → ∫ x, ‖f x‖ = 1 →
+        κ ≤ ∫ x in (Metric.closedBall (0 : V) R)ᶜ, ‖f x‖ := by ...
+
+  end Real
+  ```
+
+  Otherwise, a sequence concentrating inside the ball would give a nonzero, compactly supported limit whose Fourier transform is also compactly supported, contradicting Fourier analyticity. The formalization also avoids Mazur's lemma: it passes the needed properties to the weak limit by testing against suitable $L^2$ functions, then applies the Gaussian correction from Cohn–Gonçalves' Lemma 3.1 to make the value at the origin zero. Radializing the resulting extremizer and applying $T_d$ finishes the proof.
+
+  ```lean
+  -- The infimum A₋(d) is attained.
+  theorem exists_signRadius_eq_signUncertaintyConstant_neg_one (hd : 0 < d) :
+      ∃ g : SignEigenfunction d (-1),
+        signRadius (g : Euclidean d → ℝ) = signUncertaintyConstant (-1) d := by ...
+
+  -- Apply T_d to a radial extremizer: A₊(d) ≤ r(T_d g) < r(g) = A₋(d).
+  theorem signUncertaintyConstant_one_lt_neg_one (hd : 0 < d) :
+      signUncertaintyConstant 1 d < signUncertaintyConstant (-1) d := by ...
+  ```
+
+  The additional assertion in Proposition A.1 that $T_d$ preserves Schwartz functions is not included in these lemmas; it is not needed for the $L^1$ sign-uncertainty comparison.
+
 - The `CohnElkiesForMathlib` directory contains parts of the formalization that might be upstreamed to mathlib. Since these were all chosen by Claude, we cannot guarantee that they are indeed upstreamable. But after checking, I found that most of them are indeed useful. They include:
 
   - `fourier_comp_linearEquiv`: if $g(x) = f(Ax)$ for an invertible linear map $A$, then $\hat g(\xi) = \frac{1}{\lvert\det A\rvert}\hat f(A^{-T}\xi)$.
@@ -2076,7 +2144,6 @@ The main differences are:
 
 - The default `maxHeartbeats` is no longer changed. I guess the main reason for increasing it was the 30-digit approximation of the Cohn-Elkies exponent in the original formalization, which requires huge numerical certificates but is not important at all. So I simply removed it.
 
-- Proposition A.1 of the appendix is not yet formalized. It seems a bit more technical than I initially thought (in terms of formalization, not the original proof), but I'll try to add it later.
 
 
 ## Conclusion
