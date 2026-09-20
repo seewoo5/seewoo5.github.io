@@ -17,6 +17,11 @@ I'm interested in programming (Python, Lean, SageMath, etc) and contributing to 
 - [mathlib4](https://github.com/leanprover-community/mathlib4/issues?q=author%3Aseewoo5) (Contributor, by Lean Community)
 - [Lean-GAP (paper)](https://arxiv.org/abs/2606.02588)
     - Formalizing exercises in Dummit-Foote's Abstract Algebra book
+- [DifferentProofs](https://github.com/seewoo5/DifferentProofs)
+    - Formalizing different proofs of the same theorems.
+- [cohn-elkies-refactor](https://github.com/seewoo5/cohn-elkies-refactor)
+    - Refactored version of [OpenAI's formalization](https://github.com/openai/ten-proofs) on [their result](https://cdn.openai.com/pdf/ten-proofs-oai.pdf) on Cohn-Elkies linear programming bound and the sign uncertainty principle. It also proves missing results in the original report, and follow the original proof rather than the slightly different proof in their formalization.
+    See [blog](https://seewoo5.github.io/jekyll/update/2026/09/12/openai-sphere-packing-digest-part2.html) for the details.
 
 ## [SageMath](https://github.com/sagemath/sage/issues?q=author%3Aseewoo5)
 
