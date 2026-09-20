@@ -1205,6 +1205,29 @@ Use these values in the definitions of $b$, $w_s$, $w_B$, and $w=w_s+w_B$ above,
 We keep $\epsilon$ fixed while taking $d\to\infty$, and then let $\epsilon\to0^+$.
 
 
+### Comparison with magic functions
+
+(Updated: 2026.09.20) The following plots compare the magic functions in dimensions $d = 8, 12, 24$ with the auxiliary functions $f_-$, $f_+$, and $f_0$ for $\epsilon = 0.1$. Each curve is scaled by $r^{(d-1)/2}\exp(2\pi r)$ and then peak-normalized.
+They show that the auxiliary functions change sign repeatedly and fail to satisfy the required nonpositivity or nonnegativity conditions.
+The plots don't change much if we take a smaller $\epsilon$.
+The construction guarantees the desired sign conditions only for sufficiently large $d$ and does not give optimal constants in low dimensions.
+
+<p align="center">
+<img src="/assets/images/sphere-packing-comparison/dimension_8.png">
+<figcaption align="center">Viazovska's magic function (resp. its Fourier transform) and $f_{-}$ (resp. $f_{+}$) in dimension 8.</figcaption>
+</p>
+
+<p align="center">
+<img src="/assets/images/sphere-packing-comparison/dimension_24.png">
+<figcaption align="center">Cohn-Kumar-Miller-Radchenko-Viazovska's magic function (resp. its Fourier transform) and $f_{-}$ (resp. $f_{+}$) in dimension 24.</figcaption>
+</p>
+
+<p align="center">
+<img src="/assets/images/sphere-packing-comparison/dimension_12.png">
+<figcaption align="center">Cohn-Gonçalves's magic function and $f_{0}$ in dimension 12.</figcaption>
+</p>
+
+
 ### Proofs of lemmas
 
 #### Lemma 4.2
