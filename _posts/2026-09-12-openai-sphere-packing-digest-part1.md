@@ -334,7 +334,7 @@ Let's start with the first step.
 > $$
 
 It is easy to bound $\lvert Z \rvert$ on the upper boundary $\Im t = \lambda$, and the bound for the lower boundary $\Im t = -\lambda$ follows from the functional equation.
-For the general bound inside the strip, we use a conformal map that sends the strip to the upper half plane, and apply the Poisson principle there.
+For the general bound inside the strip, we use a conformal map that sends the strip to the upper half plane, and apply the Poisson inequality there.
 
 Next, we bound $H\_\sigma$.
 Lemma 3.3 and Lemma 3.4 are intermediate steps toward Lemma 3.5.
@@ -411,9 +411,9 @@ $$
 #### Lemma 3.2
 
 The bounds on the upper and lower boundaries of the strip are just intermediate steps, and the main goal is to bound $Z$ inside the strip.
-This follows by applying the upper half plane Poisson principle to $\log\lvert Z\rvert$.
+This follows by applying the upper half plane Poisson inequality to $\log\lvert Z\rvert$.
 
-> **Upper half plane Poisson principle.** Let $b : \mathbb{R} \to \mathbb{R}$ satisfy the weighted integrability needed below, and define $P[b] : \mathbb{H} \to \mathbb{R}$ by
+> **Upper half plane Poisson inequality.** Let $b : \mathbb{R} \to \mathbb{R}$ satisfy the weighted integrability needed below, and define $P[b] : \mathbb{H} \to \mathbb{R}$ by
 >
 > $$
 > P[b](x + iy) = \frac{1}{\pi} \int_{\mathbb{R}} \frac{y}{(t - x)^2 + y^2} b(t) \mathrm{d}t.
@@ -445,7 +445,7 @@ $$
 
 Splitting the integral at $r=1$, using $g(r)=O(r^2)$ near zero and rapid decay at infinity, makes this bound uniform in $s$ and $\eta$. Thus $Z$ is bounded on the whole closed strip.
 
-To prove the interior bound, map the strip to the upper half plane and invoke the Poisson principle there. The conformal map is
+To prove the interior bound, map the strip to the upper half plane and invoke the Poisson inequality there. The conformal map is
 
 $$
 \Phi(z) = \exp\left(\frac{\pi(z + i\lambda)}{2\lambda}\right)
@@ -1645,6 +1645,31 @@ $$
 $$
 
 uniformly on $0 \le r \le r_\ast$. $\square$
+
+
+## Appendix
+
+(Updated 2026.09.21) There is an interesting result in the appendix of the report, which is not used in the proof of the main theorem.
+
+> **Proposition A.1.** For $d \ge 1$, we have $\mathsf{A}\_+(d) < \mathsf{A}\_-(d)$.
+
+The proof is quite interesting: the main idea is to considering the integral operator
+
+$$
+(T_d g)(x) = \frac{\lambda}{2} \int_1^\infty t^{\lambda - 1} g(tx) \mathrm{d}t.
+$$
+
+The proof shows that, if $g \in L^{1}\_{\mathrm{rad}}(\mathbb{R}^d; \mathbb{R})$ satisfies $g(0) = 0$ and $\widehat{g} = -g$, then $T_d g$ (with $(T_d g)(0) := 0$) becomes a self-Fourier function, i.e. $\widehat{T_d g} = T_d g$.
+(I think the normalization factor $\lambda / 2$ is chosen so that $\lVert T_d g \rVert\_1 \le \frac{1}{2} \lVert g \rVert\_1$ holds.)
+From $\widehat{g} = -g$, the Mellin transform of $g$ vanishes at the center — $\int_0^\infty g(r) r^{\lambda - 1} \mathrm{d}r = 0$ — and this proves $\widehat{T_d g} = T_d g$.
+Now, the important fact is that $r(T_d g) < r(g)$, which is almost immediate from the definition of $T_d$: if $g(r) \ge 0$ for all $r \ge R = r(g)$, then
+
+$$
+(T_d g)(r) = \frac{\lambda}{2} r^{-\lambda} \int_r^\infty s^{\lambda - 1} g(s) \mathrm{d}s \ge 0 \quad (r \ge R),
+$$
+
+and hence $r(T_d g) \le R$. If equality holds, then $g$ must vanish on $[R, \infty)$, which is impossible since any function $f$ where both $f$ and $\widehat{f}$ are compactly supported must be identically zero.
+Now the claim follows from the fact that there an extremizer for $\mathsf{A}\_-(d)$, i.e. $g$ with $r(g) = \mathsf{A}_-(d)$ and $\widehat{g} = -g$, which is Theorem 1.4 of [Cohn-Gonçalves](https://link.springer.com/article/10.1007/s00222-019-00875-4).
 
 
 ## Formalization

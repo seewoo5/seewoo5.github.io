@@ -1,60 +1,48 @@
 (function () {
-  var keywords = {
-    theorem: true,
-    lemma: true,
-    def: true,
-    class: true,
-    structure: true,
-    instance: true,
-    example: true,
-    inductive: true,
-    axiom: true,
-    variable: true,
-    variables: true,
-    universe: true,
-    import: true,
-    open: true,
-    namespace: true,
-    section: true,
-    end: true,
-    by: true,
-    where: true,
-    abbrev: true,
-    match: true,
-    with: true,
-    fun: true,
-    have: true,
-    haveI: true,
-    let: true,
-    if: true,
-    then: true,
-    else: true,
-    calc: true,
-    show: true,
-    from: true,
-    exact: true
-  };
+  function toSet(words) {
+    var set = Object.create(null);
+    words.forEach(function (word) {
+      set[word] = true;
+    });
+    return set;
+  }
 
-  var tactics = {
-    apply: true,
-    change: true,
-    constructor: true,
-    convert: true,
-    ext: true,
-    grind: true,
-    intro: true,
-    intros: true,
-    norm_cast: true,
-    norm_num: true,
-    omega: true,
-    rcases: true,
-    refine: true,
-    ring: true,
-    rintro: true,
-    rw: true,
-    simp: true,
-    simp_all: true
-  };
+  var keywords = toSet([
+    // declarations
+    "theorem", "lemma", "def", "abbrev", "class", "structure", "instance",
+    "example", "inductive", "axiom", "opaque", "variable", "variables",
+    "universe", "universes",
+    // commands
+    "import", "open", "namespace", "section", "end", "export", "attribute",
+    "set_option", "mutual", "deriving", "extends", "notation", "infix",
+    "infixl", "infixr", "prefix", "postfix", "macro", "macro_rules", "syntax",
+    "elab", "elab_rules", "termination_by", "decreasing_by",
+    // modifiers
+    "noncomputable", "private", "protected", "partial", "unsafe", "local",
+    "scoped",
+    // terms
+    "by", "where", "match", "with", "fun", "λ", "have", "haveI", "let", "letI",
+    "if", "then", "else", "calc", "show", "from", "exact", "suffices", "obtain",
+    "do", "return", "for", "in", "at", "using", "only", "generalizing"
+  ]);
+
+  var tactics = toSet([
+    "abel", "aesop", "all_goals", "any_goals", "apply", "apply_fun",
+    "assumption", "bound", "by_cases", "by_contra", "case", "cases", "change",
+    "choose", "clear", "congr", "constructor", "continuity", "contradiction",
+    "conv", "convert", "decide", "dsimp", "done", "erw", "exact_mod_cast",
+    "exacts", "exfalso", "ext", "field_simp", "filter_upwards", "fin_cases",
+    "first", "fun_prop", "funext", "gcongr", "generalize", "grind", "group",
+    "induction", "infer_instance", "interval_cases", "intro", "intros",
+    "iterate", "left", "lia", "lift", "linarith", "linear_combination",
+    "measurability", "module", "native_decide", "next", "nlinarith",
+    "norm_cast", "norm_num", "nth_rewrite", "nth_rw", "omega", "polyrith",
+    "positivity", "push_cast", "push_neg", "rcases", "refine", "rename_i",
+    "repeat", "rfl", "right", "ring", "ring_nf", "rintro", "rw", "rwa", "set",
+    "simp", "simp_all", "simp_rw", "simpa", "skip", "specialize", "split",
+    "subst", "swap", "symm", "tauto", "trans", "trivial", "try", "unfold",
+    "use"
+  ]);
 
   function escapeHtml(value) {
     return value
@@ -76,6 +64,14 @@
 
   function isWord(ch) {
     return /[A-Za-z0-9_']/.test(ch) || isWordStart(ch);
+  }
+
+  function readWord(line, start) {
+    var i = start + 1;
+    while (i < line.length && isWord(line[i])) {
+      i += 1;
+    }
+    return i;
   }
 
   function readString(line, start) {
@@ -123,18 +119,26 @@
           continue;
         }
 
-        if (isWordStart(ch)) {
-          var wordEnd = i + 1;
-          while (wordEnd < line.length && isWord(line[wordEnd])) {
-            wordEnd += 1;
-          }
+        // #check, #eval, #print, ...
+        if (ch === "#" && i + 1 < line.length && isWordStart(line[i + 1])) {
+          var commandEnd = readWord(line, i + 1);
+          out += span("lean-keyword", line.slice(i, commandEnd));
+          i = commandEnd;
+          continue;
+        }
 
+        if (isWordStart(ch)) {
+          var wordEnd = readWord(line, i);
           var word = line.slice(i, wordEnd);
+          // `h.symm`, `Nat.le`: a name after a dot is a projection or
+          // namespace member, never a keyword or tactic.
+          var afterDot = i > 0 && line[i - 1] === ".";
+
           if (word === "sorry" || word === "admit") {
             out += span("lean-sorry", word);
-          } else if (keywords[word]) {
+          } else if (!afterDot && keywords[word]) {
             out += span("lean-keyword", word);
-          } else if (tactics[word]) {
+          } else if (!afterDot && tactics[word]) {
             out += span("lean-tactic", word);
           } else if (/^[A-Z]/.test(word)) {
             out += span("lean-type", word);

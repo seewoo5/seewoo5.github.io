@@ -3,7 +3,7 @@ layout: posts
 title:  "Understanding Astra's result on high-dimensional sphere packing — Part 2: Formalization"
 date:   2026-09-12
 categories: jekyll update
-tags: math ai
+tags: math ai formalization
 ---
 
 In the [previous post]({% post_url 2026-09-12-openai-sphere-packing-digest-part1 %}), I explained the main ideas behind Astra's proof of the optimal Cohn-Elkies LP exponent and the sharp sign-uncertainty constant.
@@ -34,11 +34,16 @@ In short, the file proves the result on the exponent of the Cohn-Elkies LP bound
 However, several intermediate results and half of Theorem 1.2 are missing.
 More precisely:
 
-- Section 2.1 of the report discusses radial and $L^1$-to-Schwartz reductions. The formalization prove radial reduction for the Schwartz LP problem (`FullAdmissible.radialization` and `fullLinearProgram_eq_radial`), but it does not prove the $L^1$-to-Schwartz reduction.
-- The definition of $\mathsf{A}_+(d)$ is missing. The formalization considers anti-self-Fourier functions and Fourier pairs, but not self-Fourier functions.
+- Section 2.1 of the report discusses radial and $L^1$-to-Schwartz reductions. The formalization prove radial reduction for the Schwartz LP problem, but it does not prove the $L^1$-to-Schwartz reduction.
+- The definition of $\mathsf{A}_+(d)$ is missing. The formalization considers anti-self-Fourier functions and Fourier pairs, but not self-Fourier functions. In particular, it only formalizes half of Theorem 1.2.
 - Proposition A.1 of the appendix is not formalized (which is obvious, considering that $\mathsf{A}_+(d)$ is not formalized).
 
 The absence of these results makes sense if you imagine that Astra's main goal is to prove the optimal Cohn-Elkies exponent. The sign uncertainty principle naturally arises in this argument, but $\mathsf{A}_+(d)$ is not needed.
+
+Also, some of the *proofs* are slightly modified.
+
+- The original proof of Lemma 3.2 (bounding the normalized Mellin transform) uses the Poisson inequality for upper half plane for subharmonic functions, while the formalization uses Phragmén-Lindelöf principle on a strip instead.
+- In the formalization of the proof of upper bound, the parameters used in the construction of auxiliary function $w(a)$ ($a_0, A, b(a)$) are chosen differently from the report.
 
 Now, let's read the Lean code!
 
@@ -411,7 +416,7 @@ theorem lowerStripCappedGammaOuter_re_dimension
           (s - ((d : ℝ) / 2) * T) := by ...
 ```
 
-The informal proof in the report applies the upper-half-plane Poisson principle to the subharmonic function $\log\lvert Z\circ\Phi^{-1}\rvert$.
+The informal proof in the report applies the Poisson inequality for upper half plane to the subharmonic function $\log\lvert Z\circ\Phi^{-1}\rvert$.
 The formalized proof is slightly different: it uses a horizontal-strip version of the Phragmén-Lindelöf principle, which is a maximum-principle argument for holomorphic functions on a horizontal strip, although the underlying argument is essentially the same.
 
 > **Phragmén–Lindelöf principle for a horizontal strip.** Let $f:\mathbb C\to\mathbb C$ be holomorphic on $\lbrace z:a<\Im z<b\rbrace$, and suppose its modulus has a continuous extension $N$ to the closed strip. Suppose that $\lvert f(z)\rvert=O(\exp(B\exp(c\lvert \Re z\rvert)))$ for some constants $B$ and $c$ with $c<\pi/(b-a)$, uniformly in the strip as $\lvert \Re z\rvert\to\infty$. If $N\le C$ on the two boundary lines for some $C>0$, then $N\le C$ throughout the strip.
@@ -2132,6 +2137,49 @@ The main differences are:
   ```
 
   The additional assertion in Proposition A.1 that $T_d$ preserves Schwartz functions is not included in these lemmas; it is not needed for the $L^1$ sign-uncertainty comparison.
+
+- (Updated 2026.09.21) Added a proof of Lemma 3.2 that uses the Poisson inequality. In particular, we defined subharmonic functions and proved the Poisson inequality using Jensen's identity (inequality). 
+
+  A function is subharmonic on $U$ if it is upper semicontinuous, does not take the value $+\infty$, and satisfies the sub-mean-value inequality.
+
+  ```lean
+  structure SubharmonicOn (u : ℂ → EReal) (U : Set ℂ) : Prop where
+    /-- `u` is upper semicontinuous on `U`. -/
+    upperSemicontinuousOn : UpperSemicontinuousOn u U
+    /-- `u` does not take the value `⊤ = +∞` on `U`. -/
+    ne_top : ∀ z ∈ U, u z ≠ ⊤
+    /-- The sub-mean-value inequality: for every `z ∈ U`, all sufficiently small radii `r > 0` and
+    every level `a : ℝ`, `u z` is at most the circle average of the truncation `(max u a).toReal`
+    over the circle of radius `r` around `z`. -/
+    le_circleAverage : ∀ z ∈ U, ∀ᶠ r in 𝓝[>] (0 : ℝ), ∀ a : ℝ,
+      u z ≤ ((circleAverage (fun w ↦ EReal.truncateToReal a (u w)) z r : ℝ) : EReal)
+  ```
+
+  When $f$ is a holomorphic function, $\log\lvert f\rvert$ is subharmonic. Also, subharmonic functions satisfy the maximum principle.
+
+  ```lean
+  theorem AnalyticOnNhd.subharmonicOn_log_enorm {f : ℂ → ℂ} (hU : IsOpen U)
+      (hf : AnalyticOnNhd ℂ f U) : SubharmonicOn (fun z ↦ ENNReal.log ‖f z‖ₑ) U := by ...
+
+  theorem le_zero_of_limsup_frontier {Ω : Set ℂ} (hΩ : IsOpen Ω) (hb : Bornology.IsBounded Ω)
+      (hc : IsPreconnected Ω) (hu : SubharmonicOn u Ω)
+      (hfr : ∀ ζ ∈ frontier Ω, limsup u (𝓝[Ω] ζ) ≤ 0) : ∀ z ∈ Ω, u z ≤ 0 := by ...
+  ```
+
+  The following `le_poissonIntegralHalfPlane` theorem proves the Poisson inequality.
+  ```lean
+  noncomputable def poissonKernelHalfPlane (z : ℂ) (x : ℝ) : ℝ :=
+    π⁻¹ * z.im / ((x - z.re) ^ 2 + z.im ^ 2)
+
+  noncomputable def poissonIntegralHalfPlane (b : ℝ → ℝ) (z : ℂ) : ℝ :=
+    ∫ x, poissonKernelHalfPlane z x * b x
+
+  theorem le_poissonIntegralHalfPlane {b : ℝ → ℝ} {E : Finset ℝ} {M : ℝ}
+      (hu : SubharmonicOn u {z | 0 < z.im}) (hM : ∀ z : ℂ, 0 < z.im → u z ≤ M)
+      (hb : Integrable fun x ↦ b x / (1 + x ^ 2)) (hbc : ∀ x : ℝ, x ∉ E → ContinuousAt b x)
+      (hbdry : ∀ x : ℝ, x ∉ E → limsup u (𝓝[{z | 0 < z.im}] (x : ℂ)) ≤ (b x : EReal)) :
+      ∀ z : ℂ, 0 < z.im → u z ≤ (poissonIntegralHalfPlane b z : EReal) := by ...
+  ```
 
 - The `CohnElkiesForMathlib` directory contains parts of the formalization that might be upstreamed to mathlib. Since these were all chosen by Claude, we cannot guarantee that they are indeed upstreamable. But after checking, I found that most of them are indeed useful. They include:
 
