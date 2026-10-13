@@ -25,6 +25,8 @@ title: Teaching
 
 #### Miscellaneous
 
+* [Digesting OpenAI's result on Cohn-Elkies bound and the sign uncertainty principle](astra-digestion.pdf)
+
 * [Lecture on Mathematics, AI, and Formalization (For MAT280 at UC Davis / Talk at UCI / Talk at UC Berkeley Student NT seminar / Talk at Korea University)](ai-math-formalization.pdf)
 
 * [Lecture on Machine Learning and Number Theory (For Math 254A, 2025 Fall)](Math254A_MLNT.pdf)
