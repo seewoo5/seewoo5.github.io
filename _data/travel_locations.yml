@@ -8,6 +8,14 @@ locations:
     popup_content: |
       [2027 Fields Medal Symposium: Maryna Viazovska](https://www.fields.utoronto.ca/activities/26-27/Fields-Medal-Symposium), April 12-16, 2027
 
+  - city: "Lausanne, Switzerland"
+    lat: 46.5196487
+    lng: 6.5687881
+    date_from: "2026-11-23"
+    date_to: "2026-11-27"
+    popup_content: |
+      [EPFL Packathon](https://seewoo5.github.io/EPFL-Packathon-2026/), November 23-27, 2026
+
   - city: "Paris, France"
     lat: 48.8441807
     lng: 2.3410468
