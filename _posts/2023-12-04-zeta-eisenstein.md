@@ -1,12 +1,12 @@
 ---
 layout: posts
-title:  "New(?) proof of Bassel problem"
+title:  "New(?) proof of Basel problem"
 date:   2023-12-04
 categories: jekyll update
 tags: math
 ---
 
-In this post, we give a new short proof of the Bassel problem $\zeta(2) = \pi^2 / 6$ using Eisenstein series.
+In this post, we give a new short proof of the Basel problem $\zeta(2) = \pi^2 / 6$ using Eisenstein series.
 
 For even $k \geq 2$, the Eisenstein series of weight $k$ and level $1$ is defined as
 
