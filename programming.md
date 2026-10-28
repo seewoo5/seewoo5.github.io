@@ -28,9 +28,11 @@ I'm interested in programming (Python, Lean, SageMath, etc) and contributing to 
 - [Positive quasimodular forms](https://github.com/seewoo5/posqmf)
     - Sage implementation related to my research on quasimodular forms
 - [Machine learning number fields](https://github.com/seewoo5/ML-NF)
-    - Sage implementation of the paper, "Machines Learn Number Fields, But How? The Case of Galois Groups" with K. Lee.
+    - Sage implementation of the paper, [*Machines Learn Number Fields, But How? The Case of Galois Groups*](https://link.springer.com/article/10.1007/s40687-026-00620-3)
 - [Function field](https://github.com/seewoo5/sage-function-field)
     - Sage implementation related to my research on function fields
+- [Machine learning Weierstrass coefficients](https://github.com/seewoo5/ML-Weierstrass)
+    - Sage implementation of the paper, [*Dicision trees, Frobenius traces, and Weierstrass coefficients of elliptic curves*](https://arxiv.org/abs/2607.24251)
 - [Bhargava cube](https://github.com/seewoo5/sage-bhargava-cube)
 - [Quantum modular form](https://github.com/seewoo5/sage-quantum-modform)
 - [Number theory tutorial](https://gist.github.com/seewoo5/400dbb69b8a4a7831ea6f035d35ad08d)
