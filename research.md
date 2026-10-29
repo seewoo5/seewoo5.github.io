@@ -25,6 +25,7 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 - (with S. Hariharan, C. Birkbeck, G. Ma, B. Mehta, A. Poiroux, M. Viazovska) **Progress in Formalizing Sphere Packing in Dimension 8**, To appear in Proceedings of the International Congress on Mathematical Software 2026 [arXiv](http://arxiv.org/abs/2604.23468) [github](https://github.com/thefundamentaltheor3m/Sphere-Packing-Lean)
 - **Shanks bias in function fields**, To appear in J. Théor. Nombres Bordeaux [arXiv](https://arxiv.org/abs/2509.16142) [github](https://github.com/seewoo5/sage-function-field)
 - **Algebraic proof of modular form inequalities for optimal sphere packings**, To appear in Algebra Number Theory [arXiv](https://arxiv.org/abs/2406.14659) [github](https://github.com/seewoo5/posqmf) [blog](https://seewoo5.github.io/jekyll/update/2024/06/23/modular-form-ineq.html) [slide](https://seewoo5.github.io/assets/presentations/spherepacking.pdf)
+- (with D. Choi, Y. Lee) **Numerical experiments on uniformity of the partition function modulo small primes**, Res. Number Theory 12, 202 (2026) [paper](https://link.springer.com/article/10.1007/s40993-026-00791-6) [github](https://github.com/youngminlee03-creator/partition-block-uniformity)
 - (with G. Bates, R. Jesubalan, J. Lu, H. Shim) **Powerful Fibonacci polynomials over finite fields**, Finite Fields Appl. 117 (2027) [paper](https://www.sciencedirect.com/science/article/pii/S1071579726000973) [github](https://github.com/seewoo5/sage-function-field)
 - (with D. Angdinata, E. Chen, K. Ono, J. Zhang) **ABC implies that Ramanujan's tau function misses almost all primes**, Indag. Math. (2026) [paper](https://www.sciencedirect.com/science/article/pii/S001935772600039X) [github](https://github.com/AxiomMath/ramanujan-tau-misses-primes)
 - (with E. Chen, K. Lau, K. Ono, J. Zhang) **Almost all primes are partially regular**, Arch. Math. (2026), [paper](https://link.springer.com/article/10.1007/s00013-026-02261-y) [github](https://github.com/AxiomMath/partial-regularity)
@@ -59,7 +60,6 @@ I mostly do computational number theory, using CAS (Sage, MAGMA, ...), proof ass
 - On extremal quasimodular forms of higher levels 
 - Number of divisors of polynomials over function fields
 - (with H. Hong) TBD
-- (with D. Choi, Y. Lee) TBD
 
 **Miscellaneous**
 
