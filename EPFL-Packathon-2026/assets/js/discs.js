@@ -27,6 +27,7 @@
   var typed = [];           // the last keys pressed
 
   var canvas = null, ctx = null, label = null;
+  var spot = null;          // over the red disc once it is still, with the egg
   var W = 0, H = 0;         // the window, in CSS pixels
   var R = 0;                // radius of a disc
   var G = 0;                // gravity, in pixels per second squared
@@ -82,7 +83,8 @@
     running = false;
     canvas.parentNode.removeChild(canvas);
     if (label) label.parentNode.removeChild(label);
-    canvas = ctx = label = null;
+    if (spot) spot.parentNode.removeChild(spot);
+    canvas = ctx = label = spot = null;
     x = []; y = []; px = []; py = []; red = [];
     n = toPour = 0;
     floor = true;
@@ -306,6 +308,7 @@
       py[i] = y[i];
     }
     draw();
+    placeSpot();
 
     var value = density();
     if (value === null) return;
@@ -313,20 +316,37 @@
       label = document.createElement("p");
       label.className = "discs__density";
       label.setAttribute("role", "status");
-      label.appendChild(document.createTextNode(""));
-      var egg = document.createElement("span");
-      egg.className = "egg";
-      egg.setAttribute("data-egg", "4");
-      egg.setAttribute("aria-hidden", "true");
-      egg.textContent = "🥚";
-      label.appendChild(egg);
       document.body.appendChild(label);
     }
     var top = H;
     for (i = 0; i < n; i++) top = Math.min(top, y[i] - R);
-    label.firstChild.nodeValue = "density " + value.toFixed(3) + " ≤ π/√12 ≈ 0.907 ";
+    label.textContent = "density " + value.toFixed(3) + " ≤ π/√12 ≈ 0.907";
     label.style.bottom = Math.round(H - top + 10) + "px";
     label.hidden = false;
+  }
+
+  // The canvas lets the pointer through, so the red disc gets a round element
+  // of its own, on top of it. The egg in it shows while the pointer is on the
+  // disc (site.css), and assets/js/egg.js shows its code.
+  function placeSpot() {
+    var i = red.indexOf(true);
+    if (i < 0) return;
+    if (!spot) {
+      spot = document.createElement("div");
+      spot.className = "discs__red";
+      spot.setAttribute("aria-hidden", "true");
+      var egg = document.createElement("span");
+      egg.className = "egg";
+      egg.setAttribute("data-egg", "4");
+      egg.textContent = "🥚";
+      spot.appendChild(egg);
+      document.body.appendChild(spot);
+    }
+    spot.style.left = x[i] - R + "px";
+    spot.style.top = y[i] - R + "px";
+    spot.style.width = spot.style.height = 2 * R + "px";
+    spot.style.fontSize = 1.2 * R + "px";
+    spot.hidden = false;
   }
 
   // Drawing and timing ----------------------------------------------------
@@ -348,6 +368,7 @@
   function wake() {
     if (running) return;
     running = true;
+    if (spot) spot.hidden = true;
     last = idle = 0;
     before = null;
     requestAnimationFrame(frame);
@@ -435,7 +456,9 @@
   });
 
   // A click on a disc lets them all fall, instead of reaching the page under it.
+  // Not the red one: a tap there is how to get to its egg without a mouse.
   document.addEventListener("click", function (event) {
+    if (spot && !spot.hidden && spot.contains(event.target)) return;
     if (canvas && floor && hit(event.clientX, event.clientY)) {
       event.preventDefault();
       event.stopPropagation();

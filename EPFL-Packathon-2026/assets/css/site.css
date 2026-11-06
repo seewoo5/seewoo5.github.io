@@ -1464,8 +1464,28 @@ main {
   pointer-events: none;
 }
 
-.discs__density .egg {
-  pointer-events: auto;
+/* Over the red disc, the same size and just as round to the pointer. The
+   position and size are set in discs.js. */
+.discs__red {
+  position: fixed;
+  z-index: 1400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.discs__red[hidden] {
+  display: none;
+}
+
+/* Not hidden, so that a pointer that lands right on it gets the code too. */
+.discs__red .egg {
+  opacity: 0;
+}
+
+.discs__red:hover .egg {
+  opacity: 1;
 }
 
 /* Words (assets/js/words.js) -------------------------------------------- */
@@ -2205,7 +2225,8 @@ main {
   .footer,
   .infoview,
   .discs,
-  .discs__density {
+  .discs__density,
+  .discs__red {
     display: none;
   }
 
