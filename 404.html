@@ -3,6 +3,19 @@ permalink: /404.html
 layout: default
 ---
 
+<!-- The Packathon site is a folder of this site, and GitHub only uses this
+     root 404 page: send wrong addresses under it to its own 404 page. -->
+<script>
+  (function () {
+    var home = "/EPFL-Packathon-2026/";
+    var path = location.pathname;
+    if (path.toLowerCase().indexOf(home.toLowerCase()) === 0 && path !== home + "404.html") {
+      document.documentElement.style.visibility = "hidden";
+      location.replace(home + "404.html");
+    }
+  })();
+</script>
+
 <style type="text/css" media="screen">
   .container {
     margin: 10px auto;

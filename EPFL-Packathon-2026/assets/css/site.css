@@ -1,0 +1,2223 @@
+/* Packathon 2026
+ *
+ * Neo Swiss: one grotesk (Inter) for reading and display, one monospace
+ * (Fragment Mono) for labels and data, a 12-column grid that everything
+ * hangs from, rules for structure, and red only as a signal: the current
+ * page, the session in progress, the thing to click.
+ *
+ * The fonts are loaded in _layouts/default.html.
+ */
+
+:root {
+  --ink: #15171a;
+  --ink-2: #4a4f56;
+  --ink-3: #6b7078;
+  --hair: #d6d8db;
+  --tint: #f4f5f6;
+  --paper: #fff;
+  --red: #d52b1e;
+
+  --sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: "Fragment Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Type scale: a few sizes, far apart. */
+  --fs-xs: 0.75rem;                                    /* mono labels */
+  --fs-s: 0.875rem;                                    /* small print */
+  --fs-m: 1.0625rem;                                   /* body */
+  --fs-l: clamp(1.25rem, 0.95rem + 0.9vw, 1.625rem);  /* lead, names */
+  --fs-xl: clamp(1.625rem, 1.1rem + 1.8vw, 2.5rem);   /* subtitle */
+  --fs-xxl: clamp(3rem, 1.2rem + 7.2vw, 8rem);        /* page titles */
+  --fs-hero: clamp(3.5rem, 0.6rem + 10.2vw, 10.5rem); /* home title */
+
+  /* Grid: 12 columns. Labels take the first three, content starts at the
+     fourth, so most pages share one vertical line at column 4. */
+  --columns: repeat(12, minmax(0, 1fr));
+  --gap: clamp(0.75rem, 1.6vw, 1.5rem);
+  --margin: clamp(1rem, 3.2vw, 3rem);
+  --max: 96rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--fs-m);
+  line-height: 1.55;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--red);
+}
+
+:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  letter-spacing: 0;
+}
+
+sub,
+sup {
+  font-size: 0.7em;
+  line-height: 0;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.wrap {
+  max-width: calc(var(--max) + 2 * var(--margin));
+  margin-inline: auto;
+  padding-inline: var(--margin);
+}
+
+.skip {
+  position: absolute;
+  top: -4rem;
+  left: var(--margin);
+  z-index: 2000;
+  padding: 0.5rem 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.skip:focus {
+  top: 0.5rem;
+}
+
+/* Labels: the monospace voice for everything that names or measures. */
+
+.block__label,
+.facts dt,
+.masthead__meta,
+.topics thead th,
+.topics tbody th::before,
+.day__weekday,
+.place__role,
+.footer__label,
+.slot__time,
+.slot__abstract summary,
+.hero__figure figcaption,
+.footer__updated,
+.countdown__unit,
+.pin__year,
+.history__when,
+.discs__density,
+.numbers__label,
+.egg-code {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+.block__label,
+.facts dt,
+.masthead__meta,
+.topics thead th,
+.day__weekday,
+.place__role,
+.footer__label,
+.slot__abstract summary,
+.countdown__unit,
+.history__when,
+.numbers__label {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Masthead -------------------------------------------------------------- */
+
+.masthead {
+  border-bottom: 1px solid var(--ink);
+}
+
+.masthead__inner {
+  display: grid;
+  grid-template-columns: var(--columns);
+  column-gap: var(--gap);
+  align-items: center;
+}
+
+.wordmark {
+  display: inline-flex;
+  grid-column: 1 / span 3;
+  justify-self: start;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.wordmark__mark {
+  flex: none;
+  width: 1.375rem;
+  height: 1.375rem;
+}
+
+.nav {
+  grid-column: 4 / span 6;
+}
+
+.nav__list {
+  display: flex;
+  gap: 0 clamp(1rem, 2vw, 1.75rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__list a {
+  display: block;
+  position: relative;
+  padding: 1.4rem 0 1.3rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.nav__list a[aria-current="page"] {
+  color: var(--red);
+}
+
+/* The current page sits on the rule under the masthead. */
+.nav__list a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 3px;
+  background: var(--red);
+}
+
+.masthead__meta {
+  grid-column: 10 / -1;
+  justify-self: end;
+  margin: 0;
+  color: var(--ink-3);
+  text-align: right;
+}
+
+/* Page furniture -------------------------------------------------------- */
+
+main {
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+}
+
+.page-head {
+  padding: clamp(2.5rem, 7vw, 6rem) 0 clamp(2rem, 4vw, 3.5rem);
+}
+
+.page-head h1 {
+  margin: 0 0 0 -0.04em;
+  font-size: var(--fs-xxl);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.page-head p {
+  max-width: 34em;
+  margin: 1.5rem 0 0;
+  color: var(--ink-2);
+  font-size: var(--fs-l);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+/* Rows that hang from a rule (blocks, people, facts, topics, slots) align
+   their columns on top and trim each column's first line to the cap
+   height, so the text in every column starts the row's top padding below
+   the rule, whatever its size. */
+
+/* A section: a label in the first three columns, content from column 4. */
+.block {
+  display: grid;
+  grid-template-columns: var(--columns);
+  column-gap: var(--gap);
+  row-gap: 0.75rem;
+  align-items: start;
+  padding: 1.25rem 0 clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--ink);
+}
+
+.block > * {
+  grid-column: 4 / -1;
+  min-width: 0;
+}
+
+/* The label and the first piece of content: the first row. */
+.block > :nth-child(-n + 2) {
+  text-box: trim-start cap alphabetic;
+}
+
+.block > .block__label {
+  grid-column: 1 / span 3;
+  margin: 0;
+}
+
+/* A block without a label: let the content span the full width. */
+.block > :only-child {
+  grid-column: 1 / -1;
+}
+
+.prose {
+  max-width: 40rem;
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose p {
+  margin: 0 0 1em;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prose--lead {
+  max-width: 46rem;
+  font-size: var(--fs-l);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.empty,
+.aside {
+  color: var(--ink-2);
+}
+
+.aside {
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 0.95rem 1.1rem 0.95rem 1.25rem;
+  background: var(--red);
+  color: var(--paper);
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.button::after {
+  content: "\2192";
+  content: "\2192" / "";
+}
+
+.button:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Home ------------------------------------------------------------------ */
+
+.hero {
+  display: grid;
+  grid-template-columns: var(--columns);
+  column-gap: var(--gap);
+  row-gap: 2.5rem;
+  align-items: start;
+  padding: clamp(2rem, 5vw, 4rem) 0 clamp(3rem, 7vw, 6rem);
+}
+
+.hero__text {
+  grid-column: 1 / span 7;
+}
+
+/* At this size the side bearing of E and P is about 10px, so pull the
+   title left to line its stems up with the margin. */
+.hero__title {
+  max-width: 6em;
+  margin: 0 0 0 -0.05em;
+  font-size: var(--fs-hero);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+}
+
+.hero__subtitle {
+  margin: 1.5rem 0 0;
+  font-size: var(--fs-xl);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+/* The main theorem in Lean. A long line wraps with its continuation
+   indented by 4ch, as in Mathlib, so it reads as Lean on a phone too. */
+.code {
+  margin: clamp(1.75rem, 3vw, 2.5rem) 0 0;
+  padding: 0.85rem 1.1rem 0.95rem;
+  background: var(--tint);
+  font-family: var(--mono);
+  font-size: clamp(0.8125rem, 0.75rem + 0.15vw, 0.875rem);
+  line-height: 1.6;
+  letter-spacing: 0;
+  white-space: pre-wrap;
+  text-indent: 4ch hanging each-line;
+}
+
+.code code {
+  font-size: inherit;
+}
+
+.code__kw {
+  color: var(--ink-3);
+}
+
+/* The gap to fill: red, with the squiggle an editor puts under it. */
+.code__sorry {
+  color: var(--red);
+  text-decoration: underline wavy;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+
+/* Key facts, set like a specification sheet on the same columns as the
+   page: 7 columns, labels in the first two. */
+.facts {
+  margin: clamp(1.75rem, 3vw, 2.5rem) 0 2rem;
+  border-bottom: 1px solid var(--hair);
+}
+
+.facts > div {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  column-gap: var(--gap);
+  align-items: start;
+  padding: 1rem 0 0.8rem;
+  border-top: 1px solid var(--hair);
+}
+
+.facts dt,
+.facts dd {
+  text-box: trim-start cap alphabetic;
+}
+
+.facts > div:first-child {
+  border-top-color: var(--ink);
+}
+
+.facts dt {
+  grid-column: 1 / span 2;
+  color: var(--ink-3);
+}
+
+.facts dd {
+  grid-column: 3 / -1;
+  margin: 0;
+  font-size: clamp(1.0625rem, 0.9rem + 0.45vw, 1.25rem);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+.hero__figure {
+  grid-column: 8 / -1;
+  margin: 0;
+}
+
+.hero__figure img {
+  width: 100%;
+}
+
+.hero__figure figcaption {
+  margin-top: 1rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--hair);
+  color: var(--ink-3);
+}
+
+/* The draggable version of the figure, added by assets/js/e8.js. */
+.e8 {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  cursor: grab;
+  touch-action: pan-y pinch-zoom;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.e8.is-dragging {
+  cursor: grabbing;
+}
+
+/* The line under the caption once the picture has been turned. */
+.e8-again {
+  margin: 0.15rem 0 0;
+}
+
+.e8-reset {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink-2);
+  font: inherit;
+  letter-spacing: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--hair);
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.e8-reset:hover {
+  color: var(--red);
+  text-decoration-color: currentColor;
+}
+
+/* People: participants, and the organizers on the home page ------------ */
+
+.people {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ink);
+  list-style: none;
+}
+
+.person {
+  display: grid;
+  grid-template-columns: var(--columns);
+  column-gap: var(--gap);
+  row-gap: 0.25rem;
+  align-items: start;
+  padding: 1.125rem 0 0.8rem;
+  border-bottom: 1px solid var(--hair);
+}
+
+.person > * {
+  text-box: trim-start cap alphabetic;
+}
+
+.person__name,
+.person__affiliation {
+  font-size: var(--fs-l);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.person__name {
+  grid-column: 1 / span 3;
+  font-weight: 500;
+}
+
+.person__affiliation {
+  grid-column: 4 / span 4;
+  color: var(--ink-3);
+}
+
+.person__talks {
+  grid-column: 8 / -1;
+}
+
+.person__talks:empty {
+  display: none;
+}
+
+/* Inside a block (the organizers on the home page) the list starts at
+   column 4, under the block's own rule. */
+.block .people {
+  border-top: 0;
+}
+
+.block .person {
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+.block .person:first-child {
+  padding-top: 0;
+}
+
+.block .person__affiliation {
+  grid-column: 4 / -1;
+}
+
+.person__name a,
+.talk {
+  text-decoration-color: var(--hair);
+}
+
+.person__name a:hover,
+.talk:hover {
+  text-decoration-color: currentColor;
+}
+
+.talk {
+  display: block;
+}
+
+.talk + .talk {
+  margin-top: 0.6rem;
+}
+
+.talk__when {
+  display: block;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.01em;
+}
+
+/* Groups ---------------------------------------------------------------- */
+
+.topics {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.topics th,
+.topics td {
+  padding: 1.25rem 0 0.95rem;
+  border-bottom: 1px solid var(--hair);
+  font-weight: 400;
+  text-align: left;
+  vertical-align: top;
+  text-box: trim-start cap alphabetic;
+}
+
+/* Column 4 of the grid starts a quarter of a gutter after 25% of the width
+   (browsers ignore calc() with percentages in table cell widths), so the
+   descriptions start on the same line as the text on the other pages. */
+.topics th:first-child {
+  width: 25%;
+  padding-right: var(--gap);
+}
+
+.topics th + th,
+.topics td {
+  padding-left: calc(var(--gap) / 4);
+}
+
+.topics thead th {
+  padding-top: 0;
+  padding-bottom: 0.6rem;
+  border-bottom-color: var(--ink);
+  color: var(--ink-3);
+}
+
+.topics tbody {
+  counter-reset: topic;
+}
+
+.topics tbody tr {
+  counter-increment: topic;
+}
+
+/* Numbered topics: the number hangs in front, on the topic's baseline. */
+.topics tbody th {
+  padding-left: 2.25rem;
+  font-size: var(--fs-l);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-indent: -2.25rem;
+}
+
+.topics tbody th::before {
+  content: counter(topic, decimal-leading-zero);
+  content: counter(topic, decimal-leading-zero) / "";
+  display: inline-block;
+  width: 2.25rem;
+  color: var(--ink-3);
+  text-indent: 0;
+}
+
+.topics td {
+  color: var(--ink-2);
+}
+
+/* Schedule -------------------------------------------------------------- */
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(var(--days, 4), minmax(0, 1fr));
+  gap: 3rem var(--gap);
+}
+
+.day__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.75rem 0 0.9rem;
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  line-height: 1;
+}
+
+.day__weekday {
+  color: var(--ink-3);
+}
+
+.day__date {
+  font-size: clamp(1.5rem, 1.1rem + 1vw, 2rem);
+  letter-spacing: -0.035em;
+}
+
+.day.is-today .day__head {
+  border-top-color: var(--red);
+}
+
+.day.is-today .day__weekday {
+  color: var(--red);
+}
+
+.day.is-today .day__weekday::after {
+  content: " \00b7  Today";
+}
+
+.slots {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slot {
+  display: grid;
+  position: relative;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+  gap: 0.5rem;
+  align-items: start;
+  padding: 1rem 0 0.8rem;
+  border-bottom: 1px solid var(--hair);
+  scroll-margin-top: 1.5rem;
+}
+
+.slot > * {
+  text-box: trim-start cap alphabetic;
+}
+
+.slot__time {
+  margin: 0;
+}
+
+.slot__end {
+  display: block;
+  color: var(--ink-3);
+}
+
+.slot__body > * {
+  margin: 0;
+}
+
+.slot__title {
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.slot__speaker {
+  margin-top: 0.2rem !important;
+  line-height: 1.3;
+}
+
+.slot__speaker a {
+  text-decoration-color: var(--hair);
+}
+
+.slot__affiliation,
+.slot__where {
+  display: block;
+  color: var(--ink-3);
+  font-size: var(--fs-s);
+}
+
+.slot__where {
+  margin-top: 0.25rem !important;
+}
+
+.slot__abstract {
+  margin-top: 0.45rem !important;
+}
+
+.slot__abstract summary {
+  display: inline-block;
+  color: var(--ink-2);
+  text-decoration: underline;
+  text-decoration-color: var(--hair);
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+  list-style: none;
+}
+
+.slot__abstract summary::-webkit-details-marker {
+  display: none;
+}
+
+.slot__abstract summary::after {
+  content: " +";
+}
+
+.slot__abstract[open] summary::after {
+  content: " \2212";
+}
+
+.slot__abstract summary:hover {
+  color: var(--red);
+}
+
+.slot__abstract p {
+  margin: 0.4rem 0 0;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.slot--break {
+  padding: 0.75rem 0 0.5rem;
+}
+
+.slot--break .slot__title {
+  color: var(--ink-3);
+  font-size: 0.9375rem;
+  font-weight: 400;
+}
+
+.slot--break .slot__time {
+  color: var(--ink-3);
+}
+
+.slot--work {
+  background-image: repeating-linear-gradient(-45deg, transparent 0 6px, rgb(21 23 26 / 0.075) 6px 7px);
+}
+
+.slot--work .slot__title {
+  font-weight: 400;
+}
+
+.slot--social .slot__title {
+  color: var(--red);
+}
+
+.slot.is-now::before,
+.slot:target::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  left: -0.6rem;
+  width: 3px;
+  background: var(--red);
+}
+
+.slot.is-now .slot__time time {
+  color: var(--red);
+}
+
+/* To be announced (_layouts/tba.html) ----------------------------------- */
+
+/* The red dot marks the page as unfinished, like the pins on the Venue page.
+   It sits in the line (not in a flex row), so that the label can be trimmed
+   like the others; the vertical-align centres it on the capitals. */
+.tba > .block__label::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  background: var(--red);
+  vertical-align: calc(0.35em - 5px);
+}
+
+.tba__title {
+  margin: 0;
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.tba .prose {
+  color: var(--ink-2);
+}
+
+/* Venue ----------------------------------------------------------------- */
+
+.map {
+  height: clamp(20rem, 42vw, 34rem);
+  border: 1px solid var(--ink);
+  background: #eceeef;
+  isolation: isolate;
+}
+
+.map .leaflet-tile-pane {
+  filter: grayscale(1) contrast(1.04) brightness(1.03);
+}
+
+.map.leaflet-container {
+  font-family: var(--sans);
+}
+
+.map .leaflet-bar {
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.map .leaflet-bar a {
+  border-radius: 0 !important;
+  color: var(--ink);
+}
+
+.map .leaflet-control-attribution {
+  font-size: 11px;
+}
+
+.pin__dot {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--paper);
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 1px var(--ink);
+}
+
+.pin--accent .pin__dot {
+  background: var(--red);
+}
+
+.pin__label {
+  position: absolute;
+  top: -13px;
+  left: 15px;
+  padding: 3px 7px 2px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font: 500 13px/1.4 var(--sans);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.pin--left .pin__label {
+  right: 15px;
+  left: auto;
+}
+
+/* History pins (assets/js/venue-map.js, _data/history.yml): smaller dots,
+   and the year before the name. With .map--history, the venue's pin gives
+   way to the latest entry. */
+
+.pin__year {
+  color: var(--ink-3);
+}
+
+.pin--now .pin__year {
+  color: var(--red);
+}
+
+.map--history .pin--place,
+.map:not(.map--history) .pin--now {
+  display: none;
+}
+
+.pin--history .pin__dot {
+  top: -6px;
+  left: -6px;
+  width: 12px;
+  height: 12px;
+}
+
+.pin--history .pin__label {
+  top: -12px;
+  left: 12px;
+}
+
+.pin--history.pin--left .pin__label {
+  right: 12px;
+  left: auto;
+}
+
+/* A label with no room around it shows only on hover or focus. */
+.pin--quiet .pin__label {
+  display: none;
+}
+
+.pin--quiet:hover .pin__label,
+.pin--quiet:focus .pin__label {
+  display: block;
+}
+
+/* Popups, boxed like the labels. The tip is a line down to the pin. */
+.map .leaflet-popup-content-wrapper {
+  padding: 0;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ink);
+}
+
+.map .leaflet-popup-content {
+  margin: 0.65rem 2rem 0.75rem 0.85rem;
+  font-size: var(--fs-s);
+  line-height: 1.45;
+}
+
+/* Leaflet sizes a popup by measuring its text unwrapped; `text-wrap` on
+   paragraphs would wrap it anyway, so let them inherit `white-space`. */
+.map .leaflet-popup-content p {
+  margin: 0;
+  white-space: inherit;
+}
+
+.map .leaflet-popup-tip-container {
+  width: 1px;
+  height: 14px;
+  margin-left: 0;
+  background: var(--ink);
+}
+
+.map .leaflet-popup-tip {
+  display: none;
+}
+
+.map a.leaflet-popup-close-button {
+  top: 0.35rem;
+  right: 0.35rem;
+  color: var(--ink-3);
+  font: 400 1.25rem/24px var(--sans);
+}
+
+.map a.leaflet-popup-close-button:hover,
+.map a.leaflet-popup-close-button:focus {
+  color: var(--red);
+}
+
+.history__when {
+  margin-bottom: 0.35rem !important;
+  color: var(--ink-3);
+}
+
+.places {
+  display: grid;
+  grid-template-columns: var(--columns);
+  gap: 0 var(--gap);
+  margin: clamp(2rem, 4vw, 3rem) 0 clamp(2.5rem, 5vw, 4rem);
+}
+
+.place {
+  grid-column: span 6;
+  padding: 0.85rem 0 1.5rem;
+  border-top: 1px solid var(--ink);
+}
+
+.place > * {
+  margin: 0;
+}
+
+.place__role {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink-3);
+}
+
+.place__pin {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.place--accent .place__pin {
+  background: var(--red);
+}
+
+/* A place that is not on the map yet. */
+.place__pin--none {
+  border: 1px solid var(--ink-3);
+  background: none;
+}
+
+.place__name {
+  margin-top: 0.6rem;
+  font-size: var(--fs-l);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.place__address {
+  margin-top: 0.6rem;
+}
+
+.place__note {
+  max-width: 32rem;
+  margin-top: 0.5rem;
+  color: var(--ink-2);
+}
+
+.place__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin-top: 0.9rem;
+  font-size: 0.9375rem;
+}
+
+/* An arrow on links that leave the site (inline-block, so that it is not
+   underlined with the link). */
+.place__links a::after,
+.footer__links a[href^="http"]::after {
+  content: "\2197";
+  content: "\2197" / "";
+  display: inline-block;
+  margin-left: 0.25em;
+}
+
+/* Application ----------------------------------------------------------- */
+
+/* Six of the nine content columns wide, so its right edge is on the grid. */
+.formlink {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2.75rem 1rem;
+  width: calc((100% - 8 * var(--gap)) / 9 * 6 + 5 * var(--gap));
+  padding: 1rem 1.25rem 1.1rem;
+  background: var(--red);
+  color: var(--paper);
+  text-decoration: none;
+}
+
+.formlink::after {
+  content: "\2197";
+  content: "\2197" / "";
+  grid-row: 1;
+  grid-column: 2;
+  font-size: var(--fs-xl);
+  line-height: 1;
+}
+
+.formlink__title {
+  grid-row: 1;
+  grid-column: 1;
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.formlink__url {
+  grid-column: 1 / -1;
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
+}
+
+.formlink:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.deadline {
+  margin: 0;
+  font-size: var(--fs-l);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+/* Countdown to the deadline (_includes/countdown.html). Each unit takes
+   one column of the page grid; --span is the number of grid columns the
+   countdown sits in. */
+.countdown {
+  --span: 9;
+  margin-top: 1.25rem;
+}
+
+.countdown[hidden],
+.countdown [hidden] {
+  display: none;
+}
+
+.countdown__clock {
+  display: grid;
+  grid-template-columns: repeat(3, calc((100% - (var(--span) - 1) * var(--gap)) / var(--span)));
+  column-gap: var(--gap);
+  margin: 0;
+}
+
+.countdown__part {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.countdown__num {
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.countdown__unit {
+  color: var(--ink-3);
+}
+
+/* The last day. */
+.countdown.is-soon .countdown__num {
+  color: var(--red);
+}
+
+.countdown__closed {
+  margin: 0;
+  color: var(--ink-2);
+}
+
+/* Footer ---------------------------------------------------------------- */
+
+.footer {
+  position: relative;
+  border-top: 1px solid var(--ink);
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: var(--columns);
+  gap: 2rem var(--gap);
+  padding-top: 0.9rem;
+  padding-bottom: 3rem;
+  font-size: var(--fs-s);
+  line-height: 1.5;
+}
+
+.footer__col {
+  grid-column: span 3;
+}
+
+.footer__col > * {
+  margin: 0;
+}
+
+.footer__label {
+  margin-bottom: 0.6rem !important;
+  color: var(--ink-3);
+}
+
+.footer__event {
+  font-weight: 500;
+}
+
+.footer__links {
+  padding: 0;
+  list-style: none;
+}
+
+.footer__updated {
+  margin-top: 0.6rem !important;
+  color: var(--ink-3);
+}
+
+/* The mark from assets/js/ring.js. */
+.ring {
+  position: absolute;
+  right: max(var(--margin), calc((100% - var(--max)) / 2));
+  bottom: calc(100% + 0.75rem);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: calc(100% - 2 * var(--margin));
+  pointer-events: none;
+  transition: opacity 1.6s ease-out;
+}
+
+.ring[hidden] {
+  display: none;
+}
+
+.ring.is-fading {
+  opacity: 0;
+}
+
+.ring__stain {
+  flex: none;
+  width: clamp(3.25rem, 6vw, 5.5rem);
+  height: auto;
+  overflow: visible;
+  fill: none;
+  stroke: #92633e;
+  stroke-linecap: round;
+  transform: rotate(-13deg);
+}
+
+.ring__wash { stroke-width: 6; opacity: 0.1; }
+.ring__edge { stroke-width: 1.7; opacity: 0.24; }
+.ring__trace { stroke-width: 0.8; opacity: 0.16; }
+.ring__smudge { stroke-width: 3; opacity: 0.12; }
+.ring__drop { fill: #92633e; stroke: none; opacity: 0.18; }
+
+.ring__note {
+  margin: 0;
+  color: var(--ink-3);
+  font: 400 var(--fs-xs)/1.5 var(--mono);
+  letter-spacing: 0;
+  pointer-events: auto;
+}
+
+.ring__egg {
+  padding: 0.35rem;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* Infoview (assets/js/infoview.js) -------------------------------------- */
+
+/* A panel at the right edge, in the style of Lean's infoview. On very wide
+   windows the page moves over to make room for it. */
+
+:root {
+  --infoview: 26rem;
+}
+
+.infoview {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1500;
+  width: min(var(--infoview), 100%);
+  overflow-y: auto;
+  padding: 0.9rem 1.25rem 2rem;
+  border-left: 1px solid var(--ink);
+  background: var(--paper);
+  font-family: var(--mono);
+  font-size: var(--fs-s);
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+
+.infoview:focus {
+  outline: none;
+}
+
+/* Type sizes follow the width of the window, not of the page, so the page
+   only makes room where it still has its full sizes: the home page title
+   needs about 114rem with the panel open. On narrower windows the panel
+   covers the right edge of the page. */
+@media (min-width: 114rem) {
+  .has-infoview body {
+    padding-right: var(--infoview);
+  }
+}
+
+.infoview summary {
+  color: var(--ink-3);
+  font-size: var(--fs-xs);
+  cursor: pointer;
+}
+
+/* The first line, the position in the file, keeps clear of the close
+   button. */
+.infoview__file:first-child > summary {
+  margin-right: 2rem;
+}
+
+.infoview__state > summary,
+.infoview__messages > summary {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.infoview details details {
+  margin: 0.6rem 0 0 1rem;
+}
+
+.infoview__messages {
+  margin-top: 1.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--hair);
+}
+
+.infoview__count,
+.infoview__goal,
+.infoview__message {
+  margin: 0.4rem 0 0;
+}
+
+/* Hypotheses in grey under their names, the goal in black. A long line
+   wraps with its continuation indented, as in Lean. */
+.infoview__goal {
+  color: var(--ink-2);
+  font: inherit;
+  white-space: pre-wrap;
+  text-indent: 4ch hanging each-line;
+}
+
+.infoview__name,
+.infoview__target {
+  color: var(--ink);
+}
+
+.infoview__vdash {
+  color: var(--red);
+}
+
+.infoview__comment {
+  color: var(--ink-3);
+}
+
+.infoview__close {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  padding: 0.2rem 0.35rem;
+  border: 0;
+  background: none;
+  color: var(--ink-3);
+  font: 400 1.25rem/1 var(--sans);
+  cursor: pointer;
+}
+
+.infoview__close:hover {
+  color: var(--red);
+}
+
+.infoview__egg {
+  margin: 1.25rem 0 0;
+}
+
+/* Discs (assets/js/discs.js) -------------------------------------------- */
+
+.discs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1400;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Above the discs, at the left margin of the page, boxed like the labels
+   on the map. */
+.discs__density {
+  position: fixed;
+  left: var(--margin);
+  z-index: 1400;
+  margin: 0;
+  padding: 3px 7px 2px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  pointer-events: none;
+}
+
+.discs__density .egg {
+  pointer-events: auto;
+}
+
+/* Words (assets/js/words.js) -------------------------------------------- */
+
+/* A box of its own, since only boxes can be turned. A box does not get the
+   underline of the link around it, so it draws its own. */
+.lean {
+  position: relative;
+  display: inline-block;
+  text-decoration: inherit;
+  transform-origin: 0 100%;
+  transition: transform 0.25s ease-out;
+}
+
+.lean:hover {
+  transform: rotate(8deg);
+}
+
+/* The egg (assets/js/egg.js) that comes out when it leans, right after it,
+   so that the pointer can go on to it. */
+.lean > .egg {
+  position: absolute;
+  bottom: 0.3em;
+  left: 100%;
+  display: none;
+  padding-left: 0.2em;
+}
+
+.lean:hover > .egg {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lean,
+  .ring {
+    transition: none;
+  }
+}
+
+/* The card from assets/js/words.js, boxed like the labels on the map. */
+.numbers {
+  position: absolute;
+  z-index: 1600;
+  padding: 0.6rem 0.8rem 0.65rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.numbers > p {
+  margin: 0;
+}
+
+.numbers__label {
+  margin-bottom: 0.35rem !important;
+  color: var(--ink-3);
+}
+
+.numbers__table {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 1.75rem;
+}
+
+.numbers__note {
+  margin-top: 0.5rem !important;
+  padding-top: 0.45rem;
+  border-top: 1px solid var(--hair);
+  color: var(--ink-3);
+}
+
+/* Basket (assets/js/basket.js) ------------------------------------------ */
+
+/* Numbered lines to type on, ruled like the rows elsewhere. */
+.basket {
+  max-width: 34rem;
+}
+
+/* Pulled up into the padding of the block, so that the number of the
+   first line is level with the label. */
+.basket__lines {
+  margin: -1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: line;
+}
+
+.basket__line {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) 1.5rem;
+  align-items: baseline;
+  border-bottom: 1px solid var(--hair);
+  counter-increment: line;
+}
+
+.basket__line:focus-within {
+  border-bottom-color: var(--ink);
+}
+
+.basket__line::before {
+  content: counter(line, decimal-leading-zero);
+  color: var(--ink-3);
+  font: 400 var(--fs-xs)/1.4 var(--mono);
+  letter-spacing: 0.01em;
+}
+
+.basket__line.is-found::after {
+  content: "\1F95A";
+  content: "\1F95A" / "";
+  text-align: right;
+}
+
+.basket__input {
+  width: 100%;
+  margin: 0;
+  padding: 0.7rem 0 0.6rem;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--ink);
+  font: 400 var(--fs-m)/1.4 var(--mono);
+  letter-spacing: 0;
+}
+
+.basket__input:focus {
+  outline: none;
+}
+
+.basket__done {
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.basket__done p {
+  margin: 0;
+}
+
+.basket__congrats {
+  font-size: var(--fs-l);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.basket__final {
+  margin: 1rem 0 !important;
+  padding: 0.8rem 1rem 0.75rem;
+  border: 1px solid var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.basket__final code {
+  font-size: var(--fs-m);
+}
+
+/* The passage on the 404 page (assets/js/passage.js). */
+.exit-intro[hidden],
+.exit-entry[hidden],
+.exit[hidden],
+.exit [hidden] {
+  display: none;
+}
+
+.exit-sign {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font: 400 var(--fs-s)/1 var(--mono);
+  cursor: pointer;
+}
+
+.exit-sign strong {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.exit-sign:hover {
+  background: #f3d44a;
+  border-color: #f3d44a;
+  color: var(--ink);
+}
+
+.exit {
+  max-width: 46rem;
+  margin: 1.5rem auto 0;
+  scroll-margin-top: 1rem;
+}
+
+.exit:focus {
+  outline: none;
+}
+
+.exit__head,
+.exit__wayfinding {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.exit__head h1 {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.exit__leave,
+.exit__rule,
+.exit__status,
+.exit__tools {
+  font-size: var(--fs-s);
+}
+
+.exit__leave {
+  white-space: nowrap;
+}
+
+.exit__rule {
+  margin: 0.75rem 0 1rem;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+.exit__wayfinding {
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--ink);
+}
+
+.exit__stage,
+.exit__counter,
+.notice__eyebrow,
+.notice__location {
+  margin: 0;
+  font: 400 var(--fs-xs)/1.4 var(--mono);
+  letter-spacing: 0.03em;
+}
+
+.exit__stage,
+.notice__eyebrow {
+  text-transform: uppercase;
+}
+
+.exit__counter {
+  color: var(--ink-3);
+}
+
+.exit__counter span {
+  color: var(--red);
+}
+
+.notice {
+  border: 1px solid var(--ink);
+  background: var(--paper);
+}
+
+.notice p,
+.notice h2 {
+  margin: 0;
+}
+
+.notice__masthead {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--hair);
+  font-size: var(--fs-s);
+  font-weight: 500;
+}
+
+.notice__logo {
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+}
+
+.notice__location {
+  margin-left: auto;
+  color: var(--ink-3);
+}
+
+.notice__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 1.5rem;
+  padding: 1.2rem;
+}
+
+.notice__eyebrow {
+  grid-column: 1 / -1;
+  padding-bottom: 0.4rem;
+  color: var(--ink-3);
+}
+
+.notice__title {
+  grid-column: 1;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+.notice__dates {
+  grid-column: 1;
+  padding-top: 0.5rem;
+  color: var(--ink-2);
+  font-size: var(--fs-s);
+}
+
+.notice__facts {
+  display: flex;
+  align-items: start;
+  gap: 1.4rem;
+  grid-column: 2;
+  grid-row: 2 / span 2;
+}
+
+.notice__facts strong,
+.notice__facts span {
+  display: block;
+}
+
+.notice__facts strong {
+  font: 400 2rem/1.1 var(--mono);
+  letter-spacing: -0.05em;
+}
+
+.notice__facts span {
+  margin-top: 0.3rem;
+  color: var(--ink-3);
+  font: 400 0.65rem/1.3 var(--mono);
+}
+
+.notice__formula {
+  grid-column: 1 / -1;
+  padding-top: 1rem;
+  font-size: var(--fs-s);
+  overflow-wrap: anywhere;
+}
+
+.notice__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  border-top: 1px solid var(--hair);
+  color: var(--ink-2);
+  font: 400 0.7rem/1.4 var(--mono);
+}
+
+.notice__direction {
+  white-space: nowrap;
+}
+
+.notice__arrow {
+  display: inline-block;
+  min-width: 1.2em;
+  margin-left: 0.3rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.exit__status {
+  min-height: 2.8em;
+  margin: 0.75rem 0;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.exit__decisions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.exit__choice,
+.exit__begin,
+.exit__retry {
+  min-height: 2.75rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: var(--fs-s);
+  cursor: pointer;
+}
+
+.exit__choice:hover,
+.exit__begin:hover,
+.exit__retry:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.exit__tools {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  min-height: 2.75rem;
+}
+
+.exit__reference {
+  min-height: 2.75rem;
+  padding: 0.4rem 0;
+  border: 0;
+  background: none;
+  color: var(--ink-2);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.exit__reference:hover {
+  color: var(--red);
+}
+
+.exit__egg {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+}
+
+.exit__credit {
+  margin: 0.5rem 0 0;
+  color: var(--ink-3);
+  font: 400 0.65rem/1.4 var(--mono);
+}
+
+@media (max-width: 38rem) {
+  .exit {
+    margin-top: 1rem;
+  }
+
+  .notice__masthead {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .notice__location {
+    font-size: 0.6rem;
+  }
+
+  .notice__body {
+    padding: 0.85rem;
+    column-gap: 0.75rem;
+  }
+
+  .notice__title,
+  .notice__dates {
+    grid-column: 1 / -1;
+  }
+
+  .notice__facts {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    gap: 1.5rem;
+    padding-top: 0.75rem;
+  }
+
+  .notice__facts p {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+
+  .notice__facts strong {
+    font-size: 1.35rem;
+  }
+
+  .notice__formula {
+    padding-top: 0.65rem;
+    font-size: 0.8rem;
+  }
+
+  .notice__footer {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.65rem;
+  }
+}
+
+/* Eggs (assets/js/egg.js) ----------------------------------------------- */
+
+.egg {
+  font-size: 0.875em;
+  font-style: normal;
+  line-height: 1;
+  cursor: default;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Boxed like the labels on the map, above everything else. */
+.egg-code {
+  position: fixed;
+  z-index: 1700;
+  padding: 3px 7px 2px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Narrower screens ------------------------------------------------------ */
+
+@media (max-width: 72rem) {
+  .nav {
+    grid-column: 4 / -1;
+  }
+
+  .masthead__meta {
+    display: none;
+  }
+}
+
+@media (max-width: 64rem) {
+  .masthead__inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .days {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer__col {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 52rem) {
+  .hero__text,
+  .hero__figure {
+    grid-column: 1 / -1;
+  }
+
+  .hero__figure {
+    max-width: 34rem;
+  }
+
+  .facts > div {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .facts dt {
+    grid-column: 1 / span 3;
+  }
+
+  .facts dd {
+    grid-column: 4 / -1;
+  }
+
+  .block > *,
+  .block > .block__label {
+    grid-column: 1 / -1;
+  }
+
+  /* The content now starts a row of its own, under the label. */
+  .block > :nth-child(2) {
+    text-box-trim: none;
+  }
+
+  .basket__lines {
+    margin-top: 0;
+  }
+
+  .person__name {
+    grid-column: 1 / span 5;
+  }
+
+  .person__affiliation {
+    grid-column: 6 / -1;
+  }
+
+  .person__talks {
+    grid-column: 6 / -1;
+    text-box-trim: none;
+  }
+
+  .block .person {
+    grid-template-columns: var(--columns);
+  }
+
+  .block .person__affiliation {
+    grid-column: 6 / -1;
+  }
+
+  .place {
+    grid-column: 1 / -1;
+  }
+
+  .formlink {
+    width: auto;
+  }
+
+  .countdown__clock {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 20rem;
+  }
+}
+
+@media (max-width: 45rem) {
+  .masthead {
+    border-bottom: 0;
+  }
+
+  .masthead__inner {
+    display: block;
+    padding-bottom: 0.5rem;
+  }
+
+  .wordmark {
+    padding: 1.1rem 0 1rem;
+  }
+
+  .nav__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+  }
+
+  .nav__list a {
+    padding: 0.8rem 0.25rem;
+    background: var(--paper);
+    color: var(--ink);
+    text-align: center;
+  }
+
+  .nav__list a[aria-current="page"] {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .nav__list a[aria-current="page"]::after {
+    content: none;
+  }
+}
+
+@media (max-width: 40rem) {
+  .facts dt {
+    grid-column: 1 / span 4;
+  }
+
+  .facts dd {
+    grid-column: 5 / -1;
+  }
+
+  .person,
+  .block .person {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .person__name,
+  .person__affiliation,
+  .person__talks,
+  .block .person__affiliation {
+    grid-column: 1;
+  }
+
+  .person__affiliation {
+    font-size: var(--fs-m);
+    letter-spacing: -0.011em;
+    text-box-trim: none;
+  }
+
+  .person__talks:not(:empty) {
+    margin-top: 0.35rem;
+  }
+
+  /* Stack each topic above its description. */
+  .topics thead {
+    display: none;
+  }
+
+  .topics tr {
+    display: block;
+    padding: 1.25rem 0 0.95rem;
+    border-bottom: 1px solid var(--hair);
+  }
+
+  /* Without the header row, the first topic sits right under the rule. */
+  .topics tbody tr:first-child {
+    padding-top: 0;
+  }
+
+  .topics th,
+  .topics td,
+  .topics th:first-child {
+    display: block;
+    width: auto;
+    padding: 0;
+    border: 0;
+  }
+
+  .topics tbody th:first-child,
+  .topics td {
+    padding-left: 2.25rem;
+  }
+
+  .topics td {
+    margin-top: 0.35rem;
+    text-box-trim: none;
+  }
+
+  .days {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .footer__inner {
+    row-gap: 1.5rem;
+  }
+}
+
+@media print {
+  .nav,
+  .skip,
+  .footer,
+  .infoview,
+  .discs,
+  .discs__density {
+    display: none;
+  }
+
+  .has-infoview body {
+    padding-right: 0;
+  }
+
+  .days {
+    grid-template-columns: repeat(var(--days, 4), minmax(0, 1fr));
+  }
+
+  .slot__abstract summary {
+    display: none;
+  }
+}
