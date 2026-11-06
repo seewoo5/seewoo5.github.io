@@ -8,6 +8,14 @@ locations:
     popup_content: |
       [2027 Fields Medal Symposium: Maryna Viazovska](https://www.fields.utoronto.ca/activities/26-27/Fields-Medal-Symposium), April 12-16, 2027
 
+  - city: "Boston, US"
+    lat: 42.3600949
+    lng: -71.0967349
+    date_from: "2027-01-25"
+    date_to: "2027-11-29"
+    popup_content: |
+      [Bridging the LMFDB and LEAN](https://math.mit.edu/~roed/conferences/lean-lmfdb2/), January 25-29, 2027
+
   - city: "Lausanne, Switzerland"
     lat: 46.5196487
     lng: 6.5687881
