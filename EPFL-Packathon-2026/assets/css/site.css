@@ -557,16 +557,8 @@ main {
 }
 
 .person__affiliation {
-  grid-column: 4 / span 4;
+  grid-column: 4 / -1;
   color: var(--ink-3);
-}
-
-.person__talks {
-  grid-column: 8 / -1;
-}
-
-.person__talks:empty {
-  display: none;
 }
 
 /* Inside a block (the organizers on the home page) the list starts at
@@ -587,30 +579,12 @@ main {
   grid-column: 4 / -1;
 }
 
-.person__name a,
-.talk {
+.person__name a {
   text-decoration-color: var(--hair);
 }
 
-.person__name a:hover,
-.talk:hover {
+.person__name a:hover {
   text-decoration-color: currentColor;
-}
-
-.talk {
-  display: block;
-}
-
-.talk + .talk {
-  margin-top: 0.6rem;
-}
-
-.talk__when {
-  display: block;
-  color: var(--ink-3);
-  font-family: var(--mono);
-  font-size: var(--fs-xs);
-  letter-spacing: 0.01em;
 }
 
 /* Groups ---------------------------------------------------------------- */
@@ -2078,11 +2052,6 @@ main {
     grid-column: 6 / -1;
   }
 
-  .person__talks {
-    grid-column: 6 / -1;
-    text-box-trim: none;
-  }
-
   .block .person {
     grid-template-columns: var(--columns);
   }
@@ -2160,7 +2129,6 @@ main {
 
   .person__name,
   .person__affiliation,
-  .person__talks,
   .block .person__affiliation {
     grid-column: 1;
   }
@@ -2169,10 +2137,6 @@ main {
     font-size: var(--fs-m);
     letter-spacing: -0.011em;
     text-box-trim: none;
-  }
-
-  .person__talks:not(:empty) {
-    margin-top: 0.35rem;
   }
 
   /* Stack each topic above its description. */
