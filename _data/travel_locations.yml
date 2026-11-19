@@ -1,5 +1,13 @@
 # _data/travel_locations.yml
 locations:
+  - city: "Cambridge, United Kingdom"
+    lat: 52.2043155
+    lng: 0.1021278
+    date_from: "2027-07-19"
+    date_to: "2027-07-21"
+    popup_content: |
+      [Mathlib 10th Anniversary Conference](https://mathlib-initiative.org/mathlib10/), July 19-21, 2027
+
   - city: "Toronto, Canada"
     lat: 43.6587275
     lng: -79.3998971
