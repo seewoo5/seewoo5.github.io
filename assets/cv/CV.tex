@@ -1,93 +1,80 @@
-% (c) 2002 Matthew Boedicker <mboedick@mboedick.org> (original author) http://mboedick.org
-% (c) 2003-2007 David J. Grant <davidgrant-at-gmail.com> http://www.davidgrant.ca
-% (c) 2008 Nathaniel Johnston <nathaniel@nathanieljohnston.com> http://www.nathanieljohnston.com
-% (l) 2012 Arun I B <arunib@smail.iitm.ac.in> http://www.ee.iitm.ac.in/~ee10s026/
-%This work is licensed under the Creative Commons Attribution-Noncommercial-Share Alike 2.5 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/2.5/ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA.
-
-
 \documentclass[letterpaper,11pt]{article}
-\newlength{\outerbordwidth}
-\pagestyle{empty}
-\raggedbottom
-\raggedright
-\usepackage[svgnames]{xcolor}
-\usepackage{framed}
-\usepackage{times}
-\usepackage{hyperref}
-\usepackage{tocloft}
-\usepackage{graphicx}
-\usepackage{comment}
-\usepackage{multirow,enumitem} 
-%\usepackage{tabularx}
-\usepackage{hyperref,tabu}
+%-----------------------------------------------------------
+% Layout & fonts
+\usepackage[letterpaper,margin=0.75in,top=0.7in,bottom=0.75in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[sups]{XCharter}          % body: Charter
+\usepackage[scale=0.95]{sourcesanspro} % headings: Source Sans
+\renewcommand{\familydefault}{\rmdefault}
+\usepackage[dvipsnames,svgnames]{xcolor}
+\usepackage{graphicx,comment,multirow,tabularx,array}
+\usepackage{enumitem}
 \usepackage{fontawesome}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage{fancyhdr}
 
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{muted}{HTML}{5F6B7A}
+\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent}
 
-\title{Aparna-CV}
-%-----------------------------------------------------------
-%Edit these values as you see fit
-
-\setlength{\outerbordwidth}{3pt}  % Width of border outside of title bars
-\definecolor{shadecolor}{gray}{0.75}  % Outer background color of title bars (0 = black, 1 = white)
-\definecolor{shadecolorB}{gray}{0.93}  % Inner background color of title bars
-
-
-%-----------------------------------------------------------
-%Margin setup
-
-\setlength{\evensidemargin}{-0.25in}
-\setlength{\headheight}{0in}
-\setlength{\headsep}{0in}
-\setlength{\oddsidemargin}{-0.25in}
-\setlength{\paperheight}{11in}
-\setlength{\paperwidth}{8.5in}
-%\setlength{\tabcolsep}{0in}
-\setlength{\textheight}{9.5in}
-\setlength{\textwidth}{7in}
-\setlength{\topmargin}{-0.3in}
-\setlength{\topskip}{0in}
-\setlength{\voffset}{0.1in}
-
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[R]{\sffamily\footnotesize\color{muted}\thepage}
+\raggedright
+\setlength{\parindent}{0pt}
+\linespread{1.04}
 
 %-----------------------------------------------------------
-%Custom commands
-\newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
-\newcommand{\resheading}[1]{\vspace{8pt}
-  \parbox{\textwidth}{\setlength{\FrameSep}{\outerbordwidth}
-    \begin{shaded}
-\setlength{\fboxsep}{0pt}\framebox[\textwidth][l]{\setlength{\fboxsep}{4pt}\fcolorbox{shadecolorB}{shadecolorB}{\textbf{\sffamily{\mbox{~}\makebox[6.762in][l]{\large #1} \vphantom{p\^{E}}}}}}
-    \end{shaded}
-  }\vspace{-5pt}
-}
-\newcommand{\ressubheading}[4]{
-\begin{tabular*}{6.5in}{l@{\cftdotfill{\cftsecdotsep}\extracolsep{\fill}}r}
-		\textbf{#1} & #2 \\
-		{#3} & {#4} \\
-\end{tabular*}\vspace{-6pt}}
+% Lists
+\setlist{nosep}
+\setlist[itemize]{leftmargin=1.1em,label={\color{accent}\scriptsize$\bullet$}}
+\setlist[itemize,2]{leftmargin=1.1em,label={\color{muted}\textendash}}
+\setlist[enumerate]{leftmargin=2.2em,itemsep=1.5pt,label={\sffamily\small\color{muted}[\arabic*]}}
+
+%-----------------------------------------------------------
+% Custom commands
+\newcommand{\resitem}[1]{\item #1}
+\newcommand{\resheading}[1]{%
+  \par\addvspace{10pt}%
+  {\sffamily\bfseries\large\color{accent}\MakeUppercase{#1}}\par\nobreak
+  \vspace{2pt}{\color{accent!35}\hrule height 0.7pt}\par\nobreak\vspace{5pt}}
+\newcommand{\ressubsection}[1]{%
+  \par\addvspace{4pt}{\sffamily\bfseries\color{muted}#1}\par\nobreak\vspace{2pt}}
+% \ressubheading{Institution}{Location}{Role}{Dates}
+\newcommand{\ressubheading}[4]{%
+  \par\addvspace{3pt}%
+  \begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}r@{}}
+    \textbf{#1} & {\sffamily\small\color{accent}#4} \\
+    \textit{#3} & {\small\color{muted}#2} \\
+  \end{tabular*}\par\nobreak\vspace{1pt}}
+% \award{Name}{Date}
+\newcommand{\award}[2]{#1 & {\sffamily\small\color{muted}#2}\\}
 %-----------------------------------------------------------
 
-\usepackage{newtxtext}
 \begin{document}
 
 %-----------------------------------------------------------
-%Insert IIT Madras Logo 
-\begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
-  & \multirow{4}{*}{}\\
-  & \\
-%-----------------------------------------------------------  
-  \textbf{\Large Seewoo Lee} & \\
-  Postdoc at EPFL & \\
-  seewoo.lee@epfl.ch \\
-  \faHome\,\,\url{https://seewoo5.github.io} \\
-  \faGithubSquare\,\,\url{https://github.com/seewoo5} \\
-  \faLinkedinSquare\,\,\url{https://www.linkedin.com/in/seewoo-lee-857062171/}
-\end{tabular*}
-\\
+% Header
+\begin{minipage}[c]{0.6\linewidth}
+  {\sffamily\bfseries\fontsize{26}{28}\selectfont\color{accent}Seewoo Lee}\par\vspace{5pt}
+  {\sffamily\large\color{muted}Postdoc, \'{E}cole Polytechnique F\'{e}d\'{e}rale de Lausanne}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.38\linewidth}
+  \raggedleft\small\linespread{1.15}\selectfont
+  \faEnvelope\,\,\href{mailto:seewoo.lee@epfl.ch}{seewoo.lee@epfl.ch}\\
+  \faHome\,\,\href{https://seewoo5.github.io}{seewoo5.github.io}\\
+  \faGithub\,\,\href{https://github.com/seewoo5}{github.com/seewoo5}\\
+  \faLinkedinSquare\,\,\href{https://www.linkedin.com/in/seewoo-lee-857062171/}{linkedin.com/in/seewoo-lee}
+\end{minipage}
+\par\vspace{2pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \resheading{Academic Employment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{itemize}[leftmargin=5.5mm]
+\begin{itemize}
 \item[]
 	\ressubheading{\'{E}cole Polytechnique F\'{e}d\'{e}rale de Lausanne (EPFL)}{Lausanne, Switzerland}{Collaborateur scientifique (Postdoc)}{2026 -- present}
 	\begin{itemize}
@@ -98,7 +85,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \resheading{Education}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{itemize}[leftmargin=5.5mm]
+\begin{itemize}
 \item[]
 	\ressubheading{University of California Berkeley}{Berkeley, US}{Ph.D. in Mathematics}{2018 -- 2026}
 	\begin{itemize}
@@ -127,7 +114,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \resheading{Work Experiences}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{itemize}[leftmargin=5.5mm]
+\begin{itemize}
 \item[]
 	\ressubheading{Axiom Math}{Palo Alto, US}{Internship}{2026.01 -- 2026.04}
 	\begin{itemize}
@@ -160,7 +147,7 @@
 \resheading{Publications}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}
-	\item Math
+	\item[] \ressubsection{Mathematics}
 	\begin{enumerate}
 		\item S. Hariharan, C. Birkbeck, \textbf{S. Lee}, G. Ma, B. Mehta, A. Poiroux, M. Viazovska, \emph{Progress in Formalizing Sphere Packing in Dimension 8}, To appear in Proceedings of the International Congress on Mathematical Software 2026, \href{http://arxiv.org/abs/2604.23468}{arXiv:2604.23468}
 		\item \textbf{S. Lee}, \emph{Shanks bias in function fields}, To appear in J. Th\'eor. Nombres Bordeaux, \href{https://arxiv.org/abs/2509.16142}{arXiv:2509.16142}
@@ -177,7 +164,7 @@
 		\item \textbf{S. Lee}, \emph{Quantum Modular Forms and Hecke Operators}, Res. Number Theory 4, 18 (2018)
 		\item Y. Chen, R. Chernov, M. Flores, M. F. Bourque, \textbf{S. Lee}, B. Yang, \emph{Toy Teichm\"uller spaces of real dimension 2: the pentagon and the punctured triangle}, Geom. Dedicata 197 (2018), 193-227
 	\end{enumerate}
-	\item Others
+	\item[] \ressubsection{Other Fields}
 	\begin{enumerate}
 		\item F. Lin, K. Nagel, \textbf{S. Lee}, J. Jiang, G. Yang, P. Chang, S. Li, N. Sheu, \emph{An Analysis of Silk Density in Spider Webs}, R. Soc. Open Sci. 12: 250455 (2025)
 		\item \textbf{S. Lee}, G. Lee, J. Kim, J. Shin, M. Lee, \emph{HETAL: Efficient Privacy-preserving Transfer Learning with Homomorphic Encryption}, International Conference on Machine Learning. 2023 (Oral, 155/6538)
@@ -206,33 +193,27 @@
     \item Y. Choi, Y. Lee, J. Cho, J. Baek, D. Shin, H. Yu, Y. Shim, \textbf{S. Lee}, J. Shin, C. Bae, B. Kim, J. Heo, \emph{Assessment Modeling: Fundamental Pre-training Tasks for Interactive Educational Systems}, \href{https://arxiv.org/abs/2002.05505}{arXiv:2022.05505}
 \end{enumerate}
 
-\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \resheading{Awards, Grants \& Honours}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\vspace{-2pt}
-	\begin{center}\begin{tabular*}{6.6in}{l@{\extracolsep{\fill}}r}
-	    \multicolumn{2}{c}{Nikki Kose Memorial Teaching Prize, Dept. of Mathematics, UC Berkeley \cftdotfill{\cftdotsep}2026 Spring}\\
-	    \multicolumn{2}{c}{Department of Mathematics Summer Grant, UC Berkeley \cftdotfill{\cftdotsep}2024 Summer}\\
-	    \multicolumn{2}{c}{Outstanding Graduate Student Instructor Award, UC Berkeley \cftdotfill{\cftdotsep}2024 Spring}\\
-	    \multicolumn{2}{c}{Graduate Student Researcher, UC Berkeley \cftdotfill{\cftdotsep}2023 Spring, Summer}\\
-	    \multicolumn{2}{c}{Kwanjeong Educational Foundation Scholarship, KEF \cftdotfill{\cftdotsep}2017 -- 2018}\\
-		\multicolumn{2}{c}{Excellency Award (Top Honours), Dept. of Mathematics, POSTECH \cftdotfill{\cftdotsep}2017}\\
-		\multicolumn{2}{c}{POSTECH Outstanding Talent Development Scholarship, POSTECH \cftdotfill{\cftdotsep} 2013 -- 2016}\\
-		\multicolumn{2}{c}{National Science and Technology Scholarship, KOSAF \cftdotfill{\cftdotsep}2013 -- 2016}\\
-		\multicolumn{2}{c}{Silver medals, Undergraduate Mathematical Competition, KMS  \cftdotfill{\cftdotsep}2013, 2015, 2016}\\ 
-		\multicolumn{2}{c}{31st place, ACM-ICPC Daejeon Regional, ACM\cftdotfill{\cftdotsep} 2015}\\
-		\multicolumn{2}{c}{Grand prize, POSTECH Programming Contest, Dept. of Computer Science, POSTECH \cftdotfill{\cftdotsep} 2015} \\
-		\multicolumn{2}{c}{Honorable mention, Korean Olympiad of Informatics, NIA \cftdotfill{\cftdotsep} 2012} \\
-		\vphantom{E}
-		
-\end{tabular*}
-\end{center}\vspace*{-16pt} 
+\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}r@{}}
+  \award{Nikki Kose Memorial Teaching Prize, Dept. of Mathematics, UC Berkeley}{2026 Spring}
+  \award{Department of Mathematics Summer Grant, UC Berkeley}{2024 Summer}
+  \award{Outstanding Graduate Student Instructor Award, UC Berkeley}{2024 Spring}
+  \award{Graduate Student Researcher, UC Berkeley}{2023 Spring, Summer}
+  \award{Kwanjeong Educational Foundation Scholarship, KEF}{2017 -- 2018}
+  \award{Excellency Award (Top Honours), Dept. of Mathematics, POSTECH}{2017}
+  \award{POSTECH Outstanding Talent Development Scholarship, POSTECH}{2013 -- 2016}
+  \award{National Science and Technology Scholarship, KOSAF}{2013 -- 2016}
+  \award{Silver medals, Undergraduate Mathematical Competition, KMS}{2013, 2015, 2016}
+  \award{31st place, ACM-ICPC Daejeon Regional, ACM}{2015}
+  \award{Grand prize, POSTECH Programming Contest, Dept. of Computer Science, POSTECH}{2015}
+  \award{Honorable mention, Korean Olympiad of Informatics, NIA}{2012}
+\end{tabular*} 
 
 % \newpage
 \resheading{Teaching Experience}
 %%%%%%%%%%%%%%%%
-\begin{itemize}[leftmargin=5.5mm] 
+\begin{itemize} 
 \item[]
 \ressubheading{T.A.}{Lausanne}{EPFL}{2026 -- Present}
 	\begin{itemize}
@@ -274,28 +255,32 @@
 	\end{itemize}
 \end{itemize}
 
-\newpage
 \resheading{Outreach}
 %%%%%%%%%%%%%%%%
-\begin{itemize}[leftmargin=5.5mm] 
+\begin{itemize} 
 	\item[]
+	\ressubheading{EPFL Packathon}{EPFL}{Mentor}{Nov 23--27, 2026}
+	\begin{itemize}
+		\resitem{Organizer of a week-long workshop on formalizing Sphere packing in Lean}
+	\end{itemize}
+
 	\ressubheading{EPFL Bacheler Project Mentoring}{EPFL}{Mentor}{2026 Fall -- present}
 	\begin{itemize}
 		\resitem{Introduction to Lean (Michelle Egli, Loan Depuydt, co-advise with Maryna Viazovska)}
 	\end{itemize}
 
-	\ressubheading{KIAS Thematic Program on AI and Mathematics}{KIAS}{Coordinator for week 2: Number Theory}{2026 Summer}
+	\ressubheading{KIAS Thematic Program on AI and Mathematics}{KIAS}{Coordinator for week 2: Number Theory}{Jul 20--24, 2026}
 	\begin{itemize}
 		\item Organized a week-long program on Number Theory and AI
 	\end{itemize}
 
-	\ressubheading{KIAS Winter School on Mathematics and AI}{KIAS}{Team Leader}{2025 Winter}
+	\ressubheading{KIAS Winter School on Mathematics and AI}{KIAS}{Team Leader}{Dec 2--5, 2025}
 	\begin{itemize}
 		\resitem{Use machine learning to study Artin representations and abelian varieties over finite fields}
 		\resitem{Members: Dohoon Choi, Keunyoung Jeong, Jaehak Yi, Minseo Shin, Euntaek Lee, Taeyoung Kim}
 	\end{itemize}
 
-	\ressubheading{Berkeley Math REU}{UC Berkeley}{Mentor}{2025 Summer}
+	\ressubheading{Berkeley Math REU}{UC Berkeley}{Mentor}{Jun 1 -- Jul 31, 2025}
 	\begin{itemize}
 		\resitem{Diophantine equations on Fibonacci polynomials and ties in Chebyshev bias over finite fields}
 		\resitem{Mentees: Graeme Bates, Ryan Jesubalan, Jane Lu, Hyewon Shim}
@@ -322,93 +307,93 @@
 \resheading{Talks}
 %%%%%%%%%%%%%%%%%
 \begin{itemize}
-	\item Research Talks
+	\item[] \ressubsection{Research Talks}
 	\begin{itemize}
 		\item Thematic Program on AI and Mathematics, KIAS, Seoul, July 2026 \\
-		Formalized $q$-series
+		{\color{muted}\textit{Formalized $q$-series}}
 		\item BRL-AGSTA One-day Workshop, DGIST, Daegu, July 2026 \\
-		Machine Learning Number Theory
+		{\color{muted}\textit{Machine Learning Number Theory}}
 		\item Mathematics x AI: Challenges and Opportunities, KIAS, Seoul, July 2026 \\
-		Machine Learning Number Theory
+		{\color{muted}\textit{Machine Learning Number Theory}}
 		\item Workshop on Algebraic Geometry and Machine Learning, ICARM, Pittsburgh, June 2026 \\
-		Machine Learning Number Theory
+		{\color{muted}\textit{Machine Learning Number Theory}}
 		\item Graduate School of AI for Math, KAIST, Daejeon, June 2026 \\
-		Positive Quasimodular Forms and Linear Programming Bounds
+		{\color{muted}\textit{Positive Quasimodular Forms and Linear Programming Bounds}}
 		\item Mathematics Colloquium, Carnegie Mellon University, Pittsburgh, April 2026 \\
-		Positive Quasimodular Forms and Linear Programming Bounds
+		{\color{muted}\textit{Positive Quasimodular Forms and Linear Programming Bounds}}
 		\item Aarhus Mathamtics \& AI Workshop, Aarhus Institute of Advanced Studies, Aarhus, January 2026 \\
-		How Machines Learn Galois Groups \\ 
+		{\color{muted}\textit{How Machines Learn Galois Groups}}
 		\item Lean Together 2026, Online, January 2026 \\
-		Progress on the Sphere Packing Project (with Sidarth Hariharan and Chris Birkbeck)
+		{\color{muted}\textit{Progress on the Sphere Packing Project (with Sidarth Hariharan and Chris Birkbeck)}}
 		\item June E Huh Center for Mathematical Challenges, KIAS, Seoul, January 2026 \\
-		Positive Quasimodular Forms and Linear Programming Bounds
+		{\color{muted}\textit{Positive Quasimodular Forms and Linear Programming Bounds}}
 		\item Number Theory Seminar, University of Wisconsin-Madison, Wisconsin, December 2025 \\
-		How Machines Learn Galois Groups \\ 
+		{\color{muted}\textit{How Machines Learn Galois Groups}}
 		\item EPFL, Lausanne, November 2025 \\
-		Sphere Packing, Sign Uncertainty Principle, Universal Optimality, and Positive Quasimodular Forms
+		{\color{muted}\textit{Sphere Packing, Sign Uncertainty Principle, Universal Optimality, and Positive Quasimodular Forms}}
 		\item Aarhus University, Aarhus, November 2025 \\
-		Sphere Packing, Sign Uncertainty Principle, Universal Optimality, and Positive Quasimodular Forms
+		{\color{muted}\textit{Sphere Packing, Sign Uncertainty Principle, Universal Optimality, and Positive Quasimodular Forms}}
 		\item Special Seminar, Carnegie Mellon University, Pittsburgh, November 2025 \\
-		How Machines Learn Galois Groups \\ 
+		{\color{muted}\textit{How Machines Learn Galois Groups}}
 		\item International Seminar on Automorphic Forms, Online, April 2025 \\
-		Algebraic proof of modular form inequalities for optimal sphere packings 
+		{\color{muted}\textit{Algebraic proof of modular form inequalities for optimal sphere packings}}
 		\item RTG seminar, UC Berkeley, Berkeley, February 2025 \\
-		Algebraic proof of modular form inequalities for optimal sphere packings 
+		{\color{muted}\textit{Algebraic proof of modular form inequalities for optimal sphere packings}}
 		\item Algebra Discrete Math seminar, UC Davis, Davis, January 2025 \\
-		Algebraic proof of modular form inequalities for optimal sphere packings 
+		{\color{muted}\textit{Algebraic proof of modular form inequalities for optimal sphere packings}}
 		\item 6th EU/US Workshop on Automorphic Forms and Related Topics, Luminy, September 2024 \\
-		Algebraic proof of modular form inequalities for optimal sphere packings 
+		{\color{muted}\textit{Algebraic proof of modular form inequalities for optimal sphere packings}}
 		\item POSTECH Number Theory Seminar, POSTECH, Pohang, May 2024 \\
-		Algebraic proof of modular form inequalities for optimal sphere packings 
+		{\color{muted}\textit{Algebraic proof of modular form inequalities for optimal sphere packings}}
 		\item Student Number Theory Seminar, UC Berkeley, Berkeley, April 2024 \\
-		Algebraic proof of Viazovska's inequalities
+		{\color{muted}\textit{Algebraic proof of Viazovska's inequalities}}
 		\item School of Mathematics, KIAS, Seoul, December 2023 \\
-		A new proof of Viazovska's modular form inequality and beyond
+		{\color{muted}\textit{A new proof of Viazovska's modular form inequality and beyond}}
 		\item International Conference on Machine Learning, Hawaii, US, July 2023 \\
-		HETAL: Efficient Privacy-preserving Transfer Learning with Homomorphic Encryption
+		{\color{muted}\textit{HETAL: Efficient Privacy-preserving Transfer Learning with Homomorphic Encryption}}
 		\item Center for Artificial Intelligence and Natural Sciences, KIAS, Seoul, June 2023 \\
-		HETAL: Efficient Privacy-preserving Transfer Learning with Homomorphic Encryption
+		{\color{muted}\textit{HETAL: Efficient Privacy-preserving Transfer Learning with Homomorphic Encryption}}
 		\item School of Computing, KAIST, Daejeon, June 2023 \\
-		HETAL: Efficient Privacy-preserving Transfer Learning with Homomorphic Encryption
+		{\color{muted}\textit{HETAL: Efficient Privacy-preserving Transfer Learning with Homomorphic Encryption}}
 		\item 1st FHE.org workshop, Trondheim, May 2022 \\
-		Encrypted Multinomial Logistic Regression Training with Softmax Approximation
+		{\color{muted}\textit{Encrypted Multinomial Logistic Regression Training with Softmax Approximation}}
 		\item Workshop for Young Mathematicians in Korea, Online, January 2022 \\
-		Hitchhiker's guide to non-archimedean world
+		{\color{muted}\textit{Hitchhiker's guide to non-archimedean world}}
 		\item Graduate student seminar, Sogang University, Seoul, July 2018 \\
-		Maass wave forms, quantum modular forms and Hecke operators
+		{\color{muted}\textit{Maass wave forms, quantum modular forms and Hecke operators}}
 		\item Sungkyunkwan University, Seoul, June 2018 \\
-		Maass wave forms, quantum modular forms and Hecke operators
-		\item NCTS-POSTECH Number Theory Workshop, NTU, Taiwan, December 2017 \\ 
-		Quantum modular forms and Hecke operators
+		{\color{muted}\textit{Maass wave forms, quantum modular forms and Hecke operators}}
+		\item NCTS-POSTECH Number Theory Workshop, NTU, Taiwan, December 2017 \\
+		{\color{muted}\textit{Quantum modular forms and Hecke operators}}
 	\end{itemize}
-	\item Expository Talks
+	\item[] \ressubsection{Expository Talks}
 	\begin{itemize}
 		\item AI, Combinatorics and Number Theory Seminar, Online, October 2026 \\
-		Some practical tips on digesting AI proofs: informal and formal aspects
+		{\color{muted}\textit{Some practical tips on digesting AI proofs: informal and formal aspects}}
 		\item Korea University, Seoul, June 2026 \\
-		Mathematics, AI, and Formalization
+		{\color{muted}\textit{Mathematics, AI, and Formalization}}
 		\item Student Number Theory Seminar, Berkeley, March 2026 \\
-		Mathematics, AI, and Formalization
+		{\color{muted}\textit{Mathematics, AI, and Formalization}}
 		\item Harmonic Analysis Seminar, University of California Irvine, February 2026 \\
-		Mathematics, AI, and Formalization
+		{\color{muted}\textit{Mathematics, AI, and Formalization}}
 		\item Student Number Theory Seminar, Berkeley, August 2025 \\
-		How Do Automorphic Forms and Elliptic Curves Fly? (Survey on Murmuration)
+		{\color{muted}\textit{How Do Automorphic Forms and Elliptic Curves Fly? (Survey on Murmuration)}}
 		\item Bruhat-Tits building seminar, Berkeley, February 2025 \\
-		Bruhat-Tits buildings for split groups / Moy-Prasad filtration and Local Langlands correspondence
-		\item Berkeley--Stanford Number Theory Learning Seminar, Berkeley, December 2024.\\
-		Proof of irrationality of $L(2, \chi_{-3})$ and product of log values
+		{\color{muted}\textit{Bruhat-Tits buildings for split groups / Moy-Prasad filtration and Local Langlands correspondence}}
+		\item Berkeley--Stanford Number Theory Learning Seminar, Berkeley, December 2024 \\
+		{\color{muted}\textit{Proof of irrationality of $L(2, \chi_{-3})$ and product of log values}}
 		\item Student Number Theory Seminar, Berkeley, October 2024 \\
-		Modular forms on $G_2$
+		{\color{muted}\textit{Modular forms on $G_2$}}
 		\item Geometric class field theory learning seminar, Berkeley, Sep 2024 \\
-		Singular algebraic curves and de-normalization
+		{\color{muted}\textit{Singular algebraic curves and de-normalization}}
 		\item Student Number Theory Seminar, Berkeley, March 2024 \\
-		Linear Programming Beyond Sphere Packing
+		{\color{muted}\textit{Linear Programming Beyond Sphere Packing}}
 		\item Orbit methods and automorphic forms learning seminar, Berkeley, Oct 2023 \\
-		Gan--Gross--Prasad conjectures
+		{\color{muted}\textit{Gan--Gross--Prasad conjectures}}
 		\item Student Number Theory Seminar, Berkeley, Nov 2022 \\
-		Shimura correspondence and Waldspurger's formula
+		{\color{muted}\textit{Shimura correspondence and Waldspurger's formula}}
 		\item Instructional Workshop on Class Field Theory, KIAS, Seoul, January 2018 \\
-		Proof of the main theorem of local class field theory
+		{\color{muted}\textit{Proof of the main theorem of local class field theory}}
 	\end{itemize}
 \end{itemize}
 % \begin{itemize}
@@ -443,7 +428,7 @@
 \end{itemize}
 
 % \newpage
-\resheading{Miscelleneous (click the icons)}
+\resheading{Miscellaneous (click the icons)}
 \begin{itemize}
 \item Working as a reviewer for Mathematical Reviews (2022$\sim$) \href{https://mathscinet.ams.org/mathscinet/search/publications.html?pg1=RVRI&s1=1266901&pg3=authreviews}{\faExternalLink}
 \item GitHub blog on various topics \href{https://seewoo5.github.io/blog/}{\faEdit}
@@ -452,5 +437,6 @@
 \item DJ (Techno, Trance, House)\,\,\href{https://soundcloud.com/aftrmath-dj}{\faSoundcloud}\,\,\href{https://www.youtube.com/channel/UCv2LsKzh8sdzXeMWa99dn_A}{\faYoutube}
 \end{itemize}
 
-(Last updated: \today)
+\vfill
+{\hfill\sffamily\footnotesize\color{muted}Last updated: \today}
 \end{document}
